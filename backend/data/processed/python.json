@@ -1,0 +1,759 @@
+[
+  {
+    "id": "4d7771d5-265f-5473-bf83-b6c0d73690b0",
+    "domain": "Python",
+    "subcategory": "Core Language",
+    "topic": "data-structures",
+    "difficulty": "easy",
+    "question": "What is the difference between list and tuple in Python?",
+    "options": {
+      "A": "List is mutable, Tuple is immutable",
+      "B": "List is immutable, Tuple is mutable",
+      "C": "List holds homogeneous data, Tuple holds heterogeneous data",
+      "D": "There is no difference"
+    },
+    "correct_answer": "A",
+    "explanation": "Lists are mutable and can be modified after creation. Tuples are immutable and their contents cannot be changed.",
+    "expected_concepts": [
+      "list",
+      "tuple",
+      "python",
+      "lists",
+      "mutable"
+    ],
+    "keywords": [
+      "list",
+      "tuple",
+      "python",
+      "lists",
+      "mutable",
+      "modified",
+      "creation",
+      "tuples",
+      "immutable",
+      "contents",
+      "cannot",
+      "changed"
+    ],
+    "source": "python.json"
+  },
+  {
+    "id": "2f278d0e-bcbd-58af-ae7c-6c26fc1e0414",
+    "domain": "Python",
+    "subcategory": "Core Language",
+    "topic": "data-structures",
+    "difficulty": "easy",
+    "question": "Which of the following creates a dictionary in Python?",
+    "options": {
+      "A": "x = []",
+      "B": "x = ()",
+      "C": "x = {}",
+      "D": "x = set()"
+    },
+    "correct_answer": "C",
+    "explanation": "Curly braces {} are used to define a dictionary in Python. x = [] creates a list, x = () creates a tuple, and x = set() creates an empty set.",
+    "expected_concepts": [
+      "following",
+      "creates",
+      "dictionary",
+      "python",
+      "curly"
+    ],
+    "keywords": [
+      "following",
+      "creates",
+      "dictionary",
+      "python",
+      "curly",
+      "braces",
+      "list",
+      "tuple",
+      "set",
+      "empty"
+    ],
+    "source": "python.json"
+  },
+  {
+    "id": "6cb6be3f-1489-5473-8dd4-093345cf5dd6",
+    "domain": "Python",
+    "subcategory": "Core Language",
+    "topic": "operators",
+    "difficulty": "easy",
+    "question": "What does the 'is' keyword evaluate in Python?",
+    "options": {
+      "A": "Equality of values",
+      "B": "Identity/memory address equality",
+      "C": "Type equality",
+      "D": "Subclass relationships"
+    },
+    "correct_answer": "B",
+    "explanation": "The 'is' operator checks if two reference variables point to the exact same object in memory, whereas '==' checks if the values of two objects are equal.",
+    "expected_concepts": [
+      "keyword",
+      "evaluate",
+      "python",
+      "operator",
+      "checks"
+    ],
+    "keywords": [
+      "keyword",
+      "evaluate",
+      "python",
+      "operator",
+      "checks",
+      "two",
+      "reference",
+      "variables",
+      "point",
+      "exact",
+      "object",
+      "memory"
+    ],
+    "source": "python.json"
+  },
+  {
+    "id": "fc7d1f64-3808-5ca7-bf52-21444d22c0a9",
+    "domain": "Python",
+    "subcategory": "Core Language",
+    "topic": "data-structures",
+    "difficulty": "easy",
+    "question": "What does print(type([])) output?",
+    "options": {
+      "A": "<class 'list'>",
+      "B": "list",
+      "C": "[]",
+      "D": "Error"
+    },
+    "correct_answer": "A",
+    "explanation": "In Python 3, all data types are classes. Evaluating type of a list literal returns the list class.",
+    "expected_concepts": [
+      "print",
+      "type",
+      "output",
+      "python",
+      "data"
+    ],
+    "keywords": [
+      "print",
+      "type",
+      "output",
+      "python",
+      "data",
+      "types",
+      "classes",
+      "evaluating",
+      "list",
+      "literal",
+      "returns",
+      "class"
+    ],
+    "source": "python.json"
+  },
+  {
+    "id": "b370980f-c8d3-5f43-bb4f-04cc24328ed3",
+    "domain": "Python",
+    "subcategory": "Core Language",
+    "topic": "slicing",
+    "difficulty": "easy",
+    "question": "How do you reverse a list 'my_list' using slicing?",
+    "options": {
+      "A": "my_list[::]",
+      "B": "my_list[::-1]",
+      "C": "my_list[-1::]",
+      "D": "my_list[1::-1]"
+    },
+    "correct_answer": "B",
+    "explanation": "The slicing format is start:stop:step. A step of -1 traverses the list in reverse order.",
+    "expected_concepts": [
+      "you",
+      "reverse",
+      "list",
+      "my_list",
+      "slicing"
+    ],
+    "keywords": [
+      "you",
+      "reverse",
+      "list",
+      "my_list",
+      "slicing",
+      "format",
+      "start",
+      "stop",
+      "step",
+      "traverses",
+      "order"
+    ],
+    "source": "python.json"
+  },
+  {
+    "id": "b03f2d7e-fbac-5f82-a42e-1cfcd7027cf2",
+    "domain": "Python",
+    "subcategory": "Core Language",
+    "topic": "functions",
+    "difficulty": "medium",
+    "question": "What happens when a default mutable argument is modified in a function?",
+    "options": {
+      "A": "It is reset to empty on every function call",
+      "B": "It retains modifications across calls because default arguments are evaluated once at definition time",
+      "C": "A TypeError is raised",
+      "D": "A new copy is created automatically"
+    },
+    "correct_answer": "B",
+    "explanation": "Python's default arguments are evaluated once when the function is defined. If you use a mutable default parameter (like a list) and modify it, the changes persist across subsequent function calls.",
+    "expected_concepts": [
+      "happens",
+      "default",
+      "mutable",
+      "argument",
+      "modified"
+    ],
+    "keywords": [
+      "happens",
+      "default",
+      "mutable",
+      "argument",
+      "modified",
+      "function",
+      "python",
+      "arguments",
+      "evaluated",
+      "defined",
+      "you",
+      "use"
+    ],
+    "source": "python.json"
+  },
+  {
+    "id": "d0c572e7-ec61-5acf-89aa-0fe474eff65f",
+    "domain": "Python",
+    "subcategory": "Core Language",
+    "topic": "data-structures",
+    "difficulty": "medium",
+    "question": "Which types can be used as keys in a Python dictionary?",
+    "options": {
+      "A": "Only strings",
+      "B": "Any mutable type",
+      "C": "Any hashable (immutable) type",
+      "D": "Any type including lists and dictionaries"
+    },
+    "correct_answer": "C",
+    "explanation": "Dictionary keys must be hashable, meaning they must have a hash value that never changes during their lifetime. This includes immutable types like strings, numbers, and tuples (if all their elements are hashable).",
+    "expected_concepts": [
+      "types",
+      "keys",
+      "python",
+      "dictionary",
+      "hashable"
+    ],
+    "keywords": [
+      "types",
+      "keys",
+      "python",
+      "dictionary",
+      "hashable",
+      "meaning",
+      "hash",
+      "value",
+      "never",
+      "changes",
+      "lifetime",
+      "includes"
+    ],
+    "source": "python.json"
+  },
+  {
+    "id": "57973508-d57e-5cd9-baaf-4d3a457f5baf",
+    "domain": "Python",
+    "subcategory": "Core Language",
+    "topic": "generators",
+    "difficulty": "medium",
+    "question": "What is the primary difference between a generator (using yield) and a regular function?",
+    "options": {
+      "A": "Generators are faster but use more memory",
+      "B": "Generators return an iterator that yields values lazily, preserving state between yields, whereas functions return a single value and terminate",
+      "C": "Generators can only yield strings",
+      "D": "Functions can be recursive but generators cannot"
+    },
+    "correct_answer": "B",
+    "explanation": "Generators generate values on-the-fly (lazy evaluation) and pause their state, saving memory compared to returning a full list from a function.",
+    "expected_concepts": [
+      "primary",
+      "generator",
+      "yield",
+      "regular",
+      "function"
+    ],
+    "keywords": [
+      "primary",
+      "generator",
+      "yield",
+      "regular",
+      "function",
+      "generators",
+      "generate",
+      "values",
+      "on-the-fly",
+      "lazy",
+      "evaluation",
+      "pause"
+    ],
+    "source": "python.json"
+  },
+  {
+    "id": "0ff26d3a-0501-526a-a1b5-b7311e13c8ed",
+    "domain": "Python",
+    "subcategory": "Core Language",
+    "topic": "decorators",
+    "difficulty": "medium",
+    "question": "What is the purpose of the functools.wraps decorator when writing a custom decorator?",
+    "options": {
+      "A": "To speed up execution of the decorated function",
+      "B": "To preserve the original function's metadata (name, docstring, etc.)",
+      "C": "To allow the decorator to accept arguments",
+      "D": "To enforce type safety"
+    },
+    "correct_answer": "B",
+    "explanation": "Without functools.wraps, the decorated function inherits the metadata of the wrapper function. wraps copies the __name__, __doc__, and other attributes back to the original function.",
+    "expected_concepts": [
+      "purpose",
+      "functools",
+      "wraps",
+      "decorator",
+      "writing"
+    ],
+    "keywords": [
+      "purpose",
+      "functools",
+      "wraps",
+      "decorator",
+      "writing",
+      "custom",
+      "without",
+      "decorated",
+      "function",
+      "inherits",
+      "metadata",
+      "wrapper"
+    ],
+    "source": "python.json"
+  },
+  {
+    "id": "7f517df0-6804-50c4-8d94-bef1927ec67a",
+    "domain": "Python",
+    "subcategory": "Core Language",
+    "topic": "types",
+    "difficulty": "medium",
+    "question": "What is the output of print(bool('False')) in Python?",
+    "options": {
+      "A": "False",
+      "B": "True",
+      "C": "None",
+      "D": "Error"
+    },
+    "correct_answer": "B",
+    "explanation": "Any non-empty string in Python evaluates to True when cast to a boolean. Only empty strings ('') evaluate to False.",
+    "expected_concepts": [
+      "output",
+      "print",
+      "bool",
+      "false",
+      "python"
+    ],
+    "keywords": [
+      "output",
+      "print",
+      "bool",
+      "false",
+      "python",
+      "non-empty",
+      "string",
+      "evaluates",
+      "true",
+      "cast",
+      "boolean",
+      "empty"
+    ],
+    "source": "python.json"
+  },
+  {
+    "id": "29c78f14-8ab7-5fd7-b565-b47bde4e37bb",
+    "domain": "Python",
+    "subcategory": "Core Language",
+    "topic": "concurrency",
+    "difficulty": "hard",
+    "question": "Which of the following is correct regarding Python's Global Interpreter Lock (GIL)?",
+    "options": {
+      "A": "It allows multiple threads to run Python bytecode in parallel on multiple CPU cores",
+      "B": "It limits execution to a single thread at a time for Python bytecode, preventing CPU-bound parallel execution in CPython",
+      "C": "It speeds up I/O bound multi-threaded operations",
+      "D": "It is present in all Python implementations including Jython and IronPython"
+    },
+    "correct_answer": "B",
+    "explanation": "The GIL is a mutex that protects access to Python objects, preventing multiple threads from executing Python bytecodes at once. It is specific to the reference implementation CPython.",
+    "expected_concepts": [
+      "following",
+      "correct",
+      "regarding",
+      "python",
+      "global"
+    ],
+    "keywords": [
+      "following",
+      "correct",
+      "regarding",
+      "python",
+      "global",
+      "interpreter",
+      "lock",
+      "gil",
+      "mutex",
+      "protects",
+      "access",
+      "objects"
+    ],
+    "source": "python.json"
+  },
+  {
+    "id": "7deb79f6-5425-59cd-98c3-0ddd8f4aaa3f",
+    "domain": "Python",
+    "subcategory": "Core Language",
+    "topic": "oop",
+    "difficulty": "hard",
+    "question": "In Python's model, what is the difference between __new__ and __init__?",
+    "options": {
+      "A": "__init__ is the constructor, __new__ is the destructor",
+      "B": "__new__ is a static method responsible for creating and returning a new instance, while __init__ is an instance method responsible for initializing it",
+      "C": "__new__ is called after __init__",
+      "D": "__new__ only works for subclasses"
+    },
+    "correct_answer": "B",
+    "explanation": "__new__ is the actual creator of the object, whereas __init__ is the initializer. __new__ takes the class reference (cls) as its first argument and returns the instance, which is then passed to __init__.",
+    "expected_concepts": [
+      "python",
+      "model",
+      "__new__",
+      "__init__",
+      "actual"
+    ],
+    "keywords": [
+      "python",
+      "model",
+      "__new__",
+      "__init__",
+      "actual",
+      "creator",
+      "object",
+      "whereas",
+      "initializer",
+      "takes",
+      "class",
+      "reference"
+    ],
+    "source": "python.json"
+  },
+  {
+    "id": "f3fb5c62-cba6-546a-a905-77bda86f7279",
+    "domain": "Python",
+    "subcategory": "Core Language",
+    "topic": "oop",
+    "difficulty": "hard",
+    "question": "What is the purpose of Method Resolution Order (MRO) in Python multiple inheritance?",
+    "options": {
+      "A": "To optimize database queries in Django",
+      "B": "To define the search order Python uses to lookup methods/attributes on an object in multiple inheritance, resolved via the C3 linearization algorithm",
+      "C": "To sort class attributes alphabetically",
+      "D": "To resolve cyclic imports"
+    },
+    "correct_answer": "B",
+    "explanation": "MRO defines the order in which base classes are searched when looking up a method or attribute. Python uses the C3 linearization algorithm to construct this order, avoiding the Diamond Problem.",
+    "expected_concepts": [
+      "purpose",
+      "method",
+      "resolution",
+      "order",
+      "mro"
+    ],
+    "keywords": [
+      "purpose",
+      "method",
+      "resolution",
+      "order",
+      "mro",
+      "python",
+      "multiple",
+      "inheritance",
+      "defines",
+      "base",
+      "classes",
+      "searched"
+    ],
+    "source": "python.json"
+  },
+  {
+    "id": "df5b785a-a34e-566c-acef-246b53a37e87",
+    "domain": "Python",
+    "subcategory": "Core Language",
+    "topic": "comprehensions",
+    "difficulty": "hard",
+    "question": "What will be the output of print([x for x in range(3)] == (x for x in range(3)))?",
+    "options": {
+      "A": "True",
+      "B": "False",
+      "C": "Error",
+      "D": "None"
+    },
+    "correct_answer": "B",
+    "explanation": "The left side is a list comprehension which produces a list ([0, 1, 2]). The right side is a generator expression which produces a generator object. A list and a generator are not equal, even if they yield the same elements.",
+    "expected_concepts": [
+      "output",
+      "print",
+      "range",
+      "left",
+      "side"
+    ],
+    "keywords": [
+      "output",
+      "print",
+      "range",
+      "left",
+      "side",
+      "list",
+      "comprehension",
+      "produces",
+      "right",
+      "generator",
+      "expression",
+      "object"
+    ],
+    "source": "python.json"
+  },
+  {
+    "id": "f92c34e9-7236-56b2-adfd-2e286bfd9b62",
+    "domain": "Python",
+    "subcategory": "Core Language",
+    "topic": "memory",
+    "difficulty": "hard",
+    "question": "How does python manage memory and clean up unused objects?",
+    "options": {
+      "A": "Solely through manual memory management like malloc/free",
+      "B": "Using reference counting as the primary mechanism, supplemented by a cyclic garbage collector to detect and clean reference cycles",
+      "C": "Solely through a stop-the-world mark-and-sweep garbage collector",
+      "D": "Python does not clean up memory until the process terminates"
+    },
+    "correct_answer": "B",
+    "explanation": "CPython uses reference counting. When an object's reference count drops to 0, it is immediately deallocated. However, because self-referencing loops (reference cycles) would never drop to 0, Python uses a generational cyclic garbage collector to find and clean these cycles.",
+    "expected_concepts": [
+      "python",
+      "manage",
+      "memory",
+      "clean",
+      "unused"
+    ],
+    "keywords": [
+      "python",
+      "manage",
+      "memory",
+      "clean",
+      "unused",
+      "objects",
+      "cpython",
+      "uses",
+      "reference",
+      "counting",
+      "object",
+      "count"
+    ],
+    "source": "python.json"
+  },
+  {
+    "id": "91408cbc-6cc0-58b4-814b-246671aa3fec",
+    "domain": "Python",
+    "subcategory": "Core Language",
+    "topic": "data-structures",
+    "difficulty": "medium",
+    "question": "What is the difference between copy.copy() and copy.deepcopy() in Python?",
+    "options": {
+      "A": "copy.copy() copies lists, copy.deepcopy() copies dictionaries",
+      "B": "copy.copy() performs a shallow copy (copies references to nested objects), while copy.deepcopy() recursively duplicates all nested objects",
+      "C": "copy.deepcopy() runs in O(1) time",
+      "D": "There is no difference"
+    },
+    "correct_answer": "B",
+    "explanation": "Shallow copy creates a new compound object but inserts references into it to the objects found in the original. Deep copy creates a new compound object and recursively inserts copies of the objects found in the original.",
+    "expected_concepts": [
+      "copy",
+      "deepcopy",
+      "python",
+      "shallow",
+      "creates"
+    ],
+    "keywords": [
+      "copy",
+      "deepcopy",
+      "python",
+      "shallow",
+      "creates",
+      "new",
+      "compound",
+      "object",
+      "but",
+      "inserts",
+      "references",
+      "objects"
+    ],
+    "source": "python.json"
+  },
+  {
+    "id": "c348341c-851c-5ca4-bc3d-a4994a4ef42c",
+    "domain": "Python",
+    "subcategory": "Core Language",
+    "topic": "oop",
+    "difficulty": "medium",
+    "question": "What is name mangling in Python classes?",
+    "options": {
+      "A": "A runtime optimization that obfuscates function names to run faster",
+      "B": "Prefixing an attribute with two leading underscores (e.g. __member) to rewrite its name internally as _ClassName__member to prevent naming collisions in subclasses",
+      "C": "Overloading class constructors",
+      "D": "Replacing variable names with numbers"
+    },
+    "correct_answer": "B",
+    "explanation": "Name mangling is used to protect class-private variables from being overridden by subclasses. Any identifier of the form __spam is textually replaced with _classname__spam.",
+    "expected_concepts": [
+      "name",
+      "mangling",
+      "python",
+      "classes",
+      "protect"
+    ],
+    "keywords": [
+      "name",
+      "mangling",
+      "python",
+      "classes",
+      "protect",
+      "class-private",
+      "variables",
+      "being",
+      "overridden",
+      "subclasses",
+      "identifier",
+      "form"
+    ],
+    "source": "python.json"
+  },
+  {
+    "id": "75972557-2e4d-5320-999f-3c9fe55bef2c",
+    "domain": "Python",
+    "subcategory": "Core Language",
+    "topic": "operators",
+    "difficulty": "medium",
+    "question": "What is the output of print(1 or 2, 1 and 2)?",
+    "options": {
+      "A": "True, False",
+      "B": "1, 2",
+      "C": "1, 1",
+      "D": "2, 1"
+    },
+    "correct_answer": "B",
+    "explanation": "Python's logical operators 'or' and 'and' evaluate lazily and return the actual operands, not boolean values. '1 or 2' evaluates 1 (truthy) and stops, returning 1. '1 and 2' evaluates 1 (truthy), then evaluates 2, returning 2.",
+    "expected_concepts": [
+      "output",
+      "print",
+      "python",
+      "logical",
+      "operators"
+    ],
+    "keywords": [
+      "output",
+      "print",
+      "python",
+      "logical",
+      "operators",
+      "evaluate",
+      "lazily",
+      "return",
+      "actual",
+      "operands",
+      "boolean",
+      "values"
+    ],
+    "source": "python.json"
+  },
+  {
+    "id": "b582e13f-885f-5324-9e89-f7f38be88424",
+    "domain": "Python",
+    "subcategory": "Core Language",
+    "topic": "oop",
+    "difficulty": "easy",
+    "question": "Which magic method implements length checking (len()) in custom classes?",
+    "options": {
+      "A": "__size__",
+      "B": "__length__",
+      "C": "__len__",
+      "D": "__count__"
+    },
+    "correct_answer": "C",
+    "explanation": "To define how the built-in len() function behaves on your custom class, implement the __len__(self) magic method.",
+    "expected_concepts": [
+      "magic",
+      "method",
+      "implements",
+      "length",
+      "checking"
+    ],
+    "keywords": [
+      "magic",
+      "method",
+      "implements",
+      "length",
+      "checking",
+      "len",
+      "custom",
+      "classes",
+      "built-in",
+      "function",
+      "behaves",
+      "class"
+    ],
+    "source": "python.json"
+  },
+  {
+    "id": "b30c6377-8782-5895-b049-c2e74ae1e4e3",
+    "domain": "Python",
+    "subcategory": "Core Language",
+    "topic": "exceptions",
+    "difficulty": "medium",
+    "question": "What happens if an exception is raised inside a try block and there is a finally block?",
+    "options": {
+      "A": "The finally block is skipped if the exception is unhandled",
+      "B": "The finally block is executed always, before control leaves the try/except/finally structure",
+      "C": "The program crashes immediately before executing finally",
+      "D": "finally is only executed if no exception was raised"
+    },
+    "correct_answer": "B",
+    "explanation": "The finally block is guaranteed to execute whether an exception is raised or not, and whether it is caught or not. If finally returns or raises a new exception, it overrides the original exception.",
+    "expected_concepts": [
+      "happens",
+      "exception",
+      "raised",
+      "inside",
+      "try"
+    ],
+    "keywords": [
+      "happens",
+      "exception",
+      "raised",
+      "inside",
+      "try",
+      "block",
+      "finally",
+      "guaranteed",
+      "execute",
+      "whether",
+      "caught",
+      "returns"
+    ],
+    "source": "python.json"
+  }
+]
