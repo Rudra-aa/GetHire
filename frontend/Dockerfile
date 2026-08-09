@@ -18,10 +18,12 @@ WORKDIR /app
 
 # Install dependencies separately from source to maximise layer caching.
 # The node_modules layer is only rebuilt when package.json or package-lock.json changes.
-COPY package.json package-lock.json* ./
+COPY package.json ./
+COPY package-lock.json* ./
 
-# Install all dependencies (including devDependencies — needed for Vite dev server)
-RUN npm ci
+# Install all dependencies. If package-lock.json is present, use npm ci (clean install).
+# Otherwise, fall back to npm install.
+RUN if [ -f package-lock.json ]; then npm ci; else npm install; fi
 
 # Copy source files
 # NOTE: In docker-compose.yml the source directory is mounted as a volume,
