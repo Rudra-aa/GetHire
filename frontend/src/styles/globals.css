@@ -1,0 +1,70 @@
+/**
+ * src/styles/globals.css
+ * ----------------------
+ * Global stylesheet for GetHire.
+ *
+ * Layer order:
+ *   1. Tailwind base   — resets and sensible defaults
+ *   2. Tailwind components — pre-built component classes
+ *   3. Tailwind utilities  — utility classes (highest priority)
+ *   4. Custom base styles  — global element styles
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Custom Base Layer ───────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    /* Smooth scrolling across the whole page */
+    scroll-behavior: smooth;
+  }
+
+  html {
+    /* Prevent layout shift from scrollbar appearing/disappearing */
+    overflow-y: scroll;
+  }
+
+  body {
+    @apply bg-surface-950 text-white font-sans antialiased;
+    /* Prevent content shifting when modals are open */
+    overflow-x: hidden;
+  }
+
+  /* Better default focus styles */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-brand-400 ring-offset-2 ring-offset-surface-950;
+  }
+
+  /* Scrollbar styling — dark theme */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-200 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-brand-400;
+  }
+}
+
+/* ── Custom Component Layer ──────────────────────────────────────────────── */
+@layer components {
+  /* Glassmorphism card base — reused across many components */
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl;
+  }
+
+  /* Gradient text utility */
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-400 to-purple-400 bg-clip-text text-transparent;
+  }
+}
