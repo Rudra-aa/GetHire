@@ -1,0 +1,272 @@
+{
+  "metadata": {
+    "subject": "RNN",
+    "domain": "Artificial Intelligence",
+    "total_questions": 9,
+    "difficulty_distribution": {
+      "Easy": 2,
+      "Medium": 5,
+      "Hard": 2
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "RNN-001",
+      "subject": "RNN",
+      "category": "Architecture",
+      "subcategory": "Implementation",
+      "difficulty": "Easy",
+      "question": "What is bidirectional RNN in RNN and how does it work?",
+      "ideal_answer": "bidirectional RNN in RNN refers to future context utilization. It works by two-directional processing. Key characteristics include forward + backward hidden states concatenated. Example: BiLSTM for NER. Common pitfalls include real-time processing limitation.",
+      "keywords": [
+        "bidirectional RNN",
+        "RNN programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of bidirectional RNN in a production environment?",
+        "What are the common pitfalls or issues associated with bidirectional RNN?"
+      ],
+      "related_concepts": [
+        "recurrent connections",
+        "vanishing gradient"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RNN-002",
+      "subject": "RNN",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Easy",
+      "question": "What are the common issues with vanishing gradient in RNN and how do you debug them?",
+      "ideal_answer": "Common issues with vanishing gradient in RNN include: LSTM/GRU as solutions. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "vanishing gradient",
+        "troubleshooting",
+        "RNN"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to vanishing gradient?",
+        "What tools can assist in detecting problems with vanishing gradient at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "recurrent connections",
+        "bidirectional RNN"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RNN-003",
+      "subject": "RNN",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "What is recurrent connections in RNN and how does it work?",
+      "ideal_answer": "recurrent connections in RNN refers to sequential data processing. It works by hidden state persistence. Key characteristics include h_t = tanh(W_hh * h_{t-1} + W_xh * x_t + b). Example: unrolled computation graph. Common pitfalls include temporal dependencies.",
+      "keywords": [
+        "recurrent connections",
+        "RNN programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of recurrent connections in a production environment?",
+        "What are the common pitfalls or issues associated with recurrent connections?"
+      ],
+      "related_concepts": [
+        "vanishing gradient",
+        "bidirectional RNN"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RNN-004",
+      "subject": "RNN",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What are the common issues with bidirectional RNN in RNN and how do you debug them?",
+      "ideal_answer": "Common issues with bidirectional RNN in RNN include: real-time processing limitation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "bidirectional RNN",
+        "troubleshooting",
+        "RNN"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to bidirectional RNN?",
+        "What tools can assist in detecting problems with bidirectional RNN at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "recurrent connections",
+        "vanishing gradient"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RNN-005",
+      "subject": "RNN",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Medium",
+      "question": "Explain the difference between recurrent connections and bidirectional RNN in RNN.",
+      "ideal_answer": "recurrent connections and bidirectional RNN differ in several ways: recurrent connections is sequential data processing (works by hidden state persistence) whereas bidirectional RNN is future context utilization (works by two-directional processing). recurrent connections is typically used for h_t = tanh(W_hh * h_{t-1} + W_xh * x_t + b), while bidirectional RNN is used for forward + backward hidden states concatenated. Example demonstrating recurrent connections: unrolled computation graph. Example demonstrating bidirectional RNN: BiLSTM for NER.",
+      "keywords": [
+        "recurrent connections",
+        "bidirectional RNN",
+        "comparison",
+        "RNN"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose recurrent connections over bidirectional RNN?",
+        "What is the performance or memory difference between recurrent connections and bidirectional RNN?"
+      ],
+      "related_concepts": [
+        "recurrent connections",
+        "bidirectional RNN",
+        "vanishing gradient"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RNN-006",
+      "subject": "RNN",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Medium",
+      "question": "Explain the difference between recurrent connections and vanishing gradient in RNN.",
+      "ideal_answer": "recurrent connections and vanishing gradient differ in several ways: recurrent connections is sequential data processing (works by hidden state persistence) whereas vanishing gradient is long-term dependency problem (works by gradients shrinking through time). recurrent connections is typically used for h_t = tanh(W_hh * h_{t-1} + W_xh * x_t + b), while vanishing gradient is used for sigmoid/tanh saturation, weight matrix eigenvalues. Example demonstrating recurrent connections: unrolled computation graph. Example demonstrating vanishing gradient: gradient clipping partial solution.",
+      "keywords": [
+        "recurrent connections",
+        "vanishing gradient",
+        "comparison",
+        "RNN"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose recurrent connections over vanishing gradient?",
+        "What is the performance or memory difference between recurrent connections and vanishing gradient?"
+      ],
+      "related_concepts": [
+        "recurrent connections",
+        "vanishing gradient",
+        "bidirectional RNN"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RNN-007",
+      "subject": "RNN",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "What are the common issues with recurrent connections in RNN and how do you debug them?",
+      "ideal_answer": "Common issues with recurrent connections in RNN include: temporal dependencies. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "recurrent connections",
+        "troubleshooting",
+        "RNN"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to recurrent connections?",
+        "What tools can assist in detecting problems with recurrent connections at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "vanishing gradient",
+        "bidirectional RNN"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RNN-008",
+      "subject": "RNN",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Hard",
+      "question": "What is vanishing gradient in RNN and how does it work?",
+      "ideal_answer": "vanishing gradient in RNN refers to long-term dependency problem. It works by gradients shrinking through time. Key characteristics include sigmoid/tanh saturation, weight matrix eigenvalues. Example: gradient clipping partial solution. Common pitfalls include LSTM/GRU as solutions.",
+      "keywords": [
+        "vanishing gradient",
+        "RNN programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of vanishing gradient in a production environment?",
+        "What are the common pitfalls or issues associated with vanishing gradient?"
+      ],
+      "related_concepts": [
+        "recurrent connections",
+        "bidirectional RNN"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RNN-009",
+      "subject": "RNN",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Hard",
+      "question": "Explain the difference between vanishing gradient and bidirectional RNN in RNN.",
+      "ideal_answer": "vanishing gradient and bidirectional RNN differ in several ways: vanishing gradient is long-term dependency problem (works by gradients shrinking through time) whereas bidirectional RNN is future context utilization (works by two-directional processing). vanishing gradient is typically used for sigmoid/tanh saturation, weight matrix eigenvalues, while bidirectional RNN is used for forward + backward hidden states concatenated. Example demonstrating vanishing gradient: gradient clipping partial solution. Example demonstrating bidirectional RNN: BiLSTM for NER.",
+      "keywords": [
+        "vanishing gradient",
+        "bidirectional RNN",
+        "comparison",
+        "RNN"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose vanishing gradient over bidirectional RNN?",
+        "What is the performance or memory difference between vanishing gradient and bidirectional RNN?"
+      ],
+      "related_concepts": [
+        "vanishing gradient",
+        "bidirectional RNN",
+        "recurrent connections"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

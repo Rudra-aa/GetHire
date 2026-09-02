@@ -1,0 +1,391 @@
+{
+  "metadata": {
+    "subject": "Artificial Intelligence",
+    "domain": "Artificial Intelligence",
+    "total_questions": 14,
+    "difficulty_distribution": {
+      "Easy": 4,
+      "Medium": 7,
+      "Hard": 3
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "AI-001",
+      "subject": "Artificial Intelligence",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Easy",
+      "question": "Explain the difference between search algorithms and knowledge representation in Artificial Intelligence.",
+      "ideal_answer": "search algorithms and knowledge representation differ in several ways: search algorithms is problem-solving through search (works by uninformed and informed search) whereas knowledge representation is formalizing information for AI (works by semantic networks, frames, rules, ontologies). search algorithms is typically used for BFS, DFS, UCS, A*, IDA*, minimax, alpha-beta, while knowledge representation is used for RDF, OWL, description logics. Example demonstrating search algorithms: A* with admissible heuristic. Example demonstrating knowledge representation: expert systems, knowledge graphs.",
+      "keywords": [
+        "search algorithms",
+        "knowledge representation",
+        "comparison",
+        "Artificial Intelligence"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose search algorithms over knowledge representation?",
+        "What is the performance or memory difference between search algorithms and knowledge representation?"
+      ],
+      "related_concepts": [
+        "search algorithms",
+        "knowledge representation",
+        "AI definition"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "AI-002",
+      "subject": "Artificial Intelligence",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Easy",
+      "question": "What are the common issues with agent architecture in Artificial Intelligence and how do you debug them?",
+      "ideal_answer": "Common issues with agent architecture in Artificial Intelligence include: multi-agent systems. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "agent architecture",
+        "troubleshooting",
+        "Artificial Intelligence"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to agent architecture?",
+        "What tools can assist in detecting problems with agent architecture at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "planning"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "AI-003",
+      "subject": "Artificial Intelligence",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Easy",
+      "question": "Explain the difference between AI definition and knowledge representation in Artificial Intelligence.",
+      "ideal_answer": "AI definition and knowledge representation differ in several ways: AI definition is intelligent machine simulation (works by learning, reasoning, perception, action) whereas knowledge representation is formalizing information for AI (works by semantic networks, frames, rules, ontologies). AI definition is typically used for narrow AI vs general AI vs super AI, while knowledge representation is used for RDF, OWL, description logics. Example demonstrating AI definition: Turing test, Chinese room argument. Example demonstrating knowledge representation: expert systems, knowledge graphs.",
+      "keywords": [
+        "AI definition",
+        "knowledge representation",
+        "comparison",
+        "Artificial Intelligence"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose AI definition over knowledge representation?",
+        "What is the performance or memory difference between AI definition and knowledge representation?"
+      ],
+      "related_concepts": [
+        "AI definition",
+        "knowledge representation",
+        "search algorithms"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "AI-004",
+      "subject": "Artificial Intelligence",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Easy",
+      "question": "Explain the difference between AI definition and search algorithms in Artificial Intelligence.",
+      "ideal_answer": "AI definition and search algorithms differ in several ways: AI definition is intelligent machine simulation (works by learning, reasoning, perception, action) whereas search algorithms is problem-solving through search (works by uninformed and informed search). AI definition is typically used for narrow AI vs general AI vs super AI, while search algorithms is used for BFS, DFS, UCS, A*, IDA*, minimax, alpha-beta. Example demonstrating AI definition: Turing test, Chinese room argument. Example demonstrating search algorithms: A* with admissible heuristic.",
+      "keywords": [
+        "AI definition",
+        "search algorithms",
+        "comparison",
+        "Artificial Intelligence"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose AI definition over search algorithms?",
+        "What is the performance or memory difference between AI definition and search algorithms?"
+      ],
+      "related_concepts": [
+        "AI definition",
+        "search algorithms",
+        "knowledge representation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "AI-005",
+      "subject": "Artificial Intelligence",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "Explain the difference between planning and agent architecture in Artificial Intelligence.",
+      "ideal_answer": "planning and agent architecture differ in several ways: planning is action sequence generation (works by STRIPS, PDDL, hierarchical task networks) whereas agent architecture is perception-action loop (works by reflex, model-based, goal-based, utility-based). planning is typically used for state space search, partial order planning, while agent architecture is used for PEAS description. Example demonstrating planning: GPS (General Problem Solver). Example demonstrating agent architecture: rational agent definition.",
+      "keywords": [
+        "planning",
+        "agent architecture",
+        "comparison",
+        "Artificial Intelligence"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose planning over agent architecture?",
+        "What is the performance or memory difference between planning and agent architecture?"
+      ],
+      "related_concepts": [
+        "planning",
+        "agent architecture"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "AI-006",
+      "subject": "Artificial Intelligence",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Medium",
+      "question": "What is agent architecture in Artificial Intelligence and how does it work?",
+      "ideal_answer": "agent architecture in Artificial Intelligence refers to perception-action loop. It works by reflex, model-based, goal-based, utility-based. Key characteristics include PEAS description. Example: rational agent definition. Common pitfalls include multi-agent systems.",
+      "keywords": [
+        "agent architecture",
+        "Artificial Intelligence programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of agent architecture in a production environment?",
+        "What are the common pitfalls or issues associated with agent architecture?"
+      ],
+      "related_concepts": [
+        "planning"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "AI-007",
+      "subject": "Artificial Intelligence",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What are the common issues with knowledge representation in Artificial Intelligence and how do you debug them?",
+      "ideal_answer": "Common issues with knowledge representation in Artificial Intelligence include: symbolic vs subsymbolic. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "knowledge representation",
+        "troubleshooting",
+        "Artificial Intelligence"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to knowledge representation?",
+        "What tools can assist in detecting problems with knowledge representation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "AI definition",
+        "search algorithms"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "AI-008",
+      "subject": "Artificial Intelligence",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Medium",
+      "question": "What is search algorithms in Artificial Intelligence and how does it work?",
+      "ideal_answer": "search algorithms in Artificial Intelligence refers to problem-solving through search. It works by uninformed and informed search. Key characteristics include BFS, DFS, UCS, A*, IDA*, minimax, alpha-beta. Example: A* with admissible heuristic. Common pitfalls include combinatorial explosion.",
+      "keywords": [
+        "search algorithms",
+        "Artificial Intelligence programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of search algorithms in a production environment?",
+        "What are the common pitfalls or issues associated with search algorithms?"
+      ],
+      "related_concepts": [
+        "AI definition",
+        "knowledge representation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "AI-009",
+      "subject": "Artificial Intelligence",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "What is planning in Artificial Intelligence and how does it work?",
+      "ideal_answer": "planning in Artificial Intelligence refers to action sequence generation. It works by STRIPS, PDDL, hierarchical task networks. Key characteristics include state space search, partial order planning. Example: GPS (General Problem Solver). Common pitfalls include real-world planning complexity.",
+      "keywords": [
+        "planning",
+        "Artificial Intelligence programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of planning in a production environment?",
+        "What are the common pitfalls or issues associated with planning?"
+      ],
+      "related_concepts": [
+        "agent architecture"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "AI-010",
+      "subject": "Artificial Intelligence",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Medium",
+      "question": "What are the common issues with search algorithms in Artificial Intelligence and how do you debug them?",
+      "ideal_answer": "Common issues with search algorithms in Artificial Intelligence include: combinatorial explosion. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "search algorithms",
+        "troubleshooting",
+        "Artificial Intelligence"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to search algorithms?",
+        "What tools can assist in detecting problems with search algorithms at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "AI definition",
+        "knowledge representation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "AI-011",
+      "subject": "Artificial Intelligence",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What is knowledge representation in Artificial Intelligence and how does it work?",
+      "ideal_answer": "knowledge representation in Artificial Intelligence refers to formalizing information for AI. It works by semantic networks, frames, rules, ontologies. Key characteristics include RDF, OWL, description logics. Example: expert systems, knowledge graphs. Common pitfalls include symbolic vs subsymbolic.",
+      "keywords": [
+        "knowledge representation",
+        "Artificial Intelligence programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of knowledge representation in a production environment?",
+        "What are the common pitfalls or issues associated with knowledge representation?"
+      ],
+      "related_concepts": [
+        "AI definition",
+        "search algorithms"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "AI-012",
+      "subject": "Artificial Intelligence",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What is AI definition in Artificial Intelligence and how does it work?",
+      "ideal_answer": "AI definition in Artificial Intelligence refers to intelligent machine simulation. It works by learning, reasoning, perception, action. Key characteristics include narrow AI vs general AI vs super AI. Example: Turing test, Chinese room argument. Common pitfalls include AI winter history.",
+      "keywords": [
+        "AI definition",
+        "Artificial Intelligence programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of AI definition in a production environment?",
+        "What are the common pitfalls or issues associated with AI definition?"
+      ],
+      "related_concepts": [
+        "search algorithms",
+        "knowledge representation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "AI-013",
+      "subject": "Artificial Intelligence",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What are the common issues with AI definition in Artificial Intelligence and how do you debug them?",
+      "ideal_answer": "Common issues with AI definition in Artificial Intelligence include: AI winter history. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "AI definition",
+        "troubleshooting",
+        "Artificial Intelligence"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to AI definition?",
+        "What tools can assist in detecting problems with AI definition at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "search algorithms",
+        "knowledge representation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "AI-014",
+      "subject": "Artificial Intelligence",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Hard",
+      "question": "What are the common issues with planning in Artificial Intelligence and how do you debug them?",
+      "ideal_answer": "Common issues with planning in Artificial Intelligence include: real-world planning complexity. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "planning",
+        "troubleshooting",
+        "Artificial Intelligence"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to planning?",
+        "What tools can assist in detecting problems with planning at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "agent architecture"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

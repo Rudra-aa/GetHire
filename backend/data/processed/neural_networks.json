@@ -1,0 +1,319 @@
+{
+  "metadata": {
+    "subject": "Neural Networks",
+    "domain": "Artificial Intelligence",
+    "total_questions": 11,
+    "difficulty_distribution": {
+      "Easy": 3,
+      "Medium": 5,
+      "Hard": 3
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "NN-001",
+      "subject": "Neural Networks",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Easy",
+      "question": "Explain the difference between perceptron and weight initialization in Neural Networks.",
+      "ideal_answer": "perceptron and weight initialization differ in several ways: perceptron is simplest neural unit (works by linear binary classifier) whereas weight initialization is starting parameter values (works by training convergence facilitation). perceptron is typically used for weighted sum + step function, while weight initialization is used for Xavier/Glorot, He initialization. Example demonstrating perceptron: y = sign(w·x + b). Example demonstrating weight initialization: W ~ N(0, sqrt(2/fan_in)).",
+      "keywords": [
+        "perceptron",
+        "weight initialization",
+        "comparison",
+        "Neural Networks"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose perceptron over weight initialization?",
+        "What is the performance or memory difference between perceptron and weight initialization?"
+      ],
+      "related_concepts": [
+        "perceptron",
+        "weight initialization",
+        "MLP"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NN-002",
+      "subject": "Neural Networks",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Easy",
+      "question": "What are the common issues with MLP in Neural Networks and how do you debug them?",
+      "ideal_answer": "Common issues with MLP in Neural Networks include: credit assignment problem. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "MLP",
+        "troubleshooting",
+        "Neural Networks"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to MLP?",
+        "What tools can assist in detecting problems with MLP at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "perceptron",
+        "weight initialization"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NN-003",
+      "subject": "Neural Networks",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Easy",
+      "question": "What is MLP in Neural Networks and how does it work?",
+      "ideal_answer": "MLP in Neural Networks refers to multi-layer perceptron. It works by feedforward fully connected network. Key characteristics include universal function approximator. Example: input -> hidden(s) -> output. Common pitfalls include credit assignment problem.",
+      "keywords": [
+        "MLP",
+        "Neural Networks programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of MLP in a production environment?",
+        "What are the common pitfalls or issues associated with MLP?"
+      ],
+      "related_concepts": [
+        "perceptron",
+        "weight initialization"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NN-004",
+      "subject": "Neural Networks",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Medium",
+      "question": "Explain the difference between MLP and weight initialization in Neural Networks.",
+      "ideal_answer": "MLP and weight initialization differ in several ways: MLP is multi-layer perceptron (works by feedforward fully connected network) whereas weight initialization is starting parameter values (works by training convergence facilitation). MLP is typically used for universal function approximator, while weight initialization is used for Xavier/Glorot, He initialization. Example demonstrating MLP: input -> hidden(s) -> output. Example demonstrating weight initialization: W ~ N(0, sqrt(2/fan_in)).",
+      "keywords": [
+        "MLP",
+        "weight initialization",
+        "comparison",
+        "Neural Networks"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose MLP over weight initialization?",
+        "What is the performance or memory difference between MLP and weight initialization?"
+      ],
+      "related_concepts": [
+        "MLP",
+        "weight initialization",
+        "perceptron"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NN-005",
+      "subject": "Neural Networks",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What are the common issues with weight initialization in Neural Networks and how do you debug them?",
+      "ideal_answer": "Common issues with weight initialization in Neural Networks include: symmetry breaking. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "weight initialization",
+        "troubleshooting",
+        "Neural Networks"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to weight initialization?",
+        "What tools can assist in detecting problems with weight initialization at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "perceptron",
+        "MLP"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NN-006",
+      "subject": "Neural Networks",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Medium",
+      "question": "Explain the difference between perceptron and MLP in Neural Networks.",
+      "ideal_answer": "perceptron and MLP differ in several ways: perceptron is simplest neural unit (works by linear binary classifier) whereas MLP is multi-layer perceptron (works by feedforward fully connected network). perceptron is typically used for weighted sum + step function, while MLP is used for universal function approximator. Example demonstrating perceptron: y = sign(w·x + b). Example demonstrating MLP: input -> hidden(s) -> output.",
+      "keywords": [
+        "perceptron",
+        "MLP",
+        "comparison",
+        "Neural Networks"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose perceptron over MLP?",
+        "What is the performance or memory difference between perceptron and MLP?"
+      ],
+      "related_concepts": [
+        "perceptron",
+        "MLP",
+        "weight initialization"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NN-007",
+      "subject": "Neural Networks",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "What is loss functions in Neural Networks and how does it work?",
+      "ideal_answer": "loss functions in Neural Networks refers to error measurement. It works by optimization objective. Key characteristics include MSE, cross-entropy, hinge loss, KL divergence. Example: cross-entropy: -sum(y_true * log(y_pred)). Common pitfalls include loss landscape geometry.",
+      "keywords": [
+        "loss functions",
+        "Neural Networks programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of loss functions in a production environment?",
+        "What are the common pitfalls or issues associated with loss functions?"
+      ],
+      "related_concepts": [
+        "loss functions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NN-008",
+      "subject": "Neural Networks",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What is weight initialization in Neural Networks and how does it work?",
+      "ideal_answer": "weight initialization in Neural Networks refers to starting parameter values. It works by training convergence facilitation. Key characteristics include Xavier/Glorot, He initialization. Example: W ~ N(0, sqrt(2/fan_in)). Common pitfalls include symmetry breaking.",
+      "keywords": [
+        "weight initialization",
+        "Neural Networks programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of weight initialization in a production environment?",
+        "What are the common pitfalls or issues associated with weight initialization?"
+      ],
+      "related_concepts": [
+        "perceptron",
+        "MLP"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NN-009",
+      "subject": "Neural Networks",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What is perceptron in Neural Networks and how does it work?",
+      "ideal_answer": "perceptron in Neural Networks refers to simplest neural unit. It works by linear binary classifier. Key characteristics include weighted sum + step function. Example: y = sign(w·x + b). Common pitfalls include XOR problem limitation.",
+      "keywords": [
+        "perceptron",
+        "Neural Networks programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of perceptron in a production environment?",
+        "What are the common pitfalls or issues associated with perceptron?"
+      ],
+      "related_concepts": [
+        "MLP",
+        "weight initialization"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NN-010",
+      "subject": "Neural Networks",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What are the common issues with perceptron in Neural Networks and how do you debug them?",
+      "ideal_answer": "Common issues with perceptron in Neural Networks include: XOR problem limitation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "perceptron",
+        "troubleshooting",
+        "Neural Networks"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to perceptron?",
+        "What tools can assist in detecting problems with perceptron at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "MLP",
+        "weight initialization"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NN-011",
+      "subject": "Neural Networks",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Hard",
+      "question": "What are the common issues with loss functions in Neural Networks and how do you debug them?",
+      "ideal_answer": "Common issues with loss functions in Neural Networks include: loss landscape geometry. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "loss functions",
+        "troubleshooting",
+        "Neural Networks"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to loss functions?",
+        "What tools can assist in detecting problems with loss functions at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "loss functions"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

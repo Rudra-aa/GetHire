@@ -1,0 +1,1693 @@
+{
+  "metadata": {
+    "subject": "Redis",
+    "domain": "Databases",
+    "total_questions": 64,
+    "difficulty_distribution": {
+      "Easy": 19,
+      "Medium": 32,
+      "Hard": 13
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "REDIS-001",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Lists",
+      "difficulty": "Easy",
+      "question": "Explain the difference between lists and geospatial in Redis.",
+      "ideal_answer": "lists and geospatial differ in several ways: lists is linked list implementation (works by queue and stack operations) whereas geospatial is location data indexing (works by geographic queries). lists is typically used for LPUSH, RPUSH, LPOP, RPOP, LRANGE, LTRIM, while geospatial is used for GEOADD, GEORADIUS, GEODIST, GEOHASH. Example demonstrating lists: LPUSH queue 'job1'; BRPOP queue 30. Example demonstrating geospatial: GEOADD cities 13.361389 38.115556 'Palermo'.",
+      "keywords": [
+        "lists",
+        "geospatial",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose lists over geospatial?",
+        "What is the performance or memory difference between lists and geospatial?"
+      ],
+      "related_concepts": [
+        "lists",
+        "geospatial",
+        "sorted sets",
+        "hashes"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REDIS-002",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Sets",
+      "difficulty": "Easy",
+      "question": "Explain the difference between sets and geospatial in Redis.",
+      "ideal_answer": "sets and geospatial differ in several ways: sets is unordered unique collection (works by membership and set operations) whereas geospatial is location data indexing (works by geographic queries). sets is typically used for SADD, SINTER, SUNION, SDIFF, SISMEMBER, while geospatial is used for GEOADD, GEORADIUS, GEODIST, GEOHASH. Example demonstrating sets: SADD tags:post1 'redis' 'database'; SINTER tags:post1 tags:post2. Example demonstrating geospatial: GEOADD cities 13.361389 38.115556 'Palermo'.",
+      "keywords": [
+        "sets",
+        "geospatial",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sets over geospatial?",
+        "What is the performance or memory difference between sets and geospatial?"
+      ],
+      "related_concepts": [
+        "sets",
+        "geospatial",
+        "sorted sets",
+        "hashes"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REDIS-003",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Sets",
+      "difficulty": "Easy",
+      "question": "What are the common issues with sets in Redis and how do you debug them?",
+      "ideal_answer": "Common issues with sets in Redis include: set cardinality limits. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "sets",
+        "troubleshooting",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to sets?",
+        "What tools can assist in detecting problems with sets at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "sorted sets",
+        "hashes",
+        "lists"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REDIS-004",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Lists",
+      "difficulty": "Easy",
+      "question": "Explain the difference between lists and streams in Redis.",
+      "ideal_answer": "lists and streams differ in several ways: lists is linked list implementation (works by queue and stack operations) whereas streams is append-only log structure (works by event sourcing and messaging). lists is typically used for LPUSH, RPUSH, LPOP, RPOP, LRANGE, LTRIM, while streams is used for XADD, XREAD, XGROUP, XACK, consumer groups. Example demonstrating lists: LPUSH queue 'job1'; BRPOP queue 30. Example demonstrating streams: XADD mystream * sensor-id 1234 temperature 19.8.",
+      "keywords": [
+        "lists",
+        "streams",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose lists over streams?",
+        "What is the performance or memory difference between lists and streams?"
+      ],
+      "related_concepts": [
+        "lists",
+        "streams",
+        "sorted sets",
+        "hashes"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REDIS-005",
+      "subject": "Redis",
+      "category": "Caching Patterns",
+      "subcategory": "Cache-Aside",
+      "difficulty": "Easy",
+      "question": "Explain the difference between cache-aside and eviction policies in Redis.",
+      "ideal_answer": "cache-aside and eviction policies differ in several ways: cache-aside is lazy loading pattern (works by application-managed caching) whereas eviction policies is memory full handling (works by determining which keys to remove). cache-aside is typically used for check cache, load from DB on miss, populate cache, while eviction policies is used for noeviction, allkeys-lru, volatile-lru, allkeys-random, volatile-ttl. Example demonstrating cache-aside: data = cache.get(key); if not data: data = db.get(key); cache.set(key, data, ttl). Example demonstrating eviction policies: maxmemory-policy allkeys-lru.",
+      "keywords": [
+        "cache-aside",
+        "eviction policies",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose cache-aside over eviction policies?",
+        "What is the performance or memory difference between cache-aside and eviction policies?"
+      ],
+      "related_concepts": [
+        "cache-aside",
+        "eviction policies",
+        "write-through",
+        "cache stampede"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REDIS-006",
+      "subject": "Redis",
+      "category": "Persistence",
+      "subcategory": "RDB",
+      "difficulty": "Easy",
+      "question": "Explain the difference between RDB snapshotting and AOF in Redis.",
+      "ideal_answer": "RDB snapshotting and AOF differ in several ways: RDB snapshotting is point-in-time backup (works by fork-based persistence) whereas AOF is Append-Only File (works by command log replay). RDB snapshotting is typically used for SAVE, BGSAVE, save configuration, while AOF is used for everysec, always, no fsync policies. Example demonstrating RDB snapshotting: save 900 1 # save after 900 sec if 1 key changed. Example demonstrating AOF: appendfsync everysec.",
+      "keywords": [
+        "RDB snapshotting",
+        "AOF",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose RDB snapshotting over AOF?",
+        "What is the performance or memory difference between RDB snapshotting and AOF?"
+      ],
+      "related_concepts": [
+        "RDB snapshotting",
+        "AOF",
+        "hybrid persistence"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REDIS-007",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Hashes",
+      "difficulty": "Easy",
+      "question": "Explain the difference between hashes and streams in Redis.",
+      "ideal_answer": "hashes and streams differ in several ways: hashes is field-value mapping (works by object-like storage) whereas streams is append-only log structure (works by event sourcing and messaging). hashes is typically used for HSET, HGET, HGETALL, HMSET, while streams is used for XADD, XREAD, XGROUP, XACK, consumer groups. Example demonstrating hashes: HSET user:1000 name 'John' age 30. Example demonstrating streams: XADD mystream * sensor-id 1234 temperature 19.8.",
+      "keywords": [
+        "hashes",
+        "streams",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose hashes over streams?",
+        "What is the performance or memory difference between hashes and streams?"
+      ],
+      "related_concepts": [
+        "hashes",
+        "streams",
+        "sorted sets",
+        "lists"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REDIS-008",
+      "subject": "Redis",
+      "category": "Replication & Clustering",
+      "subcategory": "General",
+      "difficulty": "Easy",
+      "question": "What is Redis Sentinel in Redis and how does it work?",
+      "ideal_answer": "Redis Sentinel in Redis refers to high availability solution. It works by monitoring, notification, auto-failover. Key characteristics include sentinel quorum, subjective down, objective down. Example: sentinel monitor mymaster 127.0.0.1 6379 2. Common pitfalls include split-brain protection.",
+      "keywords": [
+        "Redis Sentinel",
+        "Redis programming",
+        "replication & clustering"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Redis Sentinel in a production environment?",
+        "What are the common pitfalls or issues associated with Redis Sentinel?"
+      ],
+      "related_concepts": [
+        "Redis Cluster"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REDIS-009",
+      "subject": "Redis",
+      "category": "Caching Patterns",
+      "subcategory": "Cache-Aside",
+      "difficulty": "Easy",
+      "question": "Explain the difference between cache-aside and cache stampede in Redis.",
+      "ideal_answer": "cache-aside and cache stampede differ in several ways: cache-aside is lazy loading pattern (works by application-managed caching) whereas cache stampede is simultaneous cache miss (works by thundering herd problem). cache-aside is typically used for check cache, load from DB on miss, populate cache, while cache stampede is used for multiple requests for expired key. Example demonstrating cache-aside: data = cache.get(key); if not data: data = db.get(key); cache.set(key, data, ttl). Example demonstrating cache stampede: per-item random jitter, probabilistic early expiration, mutex/lock.",
+      "keywords": [
+        "cache-aside",
+        "cache stampede",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose cache-aside over cache stampede?",
+        "What is the performance or memory difference between cache-aside and cache stampede?"
+      ],
+      "related_concepts": [
+        "cache-aside",
+        "cache stampede",
+        "write-through",
+        "eviction policies"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REDIS-010",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Sorted Sets",
+      "difficulty": "Easy",
+      "question": "What are the common issues with streams in Redis and how do you debug them?",
+      "ideal_answer": "Common issues with streams in Redis include: stream trimming, pending entries. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "streams",
+        "troubleshooting",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to streams?",
+        "What tools can assist in detecting problems with streams at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "sorted sets",
+        "hashes",
+        "lists"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REDIS-011",
+      "subject": "Redis",
+      "category": "Caching Patterns",
+      "subcategory": "Write-Behind",
+      "difficulty": "Easy",
+      "question": "What is eviction policies in Redis and how does it work?",
+      "ideal_answer": "eviction policies in Redis refers to memory full handling. It works by determining which keys to remove. Key characteristics include noeviction, allkeys-lru, volatile-lru, allkeys-random, volatile-ttl. Example: maxmemory-policy allkeys-lru. Common pitfalls include approximated LRU (sampled).",
+      "keywords": [
+        "eviction policies",
+        "Redis programming",
+        "caching patterns"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of eviction policies in a production environment?",
+        "What are the common pitfalls or issues associated with eviction policies?"
+      ],
+      "related_concepts": [
+        "cache-aside",
+        "write-through",
+        "cache stampede"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REDIS-012",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Hashes",
+      "difficulty": "Easy",
+      "question": "Explain the difference between hashes and sets in Redis.",
+      "ideal_answer": "hashes and sets differ in several ways: hashes is field-value mapping (works by object-like storage) whereas sets is unordered unique collection (works by membership and set operations). hashes is typically used for HSET, HGET, HGETALL, HMSET, while sets is used for SADD, SINTER, SUNION, SDIFF, SISMEMBER. Example demonstrating hashes: HSET user:1000 name 'John' age 30. Example demonstrating sets: SADD tags:post1 'redis' 'database'; SINTER tags:post1 tags:post2.",
+      "keywords": [
+        "hashes",
+        "sets",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose hashes over sets?",
+        "What is the performance or memory difference between hashes and sets?"
+      ],
+      "related_concepts": [
+        "hashes",
+        "sets",
+        "sorted sets",
+        "lists"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REDIS-013",
+      "subject": "Redis",
+      "category": "Caching Patterns",
+      "subcategory": "TTL",
+      "difficulty": "Easy",
+      "question": "What is cache stampede in Redis and how does it work?",
+      "ideal_answer": "cache stampede in Redis refers to simultaneous cache miss. It works by thundering herd problem. Key characteristics include multiple requests for expired key. Example: per-item random jitter, probabilistic early expiration, mutex/lock. Common pitfalls include LOCKSET pattern with SET NX.",
+      "keywords": [
+        "cache stampede",
+        "Redis programming",
+        "caching patterns"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of cache stampede in a production environment?",
+        "What are the common pitfalls or issues associated with cache stampede?"
+      ],
+      "related_concepts": [
+        "cache-aside",
+        "write-through",
+        "eviction policies"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REDIS-014",
+      "subject": "Redis",
+      "category": "Persistence",
+      "subcategory": "Hybrid",
+      "difficulty": "Easy",
+      "question": "What is hybrid persistence in Redis and how does it work?",
+      "ideal_answer": "hybrid persistence in Redis refers to RDB + AOF combined. It works by Redis 4.0+ feature. Key characteristics include aof-use-rdb-preamble yes. Example: fast restarts with full durability. Common pitfalls include AOF file size bloating before rewrite.",
+      "keywords": [
+        "hybrid persistence",
+        "Redis programming",
+        "persistence"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of hybrid persistence in a production environment?",
+        "What are the common pitfalls or issues associated with hybrid persistence?"
+      ],
+      "related_concepts": [
+        "RDB snapshotting",
+        "AOF"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REDIS-015",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Strings",
+      "difficulty": "Easy",
+      "question": "Explain the difference between sorted sets and geospatial in Redis.",
+      "ideal_answer": "sorted sets and geospatial differ in several ways: sorted sets is ordered unique collection (works by ranking and leaderboard) whereas geospatial is location data indexing (works by geographic queries). sorted sets is typically used for score-based ordering, O(log n) ops, while geospatial is used for GEOADD, GEORADIUS, GEODIST, GEOHASH. Example demonstrating sorted sets: ZADD leaderboard 100 'player1'; ZREVRANGE leaderboard 0 9 WITHSCORES. Example demonstrating geospatial: GEOADD cities 13.361389 38.115556 'Palermo'.",
+      "keywords": [
+        "sorted sets",
+        "geospatial",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sorted sets over geospatial?",
+        "What is the performance or memory difference between sorted sets and geospatial?"
+      ],
+      "related_concepts": [
+        "sorted sets",
+        "geospatial",
+        "hashes",
+        "lists"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REDIS-016",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Lists",
+      "difficulty": "Easy",
+      "question": "Explain the difference between lists and sets in Redis.",
+      "ideal_answer": "lists and sets differ in several ways: lists is linked list implementation (works by queue and stack operations) whereas sets is unordered unique collection (works by membership and set operations). lists is typically used for LPUSH, RPUSH, LPOP, RPOP, LRANGE, LTRIM, while sets is used for SADD, SINTER, SUNION, SDIFF, SISMEMBER. Example demonstrating lists: LPUSH queue 'job1'; BRPOP queue 30. Example demonstrating sets: SADD tags:post1 'redis' 'database'; SINTER tags:post1 tags:post2.",
+      "keywords": [
+        "lists",
+        "sets",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose lists over sets?",
+        "What is the performance or memory difference between lists and sets?"
+      ],
+      "related_concepts": [
+        "lists",
+        "sets",
+        "sorted sets",
+        "hashes"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REDIS-017",
+      "subject": "Redis",
+      "category": "Caching Patterns",
+      "subcategory": "Cache-Aside",
+      "difficulty": "Easy",
+      "question": "What is cache-aside in Redis and how does it work?",
+      "ideal_answer": "cache-aside in Redis refers to lazy loading pattern. It works by application-managed caching. Key characteristics include check cache, load from DB on miss, populate cache. Example: data = cache.get(key); if not data: data = db.get(key); cache.set(key, data, ttl). Common pitfalls include cache stampede prevention.",
+      "keywords": [
+        "cache-aside",
+        "Redis programming",
+        "caching patterns"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of cache-aside in a production environment?",
+        "What are the common pitfalls or issues associated with cache-aside?"
+      ],
+      "related_concepts": [
+        "write-through",
+        "eviction policies",
+        "cache stampede"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REDIS-018",
+      "subject": "Redis",
+      "category": "Caching Patterns",
+      "subcategory": "Write-Behind",
+      "difficulty": "Easy",
+      "question": "What are the common issues with eviction policies in Redis and how do you debug them?",
+      "ideal_answer": "Common issues with eviction policies in Redis include: approximated LRU (sampled). To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "eviction policies",
+        "troubleshooting",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to eviction policies?",
+        "What tools can assist in detecting problems with eviction policies at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "cache-aside",
+        "write-through",
+        "cache stampede"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REDIS-019",
+      "subject": "Redis",
+      "category": "Persistence",
+      "subcategory": "AOF",
+      "difficulty": "Easy",
+      "question": "What is AOF in Redis and how does it work?",
+      "ideal_answer": "AOF in Redis refers to Append-Only File. It works by command log replay. Key characteristics include everysec, always, no fsync policies. Example: appendfsync everysec. Common pitfalls include AOF rewrite for compaction.",
+      "keywords": [
+        "AOF",
+        "Redis programming",
+        "persistence"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of AOF in a production environment?",
+        "What are the common pitfalls or issues associated with AOF?"
+      ],
+      "related_concepts": [
+        "RDB snapshotting",
+        "hybrid persistence"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REDIS-020",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Hashes",
+      "difficulty": "Medium",
+      "question": "Explain the difference between hashes and geospatial in Redis.",
+      "ideal_answer": "hashes and geospatial differ in several ways: hashes is field-value mapping (works by object-like storage) whereas geospatial is location data indexing (works by geographic queries). hashes is typically used for HSET, HGET, HGETALL, HMSET, while geospatial is used for GEOADD, GEORADIUS, GEODIST, GEOHASH. Example demonstrating hashes: HSET user:1000 name 'John' age 30. Example demonstrating geospatial: GEOADD cities 13.361389 38.115556 'Palermo'.",
+      "keywords": [
+        "hashes",
+        "geospatial",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose hashes over geospatial?",
+        "What is the performance or memory difference between hashes and geospatial?"
+      ],
+      "related_concepts": [
+        "hashes",
+        "geospatial",
+        "sorted sets",
+        "lists"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-021",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Bitmaps",
+      "difficulty": "Medium",
+      "question": "What are the common issues with geospatial in Redis and how do you debug them?",
+      "ideal_answer": "Common issues with geospatial in Redis include: geohash precision, radius queries. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "geospatial",
+        "troubleshooting",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to geospatial?",
+        "What tools can assist in detecting problems with geospatial at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "sorted sets",
+        "hashes",
+        "lists"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-022",
+      "subject": "Redis",
+      "category": "Performance",
+      "subcategory": "Pipelining",
+      "difficulty": "Medium",
+      "question": "What is pipelining in Redis and how does it work?",
+      "ideal_answer": "pipelining in Redis refers to batch command execution. It works by reducing RTT overhead. Key characteristics include sending multiple commands without waiting for responses. Example: pipeline = r.pipeline(); pipeline.get('a'); pipeline.set('b', 2); pipeline.execute(). Common pitfalls include transactional pipeline.",
+      "keywords": [
+        "pipelining",
+        "Redis programming",
+        "performance"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of pipelining in a production environment?",
+        "What are the common pitfalls or issues associated with pipelining?"
+      ],
+      "related_concepts": [
+        "Lua scripting",
+        "transactions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-023",
+      "subject": "Redis",
+      "category": "Caching Patterns",
+      "subcategory": "Write-Through",
+      "difficulty": "Medium",
+      "question": "What are the common issues with write-through in Redis and how do you debug them?",
+      "ideal_answer": "Common issues with write-through in Redis include: write latency increase. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "write-through",
+        "troubleshooting",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to write-through?",
+        "What tools can assist in detecting problems with write-through at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "cache-aside",
+        "eviction policies",
+        "cache stampede"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-024",
+      "subject": "Redis",
+      "category": "Caching Patterns",
+      "subcategory": "Write-Through",
+      "difficulty": "Medium",
+      "question": "Explain the difference between write-through and cache stampede in Redis.",
+      "ideal_answer": "write-through and cache stampede differ in several ways: write-through is synchronous write pattern (works by cache and DB updated together) whereas cache stampede is simultaneous cache miss (works by thundering herd problem). write-through is typically used for write to cache and DB simultaneously, while cache stampede is used for multiple requests for expired key. Example demonstrating write-through: cache.set(key, value); db.write(key, value). Example demonstrating cache stampede: per-item random jitter, probabilistic early expiration, mutex/lock.",
+      "keywords": [
+        "write-through",
+        "cache stampede",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose write-through over cache stampede?",
+        "What is the performance or memory difference between write-through and cache stampede?"
+      ],
+      "related_concepts": [
+        "write-through",
+        "cache stampede",
+        "cache-aside",
+        "eviction policies"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-025",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Hashes",
+      "difficulty": "Medium",
+      "question": "What are the common issues with hashes in Redis and how do you debug them?",
+      "ideal_answer": "Common issues with hashes in Redis include: hash max field count (512M), rehashing. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "hashes",
+        "troubleshooting",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to hashes?",
+        "What tools can assist in detecting problems with hashes at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "sorted sets",
+        "lists",
+        "sets"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-026",
+      "subject": "Redis",
+      "category": "Persistence",
+      "subcategory": "AOF",
+      "difficulty": "Medium",
+      "question": "What are the common issues with AOF in Redis and how do you debug them?",
+      "ideal_answer": "Common issues with AOF in Redis include: AOF rewrite for compaction. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "AOF",
+        "troubleshooting",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to AOF?",
+        "What tools can assist in detecting problems with AOF at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "RDB snapshotting",
+        "hybrid persistence"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-027",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Sets",
+      "difficulty": "Medium",
+      "question": "Explain the difference between sets and streams in Redis.",
+      "ideal_answer": "sets and streams differ in several ways: sets is unordered unique collection (works by membership and set operations) whereas streams is append-only log structure (works by event sourcing and messaging). sets is typically used for SADD, SINTER, SUNION, SDIFF, SISMEMBER, while streams is used for XADD, XREAD, XGROUP, XACK, consumer groups. Example demonstrating sets: SADD tags:post1 'redis' 'database'; SINTER tags:post1 tags:post2. Example demonstrating streams: XADD mystream * sensor-id 1234 temperature 19.8.",
+      "keywords": [
+        "sets",
+        "streams",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sets over streams?",
+        "What is the performance or memory difference between sets and streams?"
+      ],
+      "related_concepts": [
+        "sets",
+        "streams",
+        "sorted sets",
+        "hashes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-028",
+      "subject": "Redis",
+      "category": "Performance",
+      "subcategory": "Transactions",
+      "difficulty": "Medium",
+      "question": "What are the common issues with transactions in Redis and how do you debug them?",
+      "ideal_answer": "Common issues with transactions in Redis include: WATCH failure handling. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "transactions",
+        "troubleshooting",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to transactions?",
+        "What tools can assist in detecting problems with transactions at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "pipelining",
+        "Lua scripting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-029",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Lists",
+      "difficulty": "Medium",
+      "question": "What is lists in Redis and how does it work?",
+      "ideal_answer": "lists in Redis refers to linked list implementation. It works by queue and stack operations. Key characteristics include LPUSH, RPUSH, LPOP, RPOP, LRANGE, LTRIM. Example: LPUSH queue 'job1'; BRPOP queue 30. Common pitfalls include quicklist encoding (ziplist + linked list).",
+      "keywords": [
+        "lists",
+        "Redis programming",
+        "data structures"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of lists in a production environment?",
+        "What are the common pitfalls or issues associated with lists?"
+      ],
+      "related_concepts": [
+        "sorted sets",
+        "hashes",
+        "sets"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-030",
+      "subject": "Redis",
+      "category": "Performance",
+      "subcategory": "Pipelining",
+      "difficulty": "Medium",
+      "question": "Explain the difference between pipelining and transactions in Redis.",
+      "ideal_answer": "pipelining and transactions differ in several ways: pipelining is batch command execution (works by reducing RTT overhead) whereas transactions is atomic command grouping (works by MULTI/EXEC block). pipelining is typically used for sending multiple commands without waiting for responses, while transactions is used for no rollback, optimistic locking with WATCH. Example demonstrating pipelining: pipeline = r.pipeline(); pipeline.get('a'); pipeline.set('b', 2); pipeline.execute(). Example demonstrating transactions: WATCH mykey; MULTI; INCR mykey; EXEC;.",
+      "keywords": [
+        "pipelining",
+        "transactions",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose pipelining over transactions?",
+        "What is the performance or memory difference between pipelining and transactions?"
+      ],
+      "related_concepts": [
+        "pipelining",
+        "transactions",
+        "Lua scripting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-031",
+      "subject": "Redis",
+      "category": "Performance",
+      "subcategory": "Transactions",
+      "difficulty": "Medium",
+      "question": "What is transactions in Redis and how does it work?",
+      "ideal_answer": "transactions in Redis refers to atomic command grouping. It works by MULTI/EXEC block. Key characteristics include no rollback, optimistic locking with WATCH. Example: WATCH mykey; MULTI; INCR mykey; EXEC;. Common pitfalls include WATCH failure handling.",
+      "keywords": [
+        "transactions",
+        "Redis programming",
+        "performance"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of transactions in a production environment?",
+        "What are the common pitfalls or issues associated with transactions?"
+      ],
+      "related_concepts": [
+        "pipelining",
+        "Lua scripting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-032",
+      "subject": "Redis",
+      "category": "Caching Patterns",
+      "subcategory": "Write-Behind",
+      "difficulty": "Medium",
+      "question": "Explain the difference between eviction policies and cache stampede in Redis.",
+      "ideal_answer": "eviction policies and cache stampede differ in several ways: eviction policies is memory full handling (works by determining which keys to remove) whereas cache stampede is simultaneous cache miss (works by thundering herd problem). eviction policies is typically used for noeviction, allkeys-lru, volatile-lru, allkeys-random, volatile-ttl, while cache stampede is used for multiple requests for expired key. Example demonstrating eviction policies: maxmemory-policy allkeys-lru. Example demonstrating cache stampede: per-item random jitter, probabilistic early expiration, mutex/lock.",
+      "keywords": [
+        "eviction policies",
+        "cache stampede",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose eviction policies over cache stampede?",
+        "What is the performance or memory difference between eviction policies and cache stampede?"
+      ],
+      "related_concepts": [
+        "eviction policies",
+        "cache stampede",
+        "cache-aside",
+        "write-through"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-033",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Bitmaps",
+      "difficulty": "Medium",
+      "question": "What is geospatial in Redis and how does it work?",
+      "ideal_answer": "geospatial in Redis refers to location data indexing. It works by geographic queries. Key characteristics include GEOADD, GEORADIUS, GEODIST, GEOHASH. Example: GEOADD cities 13.361389 38.115556 'Palermo'. Common pitfalls include geohash precision, radius queries.",
+      "keywords": [
+        "geospatial",
+        "Redis programming",
+        "data structures"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of geospatial in a production environment?",
+        "What are the common pitfalls or issues associated with geospatial?"
+      ],
+      "related_concepts": [
+        "sorted sets",
+        "hashes",
+        "lists"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-034",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Strings",
+      "difficulty": "Medium",
+      "question": "What is sorted sets in Redis and how does it work?",
+      "ideal_answer": "sorted sets in Redis refers to ordered unique collection. It works by ranking and leaderboard. Key characteristics include score-based ordering, O(log n) ops. Example: ZADD leaderboard 100 'player1'; ZREVRANGE leaderboard 0 9 WITHSCORES. Common pitfalls include same score tie-breaking by lexicographic.",
+      "keywords": [
+        "sorted sets",
+        "Redis programming",
+        "data structures"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of sorted sets in a production environment?",
+        "What are the common pitfalls or issues associated with sorted sets?"
+      ],
+      "related_concepts": [
+        "hashes",
+        "lists",
+        "sets"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-035",
+      "subject": "Redis",
+      "category": "Replication & Clustering",
+      "subcategory": "General",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Redis Sentinel in Redis and how do you debug them?",
+      "ideal_answer": "Common issues with Redis Sentinel in Redis include: split-brain protection. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Redis Sentinel",
+        "troubleshooting",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Redis Sentinel?",
+        "What tools can assist in detecting problems with Redis Sentinel at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Redis Cluster"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-036",
+      "subject": "Redis",
+      "category": "Persistence",
+      "subcategory": "RDB",
+      "difficulty": "Medium",
+      "question": "What are the common issues with RDB snapshotting in Redis and how do you debug them?",
+      "ideal_answer": "Common issues with RDB snapshotting in Redis include: fork copy-on-write memory doubling. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "RDB snapshotting",
+        "troubleshooting",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to RDB snapshotting?",
+        "What tools can assist in detecting problems with RDB snapshotting at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "AOF",
+        "hybrid persistence"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-037",
+      "subject": "Redis",
+      "category": "Caching Patterns",
+      "subcategory": "Cache-Aside",
+      "difficulty": "Medium",
+      "question": "Explain the difference between cache-aside and write-through in Redis.",
+      "ideal_answer": "cache-aside and write-through differ in several ways: cache-aside is lazy loading pattern (works by application-managed caching) whereas write-through is synchronous write pattern (works by cache and DB updated together). cache-aside is typically used for check cache, load from DB on miss, populate cache, while write-through is used for write to cache and DB simultaneously. Example demonstrating cache-aside: data = cache.get(key); if not data: data = db.get(key); cache.set(key, data, ttl). Example demonstrating write-through: cache.set(key, value); db.write(key, value).",
+      "keywords": [
+        "cache-aside",
+        "write-through",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose cache-aside over write-through?",
+        "What is the performance or memory difference between cache-aside and write-through?"
+      ],
+      "related_concepts": [
+        "cache-aside",
+        "write-through",
+        "eviction policies",
+        "cache stampede"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-038",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Sorted Sets",
+      "difficulty": "Medium",
+      "question": "Explain the difference between streams and geospatial in Redis.",
+      "ideal_answer": "streams and geospatial differ in several ways: streams is append-only log structure (works by event sourcing and messaging) whereas geospatial is location data indexing (works by geographic queries). streams is typically used for XADD, XREAD, XGROUP, XACK, consumer groups, while geospatial is used for GEOADD, GEORADIUS, GEODIST, GEOHASH. Example demonstrating streams: XADD mystream * sensor-id 1234 temperature 19.8. Example demonstrating geospatial: GEOADD cities 13.361389 38.115556 'Palermo'.",
+      "keywords": [
+        "streams",
+        "geospatial",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose streams over geospatial?",
+        "What is the performance or memory difference between streams and geospatial?"
+      ],
+      "related_concepts": [
+        "streams",
+        "geospatial",
+        "sorted sets",
+        "hashes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-039",
+      "subject": "Redis",
+      "category": "Performance",
+      "subcategory": "Lua Scripting",
+      "difficulty": "Medium",
+      "question": "What is Lua scripting in Redis and how does it work?",
+      "ideal_answer": "Lua scripting in Redis refers to server-side execution. It works by atomic multi-command operations. Key characteristics include EVAL, EVALSHA, script load. Example: EVAL 'return redis.call(\"get\", KEYS[1]) + redis.call(\"get\", KEYS[2])' 2 key1 key2. Common pitfalls include script replication in cluster.",
+      "keywords": [
+        "Lua scripting",
+        "Redis programming",
+        "performance"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Lua scripting in a production environment?",
+        "What are the common pitfalls or issues associated with Lua scripting?"
+      ],
+      "related_concepts": [
+        "pipelining",
+        "transactions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-040",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Strings",
+      "difficulty": "Medium",
+      "question": "Explain the difference between sorted sets and hashes in Redis.",
+      "ideal_answer": "sorted sets and hashes differ in several ways: sorted sets is ordered unique collection (works by ranking and leaderboard) whereas hashes is field-value mapping (works by object-like storage). sorted sets is typically used for score-based ordering, O(log n) ops, while hashes is used for HSET, HGET, HGETALL, HMSET. Example demonstrating sorted sets: ZADD leaderboard 100 'player1'; ZREVRANGE leaderboard 0 9 WITHSCORES. Example demonstrating hashes: HSET user:1000 name 'John' age 30.",
+      "keywords": [
+        "sorted sets",
+        "hashes",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sorted sets over hashes?",
+        "What is the performance or memory difference between sorted sets and hashes?"
+      ],
+      "related_concepts": [
+        "sorted sets",
+        "hashes",
+        "lists",
+        "sets"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-041",
+      "subject": "Redis",
+      "category": "Persistence",
+      "subcategory": "AOF",
+      "difficulty": "Medium",
+      "question": "Explain the difference between AOF and hybrid persistence in Redis.",
+      "ideal_answer": "AOF and hybrid persistence differ in several ways: AOF is Append-Only File (works by command log replay) whereas hybrid persistence is RDB + AOF combined (works by Redis 4.0+ feature). AOF is typically used for everysec, always, no fsync policies, while hybrid persistence is used for aof-use-rdb-preamble yes. Example demonstrating AOF: appendfsync everysec. Example demonstrating hybrid persistence: fast restarts with full durability.",
+      "keywords": [
+        "AOF",
+        "hybrid persistence",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose AOF over hybrid persistence?",
+        "What is the performance or memory difference between AOF and hybrid persistence?"
+      ],
+      "related_concepts": [
+        "AOF",
+        "hybrid persistence",
+        "RDB snapshotting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-042",
+      "subject": "Redis",
+      "category": "Performance",
+      "subcategory": "Lua Scripting",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Lua scripting in Redis and how do you debug them?",
+      "ideal_answer": "Common issues with Lua scripting in Redis include: script replication in cluster. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Lua scripting",
+        "troubleshooting",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Lua scripting?",
+        "What tools can assist in detecting problems with Lua scripting at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "pipelining",
+        "transactions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-043",
+      "subject": "Redis",
+      "category": "Caching Patterns",
+      "subcategory": "Write-Through",
+      "difficulty": "Medium",
+      "question": "What is write-through in Redis and how does it work?",
+      "ideal_answer": "write-through in Redis refers to synchronous write pattern. It works by cache and DB updated together. Key characteristics include write to cache and DB simultaneously. Example: cache.set(key, value); db.write(key, value). Common pitfalls include write latency increase.",
+      "keywords": [
+        "write-through",
+        "Redis programming",
+        "caching patterns"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of write-through in a production environment?",
+        "What are the common pitfalls or issues associated with write-through?"
+      ],
+      "related_concepts": [
+        "cache-aside",
+        "eviction policies",
+        "cache stampede"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-044",
+      "subject": "Redis",
+      "category": "Persistence",
+      "subcategory": "Hybrid",
+      "difficulty": "Medium",
+      "question": "What are the common issues with hybrid persistence in Redis and how do you debug them?",
+      "ideal_answer": "Common issues with hybrid persistence in Redis include: AOF file size bloating before rewrite. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "hybrid persistence",
+        "troubleshooting",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to hybrid persistence?",
+        "What tools can assist in detecting problems with hybrid persistence at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "RDB snapshotting",
+        "AOF"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-045",
+      "subject": "Redis",
+      "category": "Performance",
+      "subcategory": "Lua Scripting",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Lua scripting and transactions in Redis.",
+      "ideal_answer": "Lua scripting and transactions differ in several ways: Lua scripting is server-side execution (works by atomic multi-command operations) whereas transactions is atomic command grouping (works by MULTI/EXEC block). Lua scripting is typically used for EVAL, EVALSHA, script load, while transactions is used for no rollback, optimistic locking with WATCH. Example demonstrating Lua scripting: EVAL 'return redis.call(\"get\", KEYS[1]) + redis.call(\"get\", KEYS[2])' 2 key1 key2. Example demonstrating transactions: WATCH mykey; MULTI; INCR mykey; EXEC;.",
+      "keywords": [
+        "Lua scripting",
+        "transactions",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Lua scripting over transactions?",
+        "What is the performance or memory difference between Lua scripting and transactions?"
+      ],
+      "related_concepts": [
+        "Lua scripting",
+        "transactions",
+        "pipelining"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-046",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Strings",
+      "difficulty": "Medium",
+      "question": "Explain the difference between sorted sets and lists in Redis.",
+      "ideal_answer": "sorted sets and lists differ in several ways: sorted sets is ordered unique collection (works by ranking and leaderboard) whereas lists is linked list implementation (works by queue and stack operations). sorted sets is typically used for score-based ordering, O(log n) ops, while lists is used for LPUSH, RPUSH, LPOP, RPOP, LRANGE, LTRIM. Example demonstrating sorted sets: ZADD leaderboard 100 'player1'; ZREVRANGE leaderboard 0 9 WITHSCORES. Example demonstrating lists: LPUSH queue 'job1'; BRPOP queue 30.",
+      "keywords": [
+        "sorted sets",
+        "lists",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sorted sets over lists?",
+        "What is the performance or memory difference between sorted sets and lists?"
+      ],
+      "related_concepts": [
+        "sorted sets",
+        "lists",
+        "hashes",
+        "sets"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-047",
+      "subject": "Redis",
+      "category": "Performance",
+      "subcategory": "Pipelining",
+      "difficulty": "Medium",
+      "question": "What are the common issues with pipelining in Redis and how do you debug them?",
+      "ideal_answer": "Common issues with pipelining in Redis include: transactional pipeline. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "pipelining",
+        "troubleshooting",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to pipelining?",
+        "What tools can assist in detecting problems with pipelining at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Lua scripting",
+        "transactions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-048",
+      "subject": "Redis",
+      "category": "Replication & Clustering",
+      "subcategory": "General",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Redis Cluster in Redis and how do you debug them?",
+      "ideal_answer": "Common issues with Redis Cluster in Redis include: multi-key operation constraints. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Redis Cluster",
+        "troubleshooting",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Redis Cluster?",
+        "What tools can assist in detecting problems with Redis Cluster at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Redis Sentinel"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-049",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Hashes",
+      "difficulty": "Medium",
+      "question": "What is hashes in Redis and how does it work?",
+      "ideal_answer": "hashes in Redis refers to field-value mapping. It works by object-like storage. Key characteristics include HSET, HGET, HGETALL, HMSET. Example: HSET user:1000 name 'John' age 30. Common pitfalls include hash max field count (512M), rehashing.",
+      "keywords": [
+        "hashes",
+        "Redis programming",
+        "data structures"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of hashes in a production environment?",
+        "What are the common pitfalls or issues associated with hashes?"
+      ],
+      "related_concepts": [
+        "sorted sets",
+        "lists",
+        "sets"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-050",
+      "subject": "Redis",
+      "category": "Persistence",
+      "subcategory": "RDB",
+      "difficulty": "Medium",
+      "question": "What is RDB snapshotting in Redis and how does it work?",
+      "ideal_answer": "RDB snapshotting in Redis refers to point-in-time backup. It works by fork-based persistence. Key characteristics include SAVE, BGSAVE, save configuration. Example: save 900 1 # save after 900 sec if 1 key changed. Common pitfalls include fork copy-on-write memory doubling.",
+      "keywords": [
+        "RDB snapshotting",
+        "Redis programming",
+        "persistence"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of RDB snapshotting in a production environment?",
+        "What are the common pitfalls or issues associated with RDB snapshotting?"
+      ],
+      "related_concepts": [
+        "AOF",
+        "hybrid persistence"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-051",
+      "subject": "Redis",
+      "category": "Caching Patterns",
+      "subcategory": "Cache-Aside",
+      "difficulty": "Medium",
+      "question": "What are the common issues with cache-aside in Redis and how do you debug them?",
+      "ideal_answer": "Common issues with cache-aside in Redis include: cache stampede prevention. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "cache-aside",
+        "troubleshooting",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to cache-aside?",
+        "What tools can assist in detecting problems with cache-aside at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "write-through",
+        "eviction policies",
+        "cache stampede"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REDIS-052",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Lists",
+      "difficulty": "Hard",
+      "question": "What are the common issues with lists in Redis and how do you debug them?",
+      "ideal_answer": "Common issues with lists in Redis include: quicklist encoding (ziplist + linked list). To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "lists",
+        "troubleshooting",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to lists?",
+        "What tools can assist in detecting problems with lists at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "sorted sets",
+        "hashes",
+        "sets"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REDIS-053",
+      "subject": "Redis",
+      "category": "Persistence",
+      "subcategory": "RDB",
+      "difficulty": "Hard",
+      "question": "Explain the difference between RDB snapshotting and hybrid persistence in Redis.",
+      "ideal_answer": "RDB snapshotting and hybrid persistence differ in several ways: RDB snapshotting is point-in-time backup (works by fork-based persistence) whereas hybrid persistence is RDB + AOF combined (works by Redis 4.0+ feature). RDB snapshotting is typically used for SAVE, BGSAVE, save configuration, while hybrid persistence is used for aof-use-rdb-preamble yes. Example demonstrating RDB snapshotting: save 900 1 # save after 900 sec if 1 key changed. Example demonstrating hybrid persistence: fast restarts with full durability.",
+      "keywords": [
+        "RDB snapshotting",
+        "hybrid persistence",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose RDB snapshotting over hybrid persistence?",
+        "What is the performance or memory difference between RDB snapshotting and hybrid persistence?"
+      ],
+      "related_concepts": [
+        "RDB snapshotting",
+        "hybrid persistence",
+        "AOF"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REDIS-054",
+      "subject": "Redis",
+      "category": "Performance",
+      "subcategory": "Pipelining",
+      "difficulty": "Hard",
+      "question": "Explain the difference between pipelining and Lua scripting in Redis.",
+      "ideal_answer": "pipelining and Lua scripting differ in several ways: pipelining is batch command execution (works by reducing RTT overhead) whereas Lua scripting is server-side execution (works by atomic multi-command operations). pipelining is typically used for sending multiple commands without waiting for responses, while Lua scripting is used for EVAL, EVALSHA, script load. Example demonstrating pipelining: pipeline = r.pipeline(); pipeline.get('a'); pipeline.set('b', 2); pipeline.execute(). Example demonstrating Lua scripting: EVAL 'return redis.call(\"get\", KEYS[1]) + redis.call(\"get\", KEYS[2])' 2 key1 key2.",
+      "keywords": [
+        "pipelining",
+        "Lua scripting",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose pipelining over Lua scripting?",
+        "What is the performance or memory difference between pipelining and Lua scripting?"
+      ],
+      "related_concepts": [
+        "pipelining",
+        "Lua scripting",
+        "transactions"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REDIS-055",
+      "subject": "Redis",
+      "category": "Caching Patterns",
+      "subcategory": "TTL",
+      "difficulty": "Hard",
+      "question": "What are the common issues with cache stampede in Redis and how do you debug them?",
+      "ideal_answer": "Common issues with cache stampede in Redis include: LOCKSET pattern with SET NX. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "cache stampede",
+        "troubleshooting",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to cache stampede?",
+        "What tools can assist in detecting problems with cache stampede at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "cache-aside",
+        "write-through",
+        "eviction policies"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REDIS-056",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Sets",
+      "difficulty": "Hard",
+      "question": "What is sets in Redis and how does it work?",
+      "ideal_answer": "sets in Redis refers to unordered unique collection. It works by membership and set operations. Key characteristics include SADD, SINTER, SUNION, SDIFF, SISMEMBER. Example: SADD tags:post1 'redis' 'database'; SINTER tags:post1 tags:post2. Common pitfalls include set cardinality limits.",
+      "keywords": [
+        "sets",
+        "Redis programming",
+        "data structures"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of sets in a production environment?",
+        "What are the common pitfalls or issues associated with sets?"
+      ],
+      "related_concepts": [
+        "sorted sets",
+        "hashes",
+        "lists"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REDIS-057",
+      "subject": "Redis",
+      "category": "Replication & Clustering",
+      "subcategory": "General",
+      "difficulty": "Hard",
+      "question": "What is Redis Cluster in Redis and how does it work?",
+      "ideal_answer": "Redis Cluster in Redis refers to distributed Redis. It works by automatic sharding and failover. Key characteristics include 16384 hash slots, cluster bus, gossip protocol. Example: redis-cli --cluster create node1:6379 node2:6379 --cluster-replicas 1. Common pitfalls include multi-key operation constraints.",
+      "keywords": [
+        "Redis Cluster",
+        "Redis programming",
+        "replication & clustering"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Redis Cluster in a production environment?",
+        "What are the common pitfalls or issues associated with Redis Cluster?"
+      ],
+      "related_concepts": [
+        "Redis Sentinel"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REDIS-058",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Sorted Sets",
+      "difficulty": "Hard",
+      "question": "What is streams in Redis and how does it work?",
+      "ideal_answer": "streams in Redis refers to append-only log structure. It works by event sourcing and messaging. Key characteristics include XADD, XREAD, XGROUP, XACK, consumer groups. Example: XADD mystream * sensor-id 1234 temperature 19.8. Common pitfalls include stream trimming, pending entries.",
+      "keywords": [
+        "streams",
+        "Redis programming",
+        "data structures"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of streams in a production environment?",
+        "What are the common pitfalls or issues associated with streams?"
+      ],
+      "related_concepts": [
+        "sorted sets",
+        "hashes",
+        "lists"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REDIS-059",
+      "subject": "Redis",
+      "category": "Replication & Clustering",
+      "subcategory": "General",
+      "difficulty": "Hard",
+      "question": "Explain the difference between Redis Sentinel and Redis Cluster in Redis.",
+      "ideal_answer": "Redis Sentinel and Redis Cluster differ in several ways: Redis Sentinel is high availability solution (works by monitoring, notification, auto-failover) whereas Redis Cluster is distributed Redis (works by automatic sharding and failover). Redis Sentinel is typically used for sentinel quorum, subjective down, objective down, while Redis Cluster is used for 16384 hash slots, cluster bus, gossip protocol. Example demonstrating Redis Sentinel: sentinel monitor mymaster 127.0.0.1 6379 2. Example demonstrating Redis Cluster: redis-cli --cluster create node1:6379 node2:6379 --cluster-replicas 1.",
+      "keywords": [
+        "Redis Sentinel",
+        "Redis Cluster",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Redis Sentinel over Redis Cluster?",
+        "What is the performance or memory difference between Redis Sentinel and Redis Cluster?"
+      ],
+      "related_concepts": [
+        "Redis Sentinel",
+        "Redis Cluster"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REDIS-060",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Strings",
+      "difficulty": "Hard",
+      "question": "Explain the difference between sorted sets and streams in Redis.",
+      "ideal_answer": "sorted sets and streams differ in several ways: sorted sets is ordered unique collection (works by ranking and leaderboard) whereas streams is append-only log structure (works by event sourcing and messaging). sorted sets is typically used for score-based ordering, O(log n) ops, while streams is used for XADD, XREAD, XGROUP, XACK, consumer groups. Example demonstrating sorted sets: ZADD leaderboard 100 'player1'; ZREVRANGE leaderboard 0 9 WITHSCORES. Example demonstrating streams: XADD mystream * sensor-id 1234 temperature 19.8.",
+      "keywords": [
+        "sorted sets",
+        "streams",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sorted sets over streams?",
+        "What is the performance or memory difference between sorted sets and streams?"
+      ],
+      "related_concepts": [
+        "sorted sets",
+        "streams",
+        "hashes",
+        "lists"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REDIS-061",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Hashes",
+      "difficulty": "Hard",
+      "question": "Explain the difference between hashes and lists in Redis.",
+      "ideal_answer": "hashes and lists differ in several ways: hashes is field-value mapping (works by object-like storage) whereas lists is linked list implementation (works by queue and stack operations). hashes is typically used for HSET, HGET, HGETALL, HMSET, while lists is used for LPUSH, RPUSH, LPOP, RPOP, LRANGE, LTRIM. Example demonstrating hashes: HSET user:1000 name 'John' age 30. Example demonstrating lists: LPUSH queue 'job1'; BRPOP queue 30.",
+      "keywords": [
+        "hashes",
+        "lists",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose hashes over lists?",
+        "What is the performance or memory difference between hashes and lists?"
+      ],
+      "related_concepts": [
+        "hashes",
+        "lists",
+        "sorted sets",
+        "sets"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REDIS-062",
+      "subject": "Redis",
+      "category": "Caching Patterns",
+      "subcategory": "Write-Through",
+      "difficulty": "Hard",
+      "question": "Explain the difference between write-through and eviction policies in Redis.",
+      "ideal_answer": "write-through and eviction policies differ in several ways: write-through is synchronous write pattern (works by cache and DB updated together) whereas eviction policies is memory full handling (works by determining which keys to remove). write-through is typically used for write to cache and DB simultaneously, while eviction policies is used for noeviction, allkeys-lru, volatile-lru, allkeys-random, volatile-ttl. Example demonstrating write-through: cache.set(key, value); db.write(key, value). Example demonstrating eviction policies: maxmemory-policy allkeys-lru.",
+      "keywords": [
+        "write-through",
+        "eviction policies",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose write-through over eviction policies?",
+        "What is the performance or memory difference between write-through and eviction policies?"
+      ],
+      "related_concepts": [
+        "write-through",
+        "eviction policies",
+        "cache-aside",
+        "cache stampede"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REDIS-063",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Strings",
+      "difficulty": "Hard",
+      "question": "What are the common issues with sorted sets in Redis and how do you debug them?",
+      "ideal_answer": "Common issues with sorted sets in Redis include: same score tie-breaking by lexicographic. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "sorted sets",
+        "troubleshooting",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to sorted sets?",
+        "What tools can assist in detecting problems with sorted sets at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "hashes",
+        "lists",
+        "sets"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REDIS-064",
+      "subject": "Redis",
+      "category": "Data Structures",
+      "subcategory": "Strings",
+      "difficulty": "Hard",
+      "question": "Explain the difference between sorted sets and sets in Redis.",
+      "ideal_answer": "sorted sets and sets differ in several ways: sorted sets is ordered unique collection (works by ranking and leaderboard) whereas sets is unordered unique collection (works by membership and set operations). sorted sets is typically used for score-based ordering, O(log n) ops, while sets is used for SADD, SINTER, SUNION, SDIFF, SISMEMBER. Example demonstrating sorted sets: ZADD leaderboard 100 'player1'; ZREVRANGE leaderboard 0 9 WITHSCORES. Example demonstrating sets: SADD tags:post1 'redis' 'database'; SINTER tags:post1 tags:post2.",
+      "keywords": [
+        "sorted sets",
+        "sets",
+        "comparison",
+        "Redis"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sorted sets over sets?",
+        "What is the performance or memory difference between sorted sets and sets?"
+      ],
+      "related_concepts": [
+        "sorted sets",
+        "sets",
+        "hashes",
+        "lists"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

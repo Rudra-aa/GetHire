@@ -1,7 +1,10 @@
 import json
 import uuid
 import re
-import fitz  # PyMuPDF
+try:
+    import fitz  # PyMuPDF
+except ImportError:
+    fitz = None
 from pathlib import Path
 
 # Common stop words to filter out when generating keywords

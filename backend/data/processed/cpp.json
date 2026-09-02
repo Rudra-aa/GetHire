@@ -1,0 +1,3197 @@
+{
+  "metadata": {
+    "subject": "C++",
+    "domain": "Software Engineering",
+    "total_questions": 120,
+    "difficulty_distribution": {
+      "Easy": 36,
+      "Medium": 60,
+      "Hard": 24
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:47Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "CPP-001",
+      "subject": "C++",
+      "category": "STL",
+      "subcategory": "Containers",
+      "difficulty": "Easy",
+      "question": "Explain the difference between vector and map vs unordered_map in C++.",
+      "ideal_answer": "vector and map vs unordered_map differ in several ways: vector is dynamic array container (works by contiguous storage, random access) whereas map vs unordered_map is associative containers (works by key-value storage). vector is typically used for amortized O(1) push_back, O(n) insert, while map vs unordered_map is used for map: O(log n) tree, ordered; unordered_map: O(1) hash, unordered. Example demonstrating vector: std::vector<int> v; v.push_back(5);. Example demonstrating map vs unordered_map: std::map<std::string, int> m;.",
+      "keywords": [
+        "vector",
+        "map vs unordered_map",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose vector over map vs unordered_map?",
+        "What is the performance or memory difference between vector and map vs unordered_map?"
+      ],
+      "related_concepts": [
+        "vector",
+        "map vs unordered_map",
+        "iterators",
+        "algorithm library"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-002",
+      "subject": "C++",
+      "category": "Concurrency",
+      "subcategory": "Mutexes",
+      "difficulty": "Easy",
+      "question": "What are the common issues with mutex in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with mutex in C++ include: deadlock avoidance strategies. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "mutex",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to mutex?",
+        "What tools can assist in detecting problems with mutex at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "std::thread",
+        "condition_variable",
+        "atomic operations"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-003",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "Auto",
+      "difficulty": "Easy",
+      "question": "What are the common issues with lambda expressions in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with lambda expressions in C++ include: capture by reference vs value. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "lambda expressions",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to lambda expressions?",
+        "What tools can assist in detecting problems with lambda expressions at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "auto keyword",
+        "constexpr",
+        "variadic templates"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-004",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "Lambda",
+      "difficulty": "Easy",
+      "question": "Explain the difference between constexpr and concepts in C++.",
+      "ideal_answer": "constexpr and concepts differ in several ways: constexpr is compile-time evaluation (works by constant expressions) whereas concepts is template constraints (works by named requirements). constexpr is typically used for C++11: single return, C++14: multiple statements, while concepts is used for requires clauses, concept definitions. Example demonstrating constexpr: constexpr int factorial(int n) { return n <= 1 ? 1 : n * factorial(n-1); }. Example demonstrating concepts: template<typename T> requires Addable<T> T add(T a, T b);.",
+      "keywords": [
+        "constexpr",
+        "concepts",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose constexpr over concepts?",
+        "What is the performance or memory difference between constexpr and concepts?"
+      ],
+      "related_concepts": [
+        "constexpr",
+        "concepts",
+        "auto keyword",
+        "lambda expressions"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-005",
+      "subject": "C++",
+      "category": "STL",
+      "subcategory": "Containers",
+      "difficulty": "Easy",
+      "question": "Explain the difference between vector and algorithm library in C++.",
+      "ideal_answer": "vector and algorithm library differ in several ways: vector is dynamic array container (works by contiguous storage, random access) whereas algorithm library is generic algorithms (works by reusable operations on ranges). vector is typically used for amortized O(1) push_back, O(n) insert, while algorithm library is used for sort, find, transform, accumulate. Example demonstrating vector: std::vector<int> v; v.push_back(5);. Example demonstrating algorithm library: std::sort(v.begin(), v.end());.",
+      "keywords": [
+        "vector",
+        "algorithm library",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose vector over algorithm library?",
+        "What is the performance or memory difference between vector and algorithm library?"
+      ],
+      "related_concepts": [
+        "vector",
+        "algorithm library",
+        "map vs unordered_map",
+        "iterators"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-006",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Classes",
+      "difficulty": "Easy",
+      "question": "Explain the difference between virtual functions and constructor initialization list in C++.",
+      "ideal_answer": "virtual functions and constructor initialization list differ in several ways: virtual functions is dynamic dispatch mechanism (works by runtime polymorphism) whereas constructor initialization list is member initialization syntax (works by efficient construction). virtual functions is typically used for vtable/vptr implementation, while constructor initialization list is used for required for const members, references, base classes. Example demonstrating virtual functions: virtual void draw() = 0;. Example demonstrating constructor initialization list: Class() : member(val), base(val) {}.",
+      "keywords": [
+        "virtual functions",
+        "constructor initialization list",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose virtual functions over constructor initialization list?",
+        "What is the performance or memory difference between virtual functions and constructor initialization list?"
+      ],
+      "related_concepts": [
+        "virtual functions",
+        "constructor initialization list",
+        "pure virtual functions",
+        "multiple inheritance"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-007",
+      "subject": "C++",
+      "category": "Fundamentals",
+      "subcategory": "Operator Overloading",
+      "difficulty": "Easy",
+      "question": "Explain the difference between operator overloading and assignment operator in C++.",
+      "ideal_answer": "operator overloading and assignment operator differ in several ways: operator overloading is custom operator behavior (works by intuitive syntax for user types) whereas assignment operator is object reassignment (works by copy-and-swap idiom). operator overloading is typically used for cannot overload . ?: :: sizeof, while assignment operator is used for returns reference to self. Example demonstrating operator overloading: Complex operator+(const Complex& a, const Complex& b). Example demonstrating assignment operator: Class& operator=(Class other) { swap(*this, other); return *this; }.",
+      "keywords": [
+        "operator overloading",
+        "assignment operator",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose operator overloading over assignment operator?",
+        "What is the performance or memory difference between operator overloading and assignment operator?"
+      ],
+      "related_concepts": [
+        "operator overloading",
+        "assignment operator",
+        "references vs pointers",
+        "name mangling"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-008",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Classes",
+      "difficulty": "Easy",
+      "question": "What is constructor initialization list in C++ and how does it work?",
+      "ideal_answer": "constructor initialization list in C++ refers to member initialization syntax. It works by efficient construction. Key characteristics include required for const members, references, base classes. Example: Class() : member(val), base(val) {}. Common pitfalls include order follows declaration, not list.",
+      "keywords": [
+        "constructor initialization list",
+        "C++ programming",
+        "oop in c++"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of constructor initialization list in a production environment?",
+        "What are the common pitfalls or issues associated with constructor initialization list?"
+      ],
+      "related_concepts": [
+        "virtual functions",
+        "pure virtual functions",
+        "multiple inheritance"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-009",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "C++11/14/17/20/23",
+      "difficulty": "Easy",
+      "question": "Explain the difference between auto keyword and coroutines in C++.",
+      "ideal_answer": "auto keyword and coroutines differ in several ways: auto keyword is type inference (works by reducing verbosity) whereas coroutines is suspendable functions (works by asynchronous programming). auto keyword is typically used for deduced at compile time, while coroutines is used for co_await, co_yield, co_return. Example demonstrating auto keyword: auto it = vec.begin();. Example demonstrating coroutines: task<void> async_op() { co_await something(); }.",
+      "keywords": [
+        "auto keyword",
+        "coroutines",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose auto keyword over coroutines?",
+        "What is the performance or memory difference between auto keyword and coroutines?"
+      ],
+      "related_concepts": [
+        "auto keyword",
+        "coroutines",
+        "lambda expressions",
+        "constexpr"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-010",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "constexpr",
+      "difficulty": "Easy",
+      "question": "What is variadic templates in C++ and how does it work?",
+      "ideal_answer": "variadic templates in C++ refers to variable argument templates. It works by type-safe variadic functions. Key characteristics include parameter packs, recursion/ fold expressions. Example: template<typename... Args> void print(Args... args);. Common pitfalls include pack expansion syntax.",
+      "keywords": [
+        "variadic templates",
+        "C++ programming",
+        "modern c++"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of variadic templates in a production environment?",
+        "What are the common pitfalls or issues associated with variadic templates?"
+      ],
+      "related_concepts": [
+        "auto keyword",
+        "lambda expressions",
+        "constexpr"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-011",
+      "subject": "C++",
+      "category": "STL",
+      "subcategory": "Iterators",
+      "difficulty": "Easy",
+      "question": "Explain the difference between map vs unordered_map and iterators in C++.",
+      "ideal_answer": "map vs unordered_map and iterators differ in several ways: map vs unordered_map is associative containers (works by key-value storage) whereas iterators is container position abstraction (works by uniform access pattern). map vs unordered_map is typically used for map: O(log n) tree, ordered; unordered_map: O(1) hash, unordered, while iterators is used for input, output, forward, bidirectional, random access. Example demonstrating map vs unordered_map: std::map<std::string, int> m;. Example demonstrating iterators: std::vector<int>::iterator it = v.begin();.",
+      "keywords": [
+        "map vs unordered_map",
+        "iterators",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose map vs unordered_map over iterators?",
+        "What is the performance or memory difference between map vs unordered_map and iterators?"
+      ],
+      "related_concepts": [
+        "map vs unordered_map",
+        "iterators",
+        "vector",
+        "algorithm library"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-012",
+      "subject": "C++",
+      "category": "Memory Management",
+      "subcategory": "Smart Pointers",
+      "difficulty": "Easy",
+      "question": "Explain the difference between smart pointers and std::move vs std::forward in C++.",
+      "ideal_answer": "smart pointers and std::move vs std::forward differ in several ways: smart pointers is RAII memory wrappers (works by automatic lifetime management) whereas std::move vs std::forward is value category manipulation (works by transferring values efficiently). smart pointers is typically used for unique_ptr, shared_ptr, weak_ptr, while std::move vs std::forward is used for move: unconditionally cast to rvalue; forward: preserve value category. Example demonstrating smart pointers: std::unique_ptr<int> p = std::make_unique<int>(5);. Example demonstrating std::move vs std::forward: std::forward<T>(arg).",
+      "keywords": [
+        "smart pointers",
+        "std::move vs std::forward",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose smart pointers over std::move vs std::forward?",
+        "What is the performance or memory difference between smart pointers and std::move vs std::forward?"
+      ],
+      "related_concepts": [
+        "smart pointers",
+        "std::move vs std::forward",
+        "RAII",
+        "move semantics"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-013",
+      "subject": "C++",
+      "category": "Fundamentals",
+      "subcategory": "References",
+      "difficulty": "Easy",
+      "question": "What is references vs pointers in C++ and how does it work?",
+      "ideal_answer": "references vs pointers in C++ refers to alias mechanisms. It works by indirect access. Key characteristics include references: non-null, non-reseatable, safer; pointers: flexible, nullable. Example: int& ref = x; int* ptr = &x;. Common pitfalls include reference to temporary lifetime.",
+      "keywords": [
+        "references vs pointers",
+        "C++ programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of references vs pointers in a production environment?",
+        "What are the common pitfalls or issues associated with references vs pointers?"
+      ],
+      "related_concepts": [
+        "name mangling",
+        "operator overloading",
+        "copy constructor"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-014",
+      "subject": "C++",
+      "category": "Concurrency",
+      "subcategory": "Threads",
+      "difficulty": "Easy",
+      "question": "Explain the difference between std::thread and condition_variable in C++.",
+      "ideal_answer": "std::thread and condition_variable differ in several ways: std::thread is OS thread wrapper (works by concurrent execution) whereas condition_variable is thread synchronization (works by waiting for conditions). std::thread is typically used for joinable, detach, join, while condition_variable is used for wait, notify_one, notify_all. Example demonstrating std::thread: std::thread t([]{ /* work */ }); t.join();. Example demonstrating condition_variable: cv.wait(lock, []{ return ready; });.",
+      "keywords": [
+        "std::thread",
+        "condition_variable",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose std::thread over condition_variable?",
+        "What is the performance or memory difference between std::thread and condition_variable?"
+      ],
+      "related_concepts": [
+        "std::thread",
+        "condition_variable",
+        "mutex",
+        "atomic operations"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-015",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "Auto",
+      "difficulty": "Easy",
+      "question": "Explain the difference between lambda expressions and constexpr in C++.",
+      "ideal_answer": "lambda expressions and constexpr differ in several ways: lambda expressions is anonymous functions (works by inline function objects) whereas constexpr is compile-time evaluation (works by constant expressions). lambda expressions is typically used for capture list, parameters, body, while constexpr is used for C++11: single return, C++14: multiple statements. Example demonstrating lambda expressions: auto lambda = [](int x) { return x * 2; };. Example demonstrating constexpr: constexpr int factorial(int n) { return n <= 1 ? 1 : n * factorial(n-1); }.",
+      "keywords": [
+        "lambda expressions",
+        "constexpr",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose lambda expressions over constexpr?",
+        "What is the performance or memory difference between lambda expressions and constexpr?"
+      ],
+      "related_concepts": [
+        "lambda expressions",
+        "constexpr",
+        "auto keyword",
+        "variadic templates"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-016",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Inheritance",
+      "difficulty": "Easy",
+      "question": "Explain the difference between pure virtual functions and RTTI in C++.",
+      "ideal_answer": "pure virtual functions and RTTI differ in several ways: pure virtual functions is abstract interface methods (works by defining interfaces) whereas RTTI is Run-Time Type Information (works by type identification at runtime). pure virtual functions is typically used for makes class abstract, while RTTI is used for typeid, dynamic_cast. Example demonstrating pure virtual functions: virtual void method() = 0;. Example demonstrating RTTI: if (typeid(*obj) == typeid(Derived)).",
+      "keywords": [
+        "pure virtual functions",
+        "RTTI",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose pure virtual functions over RTTI?",
+        "What is the performance or memory difference between pure virtual functions and RTTI?"
+      ],
+      "related_concepts": [
+        "pure virtual functions",
+        "RTTI",
+        "virtual functions",
+        "multiple inheritance"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-017",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Virtual Functions",
+      "difficulty": "Easy",
+      "question": "Explain the difference between virtual inheritance and RTTI in C++.",
+      "ideal_answer": "virtual inheritance and RTTI differ in several ways: virtual inheritance is shared base class instance (works by diamond problem solution) whereas RTTI is Run-Time Type Information (works by type identification at runtime). virtual inheritance is typically used for single subobject of virtual base, while RTTI is used for typeid, dynamic_cast. Example demonstrating virtual inheritance: class B : virtual public A {}. Example demonstrating RTTI: if (typeid(*obj) == typeid(Derived)).",
+      "keywords": [
+        "virtual inheritance",
+        "RTTI",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose virtual inheritance over RTTI?",
+        "What is the performance or memory difference between virtual inheritance and RTTI?"
+      ],
+      "related_concepts": [
+        "virtual inheritance",
+        "RTTI",
+        "virtual functions",
+        "pure virtual functions"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-018",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "constexpr",
+      "difficulty": "Easy",
+      "question": "Explain the difference between variadic templates and concepts in C++.",
+      "ideal_answer": "variadic templates and concepts differ in several ways: variadic templates is variable argument templates (works by type-safe variadic functions) whereas concepts is template constraints (works by named requirements). variadic templates is typically used for parameter packs, recursion/ fold expressions, while concepts is used for requires clauses, concept definitions. Example demonstrating variadic templates: template<typename... Args> void print(Args... args);. Example demonstrating concepts: template<typename T> requires Addable<T> T add(T a, T b);.",
+      "keywords": [
+        "variadic templates",
+        "concepts",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose variadic templates over concepts?",
+        "What is the performance or memory difference between variadic templates and concepts?"
+      ],
+      "related_concepts": [
+        "variadic templates",
+        "concepts",
+        "auto keyword",
+        "lambda expressions"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-019",
+      "subject": "C++",
+      "category": "Concurrency",
+      "subcategory": "Threads",
+      "difficulty": "Easy",
+      "question": "What is std::thread in C++ and how does it work?",
+      "ideal_answer": "std::thread in C++ refers to OS thread wrapper. It works by concurrent execution. Key characteristics include joinable, detach, join. Example: std::thread t([]{ /* work */ }); t.join();. Common pitfalls include join or detach before destruction.",
+      "keywords": [
+        "std::thread",
+        "C++ programming",
+        "concurrency"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of std::thread in a production environment?",
+        "What are the common pitfalls or issues associated with std::thread?"
+      ],
+      "related_concepts": [
+        "mutex",
+        "condition_variable",
+        "atomic operations"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-020",
+      "subject": "C++",
+      "category": "Memory Management",
+      "subcategory": "Smart Pointers",
+      "difficulty": "Easy",
+      "question": "Explain the difference between smart pointers and move semantics in C++.",
+      "ideal_answer": "smart pointers and move semantics differ in several ways: smart pointers is RAII memory wrappers (works by automatic lifetime management) whereas move semantics is resource transfer without copy (works by performance optimization). smart pointers is typically used for unique_ptr, shared_ptr, weak_ptr, while move semantics is used for rvalue references, std::move. Example demonstrating smart pointers: std::unique_ptr<int> p = std::make_unique<int>(5);. Example demonstrating move semantics: std::vector<int> v2 = std::move(v1);.",
+      "keywords": [
+        "smart pointers",
+        "move semantics",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose smart pointers over move semantics?",
+        "What is the performance or memory difference between smart pointers and move semantics?"
+      ],
+      "related_concepts": [
+        "smart pointers",
+        "move semantics",
+        "RAII",
+        "rvalue references"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-021",
+      "subject": "C++",
+      "category": "Fundamentals",
+      "subcategory": "Namespaces",
+      "difficulty": "Easy",
+      "question": "What is name mangling in C++ and how does it work?",
+      "ideal_answer": "name mangling in C++ refers to compiler symbol encoding. It works by supporting function overloading. Key characteristics include encodes parameter types in symbol names. Example: _Z3foov vs _Z3fooi. Common pitfalls include extern C for C linkage.",
+      "keywords": [
+        "name mangling",
+        "C++ programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of name mangling in a production environment?",
+        "What are the common pitfalls or issues associated with name mangling?"
+      ],
+      "related_concepts": [
+        "references vs pointers",
+        "operator overloading",
+        "copy constructor"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-022",
+      "subject": "C++",
+      "category": "Templates",
+      "subcategory": "Function Templates",
+      "difficulty": "Easy",
+      "question": "What is SFINAE in C++ and how does it work?",
+      "ideal_answer": "SFINAE in C++ refers to Substitution Failure Is Not An Error. It works by conditional template overloading. Key characteristics include enable_if, void_t. Example: template<typename T> typename std::enable_if<std::is_integral<T>::value>::type foo(T t);. Common pitfalls include complex error messages.",
+      "keywords": [
+        "SFINAE",
+        "C++ programming",
+        "templates"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of SFINAE in a production environment?",
+        "What are the common pitfalls or issues associated with SFINAE?"
+      ],
+      "related_concepts": [
+        "CRTP",
+        "template specialization"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-023",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Constructors/Destructors",
+      "difficulty": "Easy",
+      "question": "Explain the difference between RTTI and destructor in C++.",
+      "ideal_answer": "RTTI and destructor differ in several ways: RTTI is Run-Time Type Information (works by type identification at runtime) whereas destructor is cleanup method (works by resource release). RTTI is typically used for typeid, dynamic_cast, while destructor is used for virtual for base classes. Example demonstrating RTTI: if (typeid(*obj) == typeid(Derived)). Example demonstrating destructor: virtual ~Base() = default;.",
+      "keywords": [
+        "RTTI",
+        "destructor",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose RTTI over destructor?",
+        "What is the performance or memory difference between RTTI and destructor?"
+      ],
+      "related_concepts": [
+        "RTTI",
+        "destructor",
+        "virtual functions",
+        "pure virtual functions"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-024",
+      "subject": "C++",
+      "category": "STL",
+      "subcategory": "Functors",
+      "difficulty": "Easy",
+      "question": "Explain the difference between algorithm library and functors in C++.",
+      "ideal_answer": "algorithm library and functors differ in several ways: algorithm library is generic algorithms (works by reusable operations on ranges) whereas functors is function objects (works by stateful callbacks). algorithm library is typically used for sort, find, transform, accumulate, while functors is used for operator() overloading. Example demonstrating algorithm library: std::sort(v.begin(), v.end());. Example demonstrating functors: struct Compare { bool operator()(int a, int b) { return a > b; } };.",
+      "keywords": [
+        "algorithm library",
+        "functors",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose algorithm library over functors?",
+        "What is the performance or memory difference between algorithm library and functors?"
+      ],
+      "related_concepts": [
+        "algorithm library",
+        "functors",
+        "vector",
+        "map vs unordered_map"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-025",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "C++11/14/17/20/23",
+      "difficulty": "Easy",
+      "question": "Explain the difference between auto keyword and concepts in C++.",
+      "ideal_answer": "auto keyword and concepts differ in several ways: auto keyword is type inference (works by reducing verbosity) whereas concepts is template constraints (works by named requirements). auto keyword is typically used for deduced at compile time, while concepts is used for requires clauses, concept definitions. Example demonstrating auto keyword: auto it = vec.begin();. Example demonstrating concepts: template<typename T> requires Addable<T> T add(T a, T b);.",
+      "keywords": [
+        "auto keyword",
+        "concepts",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose auto keyword over concepts?",
+        "What is the performance or memory difference between auto keyword and concepts?"
+      ],
+      "related_concepts": [
+        "auto keyword",
+        "concepts",
+        "lambda expressions",
+        "constexpr"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-026",
+      "subject": "C++",
+      "category": "Templates",
+      "subcategory": "Class Templates",
+      "difficulty": "Easy",
+      "question": "What are the common issues with CRTP in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with CRTP in C++ include: avoiding virtual function overhead. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "CRTP",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to CRTP?",
+        "What tools can assist in detecting problems with CRTP at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "SFINAE",
+        "template specialization"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-027",
+      "subject": "C++",
+      "category": "Memory Management",
+      "subcategory": "Smart Pointers",
+      "difficulty": "Easy",
+      "question": "What is std::move vs std::forward in C++ and how does it work?",
+      "ideal_answer": "std::move vs std::forward in C++ refers to value category manipulation. It works by transferring values efficiently. Key characteristics include move: unconditionally cast to rvalue; forward: preserve value category. Example: std::forward<T>(arg). Common pitfalls include using move when forward needed.",
+      "keywords": [
+        "std::move vs std::forward",
+        "C++ programming",
+        "memory management"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of std::move vs std::forward in a production environment?",
+        "What are the common pitfalls or issues associated with std::move vs std::forward?"
+      ],
+      "related_concepts": [
+        "smart pointers",
+        "RAII",
+        "move semantics"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-028",
+      "subject": "C++",
+      "category": "Fundamentals",
+      "subcategory": "Namespaces",
+      "difficulty": "Easy",
+      "question": "What are the common issues with name mangling in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with name mangling in C++ include: extern C for C linkage. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "name mangling",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to name mangling?",
+        "What tools can assist in detecting problems with name mangling at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "references vs pointers",
+        "operator overloading",
+        "copy constructor"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-029",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Classes",
+      "difficulty": "Easy",
+      "question": "Explain the difference between virtual functions and destructor in C++.",
+      "ideal_answer": "virtual functions and destructor differ in several ways: virtual functions is dynamic dispatch mechanism (works by runtime polymorphism) whereas destructor is cleanup method (works by resource release). virtual functions is typically used for vtable/vptr implementation, while destructor is used for virtual for base classes. Example demonstrating virtual functions: virtual void draw() = 0;. Example demonstrating destructor: virtual ~Base() = default;.",
+      "keywords": [
+        "virtual functions",
+        "destructor",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose virtual functions over destructor?",
+        "What is the performance or memory difference between virtual functions and destructor?"
+      ],
+      "related_concepts": [
+        "virtual functions",
+        "destructor",
+        "pure virtual functions",
+        "multiple inheritance"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-030",
+      "subject": "C++",
+      "category": "Templates",
+      "subcategory": "Function Templates",
+      "difficulty": "Easy",
+      "question": "Explain the difference between SFINAE and CRTP in C++.",
+      "ideal_answer": "SFINAE and CRTP differ in several ways: SFINAE is Substitution Failure Is Not An Error (works by conditional template overloading) whereas CRTP is Curiously Recurring Template Pattern (works by static polymorphism). SFINAE is typically used for enable_if, void_t, while CRTP is used for base class template parameter is derived class. Example demonstrating SFINAE: template<typename T> typename std::enable_if<std::is_integral<T>::value>::type foo(T t);. Example demonstrating CRTP: template<typename Derived> class Base {}.",
+      "keywords": [
+        "SFINAE",
+        "CRTP",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose SFINAE over CRTP?",
+        "What is the performance or memory difference between SFINAE and CRTP?"
+      ],
+      "related_concepts": [
+        "SFINAE",
+        "CRTP",
+        "template specialization"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-031",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "C++11/14/17/20/23",
+      "difficulty": "Easy",
+      "question": "What is auto keyword in C++ and how does it work?",
+      "ideal_answer": "auto keyword in C++ refers to type inference. It works by reducing verbosity. Key characteristics include deduced at compile time. Example: auto it = vec.begin();. Common pitfalls include auto with initializer lists.",
+      "keywords": [
+        "auto keyword",
+        "C++ programming",
+        "modern c++"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of auto keyword in a production environment?",
+        "What are the common pitfalls or issues associated with auto keyword?"
+      ],
+      "related_concepts": [
+        "lambda expressions",
+        "constexpr",
+        "variadic templates"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-032",
+      "subject": "C++",
+      "category": "Memory Management",
+      "subcategory": "Move Semantics",
+      "difficulty": "Easy",
+      "question": "Explain the difference between move semantics and rvalue references in C++.",
+      "ideal_answer": "move semantics and rvalue references differ in several ways: move semantics is resource transfer without copy (works by performance optimization) whereas rvalue references is references to temporaries (works by enabling move semantics). move semantics is typically used for rvalue references, std::move, while rvalue references is used for T&&, forwarding references. Example demonstrating move semantics: std::vector<int> v2 = std::move(v1);. Example demonstrating rvalue references: void foo(int&& x); foo(5);.",
+      "keywords": [
+        "move semantics",
+        "rvalue references",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose move semantics over rvalue references?",
+        "What is the performance or memory difference between move semantics and rvalue references?"
+      ],
+      "related_concepts": [
+        "move semantics",
+        "rvalue references",
+        "smart pointers",
+        "RAII"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-033",
+      "subject": "C++",
+      "category": "Concurrency",
+      "subcategory": "Mutexes",
+      "difficulty": "Easy",
+      "question": "Explain the difference between mutex and future/promise in C++.",
+      "ideal_answer": "mutex and future/promise differ in several ways: mutex is mutual exclusion primitive (works by protecting shared data) whereas future/promise is asynchronous result transfer (works by deferred computation). mutex is typically used for lock_guard, unique_lock, scoped_lock, while future/promise is used for async, packaged_task. Example demonstrating mutex: std::mutex mtx; std::lock_guard<std::mutex> lock(mtx);. Example demonstrating future/promise: auto fut = std::async(std::launch::async, foo);.",
+      "keywords": [
+        "mutex",
+        "future/promise",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose mutex over future/promise?",
+        "What is the performance or memory difference between mutex and future/promise?"
+      ],
+      "related_concepts": [
+        "mutex",
+        "future/promise",
+        "std::thread",
+        "condition_variable"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-034",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Inheritance",
+      "difficulty": "Easy",
+      "question": "What is destructor in C++ and how does it work?",
+      "ideal_answer": "destructor in C++ refers to cleanup method. It works by resource release. Key characteristics include virtual for base classes. Example: virtual ~Base() = default;. Common pitfalls include exception throwing from destructors.",
+      "keywords": [
+        "destructor",
+        "C++ programming",
+        "oop in c++"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of destructor in a production environment?",
+        "What are the common pitfalls or issues associated with destructor?"
+      ],
+      "related_concepts": [
+        "virtual functions",
+        "pure virtual functions",
+        "multiple inheritance"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-035",
+      "subject": "C++",
+      "category": "Concurrency",
+      "subcategory": "Atomic Operations",
+      "difficulty": "Easy",
+      "question": "What is atomic operations in C++ and how does it work?",
+      "ideal_answer": "atomic operations in C++ refers to lock-free synchronization. It works by hardware-supported atomicity. Key characteristics include memory ordering, compare-and-swap. Example: std::atomic<int> counter{0}; counter.fetch_add(1);. Common pitfalls include ABA problem, memory order semantics.",
+      "keywords": [
+        "atomic operations",
+        "C++ programming",
+        "concurrency"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of atomic operations in a production environment?",
+        "What are the common pitfalls or issues associated with atomic operations?"
+      ],
+      "related_concepts": [
+        "std::thread",
+        "mutex",
+        "condition_variable"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-036",
+      "subject": "C++",
+      "category": "Fundamentals",
+      "subcategory": "Namespaces",
+      "difficulty": "Easy",
+      "question": "Explain the difference between name mangling and operator overloading in C++.",
+      "ideal_answer": "name mangling and operator overloading differ in several ways: name mangling is compiler symbol encoding (works by supporting function overloading) whereas operator overloading is custom operator behavior (works by intuitive syntax for user types). name mangling is typically used for encodes parameter types in symbol names, while operator overloading is used for cannot overload . ?: :: sizeof. Example demonstrating name mangling: _Z3foov vs _Z3fooi. Example demonstrating operator overloading: Complex operator+(const Complex& a, const Complex& b).",
+      "keywords": [
+        "name mangling",
+        "operator overloading",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose name mangling over operator overloading?",
+        "What is the performance or memory difference between name mangling and operator overloading?"
+      ],
+      "related_concepts": [
+        "name mangling",
+        "operator overloading",
+        "references vs pointers",
+        "copy constructor"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CPP-037",
+      "subject": "C++",
+      "category": "Concurrency",
+      "subcategory": "Atomic Operations",
+      "difficulty": "Medium",
+      "question": "What are the common issues with atomic operations in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with atomic operations in C++ include: ABA problem, memory order semantics. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "atomic operations",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to atomic operations?",
+        "What tools can assist in detecting problems with atomic operations at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "std::thread",
+        "mutex",
+        "condition_variable"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-038",
+      "subject": "C++",
+      "category": "Concurrency",
+      "subcategory": "Mutexes",
+      "difficulty": "Medium",
+      "question": "What is mutex in C++ and how does it work?",
+      "ideal_answer": "mutex in C++ refers to mutual exclusion primitive. It works by protecting shared data. Key characteristics include lock_guard, unique_lock, scoped_lock. Example: std::mutex mtx; std::lock_guard<std::mutex> lock(mtx);. Common pitfalls include deadlock avoidance strategies.",
+      "keywords": [
+        "mutex",
+        "C++ programming",
+        "concurrency"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of mutex in a production environment?",
+        "What are the common pitfalls or issues associated with mutex?"
+      ],
+      "related_concepts": [
+        "std::thread",
+        "condition_variable",
+        "atomic operations"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-039",
+      "subject": "C++",
+      "category": "Templates",
+      "subcategory": "Template Metaprogramming",
+      "difficulty": "Medium",
+      "question": "What are the common issues with template specialization in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with template specialization in C++ include: specialization vs overloading. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "template specialization",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to template specialization?",
+        "What tools can assist in detecting problems with template specialization at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "SFINAE",
+        "CRTP"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-040",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "Concepts",
+      "difficulty": "Medium",
+      "question": "Explain the difference between concepts and coroutines in C++.",
+      "ideal_answer": "concepts and coroutines differ in several ways: concepts is template constraints (works by named requirements) whereas coroutines is suspendable functions (works by asynchronous programming). concepts is typically used for requires clauses, concept definitions, while coroutines is used for co_await, co_yield, co_return. Example demonstrating concepts: template<typename T> requires Addable<T> T add(T a, T b);. Example demonstrating coroutines: task<void> async_op() { co_await something(); }.",
+      "keywords": [
+        "concepts",
+        "coroutines",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose concepts over coroutines?",
+        "What is the performance or memory difference between concepts and coroutines?"
+      ],
+      "related_concepts": [
+        "concepts",
+        "coroutines",
+        "auto keyword",
+        "lambda expressions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-041",
+      "subject": "C++",
+      "category": "Templates",
+      "subcategory": "Template Metaprogramming",
+      "difficulty": "Medium",
+      "question": "What is template specialization in C++ and how does it work?",
+      "ideal_answer": "template specialization in C++ refers to custom implementation for specific types. It works by optimizing for particular cases. Key characteristics include full and partial specialization. Example: template<> class vector<bool> {}. Common pitfalls include specialization vs overloading.",
+      "keywords": [
+        "template specialization",
+        "C++ programming",
+        "templates"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of template specialization in a production environment?",
+        "What are the common pitfalls or issues associated with template specialization?"
+      ],
+      "related_concepts": [
+        "SFINAE",
+        "CRTP"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-042",
+      "subject": "C++",
+      "category": "Memory Management",
+      "subcategory": "Memory Pools",
+      "difficulty": "Medium",
+      "question": "What are the common issues with rvalue references in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with rvalue references in C++ include: universal references, perfect forwarding. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "rvalue references",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to rvalue references?",
+        "What tools can assist in detecting problems with rvalue references at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "smart pointers",
+        "RAII",
+        "move semantics"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-043",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "C++11/14/17/20/23",
+      "difficulty": "Medium",
+      "question": "What are the common issues with auto keyword in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with auto keyword in C++ include: auto with initializer lists. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "auto keyword",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to auto keyword?",
+        "What tools can assist in detecting problems with auto keyword at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "lambda expressions",
+        "constexpr",
+        "variadic templates"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-044",
+      "subject": "C++",
+      "category": "Memory Management",
+      "subcategory": "RAII",
+      "difficulty": "Medium",
+      "question": "Explain the difference between RAII and std::move vs std::forward in C++.",
+      "ideal_answer": "RAII and std::move vs std::forward differ in several ways: RAII is Resource Acquisition Is Initialization (works by binding resource lifetime to object lifetime) whereas std::move vs std::forward is value category manipulation (works by transferring values efficiently). RAII is typically used for automatic cleanup, exception safety, while std::move vs std::forward is used for move: unconditionally cast to rvalue; forward: preserve value category. Example demonstrating RAII: std::lock_guard<std::mutex> lock(mtx);. Example demonstrating std::move vs std::forward: std::forward<T>(arg).",
+      "keywords": [
+        "RAII",
+        "std::move vs std::forward",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose RAII over std::move vs std::forward?",
+        "What is the performance or memory difference between RAII and std::move vs std::forward?"
+      ],
+      "related_concepts": [
+        "RAII",
+        "std::move vs std::forward",
+        "smart pointers",
+        "move semantics"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-045",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "Concepts",
+      "difficulty": "Medium",
+      "question": "What are the common issues with concepts in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with concepts in C++ include: C++20 feature, compiler support. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "concepts",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to concepts?",
+        "What tools can assist in detecting problems with concepts at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "auto keyword",
+        "lambda expressions",
+        "constexpr"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-046",
+      "subject": "C++",
+      "category": "Concurrency",
+      "subcategory": "Threads",
+      "difficulty": "Medium",
+      "question": "What are the common issues with std::thread in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with std::thread in C++ include: join or detach before destruction. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "std::thread",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to std::thread?",
+        "What tools can assist in detecting problems with std::thread at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "mutex",
+        "condition_variable",
+        "atomic operations"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-047",
+      "subject": "C++",
+      "category": "Fundamentals",
+      "subcategory": "Namespaces",
+      "difficulty": "Medium",
+      "question": "Explain the difference between name mangling and assignment operator in C++.",
+      "ideal_answer": "name mangling and assignment operator differ in several ways: name mangling is compiler symbol encoding (works by supporting function overloading) whereas assignment operator is object reassignment (works by copy-and-swap idiom). name mangling is typically used for encodes parameter types in symbol names, while assignment operator is used for returns reference to self. Example demonstrating name mangling: _Z3foov vs _Z3fooi. Example demonstrating assignment operator: Class& operator=(Class other) { swap(*this, other); return *this; }.",
+      "keywords": [
+        "name mangling",
+        "assignment operator",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose name mangling over assignment operator?",
+        "What is the performance or memory difference between name mangling and assignment operator?"
+      ],
+      "related_concepts": [
+        "name mangling",
+        "assignment operator",
+        "references vs pointers",
+        "operator overloading"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-048",
+      "subject": "C++",
+      "category": "Memory Management",
+      "subcategory": "Smart Pointers",
+      "difficulty": "Medium",
+      "question": "What is smart pointers in C++ and how does it work?",
+      "ideal_answer": "smart pointers in C++ refers to RAII memory wrappers. It works by automatic lifetime management. Key characteristics include unique_ptr, shared_ptr, weak_ptr. Example: std::unique_ptr<int> p = std::make_unique<int>(5);. Common pitfalls include circular references with shared_ptr.",
+      "keywords": [
+        "smart pointers",
+        "C++ programming",
+        "memory management"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of smart pointers in a production environment?",
+        "What are the common pitfalls or issues associated with smart pointers?"
+      ],
+      "related_concepts": [
+        "RAII",
+        "move semantics",
+        "rvalue references"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-049",
+      "subject": "C++",
+      "category": "STL",
+      "subcategory": "Adapters",
+      "difficulty": "Medium",
+      "question": "What are the common issues with functors in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with functors in C++ include: vs function pointers, lambda superiority. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "functors",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to functors?",
+        "What tools can assist in detecting problems with functors at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "vector",
+        "map vs unordered_map",
+        "iterators"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-050",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Constructors/Destructors",
+      "difficulty": "Medium",
+      "question": "Explain the difference between RTTI and constructor initialization list in C++.",
+      "ideal_answer": "RTTI and constructor initialization list differ in several ways: RTTI is Run-Time Type Information (works by type identification at runtime) whereas constructor initialization list is member initialization syntax (works by efficient construction). RTTI is typically used for typeid, dynamic_cast, while constructor initialization list is used for required for const members, references, base classes. Example demonstrating RTTI: if (typeid(*obj) == typeid(Derived)). Example demonstrating constructor initialization list: Class() : member(val), base(val) {}.",
+      "keywords": [
+        "RTTI",
+        "constructor initialization list",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose RTTI over constructor initialization list?",
+        "What is the performance or memory difference between RTTI and constructor initialization list?"
+      ],
+      "related_concepts": [
+        "RTTI",
+        "constructor initialization list",
+        "virtual functions",
+        "pure virtual functions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-051",
+      "subject": "C++",
+      "category": "STL",
+      "subcategory": "Algorithms",
+      "difficulty": "Medium",
+      "question": "What are the common issues with iterators in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with iterators in C++ include: iterator invalidation rules. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "iterators",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to iterators?",
+        "What tools can assist in detecting problems with iterators at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "vector",
+        "map vs unordered_map",
+        "algorithm library"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-052",
+      "subject": "C++",
+      "category": "STL",
+      "subcategory": "Algorithms",
+      "difficulty": "Medium",
+      "question": "Explain the difference between iterators and algorithm library in C++.",
+      "ideal_answer": "iterators and algorithm library differ in several ways: iterators is container position abstraction (works by uniform access pattern) whereas algorithm library is generic algorithms (works by reusable operations on ranges). iterators is typically used for input, output, forward, bidirectional, random access, while algorithm library is used for sort, find, transform, accumulate. Example demonstrating iterators: std::vector<int>::iterator it = v.begin();. Example demonstrating algorithm library: std::sort(v.begin(), v.end());.",
+      "keywords": [
+        "iterators",
+        "algorithm library",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose iterators over algorithm library?",
+        "What is the performance or memory difference between iterators and algorithm library?"
+      ],
+      "related_concepts": [
+        "iterators",
+        "algorithm library",
+        "vector",
+        "map vs unordered_map"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-053",
+      "subject": "C++",
+      "category": "STL",
+      "subcategory": "Containers",
+      "difficulty": "Medium",
+      "question": "Explain the difference between vector and iterators in C++.",
+      "ideal_answer": "vector and iterators differ in several ways: vector is dynamic array container (works by contiguous storage, random access) whereas iterators is container position abstraction (works by uniform access pattern). vector is typically used for amortized O(1) push_back, O(n) insert, while iterators is used for input, output, forward, bidirectional, random access. Example demonstrating vector: std::vector<int> v; v.push_back(5);. Example demonstrating iterators: std::vector<int>::iterator it = v.begin();.",
+      "keywords": [
+        "vector",
+        "iterators",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose vector over iterators?",
+        "What is the performance or memory difference between vector and iterators?"
+      ],
+      "related_concepts": [
+        "vector",
+        "iterators",
+        "map vs unordered_map",
+        "algorithm library"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-054",
+      "subject": "C++",
+      "category": "Concurrency",
+      "subcategory": "Mutexes",
+      "difficulty": "Medium",
+      "question": "Explain the difference between mutex and atomic operations in C++.",
+      "ideal_answer": "mutex and atomic operations differ in several ways: mutex is mutual exclusion primitive (works by protecting shared data) whereas atomic operations is lock-free synchronization (works by hardware-supported atomicity). mutex is typically used for lock_guard, unique_lock, scoped_lock, while atomic operations is used for memory ordering, compare-and-swap. Example demonstrating mutex: std::mutex mtx; std::lock_guard<std::mutex> lock(mtx);. Example demonstrating atomic operations: std::atomic<int> counter{0}; counter.fetch_add(1);.",
+      "keywords": [
+        "mutex",
+        "atomic operations",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose mutex over atomic operations?",
+        "What is the performance or memory difference between mutex and atomic operations?"
+      ],
+      "related_concepts": [
+        "mutex",
+        "atomic operations",
+        "std::thread",
+        "condition_variable"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-055",
+      "subject": "C++",
+      "category": "STL",
+      "subcategory": "Functors",
+      "difficulty": "Medium",
+      "question": "What is algorithm library in C++ and how does it work?",
+      "ideal_answer": "algorithm library in C++ refers to generic algorithms. It works by reusable operations on ranges. Key characteristics include sort, find, transform, accumulate. Example: std::sort(v.begin(), v.end());. Common pitfalls include custom comparator, execution policies.",
+      "keywords": [
+        "algorithm library",
+        "C++ programming",
+        "stl"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of algorithm library in a production environment?",
+        "What are the common pitfalls or issues associated with algorithm library?"
+      ],
+      "related_concepts": [
+        "vector",
+        "map vs unordered_map",
+        "iterators"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-056",
+      "subject": "C++",
+      "category": "Memory Management",
+      "subcategory": "RAII",
+      "difficulty": "Medium",
+      "question": "What are the common issues with RAII in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with RAII in C++ include: deterministic destruction. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "RAII",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to RAII?",
+        "What tools can assist in detecting problems with RAII at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "smart pointers",
+        "move semantics",
+        "rvalue references"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-057",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Classes",
+      "difficulty": "Medium",
+      "question": "Explain the difference between virtual functions and virtual inheritance in C++.",
+      "ideal_answer": "virtual functions and virtual inheritance differ in several ways: virtual functions is dynamic dispatch mechanism (works by runtime polymorphism) whereas virtual inheritance is shared base class instance (works by diamond problem solution). virtual functions is typically used for vtable/vptr implementation, while virtual inheritance is used for single subobject of virtual base. Example demonstrating virtual functions: virtual void draw() = 0;. Example demonstrating virtual inheritance: class B : virtual public A {}.",
+      "keywords": [
+        "virtual functions",
+        "virtual inheritance",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose virtual functions over virtual inheritance?",
+        "What is the performance or memory difference between virtual functions and virtual inheritance?"
+      ],
+      "related_concepts": [
+        "virtual functions",
+        "virtual inheritance",
+        "pure virtual functions",
+        "multiple inheritance"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-058",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "Lambda",
+      "difficulty": "Medium",
+      "question": "Explain the difference between constexpr and coroutines in C++.",
+      "ideal_answer": "constexpr and coroutines differ in several ways: constexpr is compile-time evaluation (works by constant expressions) whereas coroutines is suspendable functions (works by asynchronous programming). constexpr is typically used for C++11: single return, C++14: multiple statements, while coroutines is used for co_await, co_yield, co_return. Example demonstrating constexpr: constexpr int factorial(int n) { return n <= 1 ? 1 : n * factorial(n-1); }. Example demonstrating coroutines: task<void> async_op() { co_await something(); }.",
+      "keywords": [
+        "constexpr",
+        "coroutines",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose constexpr over coroutines?",
+        "What is the performance or memory difference between constexpr and coroutines?"
+      ],
+      "related_concepts": [
+        "constexpr",
+        "coroutines",
+        "auto keyword",
+        "lambda expressions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-059",
+      "subject": "C++",
+      "category": "STL",
+      "subcategory": "Adapters",
+      "difficulty": "Medium",
+      "question": "What is functors in C++ and how does it work?",
+      "ideal_answer": "functors in C++ refers to function objects. It works by stateful callbacks. Key characteristics include operator() overloading. Example: struct Compare { bool operator()(int a, int b) { return a > b; } };. Common pitfalls include vs function pointers, lambda superiority.",
+      "keywords": [
+        "functors",
+        "C++ programming",
+        "stl"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of functors in a production environment?",
+        "What are the common pitfalls or issues associated with functors?"
+      ],
+      "related_concepts": [
+        "vector",
+        "map vs unordered_map",
+        "iterators"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-060",
+      "subject": "C++",
+      "category": "Fundamentals",
+      "subcategory": "Operator Overloading",
+      "difficulty": "Medium",
+      "question": "Explain the difference between operator overloading and copy constructor in C++.",
+      "ideal_answer": "operator overloading and copy constructor differ in several ways: operator overloading is custom operator behavior (works by intuitive syntax for user types) whereas copy constructor is object duplication (works by deep vs shallow copy). operator overloading is typically used for cannot overload . ?: :: sizeof, while copy constructor is used for called on initialization from same type. Example demonstrating operator overloading: Complex operator+(const Complex& a, const Complex& b). Example demonstrating copy constructor: Class(const Class& other);.",
+      "keywords": [
+        "operator overloading",
+        "copy constructor",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose operator overloading over copy constructor?",
+        "What is the performance or memory difference between operator overloading and copy constructor?"
+      ],
+      "related_concepts": [
+        "operator overloading",
+        "copy constructor",
+        "references vs pointers",
+        "name mangling"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-061",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Polymorphism",
+      "difficulty": "Medium",
+      "question": "What are the common issues with multiple inheritance in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with multiple inheritance in C++ include: virtual inheritance resolution. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "multiple inheritance",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to multiple inheritance?",
+        "What tools can assist in detecting problems with multiple inheritance at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "virtual functions",
+        "pure virtual functions",
+        "virtual inheritance"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-062",
+      "subject": "C++",
+      "category": "Concurrency",
+      "subcategory": "Condition Variables",
+      "difficulty": "Medium",
+      "question": "What is condition_variable in C++ and how does it work?",
+      "ideal_answer": "condition_variable in C++ refers to thread synchronization. It works by waiting for conditions. Key characteristics include wait, notify_one, notify_all. Example: cv.wait(lock, []{ return ready; });. Common pitfalls include spurious wakeups, predicate necessity.",
+      "keywords": [
+        "condition_variable",
+        "C++ programming",
+        "concurrency"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of condition_variable in a production environment?",
+        "What are the common pitfalls or issues associated with condition_variable?"
+      ],
+      "related_concepts": [
+        "std::thread",
+        "mutex",
+        "atomic operations"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-063",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Virtual Functions",
+      "difficulty": "Medium",
+      "question": "Explain the difference between virtual inheritance and destructor in C++.",
+      "ideal_answer": "virtual inheritance and destructor differ in several ways: virtual inheritance is shared base class instance (works by diamond problem solution) whereas destructor is cleanup method (works by resource release). virtual inheritance is typically used for single subobject of virtual base, while destructor is used for virtual for base classes. Example demonstrating virtual inheritance: class B : virtual public A {}. Example demonstrating destructor: virtual ~Base() = default;.",
+      "keywords": [
+        "virtual inheritance",
+        "destructor",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose virtual inheritance over destructor?",
+        "What is the performance or memory difference between virtual inheritance and destructor?"
+      ],
+      "related_concepts": [
+        "virtual inheritance",
+        "destructor",
+        "virtual functions",
+        "pure virtual functions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-064",
+      "subject": "C++",
+      "category": "Fundamentals",
+      "subcategory": "Operator Overloading",
+      "difficulty": "Medium",
+      "question": "What is operator overloading in C++ and how does it work?",
+      "ideal_answer": "operator overloading in C++ refers to custom operator behavior. It works by intuitive syntax for user types. Key characteristics include cannot overload . ?: :: sizeof. Example: Complex operator+(const Complex& a, const Complex& b). Common pitfalls include overloading && and || losing short-circuit.",
+      "keywords": [
+        "operator overloading",
+        "C++ programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of operator overloading in a production environment?",
+        "What are the common pitfalls or issues associated with operator overloading?"
+      ],
+      "related_concepts": [
+        "references vs pointers",
+        "name mangling",
+        "copy constructor"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-065",
+      "subject": "C++",
+      "category": "Memory Management",
+      "subcategory": "Smart Pointers",
+      "difficulty": "Medium",
+      "question": "Explain the difference between smart pointers and rvalue references in C++.",
+      "ideal_answer": "smart pointers and rvalue references differ in several ways: smart pointers is RAII memory wrappers (works by automatic lifetime management) whereas rvalue references is references to temporaries (works by enabling move semantics). smart pointers is typically used for unique_ptr, shared_ptr, weak_ptr, while rvalue references is used for T&&, forwarding references. Example demonstrating smart pointers: std::unique_ptr<int> p = std::make_unique<int>(5);. Example demonstrating rvalue references: void foo(int&& x); foo(5);.",
+      "keywords": [
+        "smart pointers",
+        "rvalue references",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose smart pointers over rvalue references?",
+        "What is the performance or memory difference between smart pointers and rvalue references?"
+      ],
+      "related_concepts": [
+        "smart pointers",
+        "rvalue references",
+        "RAII",
+        "move semantics"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-066",
+      "subject": "C++",
+      "category": "Concurrency",
+      "subcategory": "Threads",
+      "difficulty": "Medium",
+      "question": "Explain the difference between std::thread and atomic operations in C++.",
+      "ideal_answer": "std::thread and atomic operations differ in several ways: std::thread is OS thread wrapper (works by concurrent execution) whereas atomic operations is lock-free synchronization (works by hardware-supported atomicity). std::thread is typically used for joinable, detach, join, while atomic operations is used for memory ordering, compare-and-swap. Example demonstrating std::thread: std::thread t([]{ /* work */ }); t.join();. Example demonstrating atomic operations: std::atomic<int> counter{0}; counter.fetch_add(1);.",
+      "keywords": [
+        "std::thread",
+        "atomic operations",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose std::thread over atomic operations?",
+        "What is the performance or memory difference between std::thread and atomic operations?"
+      ],
+      "related_concepts": [
+        "std::thread",
+        "atomic operations",
+        "mutex",
+        "condition_variable"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-067",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Inheritance",
+      "difficulty": "Medium",
+      "question": "Explain the difference between pure virtual functions and virtual inheritance in C++.",
+      "ideal_answer": "pure virtual functions and virtual inheritance differ in several ways: pure virtual functions is abstract interface methods (works by defining interfaces) whereas virtual inheritance is shared base class instance (works by diamond problem solution). pure virtual functions is typically used for makes class abstract, while virtual inheritance is used for single subobject of virtual base. Example demonstrating pure virtual functions: virtual void method() = 0;. Example demonstrating virtual inheritance: class B : virtual public A {}.",
+      "keywords": [
+        "pure virtual functions",
+        "virtual inheritance",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose pure virtual functions over virtual inheritance?",
+        "What is the performance or memory difference between pure virtual functions and virtual inheritance?"
+      ],
+      "related_concepts": [
+        "pure virtual functions",
+        "virtual inheritance",
+        "virtual functions",
+        "multiple inheritance"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-068",
+      "subject": "C++",
+      "category": "Concurrency",
+      "subcategory": "Atomic Operations",
+      "difficulty": "Medium",
+      "question": "Explain the difference between atomic operations and future/promise in C++.",
+      "ideal_answer": "atomic operations and future/promise differ in several ways: atomic operations is lock-free synchronization (works by hardware-supported atomicity) whereas future/promise is asynchronous result transfer (works by deferred computation). atomic operations is typically used for memory ordering, compare-and-swap, while future/promise is used for async, packaged_task. Example demonstrating atomic operations: std::atomic<int> counter{0}; counter.fetch_add(1);. Example demonstrating future/promise: auto fut = std::async(std::launch::async, foo);.",
+      "keywords": [
+        "atomic operations",
+        "future/promise",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose atomic operations over future/promise?",
+        "What is the performance or memory difference between atomic operations and future/promise?"
+      ],
+      "related_concepts": [
+        "atomic operations",
+        "future/promise",
+        "std::thread",
+        "mutex"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-069",
+      "subject": "C++",
+      "category": "Memory Management",
+      "subcategory": "Smart Pointers",
+      "difficulty": "Medium",
+      "question": "What are the common issues with smart pointers in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with smart pointers in C++ include: circular references with shared_ptr. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "smart pointers",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to smart pointers?",
+        "What tools can assist in detecting problems with smart pointers at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "RAII",
+        "move semantics",
+        "rvalue references"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-070",
+      "subject": "C++",
+      "category": "Memory Management",
+      "subcategory": "Smart Pointers",
+      "difficulty": "Medium",
+      "question": "Explain the difference between smart pointers and RAII in C++.",
+      "ideal_answer": "smart pointers and RAII differ in several ways: smart pointers is RAII memory wrappers (works by automatic lifetime management) whereas RAII is Resource Acquisition Is Initialization (works by binding resource lifetime to object lifetime). smart pointers is typically used for unique_ptr, shared_ptr, weak_ptr, while RAII is used for automatic cleanup, exception safety. Example demonstrating smart pointers: std::unique_ptr<int> p = std::make_unique<int>(5);. Example demonstrating RAII: std::lock_guard<std::mutex> lock(mtx);.",
+      "keywords": [
+        "smart pointers",
+        "RAII",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose smart pointers over RAII?",
+        "What is the performance or memory difference between smart pointers and RAII?"
+      ],
+      "related_concepts": [
+        "smart pointers",
+        "RAII",
+        "move semantics",
+        "rvalue references"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-071",
+      "subject": "C++",
+      "category": "Concurrency",
+      "subcategory": "Condition Variables",
+      "difficulty": "Medium",
+      "question": "What are the common issues with condition_variable in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with condition_variable in C++ include: spurious wakeups, predicate necessity. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "condition_variable",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to condition_variable?",
+        "What tools can assist in detecting problems with condition_variable at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "std::thread",
+        "mutex",
+        "atomic operations"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-072",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "Lambda",
+      "difficulty": "Medium",
+      "question": "What is constexpr in C++ and how does it work?",
+      "ideal_answer": "constexpr in C++ refers to compile-time evaluation. It works by constant expressions. Key characteristics include C++11: single return, C++14: multiple statements. Example: constexpr int factorial(int n) { return n <= 1 ? 1 : n * factorial(n-1); }. Common pitfalls include vs const, runtime fallback.",
+      "keywords": [
+        "constexpr",
+        "C++ programming",
+        "modern c++"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of constexpr in a production environment?",
+        "What are the common pitfalls or issues associated with constexpr?"
+      ],
+      "related_concepts": [
+        "auto keyword",
+        "lambda expressions",
+        "variadic templates"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-073",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Classes",
+      "difficulty": "Medium",
+      "question": "What are the common issues with constructor initialization list in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with constructor initialization list in C++ include: order follows declaration, not list. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "constructor initialization list",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to constructor initialization list?",
+        "What tools can assist in detecting problems with constructor initialization list at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "virtual functions",
+        "pure virtual functions",
+        "multiple inheritance"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-074",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "C++11/14/17/20/23",
+      "difficulty": "Medium",
+      "question": "What is coroutines in C++ and how does it work?",
+      "ideal_answer": "coroutines in C++ refers to suspendable functions. It works by asynchronous programming. Key characteristics include co_await, co_yield, co_return. Example: task<void> async_op() { co_await something(); }. Common pitfalls include stackless, promise type customization.",
+      "keywords": [
+        "coroutines",
+        "C++ programming",
+        "modern c++"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of coroutines in a production environment?",
+        "What are the common pitfalls or issues associated with coroutines?"
+      ],
+      "related_concepts": [
+        "auto keyword",
+        "lambda expressions",
+        "constexpr"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-075",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Classes",
+      "difficulty": "Medium",
+      "question": "What are the common issues with virtual functions in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with virtual functions in C++ include: virtual destructor necessity. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "virtual functions",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to virtual functions?",
+        "What tools can assist in detecting problems with virtual functions at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "pure virtual functions",
+        "multiple inheritance",
+        "virtual inheritance"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-076",
+      "subject": "C++",
+      "category": "Fundamentals",
+      "subcategory": "References",
+      "difficulty": "Medium",
+      "question": "What are the common issues with assignment operator in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with assignment operator in C++ include: exception safety levels. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "assignment operator",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to assignment operator?",
+        "What tools can assist in detecting problems with assignment operator at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "references vs pointers",
+        "name mangling",
+        "operator overloading"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-077",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Classes",
+      "difficulty": "Medium",
+      "question": "Explain the difference between virtual functions and pure virtual functions in C++.",
+      "ideal_answer": "virtual functions and pure virtual functions differ in several ways: virtual functions is dynamic dispatch mechanism (works by runtime polymorphism) whereas pure virtual functions is abstract interface methods (works by defining interfaces). virtual functions is typically used for vtable/vptr implementation, while pure virtual functions is used for makes class abstract. Example demonstrating virtual functions: virtual void draw() = 0;. Example demonstrating pure virtual functions: virtual void method() = 0;.",
+      "keywords": [
+        "virtual functions",
+        "pure virtual functions",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose virtual functions over pure virtual functions?",
+        "What is the performance or memory difference between virtual functions and pure virtual functions?"
+      ],
+      "related_concepts": [
+        "virtual functions",
+        "pure virtual functions",
+        "multiple inheritance",
+        "virtual inheritance"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-078",
+      "subject": "C++",
+      "category": "Concurrency",
+      "subcategory": "Threads",
+      "difficulty": "Medium",
+      "question": "Explain the difference between std::thread and future/promise in C++.",
+      "ideal_answer": "std::thread and future/promise differ in several ways: std::thread is OS thread wrapper (works by concurrent execution) whereas future/promise is asynchronous result transfer (works by deferred computation). std::thread is typically used for joinable, detach, join, while future/promise is used for async, packaged_task. Example demonstrating std::thread: std::thread t([]{ /* work */ }); t.join();. Example demonstrating future/promise: auto fut = std::async(std::launch::async, foo);.",
+      "keywords": [
+        "std::thread",
+        "future/promise",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose std::thread over future/promise?",
+        "What is the performance or memory difference between std::thread and future/promise?"
+      ],
+      "related_concepts": [
+        "std::thread",
+        "future/promise",
+        "mutex",
+        "condition_variable"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-079",
+      "subject": "C++",
+      "category": "Templates",
+      "subcategory": "Class Templates",
+      "difficulty": "Medium",
+      "question": "Explain the difference between CRTP and template specialization in C++.",
+      "ideal_answer": "CRTP and template specialization differ in several ways: CRTP is Curiously Recurring Template Pattern (works by static polymorphism) whereas template specialization is custom implementation for specific types (works by optimizing for particular cases). CRTP is typically used for base class template parameter is derived class, while template specialization is used for full and partial specialization. Example demonstrating CRTP: template<typename Derived> class Base {}. Example demonstrating template specialization: template<> class vector<bool> {}.",
+      "keywords": [
+        "CRTP",
+        "template specialization",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CRTP over template specialization?",
+        "What is the performance or memory difference between CRTP and template specialization?"
+      ],
+      "related_concepts": [
+        "CRTP",
+        "template specialization",
+        "SFINAE"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-080",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Polymorphism",
+      "difficulty": "Medium",
+      "question": "Explain the difference between multiple inheritance and constructor initialization list in C++.",
+      "ideal_answer": "multiple inheritance and constructor initialization list differ in several ways: multiple inheritance is inheriting from multiple bases (works by combining interfaces/ functionality) whereas constructor initialization list is member initialization syntax (works by efficient construction). multiple inheritance is typically used for diamond problem ambiguity, while constructor initialization list is used for required for const members, references, base classes. Example demonstrating multiple inheritance: class D : public B, public C {}. Example demonstrating constructor initialization list: Class() : member(val), base(val) {}.",
+      "keywords": [
+        "multiple inheritance",
+        "constructor initialization list",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose multiple inheritance over constructor initialization list?",
+        "What is the performance or memory difference between multiple inheritance and constructor initialization list?"
+      ],
+      "related_concepts": [
+        "multiple inheritance",
+        "constructor initialization list",
+        "virtual functions",
+        "pure virtual functions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-081",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Classes",
+      "difficulty": "Medium",
+      "question": "What is virtual functions in C++ and how does it work?",
+      "ideal_answer": "virtual functions in C++ refers to dynamic dispatch mechanism. It works by runtime polymorphism. Key characteristics include vtable/vptr implementation. Example: virtual void draw() = 0;. Common pitfalls include virtual destructor necessity.",
+      "keywords": [
+        "virtual functions",
+        "C++ programming",
+        "oop in c++"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of virtual functions in a production environment?",
+        "What are the common pitfalls or issues associated with virtual functions?"
+      ],
+      "related_concepts": [
+        "pure virtual functions",
+        "multiple inheritance",
+        "virtual inheritance"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-082",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "constexpr",
+      "difficulty": "Medium",
+      "question": "Explain the difference between variadic templates and coroutines in C++.",
+      "ideal_answer": "variadic templates and coroutines differ in several ways: variadic templates is variable argument templates (works by type-safe variadic functions) whereas coroutines is suspendable functions (works by asynchronous programming). variadic templates is typically used for parameter packs, recursion/ fold expressions, while coroutines is used for co_await, co_yield, co_return. Example demonstrating variadic templates: template<typename... Args> void print(Args... args);. Example demonstrating coroutines: task<void> async_op() { co_await something(); }.",
+      "keywords": [
+        "variadic templates",
+        "coroutines",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose variadic templates over coroutines?",
+        "What is the performance or memory difference between variadic templates and coroutines?"
+      ],
+      "related_concepts": [
+        "variadic templates",
+        "coroutines",
+        "auto keyword",
+        "lambda expressions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-083",
+      "subject": "C++",
+      "category": "Memory Management",
+      "subcategory": "Memory Pools",
+      "difficulty": "Medium",
+      "question": "What is rvalue references in C++ and how does it work?",
+      "ideal_answer": "rvalue references in C++ refers to references to temporaries. It works by enabling move semantics. Key characteristics include T&&, forwarding references. Example: void foo(int&& x); foo(5);. Common pitfalls include universal references, perfect forwarding.",
+      "keywords": [
+        "rvalue references",
+        "C++ programming",
+        "memory management"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of rvalue references in a production environment?",
+        "What are the common pitfalls or issues associated with rvalue references?"
+      ],
+      "related_concepts": [
+        "smart pointers",
+        "RAII",
+        "move semantics"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-084",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "C++11/14/17/20/23",
+      "difficulty": "Medium",
+      "question": "What are the common issues with coroutines in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with coroutines in C++ include: stackless, promise type customization. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "coroutines",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to coroutines?",
+        "What tools can assist in detecting problems with coroutines at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "auto keyword",
+        "lambda expressions",
+        "constexpr"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-085",
+      "subject": "C++",
+      "category": "Templates",
+      "subcategory": "Function Templates",
+      "difficulty": "Medium",
+      "question": "What are the common issues with SFINAE in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with SFINAE in C++ include: complex error messages. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "SFINAE",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to SFINAE?",
+        "What tools can assist in detecting problems with SFINAE at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "CRTP",
+        "template specialization"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-086",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "C++11/14/17/20/23",
+      "difficulty": "Medium",
+      "question": "Explain the difference between auto keyword and variadic templates in C++.",
+      "ideal_answer": "auto keyword and variadic templates differ in several ways: auto keyword is type inference (works by reducing verbosity) whereas variadic templates is variable argument templates (works by type-safe variadic functions). auto keyword is typically used for deduced at compile time, while variadic templates is used for parameter packs, recursion/ fold expressions. Example demonstrating auto keyword: auto it = vec.begin();. Example demonstrating variadic templates: template<typename... Args> void print(Args... args);.",
+      "keywords": [
+        "auto keyword",
+        "variadic templates",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose auto keyword over variadic templates?",
+        "What is the performance or memory difference between auto keyword and variadic templates?"
+      ],
+      "related_concepts": [
+        "auto keyword",
+        "variadic templates",
+        "lambda expressions",
+        "constexpr"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-087",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "Auto",
+      "difficulty": "Medium",
+      "question": "Explain the difference between lambda expressions and coroutines in C++.",
+      "ideal_answer": "lambda expressions and coroutines differ in several ways: lambda expressions is anonymous functions (works by inline function objects) whereas coroutines is suspendable functions (works by asynchronous programming). lambda expressions is typically used for capture list, parameters, body, while coroutines is used for co_await, co_yield, co_return. Example demonstrating lambda expressions: auto lambda = [](int x) { return x * 2; };. Example demonstrating coroutines: task<void> async_op() { co_await something(); }.",
+      "keywords": [
+        "lambda expressions",
+        "coroutines",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose lambda expressions over coroutines?",
+        "What is the performance or memory difference between lambda expressions and coroutines?"
+      ],
+      "related_concepts": [
+        "lambda expressions",
+        "coroutines",
+        "auto keyword",
+        "constexpr"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-088",
+      "subject": "C++",
+      "category": "Memory Management",
+      "subcategory": "Memory Pools",
+      "difficulty": "Medium",
+      "question": "Explain the difference between rvalue references and std::move vs std::forward in C++.",
+      "ideal_answer": "rvalue references and std::move vs std::forward differ in several ways: rvalue references is references to temporaries (works by enabling move semantics) whereas std::move vs std::forward is value category manipulation (works by transferring values efficiently). rvalue references is typically used for T&&, forwarding references, while std::move vs std::forward is used for move: unconditionally cast to rvalue; forward: preserve value category. Example demonstrating rvalue references: void foo(int&& x); foo(5);. Example demonstrating std::move vs std::forward: std::forward<T>(arg).",
+      "keywords": [
+        "rvalue references",
+        "std::move vs std::forward",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose rvalue references over std::move vs std::forward?",
+        "What is the performance or memory difference between rvalue references and std::move vs std::forward?"
+      ],
+      "related_concepts": [
+        "rvalue references",
+        "std::move vs std::forward",
+        "smart pointers",
+        "RAII"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-089",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "constexpr",
+      "difficulty": "Medium",
+      "question": "What are the common issues with variadic templates in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with variadic templates in C++ include: pack expansion syntax. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "variadic templates",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to variadic templates?",
+        "What tools can assist in detecting problems with variadic templates at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "auto keyword",
+        "lambda expressions",
+        "constexpr"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-090",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "Lambda",
+      "difficulty": "Medium",
+      "question": "What are the common issues with constexpr in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with constexpr in C++ include: vs const, runtime fallback. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "constexpr",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to constexpr?",
+        "What tools can assist in detecting problems with constexpr at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "auto keyword",
+        "lambda expressions",
+        "variadic templates"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-091",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Constructors/Destructors",
+      "difficulty": "Medium",
+      "question": "What are the common issues with RTTI in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with RTTI in C++ include: performance overhead, design alternatives. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "RTTI",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to RTTI?",
+        "What tools can assist in detecting problems with RTTI at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "virtual functions",
+        "pure virtual functions",
+        "multiple inheritance"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-092",
+      "subject": "C++",
+      "category": "Memory Management",
+      "subcategory": "Smart Pointers",
+      "difficulty": "Medium",
+      "question": "What are the common issues with std::move vs std::forward in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with std::move vs std::forward in C++ include: using move when forward needed. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "std::move vs std::forward",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to std::move vs std::forward?",
+        "What tools can assist in detecting problems with std::move vs std::forward at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "smart pointers",
+        "RAII",
+        "move semantics"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-093",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "Auto",
+      "difficulty": "Medium",
+      "question": "Explain the difference between lambda expressions and variadic templates in C++.",
+      "ideal_answer": "lambda expressions and variadic templates differ in several ways: lambda expressions is anonymous functions (works by inline function objects) whereas variadic templates is variable argument templates (works by type-safe variadic functions). lambda expressions is typically used for capture list, parameters, body, while variadic templates is used for parameter packs, recursion/ fold expressions. Example demonstrating lambda expressions: auto lambda = [](int x) { return x * 2; };. Example demonstrating variadic templates: template<typename... Args> void print(Args... args);.",
+      "keywords": [
+        "lambda expressions",
+        "variadic templates",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose lambda expressions over variadic templates?",
+        "What is the performance or memory difference between lambda expressions and variadic templates?"
+      ],
+      "related_concepts": [
+        "lambda expressions",
+        "variadic templates",
+        "auto keyword",
+        "constexpr"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-094",
+      "subject": "C++",
+      "category": "Concurrency",
+      "subcategory": "Thread Pool",
+      "difficulty": "Medium",
+      "question": "What are the common issues with future/promise in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with future/promise in C++ include: exception propagation through future. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "future/promise",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to future/promise?",
+        "What tools can assist in detecting problems with future/promise at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "std::thread",
+        "mutex",
+        "condition_variable"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-095",
+      "subject": "C++",
+      "category": "Memory Management",
+      "subcategory": "RAII",
+      "difficulty": "Medium",
+      "question": "Explain the difference between RAII and rvalue references in C++.",
+      "ideal_answer": "RAII and rvalue references differ in several ways: RAII is Resource Acquisition Is Initialization (works by binding resource lifetime to object lifetime) whereas rvalue references is references to temporaries (works by enabling move semantics). RAII is typically used for automatic cleanup, exception safety, while rvalue references is used for T&&, forwarding references. Example demonstrating RAII: std::lock_guard<std::mutex> lock(mtx);. Example demonstrating rvalue references: void foo(int&& x); foo(5);.",
+      "keywords": [
+        "RAII",
+        "rvalue references",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose RAII over rvalue references?",
+        "What is the performance or memory difference between RAII and rvalue references?"
+      ],
+      "related_concepts": [
+        "RAII",
+        "rvalue references",
+        "smart pointers",
+        "move semantics"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-096",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Polymorphism",
+      "difficulty": "Medium",
+      "question": "What is multiple inheritance in C++ and how does it work?",
+      "ideal_answer": "multiple inheritance in C++ refers to inheriting from multiple bases. It works by combining interfaces/ functionality. Key characteristics include diamond problem ambiguity. Example: class D : public B, public C {}. Common pitfalls include virtual inheritance resolution.",
+      "keywords": [
+        "multiple inheritance",
+        "C++ programming",
+        "oop in c++"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of multiple inheritance in a production environment?",
+        "What are the common pitfalls or issues associated with multiple inheritance?"
+      ],
+      "related_concepts": [
+        "virtual functions",
+        "pure virtual functions",
+        "virtual inheritance"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CPP-097",
+      "subject": "C++",
+      "category": "STL",
+      "subcategory": "Algorithms",
+      "difficulty": "Hard",
+      "question": "Explain the difference between iterators and functors in C++.",
+      "ideal_answer": "iterators and functors differ in several ways: iterators is container position abstraction (works by uniform access pattern) whereas functors is function objects (works by stateful callbacks). iterators is typically used for input, output, forward, bidirectional, random access, while functors is used for operator() overloading. Example demonstrating iterators: std::vector<int>::iterator it = v.begin();. Example demonstrating functors: struct Compare { bool operator()(int a, int b) { return a > b; } };.",
+      "keywords": [
+        "iterators",
+        "functors",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose iterators over functors?",
+        "What is the performance or memory difference between iterators and functors?"
+      ],
+      "related_concepts": [
+        "iterators",
+        "functors",
+        "vector",
+        "map vs unordered_map"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-098",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Polymorphism",
+      "difficulty": "Hard",
+      "question": "Explain the difference between multiple inheritance and RTTI in C++.",
+      "ideal_answer": "multiple inheritance and RTTI differ in several ways: multiple inheritance is inheriting from multiple bases (works by combining interfaces/ functionality) whereas RTTI is Run-Time Type Information (works by type identification at runtime). multiple inheritance is typically used for diamond problem ambiguity, while RTTI is used for typeid, dynamic_cast. Example demonstrating multiple inheritance: class D : public B, public C {}. Example demonstrating RTTI: if (typeid(*obj) == typeid(Derived)).",
+      "keywords": [
+        "multiple inheritance",
+        "RTTI",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose multiple inheritance over RTTI?",
+        "What is the performance or memory difference between multiple inheritance and RTTI?"
+      ],
+      "related_concepts": [
+        "multiple inheritance",
+        "RTTI",
+        "virtual functions",
+        "pure virtual functions"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-099",
+      "subject": "C++",
+      "category": "Memory Management",
+      "subcategory": "Move Semantics",
+      "difficulty": "Hard",
+      "question": "What is move semantics in C++ and how does it work?",
+      "ideal_answer": "move semantics in C++ refers to resource transfer without copy. It works by performance optimization. Key characteristics include rvalue references, std::move. Example: std::vector<int> v2 = std::move(v1);. Common pitfalls include moved-from state validity.",
+      "keywords": [
+        "move semantics",
+        "C++ programming",
+        "memory management"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of move semantics in a production environment?",
+        "What are the common pitfalls or issues associated with move semantics?"
+      ],
+      "related_concepts": [
+        "smart pointers",
+        "RAII",
+        "rvalue references"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-100",
+      "subject": "C++",
+      "category": "Memory Management",
+      "subcategory": "Move Semantics",
+      "difficulty": "Hard",
+      "question": "What are the common issues with move semantics in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with move semantics in C++ include: moved-from state validity. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "move semantics",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to move semantics?",
+        "What tools can assist in detecting problems with move semantics at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "smart pointers",
+        "RAII",
+        "rvalue references"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-101",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Classes",
+      "difficulty": "Hard",
+      "question": "Explain the difference between virtual functions and RTTI in C++.",
+      "ideal_answer": "virtual functions and RTTI differ in several ways: virtual functions is dynamic dispatch mechanism (works by runtime polymorphism) whereas RTTI is Run-Time Type Information (works by type identification at runtime). virtual functions is typically used for vtable/vptr implementation, while RTTI is used for typeid, dynamic_cast. Example demonstrating virtual functions: virtual void draw() = 0;. Example demonstrating RTTI: if (typeid(*obj) == typeid(Derived)).",
+      "keywords": [
+        "virtual functions",
+        "RTTI",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose virtual functions over RTTI?",
+        "What is the performance or memory difference between virtual functions and RTTI?"
+      ],
+      "related_concepts": [
+        "virtual functions",
+        "RTTI",
+        "pure virtual functions",
+        "multiple inheritance"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-102",
+      "subject": "C++",
+      "category": "Concurrency",
+      "subcategory": "Condition Variables",
+      "difficulty": "Hard",
+      "question": "Explain the difference between condition_variable and atomic operations in C++.",
+      "ideal_answer": "condition_variable and atomic operations differ in several ways: condition_variable is thread synchronization (works by waiting for conditions) whereas atomic operations is lock-free synchronization (works by hardware-supported atomicity). condition_variable is typically used for wait, notify_one, notify_all, while atomic operations is used for memory ordering, compare-and-swap. Example demonstrating condition_variable: cv.wait(lock, []{ return ready; });. Example demonstrating atomic operations: std::atomic<int> counter{0}; counter.fetch_add(1);.",
+      "keywords": [
+        "condition_variable",
+        "atomic operations",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose condition_variable over atomic operations?",
+        "What is the performance or memory difference between condition_variable and atomic operations?"
+      ],
+      "related_concepts": [
+        "condition_variable",
+        "atomic operations",
+        "std::thread",
+        "mutex"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-103",
+      "subject": "C++",
+      "category": "Fundamentals",
+      "subcategory": "References",
+      "difficulty": "Hard",
+      "question": "Explain the difference between references vs pointers and name mangling in C++.",
+      "ideal_answer": "references vs pointers and name mangling differ in several ways: references vs pointers is alias mechanisms (works by indirect access) whereas name mangling is compiler symbol encoding (works by supporting function overloading). references vs pointers is typically used for references: non-null, non-reseatable, safer; pointers: flexible, nullable, while name mangling is used for encodes parameter types in symbol names. Example demonstrating references vs pointers: int& ref = x; int* ptr = &x;. Example demonstrating name mangling: _Z3foov vs _Z3fooi.",
+      "keywords": [
+        "references vs pointers",
+        "name mangling",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose references vs pointers over name mangling?",
+        "What is the performance or memory difference between references vs pointers and name mangling?"
+      ],
+      "related_concepts": [
+        "references vs pointers",
+        "name mangling",
+        "operator overloading",
+        "copy constructor"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-104",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "Lambda",
+      "difficulty": "Hard",
+      "question": "Explain the difference between constexpr and variadic templates in C++.",
+      "ideal_answer": "constexpr and variadic templates differ in several ways: constexpr is compile-time evaluation (works by constant expressions) whereas variadic templates is variable argument templates (works by type-safe variadic functions). constexpr is typically used for C++11: single return, C++14: multiple statements, while variadic templates is used for parameter packs, recursion/ fold expressions. Example demonstrating constexpr: constexpr int factorial(int n) { return n <= 1 ? 1 : n * factorial(n-1); }. Example demonstrating variadic templates: template<typename... Args> void print(Args... args);.",
+      "keywords": [
+        "constexpr",
+        "variadic templates",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose constexpr over variadic templates?",
+        "What is the performance or memory difference between constexpr and variadic templates?"
+      ],
+      "related_concepts": [
+        "constexpr",
+        "variadic templates",
+        "auto keyword",
+        "lambda expressions"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-105",
+      "subject": "C++",
+      "category": "Fundamentals",
+      "subcategory": "Namespaces",
+      "difficulty": "Hard",
+      "question": "Explain the difference between name mangling and copy constructor in C++.",
+      "ideal_answer": "name mangling and copy constructor differ in several ways: name mangling is compiler symbol encoding (works by supporting function overloading) whereas copy constructor is object duplication (works by deep vs shallow copy). name mangling is typically used for encodes parameter types in symbol names, while copy constructor is used for called on initialization from same type. Example demonstrating name mangling: _Z3foov vs _Z3fooi. Example demonstrating copy constructor: Class(const Class& other);.",
+      "keywords": [
+        "name mangling",
+        "copy constructor",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose name mangling over copy constructor?",
+        "What is the performance or memory difference between name mangling and copy constructor?"
+      ],
+      "related_concepts": [
+        "name mangling",
+        "copy constructor",
+        "references vs pointers",
+        "operator overloading"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-106",
+      "subject": "C++",
+      "category": "STL",
+      "subcategory": "Containers",
+      "difficulty": "Hard",
+      "question": "Explain the difference between vector and functors in C++.",
+      "ideal_answer": "vector and functors differ in several ways: vector is dynamic array container (works by contiguous storage, random access) whereas functors is function objects (works by stateful callbacks). vector is typically used for amortized O(1) push_back, O(n) insert, while functors is used for operator() overloading. Example demonstrating vector: std::vector<int> v; v.push_back(5);. Example demonstrating functors: struct Compare { bool operator()(int a, int b) { return a > b; } };.",
+      "keywords": [
+        "vector",
+        "functors",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose vector over functors?",
+        "What is the performance or memory difference between vector and functors?"
+      ],
+      "related_concepts": [
+        "vector",
+        "functors",
+        "map vs unordered_map",
+        "iterators"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-107",
+      "subject": "C++",
+      "category": "STL",
+      "subcategory": "Iterators",
+      "difficulty": "Hard",
+      "question": "What are the common issues with map vs unordered_map in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with map vs unordered_map in C++ include: hash function quality, bucket count. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "map vs unordered_map",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to map vs unordered_map?",
+        "What tools can assist in detecting problems with map vs unordered_map at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "vector",
+        "iterators",
+        "algorithm library"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-108",
+      "subject": "C++",
+      "category": "Memory Management",
+      "subcategory": "Move Semantics",
+      "difficulty": "Hard",
+      "question": "Explain the difference between move semantics and std::move vs std::forward in C++.",
+      "ideal_answer": "move semantics and std::move vs std::forward differ in several ways: move semantics is resource transfer without copy (works by performance optimization) whereas std::move vs std::forward is value category manipulation (works by transferring values efficiently). move semantics is typically used for rvalue references, std::move, while std::move vs std::forward is used for move: unconditionally cast to rvalue; forward: preserve value category. Example demonstrating move semantics: std::vector<int> v2 = std::move(v1);. Example demonstrating std::move vs std::forward: std::forward<T>(arg).",
+      "keywords": [
+        "move semantics",
+        "std::move vs std::forward",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose move semantics over std::move vs std::forward?",
+        "What is the performance or memory difference between move semantics and std::move vs std::forward?"
+      ],
+      "related_concepts": [
+        "move semantics",
+        "std::move vs std::forward",
+        "smart pointers",
+        "RAII"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-109",
+      "subject": "C++",
+      "category": "Fundamentals",
+      "subcategory": "Operator Overloading",
+      "difficulty": "Hard",
+      "question": "What are the common issues with operator overloading in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with operator overloading in C++ include: overloading && and || losing short-circuit. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "operator overloading",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to operator overloading?",
+        "What tools can assist in detecting problems with operator overloading at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "references vs pointers",
+        "name mangling",
+        "copy constructor"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-110",
+      "subject": "C++",
+      "category": "Modern C++",
+      "subcategory": "Concepts",
+      "difficulty": "Hard",
+      "question": "What is concepts in C++ and how does it work?",
+      "ideal_answer": "concepts in C++ refers to template constraints. It works by named requirements. Key characteristics include requires clauses, concept definitions. Example: template<typename T> requires Addable<T> T add(T a, T b);. Common pitfalls include C++20 feature, compiler support.",
+      "keywords": [
+        "concepts",
+        "C++ programming",
+        "modern c++"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of concepts in a production environment?",
+        "What are the common pitfalls or issues associated with concepts?"
+      ],
+      "related_concepts": [
+        "auto keyword",
+        "lambda expressions",
+        "constexpr"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-111",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Inheritance",
+      "difficulty": "Hard",
+      "question": "What are the common issues with destructor in C++ and how do you debug them?",
+      "ideal_answer": "Common issues with destructor in C++ include: exception throwing from destructors. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "destructor",
+        "troubleshooting",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to destructor?",
+        "What tools can assist in detecting problems with destructor at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "virtual functions",
+        "pure virtual functions",
+        "multiple inheritance"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-112",
+      "subject": "C++",
+      "category": "Memory Management",
+      "subcategory": "RAII",
+      "difficulty": "Hard",
+      "question": "What is RAII in C++ and how does it work?",
+      "ideal_answer": "RAII in C++ refers to Resource Acquisition Is Initialization. It works by binding resource lifetime to object lifetime. Key characteristics include automatic cleanup, exception safety. Example: std::lock_guard<std::mutex> lock(mtx);. Common pitfalls include deterministic destruction.",
+      "keywords": [
+        "RAII",
+        "C++ programming",
+        "memory management"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of RAII in a production environment?",
+        "What are the common pitfalls or issues associated with RAII?"
+      ],
+      "related_concepts": [
+        "smart pointers",
+        "move semantics",
+        "rvalue references"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-113",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Inheritance",
+      "difficulty": "Hard",
+      "question": "Explain the difference between pure virtual functions and destructor in C++.",
+      "ideal_answer": "pure virtual functions and destructor differ in several ways: pure virtual functions is abstract interface methods (works by defining interfaces) whereas destructor is cleanup method (works by resource release). pure virtual functions is typically used for makes class abstract, while destructor is used for virtual for base classes. Example demonstrating pure virtual functions: virtual void method() = 0;. Example demonstrating destructor: virtual ~Base() = default;.",
+      "keywords": [
+        "pure virtual functions",
+        "destructor",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose pure virtual functions over destructor?",
+        "What is the performance or memory difference between pure virtual functions and destructor?"
+      ],
+      "related_concepts": [
+        "pure virtual functions",
+        "destructor",
+        "virtual functions",
+        "multiple inheritance"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-114",
+      "subject": "C++",
+      "category": "Concurrency",
+      "subcategory": "Threads",
+      "difficulty": "Hard",
+      "question": "Explain the difference between std::thread and mutex in C++.",
+      "ideal_answer": "std::thread and mutex differ in several ways: std::thread is OS thread wrapper (works by concurrent execution) whereas mutex is mutual exclusion primitive (works by protecting shared data). std::thread is typically used for joinable, detach, join, while mutex is used for lock_guard, unique_lock, scoped_lock. Example demonstrating std::thread: std::thread t([]{ /* work */ }); t.join();. Example demonstrating mutex: std::mutex mtx; std::lock_guard<std::mutex> lock(mtx);.",
+      "keywords": [
+        "std::thread",
+        "mutex",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose std::thread over mutex?",
+        "What is the performance or memory difference between std::thread and mutex?"
+      ],
+      "related_concepts": [
+        "std::thread",
+        "mutex",
+        "condition_variable",
+        "atomic operations"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-115",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Polymorphism",
+      "difficulty": "Hard",
+      "question": "Explain the difference between multiple inheritance and virtual inheritance in C++.",
+      "ideal_answer": "multiple inheritance and virtual inheritance differ in several ways: multiple inheritance is inheriting from multiple bases (works by combining interfaces/ functionality) whereas virtual inheritance is shared base class instance (works by diamond problem solution). multiple inheritance is typically used for diamond problem ambiguity, while virtual inheritance is used for single subobject of virtual base. Example demonstrating multiple inheritance: class D : public B, public C {}. Example demonstrating virtual inheritance: class B : virtual public A {}.",
+      "keywords": [
+        "multiple inheritance",
+        "virtual inheritance",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose multiple inheritance over virtual inheritance?",
+        "What is the performance or memory difference between multiple inheritance and virtual inheritance?"
+      ],
+      "related_concepts": [
+        "multiple inheritance",
+        "virtual inheritance",
+        "virtual functions",
+        "pure virtual functions"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-116",
+      "subject": "C++",
+      "category": "Fundamentals",
+      "subcategory": "References",
+      "difficulty": "Hard",
+      "question": "Explain the difference between references vs pointers and copy constructor in C++.",
+      "ideal_answer": "references vs pointers and copy constructor differ in several ways: references vs pointers is alias mechanisms (works by indirect access) whereas copy constructor is object duplication (works by deep vs shallow copy). references vs pointers is typically used for references: non-null, non-reseatable, safer; pointers: flexible, nullable, while copy constructor is used for called on initialization from same type. Example demonstrating references vs pointers: int& ref = x; int* ptr = &x;. Example demonstrating copy constructor: Class(const Class& other);.",
+      "keywords": [
+        "references vs pointers",
+        "copy constructor",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose references vs pointers over copy constructor?",
+        "What is the performance or memory difference between references vs pointers and copy constructor?"
+      ],
+      "related_concepts": [
+        "references vs pointers",
+        "copy constructor",
+        "name mangling",
+        "operator overloading"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-117",
+      "subject": "C++",
+      "category": "OOP in C++",
+      "subcategory": "Polymorphism",
+      "difficulty": "Hard",
+      "question": "Explain the difference between multiple inheritance and destructor in C++.",
+      "ideal_answer": "multiple inheritance and destructor differ in several ways: multiple inheritance is inheriting from multiple bases (works by combining interfaces/ functionality) whereas destructor is cleanup method (works by resource release). multiple inheritance is typically used for diamond problem ambiguity, while destructor is used for virtual for base classes. Example demonstrating multiple inheritance: class D : public B, public C {}. Example demonstrating destructor: virtual ~Base() = default;.",
+      "keywords": [
+        "multiple inheritance",
+        "destructor",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose multiple inheritance over destructor?",
+        "What is the performance or memory difference between multiple inheritance and destructor?"
+      ],
+      "related_concepts": [
+        "multiple inheritance",
+        "destructor",
+        "virtual functions",
+        "pure virtual functions"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-118",
+      "subject": "C++",
+      "category": "Fundamentals",
+      "subcategory": "References",
+      "difficulty": "Hard",
+      "question": "Explain the difference between references vs pointers and operator overloading in C++.",
+      "ideal_answer": "references vs pointers and operator overloading differ in several ways: references vs pointers is alias mechanisms (works by indirect access) whereas operator overloading is custom operator behavior (works by intuitive syntax for user types). references vs pointers is typically used for references: non-null, non-reseatable, safer; pointers: flexible, nullable, while operator overloading is used for cannot overload . ?: :: sizeof. Example demonstrating references vs pointers: int& ref = x; int* ptr = &x;. Example demonstrating operator overloading: Complex operator+(const Complex& a, const Complex& b).",
+      "keywords": [
+        "references vs pointers",
+        "operator overloading",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose references vs pointers over operator overloading?",
+        "What is the performance or memory difference between references vs pointers and operator overloading?"
+      ],
+      "related_concepts": [
+        "references vs pointers",
+        "operator overloading",
+        "name mangling",
+        "copy constructor"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-119",
+      "subject": "C++",
+      "category": "Fundamentals",
+      "subcategory": "References",
+      "difficulty": "Hard",
+      "question": "Explain the difference between references vs pointers and assignment operator in C++.",
+      "ideal_answer": "references vs pointers and assignment operator differ in several ways: references vs pointers is alias mechanisms (works by indirect access) whereas assignment operator is object reassignment (works by copy-and-swap idiom). references vs pointers is typically used for references: non-null, non-reseatable, safer; pointers: flexible, nullable, while assignment operator is used for returns reference to self. Example demonstrating references vs pointers: int& ref = x; int* ptr = &x;. Example demonstrating assignment operator: Class& operator=(Class other) { swap(*this, other); return *this; }.",
+      "keywords": [
+        "references vs pointers",
+        "assignment operator",
+        "comparison",
+        "C++"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose references vs pointers over assignment operator?",
+        "What is the performance or memory difference between references vs pointers and assignment operator?"
+      ],
+      "related_concepts": [
+        "references vs pointers",
+        "assignment operator",
+        "name mangling",
+        "operator overloading"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CPP-120",
+      "subject": "C++",
+      "category": "Templates",
+      "subcategory": "Class Templates",
+      "difficulty": "Hard",
+      "question": "What is CRTP in C++ and how does it work?",
+      "ideal_answer": "CRTP in C++ refers to Curiously Recurring Template Pattern. It works by static polymorphism. Key characteristics include base class template parameter is derived class. Example: template<typename Derived> class Base {}. Common pitfalls include avoiding virtual function overhead.",
+      "keywords": [
+        "CRTP",
+        "C++ programming",
+        "templates"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of CRTP in a production environment?",
+        "What are the common pitfalls or issues associated with CRTP?"
+      ],
+      "related_concepts": [
+        "SFINAE",
+        "template specialization"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

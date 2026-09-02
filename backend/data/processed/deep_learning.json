@@ -1,0 +1,616 @@
+{
+  "metadata": {
+    "subject": "Deep Learning",
+    "domain": "Artificial Intelligence",
+    "total_questions": 23,
+    "difficulty_distribution": {
+      "Easy": 6,
+      "Medium": 12,
+      "Hard": 5
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "DL-001",
+      "subject": "Deep Learning",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Easy",
+      "question": "Explain the difference between batch normalization and optimization algorithms in Deep Learning.",
+      "ideal_answer": "batch normalization and optimization algorithms differ in several ways: batch normalization is internal covariate shift reduction (works by stabilizing training) whereas optimization algorithms is weight update strategies (works by adaptive learning rates). batch normalization is typically used for normalize activations, learnable scale/shift, while optimization algorithms is used for Adam, RMSprop, Adagrad, SGD with momentum. Example demonstrating batch normalization: BN(x) = gamma * (x - mean) / sqrt(var + eps) + beta. Example demonstrating optimization algorithms: Adam: adaptive moment estimation.",
+      "keywords": [
+        "batch normalization",
+        "optimization algorithms",
+        "comparison",
+        "Deep Learning"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose batch normalization over optimization algorithms?",
+        "What is the performance or memory difference between batch normalization and optimization algorithms?"
+      ],
+      "related_concepts": [
+        "batch normalization",
+        "optimization algorithms",
+        "dropout"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DL-002",
+      "subject": "Deep Learning",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Easy",
+      "question": "Explain the difference between batch normalization and dropout in Deep Learning.",
+      "ideal_answer": "batch normalization and dropout differ in several ways: batch normalization is internal covariate shift reduction (works by stabilizing training) whereas dropout is regularization technique (works by preventing co-adaptation). batch normalization is typically used for normalize activations, learnable scale/shift, while dropout is used for randomly zeroing neurons during training. Example demonstrating batch normalization: BN(x) = gamma * (x - mean) / sqrt(var + eps) + beta. Example demonstrating dropout: nn.Dropout(p=0.5).",
+      "keywords": [
+        "batch normalization",
+        "dropout",
+        "comparison",
+        "Deep Learning"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose batch normalization over dropout?",
+        "What is the performance or memory difference between batch normalization and dropout?"
+      ],
+      "related_concepts": [
+        "batch normalization",
+        "dropout",
+        "optimization algorithms"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DL-003",
+      "subject": "Deep Learning",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Easy",
+      "question": "What is backpropagation in Deep Learning and how does it work?",
+      "ideal_answer": "backpropagation in Deep Learning refers to gradient computation algorithm. It works by chain rule application. Key characteristics include compute gradients from output to input. Example: delta rule, weight updates. Common pitfalls include vanishing gradient problem.",
+      "keywords": [
+        "backpropagation",
+        "Deep Learning programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of backpropagation in a production environment?",
+        "What are the common pitfalls or issues associated with backpropagation?"
+      ],
+      "related_concepts": [
+        "neural network basics",
+        "activation functions"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DL-004",
+      "subject": "Deep Learning",
+      "category": "Architecture",
+      "subcategory": "Implementation",
+      "difficulty": "Easy",
+      "question": "What are the common issues with optimization algorithms in Deep Learning and how do you debug them?",
+      "ideal_answer": "Common issues with optimization algorithms in Deep Learning include: AdamW weight decay decoupling. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "optimization algorithms",
+        "troubleshooting",
+        "Deep Learning"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to optimization algorithms?",
+        "What tools can assist in detecting problems with optimization algorithms at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "batch normalization",
+        "dropout"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DL-005",
+      "subject": "Deep Learning",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Easy",
+      "question": "What are the common issues with activation functions in Deep Learning and how do you debug them?",
+      "ideal_answer": "Common issues with activation functions in Deep Learning include: dying ReLU, saturation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "activation functions",
+        "troubleshooting",
+        "Deep Learning"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to activation functions?",
+        "What tools can assist in detecting problems with activation functions at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "neural network basics",
+        "backpropagation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DL-006",
+      "subject": "Deep Learning",
+      "category": "Architecture",
+      "subcategory": "Implementation",
+      "difficulty": "Easy",
+      "question": "What is optimization algorithms in Deep Learning and how does it work?",
+      "ideal_answer": "optimization algorithms in Deep Learning refers to weight update strategies. It works by adaptive learning rates. Key characteristics include Adam, RMSprop, Adagrad, SGD with momentum. Example: Adam: adaptive moment estimation. Common pitfalls include AdamW weight decay decoupling.",
+      "keywords": [
+        "optimization algorithms",
+        "Deep Learning programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of optimization algorithms in a production environment?",
+        "What are the common pitfalls or issues associated with optimization algorithms?"
+      ],
+      "related_concepts": [
+        "batch normalization",
+        "dropout"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DL-007",
+      "subject": "Deep Learning",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Medium",
+      "question": "Explain the difference between dropout and optimization algorithms in Deep Learning.",
+      "ideal_answer": "dropout and optimization algorithms differ in several ways: dropout is regularization technique (works by preventing co-adaptation) whereas optimization algorithms is weight update strategies (works by adaptive learning rates). dropout is typically used for randomly zeroing neurons during training, while optimization algorithms is used for Adam, RMSprop, Adagrad, SGD with momentum. Example demonstrating dropout: nn.Dropout(p=0.5). Example demonstrating optimization algorithms: Adam: adaptive moment estimation.",
+      "keywords": [
+        "dropout",
+        "optimization algorithms",
+        "comparison",
+        "Deep Learning"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose dropout over optimization algorithms?",
+        "What is the performance or memory difference between dropout and optimization algorithms?"
+      ],
+      "related_concepts": [
+        "dropout",
+        "optimization algorithms",
+        "batch normalization"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DL-008",
+      "subject": "Deep Learning",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Medium",
+      "question": "What are the common issues with dropout in Deep Learning and how do you debug them?",
+      "ideal_answer": "Common issues with dropout in Deep Learning include: inference scaling, Monte Carlo dropout. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "dropout",
+        "troubleshooting",
+        "Deep Learning"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to dropout?",
+        "What tools can assist in detecting problems with dropout at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "batch normalization",
+        "optimization algorithms"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DL-009",
+      "subject": "Deep Learning",
+      "category": "Applications",
+      "subcategory": "Use Cases",
+      "difficulty": "Medium",
+      "question": "Explain the difference between transfer learning and CNN architecture evolution in Deep Learning.",
+      "ideal_answer": "transfer learning and CNN architecture evolution differ in several ways: transfer learning is pretrained model adaptation (works by leveraging learned representations) whereas CNN architecture evolution is convolutional network development (works by from LeNet to ResNet to EfficientNet). transfer learning is typically used for feature extraction, fine-tuning, while CNN architecture evolution is used for AlexNet, VGG, Inception, ResNet, DenseNet. Example demonstrating transfer learning: BERT fine-tuning for classification. Example demonstrating CNN architecture evolution: skip connections, bottleneck layers.",
+      "keywords": [
+        "transfer learning",
+        "CNN architecture evolution",
+        "comparison",
+        "Deep Learning"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose transfer learning over CNN architecture evolution?",
+        "What is the performance or memory difference between transfer learning and CNN architecture evolution?"
+      ],
+      "related_concepts": [
+        "transfer learning",
+        "CNN architecture evolution"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DL-010",
+      "subject": "Deep Learning",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Medium",
+      "question": "Explain the difference between neural network basics and backpropagation in Deep Learning.",
+      "ideal_answer": "neural network basics and backpropagation differ in several ways: neural network basics is biologically inspired computation (works by layered weighted connections) whereas backpropagation is gradient computation algorithm (works by chain rule application). neural network basics is typically used for input, hidden, output layers; activation functions, while backpropagation is used for compute gradients from output to input. Example demonstrating neural network basics: forward pass, backward pass. Example demonstrating backpropagation: delta rule, weight updates.",
+      "keywords": [
+        "neural network basics",
+        "backpropagation",
+        "comparison",
+        "Deep Learning"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose neural network basics over backpropagation?",
+        "What is the performance or memory difference between neural network basics and backpropagation?"
+      ],
+      "related_concepts": [
+        "neural network basics",
+        "backpropagation",
+        "activation functions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DL-011",
+      "subject": "Deep Learning",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "What is batch normalization in Deep Learning and how does it work?",
+      "ideal_answer": "batch normalization in Deep Learning refers to internal covariate shift reduction. It works by stabilizing training. Key characteristics include normalize activations, learnable scale/shift. Example: BN(x) = gamma * (x - mean) / sqrt(var + eps) + beta. Common pitfalls include inference moving averages.",
+      "keywords": [
+        "batch normalization",
+        "Deep Learning programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of batch normalization in a production environment?",
+        "What are the common pitfalls or issues associated with batch normalization?"
+      ],
+      "related_concepts": [
+        "dropout",
+        "optimization algorithms"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DL-012",
+      "subject": "Deep Learning",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Medium",
+      "question": "What are the common issues with neural network basics in Deep Learning and how do you debug them?",
+      "ideal_answer": "Common issues with neural network basics in Deep Learning include: universal approximation theorem. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "neural network basics",
+        "troubleshooting",
+        "Deep Learning"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to neural network basics?",
+        "What tools can assist in detecting problems with neural network basics at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "backpropagation",
+        "activation functions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DL-013",
+      "subject": "Deep Learning",
+      "category": "Applications",
+      "subcategory": "Use Cases",
+      "difficulty": "Medium",
+      "question": "What are the common issues with transfer learning in Deep Learning and how do you debug them?",
+      "ideal_answer": "Common issues with transfer learning in Deep Learning include: domain similarity importance. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "transfer learning",
+        "troubleshooting",
+        "Deep Learning"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to transfer learning?",
+        "What tools can assist in detecting problems with transfer learning at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "CNN architecture evolution"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DL-014",
+      "subject": "Deep Learning",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Medium",
+      "question": "What is dropout in Deep Learning and how does it work?",
+      "ideal_answer": "dropout in Deep Learning refers to regularization technique. It works by preventing co-adaptation. Key characteristics include randomly zeroing neurons during training. Example: nn.Dropout(p=0.5). Common pitfalls include inference scaling, Monte Carlo dropout.",
+      "keywords": [
+        "dropout",
+        "Deep Learning programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of dropout in a production environment?",
+        "What are the common pitfalls or issues associated with dropout?"
+      ],
+      "related_concepts": [
+        "batch normalization",
+        "optimization algorithms"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DL-015",
+      "subject": "Deep Learning",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "What are the common issues with batch normalization in Deep Learning and how do you debug them?",
+      "ideal_answer": "Common issues with batch normalization in Deep Learning include: inference moving averages. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "batch normalization",
+        "troubleshooting",
+        "Deep Learning"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to batch normalization?",
+        "What tools can assist in detecting problems with batch normalization at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "dropout",
+        "optimization algorithms"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DL-016",
+      "subject": "Deep Learning",
+      "category": "Applications",
+      "subcategory": "Industry Examples",
+      "difficulty": "Medium",
+      "question": "What are the common issues with CNN architecture evolution in Deep Learning and how do you debug them?",
+      "ideal_answer": "Common issues with CNN architecture evolution in Deep Learning include: NAS, AutoML for architecture. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "CNN architecture evolution",
+        "troubleshooting",
+        "Deep Learning"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to CNN architecture evolution?",
+        "What tools can assist in detecting problems with CNN architecture evolution at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "transfer learning"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DL-017",
+      "subject": "Deep Learning",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What is activation functions in Deep Learning and how does it work?",
+      "ideal_answer": "activation functions in Deep Learning refers to non-linearity introduction. It works by enabling complex function learning. Key characteristics include ReLU, sigmoid, tanh, Leaky ReLU, GELU, Swish. Example: ReLU: max(0, x). Common pitfalls include dying ReLU, saturation.",
+      "keywords": [
+        "activation functions",
+        "Deep Learning programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of activation functions in a production environment?",
+        "What are the common pitfalls or issues associated with activation functions?"
+      ],
+      "related_concepts": [
+        "neural network basics",
+        "backpropagation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DL-018",
+      "subject": "Deep Learning",
+      "category": "Applications",
+      "subcategory": "Use Cases",
+      "difficulty": "Medium",
+      "question": "What is transfer learning in Deep Learning and how does it work?",
+      "ideal_answer": "transfer learning in Deep Learning refers to pretrained model adaptation. It works by leveraging learned representations. Key characteristics include feature extraction, fine-tuning. Example: BERT fine-tuning for classification. Common pitfalls include domain similarity importance.",
+      "keywords": [
+        "transfer learning",
+        "Deep Learning programming",
+        "applications"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of transfer learning in a production environment?",
+        "What are the common pitfalls or issues associated with transfer learning?"
+      ],
+      "related_concepts": [
+        "CNN architecture evolution"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DL-019",
+      "subject": "Deep Learning",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "Explain the difference between neural network basics and activation functions in Deep Learning.",
+      "ideal_answer": "neural network basics and activation functions differ in several ways: neural network basics is biologically inspired computation (works by layered weighted connections) whereas activation functions is non-linearity introduction (works by enabling complex function learning). neural network basics is typically used for input, hidden, output layers; activation functions, while activation functions is used for ReLU, sigmoid, tanh, Leaky ReLU, GELU, Swish. Example demonstrating neural network basics: forward pass, backward pass. Example demonstrating activation functions: ReLU: max(0, x).",
+      "keywords": [
+        "neural network basics",
+        "activation functions",
+        "comparison",
+        "Deep Learning"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose neural network basics over activation functions?",
+        "What is the performance or memory difference between neural network basics and activation functions?"
+      ],
+      "related_concepts": [
+        "neural network basics",
+        "activation functions",
+        "backpropagation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "DL-020",
+      "subject": "Deep Learning",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Hard",
+      "question": "Explain the difference between backpropagation and activation functions in Deep Learning.",
+      "ideal_answer": "backpropagation and activation functions differ in several ways: backpropagation is gradient computation algorithm (works by chain rule application) whereas activation functions is non-linearity introduction (works by enabling complex function learning). backpropagation is typically used for compute gradients from output to input, while activation functions is used for ReLU, sigmoid, tanh, Leaky ReLU, GELU, Swish. Example demonstrating backpropagation: delta rule, weight updates. Example demonstrating activation functions: ReLU: max(0, x).",
+      "keywords": [
+        "backpropagation",
+        "activation functions",
+        "comparison",
+        "Deep Learning"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose backpropagation over activation functions?",
+        "What is the performance or memory difference between backpropagation and activation functions?"
+      ],
+      "related_concepts": [
+        "backpropagation",
+        "activation functions",
+        "neural network basics"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "DL-021",
+      "subject": "Deep Learning",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What is neural network basics in Deep Learning and how does it work?",
+      "ideal_answer": "neural network basics in Deep Learning refers to biologically inspired computation. It works by layered weighted connections. Key characteristics include input, hidden, output layers; activation functions. Example: forward pass, backward pass. Common pitfalls include universal approximation theorem.",
+      "keywords": [
+        "neural network basics",
+        "Deep Learning programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of neural network basics in a production environment?",
+        "What are the common pitfalls or issues associated with neural network basics?"
+      ],
+      "related_concepts": [
+        "backpropagation",
+        "activation functions"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "DL-022",
+      "subject": "Deep Learning",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Hard",
+      "question": "What are the common issues with backpropagation in Deep Learning and how do you debug them?",
+      "ideal_answer": "Common issues with backpropagation in Deep Learning include: vanishing gradient problem. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "backpropagation",
+        "troubleshooting",
+        "Deep Learning"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to backpropagation?",
+        "What tools can assist in detecting problems with backpropagation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "neural network basics",
+        "activation functions"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "DL-023",
+      "subject": "Deep Learning",
+      "category": "Applications",
+      "subcategory": "Industry Examples",
+      "difficulty": "Hard",
+      "question": "What is CNN architecture evolution in Deep Learning and how does it work?",
+      "ideal_answer": "CNN architecture evolution in Deep Learning refers to convolutional network development. It works by from LeNet to ResNet to EfficientNet. Key characteristics include AlexNet, VGG, Inception, ResNet, DenseNet. Example: skip connections, bottleneck layers. Common pitfalls include NAS, AutoML for architecture.",
+      "keywords": [
+        "CNN architecture evolution",
+        "Deep Learning programming",
+        "applications"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of CNN architecture evolution in a production environment?",
+        "What are the common pitfalls or issues associated with CNN architecture evolution?"
+      ],
+      "related_concepts": [
+        "transfer learning"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

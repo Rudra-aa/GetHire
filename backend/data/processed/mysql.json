@@ -1,0 +1,854 @@
+{
+  "metadata": {
+    "subject": "MySQL",
+    "domain": "Databases",
+    "total_questions": 33,
+    "difficulty_distribution": {
+      "Easy": 9,
+      "Medium": 17,
+      "Hard": 7
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "MYSQL-001",
+      "subject": "MySQL",
+      "category": "Performance",
+      "subcategory": "Connection Pooling",
+      "difficulty": "Easy",
+      "question": "Explain the difference between EXPLAIN output and connection pooling in MySQL.",
+      "ideal_answer": "EXPLAIN output and connection pooling differ in several ways: EXPLAIN output is query plan analysis (works by understanding MySQL optimizer decisions) whereas connection pooling is connection reuse (works by reducing connection overhead). EXPLAIN output is typically used for type, possible_keys, key, rows, Extra columns, while connection pooling is used for max_connections, thread_cache_size, connection pool (app side). Example demonstrating EXPLAIN output: EXPLAIN FORMAT=JSON SELECT ...;. Example demonstrating connection pooling: HikariCP, c3p0, Druid.",
+      "keywords": [
+        "EXPLAIN output",
+        "connection pooling",
+        "comparison",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose EXPLAIN output over connection pooling?",
+        "What is the performance or memory difference between EXPLAIN output and connection pooling?"
+      ],
+      "related_concepts": [
+        "EXPLAIN output",
+        "connection pooling",
+        "slow query log"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MYSQL-002",
+      "subject": "MySQL",
+      "category": "Storage Engines",
+      "subcategory": "InnoDB",
+      "difficulty": "Easy",
+      "question": "What is InnoDB vs MyISAM in MySQL and how does it work?",
+      "ideal_answer": "InnoDB vs MyISAM in MySQL refers to storage engine comparison. It works by transactional vs non-transactional. Key characteristics include InnoDB: ACID, row locks, crash safe; MyISAM: table locks, full-text, smaller footprint. Example: CREATE TABLE t (id INT) ENGINE=InnoDB;. Common pitfalls include MyISAM deprecation.",
+      "keywords": [
+        "InnoDB vs MyISAM",
+        "MySQL programming",
+        "storage engines"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of InnoDB vs MyISAM in a production environment?",
+        "What are the common pitfalls or issues associated with InnoDB vs MyISAM?"
+      ],
+      "related_concepts": [
+        "buffer pool"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MYSQL-003",
+      "subject": "MySQL",
+      "category": "Replication",
+      "subcategory": "Binary Log",
+      "difficulty": "Easy",
+      "question": "What are the common issues with binary log in MySQL and how do you debug them?",
+      "ideal_answer": "Common issues with binary log in MySQL include: binlog retention, purge. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "binary log",
+        "troubleshooting",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to binary log?",
+        "What tools can assist in detecting problems with binary log at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "replication topologies",
+        "GTID"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MYSQL-004",
+      "subject": "MySQL",
+      "category": "Replication",
+      "subcategory": "Binary Log",
+      "difficulty": "Easy",
+      "question": "Explain the difference between binary log and replication topologies in MySQL.",
+      "ideal_answer": "binary log and replication topologies differ in several ways: binary log is replication event log (works by change recording for replication) whereas replication topologies is data distribution patterns (works by read scaling and HA). binary log is typically used for statement-based, row-based, mixed format, while replication topologies is used for master-slave, master-master, chain, ring. Example demonstrating binary log: SHOW MASTER STATUS; SHOW BINLOG EVENTS;. Example demonstrating replication topologies: CHANGE MASTER TO MASTER_HOST='...', MASTER_LOG_FILE='...';.",
+      "keywords": [
+        "binary log",
+        "replication topologies",
+        "comparison",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose binary log over replication topologies?",
+        "What is the performance or memory difference between binary log and replication topologies?"
+      ],
+      "related_concepts": [
+        "binary log",
+        "replication topologies",
+        "GTID"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MYSQL-005",
+      "subject": "MySQL",
+      "category": "Performance",
+      "subcategory": "Query Optimization",
+      "difficulty": "Easy",
+      "question": "Explain the difference between slow query log and connection pooling in MySQL.",
+      "ideal_answer": "slow query log and connection pooling differ in several ways: slow query log is performance monitoring (works by identifying slow queries) whereas connection pooling is connection reuse (works by reducing connection overhead). slow query log is typically used for long_query_time, log_queries_not_using_indexes, while connection pooling is used for max_connections, thread_cache_size, connection pool (app side). Example demonstrating slow query log: SET GLOBAL slow_query_log = 'ON';. Example demonstrating connection pooling: HikariCP, c3p0, Druid.",
+      "keywords": [
+        "slow query log",
+        "connection pooling",
+        "comparison",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose slow query log over connection pooling?",
+        "What is the performance or memory difference between slow query log and connection pooling?"
+      ],
+      "related_concepts": [
+        "slow query log",
+        "connection pooling",
+        "EXPLAIN output"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MYSQL-006",
+      "subject": "MySQL",
+      "category": "Replication",
+      "subcategory": "Master-Slave",
+      "difficulty": "Easy",
+      "question": "What is replication topologies in MySQL and how does it work?",
+      "ideal_answer": "replication topologies in MySQL refers to data distribution patterns. It works by read scaling and HA. Key characteristics include master-slave, master-master, chain, ring. Example: CHANGE MASTER TO MASTER_HOST='...', MASTER_LOG_FILE='...';. Common pitfalls include split-brain in master-master.",
+      "keywords": [
+        "replication topologies",
+        "MySQL programming",
+        "replication"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of replication topologies in a production environment?",
+        "What are the common pitfalls or issues associated with replication topologies?"
+      ],
+      "related_concepts": [
+        "binary log",
+        "GTID"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MYSQL-007",
+      "subject": "MySQL",
+      "category": "Performance",
+      "subcategory": "Query Optimization",
+      "difficulty": "Easy",
+      "question": "What are the common issues with slow query log in MySQL and how do you debug them?",
+      "ideal_answer": "Common issues with slow query log in MySQL include: pt-query-digest analysis. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "slow query log",
+        "troubleshooting",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to slow query log?",
+        "What tools can assist in detecting problems with slow query log at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "EXPLAIN output",
+        "connection pooling"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MYSQL-008",
+      "subject": "MySQL",
+      "category": "Replication",
+      "subcategory": "Master-Master",
+      "difficulty": "Easy",
+      "question": "What are the common issues with GTID in MySQL and how do you debug them?",
+      "ideal_answer": "Common issues with GTID in MySQL include: GTID gaps, auto-positioning. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "GTID",
+        "troubleshooting",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to GTID?",
+        "What tools can assist in detecting problems with GTID at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "binary log",
+        "replication topologies"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MYSQL-009",
+      "subject": "MySQL",
+      "category": "Replication",
+      "subcategory": "Binary Log",
+      "difficulty": "Easy",
+      "question": "What is binary log in MySQL and how does it work?",
+      "ideal_answer": "binary log in MySQL refers to replication event log. It works by change recording for replication. Key characteristics include statement-based, row-based, mixed format. Example: SHOW MASTER STATUS; SHOW BINLOG EVENTS;. Common pitfalls include binlog retention, purge.",
+      "keywords": [
+        "binary log",
+        "MySQL programming",
+        "replication"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of binary log in a production environment?",
+        "What are the common pitfalls or issues associated with binary log?"
+      ],
+      "related_concepts": [
+        "replication topologies",
+        "GTID"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MYSQL-010",
+      "subject": "MySQL",
+      "category": "Replication",
+      "subcategory": "Master-Master",
+      "difficulty": "Medium",
+      "question": "What is GTID in MySQL and how does it work?",
+      "ideal_answer": "GTID in MySQL refers to Global Transaction Identifier. It works by simplified replication management. Key characteristics include unique transaction identifier across cluster. Example: gtid_mode=ON, enforce_gtid_consistency=ON. Common pitfalls include GTID gaps, auto-positioning.",
+      "keywords": [
+        "GTID",
+        "MySQL programming",
+        "replication"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of GTID in a production environment?",
+        "What are the common pitfalls or issues associated with GTID?"
+      ],
+      "related_concepts": [
+        "binary log",
+        "replication topologies"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MYSQL-011",
+      "subject": "MySQL",
+      "category": "Performance",
+      "subcategory": "Query Optimization",
+      "difficulty": "Medium",
+      "question": "What is slow query log in MySQL and how does it work?",
+      "ideal_answer": "slow query log in MySQL refers to performance monitoring. It works by identifying slow queries. Key characteristics include long_query_time, log_queries_not_using_indexes. Example: SET GLOBAL slow_query_log = 'ON';. Common pitfalls include pt-query-digest analysis.",
+      "keywords": [
+        "slow query log",
+        "MySQL programming",
+        "performance"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of slow query log in a production environment?",
+        "What are the common pitfalls or issues associated with slow query log?"
+      ],
+      "related_concepts": [
+        "EXPLAIN output",
+        "connection pooling"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MYSQL-012",
+      "subject": "MySQL",
+      "category": "Performance",
+      "subcategory": "Connection Pooling",
+      "difficulty": "Medium",
+      "question": "What are the common issues with EXPLAIN output in MySQL and how do you debug them?",
+      "ideal_answer": "Common issues with EXPLAIN output in MySQL include: using index, using where, using temporary. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "EXPLAIN output",
+        "troubleshooting",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to EXPLAIN output?",
+        "What tools can assist in detecting problems with EXPLAIN output at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "slow query log",
+        "connection pooling"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MYSQL-013",
+      "subject": "MySQL",
+      "category": "Storage Engines",
+      "subcategory": "InnoDB",
+      "difficulty": "Medium",
+      "question": "Explain the difference between InnoDB vs MyISAM and buffer pool in MySQL.",
+      "ideal_answer": "InnoDB vs MyISAM and buffer pool differ in several ways: InnoDB vs MyISAM is storage engine comparison (works by transactional vs non-transactional) whereas buffer pool is InnoDB memory cache (works by data and index caching). InnoDB vs MyISAM is typically used for InnoDB: ACID, row locks, crash safe; MyISAM: table locks, full-text, smaller footprint, while buffer pool is used for LRU algorithm, warm-up. Example demonstrating InnoDB vs MyISAM: CREATE TABLE t (id INT) ENGINE=InnoDB;. Example demonstrating buffer pool: SHOW VARIABLES LIKE 'innodb_buffer_pool_size';.",
+      "keywords": [
+        "InnoDB vs MyISAM",
+        "buffer pool",
+        "comparison",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose InnoDB vs MyISAM over buffer pool?",
+        "What is the performance or memory difference between InnoDB vs MyISAM and buffer pool?"
+      ],
+      "related_concepts": [
+        "InnoDB vs MyISAM",
+        "buffer pool"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MYSQL-014",
+      "subject": "MySQL",
+      "category": "Advanced Features",
+      "subcategory": "JSON",
+      "difficulty": "Medium",
+      "question": "What are the common issues with JSON data type in MySQL and how do you debug them?",
+      "ideal_answer": "Common issues with JSON data type in MySQL include: JSON vs normalized design. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "JSON data type",
+        "troubleshooting",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to JSON data type?",
+        "What tools can assist in detecting problems with JSON data type at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "window functions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MYSQL-015",
+      "subject": "MySQL",
+      "category": "Performance",
+      "subcategory": "Buffer Pool",
+      "difficulty": "Medium",
+      "question": "What are the common issues with connection pooling in MySQL and how do you debug them?",
+      "ideal_answer": "Common issues with connection pooling in MySQL include: too many connections error. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "connection pooling",
+        "troubleshooting",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to connection pooling?",
+        "What tools can assist in detecting problems with connection pooling at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "slow query log",
+        "EXPLAIN output"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MYSQL-016",
+      "subject": "MySQL",
+      "category": "Storage Engines",
+      "subcategory": "InnoDB",
+      "difficulty": "Medium",
+      "question": "What are the common issues with InnoDB vs MyISAM in MySQL and how do you debug them?",
+      "ideal_answer": "Common issues with InnoDB vs MyISAM in MySQL include: MyISAM deprecation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "InnoDB vs MyISAM",
+        "troubleshooting",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to InnoDB vs MyISAM?",
+        "What tools can assist in detecting problems with InnoDB vs MyISAM at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "buffer pool"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MYSQL-017",
+      "subject": "MySQL",
+      "category": "Performance",
+      "subcategory": "Query Optimization",
+      "difficulty": "Medium",
+      "question": "Explain the difference between slow query log and EXPLAIN output in MySQL.",
+      "ideal_answer": "slow query log and EXPLAIN output differ in several ways: slow query log is performance monitoring (works by identifying slow queries) whereas EXPLAIN output is query plan analysis (works by understanding MySQL optimizer decisions). slow query log is typically used for long_query_time, log_queries_not_using_indexes, while EXPLAIN output is used for type, possible_keys, key, rows, Extra columns. Example demonstrating slow query log: SET GLOBAL slow_query_log = 'ON';. Example demonstrating EXPLAIN output: EXPLAIN FORMAT=JSON SELECT ...;.",
+      "keywords": [
+        "slow query log",
+        "EXPLAIN output",
+        "comparison",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose slow query log over EXPLAIN output?",
+        "What is the performance or memory difference between slow query log and EXPLAIN output?"
+      ],
+      "related_concepts": [
+        "slow query log",
+        "EXPLAIN output",
+        "connection pooling"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MYSQL-018",
+      "subject": "MySQL",
+      "category": "Architecture",
+      "subcategory": "Server Layers",
+      "difficulty": "Medium",
+      "question": "What is InnoDB architecture in MySQL and how does it work?",
+      "ideal_answer": "InnoDB architecture in MySQL refers to default storage engine. It works by ACID compliance, row-level locking. Key characteristics include buffer pool, change buffer, adaptive hash index, redo log. Example: SHOW ENGINE INNODB STATUS;. Common pitfalls include innodb_buffer_pool_size tuning.",
+      "keywords": [
+        "InnoDB architecture",
+        "MySQL programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of InnoDB architecture in a production environment?",
+        "What are the common pitfalls or issues associated with InnoDB architecture?"
+      ],
+      "related_concepts": [
+        "query execution flow"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MYSQL-019",
+      "subject": "MySQL",
+      "category": "Advanced Features",
+      "subcategory": "Window Functions",
+      "difficulty": "Medium",
+      "question": "What are the common issues with window functions in MySQL and how do you debug them?",
+      "ideal_answer": "Common issues with window functions in MySQL include: frame specification. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "window functions",
+        "troubleshooting",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to window functions?",
+        "What tools can assist in detecting problems with window functions at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "JSON data type"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MYSQL-020",
+      "subject": "MySQL",
+      "category": "Replication",
+      "subcategory": "Master-Slave",
+      "difficulty": "Medium",
+      "question": "What are the common issues with replication topologies in MySQL and how do you debug them?",
+      "ideal_answer": "Common issues with replication topologies in MySQL include: split-brain in master-master. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "replication topologies",
+        "troubleshooting",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to replication topologies?",
+        "What tools can assist in detecting problems with replication topologies at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "binary log",
+        "GTID"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MYSQL-021",
+      "subject": "MySQL",
+      "category": "Replication",
+      "subcategory": "Master-Slave",
+      "difficulty": "Medium",
+      "question": "Explain the difference between replication topologies and GTID in MySQL.",
+      "ideal_answer": "replication topologies and GTID differ in several ways: replication topologies is data distribution patterns (works by read scaling and HA) whereas GTID is Global Transaction Identifier (works by simplified replication management). replication topologies is typically used for master-slave, master-master, chain, ring, while GTID is used for unique transaction identifier across cluster. Example demonstrating replication topologies: CHANGE MASTER TO MASTER_HOST='...', MASTER_LOG_FILE='...';. Example demonstrating GTID: gtid_mode=ON, enforce_gtid_consistency=ON.",
+      "keywords": [
+        "replication topologies",
+        "GTID",
+        "comparison",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose replication topologies over GTID?",
+        "What is the performance or memory difference between replication topologies and GTID?"
+      ],
+      "related_concepts": [
+        "replication topologies",
+        "GTID",
+        "binary log"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MYSQL-022",
+      "subject": "MySQL",
+      "category": "Architecture",
+      "subcategory": "Connection Handling",
+      "difficulty": "Medium",
+      "question": "What is query execution flow in MySQL and how does it work?",
+      "ideal_answer": "query execution flow in MySQL refers to MySQL request processing. It works by parsing, optimization, execution. Key characteristics include parser, preprocessor, optimizer, execution engine. Example: query -> parse tree -> execution plan -> result. Common pitfalls include query rewrite plugin.",
+      "keywords": [
+        "query execution flow",
+        "MySQL programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of query execution flow in a production environment?",
+        "What are the common pitfalls or issues associated with query execution flow?"
+      ],
+      "related_concepts": [
+        "InnoDB architecture"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MYSQL-023",
+      "subject": "MySQL",
+      "category": "Replication",
+      "subcategory": "Binary Log",
+      "difficulty": "Medium",
+      "question": "Explain the difference between binary log and GTID in MySQL.",
+      "ideal_answer": "binary log and GTID differ in several ways: binary log is replication event log (works by change recording for replication) whereas GTID is Global Transaction Identifier (works by simplified replication management). binary log is typically used for statement-based, row-based, mixed format, while GTID is used for unique transaction identifier across cluster. Example demonstrating binary log: SHOW MASTER STATUS; SHOW BINLOG EVENTS;. Example demonstrating GTID: gtid_mode=ON, enforce_gtid_consistency=ON.",
+      "keywords": [
+        "binary log",
+        "GTID",
+        "comparison",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose binary log over GTID?",
+        "What is the performance or memory difference between binary log and GTID?"
+      ],
+      "related_concepts": [
+        "binary log",
+        "GTID",
+        "replication topologies"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MYSQL-024",
+      "subject": "MySQL",
+      "category": "Performance",
+      "subcategory": "Connection Pooling",
+      "difficulty": "Medium",
+      "question": "What is EXPLAIN output in MySQL and how does it work?",
+      "ideal_answer": "EXPLAIN output in MySQL refers to query plan analysis. It works by understanding MySQL optimizer decisions. Key characteristics include type, possible_keys, key, rows, Extra columns. Example: EXPLAIN FORMAT=JSON SELECT ...;. Common pitfalls include using index, using where, using temporary.",
+      "keywords": [
+        "EXPLAIN output",
+        "MySQL programming",
+        "performance"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of EXPLAIN output in a production environment?",
+        "What are the common pitfalls or issues associated with EXPLAIN output?"
+      ],
+      "related_concepts": [
+        "slow query log",
+        "connection pooling"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MYSQL-025",
+      "subject": "MySQL",
+      "category": "Architecture",
+      "subcategory": "Connection Handling",
+      "difficulty": "Medium",
+      "question": "What are the common issues with query execution flow in MySQL and how do you debug them?",
+      "ideal_answer": "Common issues with query execution flow in MySQL include: query rewrite plugin. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "query execution flow",
+        "troubleshooting",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to query execution flow?",
+        "What tools can assist in detecting problems with query execution flow at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "InnoDB architecture"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MYSQL-026",
+      "subject": "MySQL",
+      "category": "Advanced Features",
+      "subcategory": "Window Functions",
+      "difficulty": "Medium",
+      "question": "What is window functions in MySQL and how does it work?",
+      "ideal_answer": "window functions in MySQL refers to analytical query support. It works by MySQL 8.0 feature. Key characteristics include ROW_NUMBER, RANK, LAG, LEAD, NTILE. Example: SELECT name, salary, RANK() OVER (PARTITION BY dept ORDER BY salary DESC) FROM employees;. Common pitfalls include frame specification.",
+      "keywords": [
+        "window functions",
+        "MySQL programming",
+        "advanced features"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of window functions in a production environment?",
+        "What are the common pitfalls or issues associated with window functions?"
+      ],
+      "related_concepts": [
+        "JSON data type"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MYSQL-027",
+      "subject": "MySQL",
+      "category": "Architecture",
+      "subcategory": "Server Layers",
+      "difficulty": "Hard",
+      "question": "Explain the difference between InnoDB architecture and query execution flow in MySQL.",
+      "ideal_answer": "InnoDB architecture and query execution flow differ in several ways: InnoDB architecture is default storage engine (works by ACID compliance, row-level locking) whereas query execution flow is MySQL request processing (works by parsing, optimization, execution). InnoDB architecture is typically used for buffer pool, change buffer, adaptive hash index, redo log, while query execution flow is used for parser, preprocessor, optimizer, execution engine. Example demonstrating InnoDB architecture: SHOW ENGINE INNODB STATUS;. Example demonstrating query execution flow: query -> parse tree -> execution plan -> result.",
+      "keywords": [
+        "InnoDB architecture",
+        "query execution flow",
+        "comparison",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose InnoDB architecture over query execution flow?",
+        "What is the performance or memory difference between InnoDB architecture and query execution flow?"
+      ],
+      "related_concepts": [
+        "InnoDB architecture",
+        "query execution flow"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "MYSQL-028",
+      "subject": "MySQL",
+      "category": "Advanced Features",
+      "subcategory": "JSON",
+      "difficulty": "Hard",
+      "question": "What is JSON data type in MySQL and how does it work?",
+      "ideal_answer": "JSON data type in MySQL refers to native JSON storage. It works by structured document support. Key characteristics include JSON functions, generated columns, indexing. Example: SELECT * FROM users WHERE JSON_EXTRACT(preferences, '$.theme') = 'dark';. Common pitfalls include JSON vs normalized design.",
+      "keywords": [
+        "JSON data type",
+        "MySQL programming",
+        "advanced features"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of JSON data type in a production environment?",
+        "What are the common pitfalls or issues associated with JSON data type?"
+      ],
+      "related_concepts": [
+        "window functions"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "MYSQL-029",
+      "subject": "MySQL",
+      "category": "Advanced Features",
+      "subcategory": "JSON",
+      "difficulty": "Hard",
+      "question": "Explain the difference between JSON data type and window functions in MySQL.",
+      "ideal_answer": "JSON data type and window functions differ in several ways: JSON data type is native JSON storage (works by structured document support) whereas window functions is analytical query support (works by MySQL 8.0 feature). JSON data type is typically used for JSON functions, generated columns, indexing, while window functions is used for ROW_NUMBER, RANK, LAG, LEAD, NTILE. Example demonstrating JSON data type: SELECT * FROM users WHERE JSON_EXTRACT(preferences, '$.theme') = 'dark';. Example demonstrating window functions: SELECT name, salary, RANK() OVER (PARTITION BY dept ORDER BY salary DESC) FROM employees;.",
+      "keywords": [
+        "JSON data type",
+        "window functions",
+        "comparison",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose JSON data type over window functions?",
+        "What is the performance or memory difference between JSON data type and window functions?"
+      ],
+      "related_concepts": [
+        "JSON data type",
+        "window functions"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "MYSQL-030",
+      "subject": "MySQL",
+      "category": "Storage Engines",
+      "subcategory": "MyISAM",
+      "difficulty": "Hard",
+      "question": "What are the common issues with buffer pool in MySQL and how do you debug them?",
+      "ideal_answer": "Common issues with buffer pool in MySQL include: multiple buffer pool instances. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "buffer pool",
+        "troubleshooting",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to buffer pool?",
+        "What tools can assist in detecting problems with buffer pool at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "InnoDB vs MyISAM"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "MYSQL-031",
+      "subject": "MySQL",
+      "category": "Performance",
+      "subcategory": "Buffer Pool",
+      "difficulty": "Hard",
+      "question": "What is connection pooling in MySQL and how does it work?",
+      "ideal_answer": "connection pooling in MySQL refers to connection reuse. It works by reducing connection overhead. Key characteristics include max_connections, thread_cache_size, connection pool (app side). Example: HikariCP, c3p0, Druid. Common pitfalls include too many connections error.",
+      "keywords": [
+        "connection pooling",
+        "MySQL programming",
+        "performance"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of connection pooling in a production environment?",
+        "What are the common pitfalls or issues associated with connection pooling?"
+      ],
+      "related_concepts": [
+        "slow query log",
+        "EXPLAIN output"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "MYSQL-032",
+      "subject": "MySQL",
+      "category": "Architecture",
+      "subcategory": "Server Layers",
+      "difficulty": "Hard",
+      "question": "What are the common issues with InnoDB architecture in MySQL and how do you debug them?",
+      "ideal_answer": "Common issues with InnoDB architecture in MySQL include: innodb_buffer_pool_size tuning. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "InnoDB architecture",
+        "troubleshooting",
+        "MySQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to InnoDB architecture?",
+        "What tools can assist in detecting problems with InnoDB architecture at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "query execution flow"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "MYSQL-033",
+      "subject": "MySQL",
+      "category": "Storage Engines",
+      "subcategory": "MyISAM",
+      "difficulty": "Hard",
+      "question": "What is buffer pool in MySQL and how does it work?",
+      "ideal_answer": "buffer pool in MySQL refers to InnoDB memory cache. It works by data and index caching. Key characteristics include LRU algorithm, warm-up. Example: SHOW VARIABLES LIKE 'innodb_buffer_pool_size';. Common pitfalls include multiple buffer pool instances.",
+      "keywords": [
+        "buffer pool",
+        "MySQL programming",
+        "storage engines"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of buffer pool in a production environment?",
+        "What are the common pitfalls or issues associated with buffer pool?"
+      ],
+      "related_concepts": [
+        "InnoDB vs MyISAM"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

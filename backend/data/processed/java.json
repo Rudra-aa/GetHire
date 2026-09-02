@@ -1,0 +1,3216 @@
+{
+  "metadata": {
+    "subject": "Java",
+    "domain": "Software Engineering",
+    "total_questions": 120,
+    "difficulty_distribution": {
+      "Easy": 36,
+      "Medium": 60,
+      "Hard": 24
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:47Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "JAVA-001",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Strings",
+      "difficulty": "Easy",
+      "question": "Explain the difference between hashCode() contract and generics in Java.",
+      "ideal_answer": "hashCode() contract and generics differ in several ways: hashCode() contract is object hash code generation (works by hash-based collection support) whereas generics is parameterized types (works by type safety at compile time). hashCode() contract is typically used for consistent with equals, same object same hash, while generics is used for type erasure, wildcards, bounds. Example demonstrating hashCode() contract: @Override public int hashCode(). Example demonstrating generics: List<? extends Number> list.",
+      "keywords": [
+        "hashCode() contract",
+        "generics",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose hashCode() contract over generics?",
+        "What is the performance or memory difference between hashCode() contract and generics?"
+      ],
+      "related_concepts": [
+        "hashCode() contract",
+        "generics",
+        "JVM architecture",
+        "String immutability"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-002",
+      "subject": "Java",
+      "category": "OOP",
+      "subcategory": "Abstraction",
+      "difficulty": "Easy",
+      "question": "Explain the difference between encapsulation and marker interfaces in Java.",
+      "ideal_answer": "encapsulation and marker interfaces differ in several ways: encapsulation is data hiding principle (works by controlling access) whereas marker interfaces is empty interface types (works by metadata signaling). encapsulation is typically used for private fields, public getters/setters, while marker interfaces is used for Serializable, Cloneable, RandomAccess. Example demonstrating encapsulation: private int age; public int getAge() { return age; }. Example demonstrating marker interfaces: public class MyClass implements Serializable {}.",
+      "keywords": [
+        "encapsulation",
+        "marker interfaces",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose encapsulation over marker interfaces?",
+        "What is the performance or memory difference between encapsulation and marker interfaces?"
+      ],
+      "related_concepts": [
+        "encapsulation",
+        "marker interfaces",
+        "abstract class vs interface",
+        "method overloading vs overriding"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-003",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "Threads",
+      "difficulty": "Easy",
+      "question": "Explain the difference between synchronized keyword and CompletableFuture in Java.",
+      "ideal_answer": "synchronized keyword and CompletableFuture differ in several ways: synchronized keyword is intrinsic locking (works by mutual exclusion) whereas CompletableFuture is composable async programming (works by future composition and chaining). synchronized keyword is typically used for monitor lock on object/class, while CompletableFuture is used for thenApply, thenCompose, thenCombine, exceptionally. Example demonstrating synchronized keyword: synchronized(obj) { /* critical section */ }. Example demonstrating CompletableFuture: CompletableFuture.supplyAsync(() -> fetchData()).thenApply(this::process);.",
+      "keywords": [
+        "synchronized keyword",
+        "CompletableFuture",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose synchronized keyword over CompletableFuture?",
+        "What is the performance or memory difference between synchronized keyword and CompletableFuture?"
+      ],
+      "related_concepts": [
+        "synchronized keyword",
+        "CompletableFuture",
+        "ReentrantLock",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-004",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "Set",
+      "difficulty": "Easy",
+      "question": "Explain the difference between HashMap internals and Stream API in Java.",
+      "ideal_answer": "HashMap internals and Stream API differ in several ways: HashMap internals is hash table implementation (works by key-value storage) whereas Stream API is functional data processing (works by declarative operations on collections). HashMap internals is typically used for array of buckets, hash collision handling, while Stream API is used for filter, map, reduce, collect, lazy evaluation. Example demonstrating HashMap internals: Map<String, Integer> map = new HashMap<>();. Example demonstrating Stream API: list.stream().filter(x -> x > 5).map(Math::sqrt).collect(Collectors.toList());.",
+      "keywords": [
+        "HashMap internals",
+        "Stream API",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose HashMap internals over Stream API?",
+        "What is the performance or memory difference between HashMap internals and Stream API?"
+      ],
+      "related_concepts": [
+        "HashMap internals",
+        "Stream API",
+        "ArrayList vs LinkedList",
+        "ConcurrentHashMap"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-005",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "Set",
+      "difficulty": "Easy",
+      "question": "Explain the difference between HashMap internals and HashSet vs TreeSet in Java.",
+      "ideal_answer": "HashMap internals and HashSet vs TreeSet differ in several ways: HashMap internals is hash table implementation (works by key-value storage) whereas HashSet vs TreeSet is Set implementations (works by unique element collections). HashMap internals is typically used for array of buckets, hash collision handling, while HashSet vs TreeSet is used for HashSet: O(1), unordered; TreeSet: O(log n), sorted. Example demonstrating HashMap internals: Map<String, Integer> map = new HashMap<>();. Example demonstrating HashSet vs TreeSet: Set<Integer> set = new TreeSet<>();.",
+      "keywords": [
+        "HashMap internals",
+        "HashSet vs TreeSet",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose HashMap internals over HashSet vs TreeSet?",
+        "What is the performance or memory difference between HashMap internals and HashSet vs TreeSet?"
+      ],
+      "related_concepts": [
+        "HashMap internals",
+        "HashSet vs TreeSet",
+        "ArrayList vs LinkedList",
+        "ConcurrentHashMap"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-006",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "Executors",
+      "difficulty": "Easy",
+      "question": "What are the common issues with volatile keyword in Java and how do you debug them?",
+      "ideal_answer": "Common issues with volatile keyword in Java include: volatile ++ is not atomic. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "volatile keyword",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to volatile keyword?",
+        "What tools can assist in detecting problems with volatile keyword at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "synchronized keyword",
+        "ReentrantLock",
+        "ThreadLocal"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-007",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Arrays",
+      "difficulty": "Easy",
+      "question": "What are the common issues with generics in Java and how do you debug them?",
+      "ideal_answer": "Common issues with generics in Java include: heap pollution, raw types. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "generics",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to generics?",
+        "What tools can assist in detecting problems with generics at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "JVM architecture",
+        "String immutability",
+        "equals() vs =="
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-008",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "Synchronization",
+      "difficulty": "Easy",
+      "question": "What is CyclicBarrier in Java and how does it work?",
+      "ideal_answer": "CyclicBarrier in Java refers to synchronization barrier. It works by waiting for parties at barrier. Key characteristics include reusable, action on tripping. Example: CyclicBarrier barrier = new CyclicBarrier(4);. Common pitfalls include broken barrier exception.",
+      "keywords": [
+        "CyclicBarrier",
+        "Java programming",
+        "concurrency"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of CyclicBarrier in a production environment?",
+        "What are the common pitfalls or issues associated with CyclicBarrier?"
+      ],
+      "related_concepts": [
+        "synchronized keyword",
+        "ReentrantLock",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-009",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "Executors",
+      "difficulty": "Easy",
+      "question": "Explain the difference between volatile keyword and CompletableFuture in Java.",
+      "ideal_answer": "volatile keyword and CompletableFuture differ in several ways: volatile keyword is visibility guarantee (works by preventing caching in thread-local memory) whereas CompletableFuture is composable async programming (works by future composition and chaining). volatile keyword is typically used for no atomicity for compound operations, while CompletableFuture is used for thenApply, thenCompose, thenCombine, exceptionally. Example demonstrating volatile keyword: private volatile boolean running = true;. Example demonstrating CompletableFuture: CompletableFuture.supplyAsync(() -> fetchData()).thenApply(this::process);.",
+      "keywords": [
+        "volatile keyword",
+        "CompletableFuture",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose volatile keyword over CompletableFuture?",
+        "What is the performance or memory difference between volatile keyword and CompletableFuture?"
+      ],
+      "related_concepts": [
+        "volatile keyword",
+        "CompletableFuture",
+        "synchronized keyword",
+        "ReentrantLock"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-010",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "List",
+      "difficulty": "Easy",
+      "question": "What are the common issues with Optional in Java and how do you debug them?",
+      "ideal_answer": "Common issues with Optional in Java include: overuse creating wrapper overhead. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Optional",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Optional?",
+        "What tools can assist in detecting problems with Optional at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ArrayList vs LinkedList",
+        "HashMap internals",
+        "ConcurrentHashMap"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-011",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Operators",
+      "difficulty": "Easy",
+      "question": "What are the common issues with String immutability in Java and how do you debug them?",
+      "ideal_answer": "Common issues with String immutability in Java include: concatenation performance. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "String immutability",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to String immutability?",
+        "What tools can assist in detecting problems with String immutability at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "JVM architecture",
+        "equals() vs ==",
+        "hashCode() contract"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-012",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Arrays",
+      "difficulty": "Easy",
+      "question": "Explain the difference between generics and autoboxing/unboxing in Java.",
+      "ideal_answer": "generics and autoboxing/unboxing differ in several ways: generics is parameterized types (works by type safety at compile time) whereas autoboxing/unboxing is primitive-wrapper conversion (works by automatic conversion). generics is typically used for type erasure, wildcards, bounds, while autoboxing/unboxing is used for performance overhead, NPE risk. Example demonstrating generics: List<? extends Number> list. Example demonstrating autoboxing/unboxing: Integer i = 5; // autoboxed.",
+      "keywords": [
+        "generics",
+        "autoboxing/unboxing",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose generics over autoboxing/unboxing?",
+        "What is the performance or memory difference between generics and autoboxing/unboxing?"
+      ],
+      "related_concepts": [
+        "generics",
+        "autoboxing/unboxing",
+        "JVM architecture",
+        "String immutability"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-013",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Operators",
+      "difficulty": "Easy",
+      "question": "What are the common issues with final keyword in Java and how do you debug them?",
+      "ideal_answer": "Common issues with final keyword in Java include: final reference vs immutable object. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "final keyword",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to final keyword?",
+        "What tools can assist in detecting problems with final keyword at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "JVM architecture",
+        "String immutability",
+        "equals() vs =="
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-014",
+      "subject": "Java",
+      "category": "OOP",
+      "subcategory": "Inheritance",
+      "difficulty": "Easy",
+      "question": "Explain the difference between method overloading vs overriding and marker interfaces in Java.",
+      "ideal_answer": "method overloading vs overriding and marker interfaces differ in several ways: method overloading vs overriding is polymorphism forms (works by multiple methods same name) whereas marker interfaces is empty interface types (works by metadata signaling). method overloading vs overriding is typically used for overloading: compile-time, same name different params; overriding: runtime, same signature in subclass, while marker interfaces is used for Serializable, Cloneable, RandomAccess. Example demonstrating method overloading vs overriding: @Override public void draw() {}. Example demonstrating marker interfaces: public class MyClass implements Serializable {}.",
+      "keywords": [
+        "method overloading vs overriding",
+        "marker interfaces",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose method overloading vs overriding over marker interfaces?",
+        "What is the performance or memory difference between method overloading vs overriding and marker interfaces?"
+      ],
+      "related_concepts": [
+        "method overloading vs overriding",
+        "marker interfaces",
+        "abstract class vs interface",
+        "super keyword"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-015",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "Locks",
+      "difficulty": "Easy",
+      "question": "Explain the difference between ExecutorService and Fork/Join framework in Java.",
+      "ideal_answer": "ExecutorService and Fork/Join framework differ in several ways: ExecutorService is thread pool abstraction (works by managed concurrent execution) whereas Fork/Join framework is divide-and-conquer parallelism (works by work-stealing algorithm). ExecutorService is typically used for cached, fixed, scheduled, single thread pools, while Fork/Join framework is used for RecursiveTask, RecursiveAction. Example demonstrating ExecutorService: Executors.newFixedThreadPool(4);. Example demonstrating Fork/Join framework: new ForkJoinPool().invoke(new MyTask());.",
+      "keywords": [
+        "ExecutorService",
+        "Fork/Join framework",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ExecutorService over Fork/Join framework?",
+        "What is the performance or memory difference between ExecutorService and Fork/Join framework?"
+      ],
+      "related_concepts": [
+        "ExecutorService",
+        "Fork/Join framework",
+        "synchronized keyword",
+        "ReentrantLock"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-016",
+      "subject": "Java",
+      "category": "OOP",
+      "subcategory": "Inheritance",
+      "difficulty": "Easy",
+      "question": "Explain the difference between method overloading vs overriding and super keyword in Java.",
+      "ideal_answer": "method overloading vs overriding and super keyword differ in several ways: method overloading vs overriding is polymorphism forms (works by multiple methods same name) whereas super keyword is parent class reference (works by accessing superclass members). method overloading vs overriding is typically used for overloading: compile-time, same name different params; overriding: runtime, same signature in subclass, while super keyword is used for constructor chaining, method access. Example demonstrating method overloading vs overriding: @Override public void draw() {}. Example demonstrating super keyword: super.draw(); super(10);.",
+      "keywords": [
+        "method overloading vs overriding",
+        "super keyword",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose method overloading vs overriding over super keyword?",
+        "What is the performance or memory difference between method overloading vs overriding and super keyword?"
+      ],
+      "related_concepts": [
+        "method overloading vs overriding",
+        "super keyword",
+        "abstract class vs interface",
+        "this keyword"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-017",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "List",
+      "difficulty": "Easy",
+      "question": "Explain the difference between ArrayList vs LinkedList and ConcurrentHashMap in Java.",
+      "ideal_answer": "ArrayList vs LinkedList and ConcurrentHashMap differ in several ways: ArrayList vs LinkedList is List implementations (works by sequential collection storage) whereas ConcurrentHashMap is thread-safe hash map (works by concurrent access without full locking). ArrayList vs LinkedList is typically used for ArrayList: O(1) random access, O(n) insert; LinkedList: O(n) access, O(1) insert, while ConcurrentHashMap is used for segment locking (Java 7) or CAS + synchronized (Java 8+). Example demonstrating ArrayList vs LinkedList: List<String> list = new ArrayList<>();. Example demonstrating ConcurrentHashMap: ConcurrentHashMap<String, Integer> map.",
+      "keywords": [
+        "ArrayList vs LinkedList",
+        "ConcurrentHashMap",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ArrayList vs LinkedList over ConcurrentHashMap?",
+        "What is the performance or memory difference between ArrayList vs LinkedList and ConcurrentHashMap?"
+      ],
+      "related_concepts": [
+        "ArrayList vs LinkedList",
+        "ConcurrentHashMap",
+        "HashMap internals",
+        "HashSet vs TreeSet"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-018",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Data Types",
+      "difficulty": "Easy",
+      "question": "Explain the difference between JVM architecture and equals() vs == in Java.",
+      "ideal_answer": "JVM architecture and equals() vs == differ in several ways: JVM architecture is Java Virtual Machine structure (works by platform independence) whereas equals() vs == is equality comparison methods (works by reference vs content comparison). JVM architecture is typically used for classloader, runtime data areas, execution engine, while equals() vs == is used for ==: reference equality, equals(): content. Example demonstrating JVM architecture: HotSpot JVM, OpenJ9. Example demonstrating equals() vs ==: str1.equals(str2).",
+      "keywords": [
+        "JVM architecture",
+        "equals() vs ==",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose JVM architecture over equals() vs ==?",
+        "What is the performance or memory difference between JVM architecture and equals() vs ==?"
+      ],
+      "related_concepts": [
+        "JVM architecture",
+        "equals() vs ==",
+        "String immutability",
+        "hashCode() contract"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-019",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "Set",
+      "difficulty": "Easy",
+      "question": "What are the common issues with HashMap internals in Java and how do you debug them?",
+      "ideal_answer": "Common issues with HashMap internals in Java include: resize threshold, load factor tuning. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "HashMap internals",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to HashMap internals?",
+        "What tools can assist in detecting problems with HashMap internals at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ArrayList vs LinkedList",
+        "ConcurrentHashMap",
+        "HashSet vs TreeSet"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-020",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "Map",
+      "difficulty": "Easy",
+      "question": "What are the common issues with ConcurrentHashMap in Java and how do you debug them?",
+      "ideal_answer": "Common issues with ConcurrentHashMap in Java include: size() weak consistency. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "ConcurrentHashMap",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to ConcurrentHashMap?",
+        "What tools can assist in detecting problems with ConcurrentHashMap at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ArrayList vs LinkedList",
+        "HashMap internals",
+        "HashSet vs TreeSet"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-021",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "Executors",
+      "difficulty": "Easy",
+      "question": "Explain the difference between volatile keyword and Fork/Join framework in Java.",
+      "ideal_answer": "volatile keyword and Fork/Join framework differ in several ways: volatile keyword is visibility guarantee (works by preventing caching in thread-local memory) whereas Fork/Join framework is divide-and-conquer parallelism (works by work-stealing algorithm). volatile keyword is typically used for no atomicity for compound operations, while Fork/Join framework is used for RecursiveTask, RecursiveAction. Example demonstrating volatile keyword: private volatile boolean running = true;. Example demonstrating Fork/Join framework: new ForkJoinPool().invoke(new MyTask());.",
+      "keywords": [
+        "volatile keyword",
+        "Fork/Join framework",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose volatile keyword over Fork/Join framework?",
+        "What is the performance or memory difference between volatile keyword and Fork/Join framework?"
+      ],
+      "related_concepts": [
+        "volatile keyword",
+        "Fork/Join framework",
+        "synchronized keyword",
+        "ReentrantLock"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-022",
+      "subject": "Java",
+      "category": "Spring Ecosystem",
+      "subcategory": "Spring Core",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Dependency Injection and Spring Security in Java.",
+      "ideal_answer": "Dependency Injection and Spring Security differ in several ways: Dependency Injection is IoC pattern implementation (works by decoupling components) whereas Spring Security is security framework (works by authentication and authorization). Dependency Injection is typically used for constructor injection preferred, while Spring Security is used for filters, SecurityContext, JWT integration. Example demonstrating Dependency Injection: @Autowired private Service service;. Example demonstrating Spring Security: @EnableWebSecurity.",
+      "keywords": [
+        "Dependency Injection",
+        "Spring Security",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Dependency Injection over Spring Security?",
+        "What is the performance or memory difference between Dependency Injection and Spring Security?"
+      ],
+      "related_concepts": [
+        "Dependency Injection",
+        "Spring Security",
+        "Spring Bean scopes",
+        "Spring Boot auto-configuration"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-023",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Data Types",
+      "difficulty": "Easy",
+      "question": "Explain the difference between autoboxing/unboxing and var keyword in Java.",
+      "ideal_answer": "autoboxing/unboxing and var keyword differ in several ways: autoboxing/unboxing is primitive-wrapper conversion (works by automatic conversion) whereas var keyword is local variable type inference (works by reducing verbosity). autoboxing/unboxing is typically used for performance overhead, NPE risk, while var keyword is used for compiler infers type from initializer. Example demonstrating autoboxing/unboxing: Integer i = 5; // autoboxed. Example demonstrating var keyword: var list = new ArrayList<String>();.",
+      "keywords": [
+        "autoboxing/unboxing",
+        "var keyword",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose autoboxing/unboxing over var keyword?",
+        "What is the performance or memory difference between autoboxing/unboxing and var keyword?"
+      ],
+      "related_concepts": [
+        "autoboxing/unboxing",
+        "var keyword",
+        "JVM architecture",
+        "String immutability"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-024",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Operators",
+      "difficulty": "Easy",
+      "question": "Explain the difference between String immutability and equals() vs == in Java.",
+      "ideal_answer": "String immutability and equals() vs == differ in several ways: String immutability is unchangeable string objects (works by security, caching, thread-safety) whereas equals() vs == is equality comparison methods (works by reference vs content comparison). String immutability is typically used for String Pool, interning, while equals() vs == is used for ==: reference equality, equals(): content. Example demonstrating String immutability: String s = \"hello\"; // in pool. Example demonstrating equals() vs ==: str1.equals(str2).",
+      "keywords": [
+        "String immutability",
+        "equals() vs ==",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose String immutability over equals() vs ==?",
+        "What is the performance or memory difference between String immutability and equals() vs ==?"
+      ],
+      "related_concepts": [
+        "String immutability",
+        "equals() vs ==",
+        "JVM architecture",
+        "hashCode() contract"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-025",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "Map",
+      "difficulty": "Easy",
+      "question": "Explain the difference between ConcurrentHashMap and PriorityQueue in Java.",
+      "ideal_answer": "ConcurrentHashMap and PriorityQueue differ in several ways: ConcurrentHashMap is thread-safe hash map (works by concurrent access without full locking) whereas PriorityQueue is heap-based queue (works by priority ordering). ConcurrentHashMap is typically used for segment locking (Java 7) or CAS + synchronized (Java 8+), while PriorityQueue is used for min-heap by default, custom Comparator. Example demonstrating ConcurrentHashMap: ConcurrentHashMap<String, Integer> map. Example demonstrating PriorityQueue: PriorityQueue<Task> pq = new PriorityQueue<>(Comparator.comparingInt(t -> t.priority));.",
+      "keywords": [
+        "ConcurrentHashMap",
+        "PriorityQueue",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ConcurrentHashMap over PriorityQueue?",
+        "What is the performance or memory difference between ConcurrentHashMap and PriorityQueue?"
+      ],
+      "related_concepts": [
+        "ConcurrentHashMap",
+        "PriorityQueue",
+        "ArrayList vs LinkedList",
+        "HashMap internals"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-026",
+      "subject": "Java",
+      "category": "Functional Programming",
+      "subcategory": "Optional",
+      "difficulty": "Easy",
+      "question": "What is Stream intermediate vs terminal operations in Java and how does it work?",
+      "ideal_answer": "Stream intermediate vs terminal operations in Java refers to stream operation types. It works by lazy vs eager evaluation. Key characteristics include intermediate: lazy, return Stream; terminal: eager, trigger execution. Example: stream.filter().map().collect(). Common pitfalls include short-circuiting operations.",
+      "keywords": [
+        "Stream intermediate vs terminal operations",
+        "Java programming",
+        "functional programming"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Stream intermediate vs terminal operations in a production environment?",
+        "What are the common pitfalls or issues associated with Stream intermediate vs terminal operations?"
+      ],
+      "related_concepts": [
+        "lambda expressions",
+        "method references",
+        "functional interfaces"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-027",
+      "subject": "Java",
+      "category": "OOP",
+      "subcategory": "Encapsulation",
+      "difficulty": "Easy",
+      "question": "What are the common issues with this keyword in Java and how do you debug them?",
+      "ideal_answer": "Common issues with this keyword in Java include: this() must be first statement. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "this keyword",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to this keyword?",
+        "What tools can assist in detecting problems with this keyword at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "abstract class vs interface",
+        "method overloading vs overriding",
+        "super keyword"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-028",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Strings",
+      "difficulty": "Easy",
+      "question": "Explain the difference between hashCode() contract and type erasure in Java.",
+      "ideal_answer": "hashCode() contract and type erasure differ in several ways: hashCode() contract is object hash code generation (works by hash-based collection support) whereas type erasure is compile-time type removal (works by backward compatibility). hashCode() contract is typically used for consistent with equals, same object same hash, while type erasure is used for replaced with Object or first bound. Example demonstrating hashCode() contract: @Override public int hashCode(). Example demonstrating type erasure: List<String> becomes List at runtime.",
+      "keywords": [
+        "hashCode() contract",
+        "type erasure",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose hashCode() contract over type erasure?",
+        "What is the performance or memory difference between hashCode() contract and type erasure?"
+      ],
+      "related_concepts": [
+        "hashCode() contract",
+        "type erasure",
+        "JVM architecture",
+        "String immutability"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-029",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "Threads",
+      "difficulty": "Easy",
+      "question": "What is CountDownLatch in Java and how does it work?",
+      "ideal_answer": "CountDownLatch in Java refers to synchronization aid. It works by waiting for multiple events. Key characteristics include count down to zero, then release. Example: CountDownLatch latch = new CountDownLatch(3);. Common pitfalls include cannot reset, one-time use.",
+      "keywords": [
+        "CountDownLatch",
+        "Java programming",
+        "concurrency"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of CountDownLatch in a production environment?",
+        "What are the common pitfalls or issues associated with CountDownLatch?"
+      ],
+      "related_concepts": [
+        "synchronized keyword",
+        "ReentrantLock",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-030",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "Threads",
+      "difficulty": "Easy",
+      "question": "Explain the difference between CountDownLatch and CyclicBarrier in Java.",
+      "ideal_answer": "CountDownLatch and CyclicBarrier differ in several ways: CountDownLatch is synchronization aid (works by waiting for multiple events) whereas CyclicBarrier is synchronization barrier (works by waiting for parties at barrier). CountDownLatch is typically used for count down to zero, then release, while CyclicBarrier is used for reusable, action on tripping. Example demonstrating CountDownLatch: CountDownLatch latch = new CountDownLatch(3);. Example demonstrating CyclicBarrier: CyclicBarrier barrier = new CyclicBarrier(4);.",
+      "keywords": [
+        "CountDownLatch",
+        "CyclicBarrier",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CountDownLatch over CyclicBarrier?",
+        "What is the performance or memory difference between CountDownLatch and CyclicBarrier?"
+      ],
+      "related_concepts": [
+        "CountDownLatch",
+        "CyclicBarrier",
+        "synchronized keyword",
+        "ReentrantLock"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-031",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "Map",
+      "difficulty": "Easy",
+      "question": "What is ConcurrentHashMap in Java and how does it work?",
+      "ideal_answer": "ConcurrentHashMap in Java refers to thread-safe hash map. It works by concurrent access without full locking. Key characteristics include segment locking (Java 7) or CAS + synchronized (Java 8+). Example: ConcurrentHashMap<String, Integer> map. Common pitfalls include size() weak consistency.",
+      "keywords": [
+        "ConcurrentHashMap",
+        "Java programming",
+        "collections"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of ConcurrentHashMap in a production environment?",
+        "What are the common pitfalls or issues associated with ConcurrentHashMap?"
+      ],
+      "related_concepts": [
+        "ArrayList vs LinkedList",
+        "HashMap internals",
+        "HashSet vs TreeSet"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-032",
+      "subject": "Java",
+      "category": "OOP",
+      "subcategory": "Encapsulation",
+      "difficulty": "Easy",
+      "question": "Explain the difference between this keyword and composition vs inheritance in Java.",
+      "ideal_answer": "this keyword and composition vs inheritance differ in several ways: this keyword is current instance reference (works by self-referential access) whereas composition vs inheritance is code reuse strategies (works by has-a vs is-a relationship). this keyword is typically used for constructor chaining, disambiguation, while composition vs inheritance is used for composition: more flexible, less coupling; inheritance: tight coupling. Example demonstrating this keyword: this(name, age); this.name = name;. Example demonstrating composition vs inheritance: class Car { private Engine engine; }.",
+      "keywords": [
+        "this keyword",
+        "composition vs inheritance",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose this keyword over composition vs inheritance?",
+        "What is the performance or memory difference between this keyword and composition vs inheritance?"
+      ],
+      "related_concepts": [
+        "this keyword",
+        "composition vs inheritance",
+        "abstract class vs interface",
+        "method overloading vs overriding"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-033",
+      "subject": "Java",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Easy",
+      "question": "What are the common issues with abstract class vs interface in Java and how do you debug them?",
+      "ideal_answer": "Common issues with abstract class vs interface in Java include: Java 8+ default methods blurring lines. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "abstract class vs interface",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to abstract class vs interface?",
+        "What tools can assist in detecting problems with abstract class vs interface at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "method overloading vs overriding",
+        "super keyword",
+        "this keyword"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-034",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "Synchronization",
+      "difficulty": "Easy",
+      "question": "What is ReentrantLock in Java and how does it work?",
+      "ideal_answer": "ReentrantLock in Java refers to explicit lock implementation. It works by advanced locking features. Key characteristics include tryLock, lockInterruptibly, fairness. Example: ReentrantLock lock = new ReentrantLock(true);. Common pitfalls include must unlock in finally block.",
+      "keywords": [
+        "ReentrantLock",
+        "Java programming",
+        "concurrency"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of ReentrantLock in a production environment?",
+        "What are the common pitfalls or issues associated with ReentrantLock?"
+      ],
+      "related_concepts": [
+        "synchronized keyword",
+        "volatile keyword",
+        "ThreadLocal"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-035",
+      "subject": "Java",
+      "category": "Spring Ecosystem",
+      "subcategory": "Spring Data",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Spring Boot auto-configuration and Spring Security in Java.",
+      "ideal_answer": "Spring Boot auto-configuration and Spring Security differ in several ways: Spring Boot auto-configuration is convention-over-configuration (works by reducing boilerplate setup) whereas Spring Security is security framework (works by authentication and authorization). Spring Boot auto-configuration is typically used for @EnableAutoConfiguration, conditional beans, while Spring Security is used for filters, SecurityContext, JWT integration. Example demonstrating Spring Boot auto-configuration: @SpringBootApplication. Example demonstrating Spring Security: @EnableWebSecurity.",
+      "keywords": [
+        "Spring Boot auto-configuration",
+        "Spring Security",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Spring Boot auto-configuration over Spring Security?",
+        "What is the performance or memory difference between Spring Boot auto-configuration and Spring Security?"
+      ],
+      "related_concepts": [
+        "Spring Boot auto-configuration",
+        "Spring Security",
+        "Dependency Injection",
+        "Spring Bean scopes"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-036",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "Executors",
+      "difficulty": "Easy",
+      "question": "Explain the difference between volatile keyword and CyclicBarrier in Java.",
+      "ideal_answer": "volatile keyword and CyclicBarrier differ in several ways: volatile keyword is visibility guarantee (works by preventing caching in thread-local memory) whereas CyclicBarrier is synchronization barrier (works by waiting for parties at barrier). volatile keyword is typically used for no atomicity for compound operations, while CyclicBarrier is used for reusable, action on tripping. Example demonstrating volatile keyword: private volatile boolean running = true;. Example demonstrating CyclicBarrier: CyclicBarrier barrier = new CyclicBarrier(4);.",
+      "keywords": [
+        "volatile keyword",
+        "CyclicBarrier",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose volatile keyword over CyclicBarrier?",
+        "What is the performance or memory difference between volatile keyword and CyclicBarrier?"
+      ],
+      "related_concepts": [
+        "volatile keyword",
+        "CyclicBarrier",
+        "synchronized keyword",
+        "ReentrantLock"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JAVA-037",
+      "subject": "Java",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Medium",
+      "question": "What are the common issues with marker interfaces in Java and how do you debug them?",
+      "ideal_answer": "Common issues with marker interfaces in Java include: marker interfaces vs annotations. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "marker interfaces",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to marker interfaces?",
+        "What tools can assist in detecting problems with marker interfaces at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "abstract class vs interface",
+        "method overloading vs overriding",
+        "super keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-038",
+      "subject": "Java",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Medium",
+      "question": "Explain the difference between abstract class vs interface and method overloading vs overriding in Java.",
+      "ideal_answer": "abstract class vs interface and method overloading vs overriding differ in several ways: abstract class vs interface is abstraction mechanisms (works by defining contracts) whereas method overloading vs overriding is polymorphism forms (works by multiple methods same name). abstract class vs interface is typically used for abstract class: state, constructor, single inheritance; interface: pure contract, multiple inheritance, while method overloading vs overriding is used for overloading: compile-time, same name different params; overriding: runtime, same signature in subclass. Example demonstrating abstract class vs interface: interface Drawable { void draw(); }. Example demonstrating method overloading vs overriding: @Override public void draw() {}.",
+      "keywords": [
+        "abstract class vs interface",
+        "method overloading vs overriding",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose abstract class vs interface over method overloading vs overriding?",
+        "What is the performance or memory difference between abstract class vs interface and method overloading vs overriding?"
+      ],
+      "related_concepts": [
+        "abstract class vs interface",
+        "method overloading vs overriding",
+        "super keyword",
+        "this keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-039",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Data Types",
+      "difficulty": "Medium",
+      "question": "What is autoboxing/unboxing in Java and how does it work?",
+      "ideal_answer": "autoboxing/unboxing in Java refers to primitive-wrapper conversion. It works by automatic conversion. Key characteristics include performance overhead, NPE risk. Example: Integer i = 5; // autoboxed. Common pitfalls include == comparison between wrappers.",
+      "keywords": [
+        "autoboxing/unboxing",
+        "Java programming",
+        "core java"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of autoboxing/unboxing in a production environment?",
+        "What are the common pitfalls or issues associated with autoboxing/unboxing?"
+      ],
+      "related_concepts": [
+        "JVM architecture",
+        "String immutability",
+        "equals() vs =="
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-040",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "Executors",
+      "difficulty": "Medium",
+      "question": "Explain the difference between volatile keyword and ExecutorService in Java.",
+      "ideal_answer": "volatile keyword and ExecutorService differ in several ways: volatile keyword is visibility guarantee (works by preventing caching in thread-local memory) whereas ExecutorService is thread pool abstraction (works by managed concurrent execution). volatile keyword is typically used for no atomicity for compound operations, while ExecutorService is used for cached, fixed, scheduled, single thread pools. Example demonstrating volatile keyword: private volatile boolean running = true;. Example demonstrating ExecutorService: Executors.newFixedThreadPool(4);.",
+      "keywords": [
+        "volatile keyword",
+        "ExecutorService",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose volatile keyword over ExecutorService?",
+        "What is the performance or memory difference between volatile keyword and ExecutorService?"
+      ],
+      "related_concepts": [
+        "volatile keyword",
+        "ExecutorService",
+        "synchronized keyword",
+        "ReentrantLock"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-041",
+      "subject": "Java",
+      "category": "JVM Internals",
+      "subcategory": "Memory Model",
+      "difficulty": "Medium",
+      "question": "Explain the difference between garbage collection and JIT compilation in Java.",
+      "ideal_answer": "garbage collection and JIT compilation differ in several ways: garbage collection is automatic memory reclamation (works by preventing memory leaks) whereas JIT compilation is Just-In-Time optimization (works by runtime bytecode to native translation). garbage collection is typically used for mark-and-sweep, generational, G1, ZGC, Shenandoah, while JIT compilation is used for HotSpot profiling, tiered compilation. Example demonstrating garbage collection: -XX:+UseG1GC. Example demonstrating JIT compilation: -XX:CompileThreshold=10000.",
+      "keywords": [
+        "garbage collection",
+        "JIT compilation",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose garbage collection over JIT compilation?",
+        "What is the performance or memory difference between garbage collection and JIT compilation?"
+      ],
+      "related_concepts": [
+        "garbage collection",
+        "JIT compilation",
+        "G1 GC",
+        "class loading mechanism"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-042",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Data Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between JVM architecture and static block in Java.",
+      "ideal_answer": "JVM architecture and static block differ in several ways: JVM architecture is Java Virtual Machine structure (works by platform independence) whereas static block is class-level initialization (works by executed when class loads). JVM architecture is typically used for classloader, runtime data areas, execution engine, while static block is used for runs before constructor, only once. Example demonstrating JVM architecture: HotSpot JVM, OpenJ9. Example demonstrating static block: static { System.loadLibrary(\"native\"); }.",
+      "keywords": [
+        "JVM architecture",
+        "static block",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose JVM architecture over static block?",
+        "What is the performance or memory difference between JVM architecture and static block?"
+      ],
+      "related_concepts": [
+        "JVM architecture",
+        "static block",
+        "String immutability",
+        "equals() vs =="
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-043",
+      "subject": "Java",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Medium",
+      "question": "Explain the difference between abstract class vs interface and this keyword in Java.",
+      "ideal_answer": "abstract class vs interface and this keyword differ in several ways: abstract class vs interface is abstraction mechanisms (works by defining contracts) whereas this keyword is current instance reference (works by self-referential access). abstract class vs interface is typically used for abstract class: state, constructor, single inheritance; interface: pure contract, multiple inheritance, while this keyword is used for constructor chaining, disambiguation. Example demonstrating abstract class vs interface: interface Drawable { void draw(); }. Example demonstrating this keyword: this(name, age); this.name = name;.",
+      "keywords": [
+        "abstract class vs interface",
+        "this keyword",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose abstract class vs interface over this keyword?",
+        "What is the performance or memory difference between abstract class vs interface and this keyword?"
+      ],
+      "related_concepts": [
+        "abstract class vs interface",
+        "this keyword",
+        "method overloading vs overriding",
+        "super keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-044",
+      "subject": "Java",
+      "category": "OOP",
+      "subcategory": "Interfaces",
+      "difficulty": "Medium",
+      "question": "Explain the difference between composition vs inheritance and marker interfaces in Java.",
+      "ideal_answer": "composition vs inheritance and marker interfaces differ in several ways: composition vs inheritance is code reuse strategies (works by has-a vs is-a relationship) whereas marker interfaces is empty interface types (works by metadata signaling). composition vs inheritance is typically used for composition: more flexible, less coupling; inheritance: tight coupling, while marker interfaces is used for Serializable, Cloneable, RandomAccess. Example demonstrating composition vs inheritance: class Car { private Engine engine; }. Example demonstrating marker interfaces: public class MyClass implements Serializable {}.",
+      "keywords": [
+        "composition vs inheritance",
+        "marker interfaces",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose composition vs inheritance over marker interfaces?",
+        "What is the performance or memory difference between composition vs inheritance and marker interfaces?"
+      ],
+      "related_concepts": [
+        "composition vs inheritance",
+        "marker interfaces",
+        "abstract class vs interface",
+        "method overloading vs overriding"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-045",
+      "subject": "Java",
+      "category": "Spring Ecosystem",
+      "subcategory": "Spring Data",
+      "difficulty": "Medium",
+      "question": "What is Spring Boot auto-configuration in Java and how does it work?",
+      "ideal_answer": "Spring Boot auto-configuration in Java refers to convention-over-configuration. It works by reducing boilerplate setup. Key characteristics include @EnableAutoConfiguration, conditional beans. Example: @SpringBootApplication. Common pitfalls include excluding auto-configurations.",
+      "keywords": [
+        "Spring Boot auto-configuration",
+        "Java programming",
+        "spring ecosystem"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Spring Boot auto-configuration in a production environment?",
+        "What are the common pitfalls or issues associated with Spring Boot auto-configuration?"
+      ],
+      "related_concepts": [
+        "Dependency Injection",
+        "Spring Bean scopes",
+        "Spring Data JPA"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-046",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Generics",
+      "difficulty": "Medium",
+      "question": "What is type erasure in Java and how does it work?",
+      "ideal_answer": "type erasure in Java refers to compile-time type removal. It works by backward compatibility. Key characteristics include replaced with Object or first bound. Example: List<String> becomes List at runtime. Common pitfalls include instanceof with generics.",
+      "keywords": [
+        "type erasure",
+        "Java programming",
+        "core java"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of type erasure in a production environment?",
+        "What are the common pitfalls or issues associated with type erasure?"
+      ],
+      "related_concepts": [
+        "JVM architecture",
+        "String immutability",
+        "equals() vs =="
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-047",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "Stream API",
+      "difficulty": "Medium",
+      "question": "Explain the difference between PriorityQueue and Optional in Java.",
+      "ideal_answer": "PriorityQueue and Optional differ in several ways: PriorityQueue is heap-based queue (works by priority ordering) whereas Optional is null container type (works by avoiding NullPointerException). PriorityQueue is typically used for min-heap by default, custom Comparator, while Optional is used for explicit presence/absence handling. Example demonstrating PriorityQueue: PriorityQueue<Task> pq = new PriorityQueue<>(Comparator.comparingInt(t -> t.priority));. Example demonstrating Optional: Optional<String> opt = Optional.ofNullable(value);.",
+      "keywords": [
+        "PriorityQueue",
+        "Optional",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose PriorityQueue over Optional?",
+        "What is the performance or memory difference between PriorityQueue and Optional?"
+      ],
+      "related_concepts": [
+        "PriorityQueue",
+        "Optional",
+        "ArrayList vs LinkedList",
+        "HashMap internals"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-048",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "Set",
+      "difficulty": "Medium",
+      "question": "Explain the difference between HashMap internals and Optional in Java.",
+      "ideal_answer": "HashMap internals and Optional differ in several ways: HashMap internals is hash table implementation (works by key-value storage) whereas Optional is null container type (works by avoiding NullPointerException). HashMap internals is typically used for array of buckets, hash collision handling, while Optional is used for explicit presence/absence handling. Example demonstrating HashMap internals: Map<String, Integer> map = new HashMap<>();. Example demonstrating Optional: Optional<String> opt = Optional.ofNullable(value);.",
+      "keywords": [
+        "HashMap internals",
+        "Optional",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose HashMap internals over Optional?",
+        "What is the performance or memory difference between HashMap internals and Optional?"
+      ],
+      "related_concepts": [
+        "HashMap internals",
+        "Optional",
+        "ArrayList vs LinkedList",
+        "ConcurrentHashMap"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-049",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Control Flow",
+      "difficulty": "Medium",
+      "question": "Explain the difference between equals() vs == and static block in Java.",
+      "ideal_answer": "equals() vs == and static block differ in several ways: equals() vs == is equality comparison methods (works by reference vs content comparison) whereas static block is class-level initialization (works by executed when class loads). equals() vs == is typically used for ==: reference equality, equals(): content, while static block is used for runs before constructor, only once. Example demonstrating equals() vs ==: str1.equals(str2). Example demonstrating static block: static { System.loadLibrary(\"native\"); }.",
+      "keywords": [
+        "equals() vs ==",
+        "static block",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose equals() vs == over static block?",
+        "What is the performance or memory difference between equals() vs == and static block?"
+      ],
+      "related_concepts": [
+        "equals() vs ==",
+        "static block",
+        "JVM architecture",
+        "String immutability"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-050",
+      "subject": "Java",
+      "category": "Functional Programming",
+      "subcategory": "Optional",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Stream intermediate vs terminal operations in Java and how do you debug them?",
+      "ideal_answer": "Common issues with Stream intermediate vs terminal operations in Java include: short-circuiting operations. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Stream intermediate vs terminal operations",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Stream intermediate vs terminal operations?",
+        "What tools can assist in detecting problems with Stream intermediate vs terminal operations at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "lambda expressions",
+        "method references",
+        "functional interfaces"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-051",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "Collections Utility",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Stream API in Java and how do you debug them?",
+      "ideal_answer": "Common issues with Stream API in Java include: parallel streams, stateful operations. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Stream API",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Stream API?",
+        "What tools can assist in detecting problems with Stream API at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ArrayList vs LinkedList",
+        "HashMap internals",
+        "ConcurrentHashMap"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-052",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "Set",
+      "difficulty": "Medium",
+      "question": "Explain the difference between HashMap internals and ConcurrentHashMap in Java.",
+      "ideal_answer": "HashMap internals and ConcurrentHashMap differ in several ways: HashMap internals is hash table implementation (works by key-value storage) whereas ConcurrentHashMap is thread-safe hash map (works by concurrent access without full locking). HashMap internals is typically used for array of buckets, hash collision handling, while ConcurrentHashMap is used for segment locking (Java 7) or CAS + synchronized (Java 8+). Example demonstrating HashMap internals: Map<String, Integer> map = new HashMap<>();. Example demonstrating ConcurrentHashMap: ConcurrentHashMap<String, Integer> map.",
+      "keywords": [
+        "HashMap internals",
+        "ConcurrentHashMap",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose HashMap internals over ConcurrentHashMap?",
+        "What is the performance or memory difference between HashMap internals and ConcurrentHashMap?"
+      ],
+      "related_concepts": [
+        "HashMap internals",
+        "ConcurrentHashMap",
+        "ArrayList vs LinkedList",
+        "HashSet vs TreeSet"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-053",
+      "subject": "Java",
+      "category": "JVM Internals",
+      "subcategory": "Garbage Collection",
+      "difficulty": "Medium",
+      "question": "Explain the difference between G1 GC and JIT compilation in Java.",
+      "ideal_answer": "G1 GC and JIT compilation differ in several ways: G1 GC is Garbage First collector (works by predictable pause times) whereas JIT compilation is Just-In-Time optimization (works by runtime bytecode to native translation). G1 GC is typically used for region-based, mixed collections, while JIT compilation is used for HotSpot profiling, tiered compilation. Example demonstrating G1 GC: -XX:MaxGCPauseMillis=200. Example demonstrating JIT compilation: -XX:CompileThreshold=10000.",
+      "keywords": [
+        "G1 GC",
+        "JIT compilation",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose G1 GC over JIT compilation?",
+        "What is the performance or memory difference between G1 GC and JIT compilation?"
+      ],
+      "related_concepts": [
+        "G1 GC",
+        "JIT compilation",
+        "garbage collection",
+        "class loading mechanism"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-054",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "Queue",
+      "difficulty": "Medium",
+      "question": "Explain the difference between HashSet vs TreeSet and Stream API in Java.",
+      "ideal_answer": "HashSet vs TreeSet and Stream API differ in several ways: HashSet vs TreeSet is Set implementations (works by unique element collections) whereas Stream API is functional data processing (works by declarative operations on collections). HashSet vs TreeSet is typically used for HashSet: O(1), unordered; TreeSet: O(log n), sorted, while Stream API is used for filter, map, reduce, collect, lazy evaluation. Example demonstrating HashSet vs TreeSet: Set<Integer> set = new TreeSet<>();. Example demonstrating Stream API: list.stream().filter(x -> x > 5).map(Math::sqrt).collect(Collectors.toList());.",
+      "keywords": [
+        "HashSet vs TreeSet",
+        "Stream API",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose HashSet vs TreeSet over Stream API?",
+        "What is the performance or memory difference between HashSet vs TreeSet and Stream API?"
+      ],
+      "related_concepts": [
+        "HashSet vs TreeSet",
+        "Stream API",
+        "ArrayList vs LinkedList",
+        "HashMap internals"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-055",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Control Flow",
+      "difficulty": "Medium",
+      "question": "What is equals() vs == in Java and how does it work?",
+      "ideal_answer": "equals() vs == in Java refers to equality comparison methods. It works by reference vs content comparison. Key characteristics include ==: reference equality, equals(): content. Example: str1.equals(str2). Common pitfalls include null safety with equals.",
+      "keywords": [
+        "equals() vs ==",
+        "Java programming",
+        "core java"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of equals() vs == in a production environment?",
+        "What are the common pitfalls or issues associated with equals() vs ==?"
+      ],
+      "related_concepts": [
+        "JVM architecture",
+        "String immutability",
+        "hashCode() contract"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-056",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Arrays",
+      "difficulty": "Medium",
+      "question": "Explain the difference between generics and final keyword in Java.",
+      "ideal_answer": "generics and final keyword differ in several ways: generics is parameterized types (works by type safety at compile time) whereas final keyword is immutability modifier (works by preventing modification). generics is typically used for type erasure, wildcards, bounds, while final keyword is used for final class: no inheritance, final method: no override, final variable: no reassignment. Example demonstrating generics: List<? extends Number> list. Example demonstrating final keyword: final List<String> list = new ArrayList<>();.",
+      "keywords": [
+        "generics",
+        "final keyword",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose generics over final keyword?",
+        "What is the performance or memory difference between generics and final keyword?"
+      ],
+      "related_concepts": [
+        "generics",
+        "final keyword",
+        "JVM architecture",
+        "String immutability"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-057",
+      "subject": "Java",
+      "category": "Spring Ecosystem",
+      "subcategory": "Spring Core",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Dependency Injection and Spring Boot auto-configuration in Java.",
+      "ideal_answer": "Dependency Injection and Spring Boot auto-configuration differ in several ways: Dependency Injection is IoC pattern implementation (works by decoupling components) whereas Spring Boot auto-configuration is convention-over-configuration (works by reducing boilerplate setup). Dependency Injection is typically used for constructor injection preferred, while Spring Boot auto-configuration is used for @EnableAutoConfiguration, conditional beans. Example demonstrating Dependency Injection: @Autowired private Service service;. Example demonstrating Spring Boot auto-configuration: @SpringBootApplication.",
+      "keywords": [
+        "Dependency Injection",
+        "Spring Boot auto-configuration",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Dependency Injection over Spring Boot auto-configuration?",
+        "What is the performance or memory difference between Dependency Injection and Spring Boot auto-configuration?"
+      ],
+      "related_concepts": [
+        "Dependency Injection",
+        "Spring Boot auto-configuration",
+        "Spring Bean scopes",
+        "Spring Data JPA"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-058",
+      "subject": "Java",
+      "category": "OOP",
+      "subcategory": "Abstraction",
+      "difficulty": "Medium",
+      "question": "What is encapsulation in Java and how does it work?",
+      "ideal_answer": "encapsulation in Java refers to data hiding principle. It works by controlling access. Key characteristics include private fields, public getters/setters. Example: private int age; public int getAge() { return age; }. Common pitfalls include excessive boilerplate.",
+      "keywords": [
+        "encapsulation",
+        "Java programming",
+        "oop"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of encapsulation in a production environment?",
+        "What are the common pitfalls or issues associated with encapsulation?"
+      ],
+      "related_concepts": [
+        "abstract class vs interface",
+        "method overloading vs overriding",
+        "super keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-059",
+      "subject": "Java",
+      "category": "Functional Programming",
+      "subcategory": "Streams",
+      "difficulty": "Medium",
+      "question": "What is method references in Java and how does it work?",
+      "ideal_answer": "method references in Java refers to concise lambda shorthand. It works by referencing existing methods. Key characteristics include Class::method, object::method. Example: list.forEach(System.out::println);. Common pitfalls include constructor references.",
+      "keywords": [
+        "method references",
+        "Java programming",
+        "functional programming"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of method references in a production environment?",
+        "What are the common pitfalls or issues associated with method references?"
+      ],
+      "related_concepts": [
+        "lambda expressions",
+        "functional interfaces",
+        "Stream intermediate vs terminal operations"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-060",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Control Flow",
+      "difficulty": "Medium",
+      "question": "What are the common issues with equals() vs == in Java and how do you debug them?",
+      "ideal_answer": "Common issues with equals() vs == in Java include: null safety with equals. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "equals() vs ==",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to equals() vs ==?",
+        "What tools can assist in detecting problems with equals() vs == at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "JVM architecture",
+        "String immutability",
+        "hashCode() contract"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-061",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Data Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between autoboxing/unboxing and static block in Java.",
+      "ideal_answer": "autoboxing/unboxing and static block differ in several ways: autoboxing/unboxing is primitive-wrapper conversion (works by automatic conversion) whereas static block is class-level initialization (works by executed when class loads). autoboxing/unboxing is typically used for performance overhead, NPE risk, while static block is used for runs before constructor, only once. Example demonstrating autoboxing/unboxing: Integer i = 5; // autoboxed. Example demonstrating static block: static { System.loadLibrary(\"native\"); }.",
+      "keywords": [
+        "autoboxing/unboxing",
+        "static block",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose autoboxing/unboxing over static block?",
+        "What is the performance or memory difference between autoboxing/unboxing and static block?"
+      ],
+      "related_concepts": [
+        "autoboxing/unboxing",
+        "static block",
+        "JVM architecture",
+        "String immutability"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-062",
+      "subject": "Java",
+      "category": "JVM Internals",
+      "subcategory": "Memory Model",
+      "difficulty": "Medium",
+      "question": "What is garbage collection in Java and how does it work?",
+      "ideal_answer": "garbage collection in Java refers to automatic memory reclamation. It works by preventing memory leaks. Key characteristics include mark-and-sweep, generational, G1, ZGC, Shenandoah. Example: -XX:+UseG1GC. Common pitfalls include GC pause times, tuning for latency.",
+      "keywords": [
+        "garbage collection",
+        "Java programming",
+        "jvm internals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of garbage collection in a production environment?",
+        "What are the common pitfalls or issues associated with garbage collection?"
+      ],
+      "related_concepts": [
+        "G1 GC",
+        "class loading mechanism",
+        "JIT compilation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-063",
+      "subject": "Java",
+      "category": "JVM Internals",
+      "subcategory": "Garbage Collection",
+      "difficulty": "Medium",
+      "question": "What are the common issues with G1 GC in Java and how do you debug them?",
+      "ideal_answer": "Common issues with G1 GC in Java include: humongous objects, evacuation failures. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "G1 GC",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to G1 GC?",
+        "What tools can assist in detecting problems with G1 GC at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "garbage collection",
+        "class loading mechanism",
+        "JIT compilation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-064",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "Map",
+      "difficulty": "Medium",
+      "question": "Explain the difference between ConcurrentHashMap and HashSet vs TreeSet in Java.",
+      "ideal_answer": "ConcurrentHashMap and HashSet vs TreeSet differ in several ways: ConcurrentHashMap is thread-safe hash map (works by concurrent access without full locking) whereas HashSet vs TreeSet is Set implementations (works by unique element collections). ConcurrentHashMap is typically used for segment locking (Java 7) or CAS + synchronized (Java 8+), while HashSet vs TreeSet is used for HashSet: O(1), unordered; TreeSet: O(log n), sorted. Example demonstrating ConcurrentHashMap: ConcurrentHashMap<String, Integer> map. Example demonstrating HashSet vs TreeSet: Set<Integer> set = new TreeSet<>();.",
+      "keywords": [
+        "ConcurrentHashMap",
+        "HashSet vs TreeSet",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ConcurrentHashMap over HashSet vs TreeSet?",
+        "What is the performance or memory difference between ConcurrentHashMap and HashSet vs TreeSet?"
+      ],
+      "related_concepts": [
+        "ConcurrentHashMap",
+        "HashSet vs TreeSet",
+        "ArrayList vs LinkedList",
+        "HashMap internals"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-065",
+      "subject": "Java",
+      "category": "Spring Ecosystem",
+      "subcategory": "Spring Core",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Dependency Injection in Java and how do you debug them?",
+      "ideal_answer": "Common issues with Dependency Injection in Java include: circular dependencies. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Dependency Injection",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Dependency Injection?",
+        "What tools can assist in detecting problems with Dependency Injection at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Spring Bean scopes",
+        "Spring Boot auto-configuration",
+        "Spring Data JPA"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-066",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Operators",
+      "difficulty": "Medium",
+      "question": "Explain the difference between String immutability and hashCode() contract in Java.",
+      "ideal_answer": "String immutability and hashCode() contract differ in several ways: String immutability is unchangeable string objects (works by security, caching, thread-safety) whereas hashCode() contract is object hash code generation (works by hash-based collection support). String immutability is typically used for String Pool, interning, while hashCode() contract is used for consistent with equals, same object same hash. Example demonstrating String immutability: String s = \"hello\"; // in pool. Example demonstrating hashCode() contract: @Override public int hashCode().",
+      "keywords": [
+        "String immutability",
+        "hashCode() contract",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose String immutability over hashCode() contract?",
+        "What is the performance or memory difference between String immutability and hashCode() contract?"
+      ],
+      "related_concepts": [
+        "String immutability",
+        "hashCode() contract",
+        "JVM architecture",
+        "equals() vs =="
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-067",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "Concurrent Collections",
+      "difficulty": "Medium",
+      "question": "Explain the difference between ThreadLocal and CyclicBarrier in Java.",
+      "ideal_answer": "ThreadLocal and CyclicBarrier differ in several ways: ThreadLocal is thread-local variables (works by isolation per thread) whereas CyclicBarrier is synchronization barrier (works by waiting for parties at barrier). ThreadLocal is typically used for each thread has independent copy, while CyclicBarrier is used for reusable, action on tripping. Example demonstrating ThreadLocal: ThreadLocal<SimpleDateFormat> df = ThreadLocal.withInitial(SimpleDateFormat::new);. Example demonstrating CyclicBarrier: CyclicBarrier barrier = new CyclicBarrier(4);.",
+      "keywords": [
+        "ThreadLocal",
+        "CyclicBarrier",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ThreadLocal over CyclicBarrier?",
+        "What is the performance or memory difference between ThreadLocal and CyclicBarrier?"
+      ],
+      "related_concepts": [
+        "ThreadLocal",
+        "CyclicBarrier",
+        "synchronized keyword",
+        "ReentrantLock"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-068",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Strings",
+      "difficulty": "Medium",
+      "question": "Explain the difference between hashCode() contract and autoboxing/unboxing in Java.",
+      "ideal_answer": "hashCode() contract and autoboxing/unboxing differ in several ways: hashCode() contract is object hash code generation (works by hash-based collection support) whereas autoboxing/unboxing is primitive-wrapper conversion (works by automatic conversion). hashCode() contract is typically used for consistent with equals, same object same hash, while autoboxing/unboxing is used for performance overhead, NPE risk. Example demonstrating hashCode() contract: @Override public int hashCode(). Example demonstrating autoboxing/unboxing: Integer i = 5; // autoboxed.",
+      "keywords": [
+        "hashCode() contract",
+        "autoboxing/unboxing",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose hashCode() contract over autoboxing/unboxing?",
+        "What is the performance or memory difference between hashCode() contract and autoboxing/unboxing?"
+      ],
+      "related_concepts": [
+        "hashCode() contract",
+        "autoboxing/unboxing",
+        "JVM architecture",
+        "String immutability"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-069",
+      "subject": "Java",
+      "category": "Functional Programming",
+      "subcategory": "Method References",
+      "difficulty": "Medium",
+      "question": "What are the common issues with functional interfaces in Java and how do you debug them?",
+      "ideal_answer": "Common issues with functional interfaces in Java include: @FunctionalInterface annotation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "functional interfaces",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to functional interfaces?",
+        "What tools can assist in detecting problems with functional interfaces at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "lambda expressions",
+        "method references",
+        "Stream intermediate vs terminal operations"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-070",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Operators",
+      "difficulty": "Medium",
+      "question": "What is String immutability in Java and how does it work?",
+      "ideal_answer": "String immutability in Java refers to unchangeable string objects. It works by security, caching, thread-safety. Key characteristics include String Pool, interning. Example: String s = \"hello\"; // in pool. Common pitfalls include concatenation performance.",
+      "keywords": [
+        "String immutability",
+        "Java programming",
+        "core java"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of String immutability in a production environment?",
+        "What are the common pitfalls or issues associated with String immutability?"
+      ],
+      "related_concepts": [
+        "JVM architecture",
+        "equals() vs ==",
+        "hashCode() contract"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-071",
+      "subject": "Java",
+      "category": "JVM Internals",
+      "subcategory": "Class Loading",
+      "difficulty": "Medium",
+      "question": "Explain the difference between class loading mechanism and JIT compilation in Java.",
+      "ideal_answer": "class loading mechanism and JIT compilation differ in several ways: class loading mechanism is runtime class resolution (works by dynamic class loading) whereas JIT compilation is Just-In-Time optimization (works by runtime bytecode to native translation). class loading mechanism is typically used for Bootstrap -> Extension -> Application -> Custom, while JIT compilation is used for HotSpot profiling, tiered compilation. Example demonstrating class loading mechanism: Class.forName(\"com.example.MyClass\"). Example demonstrating JIT compilation: -XX:CompileThreshold=10000.",
+      "keywords": [
+        "class loading mechanism",
+        "JIT compilation",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose class loading mechanism over JIT compilation?",
+        "What is the performance or memory difference between class loading mechanism and JIT compilation?"
+      ],
+      "related_concepts": [
+        "class loading mechanism",
+        "JIT compilation",
+        "garbage collection",
+        "G1 GC"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-072",
+      "subject": "Java",
+      "category": "JVM Internals",
+      "subcategory": "JIT Compilation",
+      "difficulty": "Medium",
+      "question": "Explain the difference between JIT compilation and memory model in Java.",
+      "ideal_answer": "JIT compilation and memory model differ in several ways: JIT compilation is Just-In-Time optimization (works by runtime bytecode to native translation) whereas memory model is JMM specification (works by defining thread interaction rules). JIT compilation is typically used for HotSpot profiling, tiered compilation, while memory model is used for happens-before, volatile, synchronized. Example demonstrating JIT compilation: -XX:CompileThreshold=10000. Example demonstrating memory model: volatile int flag; // visibility guarantee.",
+      "keywords": [
+        "JIT compilation",
+        "memory model",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose JIT compilation over memory model?",
+        "What is the performance or memory difference between JIT compilation and memory model?"
+      ],
+      "related_concepts": [
+        "JIT compilation",
+        "memory model",
+        "garbage collection",
+        "G1 GC"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-073",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "Concurrent Collections",
+      "difficulty": "Medium",
+      "question": "Explain the difference between ThreadLocal and CompletableFuture in Java.",
+      "ideal_answer": "ThreadLocal and CompletableFuture differ in several ways: ThreadLocal is thread-local variables (works by isolation per thread) whereas CompletableFuture is composable async programming (works by future composition and chaining). ThreadLocal is typically used for each thread has independent copy, while CompletableFuture is used for thenApply, thenCompose, thenCombine, exceptionally. Example demonstrating ThreadLocal: ThreadLocal<SimpleDateFormat> df = ThreadLocal.withInitial(SimpleDateFormat::new);. Example demonstrating CompletableFuture: CompletableFuture.supplyAsync(() -> fetchData()).thenApply(this::process);.",
+      "keywords": [
+        "ThreadLocal",
+        "CompletableFuture",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ThreadLocal over CompletableFuture?",
+        "What is the performance or memory difference between ThreadLocal and CompletableFuture?"
+      ],
+      "related_concepts": [
+        "ThreadLocal",
+        "CompletableFuture",
+        "synchronized keyword",
+        "ReentrantLock"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-074",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "Queue",
+      "difficulty": "Medium",
+      "question": "What is HashSet vs TreeSet in Java and how does it work?",
+      "ideal_answer": "HashSet vs TreeSet in Java refers to Set implementations. It works by unique element collections. Key characteristics include HashSet: O(1), unordered; TreeSet: O(log n), sorted. Example: Set<Integer> set = new TreeSet<>();. Common pitfalls include Comparable vs Comparator for TreeSet.",
+      "keywords": [
+        "HashSet vs TreeSet",
+        "Java programming",
+        "collections"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of HashSet vs TreeSet in a production environment?",
+        "What are the common pitfalls or issues associated with HashSet vs TreeSet?"
+      ],
+      "related_concepts": [
+        "ArrayList vs LinkedList",
+        "HashMap internals",
+        "ConcurrentHashMap"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-075",
+      "subject": "Java",
+      "category": "JVM Internals",
+      "subcategory": "Garbage Collection",
+      "difficulty": "Medium",
+      "question": "Explain the difference between G1 GC and class loading mechanism in Java.",
+      "ideal_answer": "G1 GC and class loading mechanism differ in several ways: G1 GC is Garbage First collector (works by predictable pause times) whereas class loading mechanism is runtime class resolution (works by dynamic class loading). G1 GC is typically used for region-based, mixed collections, while class loading mechanism is used for Bootstrap -> Extension -> Application -> Custom. Example demonstrating G1 GC: -XX:MaxGCPauseMillis=200. Example demonstrating class loading mechanism: Class.forName(\"com.example.MyClass\").",
+      "keywords": [
+        "G1 GC",
+        "class loading mechanism",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose G1 GC over class loading mechanism?",
+        "What is the performance or memory difference between G1 GC and class loading mechanism?"
+      ],
+      "related_concepts": [
+        "G1 GC",
+        "class loading mechanism",
+        "garbage collection",
+        "JIT compilation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-076",
+      "subject": "Java",
+      "category": "Spring Ecosystem",
+      "subcategory": "Spring Security",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Spring Data JPA and Spring Security in Java.",
+      "ideal_answer": "Spring Data JPA and Spring Security differ in several ways: Spring Data JPA is repository abstraction (works by reducing data access code) whereas Spring Security is security framework (works by authentication and authorization). Spring Data JPA is typically used for CrudRepository, PagingAndSortingRepository, while Spring Security is used for filters, SecurityContext, JWT integration. Example demonstrating Spring Data JPA: interface UserRepo extends JpaRepository<User, Long> {}. Example demonstrating Spring Security: @EnableWebSecurity.",
+      "keywords": [
+        "Spring Data JPA",
+        "Spring Security",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Spring Data JPA over Spring Security?",
+        "What is the performance or memory difference between Spring Data JPA and Spring Security?"
+      ],
+      "related_concepts": [
+        "Spring Data JPA",
+        "Spring Security",
+        "Dependency Injection",
+        "Spring Bean scopes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-077",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Strings",
+      "difficulty": "Medium",
+      "question": "Explain the difference between hashCode() contract and final keyword in Java.",
+      "ideal_answer": "hashCode() contract and final keyword differ in several ways: hashCode() contract is object hash code generation (works by hash-based collection support) whereas final keyword is immutability modifier (works by preventing modification). hashCode() contract is typically used for consistent with equals, same object same hash, while final keyword is used for final class: no inheritance, final method: no override, final variable: no reassignment. Example demonstrating hashCode() contract: @Override public int hashCode(). Example demonstrating final keyword: final List<String> list = new ArrayList<>();.",
+      "keywords": [
+        "hashCode() contract",
+        "final keyword",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose hashCode() contract over final keyword?",
+        "What is the performance or memory difference between hashCode() contract and final keyword?"
+      ],
+      "related_concepts": [
+        "hashCode() contract",
+        "final keyword",
+        "JVM architecture",
+        "String immutability"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-078",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "CompletableFuture",
+      "difficulty": "Medium",
+      "question": "Explain the difference between CompletableFuture and CyclicBarrier in Java.",
+      "ideal_answer": "CompletableFuture and CyclicBarrier differ in several ways: CompletableFuture is composable async programming (works by future composition and chaining) whereas CyclicBarrier is synchronization barrier (works by waiting for parties at barrier). CompletableFuture is typically used for thenApply, thenCompose, thenCombine, exceptionally, while CyclicBarrier is used for reusable, action on tripping. Example demonstrating CompletableFuture: CompletableFuture.supplyAsync(() -> fetchData()).thenApply(this::process);. Example demonstrating CyclicBarrier: CyclicBarrier barrier = new CyclicBarrier(4);.",
+      "keywords": [
+        "CompletableFuture",
+        "CyclicBarrier",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CompletableFuture over CyclicBarrier?",
+        "What is the performance or memory difference between CompletableFuture and CyclicBarrier?"
+      ],
+      "related_concepts": [
+        "CompletableFuture",
+        "CyclicBarrier",
+        "synchronized keyword",
+        "ReentrantLock"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-079",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "Locks",
+      "difficulty": "Medium",
+      "question": "What are the common issues with ExecutorService in Java and how do you debug them?",
+      "ideal_answer": "Common issues with ExecutorService in Java include: graceful shutdown, awaitTermination. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "ExecutorService",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to ExecutorService?",
+        "What tools can assist in detecting problems with ExecutorService at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "synchronized keyword",
+        "ReentrantLock",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-080",
+      "subject": "Java",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Medium",
+      "question": "What is marker interfaces in Java and how does it work?",
+      "ideal_answer": "marker interfaces in Java refers to empty interface types. It works by metadata signaling. Key characteristics include Serializable, Cloneable, RandomAccess. Example: public class MyClass implements Serializable {}. Common pitfalls include marker interfaces vs annotations.",
+      "keywords": [
+        "marker interfaces",
+        "Java programming",
+        "oop"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of marker interfaces in a production environment?",
+        "What are the common pitfalls or issues associated with marker interfaces?"
+      ],
+      "related_concepts": [
+        "abstract class vs interface",
+        "method overloading vs overriding",
+        "super keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-081",
+      "subject": "Java",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Medium",
+      "question": "Explain the difference between abstract class vs interface and marker interfaces in Java.",
+      "ideal_answer": "abstract class vs interface and marker interfaces differ in several ways: abstract class vs interface is abstraction mechanisms (works by defining contracts) whereas marker interfaces is empty interface types (works by metadata signaling). abstract class vs interface is typically used for abstract class: state, constructor, single inheritance; interface: pure contract, multiple inheritance, while marker interfaces is used for Serializable, Cloneable, RandomAccess. Example demonstrating abstract class vs interface: interface Drawable { void draw(); }. Example demonstrating marker interfaces: public class MyClass implements Serializable {}.",
+      "keywords": [
+        "abstract class vs interface",
+        "marker interfaces",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose abstract class vs interface over marker interfaces?",
+        "What is the performance or memory difference between abstract class vs interface and marker interfaces?"
+      ],
+      "related_concepts": [
+        "abstract class vs interface",
+        "marker interfaces",
+        "method overloading vs overriding",
+        "super keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-082",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Control Flow",
+      "difficulty": "Medium",
+      "question": "Explain the difference between equals() vs == and generics in Java.",
+      "ideal_answer": "equals() vs == and generics differ in several ways: equals() vs == is equality comparison methods (works by reference vs content comparison) whereas generics is parameterized types (works by type safety at compile time). equals() vs == is typically used for ==: reference equality, equals(): content, while generics is used for type erasure, wildcards, bounds. Example demonstrating equals() vs ==: str1.equals(str2). Example demonstrating generics: List<? extends Number> list.",
+      "keywords": [
+        "equals() vs ==",
+        "generics",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose equals() vs == over generics?",
+        "What is the performance or memory difference between equals() vs == and generics?"
+      ],
+      "related_concepts": [
+        "equals() vs ==",
+        "generics",
+        "JVM architecture",
+        "String immutability"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-083",
+      "subject": "Java",
+      "category": "JVM Internals",
+      "subcategory": "Class Loading",
+      "difficulty": "Medium",
+      "question": "Explain the difference between class loading mechanism and memory model in Java.",
+      "ideal_answer": "class loading mechanism and memory model differ in several ways: class loading mechanism is runtime class resolution (works by dynamic class loading) whereas memory model is JMM specification (works by defining thread interaction rules). class loading mechanism is typically used for Bootstrap -> Extension -> Application -> Custom, while memory model is used for happens-before, volatile, synchronized. Example demonstrating class loading mechanism: Class.forName(\"com.example.MyClass\"). Example demonstrating memory model: volatile int flag; // visibility guarantee.",
+      "keywords": [
+        "class loading mechanism",
+        "memory model",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose class loading mechanism over memory model?",
+        "What is the performance or memory difference between class loading mechanism and memory model?"
+      ],
+      "related_concepts": [
+        "class loading mechanism",
+        "memory model",
+        "garbage collection",
+        "G1 GC"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-084",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Data Types",
+      "difficulty": "Medium",
+      "question": "What are the common issues with autoboxing/unboxing in Java and how do you debug them?",
+      "ideal_answer": "Common issues with autoboxing/unboxing in Java include: == comparison between wrappers. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "autoboxing/unboxing",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to autoboxing/unboxing?",
+        "What tools can assist in detecting problems with autoboxing/unboxing at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "JVM architecture",
+        "String immutability",
+        "equals() vs =="
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-085",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "Concurrent Collections",
+      "difficulty": "Medium",
+      "question": "Explain the difference between ThreadLocal and ExecutorService in Java.",
+      "ideal_answer": "ThreadLocal and ExecutorService differ in several ways: ThreadLocal is thread-local variables (works by isolation per thread) whereas ExecutorService is thread pool abstraction (works by managed concurrent execution). ThreadLocal is typically used for each thread has independent copy, while ExecutorService is used for cached, fixed, scheduled, single thread pools. Example demonstrating ThreadLocal: ThreadLocal<SimpleDateFormat> df = ThreadLocal.withInitial(SimpleDateFormat::new);. Example demonstrating ExecutorService: Executors.newFixedThreadPool(4);.",
+      "keywords": [
+        "ThreadLocal",
+        "ExecutorService",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ThreadLocal over ExecutorService?",
+        "What is the performance or memory difference between ThreadLocal and ExecutorService?"
+      ],
+      "related_concepts": [
+        "ThreadLocal",
+        "ExecutorService",
+        "synchronized keyword",
+        "ReentrantLock"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-086",
+      "subject": "Java",
+      "category": "Spring Ecosystem",
+      "subcategory": "Spring Data",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Spring Boot auto-configuration in Java and how do you debug them?",
+      "ideal_answer": "Common issues with Spring Boot auto-configuration in Java include: excluding auto-configurations. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Spring Boot auto-configuration",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Spring Boot auto-configuration?",
+        "What tools can assist in detecting problems with Spring Boot auto-configuration at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Dependency Injection",
+        "Spring Bean scopes",
+        "Spring Data JPA"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-087",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Control Flow",
+      "difficulty": "Medium",
+      "question": "Explain the difference between static block and var keyword in Java.",
+      "ideal_answer": "static block and var keyword differ in several ways: static block is class-level initialization (works by executed when class loads) whereas var keyword is local variable type inference (works by reducing verbosity). static block is typically used for runs before constructor, only once, while var keyword is used for compiler infers type from initializer. Example demonstrating static block: static { System.loadLibrary(\"native\"); }. Example demonstrating var keyword: var list = new ArrayList<String>();.",
+      "keywords": [
+        "static block",
+        "var keyword",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose static block over var keyword?",
+        "What is the performance or memory difference between static block and var keyword?"
+      ],
+      "related_concepts": [
+        "static block",
+        "var keyword",
+        "JVM architecture",
+        "String immutability"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-088",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Operators",
+      "difficulty": "Medium",
+      "question": "Explain the difference between String immutability and autoboxing/unboxing in Java.",
+      "ideal_answer": "String immutability and autoboxing/unboxing differ in several ways: String immutability is unchangeable string objects (works by security, caching, thread-safety) whereas autoboxing/unboxing is primitive-wrapper conversion (works by automatic conversion). String immutability is typically used for String Pool, interning, while autoboxing/unboxing is used for performance overhead, NPE risk. Example demonstrating String immutability: String s = \"hello\"; // in pool. Example demonstrating autoboxing/unboxing: Integer i = 5; // autoboxed.",
+      "keywords": [
+        "String immutability",
+        "autoboxing/unboxing",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose String immutability over autoboxing/unboxing?",
+        "What is the performance or memory difference between String immutability and autoboxing/unboxing?"
+      ],
+      "related_concepts": [
+        "String immutability",
+        "autoboxing/unboxing",
+        "JVM architecture",
+        "equals() vs =="
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-089",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Data Types",
+      "difficulty": "Medium",
+      "question": "What is JVM architecture in Java and how does it work?",
+      "ideal_answer": "JVM architecture in Java refers to Java Virtual Machine structure. It works by platform independence. Key characteristics include classloader, runtime data areas, execution engine. Example: HotSpot JVM, OpenJ9. Common pitfalls include tuning heap sizes.",
+      "keywords": [
+        "JVM architecture",
+        "Java programming",
+        "core java"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of JVM architecture in a production environment?",
+        "What are the common pitfalls or issues associated with JVM architecture?"
+      ],
+      "related_concepts": [
+        "String immutability",
+        "equals() vs ==",
+        "hashCode() contract"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-090",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "Threads",
+      "difficulty": "Medium",
+      "question": "Explain the difference between synchronized keyword and ReentrantLock in Java.",
+      "ideal_answer": "synchronized keyword and ReentrantLock differ in several ways: synchronized keyword is intrinsic locking (works by mutual exclusion) whereas ReentrantLock is explicit lock implementation (works by advanced locking features). synchronized keyword is typically used for monitor lock on object/class, while ReentrantLock is used for tryLock, lockInterruptibly, fairness. Example demonstrating synchronized keyword: synchronized(obj) { /* critical section */ }. Example demonstrating ReentrantLock: ReentrantLock lock = new ReentrantLock(true);.",
+      "keywords": [
+        "synchronized keyword",
+        "ReentrantLock",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose synchronized keyword over ReentrantLock?",
+        "What is the performance or memory difference between synchronized keyword and ReentrantLock?"
+      ],
+      "related_concepts": [
+        "synchronized keyword",
+        "ReentrantLock",
+        "volatile keyword",
+        "ThreadLocal"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-091",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "Concurrent Collections",
+      "difficulty": "Medium",
+      "question": "What is ThreadLocal in Java and how does it work?",
+      "ideal_answer": "ThreadLocal in Java refers to thread-local variables. It works by isolation per thread. Key characteristics include each thread has independent copy. Example: ThreadLocal<SimpleDateFormat> df = ThreadLocal.withInitial(SimpleDateFormat::new);. Common pitfalls include memory leak with thread pools.",
+      "keywords": [
+        "ThreadLocal",
+        "Java programming",
+        "concurrency"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of ThreadLocal in a production environment?",
+        "What are the common pitfalls or issues associated with ThreadLocal?"
+      ],
+      "related_concepts": [
+        "synchronized keyword",
+        "ReentrantLock",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-092",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "Concurrent Collections",
+      "difficulty": "Medium",
+      "question": "Explain the difference between ThreadLocal and CountDownLatch in Java.",
+      "ideal_answer": "ThreadLocal and CountDownLatch differ in several ways: ThreadLocal is thread-local variables (works by isolation per thread) whereas CountDownLatch is synchronization aid (works by waiting for multiple events). ThreadLocal is typically used for each thread has independent copy, while CountDownLatch is used for count down to zero, then release. Example demonstrating ThreadLocal: ThreadLocal<SimpleDateFormat> df = ThreadLocal.withInitial(SimpleDateFormat::new);. Example demonstrating CountDownLatch: CountDownLatch latch = new CountDownLatch(3);.",
+      "keywords": [
+        "ThreadLocal",
+        "CountDownLatch",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ThreadLocal over CountDownLatch?",
+        "What is the performance or memory difference between ThreadLocal and CountDownLatch?"
+      ],
+      "related_concepts": [
+        "ThreadLocal",
+        "CountDownLatch",
+        "synchronized keyword",
+        "ReentrantLock"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-093",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Control Flow",
+      "difficulty": "Medium",
+      "question": "Explain the difference between equals() vs == and hashCode() contract in Java.",
+      "ideal_answer": "equals() vs == and hashCode() contract differ in several ways: equals() vs == is equality comparison methods (works by reference vs content comparison) whereas hashCode() contract is object hash code generation (works by hash-based collection support). equals() vs == is typically used for ==: reference equality, equals(): content, while hashCode() contract is used for consistent with equals, same object same hash. Example demonstrating equals() vs ==: str1.equals(str2). Example demonstrating hashCode() contract: @Override public int hashCode().",
+      "keywords": [
+        "equals() vs ==",
+        "hashCode() contract",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose equals() vs == over hashCode() contract?",
+        "What is the performance or memory difference between equals() vs == and hashCode() contract?"
+      ],
+      "related_concepts": [
+        "equals() vs ==",
+        "hashCode() contract",
+        "JVM architecture",
+        "String immutability"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-094",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "List",
+      "difficulty": "Medium",
+      "question": "What is ArrayList vs LinkedList in Java and how does it work?",
+      "ideal_answer": "ArrayList vs LinkedList in Java refers to List implementations. It works by sequential collection storage. Key characteristics include ArrayList: O(1) random access, O(n) insert; LinkedList: O(n) access, O(1) insert. Example: List<String> list = new ArrayList<>();. Common pitfalls include memory overhead of LinkedList nodes.",
+      "keywords": [
+        "ArrayList vs LinkedList",
+        "Java programming",
+        "collections"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of ArrayList vs LinkedList in a production environment?",
+        "What are the common pitfalls or issues associated with ArrayList vs LinkedList?"
+      ],
+      "related_concepts": [
+        "HashMap internals",
+        "ConcurrentHashMap",
+        "HashSet vs TreeSet"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-095",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "Threads",
+      "difficulty": "Medium",
+      "question": "Explain the difference between synchronized keyword and ThreadLocal in Java.",
+      "ideal_answer": "synchronized keyword and ThreadLocal differ in several ways: synchronized keyword is intrinsic locking (works by mutual exclusion) whereas ThreadLocal is thread-local variables (works by isolation per thread). synchronized keyword is typically used for monitor lock on object/class, while ThreadLocal is used for each thread has independent copy. Example demonstrating synchronized keyword: synchronized(obj) { /* critical section */ }. Example demonstrating ThreadLocal: ThreadLocal<SimpleDateFormat> df = ThreadLocal.withInitial(SimpleDateFormat::new);.",
+      "keywords": [
+        "synchronized keyword",
+        "ThreadLocal",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose synchronized keyword over ThreadLocal?",
+        "What is the performance or memory difference between synchronized keyword and ThreadLocal?"
+      ],
+      "related_concepts": [
+        "synchronized keyword",
+        "ThreadLocal",
+        "ReentrantLock",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-096",
+      "subject": "Java",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Medium",
+      "question": "Explain the difference between abstract class vs interface and encapsulation in Java.",
+      "ideal_answer": "abstract class vs interface and encapsulation differ in several ways: abstract class vs interface is abstraction mechanisms (works by defining contracts) whereas encapsulation is data hiding principle (works by controlling access). abstract class vs interface is typically used for abstract class: state, constructor, single inheritance; interface: pure contract, multiple inheritance, while encapsulation is used for private fields, public getters/setters. Example demonstrating abstract class vs interface: interface Drawable { void draw(); }. Example demonstrating encapsulation: private int age; public int getAge() { return age; }.",
+      "keywords": [
+        "abstract class vs interface",
+        "encapsulation",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose abstract class vs interface over encapsulation?",
+        "What is the performance or memory difference between abstract class vs interface and encapsulation?"
+      ],
+      "related_concepts": [
+        "abstract class vs interface",
+        "encapsulation",
+        "method overloading vs overriding",
+        "super keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JAVA-097",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Operators",
+      "difficulty": "Hard",
+      "question": "Explain the difference between String immutability and final keyword in Java.",
+      "ideal_answer": "String immutability and final keyword differ in several ways: String immutability is unchangeable string objects (works by security, caching, thread-safety) whereas final keyword is immutability modifier (works by preventing modification). String immutability is typically used for String Pool, interning, while final keyword is used for final class: no inheritance, final method: no override, final variable: no reassignment. Example demonstrating String immutability: String s = \"hello\"; // in pool. Example demonstrating final keyword: final List<String> list = new ArrayList<>();.",
+      "keywords": [
+        "String immutability",
+        "final keyword",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose String immutability over final keyword?",
+        "What is the performance or memory difference between String immutability and final keyword?"
+      ],
+      "related_concepts": [
+        "String immutability",
+        "final keyword",
+        "JVM architecture",
+        "equals() vs =="
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-098",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "Set",
+      "difficulty": "Hard",
+      "question": "Explain the difference between HashMap internals and PriorityQueue in Java.",
+      "ideal_answer": "HashMap internals and PriorityQueue differ in several ways: HashMap internals is hash table implementation (works by key-value storage) whereas PriorityQueue is heap-based queue (works by priority ordering). HashMap internals is typically used for array of buckets, hash collision handling, while PriorityQueue is used for min-heap by default, custom Comparator. Example demonstrating HashMap internals: Map<String, Integer> map = new HashMap<>();. Example demonstrating PriorityQueue: PriorityQueue<Task> pq = new PriorityQueue<>(Comparator.comparingInt(t -> t.priority));.",
+      "keywords": [
+        "HashMap internals",
+        "PriorityQueue",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose HashMap internals over PriorityQueue?",
+        "What is the performance or memory difference between HashMap internals and PriorityQueue?"
+      ],
+      "related_concepts": [
+        "HashMap internals",
+        "PriorityQueue",
+        "ArrayList vs LinkedList",
+        "ConcurrentHashMap"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-099",
+      "subject": "Java",
+      "category": "Functional Programming",
+      "subcategory": "Lambda",
+      "difficulty": "Hard",
+      "question": "Explain the difference between lambda expressions and method references in Java.",
+      "ideal_answer": "lambda expressions and method references differ in several ways: lambda expressions is anonymous function syntax (works by functional interface implementation) whereas method references is concise lambda shorthand (works by referencing existing methods). lambda expressions is typically used for (params) -> body, while method references is used for Class::method, object::method. Example demonstrating lambda expressions: Runnable r = () -> System.out.println(\"Hello\");. Example demonstrating method references: list.forEach(System.out::println);.",
+      "keywords": [
+        "lambda expressions",
+        "method references",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose lambda expressions over method references?",
+        "What is the performance or memory difference between lambda expressions and method references?"
+      ],
+      "related_concepts": [
+        "lambda expressions",
+        "method references",
+        "functional interfaces",
+        "Stream intermediate vs terminal operations"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-100",
+      "subject": "Java",
+      "category": "Functional Programming",
+      "subcategory": "Streams",
+      "difficulty": "Hard",
+      "question": "Explain the difference between method references and functional interfaces in Java.",
+      "ideal_answer": "method references and functional interfaces differ in several ways: method references is concise lambda shorthand (works by referencing existing methods) whereas functional interfaces is single abstract method interfaces (works by lambda target types). method references is typically used for Class::method, object::method, while functional interfaces is used for Predicate, Function, Consumer, Supplier. Example demonstrating method references: list.forEach(System.out::println);. Example demonstrating functional interfaces: Predicate<String> isEmpty = String::isEmpty;.",
+      "keywords": [
+        "method references",
+        "functional interfaces",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose method references over functional interfaces?",
+        "What is the performance or memory difference between method references and functional interfaces?"
+      ],
+      "related_concepts": [
+        "method references",
+        "functional interfaces",
+        "lambda expressions",
+        "Stream intermediate vs terminal operations"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-101",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "List",
+      "difficulty": "Hard",
+      "question": "Explain the difference between ArrayList vs LinkedList and Optional in Java.",
+      "ideal_answer": "ArrayList vs LinkedList and Optional differ in several ways: ArrayList vs LinkedList is List implementations (works by sequential collection storage) whereas Optional is null container type (works by avoiding NullPointerException). ArrayList vs LinkedList is typically used for ArrayList: O(1) random access, O(n) insert; LinkedList: O(n) access, O(1) insert, while Optional is used for explicit presence/absence handling. Example demonstrating ArrayList vs LinkedList: List<String> list = new ArrayList<>();. Example demonstrating Optional: Optional<String> opt = Optional.ofNullable(value);.",
+      "keywords": [
+        "ArrayList vs LinkedList",
+        "Optional",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ArrayList vs LinkedList over Optional?",
+        "What is the performance or memory difference between ArrayList vs LinkedList and Optional?"
+      ],
+      "related_concepts": [
+        "ArrayList vs LinkedList",
+        "Optional",
+        "HashMap internals",
+        "ConcurrentHashMap"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-102",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "Map",
+      "difficulty": "Hard",
+      "question": "Explain the difference between ConcurrentHashMap and Optional in Java.",
+      "ideal_answer": "ConcurrentHashMap and Optional differ in several ways: ConcurrentHashMap is thread-safe hash map (works by concurrent access without full locking) whereas Optional is null container type (works by avoiding NullPointerException). ConcurrentHashMap is typically used for segment locking (Java 7) or CAS + synchronized (Java 8+), while Optional is used for explicit presence/absence handling. Example demonstrating ConcurrentHashMap: ConcurrentHashMap<String, Integer> map. Example demonstrating Optional: Optional<String> opt = Optional.ofNullable(value);.",
+      "keywords": [
+        "ConcurrentHashMap",
+        "Optional",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ConcurrentHashMap over Optional?",
+        "What is the performance or memory difference between ConcurrentHashMap and Optional?"
+      ],
+      "related_concepts": [
+        "ConcurrentHashMap",
+        "Optional",
+        "ArrayList vs LinkedList",
+        "HashMap internals"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-103",
+      "subject": "Java",
+      "category": "Functional Programming",
+      "subcategory": "Lambda",
+      "difficulty": "Hard",
+      "question": "What is lambda expressions in Java and how does it work?",
+      "ideal_answer": "lambda expressions in Java refers to anonymous function syntax. It works by functional interface implementation. Key characteristics include (params) -> body. Example: Runnable r = () -> System.out.println(\"Hello\");. Common pitfalls include effectively final variables.",
+      "keywords": [
+        "lambda expressions",
+        "Java programming",
+        "functional programming"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of lambda expressions in a production environment?",
+        "What are the common pitfalls or issues associated with lambda expressions?"
+      ],
+      "related_concepts": [
+        "method references",
+        "functional interfaces",
+        "Stream intermediate vs terminal operations"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-104",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "CompletableFuture",
+      "difficulty": "Hard",
+      "question": "Explain the difference between CompletableFuture and Fork/Join framework in Java.",
+      "ideal_answer": "CompletableFuture and Fork/Join framework differ in several ways: CompletableFuture is composable async programming (works by future composition and chaining) whereas Fork/Join framework is divide-and-conquer parallelism (works by work-stealing algorithm). CompletableFuture is typically used for thenApply, thenCompose, thenCombine, exceptionally, while Fork/Join framework is used for RecursiveTask, RecursiveAction. Example demonstrating CompletableFuture: CompletableFuture.supplyAsync(() -> fetchData()).thenApply(this::process);. Example demonstrating Fork/Join framework: new ForkJoinPool().invoke(new MyTask());.",
+      "keywords": [
+        "CompletableFuture",
+        "Fork/Join framework",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CompletableFuture over Fork/Join framework?",
+        "What is the performance or memory difference between CompletableFuture and Fork/Join framework?"
+      ],
+      "related_concepts": [
+        "CompletableFuture",
+        "Fork/Join framework",
+        "synchronized keyword",
+        "ReentrantLock"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-105",
+      "subject": "Java",
+      "category": "Spring Ecosystem",
+      "subcategory": "Spring Boot",
+      "difficulty": "Hard",
+      "question": "Explain the difference between Spring Bean scopes and Spring Data JPA in Java.",
+      "ideal_answer": "Spring Bean scopes and Spring Data JPA differ in several ways: Spring Bean scopes is object lifecycle management (works by controlling instance creation) whereas Spring Data JPA is repository abstraction (works by reducing data access code). Spring Bean scopes is typically used for singleton, prototype, request, session, application, while Spring Data JPA is used for CrudRepository, PagingAndSortingRepository. Example demonstrating Spring Bean scopes: @Scope(\"prototype\"). Example demonstrating Spring Data JPA: interface UserRepo extends JpaRepository<User, Long> {}.",
+      "keywords": [
+        "Spring Bean scopes",
+        "Spring Data JPA",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Spring Bean scopes over Spring Data JPA?",
+        "What is the performance or memory difference between Spring Bean scopes and Spring Data JPA?"
+      ],
+      "related_concepts": [
+        "Spring Bean scopes",
+        "Spring Data JPA",
+        "Dependency Injection",
+        "Spring Boot auto-configuration"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-106",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Operators",
+      "difficulty": "Hard",
+      "question": "Explain the difference between String immutability and type erasure in Java.",
+      "ideal_answer": "String immutability and type erasure differ in several ways: String immutability is unchangeable string objects (works by security, caching, thread-safety) whereas type erasure is compile-time type removal (works by backward compatibility). String immutability is typically used for String Pool, interning, while type erasure is used for replaced with Object or first bound. Example demonstrating String immutability: String s = \"hello\"; // in pool. Example demonstrating type erasure: List<String> becomes List at runtime.",
+      "keywords": [
+        "String immutability",
+        "type erasure",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose String immutability over type erasure?",
+        "What is the performance or memory difference between String immutability and type erasure?"
+      ],
+      "related_concepts": [
+        "String immutability",
+        "type erasure",
+        "JVM architecture",
+        "equals() vs =="
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-107",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "Queue",
+      "difficulty": "Hard",
+      "question": "Explain the difference between HashSet vs TreeSet and Optional in Java.",
+      "ideal_answer": "HashSet vs TreeSet and Optional differ in several ways: HashSet vs TreeSet is Set implementations (works by unique element collections) whereas Optional is null container type (works by avoiding NullPointerException). HashSet vs TreeSet is typically used for HashSet: O(1), unordered; TreeSet: O(log n), sorted, while Optional is used for explicit presence/absence handling. Example demonstrating HashSet vs TreeSet: Set<Integer> set = new TreeSet<>();. Example demonstrating Optional: Optional<String> opt = Optional.ofNullable(value);.",
+      "keywords": [
+        "HashSet vs TreeSet",
+        "Optional",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose HashSet vs TreeSet over Optional?",
+        "What is the performance or memory difference between HashSet vs TreeSet and Optional?"
+      ],
+      "related_concepts": [
+        "HashSet vs TreeSet",
+        "Optional",
+        "ArrayList vs LinkedList",
+        "HashMap internals"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-108",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "CompletableFuture",
+      "difficulty": "Hard",
+      "question": "What is CompletableFuture in Java and how does it work?",
+      "ideal_answer": "CompletableFuture in Java refers to composable async programming. It works by future composition and chaining. Key characteristics include thenApply, thenCompose, thenCombine, exceptionally. Example: CompletableFuture.supplyAsync(() -> fetchData()).thenApply(this::process);. Common pitfalls include exception propagation, async debugging.",
+      "keywords": [
+        "CompletableFuture",
+        "Java programming",
+        "concurrency"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of CompletableFuture in a production environment?",
+        "What are the common pitfalls or issues associated with CompletableFuture?"
+      ],
+      "related_concepts": [
+        "synchronized keyword",
+        "ReentrantLock",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-109",
+      "subject": "Java",
+      "category": "Collections",
+      "subcategory": "List",
+      "difficulty": "Hard",
+      "question": "What is Optional in Java and how does it work?",
+      "ideal_answer": "Optional in Java refers to null container type. It works by avoiding NullPointerException. Key characteristics include explicit presence/absence handling. Example: Optional<String> opt = Optional.ofNullable(value);. Common pitfalls include overuse creating wrapper overhead.",
+      "keywords": [
+        "Optional",
+        "Java programming",
+        "collections"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Optional in a production environment?",
+        "What are the common pitfalls or issues associated with Optional?"
+      ],
+      "related_concepts": [
+        "ArrayList vs LinkedList",
+        "HashMap internals",
+        "ConcurrentHashMap"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-110",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Strings",
+      "difficulty": "Hard",
+      "question": "Explain the difference between hashCode() contract and static block in Java.",
+      "ideal_answer": "hashCode() contract and static block differ in several ways: hashCode() contract is object hash code generation (works by hash-based collection support) whereas static block is class-level initialization (works by executed when class loads). hashCode() contract is typically used for consistent with equals, same object same hash, while static block is used for runs before constructor, only once. Example demonstrating hashCode() contract: @Override public int hashCode(). Example demonstrating static block: static { System.loadLibrary(\"native\"); }.",
+      "keywords": [
+        "hashCode() contract",
+        "static block",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose hashCode() contract over static block?",
+        "What is the performance or memory difference between hashCode() contract and static block?"
+      ],
+      "related_concepts": [
+        "hashCode() contract",
+        "static block",
+        "JVM architecture",
+        "String immutability"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-111",
+      "subject": "Java",
+      "category": "Functional Programming",
+      "subcategory": "Method References",
+      "difficulty": "Hard",
+      "question": "What is functional interfaces in Java and how does it work?",
+      "ideal_answer": "functional interfaces in Java refers to single abstract method interfaces. It works by lambda target types. Key characteristics include Predicate, Function, Consumer, Supplier. Example: Predicate<String> isEmpty = String::isEmpty;. Common pitfalls include @FunctionalInterface annotation.",
+      "keywords": [
+        "functional interfaces",
+        "Java programming",
+        "functional programming"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of functional interfaces in a production environment?",
+        "What are the common pitfalls or issues associated with functional interfaces?"
+      ],
+      "related_concepts": [
+        "lambda expressions",
+        "method references",
+        "Stream intermediate vs terminal operations"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-112",
+      "subject": "Java",
+      "category": "JVM Internals",
+      "subcategory": "Garbage Collection",
+      "difficulty": "Hard",
+      "question": "What are the common issues with metaspace in Java and how do you debug them?",
+      "ideal_answer": "Common issues with metaspace in Java include: classloader leaks. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "metaspace",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to metaspace?",
+        "What tools can assist in detecting problems with metaspace at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "garbage collection",
+        "G1 GC",
+        "class loading mechanism"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-113",
+      "subject": "Java",
+      "category": "OOP",
+      "subcategory": "Interfaces",
+      "difficulty": "Hard",
+      "question": "What are the common issues with composition vs inheritance in Java and how do you debug them?",
+      "ideal_answer": "Common issues with composition vs inheritance in Java include: favor composition over inheritance. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "composition vs inheritance",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to composition vs inheritance?",
+        "What tools can assist in detecting problems with composition vs inheritance at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "abstract class vs interface",
+        "method overloading vs overriding",
+        "super keyword"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-114",
+      "subject": "Java",
+      "category": "Functional Programming",
+      "subcategory": "Streams",
+      "difficulty": "Hard",
+      "question": "What are the common issues with method references in Java and how do you debug them?",
+      "ideal_answer": "Common issues with method references in Java include: constructor references. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "method references",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to method references?",
+        "What tools can assist in detecting problems with method references at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "lambda expressions",
+        "functional interfaces",
+        "Stream intermediate vs terminal operations"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-115",
+      "subject": "Java",
+      "category": "Concurrency",
+      "subcategory": "CompletableFuture",
+      "difficulty": "Hard",
+      "question": "Explain the difference between CompletableFuture and CountDownLatch in Java.",
+      "ideal_answer": "CompletableFuture and CountDownLatch differ in several ways: CompletableFuture is composable async programming (works by future composition and chaining) whereas CountDownLatch is synchronization aid (works by waiting for multiple events). CompletableFuture is typically used for thenApply, thenCompose, thenCombine, exceptionally, while CountDownLatch is used for count down to zero, then release. Example demonstrating CompletableFuture: CompletableFuture.supplyAsync(() -> fetchData()).thenApply(this::process);. Example demonstrating CountDownLatch: CountDownLatch latch = new CountDownLatch(3);.",
+      "keywords": [
+        "CompletableFuture",
+        "CountDownLatch",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CompletableFuture over CountDownLatch?",
+        "What is the performance or memory difference between CompletableFuture and CountDownLatch?"
+      ],
+      "related_concepts": [
+        "CompletableFuture",
+        "CountDownLatch",
+        "synchronized keyword",
+        "ReentrantLock"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-116",
+      "subject": "Java",
+      "category": "Spring Ecosystem",
+      "subcategory": "Spring Core",
+      "difficulty": "Hard",
+      "question": "What is Spring Security in Java and how does it work?",
+      "ideal_answer": "Spring Security in Java refers to security framework. It works by authentication and authorization. Key characteristics include filters, SecurityContext, JWT integration. Example: @EnableWebSecurity. Common pitfalls include filter chain order.",
+      "keywords": [
+        "Spring Security",
+        "Java programming",
+        "spring ecosystem"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Spring Security in a production environment?",
+        "What are the common pitfalls or issues associated with Spring Security?"
+      ],
+      "related_concepts": [
+        "Dependency Injection",
+        "Spring Bean scopes",
+        "Spring Boot auto-configuration"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-117",
+      "subject": "Java",
+      "category": "Spring Ecosystem",
+      "subcategory": "Spring Core",
+      "difficulty": "Hard",
+      "question": "What are the common issues with Spring Security in Java and how do you debug them?",
+      "ideal_answer": "Common issues with Spring Security in Java include: filter chain order. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Spring Security",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Spring Security?",
+        "What tools can assist in detecting problems with Spring Security at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Dependency Injection",
+        "Spring Bean scopes",
+        "Spring Boot auto-configuration"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-118",
+      "subject": "Java",
+      "category": "JVM Internals",
+      "subcategory": "Class Loading",
+      "difficulty": "Hard",
+      "question": "What are the common issues with class loading mechanism in Java and how do you debug them?",
+      "ideal_answer": "Common issues with class loading mechanism in Java include: ClassNotFoundException vs NoClassDefFoundError. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "class loading mechanism",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to class loading mechanism?",
+        "What tools can assist in detecting problems with class loading mechanism at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "garbage collection",
+        "G1 GC",
+        "JIT compilation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-119",
+      "subject": "Java",
+      "category": "Core Java",
+      "subcategory": "Strings",
+      "difficulty": "Hard",
+      "question": "What are the common issues with var keyword in Java and how do you debug them?",
+      "ideal_answer": "Common issues with var keyword in Java include: cannot use for fields, method params. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "var keyword",
+        "troubleshooting",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to var keyword?",
+        "What tools can assist in detecting problems with var keyword at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "JVM architecture",
+        "String immutability",
+        "equals() vs =="
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JAVA-120",
+      "subject": "Java",
+      "category": "JVM Internals",
+      "subcategory": "Memory Model",
+      "difficulty": "Hard",
+      "question": "Explain the difference between garbage collection and class loading mechanism in Java.",
+      "ideal_answer": "garbage collection and class loading mechanism differ in several ways: garbage collection is automatic memory reclamation (works by preventing memory leaks) whereas class loading mechanism is runtime class resolution (works by dynamic class loading). garbage collection is typically used for mark-and-sweep, generational, G1, ZGC, Shenandoah, while class loading mechanism is used for Bootstrap -> Extension -> Application -> Custom. Example demonstrating garbage collection: -XX:+UseG1GC. Example demonstrating class loading mechanism: Class.forName(\"com.example.MyClass\").",
+      "keywords": [
+        "garbage collection",
+        "class loading mechanism",
+        "comparison",
+        "Java"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose garbage collection over class loading mechanism?",
+        "What is the performance or memory difference between garbage collection and class loading mechanism?"
+      ],
+      "related_concepts": [
+        "garbage collection",
+        "class loading mechanism",
+        "G1 GC",
+        "JIT compilation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

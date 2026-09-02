@@ -1,0 +1,510 @@
+{
+  "metadata": {
+    "subject": "Queues",
+    "domain": "Data Structures & Algorithms",
+    "total_questions": 19,
+    "difficulty_distribution": {
+      "Easy": 5,
+      "Medium": 10,
+      "Hard": 4
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "QUEUE-001",
+      "subject": "Queues",
+      "category": "Priority Queue",
+      "subcategory": "Merge K Sorted",
+      "difficulty": "Easy",
+      "question": "What is merge k sorted lists in Queues and how does it work?",
+      "ideal_answer": "merge k sorted lists in Queues refers to k-way merge. It works by priority queue for smallest elements. Key characteristics include O(N log k) where N total elements. Example: PriorityQueue<ListNode> pq = new PriorityQueue<>(Comparator.comparingInt(n -> n.val));. Common pitfalls include lazy vs eager merging.",
+      "keywords": [
+        "merge k sorted lists",
+        "Queues programming",
+        "priority queue"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of merge k sorted lists in a production environment?",
+        "What are the common pitfalls or issues associated with merge k sorted lists?"
+      ],
+      "related_concepts": [
+        "heap implementation",
+        "median from data stream"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "QUEUE-002",
+      "subject": "Queues",
+      "category": "Priority Queue",
+      "subcategory": "Median Finder",
+      "difficulty": "Easy",
+      "question": "What are the common issues with median from data stream in Queues and how do you debug them?",
+      "ideal_answer": "Common issues with median from data stream in Queues include: rebalancing invariant. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "median from data stream",
+        "troubleshooting",
+        "Queues"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to median from data stream?",
+        "What tools can assist in detecting problems with median from data stream at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "heap implementation",
+        "merge k sorted lists"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "QUEUE-003",
+      "subject": "Queues",
+      "category": "Implementation",
+      "subcategory": "Array-based",
+      "difficulty": "Easy",
+      "question": "Explain the difference between circular queue and circular array implementation in Queues.",
+      "ideal_answer": "circular queue and circular array implementation differ in several ways: circular queue is array-based ring buffer (works by efficient space utilization) whereas circular array implementation is modulo indexing (works by preventing linear overflow). circular queue is typically used for front and rear pointers modulo capacity, while circular array implementation is used for (front + i) % capacity for ith element. Example demonstrating circular queue: rear = (rear + 1) % capacity; front = (front + 1) % capacity;. Example demonstrating circular array implementation: int front = 0, rear = 0, count = 0;.",
+      "keywords": [
+        "circular queue",
+        "circular array implementation",
+        "comparison",
+        "Queues"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose circular queue over circular array implementation?",
+        "What is the performance or memory difference between circular queue and circular array implementation?"
+      ],
+      "related_concepts": [
+        "circular queue",
+        "circular array implementation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "QUEUE-004",
+      "subject": "Queues",
+      "category": "Applications",
+      "subcategory": "BFS",
+      "difficulty": "Easy",
+      "question": "Explain the difference between BFS traversal and sliding window maximum in Queues.",
+      "ideal_answer": "BFS traversal and sliding window maximum differ in several ways: BFS traversal is breadth-first search (works by level-order graph/tree traversal) whereas sliding window maximum is deque-based optimization (works by O(n) maximum in every window). BFS traversal is typically used for queue for frontier, visited set, while sliding window maximum is used for maintain decreasing deque of indices. Example demonstrating BFS traversal: queue.offer(start); while (!queue.isEmpty()) { Node curr = queue.poll(); for (Node neighbor : curr.neighbors) if (!visited.contains(neighbor)) queue.offer(neighbor); }. Example demonstrating sliding window maximum: while (!deque.isEmpty() && arr[i] >= arr[deque.peekLast()]) deque.pollLast(); deque.offerLast(i);.",
+      "keywords": [
+        "BFS traversal",
+        "sliding window maximum",
+        "comparison",
+        "Queues"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose BFS traversal over sliding window maximum?",
+        "What is the performance or memory difference between BFS traversal and sliding window maximum?"
+      ],
+      "related_concepts": [
+        "BFS traversal",
+        "sliding window maximum"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "QUEUE-005",
+      "subject": "Queues",
+      "category": "Applications",
+      "subcategory": "BFS",
+      "difficulty": "Easy",
+      "question": "What is BFS traversal in Queues and how does it work?",
+      "ideal_answer": "BFS traversal in Queues refers to breadth-first search. It works by level-order graph/tree traversal. Key characteristics include queue for frontier, visited set. Example: queue.offer(start); while (!queue.isEmpty()) { Node curr = queue.poll(); for (Node neighbor : curr.neighbors) if (!visited.contains(neighbor)) queue.offer(neighbor); }. Common pitfalls include shortest path in unweighted graph.",
+      "keywords": [
+        "BFS traversal",
+        "Queues programming",
+        "applications"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of BFS traversal in a production environment?",
+        "What are the common pitfalls or issues associated with BFS traversal?"
+      ],
+      "related_concepts": [
+        "sliding window maximum"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "QUEUE-006",
+      "subject": "Queues",
+      "category": "Priority Queue",
+      "subcategory": "Merge K Sorted",
+      "difficulty": "Medium",
+      "question": "What are the common issues with merge k sorted lists in Queues and how do you debug them?",
+      "ideal_answer": "Common issues with merge k sorted lists in Queues include: lazy vs eager merging. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "merge k sorted lists",
+        "troubleshooting",
+        "Queues"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to merge k sorted lists?",
+        "What tools can assist in detecting problems with merge k sorted lists at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "heap implementation",
+        "median from data stream"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "QUEUE-007",
+      "subject": "Queues",
+      "category": "Priority Queue",
+      "subcategory": "Heap Implementation",
+      "difficulty": "Medium",
+      "question": "Explain the difference between heap implementation and merge k sorted lists in Queues.",
+      "ideal_answer": "heap implementation and merge k sorted lists differ in several ways: heap implementation is binary heap structure (works by complete binary tree with heap property) whereas merge k sorted lists is k-way merge (works by priority queue for smallest elements). heap implementation is typically used for min-heap: parent <= children; max-heap: parent >= children, while merge k sorted lists is used for O(N log k) where N total elements. Example demonstrating heap implementation: PriorityQueue<Integer> minHeap = new PriorityQueue<>();. Example demonstrating merge k sorted lists: PriorityQueue<ListNode> pq = new PriorityQueue<>(Comparator.comparingInt(n -> n.val));.",
+      "keywords": [
+        "heap implementation",
+        "merge k sorted lists",
+        "comparison",
+        "Queues"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose heap implementation over merge k sorted lists?",
+        "What is the performance or memory difference between heap implementation and merge k sorted lists?"
+      ],
+      "related_concepts": [
+        "heap implementation",
+        "merge k sorted lists",
+        "median from data stream"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "QUEUE-008",
+      "subject": "Queues",
+      "category": "Applications",
+      "subcategory": "BFS",
+      "difficulty": "Medium",
+      "question": "What are the common issues with BFS traversal in Queues and how do you debug them?",
+      "ideal_answer": "Common issues with BFS traversal in Queues include: shortest path in unweighted graph. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "BFS traversal",
+        "troubleshooting",
+        "Queues"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to BFS traversal?",
+        "What tools can assist in detecting problems with BFS traversal at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "sliding window maximum"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "QUEUE-009",
+      "subject": "Queues",
+      "category": "Priority Queue",
+      "subcategory": "Median Finder",
+      "difficulty": "Medium",
+      "question": "What is median from data stream in Queues and how does it work?",
+      "ideal_answer": "median from data stream in Queues refers to dual heap approach. It works by O(log n) insertion, O(1) median. Key characteristics include max-heap for lower half, min-heap for upper half. Example: maxHeap.offer(num); minHeap.offer(maxHeap.poll()); // rebalance. Common pitfalls include rebalancing invariant.",
+      "keywords": [
+        "median from data stream",
+        "Queues programming",
+        "priority queue"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of median from data stream in a production environment?",
+        "What are the common pitfalls or issues associated with median from data stream?"
+      ],
+      "related_concepts": [
+        "heap implementation",
+        "merge k sorted lists"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "QUEUE-010",
+      "subject": "Queues",
+      "category": "Priority Queue",
+      "subcategory": "Heap Implementation",
+      "difficulty": "Medium",
+      "question": "Explain the difference between heap implementation and median from data stream in Queues.",
+      "ideal_answer": "heap implementation and median from data stream differ in several ways: heap implementation is binary heap structure (works by complete binary tree with heap property) whereas median from data stream is dual heap approach (works by O(log n) insertion, O(1) median). heap implementation is typically used for min-heap: parent <= children; max-heap: parent >= children, while median from data stream is used for max-heap for lower half, min-heap for upper half. Example demonstrating heap implementation: PriorityQueue<Integer> minHeap = new PriorityQueue<>();. Example demonstrating median from data stream: maxHeap.offer(num); minHeap.offer(maxHeap.poll()); // rebalance.",
+      "keywords": [
+        "heap implementation",
+        "median from data stream",
+        "comparison",
+        "Queues"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose heap implementation over median from data stream?",
+        "What is the performance or memory difference between heap implementation and median from data stream?"
+      ],
+      "related_concepts": [
+        "heap implementation",
+        "median from data stream",
+        "merge k sorted lists"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "QUEUE-011",
+      "subject": "Queues",
+      "category": "Priority Queue",
+      "subcategory": "Heap Implementation",
+      "difficulty": "Medium",
+      "question": "What is heap implementation in Queues and how does it work?",
+      "ideal_answer": "heap implementation in Queues refers to binary heap structure. It works by complete binary tree with heap property. Key characteristics include min-heap: parent <= children; max-heap: parent >= children. Example: PriorityQueue<Integer> minHeap = new PriorityQueue<>();. Common pitfalls include heapify, sift up/down, array representation.",
+      "keywords": [
+        "heap implementation",
+        "Queues programming",
+        "priority queue"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of heap implementation in a production environment?",
+        "What are the common pitfalls or issues associated with heap implementation?"
+      ],
+      "related_concepts": [
+        "median from data stream",
+        "merge k sorted lists"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "QUEUE-012",
+      "subject": "Queues",
+      "category": "Implementation",
+      "subcategory": "Array-based",
+      "difficulty": "Medium",
+      "question": "What are the common issues with circular queue in Queues and how do you debug them?",
+      "ideal_answer": "Common issues with circular queue in Queues include: full vs empty condition (waste one slot or use count). To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "circular queue",
+        "troubleshooting",
+        "Queues"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to circular queue?",
+        "What tools can assist in detecting problems with circular queue at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "circular array implementation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "QUEUE-013",
+      "subject": "Queues",
+      "category": "Priority Queue",
+      "subcategory": "Heap Implementation",
+      "difficulty": "Medium",
+      "question": "What are the common issues with heap implementation in Queues and how do you debug them?",
+      "ideal_answer": "Common issues with heap implementation in Queues include: heapify, sift up/down, array representation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "heap implementation",
+        "troubleshooting",
+        "Queues"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to heap implementation?",
+        "What tools can assist in detecting problems with heap implementation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "median from data stream",
+        "merge k sorted lists"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "QUEUE-014",
+      "subject": "Queues",
+      "category": "Implementation",
+      "subcategory": "Linked List-based",
+      "difficulty": "Medium",
+      "question": "What is circular array implementation in Queues and how does it work?",
+      "ideal_answer": "circular array implementation in Queues refers to modulo indexing. It works by preventing linear overflow. Key characteristics include (front + i) % capacity for ith element. Example: int front = 0, rear = 0, count = 0;. Common pitfalls include resize strategy.",
+      "keywords": [
+        "circular array implementation",
+        "Queues programming",
+        "implementation"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of circular array implementation in a production environment?",
+        "What are the common pitfalls or issues associated with circular array implementation?"
+      ],
+      "related_concepts": [
+        "circular queue"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "QUEUE-015",
+      "subject": "Queues",
+      "category": "Priority Queue",
+      "subcategory": "Median Finder",
+      "difficulty": "Medium",
+      "question": "Explain the difference between median from data stream and merge k sorted lists in Queues.",
+      "ideal_answer": "median from data stream and merge k sorted lists differ in several ways: median from data stream is dual heap approach (works by O(log n) insertion, O(1) median) whereas merge k sorted lists is k-way merge (works by priority queue for smallest elements). median from data stream is typically used for max-heap for lower half, min-heap for upper half, while merge k sorted lists is used for O(N log k) where N total elements. Example demonstrating median from data stream: maxHeap.offer(num); minHeap.offer(maxHeap.poll()); // rebalance. Example demonstrating merge k sorted lists: PriorityQueue<ListNode> pq = new PriorityQueue<>(Comparator.comparingInt(n -> n.val));.",
+      "keywords": [
+        "median from data stream",
+        "merge k sorted lists",
+        "comparison",
+        "Queues"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose median from data stream over merge k sorted lists?",
+        "What is the performance or memory difference between median from data stream and merge k sorted lists?"
+      ],
+      "related_concepts": [
+        "median from data stream",
+        "merge k sorted lists",
+        "heap implementation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "QUEUE-016",
+      "subject": "Queues",
+      "category": "Applications",
+      "subcategory": "CPU Scheduling",
+      "difficulty": "Hard",
+      "question": "What is sliding window maximum in Queues and how does it work?",
+      "ideal_answer": "sliding window maximum in Queues refers to deque-based optimization. It works by O(n) maximum in every window. Key characteristics include maintain decreasing deque of indices. Example: while (!deque.isEmpty() && arr[i] >= arr[deque.peekLast()]) deque.pollLast(); deque.offerLast(i);. Common pitfalls include removing out-of-window elements.",
+      "keywords": [
+        "sliding window maximum",
+        "Queues programming",
+        "applications"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of sliding window maximum in a production environment?",
+        "What are the common pitfalls or issues associated with sliding window maximum?"
+      ],
+      "related_concepts": [
+        "BFS traversal"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "QUEUE-017",
+      "subject": "Queues",
+      "category": "Applications",
+      "subcategory": "CPU Scheduling",
+      "difficulty": "Hard",
+      "question": "What are the common issues with sliding window maximum in Queues and how do you debug them?",
+      "ideal_answer": "Common issues with sliding window maximum in Queues include: removing out-of-window elements. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "sliding window maximum",
+        "troubleshooting",
+        "Queues"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to sliding window maximum?",
+        "What tools can assist in detecting problems with sliding window maximum at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "BFS traversal"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "QUEUE-018",
+      "subject": "Queues",
+      "category": "Implementation",
+      "subcategory": "Array-based",
+      "difficulty": "Hard",
+      "question": "What is circular queue in Queues and how does it work?",
+      "ideal_answer": "circular queue in Queues refers to array-based ring buffer. It works by efficient space utilization. Key characteristics include front and rear pointers modulo capacity. Example: rear = (rear + 1) % capacity; front = (front + 1) % capacity;. Common pitfalls include full vs empty condition (waste one slot or use count).",
+      "keywords": [
+        "circular queue",
+        "Queues programming",
+        "implementation"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of circular queue in a production environment?",
+        "What are the common pitfalls or issues associated with circular queue?"
+      ],
+      "related_concepts": [
+        "circular array implementation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "QUEUE-019",
+      "subject": "Queues",
+      "category": "Implementation",
+      "subcategory": "Linked List-based",
+      "difficulty": "Hard",
+      "question": "What are the common issues with circular array implementation in Queues and how do you debug them?",
+      "ideal_answer": "Common issues with circular array implementation in Queues include: resize strategy. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "circular array implementation",
+        "troubleshooting",
+        "Queues"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to circular array implementation?",
+        "What tools can assist in detecting problems with circular array implementation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "circular queue"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

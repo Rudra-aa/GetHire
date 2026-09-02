@@ -333,26 +333,102 @@ Set-Cookie: refresh_token=eyJhbGc...; HttpOnly; Secure; SameSite=Strict; Max-Age
 
 ---
 
-### GET /auth/me 🔐
+### GET /auth/session 🔐
 
-**Purpose:** Retrieve the currently authenticated user's profile.
+**Purpose:** Check active connection, user profile details, system roles, and current session metadata.
 
 **Success Response — 200 OK:**
 ```json
 {
+  "success": true,
+  "message": "Active session retrieved successfully.",
+  "data": {
+    "authenticated": true,
+    "user": {
+      "id": "507f1f77bcf86cd799439011",
+      "email": "alice@example.com",
+      "role": "candidate",
+      "email_verified": false
+    },
+    "profile": {
+      "full_name": "Alice Johnson",
+      "avatar_url": "https://gethire.ai/avatars/alice.png",
+      "target_role": "Backend Developer",
+      "experience_level": "mid"
+    },
+    "session": {
+      "id": "507f1f77bcf86cd799439044",
+      "device_name": "MacBook Air",
+      "browser": "Chrome",
+      "operating_system": "macOS",
+      "ip_address": "103.21.45.67",
+      "last_seen": "2026-08-09T10:30:00Z"
+    }
+  }
+}
+```
+
+---
+
+### GET /users/me 🔐
+
+**Purpose:** Retrieve the currently authenticated user's profile and credentials information.
+
+**Success Response — 200 OK:**
+```json
+{
+  "success": true,
+  "message": "Profile retrieved successfully.",
   "data": {
     "id": "507f1f77bcf86cd799439011",
     "email": "alice@example.com",
-    "full_name": "Alice Johnson",
     "role": "candidate",
+    "email_verified": false,
     "profile": {
-      "avatar_url": null,
-      "target_role": "Software Engineer",
-      "experience_level": "entry"
+      "full_name": "Alice Johnson",
+      "avatar_url": "https://gethire.ai/avatars/alice.png",
+      "target_role": "Backend Developer",
+      "experience_level": "mid"
     },
     "created_at": "2026-08-09T10:00:00Z"
-  },
-  "meta": { ... }
+  }
+}
+```
+
+---
+
+### PATCH /users/me 🔐
+
+**Purpose:** Update basic profile information of the currently authenticated user.
+
+**Request Body:**
+```json
+{
+  "full_name": "Alice Johnson",
+  "avatar_url": "https://gethire.ai/avatars/alice_new.png",
+  "target_role": "Fullstack Developer",
+  "experience_level": "mid"
+}
+```
+
+**Success Response — 200 OK:**
+```json
+{
+  "success": true,
+  "message": "Profile updated successfully.",
+  "data": {
+    "id": "507f1f77bcf86cd799439011",
+    "email": "alice@example.com",
+    "role": "candidate",
+    "email_verified": false,
+    "profile": {
+      "full_name": "Alice Johnson",
+      "avatar_url": "https://gethire.ai/avatars/alice_new.png",
+      "target_role": "Fullstack Developer",
+      "experience_level": "mid"
+    },
+    "updated_at": "2026-08-09T11:00:00Z"
+  }
 }
 ```
 

@@ -1,0 +1,1432 @@
+{
+  "metadata": {
+    "subject": "Node.js",
+    "domain": "Web Development",
+    "total_questions": 55,
+    "difficulty_distribution": {
+      "Easy": 16,
+      "Medium": 28,
+      "Hard": 11
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:47Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "NODE-001",
+      "subject": "Node.js",
+      "category": "Modules",
+      "subcategory": "CommonJS",
+      "difficulty": "Easy",
+      "question": "Explain the difference between CommonJS vs ES Modules and circular dependencies in Node.js.",
+      "ideal_answer": "CommonJS vs ES Modules and circular dependencies differ in several ways: CommonJS vs ES Modules is module systems comparison (works by synchronous vs asynchronous loading) whereas circular dependencies is mutual module requires (works by partial exports in cycles). CommonJS vs ES Modules is typically used for require/module.exports vs import/export, while circular dependencies is used for module.exports cached, incomplete during load. Example demonstrating CommonJS vs ES Modules: const fs = require('fs'); vs import fs from 'fs';. Example demonstrating circular dependencies: a requires b, b requires a.",
+      "keywords": [
+        "CommonJS vs ES Modules",
+        "circular dependencies",
+        "comparison",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CommonJS vs ES Modules over circular dependencies?",
+        "What is the performance or memory difference between CommonJS vs ES Modules and circular dependencies?"
+      ],
+      "related_concepts": [
+        "CommonJS vs ES Modules",
+        "circular dependencies",
+        "module resolution"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NODE-002",
+      "subject": "Node.js",
+      "category": "Modules",
+      "subcategory": "CommonJS",
+      "difficulty": "Easy",
+      "question": "What is CommonJS vs ES Modules in Node.js and how does it work?",
+      "ideal_answer": "CommonJS vs ES Modules in Node.js refers to module systems comparison. It works by synchronous vs asynchronous loading. Key characteristics include require/module.exports vs import/export. Example: const fs = require('fs'); vs import fs from 'fs';. Common pitfalls include interop, .mjs, type: module.",
+      "keywords": [
+        "CommonJS vs ES Modules",
+        "Node.js programming",
+        "modules"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of CommonJS vs ES Modules in a production environment?",
+        "What are the common pitfalls or issues associated with CommonJS vs ES Modules?"
+      ],
+      "related_concepts": [
+        "module resolution",
+        "circular dependencies"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NODE-003",
+      "subject": "Node.js",
+      "category": "Performance",
+      "subcategory": "Memory Leaks",
+      "difficulty": "Easy",
+      "question": "What are the common issues with cluster module in Node.js and how do you debug them?",
+      "ideal_answer": "Common issues with cluster module in Node.js include: shared state challenges, PM2 alternative. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "cluster module",
+        "troubleshooting",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to cluster module?",
+        "What tools can assist in detecting problems with cluster module at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "worker threads",
+        "memory leaks"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NODE-004",
+      "subject": "Node.js",
+      "category": "Core",
+      "subcategory": "Process",
+      "difficulty": "Easy",
+      "question": "Explain the difference between process.nextTick and Buffer in Node.js.",
+      "ideal_answer": "process.nextTick and Buffer differ in several ways: process.nextTick is microtask queue (works by highest priority async execution) whereas Buffer is binary data handling (works by fixed-size raw memory allocation). process.nextTick is typically used for executed before event loop continues, while Buffer is used for pool allocation, encoding. Example demonstrating process.nextTick: process.nextTick(() => console.log('next tick'));. Example demonstrating Buffer: Buffer.from('hello'); Buffer.alloc(10);.",
+      "keywords": [
+        "process.nextTick",
+        "Buffer",
+        "comparison",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose process.nextTick over Buffer?",
+        "What is the performance or memory difference between process.nextTick and Buffer?"
+      ],
+      "related_concepts": [
+        "process.nextTick",
+        "Buffer",
+        "event loop",
+        "global object"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NODE-005",
+      "subject": "Node.js",
+      "category": "Event Loop",
+      "subcategory": "Microtasks",
+      "difficulty": "Easy",
+      "question": "What is libuv thread pool in Node.js and how does it work?",
+      "ideal_answer": "libuv thread pool in Node.js refers to OS operation offloading. It works by handling blocking operations. Key characteristics include 4 threads by default (UV_THREADPOOL_SIZE). Example: fs.readFile, crypto.pbkdf2, dns.lookup. Common pitfalls include increasing thread pool size.",
+      "keywords": [
+        "libuv thread pool",
+        "Node.js programming",
+        "event loop"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of libuv thread pool in a production environment?",
+        "What are the common pitfalls or issues associated with libuv thread pool?"
+      ],
+      "related_concepts": [
+        "setImmediate vs setTimeout(0)",
+        "microtask queue"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NODE-006",
+      "subject": "Node.js",
+      "category": "Event Loop",
+      "subcategory": "Phases",
+      "difficulty": "Easy",
+      "question": "Explain the difference between setImmediate vs setTimeout(0) and libuv thread pool in Node.js.",
+      "ideal_answer": "setImmediate vs setTimeout(0) and libuv thread pool differ in several ways: setImmediate vs setTimeout(0) is immediate execution scheduling (works by check phase vs timer phase) whereas libuv thread pool is OS operation offloading (works by handling blocking operations). setImmediate vs setTimeout(0) is typically used for setImmediate: check phase; setTimeout: timers phase, while libuv thread pool is used for 4 threads by default (UV_THREADPOOL_SIZE). Example demonstrating setImmediate vs setTimeout(0): setImmediate(() => {}); setTimeout(() => {}, 0);. Example demonstrating libuv thread pool: fs.readFile, crypto.pbkdf2, dns.lookup.",
+      "keywords": [
+        "setImmediate vs setTimeout(0)",
+        "libuv thread pool",
+        "comparison",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose setImmediate vs setTimeout(0) over libuv thread pool?",
+        "What is the performance or memory difference between setImmediate vs setTimeout(0) and libuv thread pool?"
+      ],
+      "related_concepts": [
+        "setImmediate vs setTimeout(0)",
+        "libuv thread pool",
+        "microtask queue"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NODE-007",
+      "subject": "Node.js",
+      "category": "Performance",
+      "subcategory": "Event Loop Lag",
+      "difficulty": "Easy",
+      "question": "What is memory leaks in Node.js and how does it work?",
+      "ideal_answer": "memory leaks in Node.js refers to unreclaimed memory growth. It works by gradual process bloat. Key characteristics include event listener accumulation, closure references, global caches. Example: heapdump analysis. Common pitfalls include tools: clinic.js, node --inspect.",
+      "keywords": [
+        "memory leaks",
+        "Node.js programming",
+        "performance"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of memory leaks in a production environment?",
+        "What are the common pitfalls or issues associated with memory leaks?"
+      ],
+      "related_concepts": [
+        "worker threads",
+        "cluster module"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NODE-008",
+      "subject": "Node.js",
+      "category": "Performance",
+      "subcategory": "Profiling",
+      "difficulty": "Easy",
+      "question": "Explain the difference between worker threads and memory leaks in Node.js.",
+      "ideal_answer": "worker threads and memory leaks differ in several ways: worker threads is true parallelism (works by CPU-intensive task offloading) whereas memory leaks is unreclaimed memory growth (works by gradual process bloat). worker threads is typically used for isolated V8 instances, SharedArrayBuffer, while memory leaks is used for event listener accumulation, closure references, global caches. Example demonstrating worker threads: const { Worker } = require('worker_threads');. Example demonstrating memory leaks: heapdump analysis.",
+      "keywords": [
+        "worker threads",
+        "memory leaks",
+        "comparison",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose worker threads over memory leaks?",
+        "What is the performance or memory difference between worker threads and memory leaks?"
+      ],
+      "related_concepts": [
+        "worker threads",
+        "memory leaks",
+        "cluster module"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NODE-009",
+      "subject": "Node.js",
+      "category": "Streams",
+      "subcategory": "Writable",
+      "difficulty": "Easy",
+      "question": "What are the common issues with backpressure in Node.js and how do you debug them?",
+      "ideal_answer": "Common issues with backpressure in Node.js include: highWaterMark tuning. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "backpressure",
+        "troubleshooting",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to backpressure?",
+        "What tools can assist in detecting problems with backpressure at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "stream types",
+        "pipeline utility"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NODE-010",
+      "subject": "Node.js",
+      "category": "Event Loop",
+      "subcategory": "setImmediate vs setTimeout",
+      "difficulty": "Easy",
+      "question": "What are the common issues with microtask queue in Node.js and how do you debug them?",
+      "ideal_answer": "Common issues with microtask queue in Node.js include: microtask queue draining. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "microtask queue",
+        "troubleshooting",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to microtask queue?",
+        "What tools can assist in detecting problems with microtask queue at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "setImmediate vs setTimeout(0)",
+        "libuv thread pool"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NODE-011",
+      "subject": "Node.js",
+      "category": "Core",
+      "subcategory": "Globals",
+      "difficulty": "Easy",
+      "question": "Explain the difference between event loop and Buffer in Node.js.",
+      "ideal_answer": "event loop and Buffer differ in several ways: event loop is concurrency mechanism (works by non-blocking I/O execution) whereas Buffer is binary data handling (works by fixed-size raw memory allocation). event loop is typically used for libuv, phases: timers, pending, poll, check, close, while Buffer is used for pool allocation, encoding. Example demonstrating event loop: setTimeout, setImmediate, I/O callbacks. Example demonstrating Buffer: Buffer.from('hello'); Buffer.alloc(10);.",
+      "keywords": [
+        "event loop",
+        "Buffer",
+        "comparison",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose event loop over Buffer?",
+        "What is the performance or memory difference between event loop and Buffer?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "Buffer",
+        "process.nextTick",
+        "global object"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NODE-012",
+      "subject": "Node.js",
+      "category": "Streams",
+      "subcategory": "Readable",
+      "difficulty": "Easy",
+      "question": "What are the common issues with stream types in Node.js and how do you debug them?",
+      "ideal_answer": "Common issues with stream types in Node.js include: object mode streams. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "stream types",
+        "troubleshooting",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to stream types?",
+        "What tools can assist in detecting problems with stream types at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "backpressure",
+        "pipeline utility"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NODE-013",
+      "subject": "Node.js",
+      "category": "HTTP",
+      "subcategory": "Server",
+      "difficulty": "Easy",
+      "question": "What is http module in Node.js and how does it work?",
+      "ideal_answer": "http module in Node.js refers to HTTP server creation. It works by basic web server. Key characteristics include createServer, request/response objects. Example: http.createServer((req, res) => { res.end('Hello'); }).listen(3000);. Common pitfalls include Express.js abstraction.",
+      "keywords": [
+        "http module",
+        "Node.js programming",
+        "http"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of http module in a production environment?",
+        "What are the common pitfalls or issues associated with http module?"
+      ],
+      "related_concepts": [
+        "keep-alive"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NODE-014",
+      "subject": "Node.js",
+      "category": "HTTP",
+      "subcategory": "Request/Response",
+      "difficulty": "Easy",
+      "question": "What are the common issues with keep-alive in Node.js and how do you debug them?",
+      "ideal_answer": "Common issues with keep-alive in Node.js include: connection limit, memory implications. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "keep-alive",
+        "troubleshooting",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to keep-alive?",
+        "What tools can assist in detecting problems with keep-alive at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "http module"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NODE-015",
+      "subject": "Node.js",
+      "category": "Modules",
+      "subcategory": "CommonJS",
+      "difficulty": "Easy",
+      "question": "Explain the difference between CommonJS vs ES Modules and module resolution in Node.js.",
+      "ideal_answer": "CommonJS vs ES Modules and module resolution differ in several ways: CommonJS vs ES Modules is module systems comparison (works by synchronous vs asynchronous loading) whereas module resolution is require path lookup (works by finding module files). CommonJS vs ES Modules is typically used for require/module.exports vs import/export, while module resolution is used for core -> node_modules -> paths. Example demonstrating CommonJS vs ES Modules: const fs = require('fs'); vs import fs from 'fs';. Example demonstrating module resolution: require('lodash') -> node_modules/lodash.",
+      "keywords": [
+        "CommonJS vs ES Modules",
+        "module resolution",
+        "comparison",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CommonJS vs ES Modules over module resolution?",
+        "What is the performance or memory difference between CommonJS vs ES Modules and module resolution?"
+      ],
+      "related_concepts": [
+        "CommonJS vs ES Modules",
+        "module resolution",
+        "circular dependencies"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NODE-016",
+      "subject": "Node.js",
+      "category": "Performance",
+      "subcategory": "Memory Leaks",
+      "difficulty": "Easy",
+      "question": "Explain the difference between cluster module and memory leaks in Node.js.",
+      "ideal_answer": "cluster module and memory leaks differ in several ways: cluster module is multi-process scaling (works by utilizing multiple CPU cores) whereas memory leaks is unreclaimed memory growth (works by gradual process bloat). cluster module is typically used for master forks workers, round-robin, while memory leaks is used for event listener accumulation, closure references, global caches. Example demonstrating cluster module: cluster.fork();. Example demonstrating memory leaks: heapdump analysis.",
+      "keywords": [
+        "cluster module",
+        "memory leaks",
+        "comparison",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose cluster module over memory leaks?",
+        "What is the performance or memory difference between cluster module and memory leaks?"
+      ],
+      "related_concepts": [
+        "cluster module",
+        "memory leaks",
+        "worker threads"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NODE-017",
+      "subject": "Node.js",
+      "category": "Core",
+      "subcategory": "Process",
+      "difficulty": "Medium",
+      "question": "What are the common issues with process.nextTick in Node.js and how do you debug them?",
+      "ideal_answer": "Common issues with process.nextTick in Node.js include: nextTick starvation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "process.nextTick",
+        "troubleshooting",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to process.nextTick?",
+        "What tools can assist in detecting problems with process.nextTick at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "Buffer",
+        "global object"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-018",
+      "subject": "Node.js",
+      "category": "Event Loop",
+      "subcategory": "Phases",
+      "difficulty": "Medium",
+      "question": "Explain the difference between setImmediate vs setTimeout(0) and microtask queue in Node.js.",
+      "ideal_answer": "setImmediate vs setTimeout(0) and microtask queue differ in several ways: setImmediate vs setTimeout(0) is immediate execution scheduling (works by check phase vs timer phase) whereas microtask queue is Promise/thenable execution (works by between event loop phases). setImmediate vs setTimeout(0) is typically used for setImmediate: check phase; setTimeout: timers phase, while microtask queue is used for process.nextTick queue first, then Promise queue. Example demonstrating setImmediate vs setTimeout(0): setImmediate(() => {}); setTimeout(() => {}, 0);. Example demonstrating microtask queue: Promise.resolve().then(() => {});.",
+      "keywords": [
+        "setImmediate vs setTimeout(0)",
+        "microtask queue",
+        "comparison",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose setImmediate vs setTimeout(0) over microtask queue?",
+        "What is the performance or memory difference between setImmediate vs setTimeout(0) and microtask queue?"
+      ],
+      "related_concepts": [
+        "setImmediate vs setTimeout(0)",
+        "microtask queue",
+        "libuv thread pool"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-019",
+      "subject": "Node.js",
+      "category": "Performance",
+      "subcategory": "Profiling",
+      "difficulty": "Medium",
+      "question": "What is worker threads in Node.js and how does it work?",
+      "ideal_answer": "worker threads in Node.js refers to true parallelism. It works by CPU-intensive task offloading. Key characteristics include isolated V8 instances, SharedArrayBuffer. Example: const { Worker } = require('worker_threads');. Common pitfalls include communication overhead, pool pattern.",
+      "keywords": [
+        "worker threads",
+        "Node.js programming",
+        "performance"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of worker threads in a production environment?",
+        "What are the common pitfalls or issues associated with worker threads?"
+      ],
+      "related_concepts": [
+        "cluster module",
+        "memory leaks"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-020",
+      "subject": "Node.js",
+      "category": "Core",
+      "subcategory": "Buffer",
+      "difficulty": "Medium",
+      "question": "What is Buffer in Node.js and how does it work?",
+      "ideal_answer": "Buffer in Node.js refers to binary data handling. It works by fixed-size raw memory allocation. Key characteristics include pool allocation, encoding. Example: Buffer.from('hello'); Buffer.alloc(10);. Common pitfalls include Buffer vs Uint8Array.",
+      "keywords": [
+        "Buffer",
+        "Node.js programming",
+        "core"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Buffer in a production environment?",
+        "What are the common pitfalls or issues associated with Buffer?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "process.nextTick",
+        "global object"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-021",
+      "subject": "Node.js",
+      "category": "Modules",
+      "subcategory": "Module Resolution",
+      "difficulty": "Medium",
+      "question": "What are the common issues with circular dependencies in Node.js and how do you debug them?",
+      "ideal_answer": "Common issues with circular dependencies in Node.js include: refactoring to avoid cycles. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "circular dependencies",
+        "troubleshooting",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to circular dependencies?",
+        "What tools can assist in detecting problems with circular dependencies at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "CommonJS vs ES Modules",
+        "module resolution"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-022",
+      "subject": "Node.js",
+      "category": "Core",
+      "subcategory": "Globals",
+      "difficulty": "Medium",
+      "question": "Explain the difference between event loop and global object in Node.js.",
+      "ideal_answer": "event loop and global object differ in several ways: event loop is concurrency mechanism (works by non-blocking I/O execution) whereas global object is global namespace (works by universal access without import). event loop is typically used for libuv, phases: timers, pending, poll, check, close, while global object is used for global, globalThis, process, console, Buffer. Example demonstrating event loop: setTimeout, setImmediate, I/O callbacks. Example demonstrating global object: global.myVar = 1;.",
+      "keywords": [
+        "event loop",
+        "global object",
+        "comparison",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose event loop over global object?",
+        "What is the performance or memory difference between event loop and global object?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "global object",
+        "process.nextTick",
+        "Buffer"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-023",
+      "subject": "Node.js",
+      "category": "HTTP",
+      "subcategory": "Server",
+      "difficulty": "Medium",
+      "question": "What are the common issues with http module in Node.js and how do you debug them?",
+      "ideal_answer": "Common issues with http module in Node.js include: Express.js abstraction. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "http module",
+        "troubleshooting",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to http module?",
+        "What tools can assist in detecting problems with http module at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "keep-alive"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-024",
+      "subject": "Node.js",
+      "category": "Event Loop",
+      "subcategory": "Microtasks",
+      "difficulty": "Medium",
+      "question": "Explain the difference between libuv thread pool and microtask queue in Node.js.",
+      "ideal_answer": "libuv thread pool and microtask queue differ in several ways: libuv thread pool is OS operation offloading (works by handling blocking operations) whereas microtask queue is Promise/thenable execution (works by between event loop phases). libuv thread pool is typically used for 4 threads by default (UV_THREADPOOL_SIZE), while microtask queue is used for process.nextTick queue first, then Promise queue. Example demonstrating libuv thread pool: fs.readFile, crypto.pbkdf2, dns.lookup. Example demonstrating microtask queue: Promise.resolve().then(() => {});.",
+      "keywords": [
+        "libuv thread pool",
+        "microtask queue",
+        "comparison",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose libuv thread pool over microtask queue?",
+        "What is the performance or memory difference between libuv thread pool and microtask queue?"
+      ],
+      "related_concepts": [
+        "libuv thread pool",
+        "microtask queue",
+        "setImmediate vs setTimeout(0)"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-025",
+      "subject": "Node.js",
+      "category": "Streams",
+      "subcategory": "Readable",
+      "difficulty": "Medium",
+      "question": "Explain the difference between stream types and backpressure in Node.js.",
+      "ideal_answer": "stream types and backpressure differ in several ways: stream types is data processing abstractions (works by handling large data efficiently) whereas backpressure is flow control mechanism (works by preventing memory overflow). stream types is typically used for Readable, Writable, Duplex, Transform, while backpressure is used for readable.pause(), writable.write() return value. Example demonstrating stream types: fs.createReadStream('file.txt').pipe(process.stdout);. Example demonstrating backpressure: pipeline(src, transform, dest, callback);.",
+      "keywords": [
+        "stream types",
+        "backpressure",
+        "comparison",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose stream types over backpressure?",
+        "What is the performance or memory difference between stream types and backpressure?"
+      ],
+      "related_concepts": [
+        "stream types",
+        "backpressure",
+        "pipeline utility"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-026",
+      "subject": "Node.js",
+      "category": "Modules",
+      "subcategory": "CommonJS",
+      "difficulty": "Medium",
+      "question": "What are the common issues with CommonJS vs ES Modules in Node.js and how do you debug them?",
+      "ideal_answer": "Common issues with CommonJS vs ES Modules in Node.js include: interop, .mjs, type: module. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "CommonJS vs ES Modules",
+        "troubleshooting",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to CommonJS vs ES Modules?",
+        "What tools can assist in detecting problems with CommonJS vs ES Modules at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "module resolution",
+        "circular dependencies"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-027",
+      "subject": "Node.js",
+      "category": "Core",
+      "subcategory": "Globals",
+      "difficulty": "Medium",
+      "question": "What is event loop in Node.js and how does it work?",
+      "ideal_answer": "event loop in Node.js refers to concurrency mechanism. It works by non-blocking I/O execution. Key characteristics include libuv, phases: timers, pending, poll, check, close. Example: setTimeout, setImmediate, I/O callbacks. Common pitfalls include blocking the event loop.",
+      "keywords": [
+        "event loop",
+        "Node.js programming",
+        "core"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of event loop in a production environment?",
+        "What are the common pitfalls or issues associated with event loop?"
+      ],
+      "related_concepts": [
+        "process.nextTick",
+        "Buffer",
+        "global object"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-028",
+      "subject": "Node.js",
+      "category": "Modules",
+      "subcategory": "ES Modules",
+      "difficulty": "Medium",
+      "question": "What is module resolution in Node.js and how does it work?",
+      "ideal_answer": "module resolution in Node.js refers to require path lookup. It works by finding module files. Key characteristics include core -> node_modules -> paths. Example: require('lodash') -> node_modules/lodash. Common pitfalls include NODE_PATH, resolution algorithm.",
+      "keywords": [
+        "module resolution",
+        "Node.js programming",
+        "modules"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of module resolution in a production environment?",
+        "What are the common pitfalls or issues associated with module resolution?"
+      ],
+      "related_concepts": [
+        "CommonJS vs ES Modules",
+        "circular dependencies"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-029",
+      "subject": "Node.js",
+      "category": "Performance",
+      "subcategory": "Event Loop Lag",
+      "difficulty": "Medium",
+      "question": "What are the common issues with memory leaks in Node.js and how do you debug them?",
+      "ideal_answer": "Common issues with memory leaks in Node.js include: tools: clinic.js, node --inspect. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "memory leaks",
+        "troubleshooting",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to memory leaks?",
+        "What tools can assist in detecting problems with memory leaks at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "worker threads",
+        "cluster module"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-030",
+      "subject": "Node.js",
+      "category": "Event Loop",
+      "subcategory": "setImmediate vs setTimeout",
+      "difficulty": "Medium",
+      "question": "What is microtask queue in Node.js and how does it work?",
+      "ideal_answer": "microtask queue in Node.js refers to Promise/thenable execution. It works by between event loop phases. Key characteristics include process.nextTick queue first, then Promise queue. Example: Promise.resolve().then(() => {});. Common pitfalls include microtask queue draining.",
+      "keywords": [
+        "microtask queue",
+        "Node.js programming",
+        "event loop"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of microtask queue in a production environment?",
+        "What are the common pitfalls or issues associated with microtask queue?"
+      ],
+      "related_concepts": [
+        "setImmediate vs setTimeout(0)",
+        "libuv thread pool"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-031",
+      "subject": "Node.js",
+      "category": "Modules",
+      "subcategory": "ES Modules",
+      "difficulty": "Medium",
+      "question": "Explain the difference between module resolution and circular dependencies in Node.js.",
+      "ideal_answer": "module resolution and circular dependencies differ in several ways: module resolution is require path lookup (works by finding module files) whereas circular dependencies is mutual module requires (works by partial exports in cycles). module resolution is typically used for core -> node_modules -> paths, while circular dependencies is used for module.exports cached, incomplete during load. Example demonstrating module resolution: require('lodash') -> node_modules/lodash. Example demonstrating circular dependencies: a requires b, b requires a.",
+      "keywords": [
+        "module resolution",
+        "circular dependencies",
+        "comparison",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose module resolution over circular dependencies?",
+        "What is the performance or memory difference between module resolution and circular dependencies?"
+      ],
+      "related_concepts": [
+        "module resolution",
+        "circular dependencies",
+        "CommonJS vs ES Modules"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-032",
+      "subject": "Node.js",
+      "category": "Streams",
+      "subcategory": "Duplex",
+      "difficulty": "Medium",
+      "question": "What is pipeline utility in Node.js and how does it work?",
+      "ideal_answer": "pipeline utility in Node.js refers to stream error handling. It works by graceful stream chaining. Key characteristics include automatic cleanup on error. Example: const { pipeline } = require('stream');. Common pitfalls include vs pipe() for error propagation.",
+      "keywords": [
+        "pipeline utility",
+        "Node.js programming",
+        "streams"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of pipeline utility in a production environment?",
+        "What are the common pitfalls or issues associated with pipeline utility?"
+      ],
+      "related_concepts": [
+        "stream types",
+        "backpressure"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-033",
+      "subject": "Node.js",
+      "category": "Modules",
+      "subcategory": "ES Modules",
+      "difficulty": "Medium",
+      "question": "What are the common issues with module resolution in Node.js and how do you debug them?",
+      "ideal_answer": "Common issues with module resolution in Node.js include: NODE_PATH, resolution algorithm. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "module resolution",
+        "troubleshooting",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to module resolution?",
+        "What tools can assist in detecting problems with module resolution at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "CommonJS vs ES Modules",
+        "circular dependencies"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-034",
+      "subject": "Node.js",
+      "category": "Core",
+      "subcategory": "Process",
+      "difficulty": "Medium",
+      "question": "Explain the difference between process.nextTick and global object in Node.js.",
+      "ideal_answer": "process.nextTick and global object differ in several ways: process.nextTick is microtask queue (works by highest priority async execution) whereas global object is global namespace (works by universal access without import). process.nextTick is typically used for executed before event loop continues, while global object is used for global, globalThis, process, console, Buffer. Example demonstrating process.nextTick: process.nextTick(() => console.log('next tick'));. Example demonstrating global object: global.myVar = 1;.",
+      "keywords": [
+        "process.nextTick",
+        "global object",
+        "comparison",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose process.nextTick over global object?",
+        "What is the performance or memory difference between process.nextTick and global object?"
+      ],
+      "related_concepts": [
+        "process.nextTick",
+        "global object",
+        "event loop",
+        "Buffer"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-035",
+      "subject": "Node.js",
+      "category": "Streams",
+      "subcategory": "Readable",
+      "difficulty": "Medium",
+      "question": "Explain the difference between stream types and pipeline utility in Node.js.",
+      "ideal_answer": "stream types and pipeline utility differ in several ways: stream types is data processing abstractions (works by handling large data efficiently) whereas pipeline utility is stream error handling (works by graceful stream chaining). stream types is typically used for Readable, Writable, Duplex, Transform, while pipeline utility is used for automatic cleanup on error. Example demonstrating stream types: fs.createReadStream('file.txt').pipe(process.stdout);. Example demonstrating pipeline utility: const { pipeline } = require('stream');.",
+      "keywords": [
+        "stream types",
+        "pipeline utility",
+        "comparison",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose stream types over pipeline utility?",
+        "What is the performance or memory difference between stream types and pipeline utility?"
+      ],
+      "related_concepts": [
+        "stream types",
+        "pipeline utility",
+        "backpressure"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-036",
+      "subject": "Node.js",
+      "category": "Streams",
+      "subcategory": "Readable",
+      "difficulty": "Medium",
+      "question": "What is stream types in Node.js and how does it work?",
+      "ideal_answer": "stream types in Node.js refers to data processing abstractions. It works by handling large data efficiently. Key characteristics include Readable, Writable, Duplex, Transform. Example: fs.createReadStream('file.txt').pipe(process.stdout);. Common pitfalls include object mode streams.",
+      "keywords": [
+        "stream types",
+        "Node.js programming",
+        "streams"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of stream types in a production environment?",
+        "What are the common pitfalls or issues associated with stream types?"
+      ],
+      "related_concepts": [
+        "backpressure",
+        "pipeline utility"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-037",
+      "subject": "Node.js",
+      "category": "Performance",
+      "subcategory": "Memory Leaks",
+      "difficulty": "Medium",
+      "question": "What is cluster module in Node.js and how does it work?",
+      "ideal_answer": "cluster module in Node.js refers to multi-process scaling. It works by utilizing multiple CPU cores. Key characteristics include master forks workers, round-robin. Example: cluster.fork();. Common pitfalls include shared state challenges, PM2 alternative.",
+      "keywords": [
+        "cluster module",
+        "Node.js programming",
+        "performance"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of cluster module in a production environment?",
+        "What are the common pitfalls or issues associated with cluster module?"
+      ],
+      "related_concepts": [
+        "worker threads",
+        "memory leaks"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-038",
+      "subject": "Node.js",
+      "category": "Core",
+      "subcategory": "Buffer",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Buffer and global object in Node.js.",
+      "ideal_answer": "Buffer and global object differ in several ways: Buffer is binary data handling (works by fixed-size raw memory allocation) whereas global object is global namespace (works by universal access without import). Buffer is typically used for pool allocation, encoding, while global object is used for global, globalThis, process, console, Buffer. Example demonstrating Buffer: Buffer.from('hello'); Buffer.alloc(10);. Example demonstrating global object: global.myVar = 1;.",
+      "keywords": [
+        "Buffer",
+        "global object",
+        "comparison",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Buffer over global object?",
+        "What is the performance or memory difference between Buffer and global object?"
+      ],
+      "related_concepts": [
+        "Buffer",
+        "global object",
+        "event loop",
+        "process.nextTick"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-039",
+      "subject": "Node.js",
+      "category": "HTTP",
+      "subcategory": "Server",
+      "difficulty": "Medium",
+      "question": "Explain the difference between http module and keep-alive in Node.js.",
+      "ideal_answer": "http module and keep-alive differ in several ways: http module is HTTP server creation (works by basic web server) whereas keep-alive is persistent connections (works by connection reuse). http module is typically used for createServer, request/response objects, while keep-alive is used for default in HTTP/1.1, timeout configuration. Example demonstrating http module: http.createServer((req, res) => { res.end('Hello'); }).listen(3000);. Example demonstrating keep-alive: server.keepAliveTimeout = 65000;.",
+      "keywords": [
+        "http module",
+        "keep-alive",
+        "comparison",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose http module over keep-alive?",
+        "What is the performance or memory difference between http module and keep-alive?"
+      ],
+      "related_concepts": [
+        "http module",
+        "keep-alive"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-040",
+      "subject": "Node.js",
+      "category": "Performance",
+      "subcategory": "Profiling",
+      "difficulty": "Medium",
+      "question": "Explain the difference between worker threads and cluster module in Node.js.",
+      "ideal_answer": "worker threads and cluster module differ in several ways: worker threads is true parallelism (works by CPU-intensive task offloading) whereas cluster module is multi-process scaling (works by utilizing multiple CPU cores). worker threads is typically used for isolated V8 instances, SharedArrayBuffer, while cluster module is used for master forks workers, round-robin. Example demonstrating worker threads: const { Worker } = require('worker_threads');. Example demonstrating cluster module: cluster.fork();.",
+      "keywords": [
+        "worker threads",
+        "cluster module",
+        "comparison",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose worker threads over cluster module?",
+        "What is the performance or memory difference between worker threads and cluster module?"
+      ],
+      "related_concepts": [
+        "worker threads",
+        "cluster module",
+        "memory leaks"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-041",
+      "subject": "Node.js",
+      "category": "Core",
+      "subcategory": "Process",
+      "difficulty": "Medium",
+      "question": "What is process.nextTick in Node.js and how does it work?",
+      "ideal_answer": "process.nextTick in Node.js refers to microtask queue. It works by highest priority async execution. Key characteristics include executed before event loop continues. Example: process.nextTick(() => console.log('next tick'));. Common pitfalls include nextTick starvation.",
+      "keywords": [
+        "process.nextTick",
+        "Node.js programming",
+        "core"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of process.nextTick in a production environment?",
+        "What are the common pitfalls or issues associated with process.nextTick?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "Buffer",
+        "global object"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-042",
+      "subject": "Node.js",
+      "category": "Modules",
+      "subcategory": "Module Resolution",
+      "difficulty": "Medium",
+      "question": "What is circular dependencies in Node.js and how does it work?",
+      "ideal_answer": "circular dependencies in Node.js refers to mutual module requires. It works by partial exports in cycles. Key characteristics include module.exports cached, incomplete during load. Example: a requires b, b requires a. Common pitfalls include refactoring to avoid cycles.",
+      "keywords": [
+        "circular dependencies",
+        "Node.js programming",
+        "modules"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of circular dependencies in a production environment?",
+        "What are the common pitfalls or issues associated with circular dependencies?"
+      ],
+      "related_concepts": [
+        "CommonJS vs ES Modules",
+        "module resolution"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-043",
+      "subject": "Node.js",
+      "category": "Streams",
+      "subcategory": "Duplex",
+      "difficulty": "Medium",
+      "question": "What are the common issues with pipeline utility in Node.js and how do you debug them?",
+      "ideal_answer": "Common issues with pipeline utility in Node.js include: vs pipe() for error propagation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "pipeline utility",
+        "troubleshooting",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to pipeline utility?",
+        "What tools can assist in detecting problems with pipeline utility at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "stream types",
+        "backpressure"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-044",
+      "subject": "Node.js",
+      "category": "Core",
+      "subcategory": "Buffer",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Buffer in Node.js and how do you debug them?",
+      "ideal_answer": "Common issues with Buffer in Node.js include: Buffer vs Uint8Array. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Buffer",
+        "troubleshooting",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Buffer?",
+        "What tools can assist in detecting problems with Buffer at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "process.nextTick",
+        "global object"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NODE-045",
+      "subject": "Node.js",
+      "category": "Streams",
+      "subcategory": "Writable",
+      "difficulty": "Hard",
+      "question": "What is backpressure in Node.js and how does it work?",
+      "ideal_answer": "backpressure in Node.js refers to flow control mechanism. It works by preventing memory overflow. Key characteristics include readable.pause(), writable.write() return value. Example: pipeline(src, transform, dest, callback);. Common pitfalls include highWaterMark tuning.",
+      "keywords": [
+        "backpressure",
+        "Node.js programming",
+        "streams"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of backpressure in a production environment?",
+        "What are the common pitfalls or issues associated with backpressure?"
+      ],
+      "related_concepts": [
+        "stream types",
+        "pipeline utility"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NODE-046",
+      "subject": "Node.js",
+      "category": "HTTP",
+      "subcategory": "Request/Response",
+      "difficulty": "Hard",
+      "question": "What is keep-alive in Node.js and how does it work?",
+      "ideal_answer": "keep-alive in Node.js refers to persistent connections. It works by connection reuse. Key characteristics include default in HTTP/1.1, timeout configuration. Example: server.keepAliveTimeout = 65000;. Common pitfalls include connection limit, memory implications.",
+      "keywords": [
+        "keep-alive",
+        "Node.js programming",
+        "http"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of keep-alive in a production environment?",
+        "What are the common pitfalls or issues associated with keep-alive?"
+      ],
+      "related_concepts": [
+        "http module"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NODE-047",
+      "subject": "Node.js",
+      "category": "Core",
+      "subcategory": "Timers",
+      "difficulty": "Hard",
+      "question": "What is global object in Node.js and how does it work?",
+      "ideal_answer": "global object in Node.js refers to global namespace. It works by universal access without import. Key characteristics include global, globalThis, process, console, Buffer. Example: global.myVar = 1;. Common pitfalls include pollution, prefer modules.",
+      "keywords": [
+        "global object",
+        "Node.js programming",
+        "core"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of global object in a production environment?",
+        "What are the common pitfalls or issues associated with global object?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "process.nextTick",
+        "Buffer"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NODE-048",
+      "subject": "Node.js",
+      "category": "Core",
+      "subcategory": "Globals",
+      "difficulty": "Hard",
+      "question": "Explain the difference between event loop and process.nextTick in Node.js.",
+      "ideal_answer": "event loop and process.nextTick differ in several ways: event loop is concurrency mechanism (works by non-blocking I/O execution) whereas process.nextTick is microtask queue (works by highest priority async execution). event loop is typically used for libuv, phases: timers, pending, poll, check, close, while process.nextTick is used for executed before event loop continues. Example demonstrating event loop: setTimeout, setImmediate, I/O callbacks. Example demonstrating process.nextTick: process.nextTick(() => console.log('next tick'));.",
+      "keywords": [
+        "event loop",
+        "process.nextTick",
+        "comparison",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose event loop over process.nextTick?",
+        "What is the performance or memory difference between event loop and process.nextTick?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "process.nextTick",
+        "Buffer",
+        "global object"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NODE-049",
+      "subject": "Node.js",
+      "category": "Event Loop",
+      "subcategory": "Phases",
+      "difficulty": "Hard",
+      "question": "What is setImmediate vs setTimeout(0) in Node.js and how does it work?",
+      "ideal_answer": "setImmediate vs setTimeout(0) in Node.js refers to immediate execution scheduling. It works by check phase vs timer phase. Key characteristics include setImmediate: check phase; setTimeout: timers phase. Example: setImmediate(() => {}); setTimeout(() => {}, 0);. Common pitfalls include execution order in I/O cycle.",
+      "keywords": [
+        "setImmediate vs setTimeout(0)",
+        "Node.js programming",
+        "event loop"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of setImmediate vs setTimeout(0) in a production environment?",
+        "What are the common pitfalls or issues associated with setImmediate vs setTimeout(0)?"
+      ],
+      "related_concepts": [
+        "libuv thread pool",
+        "microtask queue"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NODE-050",
+      "subject": "Node.js",
+      "category": "Event Loop",
+      "subcategory": "Phases",
+      "difficulty": "Hard",
+      "question": "What are the common issues with setImmediate vs setTimeout(0) in Node.js and how do you debug them?",
+      "ideal_answer": "Common issues with setImmediate vs setTimeout(0) in Node.js include: execution order in I/O cycle. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "setImmediate vs setTimeout(0)",
+        "troubleshooting",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to setImmediate vs setTimeout(0)?",
+        "What tools can assist in detecting problems with setImmediate vs setTimeout(0) at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "libuv thread pool",
+        "microtask queue"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NODE-051",
+      "subject": "Node.js",
+      "category": "Event Loop",
+      "subcategory": "Microtasks",
+      "difficulty": "Hard",
+      "question": "What are the common issues with libuv thread pool in Node.js and how do you debug them?",
+      "ideal_answer": "Common issues with libuv thread pool in Node.js include: increasing thread pool size. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "libuv thread pool",
+        "troubleshooting",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to libuv thread pool?",
+        "What tools can assist in detecting problems with libuv thread pool at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "setImmediate vs setTimeout(0)",
+        "microtask queue"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NODE-052",
+      "subject": "Node.js",
+      "category": "Performance",
+      "subcategory": "Profiling",
+      "difficulty": "Hard",
+      "question": "What are the common issues with worker threads in Node.js and how do you debug them?",
+      "ideal_answer": "Common issues with worker threads in Node.js include: communication overhead, pool pattern. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "worker threads",
+        "troubleshooting",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to worker threads?",
+        "What tools can assist in detecting problems with worker threads at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "cluster module",
+        "memory leaks"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NODE-053",
+      "subject": "Node.js",
+      "category": "Core",
+      "subcategory": "Globals",
+      "difficulty": "Hard",
+      "question": "What are the common issues with event loop in Node.js and how do you debug them?",
+      "ideal_answer": "Common issues with event loop in Node.js include: blocking the event loop. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "event loop",
+        "troubleshooting",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to event loop?",
+        "What tools can assist in detecting problems with event loop at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "process.nextTick",
+        "Buffer",
+        "global object"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NODE-054",
+      "subject": "Node.js",
+      "category": "Core",
+      "subcategory": "Timers",
+      "difficulty": "Hard",
+      "question": "What are the common issues with global object in Node.js and how do you debug them?",
+      "ideal_answer": "Common issues with global object in Node.js include: pollution, prefer modules. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "global object",
+        "troubleshooting",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to global object?",
+        "What tools can assist in detecting problems with global object at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "process.nextTick",
+        "Buffer"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NODE-055",
+      "subject": "Node.js",
+      "category": "Streams",
+      "subcategory": "Writable",
+      "difficulty": "Hard",
+      "question": "Explain the difference between backpressure and pipeline utility in Node.js.",
+      "ideal_answer": "backpressure and pipeline utility differ in several ways: backpressure is flow control mechanism (works by preventing memory overflow) whereas pipeline utility is stream error handling (works by graceful stream chaining). backpressure is typically used for readable.pause(), writable.write() return value, while pipeline utility is used for automatic cleanup on error. Example demonstrating backpressure: pipeline(src, transform, dest, callback);. Example demonstrating pipeline utility: const { pipeline } = require('stream');.",
+      "keywords": [
+        "backpressure",
+        "pipeline utility",
+        "comparison",
+        "Node.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose backpressure over pipeline utility?",
+        "What is the performance or memory difference between backpressure and pipeline utility?"
+      ],
+      "related_concepts": [
+        "backpressure",
+        "pipeline utility",
+        "stream types"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

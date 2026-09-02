@@ -1,0 +1,510 @@
+{
+  "metadata": {
+    "subject": "BST",
+    "domain": "Data Structures & Algorithms",
+    "total_questions": 19,
+    "difficulty_distribution": {
+      "Easy": 5,
+      "Medium": 10,
+      "Hard": 4
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "BST-001",
+      "subject": "BST",
+      "category": "Self-Balancing",
+      "subcategory": "AVL",
+      "difficulty": "Easy",
+      "question": "What is AVL tree in BST and how does it work?",
+      "ideal_answer": "AVL tree in BST refers to strictly balanced BST. It works by balance factor -1, 0, 1. Key characteristics include rotations: LL, RR, LR, RL. Example: if (balance > 1 && val < root.left.val) return rightRotate(root);. Common pitfalls include height O(log n), more rotations than RB.",
+      "keywords": [
+        "AVL tree",
+        "BST programming",
+        "self-balancing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of AVL tree in a production environment?",
+        "What are the common pitfalls or issues associated with AVL tree?"
+      ],
+      "related_concepts": [
+        "Red-Black tree"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "BST-002",
+      "subject": "BST",
+      "category": "Operations",
+      "subcategory": "Insert",
+      "difficulty": "Easy",
+      "question": "Explain the difference between kth smallest element and successor and predecessor in BST.",
+      "ideal_answer": "kth smallest element and successor and predecessor differ in several ways: kth smallest element is order statistic query (works by O(h) with augmented size, O(n) naive) whereas successor and predecessor is inorder neighbors (works by next larger / next smaller element). kth smallest element is typically used for left subtree size determines position, while successor and predecessor is used for successor: right subtree min, or nearest ancestor where node is in left subtree. Example demonstrating kth smallest element: int leftSize = size(root.left); if (k <= leftSize) return kthSmallest(root.left, k); else if (k == leftSize + 1) return root.val; else return kthSmallest(root.right, k - leftSize - 1);. Example demonstrating successor and predecessor: Node succ = null; while (root != null) { if (p.val < root.val) { succ = root; root = root.left; } else root = root.right; }.",
+      "keywords": [
+        "kth smallest element",
+        "successor and predecessor",
+        "comparison",
+        "BST"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose kth smallest element over successor and predecessor?",
+        "What is the performance or memory difference between kth smallest element and successor and predecessor?"
+      ],
+      "related_concepts": [
+        "kth smallest element",
+        "successor and predecessor",
+        "BST deletion"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "BST-003",
+      "subject": "BST",
+      "category": "Properties",
+      "subcategory": "Ordering",
+      "difficulty": "Easy",
+      "question": "Explain the difference between BST property and BST validation in BST.",
+      "ideal_answer": "BST property and BST validation differ in several ways: BST property is binary search tree invariant (works by left < root < right for all nodes) whereas BST validation is correctness checking (works by ensuring ordering invariant). BST property is typically used for inorder traversal yields sorted sequence, while BST validation is used for range-based recursion: min < node < max. Example demonstrating BST property: if (val < root.val) root.left = insert(root.left, val); else root.right = insert(root.right, val);. Example demonstrating BST validation: boolean isValid(Node root, long min, long max) { ... }.",
+      "keywords": [
+        "BST property",
+        "BST validation",
+        "comparison",
+        "BST"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose BST property over BST validation?",
+        "What is the performance or memory difference between BST property and BST validation?"
+      ],
+      "related_concepts": [
+        "BST property",
+        "BST validation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "BST-004",
+      "subject": "BST",
+      "category": "Operations",
+      "subcategory": "Delete",
+      "difficulty": "Easy",
+      "question": "What is successor and predecessor in BST and how does it work?",
+      "ideal_answer": "successor and predecessor in BST refers to inorder neighbors. It works by next larger / next smaller element. Key characteristics include successor: right subtree min, or nearest ancestor where node is in left subtree. Example: Node succ = null; while (root != null) { if (p.val < root.val) { succ = root; root = root.left; } else root = root.right; }. Common pitfalls include parent pointer optimization.",
+      "keywords": [
+        "successor and predecessor",
+        "BST programming",
+        "operations"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of successor and predecessor in a production environment?",
+        "What are the common pitfalls or issues associated with successor and predecessor?"
+      ],
+      "related_concepts": [
+        "BST deletion",
+        "kth smallest element"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "BST-005",
+      "subject": "BST",
+      "category": "Operations",
+      "subcategory": "Search",
+      "difficulty": "Easy",
+      "question": "What is BST deletion in BST and how does it work?",
+      "ideal_answer": "BST deletion in BST refers to node removal with structure preservation. It works by 0, 1, or 2 child cases. Key characteristics include leaf: remove; one child: replace; two children: replace with inorder successor/predecessor. Example: if (root.left == null) return root.right; if (root.right == null) return root.left; Node min = findMin(root.right); root.val = min.val; root.right = delete(root.right, min.val);. Common pitfalls include Hibbard deletion asymmetry.",
+      "keywords": [
+        "BST deletion",
+        "BST programming",
+        "operations"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of BST deletion in a production environment?",
+        "What are the common pitfalls or issues associated with BST deletion?"
+      ],
+      "related_concepts": [
+        "kth smallest element",
+        "successor and predecessor"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "BST-006",
+      "subject": "BST",
+      "category": "Self-Balancing",
+      "subcategory": "AVL",
+      "difficulty": "Medium",
+      "question": "What are the common issues with AVL tree in BST and how do you debug them?",
+      "ideal_answer": "Common issues with AVL tree in BST include: height O(log n), more rotations than RB. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "AVL tree",
+        "troubleshooting",
+        "BST"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to AVL tree?",
+        "What tools can assist in detecting problems with AVL tree at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Red-Black tree"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BST-007",
+      "subject": "BST",
+      "category": "Self-Balancing",
+      "subcategory": "Red-Black",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Red-Black tree in BST and how do you debug them?",
+      "ideal_answer": "Common issues with Red-Black tree in BST include: less rotations, used in std libraries. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Red-Black tree",
+        "troubleshooting",
+        "BST"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Red-Black tree?",
+        "What tools can assist in detecting problems with Red-Black tree at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "AVL tree"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BST-008",
+      "subject": "BST",
+      "category": "Operations",
+      "subcategory": "Search",
+      "difficulty": "Medium",
+      "question": "What are the common issues with BST deletion in BST and how do you debug them?",
+      "ideal_answer": "Common issues with BST deletion in BST include: Hibbard deletion asymmetry. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "BST deletion",
+        "troubleshooting",
+        "BST"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to BST deletion?",
+        "What tools can assist in detecting problems with BST deletion at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "kth smallest element",
+        "successor and predecessor"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BST-009",
+      "subject": "BST",
+      "category": "Operations",
+      "subcategory": "Search",
+      "difficulty": "Medium",
+      "question": "Explain the difference between BST deletion and successor and predecessor in BST.",
+      "ideal_answer": "BST deletion and successor and predecessor differ in several ways: BST deletion is node removal with structure preservation (works by 0, 1, or 2 child cases) whereas successor and predecessor is inorder neighbors (works by next larger / next smaller element). BST deletion is typically used for leaf: remove; one child: replace; two children: replace with inorder successor/predecessor, while successor and predecessor is used for successor: right subtree min, or nearest ancestor where node is in left subtree. Example demonstrating BST deletion: if (root.left == null) return root.right; if (root.right == null) return root.left; Node min = findMin(root.right); root.val = min.val; root.right = delete(root.right, min.val);. Example demonstrating successor and predecessor: Node succ = null; while (root != null) { if (p.val < root.val) { succ = root; root = root.left; } else root = root.right; }.",
+      "keywords": [
+        "BST deletion",
+        "successor and predecessor",
+        "comparison",
+        "BST"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose BST deletion over successor and predecessor?",
+        "What is the performance or memory difference between BST deletion and successor and predecessor?"
+      ],
+      "related_concepts": [
+        "BST deletion",
+        "successor and predecessor",
+        "kth smallest element"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BST-010",
+      "subject": "BST",
+      "category": "Self-Balancing",
+      "subcategory": "Red-Black",
+      "difficulty": "Medium",
+      "question": "What is Red-Black tree in BST and how does it work?",
+      "ideal_answer": "Red-Black tree in BST refers to loosely balanced BST. It works by color properties ensure balance. Key characteristics include 5 properties: root black, red children black, black height equal. Example: TreeMap, TreeSet Java implementation. Common pitfalls include less rotations, used in std libraries.",
+      "keywords": [
+        "Red-Black tree",
+        "BST programming",
+        "self-balancing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Red-Black tree in a production environment?",
+        "What are the common pitfalls or issues associated with Red-Black tree?"
+      ],
+      "related_concepts": [
+        "AVL tree"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BST-011",
+      "subject": "BST",
+      "category": "Operations",
+      "subcategory": "Delete",
+      "difficulty": "Medium",
+      "question": "What are the common issues with successor and predecessor in BST and how do you debug them?",
+      "ideal_answer": "Common issues with successor and predecessor in BST include: parent pointer optimization. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "successor and predecessor",
+        "troubleshooting",
+        "BST"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to successor and predecessor?",
+        "What tools can assist in detecting problems with successor and predecessor at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "BST deletion",
+        "kth smallest element"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BST-012",
+      "subject": "BST",
+      "category": "Properties",
+      "subcategory": "Ordering",
+      "difficulty": "Medium",
+      "question": "What are the common issues with BST property in BST and how do you debug them?",
+      "ideal_answer": "Common issues with BST property in BST include: duplicate handling strategies. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "BST property",
+        "troubleshooting",
+        "BST"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to BST property?",
+        "What tools can assist in detecting problems with BST property at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "BST validation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BST-013",
+      "subject": "BST",
+      "category": "Operations",
+      "subcategory": "Search",
+      "difficulty": "Medium",
+      "question": "Explain the difference between BST deletion and kth smallest element in BST.",
+      "ideal_answer": "BST deletion and kth smallest element differ in several ways: BST deletion is node removal with structure preservation (works by 0, 1, or 2 child cases) whereas kth smallest element is order statistic query (works by O(h) with augmented size, O(n) naive). BST deletion is typically used for leaf: remove; one child: replace; two children: replace with inorder successor/predecessor, while kth smallest element is used for left subtree size determines position. Example demonstrating BST deletion: if (root.left == null) return root.right; if (root.right == null) return root.left; Node min = findMin(root.right); root.val = min.val; root.right = delete(root.right, min.val);. Example demonstrating kth smallest element: int leftSize = size(root.left); if (k <= leftSize) return kthSmallest(root.left, k); else if (k == leftSize + 1) return root.val; else return kthSmallest(root.right, k - leftSize - 1);.",
+      "keywords": [
+        "BST deletion",
+        "kth smallest element",
+        "comparison",
+        "BST"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose BST deletion over kth smallest element?",
+        "What is the performance or memory difference between BST deletion and kth smallest element?"
+      ],
+      "related_concepts": [
+        "BST deletion",
+        "kth smallest element",
+        "successor and predecessor"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BST-014",
+      "subject": "BST",
+      "category": "Properties",
+      "subcategory": "Height",
+      "difficulty": "Medium",
+      "question": "What is BST validation in BST and how does it work?",
+      "ideal_answer": "BST validation in BST refers to correctness checking. It works by ensuring ordering invariant. Key characteristics include range-based recursion: min < node < max. Example: boolean isValid(Node root, long min, long max) { ... }. Common pitfalls include iterative inorder validation.",
+      "keywords": [
+        "BST validation",
+        "BST programming",
+        "properties"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of BST validation in a production environment?",
+        "What are the common pitfalls or issues associated with BST validation?"
+      ],
+      "related_concepts": [
+        "BST property"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BST-015",
+      "subject": "BST",
+      "category": "Self-Balancing",
+      "subcategory": "AVL",
+      "difficulty": "Medium",
+      "question": "Explain the difference between AVL tree and Red-Black tree in BST.",
+      "ideal_answer": "AVL tree and Red-Black tree differ in several ways: AVL tree is strictly balanced BST (works by balance factor -1, 0, 1) whereas Red-Black tree is loosely balanced BST (works by color properties ensure balance). AVL tree is typically used for rotations: LL, RR, LR, RL, while Red-Black tree is used for 5 properties: root black, red children black, black height equal. Example demonstrating AVL tree: if (balance > 1 && val < root.left.val) return rightRotate(root);. Example demonstrating Red-Black tree: TreeMap, TreeSet Java implementation.",
+      "keywords": [
+        "AVL tree",
+        "Red-Black tree",
+        "comparison",
+        "BST"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose AVL tree over Red-Black tree?",
+        "What is the performance or memory difference between AVL tree and Red-Black tree?"
+      ],
+      "related_concepts": [
+        "AVL tree",
+        "Red-Black tree"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BST-016",
+      "subject": "BST",
+      "category": "Operations",
+      "subcategory": "Insert",
+      "difficulty": "Hard",
+      "question": "What is kth smallest element in BST and how does it work?",
+      "ideal_answer": "kth smallest element in BST refers to order statistic query. It works by O(h) with augmented size, O(n) naive. Key characteristics include left subtree size determines position. Example: int leftSize = size(root.left); if (k <= leftSize) return kthSmallest(root.left, k); else if (k == leftSize + 1) return root.val; else return kthSmallest(root.right, k - leftSize - 1);. Common pitfalls include Morris traversal O(1) space.",
+      "keywords": [
+        "kth smallest element",
+        "BST programming",
+        "operations"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of kth smallest element in a production environment?",
+        "What are the common pitfalls or issues associated with kth smallest element?"
+      ],
+      "related_concepts": [
+        "BST deletion",
+        "successor and predecessor"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "BST-017",
+      "subject": "BST",
+      "category": "Operations",
+      "subcategory": "Insert",
+      "difficulty": "Hard",
+      "question": "What are the common issues with kth smallest element in BST and how do you debug them?",
+      "ideal_answer": "Common issues with kth smallest element in BST include: Morris traversal O(1) space. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "kth smallest element",
+        "troubleshooting",
+        "BST"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to kth smallest element?",
+        "What tools can assist in detecting problems with kth smallest element at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "BST deletion",
+        "successor and predecessor"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "BST-018",
+      "subject": "BST",
+      "category": "Properties",
+      "subcategory": "Ordering",
+      "difficulty": "Hard",
+      "question": "What is BST property in BST and how does it work?",
+      "ideal_answer": "BST property in BST refers to binary search tree invariant. It works by left < root < right for all nodes. Key characteristics include inorder traversal yields sorted sequence. Example: if (val < root.val) root.left = insert(root.left, val); else root.right = insert(root.right, val);. Common pitfalls include duplicate handling strategies.",
+      "keywords": [
+        "BST property",
+        "BST programming",
+        "properties"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of BST property in a production environment?",
+        "What are the common pitfalls or issues associated with BST property?"
+      ],
+      "related_concepts": [
+        "BST validation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "BST-019",
+      "subject": "BST",
+      "category": "Properties",
+      "subcategory": "Height",
+      "difficulty": "Hard",
+      "question": "What are the common issues with BST validation in BST and how do you debug them?",
+      "ideal_answer": "Common issues with BST validation in BST include: iterative inorder validation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "BST validation",
+        "troubleshooting",
+        "BST"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to BST validation?",
+        "What tools can assist in detecting problems with BST validation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "BST property"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

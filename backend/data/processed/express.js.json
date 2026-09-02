@@ -1,0 +1,960 @@
+{
+  "metadata": {
+    "subject": "Express.js",
+    "domain": "Web Development",
+    "total_questions": 37,
+    "difficulty_distribution": {
+      "Easy": 11,
+      "Medium": 18,
+      "Hard": 8
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:47Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "EXPRESS-001",
+      "subject": "Express.js",
+      "category": "Core",
+      "subcategory": "App Mounting",
+      "difficulty": "Easy",
+      "question": "What are the common issues with app mounting in Express.js and how do you debug them?",
+      "ideal_answer": "Common issues with app mounting in Express.js include: path stripping behavior. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "app mounting",
+        "troubleshooting",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to app mounting?",
+        "What tools can assist in detecting problems with app mounting at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "middleware pattern",
+        "request-response cycle"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "EXPRESS-002",
+      "subject": "Express.js",
+      "category": "Routing",
+      "subcategory": "Route Parameters",
+      "difficulty": "Easy",
+      "question": "What is route handlers in Express.js and how does it work?",
+      "ideal_answer": "route handlers in Express.js refers to request processing functions. It works by multiple handlers per route. Key characteristics include array of handlers, next('route'). Example: app.get('/path', [middleware1, middleware2], handler);. Common pitfalls include handler return value ignored.",
+      "keywords": [
+        "route handlers",
+        "Express.js programming",
+        "routing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of route handlers in a production environment?",
+        "What are the common pitfalls or issues associated with route handlers?"
+      ],
+      "related_concepts": [
+        "route parameters"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "EXPRESS-003",
+      "subject": "Express.js",
+      "category": "Middleware",
+      "subcategory": "Router",
+      "difficulty": "Easy",
+      "question": "What are the common issues with router middleware in Express.js and how do you debug them?",
+      "ideal_answer": "Common issues with router middleware in Express.js include: router.param for route params. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "router middleware",
+        "troubleshooting",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to router middleware?",
+        "What tools can assist in detecting problems with router middleware at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "application middleware",
+        "error middleware"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "EXPRESS-004",
+      "subject": "Express.js",
+      "category": "Middleware",
+      "subcategory": "Application",
+      "difficulty": "Easy",
+      "question": "What is application middleware in Express.js and how does it work?",
+      "ideal_answer": "application middleware in Express.js refers to global request processing. It works by app-level functionality. Key characteristics include logging, parsing, authentication. Example: app.use(express.static('public'));. Common pitfalls include mount path specificity.",
+      "keywords": [
+        "application middleware",
+        "Express.js programming",
+        "middleware"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of application middleware in a production environment?",
+        "What are the common pitfalls or issues associated with application middleware?"
+      ],
+      "related_concepts": [
+        "router middleware",
+        "error middleware"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "EXPRESS-005",
+      "subject": "Express.js",
+      "category": "Routing",
+      "subcategory": "Route Methods",
+      "difficulty": "Easy",
+      "question": "Explain the difference between route parameters and route handlers in Express.js.",
+      "ideal_answer": "route parameters and route handlers differ in several ways: route parameters is URL variable extraction (works by dynamic route segments) whereas route handlers is request processing functions (works by multiple handlers per route). route parameters is typically used for :paramName, req.params, while route handlers is used for array of handlers, next('route'). Example demonstrating route parameters: app.get('/users/:id', (req, res) => { const id = req.params.id; });. Example demonstrating route handlers: app.get('/path', [middleware1, middleware2], handler);.",
+      "keywords": [
+        "route parameters",
+        "route handlers",
+        "comparison",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose route parameters over route handlers?",
+        "What is the performance or memory difference between route parameters and route handlers?"
+      ],
+      "related_concepts": [
+        "route parameters",
+        "route handlers"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "EXPRESS-006",
+      "subject": "Express.js",
+      "category": "Error Handling",
+      "subcategory": "Async Errors",
+      "difficulty": "Easy",
+      "question": "What are the common issues with custom error classes in Express.js and how do you debug them?",
+      "ideal_answer": "Common issues with custom error classes in Express.js include: error serialization. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "custom error classes",
+        "troubleshooting",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to custom error classes?",
+        "What tools can assist in detecting problems with custom error classes at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "async error handling"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "EXPRESS-007",
+      "subject": "Express.js",
+      "category": "Error Handling",
+      "subcategory": "Sync Errors",
+      "difficulty": "Easy",
+      "question": "Explain the difference between async error handling and custom error classes in Express.js.",
+      "ideal_answer": "async error handling and custom error classes differ in several ways: async error handling is Promise rejection catching (works by wrapping async routes) whereas custom error classes is structured error information (works by HTTP status code association). async error handling is typically used for express-async-handler, try-catch wrapper, while custom error classes is used for extending Error. Example demonstrating async error handling: const asyncHandler = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next);. Example demonstrating custom error classes: class NotFoundError extends Error { constructor(message) { super(message); this.statusCode = 404; } }.",
+      "keywords": [
+        "async error handling",
+        "custom error classes",
+        "comparison",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose async error handling over custom error classes?",
+        "What is the performance or memory difference between async error handling and custom error classes?"
+      ],
+      "related_concepts": [
+        "async error handling",
+        "custom error classes"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "EXPRESS-008",
+      "subject": "Express.js",
+      "category": "Core",
+      "subcategory": "App Mounting",
+      "difficulty": "Easy",
+      "question": "What is app mounting in Express.js and how does it work?",
+      "ideal_answer": "app mounting in Express.js refers to sub-application composition. It works by modular route organization. Key characteristics include app.use('/api', apiApp). Example: const api = express.Router(); app.use('/api', api);. Common pitfalls include path stripping behavior.",
+      "keywords": [
+        "app mounting",
+        "Express.js programming",
+        "core"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of app mounting in a production environment?",
+        "What are the common pitfalls or issues associated with app mounting?"
+      ],
+      "related_concepts": [
+        "middleware pattern",
+        "request-response cycle"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "EXPRESS-009",
+      "subject": "Express.js",
+      "category": "Error Handling",
+      "subcategory": "Sync Errors",
+      "difficulty": "Easy",
+      "question": "What are the common issues with async error handling in Express.js and how do you debug them?",
+      "ideal_answer": "Common issues with async error handling in Express.js include: unhandled rejection crash. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "async error handling",
+        "troubleshooting",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to async error handling?",
+        "What tools can assist in detecting problems with async error handling at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "custom error classes"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "EXPRESS-010",
+      "subject": "Express.js",
+      "category": "Security",
+      "subcategory": "Helmet",
+      "difficulty": "Easy",
+      "question": "What are the common issues with helmet middleware in Express.js and how do you debug them?",
+      "ideal_answer": "Common issues with helmet middleware in Express.js include: CSP configuration complexity. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "helmet middleware",
+        "troubleshooting",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to helmet middleware?",
+        "What tools can assist in detecting problems with helmet middleware at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "CORS",
+        "rate limiting"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "EXPRESS-011",
+      "subject": "Express.js",
+      "category": "Security",
+      "subcategory": "Rate Limiting",
+      "difficulty": "Easy",
+      "question": "What are the common issues with rate limiting in Express.js and how do you debug them?",
+      "ideal_answer": "Common issues with rate limiting in Express.js include: distributed rate limiting. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "rate limiting",
+        "troubleshooting",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to rate limiting?",
+        "What tools can assist in detecting problems with rate limiting at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "helmet middleware",
+        "CORS"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "EXPRESS-012",
+      "subject": "Express.js",
+      "category": "Security",
+      "subcategory": "CORS",
+      "difficulty": "Medium",
+      "question": "What are the common issues with CORS in Express.js and how do you debug them?",
+      "ideal_answer": "Common issues with CORS in Express.js include: preflight requests. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "CORS",
+        "troubleshooting",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to CORS?",
+        "What tools can assist in detecting problems with CORS at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "helmet middleware",
+        "rate limiting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "EXPRESS-013",
+      "subject": "Express.js",
+      "category": "Security",
+      "subcategory": "Rate Limiting",
+      "difficulty": "Medium",
+      "question": "What is rate limiting in Express.js and how does it work?",
+      "ideal_answer": "rate limiting in Express.js refers to request throttling. It works by DDoS protection. Key characteristics include windowMs, max, keyGenerator. Example: app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));. Common pitfalls include distributed rate limiting.",
+      "keywords": [
+        "rate limiting",
+        "Express.js programming",
+        "security"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of rate limiting in a production environment?",
+        "What are the common pitfalls or issues associated with rate limiting?"
+      ],
+      "related_concepts": [
+        "helmet middleware",
+        "CORS"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "EXPRESS-014",
+      "subject": "Express.js",
+      "category": "Middleware",
+      "subcategory": "Application",
+      "difficulty": "Medium",
+      "question": "What are the common issues with application middleware in Express.js and how do you debug them?",
+      "ideal_answer": "Common issues with application middleware in Express.js include: mount path specificity. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "application middleware",
+        "troubleshooting",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to application middleware?",
+        "What tools can assist in detecting problems with application middleware at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "router middleware",
+        "error middleware"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "EXPRESS-015",
+      "subject": "Express.js",
+      "category": "Middleware",
+      "subcategory": "Router",
+      "difficulty": "Medium",
+      "question": "What is router middleware in Express.js and how does it work?",
+      "ideal_answer": "router middleware in Express.js refers to route-specific processing. It works by modular route handlers. Key characteristics include Router instance, mountable. Example: const router = express.Router(); router.get('/users', handler);. Common pitfalls include router.param for route params.",
+      "keywords": [
+        "router middleware",
+        "Express.js programming",
+        "middleware"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of router middleware in a production environment?",
+        "What are the common pitfalls or issues associated with router middleware?"
+      ],
+      "related_concepts": [
+        "application middleware",
+        "error middleware"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "EXPRESS-016",
+      "subject": "Express.js",
+      "category": "Routing",
+      "subcategory": "Route Methods",
+      "difficulty": "Medium",
+      "question": "What are the common issues with route parameters in Express.js and how do you debug them?",
+      "ideal_answer": "Common issues with route parameters in Express.js include: regex constraints on params. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "route parameters",
+        "troubleshooting",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to route parameters?",
+        "What tools can assist in detecting problems with route parameters at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "route handlers"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "EXPRESS-017",
+      "subject": "Express.js",
+      "category": "Security",
+      "subcategory": "Helmet",
+      "difficulty": "Medium",
+      "question": "What is helmet middleware in Express.js and how does it work?",
+      "ideal_answer": "helmet middleware in Express.js refers to security headers. It works by OWASP protection. Key characteristics include X-Frame-Options, CSP, HSTS. Example: app.use(helmet());. Common pitfalls include CSP configuration complexity.",
+      "keywords": [
+        "helmet middleware",
+        "Express.js programming",
+        "security"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of helmet middleware in a production environment?",
+        "What are the common pitfalls or issues associated with helmet middleware?"
+      ],
+      "related_concepts": [
+        "CORS",
+        "rate limiting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "EXPRESS-018",
+      "subject": "Express.js",
+      "category": "Middleware",
+      "subcategory": "Application",
+      "difficulty": "Medium",
+      "question": "Explain the difference between application middleware and error middleware in Express.js.",
+      "ideal_answer": "application middleware and error middleware differ in several ways: application middleware is global request processing (works by app-level functionality) whereas error middleware is exception handling (works by 4-argument signature). application middleware is typically used for logging, parsing, authentication, while error middleware is used for catching sync and async errors. Example demonstrating application middleware: app.use(express.static('public'));. Example demonstrating error middleware: app.use((err, req, res, next) => { res.status(500).json({ error: err.message }); });.",
+      "keywords": [
+        "application middleware",
+        "error middleware",
+        "comparison",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose application middleware over error middleware?",
+        "What is the performance or memory difference between application middleware and error middleware?"
+      ],
+      "related_concepts": [
+        "application middleware",
+        "error middleware",
+        "router middleware"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "EXPRESS-019",
+      "subject": "Express.js",
+      "category": "Security",
+      "subcategory": "CORS",
+      "difficulty": "Medium",
+      "question": "Explain the difference between CORS and rate limiting in Express.js.",
+      "ideal_answer": "CORS and rate limiting differ in several ways: CORS is cross-origin resource sharing (works by controlling cross-origin requests) whereas rate limiting is request throttling (works by DDoS protection). CORS is typically used for origin, methods, headers, credentials, while rate limiting is used for windowMs, max, keyGenerator. Example demonstrating CORS: app.use(cors({ origin: 'https://example.com', credentials: true }));. Example demonstrating rate limiting: app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));.",
+      "keywords": [
+        "CORS",
+        "rate limiting",
+        "comparison",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CORS over rate limiting?",
+        "What is the performance or memory difference between CORS and rate limiting?"
+      ],
+      "related_concepts": [
+        "CORS",
+        "rate limiting",
+        "helmet middleware"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "EXPRESS-020",
+      "subject": "Express.js",
+      "category": "Core",
+      "subcategory": "App Setup",
+      "difficulty": "Medium",
+      "question": "Explain the difference between middleware pattern and request-response cycle in Express.js.",
+      "ideal_answer": "middleware pattern and request-response cycle differ in several ways: middleware pattern is request processing pipeline (works by layered function execution) whereas request-response cycle is HTTP handling flow (works by req -> middleware -> route -> res). middleware pattern is typically used for app.use, sequential order matters, while request-response cycle is used for req object, res object, next function. Example demonstrating middleware pattern: app.use(express.json()); app.use('/api', routes);. Example demonstrating request-response cycle: app.get('/', (req, res, next) => { ... });.",
+      "keywords": [
+        "middleware pattern",
+        "request-response cycle",
+        "comparison",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose middleware pattern over request-response cycle?",
+        "What is the performance or memory difference between middleware pattern and request-response cycle?"
+      ],
+      "related_concepts": [
+        "middleware pattern",
+        "request-response cycle",
+        "app mounting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "EXPRESS-021",
+      "subject": "Express.js",
+      "category": "Error Handling",
+      "subcategory": "Async Errors",
+      "difficulty": "Medium",
+      "question": "What is custom error classes in Express.js and how does it work?",
+      "ideal_answer": "custom error classes in Express.js refers to structured error information. It works by HTTP status code association. Key characteristics include extending Error. Example: class NotFoundError extends Error { constructor(message) { super(message); this.statusCode = 404; } }. Common pitfalls include error serialization.",
+      "keywords": [
+        "custom error classes",
+        "Express.js programming",
+        "error handling"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of custom error classes in a production environment?",
+        "What are the common pitfalls or issues associated with custom error classes?"
+      ],
+      "related_concepts": [
+        "async error handling"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "EXPRESS-022",
+      "subject": "Express.js",
+      "category": "Core",
+      "subcategory": "App Setup",
+      "difficulty": "Medium",
+      "question": "What is middleware pattern in Express.js and how does it work?",
+      "ideal_answer": "middleware pattern in Express.js refers to request processing pipeline. It works by layered function execution. Key characteristics include app.use, sequential order matters. Example: app.use(express.json()); app.use('/api', routes);. Common pitfalls include middleware execution order.",
+      "keywords": [
+        "middleware pattern",
+        "Express.js programming",
+        "core"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of middleware pattern in a production environment?",
+        "What are the common pitfalls or issues associated with middleware pattern?"
+      ],
+      "related_concepts": [
+        "request-response cycle",
+        "app mounting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "EXPRESS-023",
+      "subject": "Express.js",
+      "category": "Security",
+      "subcategory": "Helmet",
+      "difficulty": "Medium",
+      "question": "Explain the difference between helmet middleware and rate limiting in Express.js.",
+      "ideal_answer": "helmet middleware and rate limiting differ in several ways: helmet middleware is security headers (works by OWASP protection) whereas rate limiting is request throttling (works by DDoS protection). helmet middleware is typically used for X-Frame-Options, CSP, HSTS, while rate limiting is used for windowMs, max, keyGenerator. Example demonstrating helmet middleware: app.use(helmet());. Example demonstrating rate limiting: app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));.",
+      "keywords": [
+        "helmet middleware",
+        "rate limiting",
+        "comparison",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose helmet middleware over rate limiting?",
+        "What is the performance or memory difference between helmet middleware and rate limiting?"
+      ],
+      "related_concepts": [
+        "helmet middleware",
+        "rate limiting",
+        "CORS"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "EXPRESS-024",
+      "subject": "Express.js",
+      "category": "Middleware",
+      "subcategory": "Error",
+      "difficulty": "Medium",
+      "question": "What is error middleware in Express.js and how does it work?",
+      "ideal_answer": "error middleware in Express.js refers to exception handling. It works by 4-argument signature. Key characteristics include catching sync and async errors. Example: app.use((err, req, res, next) => { res.status(500).json({ error: err.message }); });. Common pitfalls include async error propagation.",
+      "keywords": [
+        "error middleware",
+        "Express.js programming",
+        "middleware"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of error middleware in a production environment?",
+        "What are the common pitfalls or issues associated with error middleware?"
+      ],
+      "related_concepts": [
+        "application middleware",
+        "router middleware"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "EXPRESS-025",
+      "subject": "Express.js",
+      "category": "Routing",
+      "subcategory": "Route Methods",
+      "difficulty": "Medium",
+      "question": "What is route parameters in Express.js and how does it work?",
+      "ideal_answer": "route parameters in Express.js refers to URL variable extraction. It works by dynamic route segments. Key characteristics include :paramName, req.params. Example: app.get('/users/:id', (req, res) => { const id = req.params.id; });. Common pitfalls include regex constraints on params.",
+      "keywords": [
+        "route parameters",
+        "Express.js programming",
+        "routing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of route parameters in a production environment?",
+        "What are the common pitfalls or issues associated with route parameters?"
+      ],
+      "related_concepts": [
+        "route handlers"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "EXPRESS-026",
+      "subject": "Express.js",
+      "category": "Core",
+      "subcategory": "Request/Response",
+      "difficulty": "Medium",
+      "question": "What is request-response cycle in Express.js and how does it work?",
+      "ideal_answer": "request-response cycle in Express.js refers to HTTP handling flow. It works by req -> middleware -> route -> res. Key characteristics include req object, res object, next function. Example: app.get('/', (req, res, next) => { ... });. Common pitfalls include early response termination.",
+      "keywords": [
+        "request-response cycle",
+        "Express.js programming",
+        "core"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of request-response cycle in a production environment?",
+        "What are the common pitfalls or issues associated with request-response cycle?"
+      ],
+      "related_concepts": [
+        "middleware pattern",
+        "app mounting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "EXPRESS-027",
+      "subject": "Express.js",
+      "category": "Security",
+      "subcategory": "Helmet",
+      "difficulty": "Medium",
+      "question": "Explain the difference between helmet middleware and CORS in Express.js.",
+      "ideal_answer": "helmet middleware and CORS differ in several ways: helmet middleware is security headers (works by OWASP protection) whereas CORS is cross-origin resource sharing (works by controlling cross-origin requests). helmet middleware is typically used for X-Frame-Options, CSP, HSTS, while CORS is used for origin, methods, headers, credentials. Example demonstrating helmet middleware: app.use(helmet());. Example demonstrating CORS: app.use(cors({ origin: 'https://example.com', credentials: true }));.",
+      "keywords": [
+        "helmet middleware",
+        "CORS",
+        "comparison",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose helmet middleware over CORS?",
+        "What is the performance or memory difference between helmet middleware and CORS?"
+      ],
+      "related_concepts": [
+        "helmet middleware",
+        "CORS",
+        "rate limiting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "EXPRESS-028",
+      "subject": "Express.js",
+      "category": "Security",
+      "subcategory": "CORS",
+      "difficulty": "Medium",
+      "question": "What is CORS in Express.js and how does it work?",
+      "ideal_answer": "CORS in Express.js refers to cross-origin resource sharing. It works by controlling cross-origin requests. Key characteristics include origin, methods, headers, credentials. Example: app.use(cors({ origin: 'https://example.com', credentials: true }));. Common pitfalls include preflight requests.",
+      "keywords": [
+        "CORS",
+        "Express.js programming",
+        "security"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of CORS in a production environment?",
+        "What are the common pitfalls or issues associated with CORS?"
+      ],
+      "related_concepts": [
+        "helmet middleware",
+        "rate limiting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "EXPRESS-029",
+      "subject": "Express.js",
+      "category": "Routing",
+      "subcategory": "Route Parameters",
+      "difficulty": "Medium",
+      "question": "What are the common issues with route handlers in Express.js and how do you debug them?",
+      "ideal_answer": "Common issues with route handlers in Express.js include: handler return value ignored. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "route handlers",
+        "troubleshooting",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to route handlers?",
+        "What tools can assist in detecting problems with route handlers at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "route parameters"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "EXPRESS-030",
+      "subject": "Express.js",
+      "category": "Core",
+      "subcategory": "Request/Response",
+      "difficulty": "Hard",
+      "question": "What are the common issues with request-response cycle in Express.js and how do you debug them?",
+      "ideal_answer": "Common issues with request-response cycle in Express.js include: early response termination. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "request-response cycle",
+        "troubleshooting",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to request-response cycle?",
+        "What tools can assist in detecting problems with request-response cycle at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "middleware pattern",
+        "app mounting"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "EXPRESS-031",
+      "subject": "Express.js",
+      "category": "Error Handling",
+      "subcategory": "Sync Errors",
+      "difficulty": "Hard",
+      "question": "What is async error handling in Express.js and how does it work?",
+      "ideal_answer": "async error handling in Express.js refers to Promise rejection catching. It works by wrapping async routes. Key characteristics include express-async-handler, try-catch wrapper. Example: const asyncHandler = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next);. Common pitfalls include unhandled rejection crash.",
+      "keywords": [
+        "async error handling",
+        "Express.js programming",
+        "error handling"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of async error handling in a production environment?",
+        "What are the common pitfalls or issues associated with async error handling?"
+      ],
+      "related_concepts": [
+        "custom error classes"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "EXPRESS-032",
+      "subject": "Express.js",
+      "category": "Core",
+      "subcategory": "Request/Response",
+      "difficulty": "Hard",
+      "question": "Explain the difference between request-response cycle and app mounting in Express.js.",
+      "ideal_answer": "request-response cycle and app mounting differ in several ways: request-response cycle is HTTP handling flow (works by req -> middleware -> route -> res) whereas app mounting is sub-application composition (works by modular route organization). request-response cycle is typically used for req object, res object, next function, while app mounting is used for app.use('/api', apiApp). Example demonstrating request-response cycle: app.get('/', (req, res, next) => { ... });. Example demonstrating app mounting: const api = express.Router(); app.use('/api', api);.",
+      "keywords": [
+        "request-response cycle",
+        "app mounting",
+        "comparison",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose request-response cycle over app mounting?",
+        "What is the performance or memory difference between request-response cycle and app mounting?"
+      ],
+      "related_concepts": [
+        "request-response cycle",
+        "app mounting",
+        "middleware pattern"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "EXPRESS-033",
+      "subject": "Express.js",
+      "category": "Middleware",
+      "subcategory": "Error",
+      "difficulty": "Hard",
+      "question": "What are the common issues with error middleware in Express.js and how do you debug them?",
+      "ideal_answer": "Common issues with error middleware in Express.js include: async error propagation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "error middleware",
+        "troubleshooting",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to error middleware?",
+        "What tools can assist in detecting problems with error middleware at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "application middleware",
+        "router middleware"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "EXPRESS-034",
+      "subject": "Express.js",
+      "category": "Middleware",
+      "subcategory": "Application",
+      "difficulty": "Hard",
+      "question": "Explain the difference between application middleware and router middleware in Express.js.",
+      "ideal_answer": "application middleware and router middleware differ in several ways: application middleware is global request processing (works by app-level functionality) whereas router middleware is route-specific processing (works by modular route handlers). application middleware is typically used for logging, parsing, authentication, while router middleware is used for Router instance, mountable. Example demonstrating application middleware: app.use(express.static('public'));. Example demonstrating router middleware: const router = express.Router(); router.get('/users', handler);.",
+      "keywords": [
+        "application middleware",
+        "router middleware",
+        "comparison",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose application middleware over router middleware?",
+        "What is the performance or memory difference between application middleware and router middleware?"
+      ],
+      "related_concepts": [
+        "application middleware",
+        "router middleware",
+        "error middleware"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "EXPRESS-035",
+      "subject": "Express.js",
+      "category": "Middleware",
+      "subcategory": "Router",
+      "difficulty": "Hard",
+      "question": "Explain the difference between router middleware and error middleware in Express.js.",
+      "ideal_answer": "router middleware and error middleware differ in several ways: router middleware is route-specific processing (works by modular route handlers) whereas error middleware is exception handling (works by 4-argument signature). router middleware is typically used for Router instance, mountable, while error middleware is used for catching sync and async errors. Example demonstrating router middleware: const router = express.Router(); router.get('/users', handler);. Example demonstrating error middleware: app.use((err, req, res, next) => { res.status(500).json({ error: err.message }); });.",
+      "keywords": [
+        "router middleware",
+        "error middleware",
+        "comparison",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose router middleware over error middleware?",
+        "What is the performance or memory difference between router middleware and error middleware?"
+      ],
+      "related_concepts": [
+        "router middleware",
+        "error middleware",
+        "application middleware"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "EXPRESS-036",
+      "subject": "Express.js",
+      "category": "Core",
+      "subcategory": "App Setup",
+      "difficulty": "Hard",
+      "question": "What are the common issues with middleware pattern in Express.js and how do you debug them?",
+      "ideal_answer": "Common issues with middleware pattern in Express.js include: middleware execution order. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "middleware pattern",
+        "troubleshooting",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to middleware pattern?",
+        "What tools can assist in detecting problems with middleware pattern at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "request-response cycle",
+        "app mounting"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "EXPRESS-037",
+      "subject": "Express.js",
+      "category": "Core",
+      "subcategory": "App Setup",
+      "difficulty": "Hard",
+      "question": "Explain the difference between middleware pattern and app mounting in Express.js.",
+      "ideal_answer": "middleware pattern and app mounting differ in several ways: middleware pattern is request processing pipeline (works by layered function execution) whereas app mounting is sub-application composition (works by modular route organization). middleware pattern is typically used for app.use, sequential order matters, while app mounting is used for app.use('/api', apiApp). Example demonstrating middleware pattern: app.use(express.json()); app.use('/api', routes);. Example demonstrating app mounting: const api = express.Router(); app.use('/api', api);.",
+      "keywords": [
+        "middleware pattern",
+        "app mounting",
+        "comparison",
+        "Express.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose middleware pattern over app mounting?",
+        "What is the performance or memory difference between middleware pattern and app mounting?"
+      ],
+      "related_concepts": [
+        "middleware pattern",
+        "app mounting",
+        "request-response cycle"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

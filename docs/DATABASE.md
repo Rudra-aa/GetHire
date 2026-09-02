@@ -14,15 +14,18 @@
 2. [Collection Overview](#2-collection-overview)
 3. [Collection Schemas](#3-collection-schemas)
    - [users](#31-users-collection)
-   - [resumes](#32-resumes-collection)
-   - [sessions](#33-sessions-collection)
-   - [questions](#34-questions-collection)
-   - [answers](#35-answers-collection)
-   - [face_analyses](#36-face_analyses-collection)
-   - [voice_analyses](#37-voice_analyses-collection)
-   - [scores](#38-scores-collection)
-   - [reports](#39-reports-collection)
-   - [audit_logs](#310-audit_logs-collection)
+   - [user_profiles](#32-user_profiles-collection)
+   - [auth_refresh_tokens](#33-auth_refresh_tokens-collection)
+   - [user_sessions](#34-user_sessions-collection)
+   - [resumes](#35-resumes-collection)
+   - [sessions](#36-sessions-collection)
+   - [questions](#37-questions-collection)
+   - [answers](#38-answers-collection)
+   - [face_analyses](#39-face_analyses-collection)
+   - [voice_analyses](#310-voice_analyses-collection)
+   - [scores](#311-scores-collection)
+   - [reports](#312-reports-collection)
+   - [audit_logs](#313-audit_logs-collection)
 4. [Relationships](#4-relationships)
 5. [Indexes](#5-indexes)
 6. [Validation Rules](#6-validation-rules)
@@ -69,7 +72,10 @@ All document IDs use MongoDB's native `ObjectId` type. The string representation
 
 | Collection | Description | Estimated Growth Rate |
 |---|---|---|
-| `users` | Registered user accounts | Low (user registrations) |
+| `users` | Registered user credentials and system roles | Low (user registrations) |
+| `user_profiles` | User profile details, target roles, and metrics | Low (one per user) |
+| `auth_refresh_tokens` | Active refresh tokens with TTL family tracking | Moderate (multiple per user) |
+| `user_sessions` | Active device and session metadata | Moderate (multiple per user) |
 | `resumes` | Uploaded and parsed resumes | Moderate (multiple per user) |
 | `sessions` | Interview session metadata | Moderate (sessions per user) |
 | `questions` | Generated interview questions | High (multiple per session) |
@@ -78,7 +84,7 @@ All document IDs use MongoDB's native `ObjectId` type. The string representation
 | `voice_analyses` | Per-answer voice feature analysis | High (one per answer) |
 | `scores` | HireScore composite results | Moderate (one per session) |
 | `reports` | Generated PDF report metadata | Moderate (one per session) |
-| `audit_logs` | Security and action audit trail | Very High (every sensitive action) |
+| `audit_logs` | General audit trail for all application modules | Very High (every key action) |
 
 ---
 
@@ -86,41 +92,18 @@ All document IDs use MongoDB's native `ObjectId` type. The string representation
 
 ### 3.1 `users` Collection
 
-**Purpose:** Stores registered user accounts, credentials, and role assignments.
+**Purpose:** Stores registered user account credentials, credentials verification, status, and role assignments.
 
 ```json
 {
   "_id": "ObjectId('507f1f77bcf86cd799439011')",
   "schema_version": 1,
-
   "email": "alice@example.com",
   "hashed_password": "$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW",
-  "full_name": "Alice Johnson",
   "role": "candidate",
-
-  "profile": {
-    "avatar_url": null,
-    "linkedin_url": null,
-    "target_role": "Software Engineer",
-    "experience_level": "entry"
-  },
-
-  "auth": {
-    "is_email_verified": false,
-    "email_verification_token": "abc123xyz",
-    "email_verification_expires_at": "2026-08-10T10:30:00Z",
-    "password_reset_token": null,
-    "password_reset_expires_at": null,
-    "last_login_at": null,
-    "failed_login_attempts": 0,
-    "locked_until": null
-  },
-
-  "settings": {
-    "notifications_enabled": true,
-    "timezone": "Asia/Kolkata"
-  },
-
+  "status": "active",
+  "email_verified": false,
+  "refresh_token_version": 1,
   "is_deleted": false,
   "deleted_at": null,
   "created_at": "2026-08-09T10:00:00Z",
@@ -129,10 +112,75 @@ All document IDs use MongoDB's native `ObjectId` type. The string representation
 ```
 
 **Allowed roles:** `"candidate"` | `"admin"`
+**Allowed statuses:** `"active"` | `"suspended"` | `"pending"`
 
 ---
 
-### 3.2 `resumes` Collection
+### 3.2 `user_profiles` Collection
+
+**Purpose:** Stores public and personal information about the user, including target jobs and experience settings.
+
+```json
+{
+  "_id": "ObjectId('507f1f77bcf86cd799439022')",
+  "schema_version": 1,
+  "user_id": "ObjectId('507f1f77bcf86cd799439011')",
+  "full_name": "Alice Johnson",
+  "avatar_url": "https://gethire.ai/avatars/alice.png",
+  "target_role": "Backend Developer",
+  "experience_level": "mid",
+  "linkedin_url": "https://linkedin.com/in/alicejohnson",
+  "created_at": "2026-08-09T10:00:00Z",
+  "updated_at": "2026-08-09T10:00:00Z"
+}
+```
+
+**Allowed experience levels:** `"entry"` | `"mid"` | `"senior"`
+**Common Target roles:** `"Frontend Developer"`, `"Backend Developer"`, `"AI/ML Engineer"`, `"Data Scientist"`, `"DevOps Engineer"`, `"Fullstack Developer"`, `"Mobile Developer"`
+
+---
+
+### 3.3 `auth_refresh_tokens` Collection
+
+**Purpose:** Stores active refresh tokens to support token rotation (RTR) and prevent replay attacks.
+
+```json
+{
+  "_id": "ObjectId('507f1f77bcf86cd799439033')",
+  "jti": "8f6d3a5c-512b-4e12-88fb-976cc94582f3",
+  "user_id": "ObjectId('507f1f77bcf86cd799439011')",
+  "token_family": "a4d36eb7-c812-4215-9988-bb71b9c3e410",
+  "expires_at": "2026-08-16T10:00:00Z",
+  "is_revoked": false,
+  "created_at": "2026-08-09T10:00:00Z"
+}
+```
+
+---
+
+### 3.4 `user_sessions` Collection
+
+**Purpose:** Tracks active logins, devices, and sessions for user auditing and revoke purposes.
+
+```json
+{
+  "_id": "ObjectId('507f1f77bcf86cd799439044')",
+  "user_id": "ObjectId('507f1f77bcf86cd799439011')",
+  "device_name": "MacBook Air",
+  "browser": "Chrome",
+  "operating_system": "macOS",
+  "ip_address": "103.21.45.67",
+  "country": "India",
+  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36...",
+  "created_at": "2026-08-09T10:00:00Z",
+  "last_seen": "2026-08-09T10:30:00Z",
+  "is_active": true
+}
+```
+
+---
+
+### 3.5 `resumes` Collection
 
 **Purpose:** Stores uploaded resume files and their parsed structured data.
 
@@ -221,7 +269,7 @@ All document IDs use MongoDB's native `ObjectId` type. The string representation
 
 ---
 
-### 3.3 `sessions` Collection
+### 3.6 `sessions` Collection
 
 **Purpose:** Stores interview session lifecycle and configuration.
 
@@ -269,7 +317,7 @@ All document IDs use MongoDB's native `ObjectId` type. The string representation
 
 ---
 
-### 3.4 `questions` Collection
+### 3.7 `questions` Collection
 
 **Purpose:** Stores AI-generated interview questions per session.
 
@@ -306,7 +354,7 @@ All document IDs use MongoDB's native `ObjectId` type. The string representation
 
 ---
 
-### 3.5 `answers` Collection
+### 3.8 `answers` Collection
 
 **Purpose:** Stores candidate responses with full evaluation results.
 
@@ -378,7 +426,7 @@ All document IDs use MongoDB's native `ObjectId` type. The string representation
 
 ---
 
-### 3.6 `face_analyses` Collection
+### 3.9 `face_analyses` Collection
 
 **Purpose:** Stores per-session facial emotion timeline captured during the interview.
 
@@ -446,7 +494,7 @@ All document IDs use MongoDB's native `ObjectId` type. The string representation
 
 ---
 
-### 3.7 `voice_analyses` Collection
+### 3.10 `voice_analyses` Collection
 
 **Purpose:** Stores aggregate voice analysis metrics for a session (individual answer voice data is embedded in `answers`).
 
@@ -479,7 +527,7 @@ All document IDs use MongoDB's native `ObjectId` type. The string representation
 
 ---
 
-### 3.8 `scores` Collection
+### 3.11 `scores` Collection
 
 **Purpose:** Stores the final HireScore composite result for each completed session.
 
@@ -548,7 +596,7 @@ All document IDs use MongoDB's native `ObjectId` type. The string representation
 
 ---
 
-### 3.9 `reports` Collection
+### 3.12 `reports` Collection
 
 **Purpose:** Stores metadata for generated PDF interview reports.
 
@@ -590,51 +638,41 @@ All document IDs use MongoDB's native `ObjectId` type. The string representation
 
 ---
 
-### 3.10 `audit_logs` Collection
+### 3.13 `audit_logs` Collection
 
-**Purpose:** Immutable audit trail of all security-relevant actions. Documents in this collection are **never soft-deleted** and **never updated** — only appended.
+**Purpose:** Generic, immutable audit trail of all application events across all modules. Documents in this collection are **never soft-deleted** and **never updated** — only appended.
 
 ```json
 {
   "_id": "ObjectId('507f191e810c19729de860f3')",
   "schema_version": 1,
-
-  "actor_id": "ObjectId('507f1f77bcf86cd799439011')",
-  "actor_role": "candidate",
-  "actor_ip": "103.21.45.67",
-  "actor_user_agent": "Mozilla/5.0 ...",
-
-  "action": "user.login.success",
-  "resource_type": "user",
-  "resource_id": "507f1f77bcf86cd799439011",
-
-  "request_id": "req_abc123xyz",
-  "request_path": "/api/v1/auth/login",
-  "request_method": "POST",
-
-  "outcome": "success",
-  "details": {
+  "event": "LOGIN",
+  "module": "auth",
+  "severity": "info",
+  "user_id": "ObjectId('507f1f77bcf86cd799439011')",
+  "metadata": {
+    "ip_address": "103.21.45.67",
+    "browser": "Chrome",
+    "operating_system": "macOS",
+    "user_agent": "Mozilla/5.0 ...",
     "login_method": "email_password"
   },
-
-  "created_at": "2026-08-09T10:30:00Z"
+  "timestamp": "2026-08-09T10:30:00Z"
 }
 ```
 
-**Standard action names:**
+**Common Audit Events & Severity Guidelines:**
 
-| Action | Trigger |
-|---|---|
-| `user.register` | New account created |
-| `user.login.success` | Successful login |
-| `user.login.failure` | Failed login attempt |
-| `user.logout` | Explicit logout |
-| `user.password_reset` | Password reset completed |
-| `resume.upload` | Resume file uploaded |
-| `session.create` | Interview session started |
-| `session.complete` | Interview session completed |
-| `report.download` | PDF report downloaded |
-| `admin.user_view` | Admin accessed user record |
+| Event | Module | Severity | Description |
+|---|---|---|---|
+| `LOGIN` | `auth` | `info` | Successful user login |
+| `LOGOUT` | `auth` | `info` | User logged out |
+| `LOGIN_FAILED` | `auth` | `warning` | Failed login attempt |
+| `PROFILE_UPDATED` | `users` | `info` | User profile modified |
+| `RESUME_UPLOADED` | `resume` | `info` | Candidate uploaded resume |
+| `INTERVIEW_STARTED` | `interview` | `info` | New interview session created |
+| `REPORT_DOWNLOADED` | `reports` | `info` | Candidate or Admin downloaded PDF report |
+| `ACCESS_DENIED` | `auth` | `warning` | Unauthorized access attempt |
 
 ---
 

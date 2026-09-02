@@ -1,0 +1,3183 @@
+{
+  "metadata": {
+    "subject": "Kotlin",
+    "domain": "Software Engineering",
+    "total_questions": 120,
+    "difficulty_distribution": {
+      "Easy": 36,
+      "Medium": 60,
+      "Hard": 24
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:47Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "KOTLIN-001",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Control Flow",
+      "difficulty": "Easy",
+      "question": "What are the common issues with when expression in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with when expression in Kotlin include: exhaustiveness checking. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "when expression",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to when expression?",
+        "What tools can assist in detecting problems with when expression at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "null safety",
+        "smart cast",
+        "val vs var"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-002",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Structured Concurrency",
+      "difficulty": "Easy",
+      "question": "What are the common issues with channels in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with channels in Kotlin include: rendezvous vs buffered channels. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "channels",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to channels?",
+        "What tools can assist in detecting problems with channels at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "suspend functions",
+        "CoroutineScope",
+        "Flow"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-003",
+      "subject": "Kotlin",
+      "category": "Functional Programming",
+      "subcategory": "Higher-Order Functions",
+      "difficulty": "Easy",
+      "question": "Explain the difference between higher-order functions and reified types in Kotlin.",
+      "ideal_answer": "higher-order functions and reified types differ in several ways: higher-order functions is functions taking/returning functions (works by functional abstraction) whereas reified types is runtime type preservation (works by generic type access). higher-order functions is typically used for map, filter, reduce, fold, while reified types is used for inline function feature. Example demonstrating higher-order functions: list.map { it * 2 }.filter { it > 5 }. Example demonstrating reified types: inline fun <reified T> isType(value: Any) = value is T.",
+      "keywords": [
+        "higher-order functions",
+        "reified types",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose higher-order functions over reified types?",
+        "What is the performance or memory difference between higher-order functions and reified types?"
+      ],
+      "related_concepts": [
+        "higher-order functions",
+        "reified types",
+        "inline functions",
+        "scope functions"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-004",
+      "subject": "Kotlin",
+      "category": "Android",
+      "subcategory": "LiveData",
+      "difficulty": "Easy",
+      "question": "What are the common issues with LiveData in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with LiveData in Kotlin include: Transformation.map, Transformation.switchMap. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "LiveData",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to LiveData?",
+        "What tools can assist in detecting problems with LiveData at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ViewModel",
+        "Jetpack Compose"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-005",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Structured Concurrency",
+      "difficulty": "Easy",
+      "question": "What is channels in Kotlin and how does it work?",
+      "ideal_answer": "channels in Kotlin refers to coroutine communication. It works by hot streams for communication. Key characteristics include send, receive, buffer. Example: val channel = Channel<Int>(). Common pitfalls include rendezvous vs buffered channels.",
+      "keywords": [
+        "channels",
+        "Kotlin programming",
+        "coroutines"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of channels in a production environment?",
+        "What are the common pitfalls or issues associated with channels?"
+      ],
+      "related_concepts": [
+        "suspend functions",
+        "CoroutineScope",
+        "Flow"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-006",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Smart Casts",
+      "difficulty": "Easy",
+      "question": "Explain the difference between type inference and range operator in Kotlin.",
+      "ideal_answer": "type inference and range operator differ in several ways: type inference is automatic type deduction (works by reducing type annotations) whereas range operator is interval representation (works by iterating over sequences). type inference is typically used for compiler infers from initializer, while range operator is used for .., until, downTo, step. Example demonstrating type inference: val x = 5 // inferred as Int. Example demonstrating range operator: for (i in 1..10 step 2) { ... }.",
+      "keywords": [
+        "type inference",
+        "range operator",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose type inference over range operator?",
+        "What is the performance or memory difference between type inference and range operator?"
+      ],
+      "related_concepts": [
+        "type inference",
+        "range operator",
+        "null safety",
+        "smart cast"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-007",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Suspending Functions",
+      "difficulty": "Easy",
+      "question": "Explain the difference between suspend functions and Dispatchers in Kotlin.",
+      "ideal_answer": "suspend functions and Dispatchers differ in several ways: suspend functions is non-blocking functions (works by coroutine building blocks) whereas Dispatchers is coroutine execution context (works by thread pool specification). suspend functions is typically used for can pause and resume, while Dispatchers is used for Default, IO, Main, Unconfined. Example demonstrating suspend functions: suspend fun fetchData(): Data { ... }. Example demonstrating Dispatchers: withContext(Dispatchers.IO) { /* blocking IO */ }.",
+      "keywords": [
+        "suspend functions",
+        "Dispatchers",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose suspend functions over Dispatchers?",
+        "What is the performance or memory difference between suspend functions and Dispatchers?"
+      ],
+      "related_concepts": [
+        "suspend functions",
+        "Dispatchers",
+        "CoroutineScope",
+        "Flow"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-008",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Suspending Functions",
+      "difficulty": "Easy",
+      "question": "Explain the difference between suspend functions and CoroutineScope in Kotlin.",
+      "ideal_answer": "suspend functions and CoroutineScope differ in several ways: suspend functions is non-blocking functions (works by coroutine building blocks) whereas CoroutineScope is coroutine lifecycle management (works by structured concurrency). suspend functions is typically used for can pause and resume, while CoroutineScope is used for SupervisorJob, cancellation propagation. Example demonstrating suspend functions: suspend fun fetchData(): Data { ... }. Example demonstrating CoroutineScope: val scope = CoroutineScope(Dispatchers.Main).",
+      "keywords": [
+        "suspend functions",
+        "CoroutineScope",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose suspend functions over CoroutineScope?",
+        "What is the performance or memory difference between suspend functions and CoroutineScope?"
+      ],
+      "related_concepts": [
+        "suspend functions",
+        "CoroutineScope",
+        "Flow",
+        "Dispatchers"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-009",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Channels",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Flow and Dispatchers in Kotlin.",
+      "ideal_answer": "Flow and Dispatchers differ in several ways: Flow is cold async stream (works by reactive streams in Kotlin) whereas Dispatchers is coroutine execution context (works by thread pool specification). Flow is typically used for emit, collect, operators, while Dispatchers is used for Default, IO, Main, Unconfined. Example demonstrating Flow: flow { emit(1); emit(2) }.map { it * 2 }.collect { println(it) }. Example demonstrating Dispatchers: withContext(Dispatchers.IO) { /* blocking IO */ }.",
+      "keywords": [
+        "Flow",
+        "Dispatchers",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Flow over Dispatchers?",
+        "What is the performance or memory difference between Flow and Dispatchers?"
+      ],
+      "related_concepts": [
+        "Flow",
+        "Dispatchers",
+        "suspend functions",
+        "CoroutineScope"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-010",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Suspending Functions",
+      "difficulty": "Easy",
+      "question": "What is suspend functions in Kotlin and how does it work?",
+      "ideal_answer": "suspend functions in Kotlin refers to non-blocking functions. It works by coroutine building blocks. Key characteristics include can pause and resume. Example: suspend fun fetchData(): Data { ... }. Common pitfalls include suspend functions only callable from coroutines.",
+      "keywords": [
+        "suspend functions",
+        "Kotlin programming",
+        "coroutines"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of suspend functions in a production environment?",
+        "What are the common pitfalls or issues associated with suspend functions?"
+      ],
+      "related_concepts": [
+        "CoroutineScope",
+        "Flow",
+        "Dispatchers"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-011",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Easy",
+      "question": "Explain the difference between data classes and sealed classes in Kotlin.",
+      "ideal_answer": "data classes and sealed classes differ in several ways: data classes is concise data containers (works by auto-generated methods) whereas sealed classes is restricted inheritance (works by exhaustive when expressions). data classes is typically used for equals, hashCode, toString, copy, componentN, while sealed classes is used for all subclasses known at compile time. Example demonstrating data classes: data class User(val name: String, val age: Int). Example demonstrating sealed classes: sealed class Result\nclass Success(val data: String) : Result().",
+      "keywords": [
+        "data classes",
+        "sealed classes",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose data classes over sealed classes?",
+        "What is the performance or memory difference between data classes and sealed classes?"
+      ],
+      "related_concepts": [
+        "data classes",
+        "sealed classes",
+        "companion objects",
+        "object declaration"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-012",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Channels",
+      "difficulty": "Easy",
+      "question": "What is Flow in Kotlin and how does it work?",
+      "ideal_answer": "Flow in Kotlin refers to cold async stream. It works by reactive streams in Kotlin. Key characteristics include emit, collect, operators. Example: flow { emit(1); emit(2) }.map { it * 2 }.collect { println(it) }. Common pitfalls include backpressure, conflation.",
+      "keywords": [
+        "Flow",
+        "Kotlin programming",
+        "coroutines"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Flow in a production environment?",
+        "What are the common pitfalls or issues associated with Flow?"
+      ],
+      "related_concepts": [
+        "suspend functions",
+        "CoroutineScope",
+        "Dispatchers"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-013",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Suspending Functions",
+      "difficulty": "Easy",
+      "question": "Explain the difference between suspend functions and structured concurrency in Kotlin.",
+      "ideal_answer": "suspend functions and structured concurrency differ in several ways: suspend functions is non-blocking functions (works by coroutine building blocks) whereas structured concurrency is hierarchical coroutine management (works by parent-child relationship). suspend functions is typically used for can pause and resume, while structured concurrency is used for parent waits for children, cancellation propagates. Example demonstrating suspend functions: suspend fun fetchData(): Data { ... }. Example demonstrating structured concurrency: coroutineScope { launch { ... } launch { ... } }.",
+      "keywords": [
+        "suspend functions",
+        "structured concurrency",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose suspend functions over structured concurrency?",
+        "What is the performance or memory difference between suspend functions and structured concurrency?"
+      ],
+      "related_concepts": [
+        "suspend functions",
+        "structured concurrency",
+        "CoroutineScope",
+        "Flow"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-014",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Control Flow",
+      "difficulty": "Easy",
+      "question": "Explain the difference between when expression and range operator in Kotlin.",
+      "ideal_answer": "when expression and range operator differ in several ways: when expression is pattern matching alternative (works by powerful switch replacement) whereas range operator is interval representation (works by iterating over sequences). when expression is typically used for can match types, ranges, conditions, while range operator is used for .., until, downTo, step. Example demonstrating when expression: when (x) { is Int -> ... in 1..10 -> ... else -> ... }. Example demonstrating range operator: for (i in 1..10 step 2) { ... }.",
+      "keywords": [
+        "when expression",
+        "range operator",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose when expression over range operator?",
+        "What is the performance or memory difference between when expression and range operator?"
+      ],
+      "related_concepts": [
+        "when expression",
+        "range operator",
+        "null safety",
+        "smart cast"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-015",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Easy",
+      "question": "Explain the difference between null safety and type inference in Kotlin.",
+      "ideal_answer": "null safety and type inference differ in several ways: null safety is type system null prevention (works by eliminating NPE at compile time) whereas type inference is automatic type deduction (works by reducing type annotations). null safety is typically used for ?, !!, ?:, ?. operators, while type inference is used for compiler infers from initializer. Example demonstrating null safety: val name: String? = null. Example demonstrating type inference: val x = 5 // inferred as Int.",
+      "keywords": [
+        "null safety",
+        "type inference",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose null safety over type inference?",
+        "What is the performance or memory difference between null safety and type inference?"
+      ],
+      "related_concepts": [
+        "null safety",
+        "type inference",
+        "smart cast",
+        "val vs var"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-016",
+      "subject": "Kotlin",
+      "category": "Functional Programming",
+      "subcategory": "Higher-Order Functions",
+      "difficulty": "Easy",
+      "question": "What is higher-order functions in Kotlin and how does it work?",
+      "ideal_answer": "higher-order functions in Kotlin refers to functions taking/returning functions. It works by functional abstraction. Key characteristics include map, filter, reduce, fold. Example: list.map { it * 2 }.filter { it > 5 }. Common pitfalls include inline functions for performance.",
+      "keywords": [
+        "higher-order functions",
+        "Kotlin programming",
+        "functional programming"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of higher-order functions in a production environment?",
+        "What are the common pitfalls or issues associated with higher-order functions?"
+      ],
+      "related_concepts": [
+        "inline functions",
+        "scope functions",
+        "reified types"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-017",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Flows",
+      "difficulty": "Easy",
+      "question": "Explain the difference between CoroutineScope and Flow in Kotlin.",
+      "ideal_answer": "CoroutineScope and Flow differ in several ways: CoroutineScope is coroutine lifecycle management (works by structured concurrency) whereas Flow is cold async stream (works by reactive streams in Kotlin). CoroutineScope is typically used for SupervisorJob, cancellation propagation, while Flow is used for emit, collect, operators. Example demonstrating CoroutineScope: val scope = CoroutineScope(Dispatchers.Main). Example demonstrating Flow: flow { emit(1); emit(2) }.map { it * 2 }.collect { println(it) }.",
+      "keywords": [
+        "CoroutineScope",
+        "Flow",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CoroutineScope over Flow?",
+        "What is the performance or memory difference between CoroutineScope and Flow?"
+      ],
+      "related_concepts": [
+        "CoroutineScope",
+        "Flow",
+        "suspend functions",
+        "Dispatchers"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-018",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Flows",
+      "difficulty": "Easy",
+      "question": "What is CoroutineScope in Kotlin and how does it work?",
+      "ideal_answer": "CoroutineScope in Kotlin refers to coroutine lifecycle management. It works by structured concurrency. Key characteristics include SupervisorJob, cancellation propagation. Example: val scope = CoroutineScope(Dispatchers.Main). Common pitfalls include GlobalScope anti-pattern.",
+      "keywords": [
+        "CoroutineScope",
+        "Kotlin programming",
+        "coroutines"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of CoroutineScope in a production environment?",
+        "What are the common pitfalls or issues associated with CoroutineScope?"
+      ],
+      "related_concepts": [
+        "suspend functions",
+        "Flow",
+        "Dispatchers"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-019",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Easy",
+      "question": "Explain the difference between data classes and delegation in Kotlin.",
+      "ideal_answer": "data classes and delegation differ in several ways: data classes is concise data containers (works by auto-generated methods) whereas delegation is composition over inheritance (works by by keyword for delegation). data classes is typically used for equals, hashCode, toString, copy, componentN, while delegation is used for automatic forwarding. Example demonstrating data classes: data class User(val name: String, val age: Int). Example demonstrating delegation: class Derived(b: Base) : Base by b.",
+      "keywords": [
+        "data classes",
+        "delegation",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose data classes over delegation?",
+        "What is the performance or memory difference between data classes and delegation?"
+      ],
+      "related_concepts": [
+        "data classes",
+        "delegation",
+        "sealed classes",
+        "companion objects"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-020",
+      "subject": "Kotlin",
+      "category": "Standard Library",
+      "subcategory": "Collections",
+      "difficulty": "Easy",
+      "question": "Explain the difference between collection operations and Sequence in Kotlin.",
+      "ideal_answer": "collection operations and Sequence differ in several ways: collection operations is functional collection processing (works by declarative data manipulation) whereas Sequence is lazy collection evaluation (works by intermediate operations deferred). collection operations is typically used for map, filter, reduce, groupBy, associate, while Sequence is used for chaining without intermediate collections. Example demonstrating collection operations: people.groupBy { it.department }. Example demonstrating Sequence: list.asSequence().filter { ... }.map { ... }.toList().",
+      "keywords": [
+        "collection operations",
+        "Sequence",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose collection operations over Sequence?",
+        "What is the performance or memory difference between collection operations and Sequence?"
+      ],
+      "related_concepts": [
+        "collection operations",
+        "Sequence",
+        "lazy property"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-021",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Control Flow",
+      "difficulty": "Easy",
+      "question": "What is when expression in Kotlin and how does it work?",
+      "ideal_answer": "when expression in Kotlin refers to pattern matching alternative. It works by powerful switch replacement. Key characteristics include can match types, ranges, conditions. Example: when (x) { is Int -> ... in 1..10 -> ... else -> ... }. Common pitfalls include exhaustiveness checking.",
+      "keywords": [
+        "when expression",
+        "Kotlin programming",
+        "core language"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of when expression in a production environment?",
+        "What are the common pitfalls or issues associated with when expression?"
+      ],
+      "related_concepts": [
+        "null safety",
+        "smart cast",
+        "val vs var"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-022",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Interfaces",
+      "difficulty": "Easy",
+      "question": "Explain the difference between extension functions and delegation in Kotlin.",
+      "ideal_answer": "extension functions and delegation differ in several ways: extension functions is adding methods to existing types (works by non-intrusive functionality) whereas delegation is composition over inheritance (works by by keyword for delegation). extension functions is typically used for resolved statically, while delegation is used for automatic forwarding. Example demonstrating extension functions: fun String.addExclamation() = this + \"!\". Example demonstrating delegation: class Derived(b: Base) : Base by b.",
+      "keywords": [
+        "extension functions",
+        "delegation",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose extension functions over delegation?",
+        "What is the performance or memory difference between extension functions and delegation?"
+      ],
+      "related_concepts": [
+        "extension functions",
+        "delegation",
+        "data classes",
+        "sealed classes"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-023",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Channels",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Flow and structured concurrency in Kotlin.",
+      "ideal_answer": "Flow and structured concurrency differ in several ways: Flow is cold async stream (works by reactive streams in Kotlin) whereas structured concurrency is hierarchical coroutine management (works by parent-child relationship). Flow is typically used for emit, collect, operators, while structured concurrency is used for parent waits for children, cancellation propagates. Example demonstrating Flow: flow { emit(1); emit(2) }.map { it * 2 }.collect { println(it) }. Example demonstrating structured concurrency: coroutineScope { launch { ... } launch { ... } }.",
+      "keywords": [
+        "Flow",
+        "structured concurrency",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Flow over structured concurrency?",
+        "What is the performance or memory difference between Flow and structured concurrency?"
+      ],
+      "related_concepts": [
+        "Flow",
+        "structured concurrency",
+        "suspend functions",
+        "CoroutineScope"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-024",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Flows",
+      "difficulty": "Easy",
+      "question": "Explain the difference between CoroutineScope and channels in Kotlin.",
+      "ideal_answer": "CoroutineScope and channels differ in several ways: CoroutineScope is coroutine lifecycle management (works by structured concurrency) whereas channels is coroutine communication (works by hot streams for communication). CoroutineScope is typically used for SupervisorJob, cancellation propagation, while channels is used for send, receive, buffer. Example demonstrating CoroutineScope: val scope = CoroutineScope(Dispatchers.Main). Example demonstrating channels: val channel = Channel<Int>().",
+      "keywords": [
+        "CoroutineScope",
+        "channels",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CoroutineScope over channels?",
+        "What is the performance or memory difference between CoroutineScope and channels?"
+      ],
+      "related_concepts": [
+        "CoroutineScope",
+        "channels",
+        "suspend functions",
+        "Flow"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-025",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Smart Casts",
+      "difficulty": "Easy",
+      "question": "What are the common issues with type inference in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with type inference in Kotlin include: explicit types for public APIs. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "type inference",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to type inference?",
+        "What tools can assist in detecting problems with type inference at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "null safety",
+        "smart cast",
+        "val vs var"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-026",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Easy",
+      "question": "What are the common issues with null safety in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with null safety in Kotlin include: platform types from Java. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "null safety",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to null safety?",
+        "What tools can assist in detecting problems with null safety at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "smart cast",
+        "val vs var",
+        "type inference"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-027",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Flows",
+      "difficulty": "Easy",
+      "question": "What are the common issues with CoroutineScope in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with CoroutineScope in Kotlin include: GlobalScope anti-pattern. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "CoroutineScope",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to CoroutineScope?",
+        "What tools can assist in detecting problems with CoroutineScope at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "suspend functions",
+        "Flow",
+        "Dispatchers"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-028",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Flows",
+      "difficulty": "Easy",
+      "question": "Explain the difference between CoroutineScope and structured concurrency in Kotlin.",
+      "ideal_answer": "CoroutineScope and structured concurrency differ in several ways: CoroutineScope is coroutine lifecycle management (works by structured concurrency) whereas structured concurrency is hierarchical coroutine management (works by parent-child relationship). CoroutineScope is typically used for SupervisorJob, cancellation propagation, while structured concurrency is used for parent waits for children, cancellation propagates. Example demonstrating CoroutineScope: val scope = CoroutineScope(Dispatchers.Main). Example demonstrating structured concurrency: coroutineScope { launch { ... } launch { ... } }.",
+      "keywords": [
+        "CoroutineScope",
+        "structured concurrency",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CoroutineScope over structured concurrency?",
+        "What is the performance or memory difference between CoroutineScope and structured concurrency?"
+      ],
+      "related_concepts": [
+        "CoroutineScope",
+        "structured concurrency",
+        "suspend functions",
+        "Flow"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-029",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Null Safety",
+      "difficulty": "Easy",
+      "question": "Explain the difference between val vs var and when expression in Kotlin.",
+      "ideal_answer": "val vs var and when expression differ in several ways: val vs var is declaration keywords (works by immutability control) whereas when expression is pattern matching alternative (works by powerful switch replacement). val vs var is typically used for val: read-only reference; var: mutable reference, while when expression is used for can match types, ranges, conditions. Example demonstrating val vs var: val list = mutableListOf(1, 2). Example demonstrating when expression: when (x) { is Int -> ... in 1..10 -> ... else -> ... }.",
+      "keywords": [
+        "val vs var",
+        "when expression",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose val vs var over when expression?",
+        "What is the performance or memory difference between val vs var and when expression?"
+      ],
+      "related_concepts": [
+        "val vs var",
+        "when expression",
+        "null safety",
+        "smart cast"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-030",
+      "subject": "Kotlin",
+      "category": "Android",
+      "subcategory": "LiveData",
+      "difficulty": "Easy",
+      "question": "Explain the difference between LiveData and Jetpack Compose in Kotlin.",
+      "ideal_answer": "LiveData and Jetpack Compose differ in several ways: LiveData is observable data holder (works by lifecycle-aware updates) whereas Jetpack Compose is declarative UI toolkit (works by function-based UI definition). LiveData is typically used for automatic cleanup on inactive, while Jetpack Compose is used for @Composable functions, state hoisting. Example demonstrating LiveData: val data = MutableLiveData<String>(). Example demonstrating Jetpack Compose: @Composable fun Greeting(name: String) { Text(\"Hello $name\") }.",
+      "keywords": [
+        "LiveData",
+        "Jetpack Compose",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose LiveData over Jetpack Compose?",
+        "What is the performance or memory difference between LiveData and Jetpack Compose?"
+      ],
+      "related_concepts": [
+        "LiveData",
+        "Jetpack Compose",
+        "ViewModel"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-031",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Easy",
+      "question": "Explain the difference between smart cast and type inference in Kotlin.",
+      "ideal_answer": "smart cast and type inference differ in several ways: smart cast is automatic type narrowing (works by reducing explicit casting) whereas type inference is automatic type deduction (works by reducing type annotations). smart cast is typically used for after type check, compiler knows type, while type inference is used for compiler infers from initializer. Example demonstrating smart cast: if (obj is String) { println(obj.length) }. Example demonstrating type inference: val x = 5 // inferred as Int.",
+      "keywords": [
+        "smart cast",
+        "type inference",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose smart cast over type inference?",
+        "What is the performance or memory difference between smart cast and type inference?"
+      ],
+      "related_concepts": [
+        "smart cast",
+        "type inference",
+        "null safety",
+        "val vs var"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-032",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Inheritance",
+      "difficulty": "Easy",
+      "question": "Explain the difference between sealed classes and companion objects in Kotlin.",
+      "ideal_answer": "sealed classes and companion objects differ in several ways: sealed classes is restricted inheritance (works by exhaustive when expressions) whereas companion objects is class-level members (works by static-like behavior). sealed classes is typically used for all subclasses known at compile time, while companion objects is used for singleton associated with class. Example demonstrating sealed classes: sealed class Result\nclass Success(val data: String) : Result(). Example demonstrating companion objects: class MyClass { companion object { fun create() = MyClass() } }.",
+      "keywords": [
+        "sealed classes",
+        "companion objects",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sealed classes over companion objects?",
+        "What is the performance or memory difference between sealed classes and companion objects?"
+      ],
+      "related_concepts": [
+        "sealed classes",
+        "companion objects",
+        "data classes",
+        "object declaration"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-033",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Sealed Classes",
+      "difficulty": "Easy",
+      "question": "What is object declaration in Kotlin and how does it work?",
+      "ideal_answer": "object declaration in Kotlin refers to singleton pattern. It works by single instance guarantee. Key characteristics include thread-safe lazy initialization. Example: object Singleton { fun doSomething() {} }. Common pitfalls include object expressions for anonymous.",
+      "keywords": [
+        "object declaration",
+        "Kotlin programming",
+        "oop"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of object declaration in a production environment?",
+        "What are the common pitfalls or issues associated with object declaration?"
+      ],
+      "related_concepts": [
+        "data classes",
+        "sealed classes",
+        "companion objects"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-034",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Easy",
+      "question": "Explain the difference between data classes and extension functions in Kotlin.",
+      "ideal_answer": "data classes and extension functions differ in several ways: data classes is concise data containers (works by auto-generated methods) whereas extension functions is adding methods to existing types (works by non-intrusive functionality). data classes is typically used for equals, hashCode, toString, copy, componentN, while extension functions is used for resolved statically. Example demonstrating data classes: data class User(val name: String, val age: Int). Example demonstrating extension functions: fun String.addExclamation() = this + \"!\".",
+      "keywords": [
+        "data classes",
+        "extension functions",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose data classes over extension functions?",
+        "What is the performance or memory difference between data classes and extension functions?"
+      ],
+      "related_concepts": [
+        "data classes",
+        "extension functions",
+        "sealed classes",
+        "companion objects"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-035",
+      "subject": "Kotlin",
+      "category": "Functional Programming",
+      "subcategory": "Inline Functions",
+      "difficulty": "Easy",
+      "question": "What is scope functions in Kotlin and how does it work?",
+      "ideal_answer": "scope functions in Kotlin refers to object context operations. It works by temporary scope modification. Key characteristics include let, run, with, apply, also. Example: obj.apply { name = \"New\" }.also { println(it) }. Common pitfalls include choosing the right scope function.",
+      "keywords": [
+        "scope functions",
+        "Kotlin programming",
+        "functional programming"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of scope functions in a production environment?",
+        "What are the common pitfalls or issues associated with scope functions?"
+      ],
+      "related_concepts": [
+        "higher-order functions",
+        "inline functions",
+        "reified types"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-036",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Data Classes",
+      "difficulty": "Easy",
+      "question": "What is companion objects in Kotlin and how does it work?",
+      "ideal_answer": "companion objects in Kotlin refers to class-level members. It works by static-like behavior. Key characteristics include singleton associated with class. Example: class MyClass { companion object { fun create() = MyClass() } }. Common pitfalls include companion object naming.",
+      "keywords": [
+        "companion objects",
+        "Kotlin programming",
+        "oop"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of companion objects in a production environment?",
+        "What are the common pitfalls or issues associated with companion objects?"
+      ],
+      "related_concepts": [
+        "data classes",
+        "sealed classes",
+        "object declaration"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "KOTLIN-037",
+      "subject": "Kotlin",
+      "category": "Functional Programming",
+      "subcategory": "Inline Functions",
+      "difficulty": "Medium",
+      "question": "What are the common issues with scope functions in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with scope functions in Kotlin include: choosing the right scope function. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "scope functions",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to scope functions?",
+        "What tools can assist in detecting problems with scope functions at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "higher-order functions",
+        "inline functions",
+        "reified types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-038",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Medium",
+      "question": "Explain the difference between range operator and  Elvis operator  in Kotlin.",
+      "ideal_answer": "range operator and  Elvis operator  differ in several ways: range operator is interval representation (works by iterating over sequences) whereas  Elvis operator  is null fallback operator (works by providing default values). range operator is typically used for .., until, downTo, step, while  Elvis operator  is used for returns left if non-null, right otherwise. Example demonstrating range operator: for (i in 1..10 step 2) { ... }. Example demonstrating  Elvis operator : val len = name?.length ?: 0.",
+      "keywords": [
+        "range operator",
+        " Elvis operator ",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose range operator over  Elvis operator ?",
+        "What is the performance or memory difference between range operator and  Elvis operator ?"
+      ],
+      "related_concepts": [
+        "range operator",
+        " Elvis operator ",
+        "null safety",
+        "smart cast"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-039",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Sealed Classes",
+      "difficulty": "Medium",
+      "question": "Explain the difference between object declaration and delegation in Kotlin.",
+      "ideal_answer": "object declaration and delegation differ in several ways: object declaration is singleton pattern (works by single instance guarantee) whereas delegation is composition over inheritance (works by by keyword for delegation). object declaration is typically used for thread-safe lazy initialization, while delegation is used for automatic forwarding. Example demonstrating object declaration: object Singleton { fun doSomething() {} }. Example demonstrating delegation: class Derived(b: Base) : Base by b.",
+      "keywords": [
+        "object declaration",
+        "delegation",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose object declaration over delegation?",
+        "What is the performance or memory difference between object declaration and delegation?"
+      ],
+      "related_concepts": [
+        "object declaration",
+        "delegation",
+        "data classes",
+        "sealed classes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-040",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Inheritance",
+      "difficulty": "Medium",
+      "question": "What are the common issues with sealed classes in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with sealed classes in Kotlin include: sealed interfaces in Kotlin 1.5. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "sealed classes",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to sealed classes?",
+        "What tools can assist in detecting problems with sealed classes at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "data classes",
+        "companion objects",
+        "object declaration"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-041",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Sealed Classes",
+      "difficulty": "Medium",
+      "question": "Explain the difference between object declaration and extension functions in Kotlin.",
+      "ideal_answer": "object declaration and extension functions differ in several ways: object declaration is singleton pattern (works by single instance guarantee) whereas extension functions is adding methods to existing types (works by non-intrusive functionality). object declaration is typically used for thread-safe lazy initialization, while extension functions is used for resolved statically. Example demonstrating object declaration: object Singleton { fun doSomething() {} }. Example demonstrating extension functions: fun String.addExclamation() = this + \"!\".",
+      "keywords": [
+        "object declaration",
+        "extension functions",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose object declaration over extension functions?",
+        "What is the performance or memory difference between object declaration and extension functions?"
+      ],
+      "related_concepts": [
+        "object declaration",
+        "extension functions",
+        "data classes",
+        "sealed classes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-042",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Inheritance",
+      "difficulty": "Medium",
+      "question": "Explain the difference between sealed classes and delegation in Kotlin.",
+      "ideal_answer": "sealed classes and delegation differ in several ways: sealed classes is restricted inheritance (works by exhaustive when expressions) whereas delegation is composition over inheritance (works by by keyword for delegation). sealed classes is typically used for all subclasses known at compile time, while delegation is used for automatic forwarding. Example demonstrating sealed classes: sealed class Result\nclass Success(val data: String) : Result(). Example demonstrating delegation: class Derived(b: Base) : Base by b.",
+      "keywords": [
+        "sealed classes",
+        "delegation",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sealed classes over delegation?",
+        "What is the performance or memory difference between sealed classes and delegation?"
+      ],
+      "related_concepts": [
+        "sealed classes",
+        "delegation",
+        "data classes",
+        "companion objects"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-043",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Channels",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Flow and channels in Kotlin.",
+      "ideal_answer": "Flow and channels differ in several ways: Flow is cold async stream (works by reactive streams in Kotlin) whereas channels is coroutine communication (works by hot streams for communication). Flow is typically used for emit, collect, operators, while channels is used for send, receive, buffer. Example demonstrating Flow: flow { emit(1); emit(2) }.map { it * 2 }.collect { println(it) }. Example demonstrating channels: val channel = Channel<Int>().",
+      "keywords": [
+        "Flow",
+        "channels",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Flow over channels?",
+        "What is the performance or memory difference between Flow and channels?"
+      ],
+      "related_concepts": [
+        "Flow",
+        "channels",
+        "suspend functions",
+        "CoroutineScope"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-044",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between smart cast and when expression in Kotlin.",
+      "ideal_answer": "smart cast and when expression differ in several ways: smart cast is automatic type narrowing (works by reducing explicit casting) whereas when expression is pattern matching alternative (works by powerful switch replacement). smart cast is typically used for after type check, compiler knows type, while when expression is used for can match types, ranges, conditions. Example demonstrating smart cast: if (obj is String) { println(obj.length) }. Example demonstrating when expression: when (x) { is Int -> ... in 1..10 -> ... else -> ... }.",
+      "keywords": [
+        "smart cast",
+        "when expression",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose smart cast over when expression?",
+        "What is the performance or memory difference between smart cast and when expression?"
+      ],
+      "related_concepts": [
+        "smart cast",
+        "when expression",
+        "null safety",
+        "val vs var"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-045",
+      "subject": "Kotlin",
+      "category": "Functional Programming",
+      "subcategory": "Higher-Order Functions",
+      "difficulty": "Medium",
+      "question": "What are the common issues with higher-order functions in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with higher-order functions in Kotlin include: inline functions for performance. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "higher-order functions",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to higher-order functions?",
+        "What tools can assist in detecting problems with higher-order functions at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "inline functions",
+        "scope functions",
+        "reified types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-046",
+      "subject": "Kotlin",
+      "category": "Functional Programming",
+      "subcategory": "Lambdas",
+      "difficulty": "Medium",
+      "question": "What are the common issues with inline functions in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with inline functions in Kotlin include: non-local returns, reified types. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "inline functions",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to inline functions?",
+        "What tools can assist in detecting problems with inline functions at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "higher-order functions",
+        "scope functions",
+        "reified types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-047",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between smart cast and range operator in Kotlin.",
+      "ideal_answer": "smart cast and range operator differ in several ways: smart cast is automatic type narrowing (works by reducing explicit casting) whereas range operator is interval representation (works by iterating over sequences). smart cast is typically used for after type check, compiler knows type, while range operator is used for .., until, downTo, step. Example demonstrating smart cast: if (obj is String) { println(obj.length) }. Example demonstrating range operator: for (i in 1..10 step 2) { ... }.",
+      "keywords": [
+        "smart cast",
+        "range operator",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose smart cast over range operator?",
+        "What is the performance or memory difference between smart cast and range operator?"
+      ],
+      "related_concepts": [
+        "smart cast",
+        "range operator",
+        "null safety",
+        "val vs var"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-048",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Data Classes",
+      "difficulty": "Medium",
+      "question": "What are the common issues with companion objects in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with companion objects in Kotlin include: companion object naming. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "companion objects",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to companion objects?",
+        "What tools can assist in detecting problems with companion objects at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "data classes",
+        "sealed classes",
+        "object declaration"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-049",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Dispatchers",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Dispatchers and channels in Kotlin.",
+      "ideal_answer": "Dispatchers and channels differ in several ways: Dispatchers is coroutine execution context (works by thread pool specification) whereas channels is coroutine communication (works by hot streams for communication). Dispatchers is typically used for Default, IO, Main, Unconfined, while channels is used for send, receive, buffer. Example demonstrating Dispatchers: withContext(Dispatchers.IO) { /* blocking IO */ }. Example demonstrating channels: val channel = Channel<Int>().",
+      "keywords": [
+        "Dispatchers",
+        "channels",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Dispatchers over channels?",
+        "What is the performance or memory difference between Dispatchers and channels?"
+      ],
+      "related_concepts": [
+        "Dispatchers",
+        "channels",
+        "suspend functions",
+        "CoroutineScope"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-050",
+      "subject": "Kotlin",
+      "category": "Android",
+      "subcategory": "ViewModel",
+      "difficulty": "Medium",
+      "question": "What are the common issues with ViewModel in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with ViewModel in Kotlin include: ViewModelFactory for constructor args. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "ViewModel",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to ViewModel?",
+        "What tools can assist in detecting problems with ViewModel at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "LiveData",
+        "Jetpack Compose"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-051",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between smart cast and  Elvis operator  in Kotlin.",
+      "ideal_answer": "smart cast and  Elvis operator  differ in several ways: smart cast is automatic type narrowing (works by reducing explicit casting) whereas  Elvis operator  is null fallback operator (works by providing default values). smart cast is typically used for after type check, compiler knows type, while  Elvis operator  is used for returns left if non-null, right otherwise. Example demonstrating smart cast: if (obj is String) { println(obj.length) }. Example demonstrating  Elvis operator : val len = name?.length ?: 0.",
+      "keywords": [
+        "smart cast",
+        " Elvis operator ",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose smart cast over  Elvis operator ?",
+        "What is the performance or memory difference between smart cast and  Elvis operator ?"
+      ],
+      "related_concepts": [
+        "smart cast",
+        " Elvis operator ",
+        "null safety",
+        "val vs var"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-052",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Smart Casts",
+      "difficulty": "Medium",
+      "question": "What is type inference in Kotlin and how does it work?",
+      "ideal_answer": "type inference in Kotlin refers to automatic type deduction. It works by reducing type annotations. Key characteristics include compiler infers from initializer. Example: val x = 5 // inferred as Int. Common pitfalls include explicit types for public APIs.",
+      "keywords": [
+        "type inference",
+        "Kotlin programming",
+        "core language"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of type inference in a production environment?",
+        "What are the common pitfalls or issues associated with type inference?"
+      ],
+      "related_concepts": [
+        "null safety",
+        "smart cast",
+        "val vs var"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-053",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Data Classes",
+      "difficulty": "Medium",
+      "question": "Explain the difference between companion objects and object declaration in Kotlin.",
+      "ideal_answer": "companion objects and object declaration differ in several ways: companion objects is class-level members (works by static-like behavior) whereas object declaration is singleton pattern (works by single instance guarantee). companion objects is typically used for singleton associated with class, while object declaration is used for thread-safe lazy initialization. Example demonstrating companion objects: class MyClass { companion object { fun create() = MyClass() } }. Example demonstrating object declaration: object Singleton { fun doSomething() {} }.",
+      "keywords": [
+        "companion objects",
+        "object declaration",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose companion objects over object declaration?",
+        "What is the performance or memory difference between companion objects and object declaration?"
+      ],
+      "related_concepts": [
+        "companion objects",
+        "object declaration",
+        "data classes",
+        "sealed classes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-054",
+      "subject": "Kotlin",
+      "category": "Functional Programming",
+      "subcategory": "Higher-Order Functions",
+      "difficulty": "Medium",
+      "question": "Explain the difference between higher-order functions and inline functions in Kotlin.",
+      "ideal_answer": "higher-order functions and inline functions differ in several ways: higher-order functions is functions taking/returning functions (works by functional abstraction) whereas inline functions is compile-time inlining (works by eliminating lambda overhead). higher-order functions is typically used for map, filter, reduce, fold, while inline functions is used for copied to call site. Example demonstrating higher-order functions: list.map { it * 2 }.filter { it > 5 }. Example demonstrating inline functions: inline fun <T> measure(block: () -> T): T { ... }.",
+      "keywords": [
+        "higher-order functions",
+        "inline functions",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose higher-order functions over inline functions?",
+        "What is the performance or memory difference between higher-order functions and inline functions?"
+      ],
+      "related_concepts": [
+        "higher-order functions",
+        "inline functions",
+        "scope functions",
+        "reified types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-055",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Medium",
+      "question": "Explain the difference between null safety and range operator in Kotlin.",
+      "ideal_answer": "null safety and range operator differ in several ways: null safety is type system null prevention (works by eliminating NPE at compile time) whereas range operator is interval representation (works by iterating over sequences). null safety is typically used for ?, !!, ?:, ?. operators, while range operator is used for .., until, downTo, step. Example demonstrating null safety: val name: String? = null. Example demonstrating range operator: for (i in 1..10 step 2) { ... }.",
+      "keywords": [
+        "null safety",
+        "range operator",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose null safety over range operator?",
+        "What is the performance or memory difference between null safety and range operator?"
+      ],
+      "related_concepts": [
+        "null safety",
+        "range operator",
+        "smart cast",
+        "val vs var"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-056",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Medium",
+      "question": "Explain the difference between data classes and object declaration in Kotlin.",
+      "ideal_answer": "data classes and object declaration differ in several ways: data classes is concise data containers (works by auto-generated methods) whereas object declaration is singleton pattern (works by single instance guarantee). data classes is typically used for equals, hashCode, toString, copy, componentN, while object declaration is used for thread-safe lazy initialization. Example demonstrating data classes: data class User(val name: String, val age: Int). Example demonstrating object declaration: object Singleton { fun doSomething() {} }.",
+      "keywords": [
+        "data classes",
+        "object declaration",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose data classes over object declaration?",
+        "What is the performance or memory difference between data classes and object declaration?"
+      ],
+      "related_concepts": [
+        "data classes",
+        "object declaration",
+        "sealed classes",
+        "companion objects"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-057",
+      "subject": "Kotlin",
+      "category": "Android",
+      "subcategory": "ViewModel",
+      "difficulty": "Medium",
+      "question": "Explain the difference between ViewModel and Jetpack Compose in Kotlin.",
+      "ideal_answer": "ViewModel and Jetpack Compose differ in several ways: ViewModel is UI-related data holder (works by surviving configuration changes) whereas Jetpack Compose is declarative UI toolkit (works by function-based UI definition). ViewModel is typically used for lifecycle-aware, scope to activity/fragment, while Jetpack Compose is used for @Composable functions, state hoisting. Example demonstrating ViewModel: class MyViewModel : ViewModel() { ... }. Example demonstrating Jetpack Compose: @Composable fun Greeting(name: String) { Text(\"Hello $name\") }.",
+      "keywords": [
+        "ViewModel",
+        "Jetpack Compose",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ViewModel over Jetpack Compose?",
+        "What is the performance or memory difference between ViewModel and Jetpack Compose?"
+      ],
+      "related_concepts": [
+        "ViewModel",
+        "Jetpack Compose",
+        "LiveData"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-058",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Sealed Classes",
+      "difficulty": "Medium",
+      "question": "What are the common issues with object declaration in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with object declaration in Kotlin include: object expressions for anonymous. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "object declaration",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to object declaration?",
+        "What tools can assist in detecting problems with object declaration at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "data classes",
+        "sealed classes",
+        "companion objects"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-059",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Medium",
+      "question": "What is smart cast in Kotlin and how does it work?",
+      "ideal_answer": "smart cast in Kotlin refers to automatic type narrowing. It works by reducing explicit casting. Key characteristics include after type check, compiler knows type. Example: if (obj is String) { println(obj.length) }. Common pitfalls include smart cast with contracts.",
+      "keywords": [
+        "smart cast",
+        "Kotlin programming",
+        "core language"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of smart cast in a production environment?",
+        "What are the common pitfalls or issues associated with smart cast?"
+      ],
+      "related_concepts": [
+        "null safety",
+        "val vs var",
+        "type inference"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-060",
+      "subject": "Kotlin",
+      "category": "Standard Library",
+      "subcategory": "Collections",
+      "difficulty": "Medium",
+      "question": "What are the common issues with collection operations in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with collection operations in Kotlin include: eager vs lazy (Sequence). To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "collection operations",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to collection operations?",
+        "What tools can assist in detecting problems with collection operations at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Sequence",
+        "lazy property"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-061",
+      "subject": "Kotlin",
+      "category": "Functional Programming",
+      "subcategory": "Lambdas",
+      "difficulty": "Medium",
+      "question": "Explain the difference between inline functions and scope functions in Kotlin.",
+      "ideal_answer": "inline functions and scope functions differ in several ways: inline functions is compile-time inlining (works by eliminating lambda overhead) whereas scope functions is object context operations (works by temporary scope modification). inline functions is typically used for copied to call site, while scope functions is used for let, run, with, apply, also. Example demonstrating inline functions: inline fun <T> measure(block: () -> T): T { ... }. Example demonstrating scope functions: obj.apply { name = \"New\" }.also { println(it) }.",
+      "keywords": [
+        "inline functions",
+        "scope functions",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose inline functions over scope functions?",
+        "What is the performance or memory difference between inline functions and scope functions?"
+      ],
+      "related_concepts": [
+        "inline functions",
+        "scope functions",
+        "higher-order functions",
+        "reified types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-062",
+      "subject": "Kotlin",
+      "category": "Functional Programming",
+      "subcategory": "Lambdas",
+      "difficulty": "Medium",
+      "question": "Explain the difference between inline functions and reified types in Kotlin.",
+      "ideal_answer": "inline functions and reified types differ in several ways: inline functions is compile-time inlining (works by eliminating lambda overhead) whereas reified types is runtime type preservation (works by generic type access). inline functions is typically used for copied to call site, while reified types is used for inline function feature. Example demonstrating inline functions: inline fun <T> measure(block: () -> T): T { ... }. Example demonstrating reified types: inline fun <reified T> isType(value: Any) = value is T.",
+      "keywords": [
+        "inline functions",
+        "reified types",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose inline functions over reified types?",
+        "What is the performance or memory difference between inline functions and reified types?"
+      ],
+      "related_concepts": [
+        "inline functions",
+        "reified types",
+        "higher-order functions",
+        "scope functions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-063",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Medium",
+      "question": "What are the common issues with data classes in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with data classes in Kotlin include: copy() for immutable updates. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "data classes",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to data classes?",
+        "What tools can assist in detecting problems with data classes at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "sealed classes",
+        "companion objects",
+        "object declaration"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-064",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Medium",
+      "question": "What are the common issues with delegation in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with delegation in Kotlin include: property delegation with lazy, observable. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "delegation",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to delegation?",
+        "What tools can assist in detecting problems with delegation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "data classes",
+        "sealed classes",
+        "companion objects"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-065",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Inheritance",
+      "difficulty": "Medium",
+      "question": "What is sealed classes in Kotlin and how does it work?",
+      "ideal_answer": "sealed classes in Kotlin refers to restricted inheritance. It works by exhaustive when expressions. Key characteristics include all subclasses known at compile time. Example: sealed class Result\nclass Success(val data: String) : Result(). Common pitfalls include sealed interfaces in Kotlin 1.5.",
+      "keywords": [
+        "sealed classes",
+        "Kotlin programming",
+        "oop"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of sealed classes in a production environment?",
+        "What are the common pitfalls or issues associated with sealed classes?"
+      ],
+      "related_concepts": [
+        "data classes",
+        "companion objects",
+        "object declaration"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-066",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Medium",
+      "question": "What is range operator in Kotlin and how does it work?",
+      "ideal_answer": "range operator in Kotlin refers to interval representation. It works by iterating over sequences. Key characteristics include .., until, downTo, step. Example: for (i in 1..10 step 2) { ... }. Common pitfalls include range performance vs sequence.",
+      "keywords": [
+        "range operator",
+        "Kotlin programming",
+        "core language"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of range operator in a production environment?",
+        "What are the common pitfalls or issues associated with range operator?"
+      ],
+      "related_concepts": [
+        "null safety",
+        "smart cast",
+        "val vs var"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-067",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Suspending Functions",
+      "difficulty": "Medium",
+      "question": "What are the common issues with structured concurrency in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with structured concurrency in Kotlin include: supervisorScope for independent failures. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "structured concurrency",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to structured concurrency?",
+        "What tools can assist in detecting problems with structured concurrency at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "suspend functions",
+        "CoroutineScope",
+        "Flow"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-068",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Medium",
+      "question": "Explain the difference between null safety and val vs var in Kotlin.",
+      "ideal_answer": "null safety and val vs var differ in several ways: null safety is type system null prevention (works by eliminating NPE at compile time) whereas val vs var is declaration keywords (works by immutability control). null safety is typically used for ?, !!, ?:, ?. operators, while val vs var is used for val: read-only reference; var: mutable reference. Example demonstrating null safety: val name: String? = null. Example demonstrating val vs var: val list = mutableListOf(1, 2).",
+      "keywords": [
+        "null safety",
+        "val vs var",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose null safety over val vs var?",
+        "What is the performance or memory difference between null safety and val vs var?"
+      ],
+      "related_concepts": [
+        "null safety",
+        "val vs var",
+        "smart cast",
+        "type inference"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-069",
+      "subject": "Kotlin",
+      "category": "Functional Programming",
+      "subcategory": "Scope Functions",
+      "difficulty": "Medium",
+      "question": "What is reified types in Kotlin and how does it work?",
+      "ideal_answer": "reified types in Kotlin refers to runtime type preservation. It works by generic type access. Key characteristics include inline function feature. Example: inline fun <reified T> isType(value: Any) = value is T. Common pitfalls include type erasure workaround.",
+      "keywords": [
+        "reified types",
+        "Kotlin programming",
+        "functional programming"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of reified types in a production environment?",
+        "What are the common pitfalls or issues associated with reified types?"
+      ],
+      "related_concepts": [
+        "higher-order functions",
+        "inline functions",
+        "scope functions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-070",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Data Classes",
+      "difficulty": "Medium",
+      "question": "Explain the difference between companion objects and delegation in Kotlin.",
+      "ideal_answer": "companion objects and delegation differ in several ways: companion objects is class-level members (works by static-like behavior) whereas delegation is composition over inheritance (works by by keyword for delegation). companion objects is typically used for singleton associated with class, while delegation is used for automatic forwarding. Example demonstrating companion objects: class MyClass { companion object { fun create() = MyClass() } }. Example demonstrating delegation: class Derived(b: Base) : Base by b.",
+      "keywords": [
+        "companion objects",
+        "delegation",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose companion objects over delegation?",
+        "What is the performance or memory difference between companion objects and delegation?"
+      ],
+      "related_concepts": [
+        "companion objects",
+        "delegation",
+        "data classes",
+        "sealed classes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-071",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Null Safety",
+      "difficulty": "Medium",
+      "question": "What are the common issues with val vs var in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with val vs var in Kotlin include: val with mutable objects. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "val vs var",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to val vs var?",
+        "What tools can assist in detecting problems with val vs var at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "null safety",
+        "smart cast",
+        "type inference"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-072",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Control Flow",
+      "difficulty": "Medium",
+      "question": "Explain the difference between when expression and  Elvis operator  in Kotlin.",
+      "ideal_answer": "when expression and  Elvis operator  differ in several ways: when expression is pattern matching alternative (works by powerful switch replacement) whereas  Elvis operator  is null fallback operator (works by providing default values). when expression is typically used for can match types, ranges, conditions, while  Elvis operator  is used for returns left if non-null, right otherwise. Example demonstrating when expression: when (x) { is Int -> ... in 1..10 -> ... else -> ... }. Example demonstrating  Elvis operator : val len = name?.length ?: 0.",
+      "keywords": [
+        "when expression",
+        " Elvis operator ",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose when expression over  Elvis operator ?",
+        "What is the performance or memory difference between when expression and  Elvis operator ?"
+      ],
+      "related_concepts": [
+        "when expression",
+        " Elvis operator ",
+        "null safety",
+        "smart cast"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-073",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Interfaces",
+      "difficulty": "Medium",
+      "question": "What are the common issues with extension functions in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with extension functions in Kotlin include: member vs extension priority. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "extension functions",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to extension functions?",
+        "What tools can assist in detecting problems with extension functions at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "data classes",
+        "sealed classes",
+        "companion objects"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-074",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Medium",
+      "question": "What is delegation in Kotlin and how does it work?",
+      "ideal_answer": "delegation in Kotlin refers to composition over inheritance. It works by by keyword for delegation. Key characteristics include automatic forwarding. Example: class Derived(b: Base) : Base by b. Common pitfalls include property delegation with lazy, observable.",
+      "keywords": [
+        "delegation",
+        "Kotlin programming",
+        "oop"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of delegation in a production environment?",
+        "What are the common pitfalls or issues associated with delegation?"
+      ],
+      "related_concepts": [
+        "data classes",
+        "sealed classes",
+        "companion objects"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-075",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Medium",
+      "question": "What is  Elvis operator  in Kotlin and how does it work?",
+      "ideal_answer": " Elvis operator  in Kotlin refers to null fallback operator. It works by providing default values. Key characteristics include returns left if non-null, right otherwise. Example: val len = name?.length ?: 0. Common pitfalls include chaining Elvis operators.",
+      "keywords": [
+        " Elvis operator ",
+        "Kotlin programming",
+        "core language"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of  Elvis operator  in a production environment?",
+        "What are the common pitfalls or issues associated with  Elvis operator ?"
+      ],
+      "related_concepts": [
+        "null safety",
+        "smart cast",
+        "val vs var"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-076",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Medium",
+      "question": "Explain the difference between data classes and companion objects in Kotlin.",
+      "ideal_answer": "data classes and companion objects differ in several ways: data classes is concise data containers (works by auto-generated methods) whereas companion objects is class-level members (works by static-like behavior). data classes is typically used for equals, hashCode, toString, copy, componentN, while companion objects is used for singleton associated with class. Example demonstrating data classes: data class User(val name: String, val age: Int). Example demonstrating companion objects: class MyClass { companion object { fun create() = MyClass() } }.",
+      "keywords": [
+        "data classes",
+        "companion objects",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose data classes over companion objects?",
+        "What is the performance or memory difference between data classes and companion objects?"
+      ],
+      "related_concepts": [
+        "data classes",
+        "companion objects",
+        "sealed classes",
+        "object declaration"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-077",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Structured Concurrency",
+      "difficulty": "Medium",
+      "question": "Explain the difference between channels and structured concurrency in Kotlin.",
+      "ideal_answer": "channels and structured concurrency differ in several ways: channels is coroutine communication (works by hot streams for communication) whereas structured concurrency is hierarchical coroutine management (works by parent-child relationship). channels is typically used for send, receive, buffer, while structured concurrency is used for parent waits for children, cancellation propagates. Example demonstrating channels: val channel = Channel<Int>(). Example demonstrating structured concurrency: coroutineScope { launch { ... } launch { ... } }.",
+      "keywords": [
+        "channels",
+        "structured concurrency",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose channels over structured concurrency?",
+        "What is the performance or memory difference between channels and structured concurrency?"
+      ],
+      "related_concepts": [
+        "channels",
+        "structured concurrency",
+        "suspend functions",
+        "CoroutineScope"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-078",
+      "subject": "Kotlin",
+      "category": "Standard Library",
+      "subcategory": "String Manipulation",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Sequence and lazy property in Kotlin.",
+      "ideal_answer": "Sequence and lazy property differ in several ways: Sequence is lazy collection evaluation (works by intermediate operations deferred) whereas lazy property is deferred initialization (works by computed on first access). Sequence is typically used for chaining without intermediate collections, while lazy property is used for thread-safe by default. Example demonstrating Sequence: list.asSequence().filter { ... }.map { ... }.toList(). Example demonstrating lazy property: val heavyObject by lazy { createHeavyObject() }.",
+      "keywords": [
+        "Sequence",
+        "lazy property",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Sequence over lazy property?",
+        "What is the performance or memory difference between Sequence and lazy property?"
+      ],
+      "related_concepts": [
+        "Sequence",
+        "lazy property",
+        "collection operations"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-079",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Dispatchers",
+      "difficulty": "Medium",
+      "question": "What is Dispatchers in Kotlin and how does it work?",
+      "ideal_answer": "Dispatchers in Kotlin refers to coroutine execution context. It works by thread pool specification. Key characteristics include Default, IO, Main, Unconfined. Example: withContext(Dispatchers.IO) { /* blocking IO */ }. Common pitfalls include context switching cost.",
+      "keywords": [
+        "Dispatchers",
+        "Kotlin programming",
+        "coroutines"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Dispatchers in a production environment?",
+        "What are the common pitfalls or issues associated with Dispatchers?"
+      ],
+      "related_concepts": [
+        "suspend functions",
+        "CoroutineScope",
+        "Flow"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-080",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Dispatchers",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Dispatchers and structured concurrency in Kotlin.",
+      "ideal_answer": "Dispatchers and structured concurrency differ in several ways: Dispatchers is coroutine execution context (works by thread pool specification) whereas structured concurrency is hierarchical coroutine management (works by parent-child relationship). Dispatchers is typically used for Default, IO, Main, Unconfined, while structured concurrency is used for parent waits for children, cancellation propagates. Example demonstrating Dispatchers: withContext(Dispatchers.IO) { /* blocking IO */ }. Example demonstrating structured concurrency: coroutineScope { launch { ... } launch { ... } }.",
+      "keywords": [
+        "Dispatchers",
+        "structured concurrency",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Dispatchers over structured concurrency?",
+        "What is the performance or memory difference between Dispatchers and structured concurrency?"
+      ],
+      "related_concepts": [
+        "Dispatchers",
+        "structured concurrency",
+        "suspend functions",
+        "CoroutineScope"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-081",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Medium",
+      "question": "Explain the difference between null safety and  Elvis operator  in Kotlin.",
+      "ideal_answer": "null safety and  Elvis operator  differ in several ways: null safety is type system null prevention (works by eliminating NPE at compile time) whereas  Elvis operator  is null fallback operator (works by providing default values). null safety is typically used for ?, !!, ?:, ?. operators, while  Elvis operator  is used for returns left if non-null, right otherwise. Example demonstrating null safety: val name: String? = null. Example demonstrating  Elvis operator : val len = name?.length ?: 0.",
+      "keywords": [
+        "null safety",
+        " Elvis operator ",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose null safety over  Elvis operator ?",
+        "What is the performance or memory difference between null safety and  Elvis operator ?"
+      ],
+      "related_concepts": [
+        "null safety",
+        " Elvis operator ",
+        "smart cast",
+        "val vs var"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-082",
+      "subject": "Kotlin",
+      "category": "Standard Library",
+      "subcategory": "Collections",
+      "difficulty": "Medium",
+      "question": "Explain the difference between collection operations and lazy property in Kotlin.",
+      "ideal_answer": "collection operations and lazy property differ in several ways: collection operations is functional collection processing (works by declarative data manipulation) whereas lazy property is deferred initialization (works by computed on first access). collection operations is typically used for map, filter, reduce, groupBy, associate, while lazy property is used for thread-safe by default. Example demonstrating collection operations: people.groupBy { it.department }. Example demonstrating lazy property: val heavyObject by lazy { createHeavyObject() }.",
+      "keywords": [
+        "collection operations",
+        "lazy property",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose collection operations over lazy property?",
+        "What is the performance or memory difference between collection operations and lazy property?"
+      ],
+      "related_concepts": [
+        "collection operations",
+        "lazy property",
+        "Sequence"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-083",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Interfaces",
+      "difficulty": "Medium",
+      "question": "What is extension functions in Kotlin and how does it work?",
+      "ideal_answer": "extension functions in Kotlin refers to adding methods to existing types. It works by non-intrusive functionality. Key characteristics include resolved statically. Example: fun String.addExclamation() = this + \"!\". Common pitfalls include member vs extension priority.",
+      "keywords": [
+        "extension functions",
+        "Kotlin programming",
+        "oop"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of extension functions in a production environment?",
+        "What are the common pitfalls or issues associated with extension functions?"
+      ],
+      "related_concepts": [
+        "data classes",
+        "sealed classes",
+        "companion objects"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-084",
+      "subject": "Kotlin",
+      "category": "Standard Library",
+      "subcategory": "String Manipulation",
+      "difficulty": "Medium",
+      "question": "What is Sequence in Kotlin and how does it work?",
+      "ideal_answer": "Sequence in Kotlin refers to lazy collection evaluation. It works by intermediate operations deferred. Key characteristics include chaining without intermediate collections. Example: list.asSequence().filter { ... }.map { ... }.toList(). Common pitfalls include when to use vs collections.",
+      "keywords": [
+        "Sequence",
+        "Kotlin programming",
+        "standard library"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Sequence in a production environment?",
+        "What are the common pitfalls or issues associated with Sequence?"
+      ],
+      "related_concepts": [
+        "collection operations",
+        "lazy property"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-085",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between smart cast and val vs var in Kotlin.",
+      "ideal_answer": "smart cast and val vs var differ in several ways: smart cast is automatic type narrowing (works by reducing explicit casting) whereas val vs var is declaration keywords (works by immutability control). smart cast is typically used for after type check, compiler knows type, while val vs var is used for val: read-only reference; var: mutable reference. Example demonstrating smart cast: if (obj is String) { println(obj.length) }. Example demonstrating val vs var: val list = mutableListOf(1, 2).",
+      "keywords": [
+        "smart cast",
+        "val vs var",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose smart cast over val vs var?",
+        "What is the performance or memory difference between smart cast and val vs var?"
+      ],
+      "related_concepts": [
+        "smart cast",
+        "val vs var",
+        "null safety",
+        "type inference"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-086",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Medium",
+      "question": "What is null safety in Kotlin and how does it work?",
+      "ideal_answer": "null safety in Kotlin refers to type system null prevention. It works by eliminating NPE at compile time. Key characteristics include ?, !!, ?:, ?. operators. Example: val name: String? = null. Common pitfalls include platform types from Java.",
+      "keywords": [
+        "null safety",
+        "Kotlin programming",
+        "core language"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of null safety in a production environment?",
+        "What are the common pitfalls or issues associated with null safety?"
+      ],
+      "related_concepts": [
+        "smart cast",
+        "val vs var",
+        "type inference"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-087",
+      "subject": "Kotlin",
+      "category": "Android",
+      "subcategory": "Compose",
+      "difficulty": "Medium",
+      "question": "What is Jetpack Compose in Kotlin and how does it work?",
+      "ideal_answer": "Jetpack Compose in Kotlin refers to declarative UI toolkit. It works by function-based UI definition. Key characteristics include @Composable functions, state hoisting. Example: @Composable fun Greeting(name: String) { Text(\"Hello $name\") }. Common pitfalls include recomposition optimization.",
+      "keywords": [
+        "Jetpack Compose",
+        "Kotlin programming",
+        "android"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Jetpack Compose in a production environment?",
+        "What are the common pitfalls or issues associated with Jetpack Compose?"
+      ],
+      "related_concepts": [
+        "ViewModel",
+        "LiveData"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-088",
+      "subject": "Kotlin",
+      "category": "Standard Library",
+      "subcategory": "String Manipulation",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Sequence in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with Sequence in Kotlin include: when to use vs collections. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Sequence",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Sequence?",
+        "What tools can assist in detecting problems with Sequence at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "collection operations",
+        "lazy property"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-089",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Data Classes",
+      "difficulty": "Medium",
+      "question": "Explain the difference between companion objects and extension functions in Kotlin.",
+      "ideal_answer": "companion objects and extension functions differ in several ways: companion objects is class-level members (works by static-like behavior) whereas extension functions is adding methods to existing types (works by non-intrusive functionality). companion objects is typically used for singleton associated with class, while extension functions is used for resolved statically. Example demonstrating companion objects: class MyClass { companion object { fun create() = MyClass() } }. Example demonstrating extension functions: fun String.addExclamation() = this + \"!\".",
+      "keywords": [
+        "companion objects",
+        "extension functions",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose companion objects over extension functions?",
+        "What is the performance or memory difference between companion objects and extension functions?"
+      ],
+      "related_concepts": [
+        "companion objects",
+        "extension functions",
+        "data classes",
+        "sealed classes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-090",
+      "subject": "Kotlin",
+      "category": "Android",
+      "subcategory": "LiveData",
+      "difficulty": "Medium",
+      "question": "What is LiveData in Kotlin and how does it work?",
+      "ideal_answer": "LiveData in Kotlin refers to observable data holder. It works by lifecycle-aware updates. Key characteristics include automatic cleanup on inactive. Example: val data = MutableLiveData<String>(). Common pitfalls include Transformation.map, Transformation.switchMap.",
+      "keywords": [
+        "LiveData",
+        "Kotlin programming",
+        "android"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of LiveData in a production environment?",
+        "What are the common pitfalls or issues associated with LiveData?"
+      ],
+      "related_concepts": [
+        "ViewModel",
+        "Jetpack Compose"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-091",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Inheritance",
+      "difficulty": "Medium",
+      "question": "Explain the difference between sealed classes and object declaration in Kotlin.",
+      "ideal_answer": "sealed classes and object declaration differ in several ways: sealed classes is restricted inheritance (works by exhaustive when expressions) whereas object declaration is singleton pattern (works by single instance guarantee). sealed classes is typically used for all subclasses known at compile time, while object declaration is used for thread-safe lazy initialization. Example demonstrating sealed classes: sealed class Result\nclass Success(val data: String) : Result(). Example demonstrating object declaration: object Singleton { fun doSomething() {} }.",
+      "keywords": [
+        "sealed classes",
+        "object declaration",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sealed classes over object declaration?",
+        "What is the performance or memory difference between sealed classes and object declaration?"
+      ],
+      "related_concepts": [
+        "sealed classes",
+        "object declaration",
+        "data classes",
+        "companion objects"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-092",
+      "subject": "Kotlin",
+      "category": "Standard Library",
+      "subcategory": "Ranges",
+      "difficulty": "Medium",
+      "question": "What are the common issues with lazy property in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with lazy property in Kotlin include: synchronization modes. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "lazy property",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to lazy property?",
+        "What tools can assist in detecting problems with lazy property at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "collection operations",
+        "Sequence"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-093",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Suspending Functions",
+      "difficulty": "Medium",
+      "question": "Explain the difference between suspend functions and Flow in Kotlin.",
+      "ideal_answer": "suspend functions and Flow differ in several ways: suspend functions is non-blocking functions (works by coroutine building blocks) whereas Flow is cold async stream (works by reactive streams in Kotlin). suspend functions is typically used for can pause and resume, while Flow is used for emit, collect, operators. Example demonstrating suspend functions: suspend fun fetchData(): Data { ... }. Example demonstrating Flow: flow { emit(1); emit(2) }.map { it * 2 }.collect { println(it) }.",
+      "keywords": [
+        "suspend functions",
+        "Flow",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose suspend functions over Flow?",
+        "What is the performance or memory difference between suspend functions and Flow?"
+      ],
+      "related_concepts": [
+        "suspend functions",
+        "Flow",
+        "CoroutineScope",
+        "Dispatchers"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-094",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Dispatchers",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Dispatchers in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with Dispatchers in Kotlin include: context switching cost. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Dispatchers",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Dispatchers?",
+        "What tools can assist in detecting problems with Dispatchers at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "suspend functions",
+        "CoroutineScope",
+        "Flow"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-095",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Suspending Functions",
+      "difficulty": "Medium",
+      "question": "Explain the difference between suspend functions and channels in Kotlin.",
+      "ideal_answer": "suspend functions and channels differ in several ways: suspend functions is non-blocking functions (works by coroutine building blocks) whereas channels is coroutine communication (works by hot streams for communication). suspend functions is typically used for can pause and resume, while channels is used for send, receive, buffer. Example demonstrating suspend functions: suspend fun fetchData(): Data { ... }. Example demonstrating channels: val channel = Channel<Int>().",
+      "keywords": [
+        "suspend functions",
+        "channels",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose suspend functions over channels?",
+        "What is the performance or memory difference between suspend functions and channels?"
+      ],
+      "related_concepts": [
+        "suspend functions",
+        "channels",
+        "CoroutineScope",
+        "Flow"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-096",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Null Safety",
+      "difficulty": "Medium",
+      "question": "Explain the difference between val vs var and type inference in Kotlin.",
+      "ideal_answer": "val vs var and type inference differ in several ways: val vs var is declaration keywords (works by immutability control) whereas type inference is automatic type deduction (works by reducing type annotations). val vs var is typically used for val: read-only reference; var: mutable reference, while type inference is used for compiler infers from initializer. Example demonstrating val vs var: val list = mutableListOf(1, 2). Example demonstrating type inference: val x = 5 // inferred as Int.",
+      "keywords": [
+        "val vs var",
+        "type inference",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose val vs var over type inference?",
+        "What is the performance or memory difference between val vs var and type inference?"
+      ],
+      "related_concepts": [
+        "val vs var",
+        "type inference",
+        "null safety",
+        "smart cast"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "KOTLIN-097",
+      "subject": "Kotlin",
+      "category": "Functional Programming",
+      "subcategory": "Higher-Order Functions",
+      "difficulty": "Hard",
+      "question": "Explain the difference between higher-order functions and scope functions in Kotlin.",
+      "ideal_answer": "higher-order functions and scope functions differ in several ways: higher-order functions is functions taking/returning functions (works by functional abstraction) whereas scope functions is object context operations (works by temporary scope modification). higher-order functions is typically used for map, filter, reduce, fold, while scope functions is used for let, run, with, apply, also. Example demonstrating higher-order functions: list.map { it * 2 }.filter { it > 5 }. Example demonstrating scope functions: obj.apply { name = \"New\" }.also { println(it) }.",
+      "keywords": [
+        "higher-order functions",
+        "scope functions",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose higher-order functions over scope functions?",
+        "What is the performance or memory difference between higher-order functions and scope functions?"
+      ],
+      "related_concepts": [
+        "higher-order functions",
+        "scope functions",
+        "inline functions",
+        "reified types"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-098",
+      "subject": "Kotlin",
+      "category": "Standard Library",
+      "subcategory": "Collections",
+      "difficulty": "Hard",
+      "question": "What is collection operations in Kotlin and how does it work?",
+      "ideal_answer": "collection operations in Kotlin refers to functional collection processing. It works by declarative data manipulation. Key characteristics include map, filter, reduce, groupBy, associate. Example: people.groupBy { it.department }. Common pitfalls include eager vs lazy (Sequence).",
+      "keywords": [
+        "collection operations",
+        "Kotlin programming",
+        "standard library"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of collection operations in a production environment?",
+        "What are the common pitfalls or issues associated with collection operations?"
+      ],
+      "related_concepts": [
+        "Sequence",
+        "lazy property"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-099",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Suspending Functions",
+      "difficulty": "Hard",
+      "question": "What are the common issues with suspend functions in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with suspend functions in Kotlin include: suspend functions only callable from coroutines. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "suspend functions",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to suspend functions?",
+        "What tools can assist in detecting problems with suspend functions at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "CoroutineScope",
+        "Flow",
+        "Dispatchers"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-100",
+      "subject": "Kotlin",
+      "category": "Functional Programming",
+      "subcategory": "Lambdas",
+      "difficulty": "Hard",
+      "question": "What is inline functions in Kotlin and how does it work?",
+      "ideal_answer": "inline functions in Kotlin refers to compile-time inlining. It works by eliminating lambda overhead. Key characteristics include copied to call site. Example: inline fun <T> measure(block: () -> T): T { ... }. Common pitfalls include non-local returns, reified types.",
+      "keywords": [
+        "inline functions",
+        "Kotlin programming",
+        "functional programming"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of inline functions in a production environment?",
+        "What are the common pitfalls or issues associated with inline functions?"
+      ],
+      "related_concepts": [
+        "higher-order functions",
+        "scope functions",
+        "reified types"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-101",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Smart Casts",
+      "difficulty": "Hard",
+      "question": "Explain the difference between type inference and when expression in Kotlin.",
+      "ideal_answer": "type inference and when expression differ in several ways: type inference is automatic type deduction (works by reducing type annotations) whereas when expression is pattern matching alternative (works by powerful switch replacement). type inference is typically used for compiler infers from initializer, while when expression is used for can match types, ranges, conditions. Example demonstrating type inference: val x = 5 // inferred as Int. Example demonstrating when expression: when (x) { is Int -> ... in 1..10 -> ... else -> ... }.",
+      "keywords": [
+        "type inference",
+        "when expression",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose type inference over when expression?",
+        "What is the performance or memory difference between type inference and when expression?"
+      ],
+      "related_concepts": [
+        "type inference",
+        "when expression",
+        "null safety",
+        "smart cast"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-102",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Null Safety",
+      "difficulty": "Hard",
+      "question": "Explain the difference between val vs var and range operator in Kotlin.",
+      "ideal_answer": "val vs var and range operator differ in several ways: val vs var is declaration keywords (works by immutability control) whereas range operator is interval representation (works by iterating over sequences). val vs var is typically used for val: read-only reference; var: mutable reference, while range operator is used for .., until, downTo, step. Example demonstrating val vs var: val list = mutableListOf(1, 2). Example demonstrating range operator: for (i in 1..10 step 2) { ... }.",
+      "keywords": [
+        "val vs var",
+        "range operator",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose val vs var over range operator?",
+        "What is the performance or memory difference between val vs var and range operator?"
+      ],
+      "related_concepts": [
+        "val vs var",
+        "range operator",
+        "null safety",
+        "smart cast"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-103",
+      "subject": "Kotlin",
+      "category": "Standard Library",
+      "subcategory": "Ranges",
+      "difficulty": "Hard",
+      "question": "What is lazy property in Kotlin and how does it work?",
+      "ideal_answer": "lazy property in Kotlin refers to deferred initialization. It works by computed on first access. Key characteristics include thread-safe by default. Example: val heavyObject by lazy { createHeavyObject() }. Common pitfalls include synchronization modes.",
+      "keywords": [
+        "lazy property",
+        "Kotlin programming",
+        "standard library"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of lazy property in a production environment?",
+        "What are the common pitfalls or issues associated with lazy property?"
+      ],
+      "related_concepts": [
+        "collection operations",
+        "Sequence"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-104",
+      "subject": "Kotlin",
+      "category": "Android",
+      "subcategory": "ViewModel",
+      "difficulty": "Hard",
+      "question": "Explain the difference between ViewModel and LiveData in Kotlin.",
+      "ideal_answer": "ViewModel and LiveData differ in several ways: ViewModel is UI-related data holder (works by surviving configuration changes) whereas LiveData is observable data holder (works by lifecycle-aware updates). ViewModel is typically used for lifecycle-aware, scope to activity/fragment, while LiveData is used for automatic cleanup on inactive. Example demonstrating ViewModel: class MyViewModel : ViewModel() { ... }. Example demonstrating LiveData: val data = MutableLiveData<String>().",
+      "keywords": [
+        "ViewModel",
+        "LiveData",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ViewModel over LiveData?",
+        "What is the performance or memory difference between ViewModel and LiveData?"
+      ],
+      "related_concepts": [
+        "ViewModel",
+        "LiveData",
+        "Jetpack Compose"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-105",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Null Safety",
+      "difficulty": "Hard",
+      "question": "What is val vs var in Kotlin and how does it work?",
+      "ideal_answer": "val vs var in Kotlin refers to declaration keywords. It works by immutability control. Key characteristics include val: read-only reference; var: mutable reference. Example: val list = mutableListOf(1, 2). Common pitfalls include val with mutable objects.",
+      "keywords": [
+        "val vs var",
+        "Kotlin programming",
+        "core language"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of val vs var in a production environment?",
+        "What are the common pitfalls or issues associated with val vs var?"
+      ],
+      "related_concepts": [
+        "null safety",
+        "smart cast",
+        "type inference"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-106",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Inheritance",
+      "difficulty": "Hard",
+      "question": "Explain the difference between sealed classes and extension functions in Kotlin.",
+      "ideal_answer": "sealed classes and extension functions differ in several ways: sealed classes is restricted inheritance (works by exhaustive when expressions) whereas extension functions is adding methods to existing types (works by non-intrusive functionality). sealed classes is typically used for all subclasses known at compile time, while extension functions is used for resolved statically. Example demonstrating sealed classes: sealed class Result\nclass Success(val data: String) : Result(). Example demonstrating extension functions: fun String.addExclamation() = this + \"!\".",
+      "keywords": [
+        "sealed classes",
+        "extension functions",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sealed classes over extension functions?",
+        "What is the performance or memory difference between sealed classes and extension functions?"
+      ],
+      "related_concepts": [
+        "sealed classes",
+        "extension functions",
+        "data classes",
+        "companion objects"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-107",
+      "subject": "Kotlin",
+      "category": "Functional Programming",
+      "subcategory": "Inline Functions",
+      "difficulty": "Hard",
+      "question": "Explain the difference between scope functions and reified types in Kotlin.",
+      "ideal_answer": "scope functions and reified types differ in several ways: scope functions is object context operations (works by temporary scope modification) whereas reified types is runtime type preservation (works by generic type access). scope functions is typically used for let, run, with, apply, also, while reified types is used for inline function feature. Example demonstrating scope functions: obj.apply { name = \"New\" }.also { println(it) }. Example demonstrating reified types: inline fun <reified T> isType(value: Any) = value is T.",
+      "keywords": [
+        "scope functions",
+        "reified types",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose scope functions over reified types?",
+        "What is the performance or memory difference between scope functions and reified types?"
+      ],
+      "related_concepts": [
+        "scope functions",
+        "reified types",
+        "higher-order functions",
+        "inline functions"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-108",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Hard",
+      "question": "What are the common issues with range operator in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with range operator in Kotlin include: range performance vs sequence. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "range operator",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to range operator?",
+        "What tools can assist in detecting problems with range operator at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "null safety",
+        "smart cast",
+        "val vs var"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-109",
+      "subject": "Kotlin",
+      "category": "Functional Programming",
+      "subcategory": "Scope Functions",
+      "difficulty": "Hard",
+      "question": "What are the common issues with reified types in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with reified types in Kotlin include: type erasure workaround. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "reified types",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to reified types?",
+        "What tools can assist in detecting problems with reified types at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "higher-order functions",
+        "inline functions",
+        "scope functions"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-110",
+      "subject": "Kotlin",
+      "category": "Android",
+      "subcategory": "ViewModel",
+      "difficulty": "Hard",
+      "question": "What is ViewModel in Kotlin and how does it work?",
+      "ideal_answer": "ViewModel in Kotlin refers to UI-related data holder. It works by surviving configuration changes. Key characteristics include lifecycle-aware, scope to activity/fragment. Example: class MyViewModel : ViewModel() { ... }. Common pitfalls include ViewModelFactory for constructor args.",
+      "keywords": [
+        "ViewModel",
+        "Kotlin programming",
+        "android"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of ViewModel in a production environment?",
+        "What are the common pitfalls or issues associated with ViewModel?"
+      ],
+      "related_concepts": [
+        "LiveData",
+        "Jetpack Compose"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-111",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Suspending Functions",
+      "difficulty": "Hard",
+      "question": "What is structured concurrency in Kotlin and how does it work?",
+      "ideal_answer": "structured concurrency in Kotlin refers to hierarchical coroutine management. It works by parent-child relationship. Key characteristics include parent waits for children, cancellation propagates. Example: coroutineScope { launch { ... } launch { ... } }. Common pitfalls include supervisorScope for independent failures.",
+      "keywords": [
+        "structured concurrency",
+        "Kotlin programming",
+        "coroutines"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of structured concurrency in a production environment?",
+        "What are the common pitfalls or issues associated with structured concurrency?"
+      ],
+      "related_concepts": [
+        "suspend functions",
+        "CoroutineScope",
+        "Flow"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-112",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Hard",
+      "question": "What are the common issues with  Elvis operator  in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with  Elvis operator  in Kotlin include: chaining Elvis operators. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        " Elvis operator ",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to  Elvis operator ?",
+        "What tools can assist in detecting problems with  Elvis operator  at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "null safety",
+        "smart cast",
+        "val vs var"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-113",
+      "subject": "Kotlin",
+      "category": "Android",
+      "subcategory": "Compose",
+      "difficulty": "Hard",
+      "question": "What are the common issues with Jetpack Compose in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with Jetpack Compose in Kotlin include: recomposition optimization. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Jetpack Compose",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Jetpack Compose?",
+        "What tools can assist in detecting problems with Jetpack Compose at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ViewModel",
+        "LiveData"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-114",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Hard",
+      "question": "Explain the difference between null safety and when expression in Kotlin.",
+      "ideal_answer": "null safety and when expression differ in several ways: null safety is type system null prevention (works by eliminating NPE at compile time) whereas when expression is pattern matching alternative (works by powerful switch replacement). null safety is typically used for ?, !!, ?:, ?. operators, while when expression is used for can match types, ranges, conditions. Example demonstrating null safety: val name: String? = null. Example demonstrating when expression: when (x) { is Int -> ... in 1..10 -> ... else -> ... }.",
+      "keywords": [
+        "null safety",
+        "when expression",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose null safety over when expression?",
+        "What is the performance or memory difference between null safety and when expression?"
+      ],
+      "related_concepts": [
+        "null safety",
+        "when expression",
+        "smart cast",
+        "val vs var"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-115",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Null Safety",
+      "difficulty": "Hard",
+      "question": "Explain the difference between val vs var and  Elvis operator  in Kotlin.",
+      "ideal_answer": "val vs var and  Elvis operator  differ in several ways: val vs var is declaration keywords (works by immutability control) whereas  Elvis operator  is null fallback operator (works by providing default values). val vs var is typically used for val: read-only reference; var: mutable reference, while  Elvis operator  is used for returns left if non-null, right otherwise. Example demonstrating val vs var: val list = mutableListOf(1, 2). Example demonstrating  Elvis operator : val len = name?.length ?: 0.",
+      "keywords": [
+        "val vs var",
+        " Elvis operator ",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose val vs var over  Elvis operator ?",
+        "What is the performance or memory difference between val vs var and  Elvis operator ?"
+      ],
+      "related_concepts": [
+        "val vs var",
+        " Elvis operator ",
+        "null safety",
+        "smart cast"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-116",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Smart Casts",
+      "difficulty": "Hard",
+      "question": "Explain the difference between type inference and  Elvis operator  in Kotlin.",
+      "ideal_answer": "type inference and  Elvis operator  differ in several ways: type inference is automatic type deduction (works by reducing type annotations) whereas  Elvis operator  is null fallback operator (works by providing default values). type inference is typically used for compiler infers from initializer, while  Elvis operator  is used for returns left if non-null, right otherwise. Example demonstrating type inference: val x = 5 // inferred as Int. Example demonstrating  Elvis operator : val len = name?.length ?: 0.",
+      "keywords": [
+        "type inference",
+        " Elvis operator ",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose type inference over  Elvis operator ?",
+        "What is the performance or memory difference between type inference and  Elvis operator ?"
+      ],
+      "related_concepts": [
+        "type inference",
+        " Elvis operator ",
+        "null safety",
+        "smart cast"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-117",
+      "subject": "Kotlin",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Hard",
+      "question": "What is data classes in Kotlin and how does it work?",
+      "ideal_answer": "data classes in Kotlin refers to concise data containers. It works by auto-generated methods. Key characteristics include equals, hashCode, toString, copy, componentN. Example: data class User(val name: String, val age: Int). Common pitfalls include copy() for immutable updates.",
+      "keywords": [
+        "data classes",
+        "Kotlin programming",
+        "oop"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of data classes in a production environment?",
+        "What are the common pitfalls or issues associated with data classes?"
+      ],
+      "related_concepts": [
+        "sealed classes",
+        "companion objects",
+        "object declaration"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-118",
+      "subject": "Kotlin",
+      "category": "Coroutines",
+      "subcategory": "Flows",
+      "difficulty": "Hard",
+      "question": "Explain the difference between CoroutineScope and Dispatchers in Kotlin.",
+      "ideal_answer": "CoroutineScope and Dispatchers differ in several ways: CoroutineScope is coroutine lifecycle management (works by structured concurrency) whereas Dispatchers is coroutine execution context (works by thread pool specification). CoroutineScope is typically used for SupervisorJob, cancellation propagation, while Dispatchers is used for Default, IO, Main, Unconfined. Example demonstrating CoroutineScope: val scope = CoroutineScope(Dispatchers.Main). Example demonstrating Dispatchers: withContext(Dispatchers.IO) { /* blocking IO */ }.",
+      "keywords": [
+        "CoroutineScope",
+        "Dispatchers",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CoroutineScope over Dispatchers?",
+        "What is the performance or memory difference between CoroutineScope and Dispatchers?"
+      ],
+      "related_concepts": [
+        "CoroutineScope",
+        "Dispatchers",
+        "suspend functions",
+        "Flow"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-119",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Hard",
+      "question": "What are the common issues with smart cast in Kotlin and how do you debug them?",
+      "ideal_answer": "Common issues with smart cast in Kotlin include: smart cast with contracts. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "smart cast",
+        "troubleshooting",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to smart cast?",
+        "What tools can assist in detecting problems with smart cast at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "null safety",
+        "val vs var",
+        "type inference"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "KOTLIN-120",
+      "subject": "Kotlin",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Hard",
+      "question": "Explain the difference between null safety and smart cast in Kotlin.",
+      "ideal_answer": "null safety and smart cast differ in several ways: null safety is type system null prevention (works by eliminating NPE at compile time) whereas smart cast is automatic type narrowing (works by reducing explicit casting). null safety is typically used for ?, !!, ?:, ?. operators, while smart cast is used for after type check, compiler knows type. Example demonstrating null safety: val name: String? = null. Example demonstrating smart cast: if (obj is String) { println(obj.length) }.",
+      "keywords": [
+        "null safety",
+        "smart cast",
+        "comparison",
+        "Kotlin"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose null safety over smart cast?",
+        "What is the performance or memory difference between null safety and smart cast?"
+      ],
+      "related_concepts": [
+        "null safety",
+        "smart cast",
+        "val vs var",
+        "type inference"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

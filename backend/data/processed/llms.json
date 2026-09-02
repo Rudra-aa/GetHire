@@ -1,0 +1,497 @@
+{
+  "metadata": {
+    "subject": "LLMs",
+    "domain": "Artificial Intelligence",
+    "total_questions": 18,
+    "difficulty_distribution": {
+      "Easy": 5,
+      "Medium": 9,
+      "Hard": 4
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "LLM-001",
+      "subject": "LLMs",
+      "category": "Architecture",
+      "subcategory": "Implementation",
+      "difficulty": "Easy",
+      "question": "What is hallucination in LLMs and how does it work?",
+      "ideal_answer": "hallucination in LLMs refers to factually incorrect generation. It works by plausible but false outputs. Key characteristics include factual, logical, contextual hallucinations. Example: retrieval augmentation, fact verification. Common pitfalls include uncertainty quantification.",
+      "keywords": [
+        "hallucination",
+        "LLMs programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of hallucination in a production environment?",
+        "What are the common pitfalls or issues associated with hallucination?"
+      ],
+      "related_concepts": [
+        "RLHF",
+        "in-context learning"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "LLM-002",
+      "subject": "LLMs",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Easy",
+      "question": "What are the common issues with in-context learning in LLMs and how do you debug them?",
+      "ideal_answer": "Common issues with in-context learning in LLMs include: example selection, order sensitivity. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "in-context learning",
+        "troubleshooting",
+        "LLMs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to in-context learning?",
+        "What tools can assist in detecting problems with in-context learning at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "RLHF",
+        "hallucination"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "LLM-003",
+      "subject": "LLMs",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Easy",
+      "question": "What is fine-tuning in LLMs and how does it work?",
+      "ideal_answer": "fine-tuning in LLMs refers to model adaptation technique. It works by task-specific parameter update. Key characteristics include full fine-tuning, LoRA, QLoRA, prefix tuning. Example: LoRA: W = W_0 + BA, low-rank decomposition. Common pitfalls include catastrophic forgetting.",
+      "keywords": [
+        "fine-tuning",
+        "LLMs programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of fine-tuning in a production environment?",
+        "What are the common pitfalls or issues associated with fine-tuning?"
+      ],
+      "related_concepts": [
+        "scaling laws",
+        "prompt engineering"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "LLM-004",
+      "subject": "LLMs",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Easy",
+      "question": "What is RLHF in LLMs and how does it work?",
+      "ideal_answer": "RLHF in LLMs refers to reinforcement learning from human feedback. It works by alignment with human preferences. Key characteristics include reward model training, PPO optimization. Example: InstructGPT, ChatGPT training pipeline. Common pitfalls include reward hacking, alignment tax.",
+      "keywords": [
+        "RLHF",
+        "LLMs programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of RLHF in a production environment?",
+        "What are the common pitfalls or issues associated with RLHF?"
+      ],
+      "related_concepts": [
+        "in-context learning",
+        "hallucination"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "LLM-005",
+      "subject": "LLMs",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Easy",
+      "question": "What are the common issues with fine-tuning in LLMs and how do you debug them?",
+      "ideal_answer": "Common issues with fine-tuning in LLMs include: catastrophic forgetting. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "fine-tuning",
+        "troubleshooting",
+        "LLMs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to fine-tuning?",
+        "What tools can assist in detecting problems with fine-tuning at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "scaling laws",
+        "prompt engineering"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "LLM-006",
+      "subject": "LLMs",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Medium",
+      "question": "Explain the difference between scaling laws and fine-tuning in LLMs.",
+      "ideal_answer": "scaling laws and fine-tuning differ in several ways: scaling laws is performance vs compute relationship (works by predictable improvement with scale) whereas fine-tuning is model adaptation technique (works by task-specific parameter update). scaling laws is typically used for loss ∝ C^-alpha, where C is compute, while fine-tuning is used for full fine-tuning, LoRA, QLoRA, prefix tuning. Example demonstrating scaling laws: Kaplan et al. 2020, Chinchilla optimal. Example demonstrating fine-tuning: LoRA: W = W_0 + BA, low-rank decomposition.",
+      "keywords": [
+        "scaling laws",
+        "fine-tuning",
+        "comparison",
+        "LLMs"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose scaling laws over fine-tuning?",
+        "What is the performance or memory difference between scaling laws and fine-tuning?"
+      ],
+      "related_concepts": [
+        "scaling laws",
+        "fine-tuning",
+        "prompt engineering"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LLM-007",
+      "subject": "LLMs",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "Explain the difference between RLHF and hallucination in LLMs.",
+      "ideal_answer": "RLHF and hallucination differ in several ways: RLHF is reinforcement learning from human feedback (works by alignment with human preferences) whereas hallucination is factually incorrect generation (works by plausible but false outputs). RLHF is typically used for reward model training, PPO optimization, while hallucination is used for factual, logical, contextual hallucinations. Example demonstrating RLHF: InstructGPT, ChatGPT training pipeline. Example demonstrating hallucination: retrieval augmentation, fact verification.",
+      "keywords": [
+        "RLHF",
+        "hallucination",
+        "comparison",
+        "LLMs"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose RLHF over hallucination?",
+        "What is the performance or memory difference between RLHF and hallucination?"
+      ],
+      "related_concepts": [
+        "RLHF",
+        "hallucination",
+        "in-context learning"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LLM-008",
+      "subject": "LLMs",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Medium",
+      "question": "Explain the difference between scaling laws and prompt engineering in LLMs.",
+      "ideal_answer": "scaling laws and prompt engineering differ in several ways: scaling laws is performance vs compute relationship (works by predictable improvement with scale) whereas prompt engineering is input optimization for LLMs (works by eliciting desired outputs). scaling laws is typically used for loss ∝ C^-alpha, where C is compute, while prompt engineering is used for zero-shot, few-shot, chain-of-thought, ReAct. Example demonstrating scaling laws: Kaplan et al. 2020, Chinchilla optimal. Example demonstrating prompt engineering: \"Let's think step by step\".",
+      "keywords": [
+        "scaling laws",
+        "prompt engineering",
+        "comparison",
+        "LLMs"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose scaling laws over prompt engineering?",
+        "What is the performance or memory difference between scaling laws and prompt engineering?"
+      ],
+      "related_concepts": [
+        "scaling laws",
+        "prompt engineering",
+        "fine-tuning"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LLM-009",
+      "subject": "LLMs",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "What are the common issues with RLHF in LLMs and how do you debug them?",
+      "ideal_answer": "Common issues with RLHF in LLMs include: reward hacking, alignment tax. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "RLHF",
+        "troubleshooting",
+        "LLMs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to RLHF?",
+        "What tools can assist in detecting problems with RLHF at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "in-context learning",
+        "hallucination"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LLM-010",
+      "subject": "LLMs",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "Explain the difference between RLHF and in-context learning in LLMs.",
+      "ideal_answer": "RLHF and in-context learning differ in several ways: RLHF is reinforcement learning from human feedback (works by alignment with human preferences) whereas in-context learning is few-shot demonstration learning (works by learning from examples in prompt). RLHF is typically used for reward model training, PPO optimization, while in-context learning is used for no parameter updates, pattern matching. Example demonstrating RLHF: InstructGPT, ChatGPT training pipeline. Example demonstrating in-context learning: 3-5 examples in prompt sufficient.",
+      "keywords": [
+        "RLHF",
+        "in-context learning",
+        "comparison",
+        "LLMs"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose RLHF over in-context learning?",
+        "What is the performance or memory difference between RLHF and in-context learning?"
+      ],
+      "related_concepts": [
+        "RLHF",
+        "in-context learning",
+        "hallucination"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LLM-011",
+      "subject": "LLMs",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Medium",
+      "question": "What are the common issues with scaling laws in LLMs and how do you debug them?",
+      "ideal_answer": "Common issues with scaling laws in LLMs include: data vs model size tradeoff. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "scaling laws",
+        "troubleshooting",
+        "LLMs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to scaling laws?",
+        "What tools can assist in detecting problems with scaling laws at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "prompt engineering",
+        "fine-tuning"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LLM-012",
+      "subject": "LLMs",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Medium",
+      "question": "What is in-context learning in LLMs and how does it work?",
+      "ideal_answer": "in-context learning in LLMs refers to few-shot demonstration learning. It works by learning from examples in prompt. Key characteristics include no parameter updates, pattern matching. Example: 3-5 examples in prompt sufficient. Common pitfalls include example selection, order sensitivity.",
+      "keywords": [
+        "in-context learning",
+        "LLMs programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of in-context learning in a production environment?",
+        "What are the common pitfalls or issues associated with in-context learning?"
+      ],
+      "related_concepts": [
+        "RLHF",
+        "hallucination"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LLM-013",
+      "subject": "LLMs",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Medium",
+      "question": "What is prompt engineering in LLMs and how does it work?",
+      "ideal_answer": "prompt engineering in LLMs refers to input optimization for LLMs. It works by eliciting desired outputs. Key characteristics include zero-shot, few-shot, chain-of-thought, ReAct. Example: \"Let's think step by step\". Common pitfalls include prompt injection, jailbreaking.",
+      "keywords": [
+        "prompt engineering",
+        "LLMs programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of prompt engineering in a production environment?",
+        "What are the common pitfalls or issues associated with prompt engineering?"
+      ],
+      "related_concepts": [
+        "scaling laws",
+        "fine-tuning"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LLM-014",
+      "subject": "LLMs",
+      "category": "Architecture",
+      "subcategory": "Implementation",
+      "difficulty": "Medium",
+      "question": "What are the common issues with hallucination in LLMs and how do you debug them?",
+      "ideal_answer": "Common issues with hallucination in LLMs include: uncertainty quantification. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "hallucination",
+        "troubleshooting",
+        "LLMs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to hallucination?",
+        "What tools can assist in detecting problems with hallucination at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "RLHF",
+        "in-context learning"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LLM-015",
+      "subject": "LLMs",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Hard",
+      "question": "Explain the difference between in-context learning and hallucination in LLMs.",
+      "ideal_answer": "in-context learning and hallucination differ in several ways: in-context learning is few-shot demonstration learning (works by learning from examples in prompt) whereas hallucination is factually incorrect generation (works by plausible but false outputs). in-context learning is typically used for no parameter updates, pattern matching, while hallucination is used for factual, logical, contextual hallucinations. Example demonstrating in-context learning: 3-5 examples in prompt sufficient. Example demonstrating hallucination: retrieval augmentation, fact verification.",
+      "keywords": [
+        "in-context learning",
+        "hallucination",
+        "comparison",
+        "LLMs"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose in-context learning over hallucination?",
+        "What is the performance or memory difference between in-context learning and hallucination?"
+      ],
+      "related_concepts": [
+        "in-context learning",
+        "hallucination",
+        "RLHF"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "LLM-016",
+      "subject": "LLMs",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Hard",
+      "question": "Explain the difference between prompt engineering and fine-tuning in LLMs.",
+      "ideal_answer": "prompt engineering and fine-tuning differ in several ways: prompt engineering is input optimization for LLMs (works by eliciting desired outputs) whereas fine-tuning is model adaptation technique (works by task-specific parameter update). prompt engineering is typically used for zero-shot, few-shot, chain-of-thought, ReAct, while fine-tuning is used for full fine-tuning, LoRA, QLoRA, prefix tuning. Example demonstrating prompt engineering: \"Let's think step by step\". Example demonstrating fine-tuning: LoRA: W = W_0 + BA, low-rank decomposition.",
+      "keywords": [
+        "prompt engineering",
+        "fine-tuning",
+        "comparison",
+        "LLMs"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose prompt engineering over fine-tuning?",
+        "What is the performance or memory difference between prompt engineering and fine-tuning?"
+      ],
+      "related_concepts": [
+        "prompt engineering",
+        "fine-tuning",
+        "scaling laws"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "LLM-017",
+      "subject": "LLMs",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What is scaling laws in LLMs and how does it work?",
+      "ideal_answer": "scaling laws in LLMs refers to performance vs compute relationship. It works by predictable improvement with scale. Key characteristics include loss ∝ C^-alpha, where C is compute. Example: Kaplan et al. 2020, Chinchilla optimal. Common pitfalls include data vs model size tradeoff.",
+      "keywords": [
+        "scaling laws",
+        "LLMs programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of scaling laws in a production environment?",
+        "What are the common pitfalls or issues associated with scaling laws?"
+      ],
+      "related_concepts": [
+        "prompt engineering",
+        "fine-tuning"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "LLM-018",
+      "subject": "LLMs",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Hard",
+      "question": "What are the common issues with prompt engineering in LLMs and how do you debug them?",
+      "ideal_answer": "Common issues with prompt engineering in LLMs include: prompt injection, jailbreaking. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "prompt engineering",
+        "troubleshooting",
+        "LLMs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to prompt engineering?",
+        "What tools can assist in detecting problems with prompt engineering at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "scaling laws",
+        "fine-tuning"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

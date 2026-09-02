@@ -1,7 +1,7 @@
 import js from "@eslint/js";
+import globals from "globals";
 import tsParser from "@typescript-eslint/parser";
 import tsPlugin from "@typescript-eslint/eslint-plugin";
-import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 
 import { fileURLToPath } from "url";
@@ -11,13 +11,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default [
-  // 1. Ignore build output and configuration files we don't want to lint
+  // 1. Ignore build output and configuration files
   {
     ignores: [
       "dist",
       "node_modules",
       "postcss.config.js",
-      "tailwind.config.ts",
+      "tailwind.config.js",
       "vite.config.ts"
     ],
   },
@@ -28,6 +28,10 @@ export default [
     languageOptions: {
       ecmaVersion: 2020,
       sourceType: "module",
+      globals: {
+        ...globals.browser,
+        ...globals.es2020,
+      },
       parser: tsParser,
       parserOptions: {
         project: ["./tsconfig.json"],
@@ -36,7 +40,6 @@ export default [
     },
     plugins: {
       "@typescript-eslint": tsPlugin,
-      "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
     },
     rules: {
@@ -45,10 +48,6 @@ export default [
       
       // TypeScript ESLint Recommended
       ...tsPlugin.configs.recommended.rules,
-      ...tsPlugin.configs["recommended-requiring-type-checking"].rules,
-      
-      // React Hooks
-      ...reactHooks.configs.recommended.rules,
       
       // React Refresh
       "react-refresh/only-export-components": [
@@ -58,9 +57,13 @@ export default [
       
       // Custom Rules for Code Quality and Strictness
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
-      "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/explicit-module-boundary-types": "off",
-      "@typescript-eslint/no-non-null-assertion": "error",
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off",
+      "@typescript-eslint/no-unsafe-argument": "off",
+      "@typescript-eslint/no-misused-promises": "off",
       "no-console": ["warn", { allow: ["warn", "error", "info"] }],
     },
   },

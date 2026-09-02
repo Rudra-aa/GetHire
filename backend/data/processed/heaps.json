@@ -1,0 +1,510 @@
+{
+  "metadata": {
+    "subject": "Heaps",
+    "domain": "Data Structures & Algorithms",
+    "total_questions": 19,
+    "difficulty_distribution": {
+      "Easy": 5,
+      "Medium": 10,
+      "Hard": 4
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "HEAP-001",
+      "subject": "Heaps",
+      "category": "Applications",
+      "subcategory": "Heap Sort",
+      "difficulty": "Easy",
+      "question": "What is heap sort in Heaps and how does it work?",
+      "ideal_answer": "heap sort in Heaps refers to in-place comparison sort. It works by O(n log n) worst case, O(1) space. Key characteristics include build max heap, repeatedly extract max. Example: buildHeap(arr); for (int i = n-1; i > 0; i--) { swap(arr[0], arr[i]); heapify(arr, i, 0); }. Common pitfalls include unstable sort, cache inefficiency.",
+      "keywords": [
+        "heap sort",
+        "Heaps programming",
+        "applications"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of heap sort in a production environment?",
+        "What are the common pitfalls or issues associated with heap sort?"
+      ],
+      "related_concepts": [
+        "median from stream"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HEAP-002",
+      "subject": "Heaps",
+      "category": "Operations",
+      "subcategory": "Extract Max/Min",
+      "difficulty": "Easy",
+      "question": "Explain the difference between build heap and extract max in Heaps.",
+      "ideal_answer": "build heap and extract max differ in several ways: build heap is heap construction from array (works by O(n) optimal bottom-up) whereas extract max is removing root element (works by replace root with last, heapify root). build heap is typically used for heapify from last non-leaf to root, while extract max is used for O(log n) operation. Example demonstrating build heap: for (int i = n/2 - 1; i >= 0; i--) heapify(arr, n, i);. Example demonstrating extract max: int max = arr[0]; arr[0] = arr[n-1]; heapify(arr, n-1, 0);.",
+      "keywords": [
+        "build heap",
+        "extract max",
+        "comparison",
+        "Heaps"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose build heap over extract max?",
+        "What is the performance or memory difference between build heap and extract max?"
+      ],
+      "related_concepts": [
+        "build heap",
+        "extract max",
+        "heapify"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HEAP-003",
+      "subject": "Heaps",
+      "category": "Properties",
+      "subcategory": "Complete Binary Tree",
+      "difficulty": "Easy",
+      "question": "Explain the difference between heap property and array representation in Heaps.",
+      "ideal_answer": "heap property and array representation differ in several ways: heap property is parent-child ordering (works by max-heap: parent >= children; min-heap: parent <= children) whereas array representation is implicit complete tree storage (works by no pointer overhead). heap property is typically used for not a sorted structure, partial order, while array representation is used for parent i -> children 2i+1, 2i+2; child i -> parent (i-1)/2. Example demonstrating heap property: arr[i] >= arr[2*i+1] && arr[i] >= arr[2*i+2]. Example demonstrating array representation: int[] heap = new int[n];.",
+      "keywords": [
+        "heap property",
+        "array representation",
+        "comparison",
+        "Heaps"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose heap property over array representation?",
+        "What is the performance or memory difference between heap property and array representation?"
+      ],
+      "related_concepts": [
+        "heap property",
+        "array representation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HEAP-004",
+      "subject": "Heaps",
+      "category": "Operations",
+      "subcategory": "Heapify",
+      "difficulty": "Easy",
+      "question": "What is extract max in Heaps and how does it work?",
+      "ideal_answer": "extract max in Heaps refers to removing root element. It works by replace root with last, heapify root. Key characteristics include O(log n) operation. Example: int max = arr[0]; arr[0] = arr[n-1]; heapify(arr, n-1, 0);. Common pitfalls include heap underflow check.",
+      "keywords": [
+        "extract max",
+        "Heaps programming",
+        "operations"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of extract max in a production environment?",
+        "What are the common pitfalls or issues associated with extract max?"
+      ],
+      "related_concepts": [
+        "heapify",
+        "build heap"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HEAP-005",
+      "subject": "Heaps",
+      "category": "Operations",
+      "subcategory": "Insert",
+      "difficulty": "Easy",
+      "question": "What is heapify in Heaps and how does it work?",
+      "ideal_answer": "heapify in Heaps refers to maintaining heap property. It works by O(log n) sift down. Key characteristics include compare with children, swap with larger (max-heap), recurse. Example: void heapify(int[] arr, int n, int i) { int largest = i; int l = 2*i+1; int r = 2*i+2; if (l < n && arr[l] > arr[largest]) largest = l; ... }. Common pitfalls include bottom-up build heap O(n).",
+      "keywords": [
+        "heapify",
+        "Heaps programming",
+        "operations"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of heapify in a production environment?",
+        "What are the common pitfalls or issues associated with heapify?"
+      ],
+      "related_concepts": [
+        "build heap",
+        "extract max"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HEAP-006",
+      "subject": "Heaps",
+      "category": "Applications",
+      "subcategory": "Heap Sort",
+      "difficulty": "Medium",
+      "question": "What are the common issues with heap sort in Heaps and how do you debug them?",
+      "ideal_answer": "Common issues with heap sort in Heaps include: unstable sort, cache inefficiency. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "heap sort",
+        "troubleshooting",
+        "Heaps"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to heap sort?",
+        "What tools can assist in detecting problems with heap sort at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "median from stream"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HEAP-007",
+      "subject": "Heaps",
+      "category": "Applications",
+      "subcategory": "Priority Queue",
+      "difficulty": "Medium",
+      "question": "What are the common issues with median from stream in Heaps and how do you debug them?",
+      "ideal_answer": "Common issues with median from stream in Heaps include: median = maxHeap.peek() or average. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "median from stream",
+        "troubleshooting",
+        "Heaps"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to median from stream?",
+        "What tools can assist in detecting problems with median from stream at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "heap sort"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HEAP-008",
+      "subject": "Heaps",
+      "category": "Operations",
+      "subcategory": "Insert",
+      "difficulty": "Medium",
+      "question": "What are the common issues with heapify in Heaps and how do you debug them?",
+      "ideal_answer": "Common issues with heapify in Heaps include: bottom-up build heap O(n). To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "heapify",
+        "troubleshooting",
+        "Heaps"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to heapify?",
+        "What tools can assist in detecting problems with heapify at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "build heap",
+        "extract max"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HEAP-009",
+      "subject": "Heaps",
+      "category": "Operations",
+      "subcategory": "Insert",
+      "difficulty": "Medium",
+      "question": "Explain the difference between heapify and extract max in Heaps.",
+      "ideal_answer": "heapify and extract max differ in several ways: heapify is maintaining heap property (works by O(log n) sift down) whereas extract max is removing root element (works by replace root with last, heapify root). heapify is typically used for compare with children, swap with larger (max-heap), recurse, while extract max is used for O(log n) operation. Example demonstrating heapify: void heapify(int[] arr, int n, int i) { int largest = i; int l = 2*i+1; int r = 2*i+2; if (l < n && arr[l] > arr[largest]) largest = l; ... }. Example demonstrating extract max: int max = arr[0]; arr[0] = arr[n-1]; heapify(arr, n-1, 0);.",
+      "keywords": [
+        "heapify",
+        "extract max",
+        "comparison",
+        "Heaps"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose heapify over extract max?",
+        "What is the performance or memory difference between heapify and extract max?"
+      ],
+      "related_concepts": [
+        "heapify",
+        "extract max",
+        "build heap"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HEAP-010",
+      "subject": "Heaps",
+      "category": "Applications",
+      "subcategory": "Priority Queue",
+      "difficulty": "Medium",
+      "question": "What is median from stream in Heaps and how does it work?",
+      "ideal_answer": "median from stream in Heaps refers to running median calculation. It works by dual heap: max-heap lower, min-heap upper. Key characteristics include rebalance heaps to size difference <= 1. Example: maxHeap.offer(num); minHeap.offer(maxHeap.poll()); if (maxHeap.size() < minHeap.size()) maxHeap.offer(minHeap.poll());. Common pitfalls include median = maxHeap.peek() or average.",
+      "keywords": [
+        "median from stream",
+        "Heaps programming",
+        "applications"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of median from stream in a production environment?",
+        "What are the common pitfalls or issues associated with median from stream?"
+      ],
+      "related_concepts": [
+        "heap sort"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HEAP-011",
+      "subject": "Heaps",
+      "category": "Operations",
+      "subcategory": "Heapify",
+      "difficulty": "Medium",
+      "question": "What are the common issues with extract max in Heaps and how do you debug them?",
+      "ideal_answer": "Common issues with extract max in Heaps include: heap underflow check. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "extract max",
+        "troubleshooting",
+        "Heaps"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to extract max?",
+        "What tools can assist in detecting problems with extract max at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "heapify",
+        "build heap"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HEAP-012",
+      "subject": "Heaps",
+      "category": "Properties",
+      "subcategory": "Complete Binary Tree",
+      "difficulty": "Medium",
+      "question": "What are the common issues with heap property in Heaps and how do you debug them?",
+      "ideal_answer": "Common issues with heap property in Heaps include: no ordering among siblings. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "heap property",
+        "troubleshooting",
+        "Heaps"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to heap property?",
+        "What tools can assist in detecting problems with heap property at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "array representation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HEAP-013",
+      "subject": "Heaps",
+      "category": "Operations",
+      "subcategory": "Insert",
+      "difficulty": "Medium",
+      "question": "Explain the difference between heapify and build heap in Heaps.",
+      "ideal_answer": "heapify and build heap differ in several ways: heapify is maintaining heap property (works by O(log n) sift down) whereas build heap is heap construction from array (works by O(n) optimal bottom-up). heapify is typically used for compare with children, swap with larger (max-heap), recurse, while build heap is used for heapify from last non-leaf to root. Example demonstrating heapify: void heapify(int[] arr, int n, int i) { int largest = i; int l = 2*i+1; int r = 2*i+2; if (l < n && arr[l] > arr[largest]) largest = l; ... }. Example demonstrating build heap: for (int i = n/2 - 1; i >= 0; i--) heapify(arr, n, i);.",
+      "keywords": [
+        "heapify",
+        "build heap",
+        "comparison",
+        "Heaps"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose heapify over build heap?",
+        "What is the performance or memory difference between heapify and build heap?"
+      ],
+      "related_concepts": [
+        "heapify",
+        "build heap",
+        "extract max"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HEAP-014",
+      "subject": "Heaps",
+      "category": "Properties",
+      "subcategory": "Heap Property",
+      "difficulty": "Medium",
+      "question": "What is array representation in Heaps and how does it work?",
+      "ideal_answer": "array representation in Heaps refers to implicit complete tree storage. It works by no pointer overhead. Key characteristics include parent i -> children 2i+1, 2i+2; child i -> parent (i-1)/2. Example: int[] heap = new int[n];. Common pitfalls include 0-indexed vs 1-indexed formulas.",
+      "keywords": [
+        "array representation",
+        "Heaps programming",
+        "properties"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of array representation in a production environment?",
+        "What are the common pitfalls or issues associated with array representation?"
+      ],
+      "related_concepts": [
+        "heap property"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HEAP-015",
+      "subject": "Heaps",
+      "category": "Applications",
+      "subcategory": "Heap Sort",
+      "difficulty": "Medium",
+      "question": "Explain the difference between heap sort and median from stream in Heaps.",
+      "ideal_answer": "heap sort and median from stream differ in several ways: heap sort is in-place comparison sort (works by O(n log n) worst case, O(1) space) whereas median from stream is running median calculation (works by dual heap: max-heap lower, min-heap upper). heap sort is typically used for build max heap, repeatedly extract max, while median from stream is used for rebalance heaps to size difference <= 1. Example demonstrating heap sort: buildHeap(arr); for (int i = n-1; i > 0; i--) { swap(arr[0], arr[i]); heapify(arr, i, 0); }. Example demonstrating median from stream: maxHeap.offer(num); minHeap.offer(maxHeap.poll()); if (maxHeap.size() < minHeap.size()) maxHeap.offer(minHeap.poll());.",
+      "keywords": [
+        "heap sort",
+        "median from stream",
+        "comparison",
+        "Heaps"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose heap sort over median from stream?",
+        "What is the performance or memory difference between heap sort and median from stream?"
+      ],
+      "related_concepts": [
+        "heap sort",
+        "median from stream"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HEAP-016",
+      "subject": "Heaps",
+      "category": "Operations",
+      "subcategory": "Extract Max/Min",
+      "difficulty": "Hard",
+      "question": "What is build heap in Heaps and how does it work?",
+      "ideal_answer": "build heap in Heaps refers to heap construction from array. It works by O(n) optimal bottom-up. Key characteristics include heapify from last non-leaf to root. Example: for (int i = n/2 - 1; i >= 0; i--) heapify(arr, n, i);. Common pitfalls include  vs n insertions O(n log n).",
+      "keywords": [
+        "build heap",
+        "Heaps programming",
+        "operations"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of build heap in a production environment?",
+        "What are the common pitfalls or issues associated with build heap?"
+      ],
+      "related_concepts": [
+        "heapify",
+        "extract max"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "HEAP-017",
+      "subject": "Heaps",
+      "category": "Operations",
+      "subcategory": "Extract Max/Min",
+      "difficulty": "Hard",
+      "question": "What are the common issues with build heap in Heaps and how do you debug them?",
+      "ideal_answer": "Common issues with build heap in Heaps include:  vs n insertions O(n log n). To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "build heap",
+        "troubleshooting",
+        "Heaps"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to build heap?",
+        "What tools can assist in detecting problems with build heap at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "heapify",
+        "extract max"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "HEAP-018",
+      "subject": "Heaps",
+      "category": "Properties",
+      "subcategory": "Complete Binary Tree",
+      "difficulty": "Hard",
+      "question": "What is heap property in Heaps and how does it work?",
+      "ideal_answer": "heap property in Heaps refers to parent-child ordering. It works by max-heap: parent >= children; min-heap: parent <= children. Key characteristics include not a sorted structure, partial order. Example: arr[i] >= arr[2*i+1] && arr[i] >= arr[2*i+2]. Common pitfalls include no ordering among siblings.",
+      "keywords": [
+        "heap property",
+        "Heaps programming",
+        "properties"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of heap property in a production environment?",
+        "What are the common pitfalls or issues associated with heap property?"
+      ],
+      "related_concepts": [
+        "array representation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "HEAP-019",
+      "subject": "Heaps",
+      "category": "Properties",
+      "subcategory": "Heap Property",
+      "difficulty": "Hard",
+      "question": "What are the common issues with array representation in Heaps and how do you debug them?",
+      "ideal_answer": "Common issues with array representation in Heaps include: 0-indexed vs 1-indexed formulas. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "array representation",
+        "troubleshooting",
+        "Heaps"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to array representation?",
+        "What tools can assist in detecting problems with array representation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "heap property"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

@@ -15,18 +15,38 @@ def validate_file(filepath: Path) -> tuple[bool, list[str], list[dict]]:
     except Exception as e:
         return False, [f"Failed to parse JSON file: {e}"], []
 
-    if not isinstance(data, list):
-        return False, ["Root element must be a list of questions."], []
+    questions_list = []
+    if isinstance(data, list):
+        questions_list = data
+    elif isinstance(data, dict):
+        if "questions" in data:
+            questions_list = data["questions"]
+        else:
+            questions_list = [data]
+    else:
+        return False, ["Root element must be a list or a dictionary containing 'questions'."], []
 
     seen_ids = set()
     seen_texts = set()
 
-    for idx, q_dict in enumerate(data):
-        q_ref = f"Question index {idx} (ID: {q_dict.get('id', 'unknown')})"
+    for idx, q_dict in enumerate(questions_list):
+        q_id = q_dict.get('question_id', q_dict.get('id', 'unknown'))
+        q_ref = f"Question index {idx} (ID: {q_id})"
         
         # Check basic schema validation
         try:
-            question = DatasetQuestion(**q_dict)
+            # For parsing via DatasetQuestion, if q_dict contains id but not question_id, map it
+            q_parse_dict = q_dict.copy()
+            if "id" in q_parse_dict and "question_id" not in q_parse_dict:
+                q_parse_dict["question_id"] = q_parse_dict.pop("id")
+            if "domain" in q_parse_dict and "subject" not in q_parse_dict:
+                q_parse_dict["subject"] = q_parse_dict.pop("domain")
+            if "topic" in q_parse_dict and "category" not in q_parse_dict:
+                q_parse_dict["category"] = q_parse_dict.pop("topic")
+            if "explanation" in q_parse_dict and "ideal_answer" not in q_parse_dict:
+                q_parse_dict["ideal_answer"] = q_parse_dict.pop("explanation")
+
+            question = DatasetQuestion(**q_parse_dict)
             valid_questions.append(q_dict)
             
             # Check duplicate ID
@@ -41,8 +61,8 @@ def validate_file(filepath: Path) -> tuple[bool, list[str], list[dict]]:
             seen_texts.add(q_norm)
             
             # Check difficulty values
-            if question.difficulty not in ["easy", "medium", "hard"]:
-                errors.append(f"{q_ref}: Invalid difficulty level '{question.difficulty}'. Must be 'easy', 'medium', or 'hard'")
+            if question.difficulty.lower().strip() not in ["easy", "medium", "hard"]:
+                errors.append(f"{q_ref}: Invalid difficulty level '{question.difficulty}'. Must be 'Easy', 'Medium', or 'Hard'")
                 
         except ValidationError as ve:
             errors.append(f"{q_ref}: Schema validation failed: {ve}")

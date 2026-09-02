@@ -1,0 +1,757 @@
+{
+  "metadata": {
+    "subject": "Flask",
+    "domain": "Web Development",
+    "total_questions": 28,
+    "difficulty_distribution": {
+      "Easy": 8,
+      "Medium": 14,
+      "Hard": 6
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "FLASK-001",
+      "subject": "Flask",
+      "category": "Routing",
+      "subcategory": "Route Decorators",
+      "difficulty": "Easy",
+      "question": "Explain the difference between URL variable rules and url_for in Flask.",
+      "ideal_answer": "URL variable rules and url_for differ in several ways: URL variable rules is dynamic route segments (works by type conversion and validation) whereas url_for is URL generation (works by reverse routing). URL variable rules is typically used for <converter:variable_name>, while url_for is used for endpoint name, argument binding. Example demonstrating URL variable rules: @app.route('/user/<int:user_id>'). Example demonstrating url_for: url_for('user_profile', user_id=1).",
+      "keywords": [
+        "URL variable rules",
+        "url_for",
+        "comparison",
+        "Flask"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose URL variable rules over url_for?",
+        "What is the performance or memory difference between URL variable rules and url_for?"
+      ],
+      "related_concepts": [
+        "URL variable rules",
+        "url_for"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FLASK-002",
+      "subject": "Flask",
+      "category": "Routing",
+      "subcategory": "URL Variables",
+      "difficulty": "Easy",
+      "question": "What is url_for in Flask and how does it work?",
+      "ideal_answer": "url_for in Flask refers to URL generation. It works by reverse routing. Key characteristics include endpoint name, argument binding. Example: url_for('user_profile', user_id=1). Common pitfalls include external URLs, _external=True.",
+      "keywords": [
+        "url_for",
+        "Flask programming",
+        "routing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of url_for in a production environment?",
+        "What are the common pitfalls or issues associated with url_for?"
+      ],
+      "related_concepts": [
+        "URL variable rules"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FLASK-003",
+      "subject": "Flask",
+      "category": "Core",
+      "subcategory": "App Factory",
+      "difficulty": "Easy",
+      "question": "Explain the difference between application context and Jinja2 templating in Flask.",
+      "ideal_answer": "application context and Jinja2 templating differ in several ways: application context is application-level state (works by shared resources across requests) whereas Jinja2 templating is template engine integration (works by HTML generation with logic). application context is typically used for current_app, g object, while Jinja2 templating is used for variables, filters, control structures, inheritance. Example demonstrating application context: with app.app_context(): db.create_all(). Example demonstrating Jinja2 templating: {% extends 'base.html' %}{% block content %}...{% endblock %}.",
+      "keywords": [
+        "application context",
+        "Jinja2 templating",
+        "comparison",
+        "Flask"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose application context over Jinja2 templating?",
+        "What is the performance or memory difference between application context and Jinja2 templating?"
+      ],
+      "related_concepts": [
+        "application context",
+        "Jinja2 templating",
+        "request context",
+        "app factory pattern"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FLASK-004",
+      "subject": "Flask",
+      "category": "Extensions",
+      "subcategory": "Migrate",
+      "difficulty": "Easy",
+      "question": "What is Flask-Login in Flask and how does it work?",
+      "ideal_answer": "Flask-Login in Flask refers to session management. It works by user authentication state. Key characteristics include login_user, logout_user, current_user. Example: @login_required\ndef dashboard(): .... Common pitfalls include user_loader callback.",
+      "keywords": [
+        "Flask-Login",
+        "Flask programming",
+        "extensions"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Flask-Login in a production environment?",
+        "What are the common pitfalls or issues associated with Flask-Login?"
+      ],
+      "related_concepts": [
+        "Flask-SQLAlchemy",
+        "Blueprints"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FLASK-005",
+      "subject": "Flask",
+      "category": "Extensions",
+      "subcategory": "Migrate",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Flask-Login and Blueprints in Flask.",
+      "ideal_answer": "Flask-Login and Blueprints differ in several ways: Flask-Login is session management (works by user authentication state) whereas Blueprints is application modularization (works by component-based organization). Flask-Login is typically used for login_user, logout_user, current_user, while Blueprints is used for routes, templates, static files grouping. Example demonstrating Flask-Login: @login_required\ndef dashboard(): .... Example demonstrating Blueprints: bp = Blueprint('auth', __name__, url_prefix='/auth'); app.register_blueprint(bp).",
+      "keywords": [
+        "Flask-Login",
+        "Blueprints",
+        "comparison",
+        "Flask"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Flask-Login over Blueprints?",
+        "What is the performance or memory difference between Flask-Login and Blueprints?"
+      ],
+      "related_concepts": [
+        "Flask-Login",
+        "Blueprints",
+        "Flask-SQLAlchemy"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FLASK-006",
+      "subject": "Flask",
+      "category": "Core",
+      "subcategory": "Configuration",
+      "difficulty": "Easy",
+      "question": "What is Jinja2 templating in Flask and how does it work?",
+      "ideal_answer": "Jinja2 templating in Flask refers to template engine integration. It works by HTML generation with logic. Key characteristics include variables, filters, control structures, inheritance. Example: {% extends 'base.html' %}{% block content %}...{% endblock %}. Common pitfalls include autoescaping security.",
+      "keywords": [
+        "Jinja2 templating",
+        "Flask programming",
+        "core"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Jinja2 templating in a production environment?",
+        "What are the common pitfalls or issues associated with Jinja2 templating?"
+      ],
+      "related_concepts": [
+        "application context",
+        "request context",
+        "app factory pattern"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FLASK-007",
+      "subject": "Flask",
+      "category": "Core",
+      "subcategory": "Request Context",
+      "difficulty": "Easy",
+      "question": "What are the common issues with app factory pattern in Flask and how do you debug them?",
+      "ideal_answer": "Common issues with app factory pattern in Flask include: blueprint registration in factory. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "app factory pattern",
+        "troubleshooting",
+        "Flask"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to app factory pattern?",
+        "What tools can assist in detecting problems with app factory pattern at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "application context",
+        "request context",
+        "Jinja2 templating"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FLASK-008",
+      "subject": "Flask",
+      "category": "Core",
+      "subcategory": "Application Context",
+      "difficulty": "Easy",
+      "question": "Explain the difference between request context and app factory pattern in Flask.",
+      "ideal_answer": "request context and app factory pattern differ in several ways: request context is request-level state (works by per-request data isolation) whereas app factory pattern is application creation function (works by testability and configuration flexibility). request context is typically used for request, session objects, while app factory pattern is used for create_app(config_name). Example demonstrating request context: @app.route('/')\ndef index(): return request.method. Example demonstrating app factory pattern: def create_app(config_name='default'): app = Flask(__name__); app.config.from_object(configs[config_name]); return app.",
+      "keywords": [
+        "request context",
+        "app factory pattern",
+        "comparison",
+        "Flask"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose request context over app factory pattern?",
+        "What is the performance or memory difference between request context and app factory pattern?"
+      ],
+      "related_concepts": [
+        "request context",
+        "app factory pattern",
+        "application context",
+        "Jinja2 templating"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FLASK-009",
+      "subject": "Flask",
+      "category": "Routing",
+      "subcategory": "Route Decorators",
+      "difficulty": "Medium",
+      "question": "What is URL variable rules in Flask and how does it work?",
+      "ideal_answer": "URL variable rules in Flask refers to dynamic route segments. It works by type conversion and validation. Key characteristics include <converter:variable_name>. Example: @app.route('/user/<int:user_id>'). Common pitfalls include custom converters.",
+      "keywords": [
+        "URL variable rules",
+        "Flask programming",
+        "routing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of URL variable rules in a production environment?",
+        "What are the common pitfalls or issues associated with URL variable rules?"
+      ],
+      "related_concepts": [
+        "url_for"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FLASK-010",
+      "subject": "Flask",
+      "category": "Core",
+      "subcategory": "App Factory",
+      "difficulty": "Medium",
+      "question": "Explain the difference between application context and app factory pattern in Flask.",
+      "ideal_answer": "application context and app factory pattern differ in several ways: application context is application-level state (works by shared resources across requests) whereas app factory pattern is application creation function (works by testability and configuration flexibility). application context is typically used for current_app, g object, while app factory pattern is used for create_app(config_name). Example demonstrating application context: with app.app_context(): db.create_all(). Example demonstrating app factory pattern: def create_app(config_name='default'): app = Flask(__name__); app.config.from_object(configs[config_name]); return app.",
+      "keywords": [
+        "application context",
+        "app factory pattern",
+        "comparison",
+        "Flask"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose application context over app factory pattern?",
+        "What is the performance or memory difference between application context and app factory pattern?"
+      ],
+      "related_concepts": [
+        "application context",
+        "app factory pattern",
+        "request context",
+        "Jinja2 templating"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FLASK-011",
+      "subject": "Flask",
+      "category": "Extensions",
+      "subcategory": "Login",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Blueprints in Flask and how do you debug them?",
+      "ideal_answer": "Common issues with Blueprints in Flask include: blueprint-specific templates/static. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Blueprints",
+        "troubleshooting",
+        "Flask"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Blueprints?",
+        "What tools can assist in detecting problems with Blueprints at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Flask-SQLAlchemy",
+        "Flask-Login"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FLASK-012",
+      "subject": "Flask",
+      "category": "Core",
+      "subcategory": "Application Context",
+      "difficulty": "Medium",
+      "question": "Explain the difference between request context and Jinja2 templating in Flask.",
+      "ideal_answer": "request context and Jinja2 templating differ in several ways: request context is request-level state (works by per-request data isolation) whereas Jinja2 templating is template engine integration (works by HTML generation with logic). request context is typically used for request, session objects, while Jinja2 templating is used for variables, filters, control structures, inheritance. Example demonstrating request context: @app.route('/')\ndef index(): return request.method. Example demonstrating Jinja2 templating: {% extends 'base.html' %}{% block content %}...{% endblock %}.",
+      "keywords": [
+        "request context",
+        "Jinja2 templating",
+        "comparison",
+        "Flask"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose request context over Jinja2 templating?",
+        "What is the performance or memory difference between request context and Jinja2 templating?"
+      ],
+      "related_concepts": [
+        "request context",
+        "Jinja2 templating",
+        "application context",
+        "app factory pattern"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FLASK-013",
+      "subject": "Flask",
+      "category": "Extensions",
+      "subcategory": "SQLAlchemy",
+      "difficulty": "Medium",
+      "question": "What is Flask-SQLAlchemy in Flask and how does it work?",
+      "ideal_answer": "Flask-SQLAlchemy in Flask refers to ORM integration. It works by database abstraction. Key characteristics include Model base class, query interface. Example: db = SQLAlchemy(app); class User(db.Model): id = db.Column(db.Integer, primary_key=True). Common pitfalls include session management, connection pooling.",
+      "keywords": [
+        "Flask-SQLAlchemy",
+        "Flask programming",
+        "extensions"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Flask-SQLAlchemy in a production environment?",
+        "What are the common pitfalls or issues associated with Flask-SQLAlchemy?"
+      ],
+      "related_concepts": [
+        "Flask-Login",
+        "Blueprints"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FLASK-014",
+      "subject": "Flask",
+      "category": "Routing",
+      "subcategory": "Route Decorators",
+      "difficulty": "Medium",
+      "question": "What are the common issues with URL variable rules in Flask and how do you debug them?",
+      "ideal_answer": "Common issues with URL variable rules in Flask include: custom converters. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "URL variable rules",
+        "troubleshooting",
+        "Flask"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to URL variable rules?",
+        "What tools can assist in detecting problems with URL variable rules at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "url_for"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FLASK-015",
+      "subject": "Flask",
+      "category": "Extensions",
+      "subcategory": "SQLAlchemy",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Flask-SQLAlchemy and Flask-Login in Flask.",
+      "ideal_answer": "Flask-SQLAlchemy and Flask-Login differ in several ways: Flask-SQLAlchemy is ORM integration (works by database abstraction) whereas Flask-Login is session management (works by user authentication state). Flask-SQLAlchemy is typically used for Model base class, query interface, while Flask-Login is used for login_user, logout_user, current_user. Example demonstrating Flask-SQLAlchemy: db = SQLAlchemy(app); class User(db.Model): id = db.Column(db.Integer, primary_key=True). Example demonstrating Flask-Login: @login_required\ndef dashboard(): ....",
+      "keywords": [
+        "Flask-SQLAlchemy",
+        "Flask-Login",
+        "comparison",
+        "Flask"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Flask-SQLAlchemy over Flask-Login?",
+        "What is the performance or memory difference between Flask-SQLAlchemy and Flask-Login?"
+      ],
+      "related_concepts": [
+        "Flask-SQLAlchemy",
+        "Flask-Login",
+        "Blueprints"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FLASK-016",
+      "subject": "Flask",
+      "category": "Core",
+      "subcategory": "App Factory",
+      "difficulty": "Medium",
+      "question": "What are the common issues with application context in Flask and how do you debug them?",
+      "ideal_answer": "Common issues with application context in Flask include: context locals and threading. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "application context",
+        "troubleshooting",
+        "Flask"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to application context?",
+        "What tools can assist in detecting problems with application context at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "request context",
+        "app factory pattern",
+        "Jinja2 templating"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FLASK-017",
+      "subject": "Flask",
+      "category": "Core",
+      "subcategory": "Request Context",
+      "difficulty": "Medium",
+      "question": "Explain the difference between app factory pattern and Jinja2 templating in Flask.",
+      "ideal_answer": "app factory pattern and Jinja2 templating differ in several ways: app factory pattern is application creation function (works by testability and configuration flexibility) whereas Jinja2 templating is template engine integration (works by HTML generation with logic). app factory pattern is typically used for create_app(config_name), while Jinja2 templating is used for variables, filters, control structures, inheritance. Example demonstrating app factory pattern: def create_app(config_name='default'): app = Flask(__name__); app.config.from_object(configs[config_name]); return app. Example demonstrating Jinja2 templating: {% extends 'base.html' %}{% block content %}...{% endblock %}.",
+      "keywords": [
+        "app factory pattern",
+        "Jinja2 templating",
+        "comparison",
+        "Flask"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose app factory pattern over Jinja2 templating?",
+        "What is the performance or memory difference between app factory pattern and Jinja2 templating?"
+      ],
+      "related_concepts": [
+        "app factory pattern",
+        "Jinja2 templating",
+        "application context",
+        "request context"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FLASK-018",
+      "subject": "Flask",
+      "category": "Core",
+      "subcategory": "Application Context",
+      "difficulty": "Medium",
+      "question": "What is request context in Flask and how does it work?",
+      "ideal_answer": "request context in Flask refers to request-level state. It works by per-request data isolation. Key characteristics include request, session objects. Example: @app.route('/')\ndef index(): return request.method. Common pitfalls include pushing contexts manually.",
+      "keywords": [
+        "request context",
+        "Flask programming",
+        "core"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of request context in a production environment?",
+        "What are the common pitfalls or issues associated with request context?"
+      ],
+      "related_concepts": [
+        "application context",
+        "app factory pattern",
+        "Jinja2 templating"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FLASK-019",
+      "subject": "Flask",
+      "category": "Routing",
+      "subcategory": "URL Variables",
+      "difficulty": "Medium",
+      "question": "What are the common issues with url_for in Flask and how do you debug them?",
+      "ideal_answer": "Common issues with url_for in Flask include: external URLs, _external=True. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "url_for",
+        "troubleshooting",
+        "Flask"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to url_for?",
+        "What tools can assist in detecting problems with url_for at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "URL variable rules"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FLASK-020",
+      "subject": "Flask",
+      "category": "Extensions",
+      "subcategory": "SQLAlchemy",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Flask-SQLAlchemy and Blueprints in Flask.",
+      "ideal_answer": "Flask-SQLAlchemy and Blueprints differ in several ways: Flask-SQLAlchemy is ORM integration (works by database abstraction) whereas Blueprints is application modularization (works by component-based organization). Flask-SQLAlchemy is typically used for Model base class, query interface, while Blueprints is used for routes, templates, static files grouping. Example demonstrating Flask-SQLAlchemy: db = SQLAlchemy(app); class User(db.Model): id = db.Column(db.Integer, primary_key=True). Example demonstrating Blueprints: bp = Blueprint('auth', __name__, url_prefix='/auth'); app.register_blueprint(bp).",
+      "keywords": [
+        "Flask-SQLAlchemy",
+        "Blueprints",
+        "comparison",
+        "Flask"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Flask-SQLAlchemy over Blueprints?",
+        "What is the performance or memory difference between Flask-SQLAlchemy and Blueprints?"
+      ],
+      "related_concepts": [
+        "Flask-SQLAlchemy",
+        "Blueprints",
+        "Flask-Login"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FLASK-021",
+      "subject": "Flask",
+      "category": "Core",
+      "subcategory": "Request Context",
+      "difficulty": "Medium",
+      "question": "What is app factory pattern in Flask and how does it work?",
+      "ideal_answer": "app factory pattern in Flask refers to application creation function. It works by testability and configuration flexibility. Key characteristics include create_app(config_name). Example: def create_app(config_name='default'): app = Flask(__name__); app.config.from_object(configs[config_name]); return app. Common pitfalls include blueprint registration in factory.",
+      "keywords": [
+        "app factory pattern",
+        "Flask programming",
+        "core"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of app factory pattern in a production environment?",
+        "What are the common pitfalls or issues associated with app factory pattern?"
+      ],
+      "related_concepts": [
+        "application context",
+        "request context",
+        "Jinja2 templating"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FLASK-022",
+      "subject": "Flask",
+      "category": "Extensions",
+      "subcategory": "Migrate",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Flask-Login in Flask and how do you debug them?",
+      "ideal_answer": "Common issues with Flask-Login in Flask include: user_loader callback. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Flask-Login",
+        "troubleshooting",
+        "Flask"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Flask-Login?",
+        "What tools can assist in detecting problems with Flask-Login at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Flask-SQLAlchemy",
+        "Blueprints"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FLASK-023",
+      "subject": "Flask",
+      "category": "Core",
+      "subcategory": "Configuration",
+      "difficulty": "Hard",
+      "question": "What are the common issues with Jinja2 templating in Flask and how do you debug them?",
+      "ideal_answer": "Common issues with Jinja2 templating in Flask include: autoescaping security. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Jinja2 templating",
+        "troubleshooting",
+        "Flask"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Jinja2 templating?",
+        "What tools can assist in detecting problems with Jinja2 templating at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "application context",
+        "request context",
+        "app factory pattern"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "FLASK-024",
+      "subject": "Flask",
+      "category": "Core",
+      "subcategory": "App Factory",
+      "difficulty": "Hard",
+      "question": "Explain the difference between application context and request context in Flask.",
+      "ideal_answer": "application context and request context differ in several ways: application context is application-level state (works by shared resources across requests) whereas request context is request-level state (works by per-request data isolation). application context is typically used for current_app, g object, while request context is used for request, session objects. Example demonstrating application context: with app.app_context(): db.create_all(). Example demonstrating request context: @app.route('/')\ndef index(): return request.method.",
+      "keywords": [
+        "application context",
+        "request context",
+        "comparison",
+        "Flask"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose application context over request context?",
+        "What is the performance or memory difference between application context and request context?"
+      ],
+      "related_concepts": [
+        "application context",
+        "request context",
+        "app factory pattern",
+        "Jinja2 templating"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "FLASK-025",
+      "subject": "Flask",
+      "category": "Extensions",
+      "subcategory": "Login",
+      "difficulty": "Hard",
+      "question": "What is Blueprints in Flask and how does it work?",
+      "ideal_answer": "Blueprints in Flask refers to application modularization. It works by component-based organization. Key characteristics include routes, templates, static files grouping. Example: bp = Blueprint('auth', __name__, url_prefix='/auth'); app.register_blueprint(bp). Common pitfalls include blueprint-specific templates/static.",
+      "keywords": [
+        "Blueprints",
+        "Flask programming",
+        "extensions"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Blueprints in a production environment?",
+        "What are the common pitfalls or issues associated with Blueprints?"
+      ],
+      "related_concepts": [
+        "Flask-SQLAlchemy",
+        "Flask-Login"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "FLASK-026",
+      "subject": "Flask",
+      "category": "Core",
+      "subcategory": "App Factory",
+      "difficulty": "Hard",
+      "question": "What is application context in Flask and how does it work?",
+      "ideal_answer": "application context in Flask refers to application-level state. It works by shared resources across requests. Key characteristics include current_app, g object. Example: with app.app_context(): db.create_all(). Common pitfalls include context locals and threading.",
+      "keywords": [
+        "application context",
+        "Flask programming",
+        "core"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of application context in a production environment?",
+        "What are the common pitfalls or issues associated with application context?"
+      ],
+      "related_concepts": [
+        "request context",
+        "app factory pattern",
+        "Jinja2 templating"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "FLASK-027",
+      "subject": "Flask",
+      "category": "Core",
+      "subcategory": "Application Context",
+      "difficulty": "Hard",
+      "question": "What are the common issues with request context in Flask and how do you debug them?",
+      "ideal_answer": "Common issues with request context in Flask include: pushing contexts manually. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "request context",
+        "troubleshooting",
+        "Flask"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to request context?",
+        "What tools can assist in detecting problems with request context at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "application context",
+        "app factory pattern",
+        "Jinja2 templating"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "FLASK-028",
+      "subject": "Flask",
+      "category": "Extensions",
+      "subcategory": "SQLAlchemy",
+      "difficulty": "Hard",
+      "question": "What are the common issues with Flask-SQLAlchemy in Flask and how do you debug them?",
+      "ideal_answer": "Common issues with Flask-SQLAlchemy in Flask include: session management, connection pooling. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Flask-SQLAlchemy",
+        "troubleshooting",
+        "Flask"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Flask-SQLAlchemy?",
+        "What tools can assist in detecting problems with Flask-SQLAlchemy at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Flask-Login",
+        "Blueprints"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

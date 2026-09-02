@@ -1,0 +1,319 @@
+{
+  "metadata": {
+    "subject": "Generative AI",
+    "domain": "Artificial Intelligence",
+    "total_questions": 11,
+    "difficulty_distribution": {
+      "Easy": 3,
+      "Medium": 5,
+      "Hard": 3
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "GENAI-001",
+      "subject": "Generative AI",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Easy",
+      "question": "Explain the difference between GANs and diffusion models in Generative AI.",
+      "ideal_answer": "GANs and diffusion models differ in several ways: GANs is generative adversarial networks (works by generator-discriminator game) whereas diffusion models is iterative denoising generation (works by reverse diffusion process). GANs is typically used for minimax objective, Nash equilibrium, while diffusion models is used for DDPM, DDIM, Stable Diffusion. Example demonstrating GANs: DCGAN, StyleGAN, CycleGAN. Example demonstrating diffusion models: noise schedule, U-Net architecture.",
+      "keywords": [
+        "GANs",
+        "diffusion models",
+        "comparison",
+        "Generative AI"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose GANs over diffusion models?",
+        "What is the performance or memory difference between GANs and diffusion models?"
+      ],
+      "related_concepts": [
+        "GANs",
+        "diffusion models",
+        "VAE"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GENAI-002",
+      "subject": "Generative AI",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Easy",
+      "question": "What are the common issues with VAE in Generative AI and how do you debug them?",
+      "ideal_answer": "Common issues with VAE in Generative AI include: blurry outputs vs GANs. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "VAE",
+        "troubleshooting",
+        "Generative AI"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to VAE?",
+        "What tools can assist in detecting problems with VAE at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "GANs",
+        "diffusion models"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GENAI-003",
+      "subject": "Generative AI",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Easy",
+      "question": "What is VAE in Generative AI and how does it work?",
+      "ideal_answer": "VAE in Generative AI refers to variational autoencoder. It works by latent space generative model. Key characteristics include reparameterization trick, KL divergence. Example: encoder: q(z|x), decoder: p(x|z). Common pitfalls include blurry outputs vs GANs.",
+      "keywords": [
+        "VAE",
+        "Generative AI programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of VAE in a production environment?",
+        "What are the common pitfalls or issues associated with VAE?"
+      ],
+      "related_concepts": [
+        "GANs",
+        "diffusion models"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GENAI-004",
+      "subject": "Generative AI",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Medium",
+      "question": "Explain the difference between VAE and diffusion models in Generative AI.",
+      "ideal_answer": "VAE and diffusion models differ in several ways: VAE is variational autoencoder (works by latent space generative model) whereas diffusion models is iterative denoising generation (works by reverse diffusion process). VAE is typically used for reparameterization trick, KL divergence, while diffusion models is used for DDPM, DDIM, Stable Diffusion. Example demonstrating VAE: encoder: q(z|x), decoder: p(x|z). Example demonstrating diffusion models: noise schedule, U-Net architecture.",
+      "keywords": [
+        "VAE",
+        "diffusion models",
+        "comparison",
+        "Generative AI"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose VAE over diffusion models?",
+        "What is the performance or memory difference between VAE and diffusion models?"
+      ],
+      "related_concepts": [
+        "VAE",
+        "diffusion models",
+        "GANs"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GENAI-005",
+      "subject": "Generative AI",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What are the common issues with diffusion models in Generative AI and how do you debug them?",
+      "ideal_answer": "Common issues with diffusion models in Generative AI include: latent diffusion for efficiency. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "diffusion models",
+        "troubleshooting",
+        "Generative AI"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to diffusion models?",
+        "What tools can assist in detecting problems with diffusion models at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "GANs",
+        "VAE"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GENAI-006",
+      "subject": "Generative AI",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Medium",
+      "question": "Explain the difference between GANs and VAE in Generative AI.",
+      "ideal_answer": "GANs and VAE differ in several ways: GANs is generative adversarial networks (works by generator-discriminator game) whereas VAE is variational autoencoder (works by latent space generative model). GANs is typically used for minimax objective, Nash equilibrium, while VAE is used for reparameterization trick, KL divergence. Example demonstrating GANs: DCGAN, StyleGAN, CycleGAN. Example demonstrating VAE: encoder: q(z|x), decoder: p(x|z).",
+      "keywords": [
+        "GANs",
+        "VAE",
+        "comparison",
+        "Generative AI"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose GANs over VAE?",
+        "What is the performance or memory difference between GANs and VAE?"
+      ],
+      "related_concepts": [
+        "GANs",
+        "VAE",
+        "diffusion models"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GENAI-007",
+      "subject": "Generative AI",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "What is flow-based models in Generative AI and how does it work?",
+      "ideal_answer": "flow-based models in Generative AI refers to invertible transformations. It works by exact likelihood computation. Key characteristics include RealNVP, Glow, normalizing flows. Example: z = f(x), x = f^{-1}(z). Common pitfalls include coupling layers, actnorm.",
+      "keywords": [
+        "flow-based models",
+        "Generative AI programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of flow-based models in a production environment?",
+        "What are the common pitfalls or issues associated with flow-based models?"
+      ],
+      "related_concepts": [
+        "flow-based models"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GENAI-008",
+      "subject": "Generative AI",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What is diffusion models in Generative AI and how does it work?",
+      "ideal_answer": "diffusion models in Generative AI refers to iterative denoising generation. It works by reverse diffusion process. Key characteristics include DDPM, DDIM, Stable Diffusion. Example: noise schedule, U-Net architecture. Common pitfalls include latent diffusion for efficiency.",
+      "keywords": [
+        "diffusion models",
+        "Generative AI programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of diffusion models in a production environment?",
+        "What are the common pitfalls or issues associated with diffusion models?"
+      ],
+      "related_concepts": [
+        "GANs",
+        "VAE"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GENAI-009",
+      "subject": "Generative AI",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What is GANs in Generative AI and how does it work?",
+      "ideal_answer": "GANs in Generative AI refers to generative adversarial networks. It works by generator-discriminator game. Key characteristics include minimax objective, Nash equilibrium. Example: DCGAN, StyleGAN, CycleGAN. Common pitfalls include mode collapse, training instability.",
+      "keywords": [
+        "GANs",
+        "Generative AI programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of GANs in a production environment?",
+        "What are the common pitfalls or issues associated with GANs?"
+      ],
+      "related_concepts": [
+        "VAE",
+        "diffusion models"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GENAI-010",
+      "subject": "Generative AI",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What are the common issues with GANs in Generative AI and how do you debug them?",
+      "ideal_answer": "Common issues with GANs in Generative AI include: mode collapse, training instability. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "GANs",
+        "troubleshooting",
+        "Generative AI"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to GANs?",
+        "What tools can assist in detecting problems with GANs at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "VAE",
+        "diffusion models"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GENAI-011",
+      "subject": "Generative AI",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Hard",
+      "question": "What are the common issues with flow-based models in Generative AI and how do you debug them?",
+      "ideal_answer": "Common issues with flow-based models in Generative AI include: coupling layers, actnorm. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "flow-based models",
+        "troubleshooting",
+        "Generative AI"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to flow-based models?",
+        "What tools can assist in detecting problems with flow-based models at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "flow-based models"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

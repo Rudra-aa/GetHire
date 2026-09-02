@@ -24,6 +24,7 @@ from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase
 from pymongo.errors import ConnectionFailure, ServerSelectionTimeoutError
 
 from app.core.config import settings
+from app.core.exceptions import ServiceUnavailableError
 from app.core.logging import get_logger
 
 logger = get_logger(__name__)
@@ -53,26 +54,45 @@ class MongoManager:
         """
         logger.info("Connecting to MongoDB", uri_host=self._redacted_uri())
         try:
-            self._client = AsyncIOMotorClient(
-                settings.MONGODB_URI,
-                maxPoolSize=settings.MONGODB_MAX_POOL_SIZE,
-                minPoolSize=settings.MONGODB_MIN_POOL_SIZE,
-                serverSelectionTimeoutMS=5000,  # fail fast at startup
-            )
+            kwargs: dict = {
+                "maxPoolSize": settings.MONGODB_MAX_POOL_SIZE,
+                "minPoolSize": settings.MONGODB_MIN_POOL_SIZE,
+                "serverSelectionTimeoutMS": 5000,
+            }
+            if "mongodb+srv://" in settings.MONGODB_URI:
+                kwargs["tls"] = True
+                kwargs["tlsInsecure"] = True
+
+            self._client = AsyncIOMotorClient(settings.MONGODB_URI, **kwargs)
             # Verify connection is actually alive
             await self._client.admin.command("ping")
-            self._db = self._client[settings.MONGODB_DB_NAME]
+            db_name = settings.MONGODB_DB_NAME.lower()
+            self._db = self._client[db_name]
             logger.info(
                 "MongoDB connected",
-                database=settings.MONGODB_DB_NAME,
+                database=db_name,
                 max_pool=settings.MONGODB_MAX_POOL_SIZE,
             )
-        except (ConnectionFailure, ServerSelectionTimeoutError) as exc:
-            logger.error("MongoDB connection failed", error=str(exc))
-            # In development we allow the app to start anyway; in production
-            # a failed DB connection should be a fatal startup error.
+        except (ConnectionFailure, ServerSelectionTimeoutError, Exception) as exc:
+            logger.error("Primary MongoDB connection failed", error=str(exc))
+            # Try fallback to local MongoDB in development mode
+            if not settings.is_production:
+                try:
+                    logger.info("Attempting local MongoDB fallback at mongodb://localhost:27017")
+                    self._client = AsyncIOMotorClient("mongodb://localhost:27017", serverSelectionTimeoutMS=2000)
+                    await self._client.admin.command("ping")
+                    db_name = settings.MONGODB_DB_NAME.lower()
+                    self._db = self._client[db_name]
+                    logger.info("MongoDB connected successfully via local fallback", database=db_name)
+                    return
+                except Exception as fallback_err:
+                    logger.error("Local MongoDB fallback also failed", error=str(fallback_err))
+
             if settings.is_production:
-                raise
+                logger.warning(
+                    "MongoDB connection could not be established at startup. Service is running in degraded mode.",
+                    error=str(exc),
+                )
 
     async def disconnect(self) -> None:
         """Close the connection pool gracefully."""
@@ -87,12 +107,12 @@ class MongoManager:
         Return the active database handle.
 
         Raises:
-            RuntimeError: If called before connect().
+            ServiceUnavailableError: If called before connect() or MongoDB is unreachable.
         """
         if self._db is None:
-            raise RuntimeError(
-                "MongoDB is not connected. "
-                "Ensure connect() is called during application startup."
+            raise ServiceUnavailableError(
+                "Database is currently not connected. Please ensure MongoDB is running.",
+                code="DATABASE_NOT_CONNECTED",
             )
         return self._db
 

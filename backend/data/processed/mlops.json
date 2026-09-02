@@ -1,0 +1,391 @@
+{
+  "metadata": {
+    "subject": "MLOps",
+    "domain": "Artificial Intelligence",
+    "total_questions": 14,
+    "difficulty_distribution": {
+      "Easy": 4,
+      "Medium": 7,
+      "Hard": 3
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "MLOPS-001",
+      "subject": "MLOps",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Easy",
+      "question": "Explain the difference between model versioning and model monitoring in MLOps.",
+      "ideal_answer": "model versioning and model monitoring differ in several ways: model versioning is artifact tracking (works by experiment reproducibility) whereas model monitoring is production model health (works by detecting drift and degradation). model versioning is typically used for MLflow, DVC, Weights & Biases, while model monitoring is used for data drift, concept drift, prediction drift. Example demonstrating model versioning: model registry: staging, production, archived. Example demonstrating model monitoring: Evidently, WhyLabs, Fiddler.",
+      "keywords": [
+        "model versioning",
+        "model monitoring",
+        "comparison",
+        "MLOps"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose model versioning over model monitoring?",
+        "What is the performance or memory difference between model versioning and model monitoring?"
+      ],
+      "related_concepts": [
+        "model versioning",
+        "model monitoring",
+        "ML pipeline"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MLOPS-002",
+      "subject": "MLOps",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Easy",
+      "question": "What are the common issues with feature store in MLOps and how do you debug them?",
+      "ideal_answer": "Common issues with feature store in MLOps include: feature consistency, point-in-time correctness. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "feature store",
+        "troubleshooting",
+        "MLOps"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to feature store?",
+        "What tools can assist in detecting problems with feature store at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "CI/CD for ML"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MLOPS-003",
+      "subject": "MLOps",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Easy",
+      "question": "Explain the difference between ML pipeline and model monitoring in MLOps.",
+      "ideal_answer": "ML pipeline and model monitoring differ in several ways: ML pipeline is end-to-end ML workflow (works by data -> model -> deployment) whereas model monitoring is production model health (works by detecting drift and degradation). ML pipeline is typically used for data ingestion, validation, transformation, training, evaluation, while model monitoring is used for data drift, concept drift, prediction drift. Example demonstrating ML pipeline: Kubeflow, Airflow, MLflow pipelines. Example demonstrating model monitoring: Evidently, WhyLabs, Fiddler.",
+      "keywords": [
+        "ML pipeline",
+        "model monitoring",
+        "comparison",
+        "MLOps"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ML pipeline over model monitoring?",
+        "What is the performance or memory difference between ML pipeline and model monitoring?"
+      ],
+      "related_concepts": [
+        "ML pipeline",
+        "model monitoring",
+        "model versioning"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MLOPS-004",
+      "subject": "MLOps",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Easy",
+      "question": "Explain the difference between ML pipeline and model versioning in MLOps.",
+      "ideal_answer": "ML pipeline and model versioning differ in several ways: ML pipeline is end-to-end ML workflow (works by data -> model -> deployment) whereas model versioning is artifact tracking (works by experiment reproducibility). ML pipeline is typically used for data ingestion, validation, transformation, training, evaluation, while model versioning is used for MLflow, DVC, Weights & Biases. Example demonstrating ML pipeline: Kubeflow, Airflow, MLflow pipelines. Example demonstrating model versioning: model registry: staging, production, archived.",
+      "keywords": [
+        "ML pipeline",
+        "model versioning",
+        "comparison",
+        "MLOps"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ML pipeline over model versioning?",
+        "What is the performance or memory difference between ML pipeline and model versioning?"
+      ],
+      "related_concepts": [
+        "ML pipeline",
+        "model versioning",
+        "model monitoring"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MLOPS-005",
+      "subject": "MLOps",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "Explain the difference between CI/CD for ML and feature store in MLOps.",
+      "ideal_answer": "CI/CD for ML and feature store differ in several ways: CI/CD for ML is automated ML deployment (works by testing and deploying models) whereas feature store is feature management system (works by centralized feature serving). CI/CD for ML is typically used for model testing, A/B testing, canary deployment, while feature store is used for  Feast, Tecton, SageMaker Feature Store. Example demonstrating CI/CD for ML: GitOps for ML, Seldon, BentoML. Example demonstrating feature store: online vs offline features.",
+      "keywords": [
+        "CI/CD for ML",
+        "feature store",
+        "comparison",
+        "MLOps"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CI/CD for ML over feature store?",
+        "What is the performance or memory difference between CI/CD for ML and feature store?"
+      ],
+      "related_concepts": [
+        "CI/CD for ML",
+        "feature store"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MLOPS-006",
+      "subject": "MLOps",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Medium",
+      "question": "What is feature store in MLOps and how does it work?",
+      "ideal_answer": "feature store in MLOps refers to feature management system. It works by centralized feature serving. Key characteristics include  Feast, Tecton, SageMaker Feature Store. Example: online vs offline features. Common pitfalls include feature consistency, point-in-time correctness.",
+      "keywords": [
+        "feature store",
+        "MLOps programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of feature store in a production environment?",
+        "What are the common pitfalls or issues associated with feature store?"
+      ],
+      "related_concepts": [
+        "CI/CD for ML"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MLOPS-007",
+      "subject": "MLOps",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What are the common issues with model monitoring in MLOps and how do you debug them?",
+      "ideal_answer": "Common issues with model monitoring in MLOps include: alerting thresholds. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "model monitoring",
+        "troubleshooting",
+        "MLOps"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to model monitoring?",
+        "What tools can assist in detecting problems with model monitoring at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ML pipeline",
+        "model versioning"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MLOPS-008",
+      "subject": "MLOps",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Medium",
+      "question": "What is model versioning in MLOps and how does it work?",
+      "ideal_answer": "model versioning in MLOps refers to artifact tracking. It works by experiment reproducibility. Key characteristics include MLflow, DVC, Weights & Biases. Example: model registry: staging, production, archived. Common pitfalls include artifact lineage.",
+      "keywords": [
+        "model versioning",
+        "MLOps programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of model versioning in a production environment?",
+        "What are the common pitfalls or issues associated with model versioning?"
+      ],
+      "related_concepts": [
+        "ML pipeline",
+        "model monitoring"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MLOPS-009",
+      "subject": "MLOps",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "What is CI/CD for ML in MLOps and how does it work?",
+      "ideal_answer": "CI/CD for ML in MLOps refers to automated ML deployment. It works by testing and deploying models. Key characteristics include model testing, A/B testing, canary deployment. Example: GitOps for ML, Seldon, BentoML. Common pitfalls include model rollback strategies.",
+      "keywords": [
+        "CI/CD for ML",
+        "MLOps programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of CI/CD for ML in a production environment?",
+        "What are the common pitfalls or issues associated with CI/CD for ML?"
+      ],
+      "related_concepts": [
+        "feature store"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MLOPS-010",
+      "subject": "MLOps",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Medium",
+      "question": "What are the common issues with model versioning in MLOps and how do you debug them?",
+      "ideal_answer": "Common issues with model versioning in MLOps include: artifact lineage. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "model versioning",
+        "troubleshooting",
+        "MLOps"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to model versioning?",
+        "What tools can assist in detecting problems with model versioning at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ML pipeline",
+        "model monitoring"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MLOPS-011",
+      "subject": "MLOps",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What is model monitoring in MLOps and how does it work?",
+      "ideal_answer": "model monitoring in MLOps refers to production model health. It works by detecting drift and degradation. Key characteristics include data drift, concept drift, prediction drift. Example: Evidently, WhyLabs, Fiddler. Common pitfalls include alerting thresholds.",
+      "keywords": [
+        "model monitoring",
+        "MLOps programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of model monitoring in a production environment?",
+        "What are the common pitfalls or issues associated with model monitoring?"
+      ],
+      "related_concepts": [
+        "ML pipeline",
+        "model versioning"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MLOPS-012",
+      "subject": "MLOps",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What is ML pipeline in MLOps and how does it work?",
+      "ideal_answer": "ML pipeline in MLOps refers to end-to-end ML workflow. It works by data -> model -> deployment. Key characteristics include data ingestion, validation, transformation, training, evaluation. Example: Kubeflow, Airflow, MLflow pipelines. Common pitfalls include pipeline versioning.",
+      "keywords": [
+        "ML pipeline",
+        "MLOps programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of ML pipeline in a production environment?",
+        "What are the common pitfalls or issues associated with ML pipeline?"
+      ],
+      "related_concepts": [
+        "model versioning",
+        "model monitoring"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "MLOPS-013",
+      "subject": "MLOps",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What are the common issues with ML pipeline in MLOps and how do you debug them?",
+      "ideal_answer": "Common issues with ML pipeline in MLOps include: pipeline versioning. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "ML pipeline",
+        "troubleshooting",
+        "MLOps"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to ML pipeline?",
+        "What tools can assist in detecting problems with ML pipeline at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "model versioning",
+        "model monitoring"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "MLOPS-014",
+      "subject": "MLOps",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Hard",
+      "question": "What are the common issues with CI/CD for ML in MLOps and how do you debug them?",
+      "ideal_answer": "Common issues with CI/CD for ML in MLOps include: model rollback strategies. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "CI/CD for ML",
+        "troubleshooting",
+        "MLOps"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to CI/CD for ML?",
+        "What tools can assist in detecting problems with CI/CD for ML at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "feature store"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

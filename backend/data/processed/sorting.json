@@ -1,0 +1,188 @@
+{
+  "metadata": {
+    "subject": "Sorting",
+    "domain": "Data Structures & Algorithms",
+    "total_questions": 6,
+    "difficulty_distribution": {
+      "Easy": 1,
+      "Medium": 3,
+      "Hard": 2
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "SORT-001",
+      "subject": "Sorting",
+      "category": "Techniques",
+      "subcategory": "Standard Approaches",
+      "difficulty": "Easy",
+      "question": "What are the common issues with sorting strategy in Sorting and how do you debug them?",
+      "ideal_answer": "Common issues with sorting strategy in Sorting include: when sorting fails. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "sorting strategy",
+        "troubleshooting",
+        "Sorting"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to sorting strategy?",
+        "What tools can assist in detecting problems with sorting strategy at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "sorting strategy"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SORT-002",
+      "subject": "Sorting",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Medium",
+      "question": "What are the common issues with sorting overview in Sorting and how do you debug them?",
+      "ideal_answer": "Common issues with sorting overview in Sorting include: common pitfalls and optimizations. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "sorting overview",
+        "troubleshooting",
+        "Sorting"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to sorting overview?",
+        "What tools can assist in detecting problems with sorting overview at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "sorting overview"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SORT-003",
+      "subject": "Sorting",
+      "category": "Techniques",
+      "subcategory": "Standard Approaches",
+      "difficulty": "Medium",
+      "question": "What is sorting strategy in Sorting and how does it work?",
+      "ideal_answer": "sorting strategy in Sorting refers to problem-solving approach. It works by step-by-step methodology. Key characteristics include identifying applicability, making local choices, verifying optimality. Example: pseudocode and implementation. Common pitfalls include when sorting fails.",
+      "keywords": [
+        "sorting strategy",
+        "Sorting programming",
+        "techniques"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of sorting strategy in a production environment?",
+        "What are the common pitfalls or issues associated with sorting strategy?"
+      ],
+      "related_concepts": [
+        "sorting strategy"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SORT-004",
+      "subject": "Sorting",
+      "category": "Applications",
+      "subcategory": "Classic Problems",
+      "difficulty": "Medium",
+      "question": "What is classic sorting problems in Sorting and how does it work?",
+      "ideal_answer": "classic sorting problems in Sorting refers to well-known applications. It works by interview-standard questions. Key characteristics include Activity Selection, Huffman Coding, Fractional Knapsack (Greedy); N-Queens, Sudoku, Permutations (Backtracking); Tower of Hanoi, Tree traversals (Recursion); Binary Search, Interpolation Search (Searching); QuickSort, MergeSort, HeapSort (Sorting). Example: implementation details. Common pitfalls include time/space tradeoffs.",
+      "keywords": [
+        "classic sorting problems",
+        "Sorting programming",
+        "applications"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of classic sorting problems in a production environment?",
+        "What are the common pitfalls or issues associated with classic sorting problems?"
+      ],
+      "related_concepts": [
+        "classic sorting problems"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SORT-005",
+      "subject": "Sorting",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What is sorting overview in Sorting and how does it work?",
+      "ideal_answer": "sorting overview in Sorting refers to core sorting concept. It works by fundamental algorithmic paradigm. Key characteristics include key characteristics and use cases of Sorting. Example: standard implementation pattern. Common pitfalls include common pitfalls and optimizations.",
+      "keywords": [
+        "sorting overview",
+        "Sorting programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of sorting overview in a production environment?",
+        "What are the common pitfalls or issues associated with sorting overview?"
+      ],
+      "related_concepts": [
+        "sorting overview"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "SORT-006",
+      "subject": "Sorting",
+      "category": "Applications",
+      "subcategory": "Classic Problems",
+      "difficulty": "Hard",
+      "question": "What are the common issues with classic sorting problems in Sorting and how do you debug them?",
+      "ideal_answer": "Common issues with classic sorting problems in Sorting include: time/space tradeoffs. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "classic sorting problems",
+        "troubleshooting",
+        "Sorting"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to classic sorting problems?",
+        "What tools can assist in detecting problems with classic sorting problems at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "classic sorting problems"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

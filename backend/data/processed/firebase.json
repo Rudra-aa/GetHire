@@ -1,0 +1,876 @@
+{
+  "metadata": {
+    "subject": "Firebase",
+    "domain": "Databases",
+    "total_questions": 33,
+    "difficulty_distribution": {
+      "Easy": 9,
+      "Medium": 17,
+      "Hard": 7
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "FIREBASE-001",
+      "subject": "Firebase",
+      "category": "Cloud Functions",
+      "subcategory": "HTTP",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Firestore triggers and callable functions in Firebase.",
+      "ideal_answer": "Firestore triggers and callable functions differ in several ways: Firestore triggers is database event functions (works by reacting to document changes) whereas callable functions is client-callable HTTPS functions (works by authenticated client invocation). Firestore triggers is typically used for onCreate, onUpdate, onDelete, onWrite, while callable functions is used for automatic auth context, CORS handled. Example demonstrating Firestore triggers: functions.firestore.document('users/{userId}').onCreate((snap, context) => { ... }). Example demonstrating callable functions: const addMessage = httpsCallable(functions, 'addMessage'); const result = await addMessage({ text: 'Hello' });.",
+      "keywords": [
+        "Firestore triggers",
+        "callable functions",
+        "comparison",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Firestore triggers over callable functions?",
+        "What is the performance or memory difference between Firestore triggers and callable functions?"
+      ],
+      "related_concepts": [
+        "Firestore triggers",
+        "callable functions"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FIREBASE-002",
+      "subject": "Firebase",
+      "category": "Firestore",
+      "subcategory": "Queries",
+      "difficulty": "Easy",
+      "question": "What are the common issues with transactions in Firebase and how do you debug them?",
+      "ideal_answer": "Common issues with transactions in Firebase include: transaction timeout, conflict resolution. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "transactions",
+        "troubleshooting",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to transactions?",
+        "What tools can assist in detecting problems with transactions at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "document model",
+        "queries",
+        "offline persistence"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FIREBASE-003",
+      "subject": "Firebase",
+      "category": "Firestore",
+      "subcategory": "Documents",
+      "difficulty": "Easy",
+      "question": "Explain the difference between queries and transactions in Firebase.",
+      "ideal_answer": "queries and transactions differ in several ways: queries is document retrieval (works by single-collection queries with indexing) whereas transactions is atomic multi-document operations (works by all-or-nothing updates). queries is typically used for where, orderBy, limit, startAfter, while transactions is used for read before write within transaction. Example demonstrating queries: db.collection('users').where('age', '>=', 18).orderBy('age').limit(10). Example demonstrating transactions: db.runTransaction(async (t) => { const doc = await t.get(ref); t.update(ref, { count: doc.data().count + 1 }); }).",
+      "keywords": [
+        "queries",
+        "transactions",
+        "comparison",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose queries over transactions?",
+        "What is the performance or memory difference between queries and transactions?"
+      ],
+      "related_concepts": [
+        "queries",
+        "transactions",
+        "document model",
+        "offline persistence"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FIREBASE-004",
+      "subject": "Firebase",
+      "category": "Authentication",
+      "subcategory": "OAuth",
+      "difficulty": "Easy",
+      "question": "What is ID Token in Firebase and how does it work?",
+      "ideal_answer": "ID Token in Firebase refers to JWT identity token. It works by secure user identification. Key characteristics include signed by Firebase, contains claims. Example: const token = await user.getIdToken();. Common pitfalls include token refresh, verification with Admin SDK.",
+      "keywords": [
+        "ID Token",
+        "Firebase programming",
+        "authentication"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of ID Token in a production environment?",
+        "What are the common pitfalls or issues associated with ID Token?"
+      ],
+      "related_concepts": [
+        "Firebase Auth",
+        "custom claims"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FIREBASE-005",
+      "subject": "Firebase",
+      "category": "Cloud Functions",
+      "subcategory": "Firestore Triggers",
+      "difficulty": "Easy",
+      "question": "What are the common issues with callable functions in Firebase and how do you debug them?",
+      "ideal_answer": "Common issues with callable functions in Firebase include: input validation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "callable functions",
+        "troubleshooting",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to callable functions?",
+        "What tools can assist in detecting problems with callable functions at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Firestore triggers"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FIREBASE-006",
+      "subject": "Firebase",
+      "category": "Firestore",
+      "subcategory": "Documents",
+      "difficulty": "Easy",
+      "question": "Explain the difference between queries and offline persistence in Firebase.",
+      "ideal_answer": "queries and offline persistence differ in several ways: queries is document retrieval (works by single-collection queries with indexing) whereas offline persistence is local data caching (works by offline read and write support). queries is typically used for where, orderBy, limit, startAfter, while offline persistence is used for enabled by default on mobile, disabled on web. Example demonstrating queries: db.collection('users').where('age', '>=', 18).orderBy('age').limit(10). Example demonstrating offline persistence: await db.enablePersistence({ synchronizeTabs: true }).",
+      "keywords": [
+        "queries",
+        "offline persistence",
+        "comparison",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose queries over offline persistence?",
+        "What is the performance or memory difference between queries and offline persistence?"
+      ],
+      "related_concepts": [
+        "queries",
+        "offline persistence",
+        "document model",
+        "transactions"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FIREBASE-007",
+      "subject": "Firebase",
+      "category": "Authentication",
+      "subcategory": "Email/Password",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Firebase Auth and ID Token in Firebase.",
+      "ideal_answer": "Firebase Auth and ID Token differ in several ways: Firebase Auth is managed authentication service (works by multiple provider support) whereas ID Token is JWT identity token (works by secure user identification). Firebase Auth is typically used for email/password, Google, Facebook, GitHub, anonymous, while ID Token is used for signed by Firebase, contains claims. Example demonstrating Firebase Auth: const provider = new GoogleAuthProvider(); signInWithPopup(auth, provider);. Example demonstrating ID Token: const token = await user.getIdToken();.",
+      "keywords": [
+        "Firebase Auth",
+        "ID Token",
+        "comparison",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Firebase Auth over ID Token?",
+        "What is the performance or memory difference between Firebase Auth and ID Token?"
+      ],
+      "related_concepts": [
+        "Firebase Auth",
+        "ID Token",
+        "custom claims"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FIREBASE-008",
+      "subject": "Firebase",
+      "category": "Authentication",
+      "subcategory": "Email/Password",
+      "difficulty": "Easy",
+      "question": "What are the common issues with Firebase Auth in Firebase and how do you debug them?",
+      "ideal_answer": "Common issues with Firebase Auth in Firebase include: custom claims, ID tokens. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Firebase Auth",
+        "troubleshooting",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Firebase Auth?",
+        "What tools can assist in detecting problems with Firebase Auth at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ID Token",
+        "custom claims"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FIREBASE-009",
+      "subject": "Firebase",
+      "category": "Firestore",
+      "subcategory": "Collections",
+      "difficulty": "Easy",
+      "question": "Explain the difference between document model and offline persistence in Firebase.",
+      "ideal_answer": "document model and offline persistence differ in several ways: document model is NoSQL document database (works by hierarchical collection-document structure) whereas offline persistence is local data caching (works by offline read and write support). document model is typically used for collections contain documents, documents contain subcollections, while offline persistence is used for enabled by default on mobile, disabled on web. Example demonstrating document model: users/{userId}/orders/{orderId}. Example demonstrating offline persistence: await db.enablePersistence({ synchronizeTabs: true }).",
+      "keywords": [
+        "document model",
+        "offline persistence",
+        "comparison",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose document model over offline persistence?",
+        "What is the performance or memory difference between document model and offline persistence?"
+      ],
+      "related_concepts": [
+        "document model",
+        "offline persistence",
+        "queries",
+        "transactions"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FIREBASE-010",
+      "subject": "Firebase",
+      "category": "Authentication",
+      "subcategory": "Email/Password",
+      "difficulty": "Medium",
+      "question": "What is Firebase Auth in Firebase and how does it work?",
+      "ideal_answer": "Firebase Auth in Firebase refers to managed authentication service. It works by multiple provider support. Key characteristics include email/password, Google, Facebook, GitHub, anonymous. Example: const provider = new GoogleAuthProvider(); signInWithPopup(auth, provider);. Common pitfalls include custom claims, ID tokens.",
+      "keywords": [
+        "Firebase Auth",
+        "Firebase programming",
+        "authentication"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Firebase Auth in a production environment?",
+        "What are the common pitfalls or issues associated with Firebase Auth?"
+      ],
+      "related_concepts": [
+        "ID Token",
+        "custom claims"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FIREBASE-011",
+      "subject": "Firebase",
+      "category": "Authentication",
+      "subcategory": "Anonymous",
+      "difficulty": "Medium",
+      "question": "What are the common issues with custom claims in Firebase and how do you debug them?",
+      "ideal_answer": "Common issues with custom claims in Firebase include: claim propagation delay. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "custom claims",
+        "troubleshooting",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to custom claims?",
+        "What tools can assist in detecting problems with custom claims at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Firebase Auth",
+        "ID Token"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FIREBASE-012",
+      "subject": "Firebase",
+      "category": "Authentication",
+      "subcategory": "OAuth",
+      "difficulty": "Medium",
+      "question": "Explain the difference between ID Token and custom claims in Firebase.",
+      "ideal_answer": "ID Token and custom claims differ in several ways: ID Token is JWT identity token (works by secure user identification) whereas custom claims is additional user attributes (works by role-based access control). ID Token is typically used for signed by Firebase, contains claims, while custom claims is used for set via Admin SDK, accessible in rules. Example demonstrating ID Token: const token = await user.getIdToken();. Example demonstrating custom claims: admin.auth().setCustomUserClaims(uid, { admin: true }).",
+      "keywords": [
+        "ID Token",
+        "custom claims",
+        "comparison",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ID Token over custom claims?",
+        "What is the performance or memory difference between ID Token and custom claims?"
+      ],
+      "related_concepts": [
+        "ID Token",
+        "custom claims",
+        "Firebase Auth"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FIREBASE-013",
+      "subject": "Firebase",
+      "category": "Firestore",
+      "subcategory": "Collections",
+      "difficulty": "Medium",
+      "question": "Explain the difference between document model and transactions in Firebase.",
+      "ideal_answer": "document model and transactions differ in several ways: document model is NoSQL document database (works by hierarchical collection-document structure) whereas transactions is atomic multi-document operations (works by all-or-nothing updates). document model is typically used for collections contain documents, documents contain subcollections, while transactions is used for read before write within transaction. Example demonstrating document model: users/{userId}/orders/{orderId}. Example demonstrating transactions: db.runTransaction(async (t) => { const doc = await t.get(ref); t.update(ref, { count: doc.data().count + 1 }); }).",
+      "keywords": [
+        "document model",
+        "transactions",
+        "comparison",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose document model over transactions?",
+        "What is the performance or memory difference between document model and transactions?"
+      ],
+      "related_concepts": [
+        "document model",
+        "transactions",
+        "queries",
+        "offline persistence"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FIREBASE-014",
+      "subject": "Firebase",
+      "category": "Security",
+      "subcategory": "Security Rules",
+      "difficulty": "Medium",
+      "question": "What are the common issues with security rules in Firebase and how do you debug them?",
+      "ideal_answer": "Common issues with security rules in Firebase include: rules cascade, testing with emulator. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "security rules",
+        "troubleshooting",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to security rules?",
+        "What tools can assist in detecting problems with security rules at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "App Check"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FIREBASE-015",
+      "subject": "Firebase",
+      "category": "Cloud Functions",
+      "subcategory": "HTTP",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Firestore triggers in Firebase and how do you debug them?",
+      "ideal_answer": "Common issues with Firestore triggers in Firebase include: cold start latency. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Firestore triggers",
+        "troubleshooting",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Firestore triggers?",
+        "What tools can assist in detecting problems with Firestore triggers at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "callable functions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FIREBASE-016",
+      "subject": "Firebase",
+      "category": "Firestore",
+      "subcategory": "Indexes",
+      "difficulty": "Medium",
+      "question": "What is offline persistence in Firebase and how does it work?",
+      "ideal_answer": "offline persistence in Firebase refers to local data caching. It works by offline read and write support. Key characteristics include enabled by default on mobile, disabled on web. Example: await db.enablePersistence({ synchronizeTabs: true }). Common pitfalls include conflict resolution, data consistency.",
+      "keywords": [
+        "offline persistence",
+        "Firebase programming",
+        "firestore"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of offline persistence in a production environment?",
+        "What are the common pitfalls or issues associated with offline persistence?"
+      ],
+      "related_concepts": [
+        "document model",
+        "queries",
+        "transactions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FIREBASE-017",
+      "subject": "Firebase",
+      "category": "Cloud Functions",
+      "subcategory": "Firestore Triggers",
+      "difficulty": "Medium",
+      "question": "What is callable functions in Firebase and how does it work?",
+      "ideal_answer": "callable functions in Firebase refers to client-callable HTTPS functions. It works by authenticated client invocation. Key characteristics include automatic auth context, CORS handled. Example: const addMessage = httpsCallable(functions, 'addMessage'); const result = await addMessage({ text: 'Hello' });. Common pitfalls include input validation.",
+      "keywords": [
+        "callable functions",
+        "Firebase programming",
+        "cloud functions"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of callable functions in a production environment?",
+        "What are the common pitfalls or issues associated with callable functions?"
+      ],
+      "related_concepts": [
+        "Firestore triggers"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FIREBASE-018",
+      "subject": "Firebase",
+      "category": "Firestore",
+      "subcategory": "Collections",
+      "difficulty": "Medium",
+      "question": "What is document model in Firebase and how does it work?",
+      "ideal_answer": "document model in Firebase refers to NoSQL document database. It works by hierarchical collection-document structure. Key characteristics include collections contain documents, documents contain subcollections. Example: users/{userId}/orders/{orderId}. Common pitfalls include 100k subcollections per document.",
+      "keywords": [
+        "document model",
+        "Firebase programming",
+        "firestore"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of document model in a production environment?",
+        "What are the common pitfalls or issues associated with document model?"
+      ],
+      "related_concepts": [
+        "queries",
+        "transactions",
+        "offline persistence"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FIREBASE-019",
+      "subject": "Firebase",
+      "category": "Security",
+      "subcategory": "App Check",
+      "difficulty": "Medium",
+      "question": "What are the common issues with App Check in Firebase and how do you debug them?",
+      "ideal_answer": "Common issues with App Check in Firebase include: bypass for development. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "App Check",
+        "troubleshooting",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to App Check?",
+        "What tools can assist in detecting problems with App Check at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "security rules"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FIREBASE-020",
+      "subject": "Firebase",
+      "category": "Firestore",
+      "subcategory": "Queries",
+      "difficulty": "Medium",
+      "question": "Explain the difference between transactions and offline persistence in Firebase.",
+      "ideal_answer": "transactions and offline persistence differ in several ways: transactions is atomic multi-document operations (works by all-or-nothing updates) whereas offline persistence is local data caching (works by offline read and write support). transactions is typically used for read before write within transaction, while offline persistence is used for enabled by default on mobile, disabled on web. Example demonstrating transactions: db.runTransaction(async (t) => { const doc = await t.get(ref); t.update(ref, { count: doc.data().count + 1 }); }). Example demonstrating offline persistence: await db.enablePersistence({ synchronizeTabs: true }).",
+      "keywords": [
+        "transactions",
+        "offline persistence",
+        "comparison",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose transactions over offline persistence?",
+        "What is the performance or memory difference between transactions and offline persistence?"
+      ],
+      "related_concepts": [
+        "transactions",
+        "offline persistence",
+        "document model",
+        "queries"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FIREBASE-021",
+      "subject": "Firebase",
+      "category": "Authentication",
+      "subcategory": "Anonymous",
+      "difficulty": "Medium",
+      "question": "What is custom claims in Firebase and how does it work?",
+      "ideal_answer": "custom claims in Firebase refers to additional user attributes. It works by role-based access control. Key characteristics include set via Admin SDK, accessible in rules. Example: admin.auth().setCustomUserClaims(uid, { admin: true }). Common pitfalls include claim propagation delay.",
+      "keywords": [
+        "custom claims",
+        "Firebase programming",
+        "authentication"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of custom claims in a production environment?",
+        "What are the common pitfalls or issues associated with custom claims?"
+      ],
+      "related_concepts": [
+        "Firebase Auth",
+        "ID Token"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FIREBASE-022",
+      "subject": "Firebase",
+      "category": "Firestore",
+      "subcategory": "Documents",
+      "difficulty": "Medium",
+      "question": "What is queries in Firebase and how does it work?",
+      "ideal_answer": "queries in Firebase refers to document retrieval. It works by single-collection queries with indexing. Key characteristics include where, orderBy, limit, startAfter. Example: db.collection('users').where('age', '>=', 18).orderBy('age').limit(10). Common pitfalls include composite index requirements.",
+      "keywords": [
+        "queries",
+        "Firebase programming",
+        "firestore"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of queries in a production environment?",
+        "What are the common pitfalls or issues associated with queries?"
+      ],
+      "related_concepts": [
+        "document model",
+        "transactions",
+        "offline persistence"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FIREBASE-023",
+      "subject": "Firebase",
+      "category": "Authentication",
+      "subcategory": "OAuth",
+      "difficulty": "Medium",
+      "question": "What are the common issues with ID Token in Firebase and how do you debug them?",
+      "ideal_answer": "Common issues with ID Token in Firebase include: token refresh, verification with Admin SDK. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "ID Token",
+        "troubleshooting",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to ID Token?",
+        "What tools can assist in detecting problems with ID Token at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Firebase Auth",
+        "custom claims"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FIREBASE-024",
+      "subject": "Firebase",
+      "category": "Authentication",
+      "subcategory": "Email/Password",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Firebase Auth and custom claims in Firebase.",
+      "ideal_answer": "Firebase Auth and custom claims differ in several ways: Firebase Auth is managed authentication service (works by multiple provider support) whereas custom claims is additional user attributes (works by role-based access control). Firebase Auth is typically used for email/password, Google, Facebook, GitHub, anonymous, while custom claims is used for set via Admin SDK, accessible in rules. Example demonstrating Firebase Auth: const provider = new GoogleAuthProvider(); signInWithPopup(auth, provider);. Example demonstrating custom claims: admin.auth().setCustomUserClaims(uid, { admin: true }).",
+      "keywords": [
+        "Firebase Auth",
+        "custom claims",
+        "comparison",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Firebase Auth over custom claims?",
+        "What is the performance or memory difference between Firebase Auth and custom claims?"
+      ],
+      "related_concepts": [
+        "Firebase Auth",
+        "custom claims",
+        "ID Token"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FIREBASE-025",
+      "subject": "Firebase",
+      "category": "Firestore",
+      "subcategory": "Documents",
+      "difficulty": "Medium",
+      "question": "What are the common issues with queries in Firebase and how do you debug them?",
+      "ideal_answer": "Common issues with queries in Firebase include: composite index requirements. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "queries",
+        "troubleshooting",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to queries?",
+        "What tools can assist in detecting problems with queries at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "document model",
+        "transactions",
+        "offline persistence"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FIREBASE-026",
+      "subject": "Firebase",
+      "category": "Security",
+      "subcategory": "App Check",
+      "difficulty": "Medium",
+      "question": "What is App Check in Firebase and how does it work?",
+      "ideal_answer": "App Check in Firebase refers to app attestation. It works by preventing unauthorized API access. Key characteristics include reCAPTCHA v3, DeviceCheck, Play Integrity. Example: const appCheck = initializeAppCheck(app, { provider: new ReCaptchaV3Provider('...') }). Common pitfalls include bypass for development.",
+      "keywords": [
+        "App Check",
+        "Firebase programming",
+        "security"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of App Check in a production environment?",
+        "What are the common pitfalls or issues associated with App Check?"
+      ],
+      "related_concepts": [
+        "security rules"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FIREBASE-027",
+      "subject": "Firebase",
+      "category": "Firestore",
+      "subcategory": "Queries",
+      "difficulty": "Hard",
+      "question": "What is transactions in Firebase and how does it work?",
+      "ideal_answer": "transactions in Firebase refers to atomic multi-document operations. It works by all-or-nothing updates. Key characteristics include read before write within transaction. Example: db.runTransaction(async (t) => { const doc = await t.get(ref); t.update(ref, { count: doc.data().count + 1 }); }). Common pitfalls include transaction timeout, conflict resolution.",
+      "keywords": [
+        "transactions",
+        "Firebase programming",
+        "firestore"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of transactions in a production environment?",
+        "What are the common pitfalls or issues associated with transactions?"
+      ],
+      "related_concepts": [
+        "document model",
+        "queries",
+        "offline persistence"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "FIREBASE-028",
+      "subject": "Firebase",
+      "category": "Security",
+      "subcategory": "Security Rules",
+      "difficulty": "Hard",
+      "question": "What is security rules in Firebase and how does it work?",
+      "ideal_answer": "security rules in Firebase refers to access control language. It works by database and storage authorization. Key characteristics include allow/deny based on auth, data, request. Example: match /users/{userId} { allow read, write: if request.auth != null && request.auth.uid == userId; }. Common pitfalls include rules cascade, testing with emulator.",
+      "keywords": [
+        "security rules",
+        "Firebase programming",
+        "security"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of security rules in a production environment?",
+        "What are the common pitfalls or issues associated with security rules?"
+      ],
+      "related_concepts": [
+        "App Check"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "FIREBASE-029",
+      "subject": "Firebase",
+      "category": "Security",
+      "subcategory": "Security Rules",
+      "difficulty": "Hard",
+      "question": "Explain the difference between security rules and App Check in Firebase.",
+      "ideal_answer": "security rules and App Check differ in several ways: security rules is access control language (works by database and storage authorization) whereas App Check is app attestation (works by preventing unauthorized API access). security rules is typically used for allow/deny based on auth, data, request, while App Check is used for reCAPTCHA v3, DeviceCheck, Play Integrity. Example demonstrating security rules: match /users/{userId} { allow read, write: if request.auth != null && request.auth.uid == userId; }. Example demonstrating App Check: const appCheck = initializeAppCheck(app, { provider: new ReCaptchaV3Provider('...') }).",
+      "keywords": [
+        "security rules",
+        "App Check",
+        "comparison",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose security rules over App Check?",
+        "What is the performance or memory difference between security rules and App Check?"
+      ],
+      "related_concepts": [
+        "security rules",
+        "App Check"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "FIREBASE-030",
+      "subject": "Firebase",
+      "category": "Firestore",
+      "subcategory": "Collections",
+      "difficulty": "Hard",
+      "question": "Explain the difference between document model and queries in Firebase.",
+      "ideal_answer": "document model and queries differ in several ways: document model is NoSQL document database (works by hierarchical collection-document structure) whereas queries is document retrieval (works by single-collection queries with indexing). document model is typically used for collections contain documents, documents contain subcollections, while queries is used for where, orderBy, limit, startAfter. Example demonstrating document model: users/{userId}/orders/{orderId}. Example demonstrating queries: db.collection('users').where('age', '>=', 18).orderBy('age').limit(10).",
+      "keywords": [
+        "document model",
+        "queries",
+        "comparison",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose document model over queries?",
+        "What is the performance or memory difference between document model and queries?"
+      ],
+      "related_concepts": [
+        "document model",
+        "queries",
+        "transactions",
+        "offline persistence"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "FIREBASE-031",
+      "subject": "Firebase",
+      "category": "Cloud Functions",
+      "subcategory": "HTTP",
+      "difficulty": "Hard",
+      "question": "What is Firestore triggers in Firebase and how does it work?",
+      "ideal_answer": "Firestore triggers in Firebase refers to database event functions. It works by reacting to document changes. Key characteristics include onCreate, onUpdate, onDelete, onWrite. Example: functions.firestore.document('users/{userId}').onCreate((snap, context) => { ... }). Common pitfalls include cold start latency.",
+      "keywords": [
+        "Firestore triggers",
+        "Firebase programming",
+        "cloud functions"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Firestore triggers in a production environment?",
+        "What are the common pitfalls or issues associated with Firestore triggers?"
+      ],
+      "related_concepts": [
+        "callable functions"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "FIREBASE-032",
+      "subject": "Firebase",
+      "category": "Firestore",
+      "subcategory": "Collections",
+      "difficulty": "Hard",
+      "question": "What are the common issues with document model in Firebase and how do you debug them?",
+      "ideal_answer": "Common issues with document model in Firebase include: 100k subcollections per document. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "document model",
+        "troubleshooting",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to document model?",
+        "What tools can assist in detecting problems with document model at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "queries",
+        "transactions",
+        "offline persistence"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "FIREBASE-033",
+      "subject": "Firebase",
+      "category": "Firestore",
+      "subcategory": "Indexes",
+      "difficulty": "Hard",
+      "question": "What are the common issues with offline persistence in Firebase and how do you debug them?",
+      "ideal_answer": "Common issues with offline persistence in Firebase include: conflict resolution, data consistency. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "offline persistence",
+        "troubleshooting",
+        "Firebase"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to offline persistence?",
+        "What tools can assist in detecting problems with offline persistence at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "document model",
+        "queries",
+        "transactions"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

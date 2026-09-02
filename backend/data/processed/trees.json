@@ -1,0 +1,510 @@
+{
+  "metadata": {
+    "subject": "Trees",
+    "domain": "Data Structures & Algorithms",
+    "total_questions": 19,
+    "difficulty_distribution": {
+      "Easy": 5,
+      "Medium": 10,
+      "Hard": 4
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "TREE-001",
+      "subject": "Trees",
+      "category": "Types",
+      "subcategory": "Binary Tree",
+      "difficulty": "Easy",
+      "question": "What is segment tree in Trees and how does it work?",
+      "ideal_answer": "segment tree in Trees refers to range query structure. It works by O(log n) range queries and updates. Key characteristics include array-based binary tree, divide and conquer. Example: build: O(n), query: O(log n), update: O(log n). Common pitfalls include lazy propagation for range updates.",
+      "keywords": [
+        "segment tree",
+        "Trees programming",
+        "types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of segment tree in a production environment?",
+        "What are the common pitfalls or issues associated with segment tree?"
+      ],
+      "related_concepts": [
+        "Fenwick tree"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TREE-002",
+      "subject": "Trees",
+      "category": "Traversal",
+      "subcategory": "BFS",
+      "difficulty": "Easy",
+      "question": "Explain the difference between BFS traversal and Morris traversal in Trees.",
+      "ideal_answer": "BFS traversal and Morris traversal differ in several ways: BFS traversal is level-order traversal (works by queue-based breadth-first) whereas Morris traversal is O(1) space traversal (works by threaded binary tree technique). BFS traversal is typically used for O(n) time, O(w) space where w is max width, while Morris traversal is used for temporary links to predecessor. Example demonstrating BFS traversal: queue.offer(root); while (!queue.isEmpty()) { Node curr = queue.poll(); process(curr); queue.offer(curr.left); queue.offer(curr.right); }. Example demonstrating Morris traversal: if (curr.left == null) { visit(curr); curr = curr.right; } else { Node pred = findPredecessor(curr); if (pred.right == null) { pred.right = curr; curr = curr.left; } else { pred.right = null; visit(curr); curr = curr.right; } }.",
+      "keywords": [
+        "BFS traversal",
+        "Morris traversal",
+        "comparison",
+        "Trees"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose BFS traversal over Morris traversal?",
+        "What is the performance or memory difference between BFS traversal and Morris traversal?"
+      ],
+      "related_concepts": [
+        "BFS traversal",
+        "Morris traversal",
+        "DFS traversals"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TREE-003",
+      "subject": "Trees",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Easy",
+      "question": "Explain the difference between tree properties and tree representations in Trees.",
+      "ideal_answer": "tree properties and tree representations differ in several ways: tree properties is hierarchical data structure (works by acyclic connected graph) whereas tree representations is storage implementations (works by linked, array, parent pointer). tree properties is typically used for root, parent, child, leaf, sibling, ancestor, descendant, while tree representations is used for left-child right-sibling, array for complete trees. Example demonstrating tree properties: n nodes = n-1 edges. Example demonstrating tree representations: int[] tree = new int[n]; // parent array.",
+      "keywords": [
+        "tree properties",
+        "tree representations",
+        "comparison",
+        "Trees"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose tree properties over tree representations?",
+        "What is the performance or memory difference between tree properties and tree representations?"
+      ],
+      "related_concepts": [
+        "tree properties",
+        "tree representations"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TREE-004",
+      "subject": "Trees",
+      "category": "Traversal",
+      "subcategory": "Morris Traversal",
+      "difficulty": "Easy",
+      "question": "What is Morris traversal in Trees and how does it work?",
+      "ideal_answer": "Morris traversal in Trees refers to O(1) space traversal. It works by threaded binary tree technique. Key characteristics include temporary links to predecessor. Example: if (curr.left == null) { visit(curr); curr = curr.right; } else { Node pred = findPredecessor(curr); if (pred.right == null) { pred.right = curr; curr = curr.left; } else { pred.right = null; visit(curr); curr = curr.right; } }. Common pitfalls include tree modification during traversal.",
+      "keywords": [
+        "Morris traversal",
+        "Trees programming",
+        "traversal"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Morris traversal in a production environment?",
+        "What are the common pitfalls or issues associated with Morris traversal?"
+      ],
+      "related_concepts": [
+        "DFS traversals",
+        "BFS traversal"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TREE-005",
+      "subject": "Trees",
+      "category": "Traversal",
+      "subcategory": "DFS",
+      "difficulty": "Easy",
+      "question": "What is DFS traversals in Trees and how does it work?",
+      "ideal_answer": "DFS traversals in Trees refers to depth-first strategies. It works by preorder, inorder, postorder. Key characteristics include recursive and iterative implementations. Example: preorder: root-left-right; inorder: left-root-right; postorder: left-right-root. Common pitfalls include inorder of BST gives sorted order.",
+      "keywords": [
+        "DFS traversals",
+        "Trees programming",
+        "traversal"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of DFS traversals in a production environment?",
+        "What are the common pitfalls or issues associated with DFS traversals?"
+      ],
+      "related_concepts": [
+        "BFS traversal",
+        "Morris traversal"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TREE-006",
+      "subject": "Trees",
+      "category": "Types",
+      "subcategory": "Binary Tree",
+      "difficulty": "Medium",
+      "question": "What are the common issues with segment tree in Trees and how do you debug them?",
+      "ideal_answer": "Common issues with segment tree in Trees include: lazy propagation for range updates. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "segment tree",
+        "troubleshooting",
+        "Trees"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to segment tree?",
+        "What tools can assist in detecting problems with segment tree at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Fenwick tree"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TREE-007",
+      "subject": "Trees",
+      "category": "Types",
+      "subcategory": "BST",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Fenwick tree in Trees and how do you debug them?",
+      "ideal_answer": "Common issues with Fenwick tree in Trees include: range sum via two prefix queries. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Fenwick tree",
+        "troubleshooting",
+        "Trees"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Fenwick tree?",
+        "What tools can assist in detecting problems with Fenwick tree at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "segment tree"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TREE-008",
+      "subject": "Trees",
+      "category": "Traversal",
+      "subcategory": "DFS",
+      "difficulty": "Medium",
+      "question": "What are the common issues with DFS traversals in Trees and how do you debug them?",
+      "ideal_answer": "Common issues with DFS traversals in Trees include: inorder of BST gives sorted order. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "DFS traversals",
+        "troubleshooting",
+        "Trees"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to DFS traversals?",
+        "What tools can assist in detecting problems with DFS traversals at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "BFS traversal",
+        "Morris traversal"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TREE-009",
+      "subject": "Trees",
+      "category": "Traversal",
+      "subcategory": "DFS",
+      "difficulty": "Medium",
+      "question": "Explain the difference between DFS traversals and Morris traversal in Trees.",
+      "ideal_answer": "DFS traversals and Morris traversal differ in several ways: DFS traversals is depth-first strategies (works by preorder, inorder, postorder) whereas Morris traversal is O(1) space traversal (works by threaded binary tree technique). DFS traversals is typically used for recursive and iterative implementations, while Morris traversal is used for temporary links to predecessor. Example demonstrating DFS traversals: preorder: root-left-right; inorder: left-root-right; postorder: left-right-root. Example demonstrating Morris traversal: if (curr.left == null) { visit(curr); curr = curr.right; } else { Node pred = findPredecessor(curr); if (pred.right == null) { pred.right = curr; curr = curr.left; } else { pred.right = null; visit(curr); curr = curr.right; } }.",
+      "keywords": [
+        "DFS traversals",
+        "Morris traversal",
+        "comparison",
+        "Trees"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose DFS traversals over Morris traversal?",
+        "What is the performance or memory difference between DFS traversals and Morris traversal?"
+      ],
+      "related_concepts": [
+        "DFS traversals",
+        "Morris traversal",
+        "BFS traversal"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TREE-010",
+      "subject": "Trees",
+      "category": "Types",
+      "subcategory": "BST",
+      "difficulty": "Medium",
+      "question": "What is Fenwick tree in Trees and how does it work?",
+      "ideal_answer": "Fenwick tree in Trees refers to Binary Indexed Tree. It works by prefix sum queries. Key characteristics include O(log n) query and update, less memory than segment tree. Example: int[] BIT; // 1-indexed; update: i += i & -i; query: i -= i & -i;. Common pitfalls include range sum via two prefix queries.",
+      "keywords": [
+        "Fenwick tree",
+        "Trees programming",
+        "types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Fenwick tree in a production environment?",
+        "What are the common pitfalls or issues associated with Fenwick tree?"
+      ],
+      "related_concepts": [
+        "segment tree"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TREE-011",
+      "subject": "Trees",
+      "category": "Traversal",
+      "subcategory": "Morris Traversal",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Morris traversal in Trees and how do you debug them?",
+      "ideal_answer": "Common issues with Morris traversal in Trees include: tree modification during traversal. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Morris traversal",
+        "troubleshooting",
+        "Trees"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Morris traversal?",
+        "What tools can assist in detecting problems with Morris traversal at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "DFS traversals",
+        "BFS traversal"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TREE-012",
+      "subject": "Trees",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Medium",
+      "question": "What are the common issues with tree properties in Trees and how do you debug them?",
+      "ideal_answer": "Common issues with tree properties in Trees include: height vs depth definitions. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "tree properties",
+        "troubleshooting",
+        "Trees"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to tree properties?",
+        "What tools can assist in detecting problems with tree properties at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "tree representations"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TREE-013",
+      "subject": "Trees",
+      "category": "Traversal",
+      "subcategory": "DFS",
+      "difficulty": "Medium",
+      "question": "Explain the difference between DFS traversals and BFS traversal in Trees.",
+      "ideal_answer": "DFS traversals and BFS traversal differ in several ways: DFS traversals is depth-first strategies (works by preorder, inorder, postorder) whereas BFS traversal is level-order traversal (works by queue-based breadth-first). DFS traversals is typically used for recursive and iterative implementations, while BFS traversal is used for O(n) time, O(w) space where w is max width. Example demonstrating DFS traversals: preorder: root-left-right; inorder: left-root-right; postorder: left-right-root. Example demonstrating BFS traversal: queue.offer(root); while (!queue.isEmpty()) { Node curr = queue.poll(); process(curr); queue.offer(curr.left); queue.offer(curr.right); }.",
+      "keywords": [
+        "DFS traversals",
+        "BFS traversal",
+        "comparison",
+        "Trees"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose DFS traversals over BFS traversal?",
+        "What is the performance or memory difference between DFS traversals and BFS traversal?"
+      ],
+      "related_concepts": [
+        "DFS traversals",
+        "BFS traversal",
+        "Morris traversal"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TREE-014",
+      "subject": "Trees",
+      "category": "Fundamentals",
+      "subcategory": "Properties",
+      "difficulty": "Medium",
+      "question": "What is tree representations in Trees and how does it work?",
+      "ideal_answer": "tree representations in Trees refers to storage implementations. It works by linked, array, parent pointer. Key characteristics include left-child right-sibling, array for complete trees. Example: int[] tree = new int[n]; // parent array. Common pitfalls include space complexity tradeoffs.",
+      "keywords": [
+        "tree representations",
+        "Trees programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of tree representations in a production environment?",
+        "What are the common pitfalls or issues associated with tree representations?"
+      ],
+      "related_concepts": [
+        "tree properties"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TREE-015",
+      "subject": "Trees",
+      "category": "Types",
+      "subcategory": "Binary Tree",
+      "difficulty": "Medium",
+      "question": "Explain the difference between segment tree and Fenwick tree in Trees.",
+      "ideal_answer": "segment tree and Fenwick tree differ in several ways: segment tree is range query structure (works by O(log n) range queries and updates) whereas Fenwick tree is Binary Indexed Tree (works by prefix sum queries). segment tree is typically used for array-based binary tree, divide and conquer, while Fenwick tree is used for O(log n) query and update, less memory than segment tree. Example demonstrating segment tree: build: O(n), query: O(log n), update: O(log n). Example demonstrating Fenwick tree: int[] BIT; // 1-indexed; update: i += i & -i; query: i -= i & -i;.",
+      "keywords": [
+        "segment tree",
+        "Fenwick tree",
+        "comparison",
+        "Trees"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose segment tree over Fenwick tree?",
+        "What is the performance or memory difference between segment tree and Fenwick tree?"
+      ],
+      "related_concepts": [
+        "segment tree",
+        "Fenwick tree"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TREE-016",
+      "subject": "Trees",
+      "category": "Traversal",
+      "subcategory": "BFS",
+      "difficulty": "Hard",
+      "question": "What is BFS traversal in Trees and how does it work?",
+      "ideal_answer": "BFS traversal in Trees refers to level-order traversal. It works by queue-based breadth-first. Key characteristics include O(n) time, O(w) space where w is max width. Example: queue.offer(root); while (!queue.isEmpty()) { Node curr = queue.poll(); process(curr); queue.offer(curr.left); queue.offer(curr.right); }. Common pitfalls include level-by-level processing.",
+      "keywords": [
+        "BFS traversal",
+        "Trees programming",
+        "traversal"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of BFS traversal in a production environment?",
+        "What are the common pitfalls or issues associated with BFS traversal?"
+      ],
+      "related_concepts": [
+        "DFS traversals",
+        "Morris traversal"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TREE-017",
+      "subject": "Trees",
+      "category": "Traversal",
+      "subcategory": "BFS",
+      "difficulty": "Hard",
+      "question": "What are the common issues with BFS traversal in Trees and how do you debug them?",
+      "ideal_answer": "Common issues with BFS traversal in Trees include: level-by-level processing. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "BFS traversal",
+        "troubleshooting",
+        "Trees"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to BFS traversal?",
+        "What tools can assist in detecting problems with BFS traversal at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "DFS traversals",
+        "Morris traversal"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TREE-018",
+      "subject": "Trees",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What is tree properties in Trees and how does it work?",
+      "ideal_answer": "tree properties in Trees refers to hierarchical data structure. It works by acyclic connected graph. Key characteristics include root, parent, child, leaf, sibling, ancestor, descendant. Example: n nodes = n-1 edges. Common pitfalls include height vs depth definitions.",
+      "keywords": [
+        "tree properties",
+        "Trees programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of tree properties in a production environment?",
+        "What are the common pitfalls or issues associated with tree properties?"
+      ],
+      "related_concepts": [
+        "tree representations"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TREE-019",
+      "subject": "Trees",
+      "category": "Fundamentals",
+      "subcategory": "Properties",
+      "difficulty": "Hard",
+      "question": "What are the common issues with tree representations in Trees and how do you debug them?",
+      "ideal_answer": "Common issues with tree representations in Trees include: space complexity tradeoffs. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "tree representations",
+        "troubleshooting",
+        "Trees"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to tree representations?",
+        "What tools can assist in detecting problems with tree representations at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "tree properties"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

@@ -1,0 +1,319 @@
+{
+  "metadata": {
+    "subject": "AI Agents",
+    "domain": "Artificial Intelligence",
+    "total_questions": 11,
+    "difficulty_distribution": {
+      "Easy": 3,
+      "Medium": 5,
+      "Hard": 3
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "AGENT-001",
+      "subject": "AI Agents",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Easy",
+      "question": "Explain the difference between agent architecture and planning in AI Agents.",
+      "ideal_answer": "agent architecture and planning differ in several ways: agent architecture is autonomous AI system (works by perception, reasoning, action loop) whereas planning is multi-step goal decomposition (works by breaking complex goals into actions). agent architecture is typically used for ReAct, Plan-and-Execute, AutoGPT, while planning is used for Hierarchical Task Networks, tree search. Example demonstrating agent architecture: observation -> thought -> action -> observation. Example demonstrating planning: plan -> execute -> observe -> replan.",
+      "keywords": [
+        "agent architecture",
+        "planning",
+        "comparison",
+        "AI Agents"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose agent architecture over planning?",
+        "What is the performance or memory difference between agent architecture and planning?"
+      ],
+      "related_concepts": [
+        "agent architecture",
+        "planning",
+        "tool use"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "AGENT-002",
+      "subject": "AI Agents",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Easy",
+      "question": "What are the common issues with tool use in AI Agents and how do you debug them?",
+      "ideal_answer": "Common issues with tool use in AI Agents include: tool description optimization. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "tool use",
+        "troubleshooting",
+        "AI Agents"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to tool use?",
+        "What tools can assist in detecting problems with tool use at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "agent architecture",
+        "planning"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "AGENT-003",
+      "subject": "AI Agents",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Easy",
+      "question": "What is tool use in AI Agents and how does it work?",
+      "ideal_answer": "tool use in AI Agents refers to external capability integration. It works by LLM calling functions/APIs. Key characteristics include function calling, API selection, parameter extraction. Example: OpenAI function calling schema. Common pitfalls include tool description optimization.",
+      "keywords": [
+        "tool use",
+        "AI Agents programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of tool use in a production environment?",
+        "What are the common pitfalls or issues associated with tool use?"
+      ],
+      "related_concepts": [
+        "agent architecture",
+        "planning"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "AGENT-004",
+      "subject": "AI Agents",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Medium",
+      "question": "Explain the difference between tool use and planning in AI Agents.",
+      "ideal_answer": "tool use and planning differ in several ways: tool use is external capability integration (works by LLM calling functions/APIs) whereas planning is multi-step goal decomposition (works by breaking complex goals into actions). tool use is typically used for function calling, API selection, parameter extraction, while planning is used for Hierarchical Task Networks, tree search. Example demonstrating tool use: OpenAI function calling schema. Example demonstrating planning: plan -> execute -> observe -> replan.",
+      "keywords": [
+        "tool use",
+        "planning",
+        "comparison",
+        "AI Agents"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose tool use over planning?",
+        "What is the performance or memory difference between tool use and planning?"
+      ],
+      "related_concepts": [
+        "tool use",
+        "planning",
+        "agent architecture"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "AGENT-005",
+      "subject": "AI Agents",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What are the common issues with planning in AI Agents and how do you debug them?",
+      "ideal_answer": "Common issues with planning in AI Agents include: plan repair vs replanning. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "planning",
+        "troubleshooting",
+        "AI Agents"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to planning?",
+        "What tools can assist in detecting problems with planning at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "agent architecture",
+        "tool use"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "AGENT-006",
+      "subject": "AI Agents",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Medium",
+      "question": "Explain the difference between agent architecture and tool use in AI Agents.",
+      "ideal_answer": "agent architecture and tool use differ in several ways: agent architecture is autonomous AI system (works by perception, reasoning, action loop) whereas tool use is external capability integration (works by LLM calling functions/APIs). agent architecture is typically used for ReAct, Plan-and-Execute, AutoGPT, while tool use is used for function calling, API selection, parameter extraction. Example demonstrating agent architecture: observation -> thought -> action -> observation. Example demonstrating tool use: OpenAI function calling schema.",
+      "keywords": [
+        "agent architecture",
+        "tool use",
+        "comparison",
+        "AI Agents"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose agent architecture over tool use?",
+        "What is the performance or memory difference between agent architecture and tool use?"
+      ],
+      "related_concepts": [
+        "agent architecture",
+        "tool use",
+        "planning"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "AGENT-007",
+      "subject": "AI Agents",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "What is multi-agent systems in AI Agents and how does it work?",
+      "ideal_answer": "multi-agent systems in AI Agents refers to collaborative AI agents. It works by agent specialization and communication. Key characteristics include CrewAI, AutoGen, MetaGPT. Example: orchestrator, worker, critic roles. Common pitfalls include consensus mechanisms, debate.",
+      "keywords": [
+        "multi-agent systems",
+        "AI Agents programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of multi-agent systems in a production environment?",
+        "What are the common pitfalls or issues associated with multi-agent systems?"
+      ],
+      "related_concepts": [
+        "multi-agent systems"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "AGENT-008",
+      "subject": "AI Agents",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What is planning in AI Agents and how does it work?",
+      "ideal_answer": "planning in AI Agents refers to multi-step goal decomposition. It works by breaking complex goals into actions. Key characteristics include Hierarchical Task Networks, tree search. Example: plan -> execute -> observe -> replan. Common pitfalls include plan repair vs replanning.",
+      "keywords": [
+        "planning",
+        "AI Agents programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of planning in a production environment?",
+        "What are the common pitfalls or issues associated with planning?"
+      ],
+      "related_concepts": [
+        "agent architecture",
+        "tool use"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "AGENT-009",
+      "subject": "AI Agents",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What is agent architecture in AI Agents and how does it work?",
+      "ideal_answer": "agent architecture in AI Agents refers to autonomous AI system. It works by perception, reasoning, action loop. Key characteristics include ReAct, Plan-and-Execute, AutoGPT. Example: observation -> thought -> action -> observation. Common pitfalls include tool use, memory, planning.",
+      "keywords": [
+        "agent architecture",
+        "AI Agents programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of agent architecture in a production environment?",
+        "What are the common pitfalls or issues associated with agent architecture?"
+      ],
+      "related_concepts": [
+        "tool use",
+        "planning"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "AGENT-010",
+      "subject": "AI Agents",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What are the common issues with agent architecture in AI Agents and how do you debug them?",
+      "ideal_answer": "Common issues with agent architecture in AI Agents include: tool use, memory, planning. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "agent architecture",
+        "troubleshooting",
+        "AI Agents"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to agent architecture?",
+        "What tools can assist in detecting problems with agent architecture at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "tool use",
+        "planning"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "AGENT-011",
+      "subject": "AI Agents",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Hard",
+      "question": "What are the common issues with multi-agent systems in AI Agents and how do you debug them?",
+      "ideal_answer": "Common issues with multi-agent systems in AI Agents include: consensus mechanisms, debate. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "multi-agent systems",
+        "troubleshooting",
+        "AI Agents"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to multi-agent systems?",
+        "What tools can assist in detecting problems with multi-agent systems at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "multi-agent systems"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

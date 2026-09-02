@@ -1,0 +1,1366 @@
+{
+  "metadata": {
+    "subject": "HTML",
+    "domain": "Web Development",
+    "total_questions": 52,
+    "difficulty_distribution": {
+      "Easy": 15,
+      "Medium": 26,
+      "Hard": 11
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:47Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "HTML-001",
+      "subject": "HTML",
+      "category": "Core Elements",
+      "subcategory": "Lists",
+      "difficulty": "Easy",
+      "question": "What are the common issues with picture element in HTML and how do you debug them?",
+      "ideal_answer": "Common issues with picture element in HTML include: browser support for formats. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "picture element",
+        "troubleshooting",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to picture element?",
+        "What tools can assist in detecting problems with picture element at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "DOCTYPE declaration",
+        "meta viewport tag",
+        "script tag attributes"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HTML-002",
+      "subject": "HTML",
+      "category": "Semantic HTML",
+      "subcategory": "Nav",
+      "difficulty": "Easy",
+      "question": "What are the common issues with article vs section in HTML and how do you debug them?",
+      "ideal_answer": "Common issues with article vs section in HTML include: nesting rules. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "article vs section",
+        "troubleshooting",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to article vs section?",
+        "What tools can assist in detecting problems with article vs section at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "semantic elements",
+        "heading hierarchy"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HTML-003",
+      "subject": "HTML",
+      "category": "Semantic HTML",
+      "subcategory": "Main",
+      "difficulty": "Easy",
+      "question": "What are the common issues with heading hierarchy in HTML and how do you debug them?",
+      "ideal_answer": "Common issues with heading hierarchy in HTML include: skipping levels for styling. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "heading hierarchy",
+        "troubleshooting",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to heading hierarchy?",
+        "What tools can assist in detecting problems with heading hierarchy at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "semantic elements",
+        "article vs section"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HTML-004",
+      "subject": "HTML",
+      "category": "Core Elements",
+      "subcategory": "Text Elements",
+      "difficulty": "Easy",
+      "question": "What are the common issues with meta viewport tag in HTML and how do you debug them?",
+      "ideal_answer": "Common issues with meta viewport tag in HTML include: minimum-scale, user-scalable. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "meta viewport tag",
+        "troubleshooting",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to meta viewport tag?",
+        "What tools can assist in detecting problems with meta viewport tag at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "DOCTYPE declaration",
+        "script tag attributes",
+        "data attributes"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HTML-005",
+      "subject": "HTML",
+      "category": "Semantic HTML",
+      "subcategory": "Header",
+      "difficulty": "Easy",
+      "question": "What are the common issues with semantic elements in HTML and how do you debug them?",
+      "ideal_answer": "Common issues with semantic elements in HTML include: div soup vs semantic markup. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "semantic elements",
+        "troubleshooting",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to semantic elements?",
+        "What tools can assist in detecting problems with semantic elements at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "article vs section",
+        "heading hierarchy"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HTML-006",
+      "subject": "HTML",
+      "category": "Accessibility",
+      "subcategory": "ARIA",
+      "difficulty": "Easy",
+      "question": "What is ARIA roles in HTML and how does it work?",
+      "ideal_answer": "ARIA roles in HTML refers to accessibility semantics. It works by enhancing assistive technology. Key characteristics include landmark, widget, live region roles. Example: <nav role=\"navigation\"> or <nav>. Common pitfalls include prefer native semantics over ARIA.",
+      "keywords": [
+        "ARIA roles",
+        "HTML programming",
+        "accessibility"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of ARIA roles in a production environment?",
+        "What are the common pitfalls or issues associated with ARIA roles?"
+      ],
+      "related_concepts": [
+        "alt text",
+        "focus management"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HTML-007",
+      "subject": "HTML",
+      "category": "Core Elements",
+      "subcategory": "Text Elements",
+      "difficulty": "Easy",
+      "question": "Explain the difference between meta viewport tag and picture element in HTML.",
+      "ideal_answer": "meta viewport tag and picture element differ in several ways: meta viewport tag is responsive design control (works by mobile viewport configuration) whereas picture element is responsive images (works by art direction and format selection). meta viewport tag is typically used for width=device-width, initial-scale=1.0, while picture element is used for source elements with media queries. Example demonstrating meta viewport tag: <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">. Example demonstrating picture element: <picture><source srcset=\"large.webp\" media=\"(min-width: 800px)\"><img src=\"fallback.jpg\"></picture>.",
+      "keywords": [
+        "meta viewport tag",
+        "picture element",
+        "comparison",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose meta viewport tag over picture element?",
+        "What is the performance or memory difference between meta viewport tag and picture element?"
+      ],
+      "related_concepts": [
+        "meta viewport tag",
+        "picture element",
+        "DOCTYPE declaration",
+        "script tag attributes"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HTML-008",
+      "subject": "HTML",
+      "category": "Accessibility",
+      "subcategory": "ARIA",
+      "difficulty": "Easy",
+      "question": "What are the common issues with ARIA roles in HTML and how do you debug them?",
+      "ideal_answer": "Common issues with ARIA roles in HTML include: prefer native semantics over ARIA. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "ARIA roles",
+        "troubleshooting",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to ARIA roles?",
+        "What tools can assist in detecting problems with ARIA roles at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "alt text",
+        "focus management"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HTML-009",
+      "subject": "HTML",
+      "category": "Core Elements",
+      "subcategory": "Tables",
+      "difficulty": "Easy",
+      "question": "Explain the difference between data attributes and picture element in HTML.",
+      "ideal_answer": "data attributes and picture element differ in several ways: data attributes is custom data storage (works by embedding extra information) whereas picture element is responsive images (works by art direction and format selection). data attributes is typically used for data-* prefix, accessible via dataset, while picture element is used for source elements with media queries. Example demonstrating data attributes: <div data-user-id=\"123\" data-role=\"admin\">. Example demonstrating picture element: <picture><source srcset=\"large.webp\" media=\"(min-width: 800px)\"><img src=\"fallback.jpg\"></picture>.",
+      "keywords": [
+        "data attributes",
+        "picture element",
+        "comparison",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose data attributes over picture element?",
+        "What is the performance or memory difference between data attributes and picture element?"
+      ],
+      "related_concepts": [
+        "data attributes",
+        "picture element",
+        "DOCTYPE declaration",
+        "meta viewport tag"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HTML-010",
+      "subject": "HTML",
+      "category": "Core Elements",
+      "subcategory": "Document Structure",
+      "difficulty": "Easy",
+      "question": "Explain the difference between DOCTYPE declaration and script tag attributes in HTML.",
+      "ideal_answer": "DOCTYPE declaration and script tag attributes differ in several ways: DOCTYPE declaration is document type definition (works by specifying HTML version) whereas script tag attributes is JavaScript loading control (works by execution timing and order). DOCTYPE declaration is typically used for triggers standards mode in browsers, while script tag attributes is used for async: parallel download, execute when ready; defer: parallel download, execute after parse. Example demonstrating DOCTYPE declaration: <!DOCTYPE html>. Example demonstrating script tag attributes: <script src=\"app.js\" defer></script>.",
+      "keywords": [
+        "DOCTYPE declaration",
+        "script tag attributes",
+        "comparison",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose DOCTYPE declaration over script tag attributes?",
+        "What is the performance or memory difference between DOCTYPE declaration and script tag attributes?"
+      ],
+      "related_concepts": [
+        "DOCTYPE declaration",
+        "script tag attributes",
+        "meta viewport tag",
+        "data attributes"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HTML-011",
+      "subject": "HTML",
+      "category": "Accessibility",
+      "subcategory": "Screen Readers",
+      "difficulty": "Easy",
+      "question": "Explain the difference between alt text and focus management in HTML.",
+      "ideal_answer": "alt text and focus management differ in several ways: alt text is image description (works by screen reader content) whereas focus management is keyboard navigation control (works by interactive element accessibility). alt text is typically used for descriptive, functional, empty for decorative, while focus management is used for tabindex, focus-visible, skip links. Example demonstrating alt text: <img src=\"chart.png\" alt=\"Q3 revenue increased 25% to $5M\">. Example demonstrating focus management: <a href=\"#main\" class=\"skip-link\">Skip to content</a>.",
+      "keywords": [
+        "alt text",
+        "focus management",
+        "comparison",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose alt text over focus management?",
+        "What is the performance or memory difference between alt text and focus management?"
+      ],
+      "related_concepts": [
+        "alt text",
+        "focus management",
+        "ARIA roles"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HTML-012",
+      "subject": "HTML",
+      "category": "Semantic HTML",
+      "subcategory": "Main",
+      "difficulty": "Easy",
+      "question": "What is heading hierarchy in HTML and how does it work?",
+      "ideal_answer": "heading hierarchy in HTML refers to h1-h6 structure. It works by document outline. Key characteristics include one h1 per page, sequential order. Example: <h1>Main Title</h1><h2>Section</h2><h3>Subsection</h3>. Common pitfalls include skipping levels for styling.",
+      "keywords": [
+        "heading hierarchy",
+        "HTML programming",
+        "semantic html"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of heading hierarchy in a production environment?",
+        "What are the common pitfalls or issues associated with heading hierarchy?"
+      ],
+      "related_concepts": [
+        "semantic elements",
+        "article vs section"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HTML-013",
+      "subject": "HTML",
+      "category": "Forms",
+      "subcategory": "Accessibility",
+      "difficulty": "Easy",
+      "question": "What is label association in HTML and how does it work?",
+      "ideal_answer": "label association in HTML refers to input labeling. It works by accessibility and usability. Key characteristics include for attribute or nesting. Example: <label for=\"email\">Email:</label><input id=\"email\">. Common pitfalls include clickable area expansion.",
+      "keywords": [
+        "label association",
+        "HTML programming",
+        "forms"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of label association in a production environment?",
+        "What are the common pitfalls or issues associated with label association?"
+      ],
+      "related_concepts": [
+        "input types",
+        "form validation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HTML-014",
+      "subject": "HTML",
+      "category": "Forms",
+      "subcategory": "Input Types",
+      "difficulty": "Easy",
+      "question": "What is input types in HTML and how does it work?",
+      "ideal_answer": "input types in HTML refers to form control varieties. It works by native input behaviors. Key characteristics include text, email, tel, number, date, color, range. Example: <input type=\"email\" required>. Common pitfalls include mobile keyboard optimization.",
+      "keywords": [
+        "input types",
+        "HTML programming",
+        "forms"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of input types in a production environment?",
+        "What are the common pitfalls or issues associated with input types?"
+      ],
+      "related_concepts": [
+        "form validation",
+        "label association"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HTML-015",
+      "subject": "HTML",
+      "category": "Forms",
+      "subcategory": "Validation",
+      "difficulty": "Easy",
+      "question": "What is form validation in HTML and how does it work?",
+      "ideal_answer": "form validation in HTML refers to client-side checking. It works by preventing invalid submissions. Key characteristics include required, pattern, min/max, custom validity. Example: <input pattern=\"[A-Za-z]{3}\">. Common pitfalls include server-side validation still required.",
+      "keywords": [
+        "form validation",
+        "HTML programming",
+        "forms"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of form validation in a production environment?",
+        "What are the common pitfalls or issues associated with form validation?"
+      ],
+      "related_concepts": [
+        "input types",
+        "label association"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HTML-016",
+      "subject": "HTML",
+      "category": "Accessibility",
+      "subcategory": "Keyboard Navigation",
+      "difficulty": "Medium",
+      "question": "What are the common issues with focus management in HTML and how do you debug them?",
+      "ideal_answer": "Common issues with focus management in HTML include: positive tabindex anti-pattern. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "focus management",
+        "troubleshooting",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to focus management?",
+        "What tools can assist in detecting problems with focus management at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ARIA roles",
+        "alt text"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-017",
+      "subject": "HTML",
+      "category": "Core Elements",
+      "subcategory": "Links",
+      "difficulty": "Medium",
+      "question": "What is script tag attributes in HTML and how does it work?",
+      "ideal_answer": "script tag attributes in HTML refers to JavaScript loading control. It works by execution timing and order. Key characteristics include async: parallel download, execute when ready; defer: parallel download, execute after parse. Example: <script src=\"app.js\" defer></script>. Common pitfalls include async execution order unpredictability.",
+      "keywords": [
+        "script tag attributes",
+        "HTML programming",
+        "core elements"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of script tag attributes in a production environment?",
+        "What are the common pitfalls or issues associated with script tag attributes?"
+      ],
+      "related_concepts": [
+        "DOCTYPE declaration",
+        "meta viewport tag",
+        "data attributes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-018",
+      "subject": "HTML",
+      "category": "Semantic HTML",
+      "subcategory": "Nav",
+      "difficulty": "Medium",
+      "question": "Explain the difference between article vs section and heading hierarchy in HTML.",
+      "ideal_answer": "article vs section and heading hierarchy differ in several ways: article vs section is content grouping elements (works by independent vs thematic grouping) whereas heading hierarchy is h1-h6 structure (works by document outline). article vs section is typically used for article: self-contained content; section: thematic grouping, while heading hierarchy is used for one h1 per page, sequential order. Example demonstrating article vs section: <article> for blog post, <section> for chapters. Example demonstrating heading hierarchy: <h1>Main Title</h1><h2>Section</h2><h3>Subsection</h3>.",
+      "keywords": [
+        "article vs section",
+        "heading hierarchy",
+        "comparison",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose article vs section over heading hierarchy?",
+        "What is the performance or memory difference between article vs section and heading hierarchy?"
+      ],
+      "related_concepts": [
+        "article vs section",
+        "heading hierarchy",
+        "semantic elements"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-019",
+      "subject": "HTML",
+      "category": "Core Elements",
+      "subcategory": "Document Structure",
+      "difficulty": "Medium",
+      "question": "Explain the difference between DOCTYPE declaration and meta viewport tag in HTML.",
+      "ideal_answer": "DOCTYPE declaration and meta viewport tag differ in several ways: DOCTYPE declaration is document type definition (works by specifying HTML version) whereas meta viewport tag is responsive design control (works by mobile viewport configuration). DOCTYPE declaration is typically used for triggers standards mode in browsers, while meta viewport tag is used for width=device-width, initial-scale=1.0. Example demonstrating DOCTYPE declaration: <!DOCTYPE html>. Example demonstrating meta viewport tag: <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">.",
+      "keywords": [
+        "DOCTYPE declaration",
+        "meta viewport tag",
+        "comparison",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose DOCTYPE declaration over meta viewport tag?",
+        "What is the performance or memory difference between DOCTYPE declaration and meta viewport tag?"
+      ],
+      "related_concepts": [
+        "DOCTYPE declaration",
+        "meta viewport tag",
+        "script tag attributes",
+        "data attributes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-020",
+      "subject": "HTML",
+      "category": "Semantic HTML",
+      "subcategory": "Header",
+      "difficulty": "Medium",
+      "question": "Explain the difference between semantic elements and article vs section in HTML.",
+      "ideal_answer": "semantic elements and article vs section differ in several ways: semantic elements is meaningful structure tags (works by improving accessibility and SEO) whereas article vs section is content grouping elements (works by independent vs thematic grouping). semantic elements is typically used for header, nav, main, article, section, aside, footer, while article vs section is used for article: self-contained content; section: thematic grouping. Example demonstrating semantic elements: <main><article>...</article></main>. Example demonstrating article vs section: <article> for blog post, <section> for chapters.",
+      "keywords": [
+        "semantic elements",
+        "article vs section",
+        "comparison",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose semantic elements over article vs section?",
+        "What is the performance or memory difference between semantic elements and article vs section?"
+      ],
+      "related_concepts": [
+        "semantic elements",
+        "article vs section",
+        "heading hierarchy"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-021",
+      "subject": "HTML",
+      "category": "Forms",
+      "subcategory": "Input Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between input types and label association in HTML.",
+      "ideal_answer": "input types and label association differ in several ways: input types is form control varieties (works by native input behaviors) whereas label association is input labeling (works by accessibility and usability). input types is typically used for text, email, tel, number, date, color, range, while label association is used for for attribute or nesting. Example demonstrating input types: <input type=\"email\" required>. Example demonstrating label association: <label for=\"email\">Email:</label><input id=\"email\">.",
+      "keywords": [
+        "input types",
+        "label association",
+        "comparison",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose input types over label association?",
+        "What is the performance or memory difference between input types and label association?"
+      ],
+      "related_concepts": [
+        "input types",
+        "label association",
+        "form validation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-022",
+      "subject": "HTML",
+      "category": "Core Elements",
+      "subcategory": "Document Structure",
+      "difficulty": "Medium",
+      "question": "What is DOCTYPE declaration in HTML and how does it work?",
+      "ideal_answer": "DOCTYPE declaration in HTML refers to document type definition. It works by specifying HTML version. Key characteristics include triggers standards mode in browsers. Example: <!DOCTYPE html>. Common pitfalls include quirks mode without DOCTYPE.",
+      "keywords": [
+        "DOCTYPE declaration",
+        "HTML programming",
+        "core elements"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of DOCTYPE declaration in a production environment?",
+        "What are the common pitfalls or issues associated with DOCTYPE declaration?"
+      ],
+      "related_concepts": [
+        "meta viewport tag",
+        "script tag attributes",
+        "data attributes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-023",
+      "subject": "HTML",
+      "category": "Accessibility",
+      "subcategory": "ARIA",
+      "difficulty": "Medium",
+      "question": "Explain the difference between ARIA roles and alt text in HTML.",
+      "ideal_answer": "ARIA roles and alt text differ in several ways: ARIA roles is accessibility semantics (works by enhancing assistive technology) whereas alt text is image description (works by screen reader content). ARIA roles is typically used for landmark, widget, live region roles, while alt text is used for descriptive, functional, empty for decorative. Example demonstrating ARIA roles: <nav role=\"navigation\"> or <nav>. Example demonstrating alt text: <img src=\"chart.png\" alt=\"Q3 revenue increased 25% to $5M\">.",
+      "keywords": [
+        "ARIA roles",
+        "alt text",
+        "comparison",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ARIA roles over alt text?",
+        "What is the performance or memory difference between ARIA roles and alt text?"
+      ],
+      "related_concepts": [
+        "ARIA roles",
+        "alt text",
+        "focus management"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-024",
+      "subject": "HTML",
+      "category": "Core Elements",
+      "subcategory": "Links",
+      "difficulty": "Medium",
+      "question": "Explain the difference between script tag attributes and picture element in HTML.",
+      "ideal_answer": "script tag attributes and picture element differ in several ways: script tag attributes is JavaScript loading control (works by execution timing and order) whereas picture element is responsive images (works by art direction and format selection). script tag attributes is typically used for async: parallel download, execute when ready; defer: parallel download, execute after parse, while picture element is used for source elements with media queries. Example demonstrating script tag attributes: <script src=\"app.js\" defer></script>. Example demonstrating picture element: <picture><source srcset=\"large.webp\" media=\"(min-width: 800px)\"><img src=\"fallback.jpg\"></picture>.",
+      "keywords": [
+        "script tag attributes",
+        "picture element",
+        "comparison",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose script tag attributes over picture element?",
+        "What is the performance or memory difference between script tag attributes and picture element?"
+      ],
+      "related_concepts": [
+        "script tag attributes",
+        "picture element",
+        "DOCTYPE declaration",
+        "meta viewport tag"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-025",
+      "subject": "HTML",
+      "category": "Accessibility",
+      "subcategory": "Keyboard Navigation",
+      "difficulty": "Medium",
+      "question": "What is focus management in HTML and how does it work?",
+      "ideal_answer": "focus management in HTML refers to keyboard navigation control. It works by interactive element accessibility. Key characteristics include tabindex, focus-visible, skip links. Example: <a href=\"#main\" class=\"skip-link\">Skip to content</a>. Common pitfalls include positive tabindex anti-pattern.",
+      "keywords": [
+        "focus management",
+        "HTML programming",
+        "accessibility"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of focus management in a production environment?",
+        "What are the common pitfalls or issues associated with focus management?"
+      ],
+      "related_concepts": [
+        "ARIA roles",
+        "alt text"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-026",
+      "subject": "HTML",
+      "category": "Performance",
+      "subcategory": "Preloading",
+      "difficulty": "Medium",
+      "question": "What are the common issues with lazy loading in HTML and how do you debug them?",
+      "ideal_answer": "Common issues with lazy loading in HTML include: eager loading for above-fold. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "lazy loading",
+        "troubleshooting",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to lazy loading?",
+        "What tools can assist in detecting problems with lazy loading at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "resource hints"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-027",
+      "subject": "HTML",
+      "category": "Forms",
+      "subcategory": "Input Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between input types and form validation in HTML.",
+      "ideal_answer": "input types and form validation differ in several ways: input types is form control varieties (works by native input behaviors) whereas form validation is client-side checking (works by preventing invalid submissions). input types is typically used for text, email, tel, number, date, color, range, while form validation is used for required, pattern, min/max, custom validity. Example demonstrating input types: <input type=\"email\" required>. Example demonstrating form validation: <input pattern=\"[A-Za-z]{3}\">.",
+      "keywords": [
+        "input types",
+        "form validation",
+        "comparison",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose input types over form validation?",
+        "What is the performance or memory difference between input types and form validation?"
+      ],
+      "related_concepts": [
+        "input types",
+        "form validation",
+        "label association"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-028",
+      "subject": "HTML",
+      "category": "Performance",
+      "subcategory": "Lazy Loading",
+      "difficulty": "Medium",
+      "question": "What are the common issues with resource hints in HTML and how do you debug them?",
+      "ideal_answer": "Common issues with resource hints in HTML include: over-preloading bandwidth waste. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "resource hints",
+        "troubleshooting",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to resource hints?",
+        "What tools can assist in detecting problems with resource hints at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "lazy loading"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-029",
+      "subject": "HTML",
+      "category": "Forms",
+      "subcategory": "Input Types",
+      "difficulty": "Medium",
+      "question": "What are the common issues with input types in HTML and how do you debug them?",
+      "ideal_answer": "Common issues with input types in HTML include: mobile keyboard optimization. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "input types",
+        "troubleshooting",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to input types?",
+        "What tools can assist in detecting problems with input types at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "form validation",
+        "label association"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-030",
+      "subject": "HTML",
+      "category": "Semantic HTML",
+      "subcategory": "Header",
+      "difficulty": "Medium",
+      "question": "What is semantic elements in HTML and how does it work?",
+      "ideal_answer": "semantic elements in HTML refers to meaningful structure tags. It works by improving accessibility and SEO. Key characteristics include header, nav, main, article, section, aside, footer. Example: <main><article>...</article></main>. Common pitfalls include div soup vs semantic markup.",
+      "keywords": [
+        "semantic elements",
+        "HTML programming",
+        "semantic html"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of semantic elements in a production environment?",
+        "What are the common pitfalls or issues associated with semantic elements?"
+      ],
+      "related_concepts": [
+        "article vs section",
+        "heading hierarchy"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-031",
+      "subject": "HTML",
+      "category": "Semantic HTML",
+      "subcategory": "Nav",
+      "difficulty": "Medium",
+      "question": "What is article vs section in HTML and how does it work?",
+      "ideal_answer": "article vs section in HTML refers to content grouping elements. It works by independent vs thematic grouping. Key characteristics include article: self-contained content; section: thematic grouping. Example: <article> for blog post, <section> for chapters. Common pitfalls include nesting rules.",
+      "keywords": [
+        "article vs section",
+        "HTML programming",
+        "semantic html"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of article vs section in a production environment?",
+        "What are the common pitfalls or issues associated with article vs section?"
+      ],
+      "related_concepts": [
+        "semantic elements",
+        "heading hierarchy"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-032",
+      "subject": "HTML",
+      "category": "Core Elements",
+      "subcategory": "Document Structure",
+      "difficulty": "Medium",
+      "question": "Explain the difference between DOCTYPE declaration and data attributes in HTML.",
+      "ideal_answer": "DOCTYPE declaration and data attributes differ in several ways: DOCTYPE declaration is document type definition (works by specifying HTML version) whereas data attributes is custom data storage (works by embedding extra information). DOCTYPE declaration is typically used for triggers standards mode in browsers, while data attributes is used for data-* prefix, accessible via dataset. Example demonstrating DOCTYPE declaration: <!DOCTYPE html>. Example demonstrating data attributes: <div data-user-id=\"123\" data-role=\"admin\">.",
+      "keywords": [
+        "DOCTYPE declaration",
+        "data attributes",
+        "comparison",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose DOCTYPE declaration over data attributes?",
+        "What is the performance or memory difference between DOCTYPE declaration and data attributes?"
+      ],
+      "related_concepts": [
+        "DOCTYPE declaration",
+        "data attributes",
+        "meta viewport tag",
+        "script tag attributes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-033",
+      "subject": "HTML",
+      "category": "Performance",
+      "subcategory": "Lazy Loading",
+      "difficulty": "Medium",
+      "question": "Explain the difference between resource hints and lazy loading in HTML.",
+      "ideal_answer": "resource hints and lazy loading differ in several ways: resource hints is preemptive resource loading (works by performance optimization) whereas lazy loading is deferred content loading (works by improving initial page load). resource hints is typically used for preload, prefetch, preconnect, dns-prefetch, while lazy loading is used for loading=\"lazy\" for images and iframes. Example demonstrating resource hints: <link rel=\"preload\" href=\"critical.css\" as=\"style\">. Example demonstrating lazy loading: <img src=\"image.jpg\" loading=\"lazy\" alt=\"...\">.",
+      "keywords": [
+        "resource hints",
+        "lazy loading",
+        "comparison",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose resource hints over lazy loading?",
+        "What is the performance or memory difference between resource hints and lazy loading?"
+      ],
+      "related_concepts": [
+        "resource hints",
+        "lazy loading"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-034",
+      "subject": "HTML",
+      "category": "Forms",
+      "subcategory": "Validation",
+      "difficulty": "Medium",
+      "question": "What are the common issues with form validation in HTML and how do you debug them?",
+      "ideal_answer": "Common issues with form validation in HTML include: server-side validation still required. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "form validation",
+        "troubleshooting",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to form validation?",
+        "What tools can assist in detecting problems with form validation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "input types",
+        "label association"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-035",
+      "subject": "HTML",
+      "category": "Accessibility",
+      "subcategory": "ARIA",
+      "difficulty": "Medium",
+      "question": "Explain the difference between ARIA roles and focus management in HTML.",
+      "ideal_answer": "ARIA roles and focus management differ in several ways: ARIA roles is accessibility semantics (works by enhancing assistive technology) whereas focus management is keyboard navigation control (works by interactive element accessibility). ARIA roles is typically used for landmark, widget, live region roles, while focus management is used for tabindex, focus-visible, skip links. Example demonstrating ARIA roles: <nav role=\"navigation\"> or <nav>. Example demonstrating focus management: <a href=\"#main\" class=\"skip-link\">Skip to content</a>.",
+      "keywords": [
+        "ARIA roles",
+        "focus management",
+        "comparison",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ARIA roles over focus management?",
+        "What is the performance or memory difference between ARIA roles and focus management?"
+      ],
+      "related_concepts": [
+        "ARIA roles",
+        "focus management",
+        "alt text"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-036",
+      "subject": "HTML",
+      "category": "Core Elements",
+      "subcategory": "Document Structure",
+      "difficulty": "Medium",
+      "question": "Explain the difference between DOCTYPE declaration and picture element in HTML.",
+      "ideal_answer": "DOCTYPE declaration and picture element differ in several ways: DOCTYPE declaration is document type definition (works by specifying HTML version) whereas picture element is responsive images (works by art direction and format selection). DOCTYPE declaration is typically used for triggers standards mode in browsers, while picture element is used for source elements with media queries. Example demonstrating DOCTYPE declaration: <!DOCTYPE html>. Example demonstrating picture element: <picture><source srcset=\"large.webp\" media=\"(min-width: 800px)\"><img src=\"fallback.jpg\"></picture>.",
+      "keywords": [
+        "DOCTYPE declaration",
+        "picture element",
+        "comparison",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose DOCTYPE declaration over picture element?",
+        "What is the performance or memory difference between DOCTYPE declaration and picture element?"
+      ],
+      "related_concepts": [
+        "DOCTYPE declaration",
+        "picture element",
+        "meta viewport tag",
+        "script tag attributes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-037",
+      "subject": "HTML",
+      "category": "Accessibility",
+      "subcategory": "Screen Readers",
+      "difficulty": "Medium",
+      "question": "What are the common issues with alt text in HTML and how do you debug them?",
+      "ideal_answer": "Common issues with alt text in HTML include: keyword stuffing in alt. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "alt text",
+        "troubleshooting",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to alt text?",
+        "What tools can assist in detecting problems with alt text at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ARIA roles",
+        "focus management"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-038",
+      "subject": "HTML",
+      "category": "Performance",
+      "subcategory": "Preloading",
+      "difficulty": "Medium",
+      "question": "What is lazy loading in HTML and how does it work?",
+      "ideal_answer": "lazy loading in HTML refers to deferred content loading. It works by improving initial page load. Key characteristics include loading=\"lazy\" for images and iframes. Example: <img src=\"image.jpg\" loading=\"lazy\" alt=\"...\">. Common pitfalls include eager loading for above-fold.",
+      "keywords": [
+        "lazy loading",
+        "HTML programming",
+        "performance"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of lazy loading in a production environment?",
+        "What are the common pitfalls or issues associated with lazy loading?"
+      ],
+      "related_concepts": [
+        "resource hints"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-039",
+      "subject": "HTML",
+      "category": "Core Elements",
+      "subcategory": "Text Elements",
+      "difficulty": "Medium",
+      "question": "What is meta viewport tag in HTML and how does it work?",
+      "ideal_answer": "meta viewport tag in HTML refers to responsive design control. It works by mobile viewport configuration. Key characteristics include width=device-width, initial-scale=1.0. Example: <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">. Common pitfalls include minimum-scale, user-scalable.",
+      "keywords": [
+        "meta viewport tag",
+        "HTML programming",
+        "core elements"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of meta viewport tag in a production environment?",
+        "What are the common pitfalls or issues associated with meta viewport tag?"
+      ],
+      "related_concepts": [
+        "DOCTYPE declaration",
+        "script tag attributes",
+        "data attributes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-040",
+      "subject": "HTML",
+      "category": "Semantic HTML",
+      "subcategory": "Header",
+      "difficulty": "Medium",
+      "question": "Explain the difference between semantic elements and heading hierarchy in HTML.",
+      "ideal_answer": "semantic elements and heading hierarchy differ in several ways: semantic elements is meaningful structure tags (works by improving accessibility and SEO) whereas heading hierarchy is h1-h6 structure (works by document outline). semantic elements is typically used for header, nav, main, article, section, aside, footer, while heading hierarchy is used for one h1 per page, sequential order. Example demonstrating semantic elements: <main><article>...</article></main>. Example demonstrating heading hierarchy: <h1>Main Title</h1><h2>Section</h2><h3>Subsection</h3>.",
+      "keywords": [
+        "semantic elements",
+        "heading hierarchy",
+        "comparison",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose semantic elements over heading hierarchy?",
+        "What is the performance or memory difference between semantic elements and heading hierarchy?"
+      ],
+      "related_concepts": [
+        "semantic elements",
+        "heading hierarchy",
+        "article vs section"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-041",
+      "subject": "HTML",
+      "category": "Forms",
+      "subcategory": "Validation",
+      "difficulty": "Medium",
+      "question": "Explain the difference between form validation and label association in HTML.",
+      "ideal_answer": "form validation and label association differ in several ways: form validation is client-side checking (works by preventing invalid submissions) whereas label association is input labeling (works by accessibility and usability). form validation is typically used for required, pattern, min/max, custom validity, while label association is used for for attribute or nesting. Example demonstrating form validation: <input pattern=\"[A-Za-z]{3}\">. Example demonstrating label association: <label for=\"email\">Email:</label><input id=\"email\">.",
+      "keywords": [
+        "form validation",
+        "label association",
+        "comparison",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose form validation over label association?",
+        "What is the performance or memory difference between form validation and label association?"
+      ],
+      "related_concepts": [
+        "form validation",
+        "label association",
+        "input types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HTML-042",
+      "subject": "HTML",
+      "category": "Core Elements",
+      "subcategory": "Links",
+      "difficulty": "Hard",
+      "question": "What are the common issues with script tag attributes in HTML and how do you debug them?",
+      "ideal_answer": "Common issues with script tag attributes in HTML include: async execution order unpredictability. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "script tag attributes",
+        "troubleshooting",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to script tag attributes?",
+        "What tools can assist in detecting problems with script tag attributes at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "DOCTYPE declaration",
+        "meta viewport tag",
+        "data attributes"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "HTML-043",
+      "subject": "HTML",
+      "category": "Forms",
+      "subcategory": "Accessibility",
+      "difficulty": "Hard",
+      "question": "What are the common issues with label association in HTML and how do you debug them?",
+      "ideal_answer": "Common issues with label association in HTML include: clickable area expansion. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "label association",
+        "troubleshooting",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to label association?",
+        "What tools can assist in detecting problems with label association at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "input types",
+        "form validation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "HTML-044",
+      "subject": "HTML",
+      "category": "Core Elements",
+      "subcategory": "Tables",
+      "difficulty": "Hard",
+      "question": "What is data attributes in HTML and how does it work?",
+      "ideal_answer": "data attributes in HTML refers to custom data storage. It works by embedding extra information. Key characteristics include data-* prefix, accessible via dataset. Example: <div data-user-id=\"123\" data-role=\"admin\">. Common pitfalls include camelCase conversion in dataset.",
+      "keywords": [
+        "data attributes",
+        "HTML programming",
+        "core elements"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of data attributes in a production environment?",
+        "What are the common pitfalls or issues associated with data attributes?"
+      ],
+      "related_concepts": [
+        "DOCTYPE declaration",
+        "meta viewport tag",
+        "script tag attributes"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "HTML-045",
+      "subject": "HTML",
+      "category": "Core Elements",
+      "subcategory": "Lists",
+      "difficulty": "Hard",
+      "question": "What is picture element in HTML and how does it work?",
+      "ideal_answer": "picture element in HTML refers to responsive images. It works by art direction and format selection. Key characteristics include source elements with media queries. Example: <picture><source srcset=\"large.webp\" media=\"(min-width: 800px)\"><img src=\"fallback.jpg\"></picture>. Common pitfalls include browser support for formats.",
+      "keywords": [
+        "picture element",
+        "HTML programming",
+        "core elements"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of picture element in a production environment?",
+        "What are the common pitfalls or issues associated with picture element?"
+      ],
+      "related_concepts": [
+        "DOCTYPE declaration",
+        "meta viewport tag",
+        "script tag attributes"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "HTML-046",
+      "subject": "HTML",
+      "category": "Core Elements",
+      "subcategory": "Text Elements",
+      "difficulty": "Hard",
+      "question": "Explain the difference between meta viewport tag and script tag attributes in HTML.",
+      "ideal_answer": "meta viewport tag and script tag attributes differ in several ways: meta viewport tag is responsive design control (works by mobile viewport configuration) whereas script tag attributes is JavaScript loading control (works by execution timing and order). meta viewport tag is typically used for width=device-width, initial-scale=1.0, while script tag attributes is used for async: parallel download, execute when ready; defer: parallel download, execute after parse. Example demonstrating meta viewport tag: <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">. Example demonstrating script tag attributes: <script src=\"app.js\" defer></script>.",
+      "keywords": [
+        "meta viewport tag",
+        "script tag attributes",
+        "comparison",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose meta viewport tag over script tag attributes?",
+        "What is the performance or memory difference between meta viewport tag and script tag attributes?"
+      ],
+      "related_concepts": [
+        "meta viewport tag",
+        "script tag attributes",
+        "DOCTYPE declaration",
+        "data attributes"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "HTML-047",
+      "subject": "HTML",
+      "category": "Core Elements",
+      "subcategory": "Text Elements",
+      "difficulty": "Hard",
+      "question": "Explain the difference between meta viewport tag and data attributes in HTML.",
+      "ideal_answer": "meta viewport tag and data attributes differ in several ways: meta viewport tag is responsive design control (works by mobile viewport configuration) whereas data attributes is custom data storage (works by embedding extra information). meta viewport tag is typically used for width=device-width, initial-scale=1.0, while data attributes is used for data-* prefix, accessible via dataset. Example demonstrating meta viewport tag: <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">. Example demonstrating data attributes: <div data-user-id=\"123\" data-role=\"admin\">.",
+      "keywords": [
+        "meta viewport tag",
+        "data attributes",
+        "comparison",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose meta viewport tag over data attributes?",
+        "What is the performance or memory difference between meta viewport tag and data attributes?"
+      ],
+      "related_concepts": [
+        "meta viewport tag",
+        "data attributes",
+        "DOCTYPE declaration",
+        "script tag attributes"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "HTML-048",
+      "subject": "HTML",
+      "category": "Core Elements",
+      "subcategory": "Links",
+      "difficulty": "Hard",
+      "question": "Explain the difference between script tag attributes and data attributes in HTML.",
+      "ideal_answer": "script tag attributes and data attributes differ in several ways: script tag attributes is JavaScript loading control (works by execution timing and order) whereas data attributes is custom data storage (works by embedding extra information). script tag attributes is typically used for async: parallel download, execute when ready; defer: parallel download, execute after parse, while data attributes is used for data-* prefix, accessible via dataset. Example demonstrating script tag attributes: <script src=\"app.js\" defer></script>. Example demonstrating data attributes: <div data-user-id=\"123\" data-role=\"admin\">.",
+      "keywords": [
+        "script tag attributes",
+        "data attributes",
+        "comparison",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose script tag attributes over data attributes?",
+        "What is the performance or memory difference between script tag attributes and data attributes?"
+      ],
+      "related_concepts": [
+        "script tag attributes",
+        "data attributes",
+        "DOCTYPE declaration",
+        "meta viewport tag"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "HTML-049",
+      "subject": "HTML",
+      "category": "Performance",
+      "subcategory": "Lazy Loading",
+      "difficulty": "Hard",
+      "question": "What is resource hints in HTML and how does it work?",
+      "ideal_answer": "resource hints in HTML refers to preemptive resource loading. It works by performance optimization. Key characteristics include preload, prefetch, preconnect, dns-prefetch. Example: <link rel=\"preload\" href=\"critical.css\" as=\"style\">. Common pitfalls include over-preloading bandwidth waste.",
+      "keywords": [
+        "resource hints",
+        "HTML programming",
+        "performance"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of resource hints in a production environment?",
+        "What are the common pitfalls or issues associated with resource hints?"
+      ],
+      "related_concepts": [
+        "lazy loading"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "HTML-050",
+      "subject": "HTML",
+      "category": "Core Elements",
+      "subcategory": "Document Structure",
+      "difficulty": "Hard",
+      "question": "What are the common issues with DOCTYPE declaration in HTML and how do you debug them?",
+      "ideal_answer": "Common issues with DOCTYPE declaration in HTML include: quirks mode without DOCTYPE. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "DOCTYPE declaration",
+        "troubleshooting",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to DOCTYPE declaration?",
+        "What tools can assist in detecting problems with DOCTYPE declaration at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "meta viewport tag",
+        "script tag attributes",
+        "data attributes"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "HTML-051",
+      "subject": "HTML",
+      "category": "Core Elements",
+      "subcategory": "Tables",
+      "difficulty": "Hard",
+      "question": "What are the common issues with data attributes in HTML and how do you debug them?",
+      "ideal_answer": "Common issues with data attributes in HTML include: camelCase conversion in dataset. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "data attributes",
+        "troubleshooting",
+        "HTML"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to data attributes?",
+        "What tools can assist in detecting problems with data attributes at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "DOCTYPE declaration",
+        "meta viewport tag",
+        "script tag attributes"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "HTML-052",
+      "subject": "HTML",
+      "category": "Accessibility",
+      "subcategory": "Screen Readers",
+      "difficulty": "Hard",
+      "question": "What is alt text in HTML and how does it work?",
+      "ideal_answer": "alt text in HTML refers to image description. It works by screen reader content. Key characteristics include descriptive, functional, empty for decorative. Example: <img src=\"chart.png\" alt=\"Q3 revenue increased 25% to $5M\">. Common pitfalls include keyword stuffing in alt.",
+      "keywords": [
+        "alt text",
+        "HTML programming",
+        "accessibility"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of alt text in a production environment?",
+        "What are the common pitfalls or issues associated with alt text?"
+      ],
+      "related_concepts": [
+        "ARIA roles",
+        "focus management"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

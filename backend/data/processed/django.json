@@ -1,0 +1,1282 @@
+{
+  "metadata": {
+    "subject": "Django",
+    "domain": "Web Development",
+    "total_questions": 48,
+    "difficulty_distribution": {
+      "Easy": 14,
+      "Medium": 24,
+      "Hard": 10
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "DJANGO-001",
+      "subject": "Django",
+      "category": "ORM",
+      "subcategory": "Queries",
+      "difficulty": "Easy",
+      "question": "Explain the difference between select_related vs prefetch_related and model Meta options in Django.",
+      "ideal_answer": "select_related vs prefetch_related and model Meta options differ in several ways: select_related vs prefetch_related is query optimization methods (works by reducing database queries) whereas model Meta options is model metadata configuration (works by customizing model behavior). select_related vs prefetch_related is typically used for select_related: SQL JOIN for FK/one-to-one; prefetch_related: separate queries for M2M/reverse FK, while model Meta options is used for db_table, ordering, verbose_name, constraints. Example demonstrating select_related vs prefetch_related: Post.objects.select_related('author').prefetch_related('tags'). Example demonstrating model Meta options: class Meta: ordering = ['-created_at']; db_table = 'custom_users'.",
+      "keywords": [
+        "select_related vs prefetch_related",
+        "model Meta options",
+        "comparison",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose select_related vs prefetch_related over model Meta options?",
+        "What is the performance or memory difference between select_related vs prefetch_related and model Meta options?"
+      ],
+      "related_concepts": [
+        "select_related vs prefetch_related",
+        "model Meta options",
+        "QuerySet",
+        "migrations"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DJANGO-002",
+      "subject": "Django",
+      "category": "ORM",
+      "subcategory": "Raw SQL",
+      "difficulty": "Easy",
+      "question": "What are the common issues with raw SQL in Django and how do you debug them?",
+      "ideal_answer": "Common issues with raw SQL in Django include: SQL injection prevention with params. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "raw SQL",
+        "troubleshooting",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to raw SQL?",
+        "What tools can assist in detecting problems with raw SQL at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "QuerySet",
+        "select_related vs prefetch_related",
+        "migrations"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DJANGO-003",
+      "subject": "Django",
+      "category": "ORM",
+      "subcategory": "Models",
+      "difficulty": "Easy",
+      "question": "Explain the difference between QuerySet and select_related vs prefetch_related in Django.",
+      "ideal_answer": "QuerySet and select_related vs prefetch_related differ in several ways: QuerySet is lazy query building (works by database abstraction layer) whereas select_related vs prefetch_related is query optimization methods (works by reducing database queries). QuerySet is typically used for chainable filters, lazy evaluation, while select_related vs prefetch_related is used for select_related: SQL JOIN for FK/one-to-one; prefetch_related: separate queries for M2M/reverse FK. Example demonstrating QuerySet: User.objects.filter(is_active=True).select_related('profile').prefetch_related('posts'). Example demonstrating select_related vs prefetch_related: Post.objects.select_related('author').prefetch_related('tags').",
+      "keywords": [
+        "QuerySet",
+        "select_related vs prefetch_related",
+        "comparison",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose QuerySet over select_related vs prefetch_related?",
+        "What is the performance or memory difference between QuerySet and select_related vs prefetch_related?"
+      ],
+      "related_concepts": [
+        "QuerySet",
+        "select_related vs prefetch_related",
+        "migrations",
+        "model Meta options"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DJANGO-004",
+      "subject": "Django",
+      "category": "Core",
+      "subcategory": "MTV Architecture",
+      "difficulty": "Easy",
+      "question": "Explain the difference between MTV architecture and Django apps in Django.",
+      "ideal_answer": "MTV architecture and Django apps differ in several ways: MTV architecture is Model-Template-View pattern (works by Django's MVC variant) whereas Django apps is modular application structure (works by reusable components). MTV architecture is typically used for Model: data layer, Template: presentation, View: business logic, while Django apps is used for models, views, templates, static files. Example demonstrating MTV architecture: urls.py -> views.py -> models.py -> templates/. Example demonstrating Django apps: python manage.py startapp blog.",
+      "keywords": [
+        "MTV architecture",
+        "Django apps",
+        "comparison",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose MTV architecture over Django apps?",
+        "What is the performance or memory difference between MTV architecture and Django apps?"
+      ],
+      "related_concepts": [
+        "MTV architecture",
+        "Django apps",
+        "middleware",
+        "signals"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DJANGO-005",
+      "subject": "Django",
+      "category": "ORM",
+      "subcategory": "Migrations",
+      "difficulty": "Easy",
+      "question": "What are the common issues with model Meta options in Django and how do you debug them?",
+      "ideal_answer": "Common issues with model Meta options in Django include: abstract base classes. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "model Meta options",
+        "troubleshooting",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to model Meta options?",
+        "What tools can assist in detecting problems with model Meta options at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "QuerySet",
+        "select_related vs prefetch_related",
+        "migrations"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DJANGO-006",
+      "subject": "Django",
+      "category": "Core",
+      "subcategory": "MTV Architecture",
+      "difficulty": "Easy",
+      "question": "Explain the difference between MTV architecture and signals in Django.",
+      "ideal_answer": "MTV architecture and signals differ in several ways: MTV architecture is Model-Template-View pattern (works by Django's MVC variant) whereas signals is decoupled event notification (works by loose coupling between apps). MTV architecture is typically used for Model: data layer, Template: presentation, View: business logic, while signals is used for pre_save, post_save, pre_delete, request_started. Example demonstrating MTV architecture: urls.py -> views.py -> models.py -> templates/. Example demonstrating signals: @receiver(post_save, sender=User)\ndef create_profile(sender, instance, created, **kwargs): ....",
+      "keywords": [
+        "MTV architecture",
+        "signals",
+        "comparison",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose MTV architecture over signals?",
+        "What is the performance or memory difference between MTV architecture and signals?"
+      ],
+      "related_concepts": [
+        "MTV architecture",
+        "signals",
+        "middleware",
+        "Django apps"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DJANGO-007",
+      "subject": "Django",
+      "category": "ORM",
+      "subcategory": "Queries",
+      "difficulty": "Easy",
+      "question": "Explain the difference between select_related vs prefetch_related and raw SQL in Django.",
+      "ideal_answer": "select_related vs prefetch_related and raw SQL differ in several ways: select_related vs prefetch_related is query optimization methods (works by reducing database queries) whereas raw SQL is direct database queries (works by bypassing ORM for complex queries). select_related vs prefetch_related is typically used for select_related: SQL JOIN for FK/one-to-one; prefetch_related: separate queries for M2M/reverse FK, while raw SQL is used for Manager.raw(), connection.cursor(). Example demonstrating select_related vs prefetch_related: Post.objects.select_related('author').prefetch_related('tags'). Example demonstrating raw SQL: User.objects.raw('SELECT * FROM users WHERE age > %s', [18]).",
+      "keywords": [
+        "select_related vs prefetch_related",
+        "raw SQL",
+        "comparison",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose select_related vs prefetch_related over raw SQL?",
+        "What is the performance or memory difference between select_related vs prefetch_related and raw SQL?"
+      ],
+      "related_concepts": [
+        "select_related vs prefetch_related",
+        "raw SQL",
+        "QuerySet",
+        "migrations"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DJANGO-008",
+      "subject": "Django",
+      "category": "Views",
+      "subcategory": "Generic Views",
+      "difficulty": "Easy",
+      "question": "What are the common issues with DRF serializers in Django and how do you debug them?",
+      "ideal_answer": "Common issues with DRF serializers in Django include: nested serializers, validation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "DRF serializers",
+        "troubleshooting",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to DRF serializers?",
+        "What tools can assist in detecting problems with DRF serializers at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "class-based views",
+        "DRF ViewSets"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DJANGO-009",
+      "subject": "Django",
+      "category": "Core",
+      "subcategory": "Settings",
+      "difficulty": "Easy",
+      "question": "Explain the difference between middleware and Django apps in Django.",
+      "ideal_answer": "middleware and Django apps differ in several ways: middleware is request/response processing hooks (works by global request modification) whereas Django apps is modular application structure (works by reusable components). middleware is typically used for process_request, process_view, process_response, process_exception, while Django apps is used for models, views, templates, static files. Example demonstrating middleware: class SimpleMiddleware: def __init__(self, get_response): .... Example demonstrating Django apps: python manage.py startapp blog.",
+      "keywords": [
+        "middleware",
+        "Django apps",
+        "comparison",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose middleware over Django apps?",
+        "What is the performance or memory difference between middleware and Django apps?"
+      ],
+      "related_concepts": [
+        "middleware",
+        "Django apps",
+        "MTV architecture",
+        "signals"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DJANGO-010",
+      "subject": "Django",
+      "category": "Core",
+      "subcategory": "Settings",
+      "difficulty": "Easy",
+      "question": "What are the common issues with middleware in Django and how do you debug them?",
+      "ideal_answer": "Common issues with middleware in Django include: middleware order significance. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "middleware",
+        "troubleshooting",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to middleware?",
+        "What tools can assist in detecting problems with middleware at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "MTV architecture",
+        "signals",
+        "Django apps"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DJANGO-011",
+      "subject": "Django",
+      "category": "Views",
+      "subcategory": "Function Views",
+      "difficulty": "Easy",
+      "question": "What are the common issues with class-based views in Django and how do you debug them?",
+      "ideal_answer": "Common issues with class-based views in Django include: method dispatch, mixins. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "class-based views",
+        "troubleshooting",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to class-based views?",
+        "What tools can assist in detecting problems with class-based views at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "DRF ViewSets",
+        "DRF serializers"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DJANGO-012",
+      "subject": "Django",
+      "category": "Core",
+      "subcategory": "Apps",
+      "difficulty": "Easy",
+      "question": "What is signals in Django and how does it work?",
+      "ideal_answer": "signals in Django refers to decoupled event notification. It works by loose coupling between apps. Key characteristics include pre_save, post_save, pre_delete, request_started. Example: @receiver(post_save, sender=User)\ndef create_profile(sender, instance, created, **kwargs): .... Common pitfalls include signal vs explicit call tradeoff.",
+      "keywords": [
+        "signals",
+        "Django programming",
+        "core"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of signals in a production environment?",
+        "What are the common pitfalls or issues associated with signals?"
+      ],
+      "related_concepts": [
+        "MTV architecture",
+        "middleware",
+        "Django apps"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DJANGO-013",
+      "subject": "Django",
+      "category": "Security",
+      "subcategory": "CSRF",
+      "difficulty": "Easy",
+      "question": "What is CSRF protection in Django and how does it work?",
+      "ideal_answer": "CSRF protection in Django refers to cross-site request forgery prevention. It works by token-based validation. Key characteristics include {% csrf_token %} in forms, middleware. Example: django.middleware.csrf.CsrfViewMiddleware. Common pitfalls include exempting views with @csrf_exempt.",
+      "keywords": [
+        "CSRF protection",
+        "Django programming",
+        "security"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of CSRF protection in a production environment?",
+        "What are the common pitfalls or issues associated with CSRF protection?"
+      ],
+      "related_concepts": [
+        "Django security middleware"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DJANGO-014",
+      "subject": "Django",
+      "category": "ORM",
+      "subcategory": "Models",
+      "difficulty": "Easy",
+      "question": "Explain the difference between QuerySet and model Meta options in Django.",
+      "ideal_answer": "QuerySet and model Meta options differ in several ways: QuerySet is lazy query building (works by database abstraction layer) whereas model Meta options is model metadata configuration (works by customizing model behavior). QuerySet is typically used for chainable filters, lazy evaluation, while model Meta options is used for db_table, ordering, verbose_name, constraints. Example demonstrating QuerySet: User.objects.filter(is_active=True).select_related('profile').prefetch_related('posts'). Example demonstrating model Meta options: class Meta: ordering = ['-created_at']; db_table = 'custom_users'.",
+      "keywords": [
+        "QuerySet",
+        "model Meta options",
+        "comparison",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose QuerySet over model Meta options?",
+        "What is the performance or memory difference between QuerySet and model Meta options?"
+      ],
+      "related_concepts": [
+        "QuerySet",
+        "model Meta options",
+        "select_related vs prefetch_related",
+        "migrations"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DJANGO-015",
+      "subject": "Django",
+      "category": "Core",
+      "subcategory": "Settings",
+      "difficulty": "Medium",
+      "question": "Explain the difference between middleware and signals in Django.",
+      "ideal_answer": "middleware and signals differ in several ways: middleware is request/response processing hooks (works by global request modification) whereas signals is decoupled event notification (works by loose coupling between apps). middleware is typically used for process_request, process_view, process_response, process_exception, while signals is used for pre_save, post_save, pre_delete, request_started. Example demonstrating middleware: class SimpleMiddleware: def __init__(self, get_response): .... Example demonstrating signals: @receiver(post_save, sender=User)\ndef create_profile(sender, instance, created, **kwargs): ....",
+      "keywords": [
+        "middleware",
+        "signals",
+        "comparison",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose middleware over signals?",
+        "What is the performance or memory difference between middleware and signals?"
+      ],
+      "related_concepts": [
+        "middleware",
+        "signals",
+        "MTV architecture",
+        "Django apps"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-016",
+      "subject": "Django",
+      "category": "ORM",
+      "subcategory": "Migrations",
+      "difficulty": "Medium",
+      "question": "Explain the difference between model Meta options and raw SQL in Django.",
+      "ideal_answer": "model Meta options and raw SQL differ in several ways: model Meta options is model metadata configuration (works by customizing model behavior) whereas raw SQL is direct database queries (works by bypassing ORM for complex queries). model Meta options is typically used for db_table, ordering, verbose_name, constraints, while raw SQL is used for Manager.raw(), connection.cursor(). Example demonstrating model Meta options: class Meta: ordering = ['-created_at']; db_table = 'custom_users'. Example demonstrating raw SQL: User.objects.raw('SELECT * FROM users WHERE age > %s', [18]).",
+      "keywords": [
+        "model Meta options",
+        "raw SQL",
+        "comparison",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose model Meta options over raw SQL?",
+        "What is the performance or memory difference between model Meta options and raw SQL?"
+      ],
+      "related_concepts": [
+        "model Meta options",
+        "raw SQL",
+        "QuerySet",
+        "select_related vs prefetch_related"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-017",
+      "subject": "Django",
+      "category": "ORM",
+      "subcategory": "Queries",
+      "difficulty": "Medium",
+      "question": "Explain the difference between select_related vs prefetch_related and migrations in Django.",
+      "ideal_answer": "select_related vs prefetch_related and migrations differ in several ways: select_related vs prefetch_related is query optimization methods (works by reducing database queries) whereas migrations is schema version control (works by database change tracking). select_related vs prefetch_related is typically used for select_related: SQL JOIN for FK/one-to-one; prefetch_related: separate queries for M2M/reverse FK, while migrations is used for makemigrations, migrate, squashmigrations. Example demonstrating select_related vs prefetch_related: Post.objects.select_related('author').prefetch_related('tags'). Example demonstrating migrations: python manage.py makemigrations; python manage.py migrate.",
+      "keywords": [
+        "select_related vs prefetch_related",
+        "migrations",
+        "comparison",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose select_related vs prefetch_related over migrations?",
+        "What is the performance or memory difference between select_related vs prefetch_related and migrations?"
+      ],
+      "related_concepts": [
+        "select_related vs prefetch_related",
+        "migrations",
+        "QuerySet",
+        "model Meta options"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-018",
+      "subject": "Django",
+      "category": "Views",
+      "subcategory": "Function Views",
+      "difficulty": "Medium",
+      "question": "Explain the difference between class-based views and DRF serializers in Django.",
+      "ideal_answer": "class-based views and DRF serializers differ in several ways: class-based views is OOP view organization (works by reusable view logic) whereas DRF serializers is data serialization/deserialization (works by validation and representation). class-based views is typically used for TemplateView, ListView, DetailView, CreateView, while DRF serializers is used for ModelSerializer, HyperlinkedModelSerializer. Example demonstrating class-based views: class PostListView(ListView): model = Post; template_name = 'posts/list.html'. Example demonstrating DRF serializers: class UserSerializer(serializers.ModelSerializer): class Meta: model = User; fields = ['id', 'name'].",
+      "keywords": [
+        "class-based views",
+        "DRF serializers",
+        "comparison",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose class-based views over DRF serializers?",
+        "What is the performance or memory difference between class-based views and DRF serializers?"
+      ],
+      "related_concepts": [
+        "class-based views",
+        "DRF serializers",
+        "DRF ViewSets"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-019",
+      "subject": "Django",
+      "category": "ORM",
+      "subcategory": "Managers",
+      "difficulty": "Medium",
+      "question": "What is migrations in Django and how does it work?",
+      "ideal_answer": "migrations in Django refers to schema version control. It works by database change tracking. Key characteristics include makemigrations, migrate, squashmigrations. Example: python manage.py makemigrations; python manage.py migrate. Common pitfalls include migration conflicts, data migrations.",
+      "keywords": [
+        "migrations",
+        "Django programming",
+        "orm"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of migrations in a production environment?",
+        "What are the common pitfalls or issues associated with migrations?"
+      ],
+      "related_concepts": [
+        "QuerySet",
+        "select_related vs prefetch_related",
+        "model Meta options"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-020",
+      "subject": "Django",
+      "category": "ORM",
+      "subcategory": "Managers",
+      "difficulty": "Medium",
+      "question": "Explain the difference between migrations and model Meta options in Django.",
+      "ideal_answer": "migrations and model Meta options differ in several ways: migrations is schema version control (works by database change tracking) whereas model Meta options is model metadata configuration (works by customizing model behavior). migrations is typically used for makemigrations, migrate, squashmigrations, while model Meta options is used for db_table, ordering, verbose_name, constraints. Example demonstrating migrations: python manage.py makemigrations; python manage.py migrate. Example demonstrating model Meta options: class Meta: ordering = ['-created_at']; db_table = 'custom_users'.",
+      "keywords": [
+        "migrations",
+        "model Meta options",
+        "comparison",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose migrations over model Meta options?",
+        "What is the performance or memory difference between migrations and model Meta options?"
+      ],
+      "related_concepts": [
+        "migrations",
+        "model Meta options",
+        "QuerySet",
+        "select_related vs prefetch_related"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-021",
+      "subject": "Django",
+      "category": "Security",
+      "subcategory": "XSS",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Django security middleware in Django and how do you debug them?",
+      "ideal_answer": "Common issues with Django security middleware in Django include: deployment checklist. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Django security middleware",
+        "troubleshooting",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Django security middleware?",
+        "What tools can assist in detecting problems with Django security middleware at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "CSRF protection"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-022",
+      "subject": "Django",
+      "category": "ORM",
+      "subcategory": "Managers",
+      "difficulty": "Medium",
+      "question": "Explain the difference between migrations and raw SQL in Django.",
+      "ideal_answer": "migrations and raw SQL differ in several ways: migrations is schema version control (works by database change tracking) whereas raw SQL is direct database queries (works by bypassing ORM for complex queries). migrations is typically used for makemigrations, migrate, squashmigrations, while raw SQL is used for Manager.raw(), connection.cursor(). Example demonstrating migrations: python manage.py makemigrations; python manage.py migrate. Example demonstrating raw SQL: User.objects.raw('SELECT * FROM users WHERE age > %s', [18]).",
+      "keywords": [
+        "migrations",
+        "raw SQL",
+        "comparison",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose migrations over raw SQL?",
+        "What is the performance or memory difference between migrations and raw SQL?"
+      ],
+      "related_concepts": [
+        "migrations",
+        "raw SQL",
+        "QuerySet",
+        "select_related vs prefetch_related"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-023",
+      "subject": "Django",
+      "category": "Views",
+      "subcategory": "Class-Based Views",
+      "difficulty": "Medium",
+      "question": "What is DRF ViewSets in Django and how does it work?",
+      "ideal_answer": "DRF ViewSets in Django refers to RESTful view grouping. It works by combined list/detail actions. Key characteristics include ModelViewSet, ReadOnlyModelViewSet. Example: class UserViewSet(viewsets.ModelViewSet): queryset = User.objects.all(); serializer_class = UserSerializer. Common pitfalls include router registration.",
+      "keywords": [
+        "DRF ViewSets",
+        "Django programming",
+        "views"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of DRF ViewSets in a production environment?",
+        "What are the common pitfalls or issues associated with DRF ViewSets?"
+      ],
+      "related_concepts": [
+        "class-based views",
+        "DRF serializers"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-024",
+      "subject": "Django",
+      "category": "ORM",
+      "subcategory": "Models",
+      "difficulty": "Medium",
+      "question": "Explain the difference between QuerySet and migrations in Django.",
+      "ideal_answer": "QuerySet and migrations differ in several ways: QuerySet is lazy query building (works by database abstraction layer) whereas migrations is schema version control (works by database change tracking). QuerySet is typically used for chainable filters, lazy evaluation, while migrations is used for makemigrations, migrate, squashmigrations. Example demonstrating QuerySet: User.objects.filter(is_active=True).select_related('profile').prefetch_related('posts'). Example demonstrating migrations: python manage.py makemigrations; python manage.py migrate.",
+      "keywords": [
+        "QuerySet",
+        "migrations",
+        "comparison",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose QuerySet over migrations?",
+        "What is the performance or memory difference between QuerySet and migrations?"
+      ],
+      "related_concepts": [
+        "QuerySet",
+        "migrations",
+        "select_related vs prefetch_related",
+        "model Meta options"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-025",
+      "subject": "Django",
+      "category": "ORM",
+      "subcategory": "Migrations",
+      "difficulty": "Medium",
+      "question": "What is model Meta options in Django and how does it work?",
+      "ideal_answer": "model Meta options in Django refers to model metadata configuration. It works by customizing model behavior. Key characteristics include db_table, ordering, verbose_name, constraints. Example: class Meta: ordering = ['-created_at']; db_table = 'custom_users'. Common pitfalls include abstract base classes.",
+      "keywords": [
+        "model Meta options",
+        "Django programming",
+        "orm"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of model Meta options in a production environment?",
+        "What are the common pitfalls or issues associated with model Meta options?"
+      ],
+      "related_concepts": [
+        "QuerySet",
+        "select_related vs prefetch_related",
+        "migrations"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-026",
+      "subject": "Django",
+      "category": "ORM",
+      "subcategory": "Raw SQL",
+      "difficulty": "Medium",
+      "question": "What is raw SQL in Django and how does it work?",
+      "ideal_answer": "raw SQL in Django refers to direct database queries. It works by bypassing ORM for complex queries. Key characteristics include Manager.raw(), connection.cursor(). Example: User.objects.raw('SELECT * FROM users WHERE age > %s', [18]). Common pitfalls include SQL injection prevention with params.",
+      "keywords": [
+        "raw SQL",
+        "Django programming",
+        "orm"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of raw SQL in a production environment?",
+        "What are the common pitfalls or issues associated with raw SQL?"
+      ],
+      "related_concepts": [
+        "QuerySet",
+        "select_related vs prefetch_related",
+        "migrations"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-027",
+      "subject": "Django",
+      "category": "Security",
+      "subcategory": "CSRF",
+      "difficulty": "Medium",
+      "question": "Explain the difference between CSRF protection and Django security middleware in Django.",
+      "ideal_answer": "CSRF protection and Django security middleware differ in several ways: CSRF protection is cross-site request forgery prevention (works by token-based validation) whereas Django security middleware is security header injection (works by common vulnerability protection). CSRF protection is typically used for {% csrf_token %} in forms, middleware, while Django security middleware is used for SecurityMiddleware: HSTS, XSS filter, content-type nosniff. Example demonstrating CSRF protection: django.middleware.csrf.CsrfViewMiddleware. Example demonstrating Django security middleware: SECURE_SSL_REDIRECT, SECURE_HSTS_SECONDS.",
+      "keywords": [
+        "CSRF protection",
+        "Django security middleware",
+        "comparison",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CSRF protection over Django security middleware?",
+        "What is the performance or memory difference between CSRF protection and Django security middleware?"
+      ],
+      "related_concepts": [
+        "CSRF protection",
+        "Django security middleware"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-028",
+      "subject": "Django",
+      "category": "Security",
+      "subcategory": "CSRF",
+      "difficulty": "Medium",
+      "question": "What are the common issues with CSRF protection in Django and how do you debug them?",
+      "ideal_answer": "Common issues with CSRF protection in Django include: exempting views with @csrf_exempt. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "CSRF protection",
+        "troubleshooting",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to CSRF protection?",
+        "What tools can assist in detecting problems with CSRF protection at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Django security middleware"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-029",
+      "subject": "Django",
+      "category": "Core",
+      "subcategory": "MTV Architecture",
+      "difficulty": "Medium",
+      "question": "What is MTV architecture in Django and how does it work?",
+      "ideal_answer": "MTV architecture in Django refers to Model-Template-View pattern. It works by Django's MVC variant. Key characteristics include Model: data layer, Template: presentation, View: business logic. Example: urls.py -> views.py -> models.py -> templates/. Common pitfalls include separation of concerns.",
+      "keywords": [
+        "MTV architecture",
+        "Django programming",
+        "core"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of MTV architecture in a production environment?",
+        "What are the common pitfalls or issues associated with MTV architecture?"
+      ],
+      "related_concepts": [
+        "middleware",
+        "signals",
+        "Django apps"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-030",
+      "subject": "Django",
+      "category": "ORM",
+      "subcategory": "Managers",
+      "difficulty": "Medium",
+      "question": "What are the common issues with migrations in Django and how do you debug them?",
+      "ideal_answer": "Common issues with migrations in Django include: migration conflicts, data migrations. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "migrations",
+        "troubleshooting",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to migrations?",
+        "What tools can assist in detecting problems with migrations at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "QuerySet",
+        "select_related vs prefetch_related",
+        "model Meta options"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-031",
+      "subject": "Django",
+      "category": "ORM",
+      "subcategory": "Queries",
+      "difficulty": "Medium",
+      "question": "What is select_related vs prefetch_related in Django and how does it work?",
+      "ideal_answer": "select_related vs prefetch_related in Django refers to query optimization methods. It works by reducing database queries. Key characteristics include select_related: SQL JOIN for FK/one-to-one; prefetch_related: separate queries for M2M/reverse FK. Example: Post.objects.select_related('author').prefetch_related('tags'). Common pitfalls include overfetching with select_related.",
+      "keywords": [
+        "select_related vs prefetch_related",
+        "Django programming",
+        "orm"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of select_related vs prefetch_related in a production environment?",
+        "What are the common pitfalls or issues associated with select_related vs prefetch_related?"
+      ],
+      "related_concepts": [
+        "QuerySet",
+        "migrations",
+        "model Meta options"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-032",
+      "subject": "Django",
+      "category": "Views",
+      "subcategory": "Class-Based Views",
+      "difficulty": "Medium",
+      "question": "Explain the difference between DRF ViewSets and DRF serializers in Django.",
+      "ideal_answer": "DRF ViewSets and DRF serializers differ in several ways: DRF ViewSets is RESTful view grouping (works by combined list/detail actions) whereas DRF serializers is data serialization/deserialization (works by validation and representation). DRF ViewSets is typically used for ModelViewSet, ReadOnlyModelViewSet, while DRF serializers is used for ModelSerializer, HyperlinkedModelSerializer. Example demonstrating DRF ViewSets: class UserViewSet(viewsets.ModelViewSet): queryset = User.objects.all(); serializer_class = UserSerializer. Example demonstrating DRF serializers: class UserSerializer(serializers.ModelSerializer): class Meta: model = User; fields = ['id', 'name'].",
+      "keywords": [
+        "DRF ViewSets",
+        "DRF serializers",
+        "comparison",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose DRF ViewSets over DRF serializers?",
+        "What is the performance or memory difference between DRF ViewSets and DRF serializers?"
+      ],
+      "related_concepts": [
+        "DRF ViewSets",
+        "DRF serializers",
+        "class-based views"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-033",
+      "subject": "Django",
+      "category": "Core",
+      "subcategory": "Apps",
+      "difficulty": "Medium",
+      "question": "Explain the difference between signals and Django apps in Django.",
+      "ideal_answer": "signals and Django apps differ in several ways: signals is decoupled event notification (works by loose coupling between apps) whereas Django apps is modular application structure (works by reusable components). signals is typically used for pre_save, post_save, pre_delete, request_started, while Django apps is used for models, views, templates, static files. Example demonstrating signals: @receiver(post_save, sender=User)\ndef create_profile(sender, instance, created, **kwargs): .... Example demonstrating Django apps: python manage.py startapp blog.",
+      "keywords": [
+        "signals",
+        "Django apps",
+        "comparison",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose signals over Django apps?",
+        "What is the performance or memory difference between signals and Django apps?"
+      ],
+      "related_concepts": [
+        "signals",
+        "Django apps",
+        "MTV architecture",
+        "middleware"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-034",
+      "subject": "Django",
+      "category": "Views",
+      "subcategory": "Generic Views",
+      "difficulty": "Medium",
+      "question": "What is DRF serializers in Django and how does it work?",
+      "ideal_answer": "DRF serializers in Django refers to data serialization/deserialization. It works by validation and representation. Key characteristics include ModelSerializer, HyperlinkedModelSerializer. Example: class UserSerializer(serializers.ModelSerializer): class Meta: model = User; fields = ['id', 'name']. Common pitfalls include nested serializers, validation.",
+      "keywords": [
+        "DRF serializers",
+        "Django programming",
+        "views"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of DRF serializers in a production environment?",
+        "What are the common pitfalls or issues associated with DRF serializers?"
+      ],
+      "related_concepts": [
+        "class-based views",
+        "DRF ViewSets"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-035",
+      "subject": "Django",
+      "category": "Security",
+      "subcategory": "XSS",
+      "difficulty": "Medium",
+      "question": "What is Django security middleware in Django and how does it work?",
+      "ideal_answer": "Django security middleware in Django refers to security header injection. It works by common vulnerability protection. Key characteristics include SecurityMiddleware: HSTS, XSS filter, content-type nosniff. Example: SECURE_SSL_REDIRECT, SECURE_HSTS_SECONDS. Common pitfalls include deployment checklist.",
+      "keywords": [
+        "Django security middleware",
+        "Django programming",
+        "security"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Django security middleware in a production environment?",
+        "What are the common pitfalls or issues associated with Django security middleware?"
+      ],
+      "related_concepts": [
+        "CSRF protection"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-036",
+      "subject": "Django",
+      "category": "Core",
+      "subcategory": "Settings",
+      "difficulty": "Medium",
+      "question": "What is middleware in Django and how does it work?",
+      "ideal_answer": "middleware in Django refers to request/response processing hooks. It works by global request modification. Key characteristics include process_request, process_view, process_response, process_exception. Example: class SimpleMiddleware: def __init__(self, get_response): .... Common pitfalls include middleware order significance.",
+      "keywords": [
+        "middleware",
+        "Django programming",
+        "core"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of middleware in a production environment?",
+        "What are the common pitfalls or issues associated with middleware?"
+      ],
+      "related_concepts": [
+        "MTV architecture",
+        "signals",
+        "Django apps"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-037",
+      "subject": "Django",
+      "category": "ORM",
+      "subcategory": "Models",
+      "difficulty": "Medium",
+      "question": "Explain the difference between QuerySet and raw SQL in Django.",
+      "ideal_answer": "QuerySet and raw SQL differ in several ways: QuerySet is lazy query building (works by database abstraction layer) whereas raw SQL is direct database queries (works by bypassing ORM for complex queries). QuerySet is typically used for chainable filters, lazy evaluation, while raw SQL is used for Manager.raw(), connection.cursor(). Example demonstrating QuerySet: User.objects.filter(is_active=True).select_related('profile').prefetch_related('posts'). Example demonstrating raw SQL: User.objects.raw('SELECT * FROM users WHERE age > %s', [18]).",
+      "keywords": [
+        "QuerySet",
+        "raw SQL",
+        "comparison",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose QuerySet over raw SQL?",
+        "What is the performance or memory difference between QuerySet and raw SQL?"
+      ],
+      "related_concepts": [
+        "QuerySet",
+        "raw SQL",
+        "select_related vs prefetch_related",
+        "migrations"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-038",
+      "subject": "Django",
+      "category": "Views",
+      "subcategory": "Class-Based Views",
+      "difficulty": "Medium",
+      "question": "What are the common issues with DRF ViewSets in Django and how do you debug them?",
+      "ideal_answer": "Common issues with DRF ViewSets in Django include: router registration. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "DRF ViewSets",
+        "troubleshooting",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to DRF ViewSets?",
+        "What tools can assist in detecting problems with DRF ViewSets at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "class-based views",
+        "DRF serializers"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DJANGO-039",
+      "subject": "Django",
+      "category": "Core",
+      "subcategory": "Apps",
+      "difficulty": "Hard",
+      "question": "What are the common issues with signals in Django and how do you debug them?",
+      "ideal_answer": "Common issues with signals in Django include: signal vs explicit call tradeoff. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "signals",
+        "troubleshooting",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to signals?",
+        "What tools can assist in detecting problems with signals at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "MTV architecture",
+        "middleware",
+        "Django apps"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "DJANGO-040",
+      "subject": "Django",
+      "category": "Views",
+      "subcategory": "Function Views",
+      "difficulty": "Hard",
+      "question": "What is class-based views in Django and how does it work?",
+      "ideal_answer": "class-based views in Django refers to OOP view organization. It works by reusable view logic. Key characteristics include TemplateView, ListView, DetailView, CreateView. Example: class PostListView(ListView): model = Post; template_name = 'posts/list.html'. Common pitfalls include method dispatch, mixins.",
+      "keywords": [
+        "class-based views",
+        "Django programming",
+        "views"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of class-based views in a production environment?",
+        "What are the common pitfalls or issues associated with class-based views?"
+      ],
+      "related_concepts": [
+        "DRF ViewSets",
+        "DRF serializers"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "DJANGO-041",
+      "subject": "Django",
+      "category": "Core",
+      "subcategory": "Middleware",
+      "difficulty": "Hard",
+      "question": "What is Django apps in Django and how does it work?",
+      "ideal_answer": "Django apps in Django refers to modular application structure. It works by reusable components. Key characteristics include models, views, templates, static files. Example: python manage.py startapp blog. Common pitfalls include INSTALLED_APPS registration.",
+      "keywords": [
+        "Django apps",
+        "Django programming",
+        "core"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Django apps in a production environment?",
+        "What are the common pitfalls or issues associated with Django apps?"
+      ],
+      "related_concepts": [
+        "MTV architecture",
+        "middleware",
+        "signals"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "DJANGO-042",
+      "subject": "Django",
+      "category": "Core",
+      "subcategory": "MTV Architecture",
+      "difficulty": "Hard",
+      "question": "Explain the difference between MTV architecture and middleware in Django.",
+      "ideal_answer": "MTV architecture and middleware differ in several ways: MTV architecture is Model-Template-View pattern (works by Django's MVC variant) whereas middleware is request/response processing hooks (works by global request modification). MTV architecture is typically used for Model: data layer, Template: presentation, View: business logic, while middleware is used for process_request, process_view, process_response, process_exception. Example demonstrating MTV architecture: urls.py -> views.py -> models.py -> templates/. Example demonstrating middleware: class SimpleMiddleware: def __init__(self, get_response): ....",
+      "keywords": [
+        "MTV architecture",
+        "middleware",
+        "comparison",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose MTV architecture over middleware?",
+        "What is the performance or memory difference between MTV architecture and middleware?"
+      ],
+      "related_concepts": [
+        "MTV architecture",
+        "middleware",
+        "signals",
+        "Django apps"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "DJANGO-043",
+      "subject": "Django",
+      "category": "ORM",
+      "subcategory": "Models",
+      "difficulty": "Hard",
+      "question": "What is QuerySet in Django and how does it work?",
+      "ideal_answer": "QuerySet in Django refers to lazy query building. It works by database abstraction layer. Key characteristics include chainable filters, lazy evaluation. Example: User.objects.filter(is_active=True).select_related('profile').prefetch_related('posts'). Common pitfalls include N+1 query problem.",
+      "keywords": [
+        "QuerySet",
+        "Django programming",
+        "orm"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of QuerySet in a production environment?",
+        "What are the common pitfalls or issues associated with QuerySet?"
+      ],
+      "related_concepts": [
+        "select_related vs prefetch_related",
+        "migrations",
+        "model Meta options"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "DJANGO-044",
+      "subject": "Django",
+      "category": "ORM",
+      "subcategory": "Models",
+      "difficulty": "Hard",
+      "question": "What are the common issues with QuerySet in Django and how do you debug them?",
+      "ideal_answer": "Common issues with QuerySet in Django include: N+1 query problem. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "QuerySet",
+        "troubleshooting",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to QuerySet?",
+        "What tools can assist in detecting problems with QuerySet at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "select_related vs prefetch_related",
+        "migrations",
+        "model Meta options"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "DJANGO-045",
+      "subject": "Django",
+      "category": "ORM",
+      "subcategory": "Queries",
+      "difficulty": "Hard",
+      "question": "What are the common issues with select_related vs prefetch_related in Django and how do you debug them?",
+      "ideal_answer": "Common issues with select_related vs prefetch_related in Django include: overfetching with select_related. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "select_related vs prefetch_related",
+        "troubleshooting",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to select_related vs prefetch_related?",
+        "What tools can assist in detecting problems with select_related vs prefetch_related at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "QuerySet",
+        "migrations",
+        "model Meta options"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "DJANGO-046",
+      "subject": "Django",
+      "category": "Core",
+      "subcategory": "MTV Architecture",
+      "difficulty": "Hard",
+      "question": "What are the common issues with MTV architecture in Django and how do you debug them?",
+      "ideal_answer": "Common issues with MTV architecture in Django include: separation of concerns. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "MTV architecture",
+        "troubleshooting",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to MTV architecture?",
+        "What tools can assist in detecting problems with MTV architecture at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "middleware",
+        "signals",
+        "Django apps"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "DJANGO-047",
+      "subject": "Django",
+      "category": "Core",
+      "subcategory": "Middleware",
+      "difficulty": "Hard",
+      "question": "What are the common issues with Django apps in Django and how do you debug them?",
+      "ideal_answer": "Common issues with Django apps in Django include: INSTALLED_APPS registration. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Django apps",
+        "troubleshooting",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Django apps?",
+        "What tools can assist in detecting problems with Django apps at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "MTV architecture",
+        "middleware",
+        "signals"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "DJANGO-048",
+      "subject": "Django",
+      "category": "Views",
+      "subcategory": "Function Views",
+      "difficulty": "Hard",
+      "question": "Explain the difference between class-based views and DRF ViewSets in Django.",
+      "ideal_answer": "class-based views and DRF ViewSets differ in several ways: class-based views is OOP view organization (works by reusable view logic) whereas DRF ViewSets is RESTful view grouping (works by combined list/detail actions). class-based views is typically used for TemplateView, ListView, DetailView, CreateView, while DRF ViewSets is used for ModelViewSet, ReadOnlyModelViewSet. Example demonstrating class-based views: class PostListView(ListView): model = Post; template_name = 'posts/list.html'. Example demonstrating DRF ViewSets: class UserViewSet(viewsets.ModelViewSet): queryset = User.objects.all(); serializer_class = UserSerializer.",
+      "keywords": [
+        "class-based views",
+        "DRF ViewSets",
+        "comparison",
+        "Django"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose class-based views over DRF ViewSets?",
+        "What is the performance or memory difference between class-based views and DRF ViewSets?"
+      ],
+      "related_concepts": [
+        "class-based views",
+        "DRF ViewSets",
+        "DRF serializers"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

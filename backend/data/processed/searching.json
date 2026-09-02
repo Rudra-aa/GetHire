@@ -1,0 +1,188 @@
+{
+  "metadata": {
+    "subject": "Searching",
+    "domain": "Data Structures & Algorithms",
+    "total_questions": 6,
+    "difficulty_distribution": {
+      "Easy": 1,
+      "Medium": 3,
+      "Hard": 2
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "SEARCH-001",
+      "subject": "Searching",
+      "category": "Techniques",
+      "subcategory": "Standard Approaches",
+      "difficulty": "Easy",
+      "question": "What are the common issues with searching strategy in Searching and how do you debug them?",
+      "ideal_answer": "Common issues with searching strategy in Searching include: when searching fails. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "searching strategy",
+        "troubleshooting",
+        "Searching"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to searching strategy?",
+        "What tools can assist in detecting problems with searching strategy at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "searching strategy"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SEARCH-002",
+      "subject": "Searching",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Medium",
+      "question": "What are the common issues with searching overview in Searching and how do you debug them?",
+      "ideal_answer": "Common issues with searching overview in Searching include: common pitfalls and optimizations. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "searching overview",
+        "troubleshooting",
+        "Searching"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to searching overview?",
+        "What tools can assist in detecting problems with searching overview at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "searching overview"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SEARCH-003",
+      "subject": "Searching",
+      "category": "Techniques",
+      "subcategory": "Standard Approaches",
+      "difficulty": "Medium",
+      "question": "What is searching strategy in Searching and how does it work?",
+      "ideal_answer": "searching strategy in Searching refers to problem-solving approach. It works by step-by-step methodology. Key characteristics include identifying applicability, making local choices, verifying optimality. Example: pseudocode and implementation. Common pitfalls include when searching fails.",
+      "keywords": [
+        "searching strategy",
+        "Searching programming",
+        "techniques"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of searching strategy in a production environment?",
+        "What are the common pitfalls or issues associated with searching strategy?"
+      ],
+      "related_concepts": [
+        "searching strategy"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SEARCH-004",
+      "subject": "Searching",
+      "category": "Applications",
+      "subcategory": "Classic Problems",
+      "difficulty": "Medium",
+      "question": "What is classic searching problems in Searching and how does it work?",
+      "ideal_answer": "classic searching problems in Searching refers to well-known applications. It works by interview-standard questions. Key characteristics include Activity Selection, Huffman Coding, Fractional Knapsack (Greedy); N-Queens, Sudoku, Permutations (Backtracking); Tower of Hanoi, Tree traversals (Recursion); Binary Search, Interpolation Search (Searching); QuickSort, MergeSort, HeapSort (Sorting). Example: implementation details. Common pitfalls include time/space tradeoffs.",
+      "keywords": [
+        "classic searching problems",
+        "Searching programming",
+        "applications"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of classic searching problems in a production environment?",
+        "What are the common pitfalls or issues associated with classic searching problems?"
+      ],
+      "related_concepts": [
+        "classic searching problems"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SEARCH-005",
+      "subject": "Searching",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What is searching overview in Searching and how does it work?",
+      "ideal_answer": "searching overview in Searching refers to core searching concept. It works by fundamental algorithmic paradigm. Key characteristics include key characteristics and use cases of Searching. Example: standard implementation pattern. Common pitfalls include common pitfalls and optimizations.",
+      "keywords": [
+        "searching overview",
+        "Searching programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of searching overview in a production environment?",
+        "What are the common pitfalls or issues associated with searching overview?"
+      ],
+      "related_concepts": [
+        "searching overview"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "SEARCH-006",
+      "subject": "Searching",
+      "category": "Applications",
+      "subcategory": "Classic Problems",
+      "difficulty": "Hard",
+      "question": "What are the common issues with classic searching problems in Searching and how do you debug them?",
+      "ideal_answer": "Common issues with classic searching problems in Searching include: time/space tradeoffs. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "classic searching problems",
+        "troubleshooting",
+        "Searching"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to classic searching problems?",
+        "What tools can assist in detecting problems with classic searching problems at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "classic searching problems"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

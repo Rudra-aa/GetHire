@@ -1,0 +1,188 @@
+{
+  "metadata": {
+    "subject": "Recursion",
+    "domain": "Data Structures & Algorithms",
+    "total_questions": 6,
+    "difficulty_distribution": {
+      "Easy": 1,
+      "Medium": 3,
+      "Hard": 2
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "RECURSION-001",
+      "subject": "Recursion",
+      "category": "Techniques",
+      "subcategory": "Standard Approaches",
+      "difficulty": "Easy",
+      "question": "What are the common issues with recursion strategy in Recursion and how do you debug them?",
+      "ideal_answer": "Common issues with recursion strategy in Recursion include: when recursion fails. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "recursion strategy",
+        "troubleshooting",
+        "Recursion"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to recursion strategy?",
+        "What tools can assist in detecting problems with recursion strategy at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "recursion strategy"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RECURSION-002",
+      "subject": "Recursion",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Medium",
+      "question": "What are the common issues with recursion overview in Recursion and how do you debug them?",
+      "ideal_answer": "Common issues with recursion overview in Recursion include: common pitfalls and optimizations. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "recursion overview",
+        "troubleshooting",
+        "Recursion"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to recursion overview?",
+        "What tools can assist in detecting problems with recursion overview at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "recursion overview"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RECURSION-003",
+      "subject": "Recursion",
+      "category": "Techniques",
+      "subcategory": "Standard Approaches",
+      "difficulty": "Medium",
+      "question": "What is recursion strategy in Recursion and how does it work?",
+      "ideal_answer": "recursion strategy in Recursion refers to problem-solving approach. It works by step-by-step methodology. Key characteristics include identifying applicability, making local choices, verifying optimality. Example: pseudocode and implementation. Common pitfalls include when recursion fails.",
+      "keywords": [
+        "recursion strategy",
+        "Recursion programming",
+        "techniques"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of recursion strategy in a production environment?",
+        "What are the common pitfalls or issues associated with recursion strategy?"
+      ],
+      "related_concepts": [
+        "recursion strategy"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RECURSION-004",
+      "subject": "Recursion",
+      "category": "Applications",
+      "subcategory": "Classic Problems",
+      "difficulty": "Medium",
+      "question": "What is classic recursion problems in Recursion and how does it work?",
+      "ideal_answer": "classic recursion problems in Recursion refers to well-known applications. It works by interview-standard questions. Key characteristics include Activity Selection, Huffman Coding, Fractional Knapsack (Greedy); N-Queens, Sudoku, Permutations (Backtracking); Tower of Hanoi, Tree traversals (Recursion); Binary Search, Interpolation Search (Searching); QuickSort, MergeSort, HeapSort (Sorting). Example: implementation details. Common pitfalls include time/space tradeoffs.",
+      "keywords": [
+        "classic recursion problems",
+        "Recursion programming",
+        "applications"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of classic recursion problems in a production environment?",
+        "What are the common pitfalls or issues associated with classic recursion problems?"
+      ],
+      "related_concepts": [
+        "classic recursion problems"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RECURSION-005",
+      "subject": "Recursion",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What is recursion overview in Recursion and how does it work?",
+      "ideal_answer": "recursion overview in Recursion refers to core recursion concept. It works by fundamental algorithmic paradigm. Key characteristics include key characteristics and use cases of Recursion. Example: standard implementation pattern. Common pitfalls include common pitfalls and optimizations.",
+      "keywords": [
+        "recursion overview",
+        "Recursion programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of recursion overview in a production environment?",
+        "What are the common pitfalls or issues associated with recursion overview?"
+      ],
+      "related_concepts": [
+        "recursion overview"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RECURSION-006",
+      "subject": "Recursion",
+      "category": "Applications",
+      "subcategory": "Classic Problems",
+      "difficulty": "Hard",
+      "question": "What are the common issues with classic recursion problems in Recursion and how do you debug them?",
+      "ideal_answer": "Common issues with classic recursion problems in Recursion include: time/space tradeoffs. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "classic recursion problems",
+        "troubleshooting",
+        "Recursion"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to classic recursion problems?",
+        "What tools can assist in detecting problems with classic recursion problems at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "classic recursion problems"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

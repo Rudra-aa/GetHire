@@ -1,0 +1,3216 @@
+{
+  "metadata": {
+    "subject": "C",
+    "domain": "Software Engineering",
+    "total_questions": 120,
+    "difficulty_distribution": {
+      "Easy": 36,
+      "Medium": 60,
+      "Hard": 24
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:47Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "C-001",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Data Types",
+      "difficulty": "Easy",
+      "question": "What is const qualifier in C and how does it work?",
+      "ideal_answer": "const qualifier in C refers to a type qualifier. It works by preventing modification of variables. Key characteristics include read-only access, compiler optimizations. Example: const int MAX = 100;. Common pitfalls include const pointer vs pointer to const confusion.",
+      "keywords": [
+        "const qualifier",
+        "C programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of const qualifier in a production environment?",
+        "What are the common pitfalls or issues associated with const qualifier?"
+      ],
+      "related_concepts": [
+        "static keyword",
+        "volatile keyword",
+        "extern keyword"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-002",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Data Types",
+      "difficulty": "Easy",
+      "question": "What is sizeof operator in C and how does it work?",
+      "ideal_answer": "sizeof operator in C refers to compile-time operator. It works by determining size of types/objects. Key characteristics include platform-dependent, excludes flexible array members. Example: sizeof(int) on 32-bit vs 64-bit. Common pitfalls include using sizeof on pointers vs arrays.",
+      "keywords": [
+        "sizeof operator",
+        "C programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of sizeof operator in a production environment?",
+        "What are the common pitfalls or issues associated with sizeof operator?"
+      ],
+      "related_concepts": [
+        "static keyword",
+        "const qualifier",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-003",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Pointer Arithmetic",
+      "difficulty": "Easy",
+      "question": "What is const pointer vs pointer to const in C and how does it work?",
+      "ideal_answer": "const pointer vs pointer to const in C refers to different const placements. It works by varying mutability. Key characteristics include const int* p: data const, int* const p: pointer const. Example: const int* const p;. Common pitfalls include reading declarations right-to-left.",
+      "keywords": [
+        "const pointer vs pointer to const",
+        "C programming",
+        "pointers"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of const pointer vs pointer to const in a production environment?",
+        "What are the common pitfalls or issues associated with const pointer vs pointer to const?"
+      ],
+      "related_concepts": [
+        "pointer arithmetic",
+        "function pointers",
+        "void pointer"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-004",
+      "subject": "C",
+      "category": "Advanced C",
+      "subcategory": "Bit Manipulation",
+      "difficulty": "Easy",
+      "question": "What are the common issues with bit fields in C and how do you debug them?",
+      "ideal_answer": "Common issues with bit fields in C include: endianness issues. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "bit fields",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to bit fields?",
+        "What tools can assist in detecting problems with bit fields at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "flexible array members",
+        "restrict keyword",
+        "alignment"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-005",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Double Pointers",
+      "difficulty": "Easy",
+      "question": "What are the common issues with NULL pointer in C and how do you debug them?",
+      "ideal_answer": "Common issues with NULL pointer in C include: NULL vs 0 vs (void*)0. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "NULL pointer",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to NULL pointer?",
+        "What tools can assist in detecting problems with NULL pointer at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "pointer arithmetic",
+        "function pointers",
+        "void pointer"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-006",
+      "subject": "C",
+      "category": "Advanced C",
+      "subcategory": "Volatile",
+      "difficulty": "Easy",
+      "question": "Explain the difference between flexible array members and restrict keyword in C.",
+      "ideal_answer": "flexible array members and restrict keyword differ in several ways: flexible array members is unsized array at struct end (works by variable-length structures) whereas restrict keyword is pointer aliasing hint (works by compiler optimization enablement). flexible array members is typically used for sizeof excludes FAM, while restrict keyword is used for promise of non-overlapping access. Example demonstrating flexible array members: struct { int len; int data[]; };. Example demonstrating restrict keyword: void copy(int* restrict dst, const int* restrict src);.",
+      "keywords": [
+        "flexible array members",
+        "restrict keyword",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose flexible array members over restrict keyword?",
+        "What is the performance or memory difference between flexible array members and restrict keyword?"
+      ],
+      "related_concepts": [
+        "flexible array members",
+        "restrict keyword",
+        "bit fields",
+        "alignment"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-007",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Data Types",
+      "difficulty": "Easy",
+      "question": "Explain the difference between const qualifier and header guards in C.",
+      "ideal_answer": "const qualifier and header guards differ in several ways: const qualifier is a type qualifier (works by preventing modification of variables) whereas header guards is preprocessor technique (works by preventing multiple inclusion). const qualifier is typically used for read-only access, compiler optimizations, while header guards is used for #ifndef, #define, #endif pattern. Example demonstrating const qualifier: const int MAX = 100;. Example demonstrating header guards: #ifndef HEADER_H\n#define HEADER_H.",
+      "keywords": [
+        "const qualifier",
+        "header guards",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose const qualifier over header guards?",
+        "What is the performance or memory difference between const qualifier and header guards?"
+      ],
+      "related_concepts": [
+        "const qualifier",
+        "header guards",
+        "static keyword",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-008",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Pointer Arithmetic",
+      "difficulty": "Easy",
+      "question": "What is function pointers in C and how does it work?",
+      "ideal_answer": "function pointers in C refers to pointers to functions. It works by callbacks, polymorphism. Key characteristics include type signature must match. Example: int (*cmp)(const void*, const void*);. Common pitfalls include syntax complexity, casting issues.",
+      "keywords": [
+        "function pointers",
+        "C programming",
+        "pointers"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of function pointers in a production environment?",
+        "What are the common pitfalls or issues associated with function pointers?"
+      ],
+      "related_concepts": [
+        "pointer arithmetic",
+        "void pointer",
+        "NULL pointer"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-009",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Function Pointers",
+      "difficulty": "Easy",
+      "question": "What is void pointer in C and how does it work?",
+      "ideal_answer": "void pointer in C refers to generic pointer type. It works by type-erased data handling. Key characteristics include cannot be dereferenced directly. Example: void* generic_data;. Common pitfalls include casting required before use.",
+      "keywords": [
+        "void pointer",
+        "C programming",
+        "pointers"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of void pointer in a production environment?",
+        "What are the common pitfalls or issues associated with void pointer?"
+      ],
+      "related_concepts": [
+        "pointer arithmetic",
+        "function pointers",
+        "NULL pointer"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-010",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Syntax",
+      "difficulty": "Easy",
+      "question": "What are the common issues with enum in C and how do you debug them?",
+      "ideal_answer": "Common issues with enum in C include: enum size implementation-defined. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "enum",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to enum?",
+        "What tools can assist in detecting problems with enum at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "static keyword",
+        "const qualifier",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-011",
+      "subject": "C",
+      "category": "System Programming",
+      "subcategory": "File I/O",
+      "difficulty": "Easy",
+      "question": "What is file descriptors in C and how does it work?",
+      "ideal_answer": "file descriptors in C refers to integer handles for I/O. It works by kernel resource abstraction. Key characteristics include 0: stdin, 1: stdout, 2: stderr. Example: int fd = open('file.txt', O_RDONLY);. Common pitfalls include fd leak on exception paths.",
+      "keywords": [
+        "file descriptors",
+        "C programming",
+        "system programming"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of file descriptors in a production environment?",
+        "What are the common pitfalls or issues associated with file descriptors?"
+      ],
+      "related_concepts": [
+        "fork()",
+        "exec family",
+        "signals"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-012",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Data Types",
+      "difficulty": "Easy",
+      "question": "What are the common issues with sizeof operator in C and how do you debug them?",
+      "ideal_answer": "Common issues with sizeof operator in C include: using sizeof on pointers vs arrays. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "sizeof operator",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to sizeof operator?",
+        "What tools can assist in detecting problems with sizeof operator at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "static keyword",
+        "const qualifier",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-013",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Operators",
+      "difficulty": "Easy",
+      "question": "Explain the difference between volatile keyword and extern keyword in C.",
+      "ideal_answer": "volatile keyword and extern keyword differ in several ways: volatile keyword is a type qualifier (works by telling compiler not to optimize access) whereas extern keyword is a storage class (works by declaring variables defined elsewhere). volatile keyword is typically used for hardware registers, signal handlers, multi-threaded variables, while extern keyword is used for global scope, cross-file linkage. Example demonstrating volatile keyword: volatile int flag = 0;. Example demonstrating extern keyword: extern int global_var;.",
+      "keywords": [
+        "volatile keyword",
+        "extern keyword",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose volatile keyword over extern keyword?",
+        "What is the performance or memory difference between volatile keyword and extern keyword?"
+      ],
+      "related_concepts": [
+        "volatile keyword",
+        "extern keyword",
+        "static keyword",
+        "const qualifier"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-014",
+      "subject": "C",
+      "category": "Advanced C",
+      "subcategory": "Inline Assembly",
+      "difficulty": "Easy",
+      "question": "What are the common issues with restrict keyword in C and how do you debug them?",
+      "ideal_answer": "Common issues with restrict keyword in C include: violating restrict contract. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "restrict keyword",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to restrict keyword?",
+        "What tools can assist in detecting problems with restrict keyword at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "bit fields",
+        "flexible array members",
+        "alignment"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-015",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Pointer Arithmetic",
+      "difficulty": "Easy",
+      "question": "What are the common issues with function pointers in C and how do you debug them?",
+      "ideal_answer": "Common issues with function pointers in C include: syntax complexity, casting issues. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "function pointers",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to function pointers?",
+        "What tools can assist in detecting problems with function pointers at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "pointer arithmetic",
+        "void pointer",
+        "NULL pointer"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-016",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Data Types",
+      "difficulty": "Easy",
+      "question": "Explain the difference between const qualifier and struct vs union in C.",
+      "ideal_answer": "const qualifier and struct vs union differ in several ways: const qualifier is a type qualifier (works by preventing modification of variables) whereas struct vs union is composite data types (works by grouping related data). const qualifier is typically used for read-only access, compiler optimizations, while struct vs union is used for struct: sum of members, union: shared memory. Example demonstrating const qualifier: const int MAX = 100;. Example demonstrating struct vs union: struct Point {int x, y;};.",
+      "keywords": [
+        "const qualifier",
+        "struct vs union",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose const qualifier over struct vs union?",
+        "What is the performance or memory difference between const qualifier and struct vs union?"
+      ],
+      "related_concepts": [
+        "const qualifier",
+        "struct vs union",
+        "static keyword",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-017",
+      "subject": "C",
+      "category": "System Programming",
+      "subcategory": "File I/O",
+      "difficulty": "Easy",
+      "question": "Explain the difference between file descriptors and exec family in C.",
+      "ideal_answer": "file descriptors and exec family differ in several ways: file descriptors is integer handles for I/O (works by kernel resource abstraction) whereas exec family is program execution (works by replacing process image). file descriptors is typically used for 0: stdin, 1: stdout, 2: stderr, while exec family is used for execl, execv, execvp variants. Example demonstrating file descriptors: int fd = open('file.txt', O_RDONLY);. Example demonstrating exec family: execl('/bin/ls', 'ls', '-l', NULL);.",
+      "keywords": [
+        "file descriptors",
+        "exec family",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose file descriptors over exec family?",
+        "What is the performance or memory difference between file descriptors and exec family?"
+      ],
+      "related_concepts": [
+        "file descriptors",
+        "exec family",
+        "fork()",
+        "signals"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-018",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Stack vs Heap",
+      "difficulty": "Easy",
+      "question": "What is malloc vs calloc in C and how does it work?",
+      "ideal_answer": "malloc vs calloc in C refers to memory allocation functions. It works by allocating dynamic memory. Key characteristics include malloc: uninitialized, calloc: zero-initialized. Example: int* arr = calloc(10, sizeof(int));. Common pitfalls include not checking return value for NULL.",
+      "keywords": [
+        "malloc vs calloc",
+        "C programming",
+        "memory management"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of malloc vs calloc in a production environment?",
+        "What are the common pitfalls or issues associated with malloc vs calloc?"
+      ],
+      "related_concepts": [
+        "realloc",
+        "free",
+        "memory leak"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-019",
+      "subject": "C",
+      "category": "System Programming",
+      "subcategory": "File I/O",
+      "difficulty": "Easy",
+      "question": "What are the common issues with file descriptors in C and how do you debug them?",
+      "ideal_answer": "Common issues with file descriptors in C include: fd leak on exception paths. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "file descriptors",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to file descriptors?",
+        "What tools can assist in detecting problems with file descriptors at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "fork()",
+        "exec family",
+        "signals"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-020",
+      "subject": "C",
+      "category": "System Programming",
+      "subcategory": "Process Management",
+      "difficulty": "Easy",
+      "question": "Explain the difference between fork() and pipes in C.",
+      "ideal_answer": "fork() and pipes differ in several ways: fork() is process creation (works by duplicating process) whereas pipes is unidirectional data channels (works by inter-process communication). fork() is typically used for copy-on-write, returns PID, while pipes is used for anonymous and named pipes. Example demonstrating fork(): pid_t pid = fork(); if (pid == 0) { /* child */ }. Example demonstrating pipes: pipe(fd); write(fd[1], data, len);.",
+      "keywords": [
+        "fork()",
+        "pipes",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose fork() over pipes?",
+        "What is the performance or memory difference between fork() and pipes?"
+      ],
+      "related_concepts": [
+        "fork()",
+        "pipes",
+        "file descriptors",
+        "exec family"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-021",
+      "subject": "C",
+      "category": "System Programming",
+      "subcategory": "IPC",
+      "difficulty": "Easy",
+      "question": "Explain the difference between signals and pipes in C.",
+      "ideal_answer": "signals and pipes differ in several ways: signals is asynchronous notifications (works by inter-process communication) whereas pipes is unidirectional data channels (works by inter-process communication). signals is typically used for SIGINT, SIGSEGV, SIGKILL, while pipes is used for anonymous and named pipes. Example demonstrating signals: signal(SIGINT, handler);. Example demonstrating pipes: pipe(fd); write(fd[1], data, len);.",
+      "keywords": [
+        "signals",
+        "pipes",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose signals over pipes?",
+        "What is the performance or memory difference between signals and pipes?"
+      ],
+      "related_concepts": [
+        "signals",
+        "pipes",
+        "file descriptors",
+        "fork()"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-022",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Control Flow",
+      "difficulty": "Easy",
+      "question": "What are the common issues with header guards in C and how do you debug them?",
+      "ideal_answer": "Common issues with header guards in C include: pragma once portability. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "header guards",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to header guards?",
+        "What tools can assist in detecting problems with header guards at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "static keyword",
+        "const qualifier",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-023",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Functions",
+      "difficulty": "Easy",
+      "question": "Explain the difference between typedef and type casting in C.",
+      "ideal_answer": "typedef and type casting differ in several ways: typedef is a keyword for type aliasing (works by creating new type names) whereas type casting is explicit conversion (works by converting between types). typedef is typically used for improved readability, abstraction, while type casting is used for truncation, sign extension, pointer casting. Example demonstrating typedef: typedef unsigned int uint32_t;. Example demonstrating type casting: (int*)ptr vs (void*)ptr.",
+      "keywords": [
+        "typedef",
+        "type casting",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose typedef over type casting?",
+        "What is the performance or memory difference between typedef and type casting?"
+      ],
+      "related_concepts": [
+        "typedef",
+        "type casting",
+        "static keyword",
+        "const qualifier"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-024",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Syntax",
+      "difficulty": "Easy",
+      "question": "Explain the difference between static keyword and enum in C.",
+      "ideal_answer": "static keyword and enum differ in several ways: static keyword is a storage class specifier (works by controlling variable lifetime and scope) whereas enum is user-defined type (works by named integer constants). static keyword is typically used for persistent storage across function calls, internal linkage, while enum is used for type safety, readable code. Example demonstrating static keyword: static int count = 0;. Example demonstrating enum: enum Color {RED, GREEN, BLUE};.",
+      "keywords": [
+        "static keyword",
+        "enum",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose static keyword over enum?",
+        "What is the performance or memory difference between static keyword and enum?"
+      ],
+      "related_concepts": [
+        "static keyword",
+        "enum",
+        "const qualifier",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-025",
+      "subject": "C",
+      "category": "System Programming",
+      "subcategory": "Process Management",
+      "difficulty": "Easy",
+      "question": "Explain the difference between fork() and exec family in C.",
+      "ideal_answer": "fork() and exec family differ in several ways: fork() is process creation (works by duplicating process) whereas exec family is program execution (works by replacing process image). fork() is typically used for copy-on-write, returns PID, while exec family is used for execl, execv, execvp variants. Example demonstrating fork(): pid_t pid = fork(); if (pid == 0) { /* child */ }. Example demonstrating exec family: execl('/bin/ls', 'ls', '-l', NULL);.",
+      "keywords": [
+        "fork()",
+        "exec family",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose fork() over exec family?",
+        "What is the performance or memory difference between fork() and exec family?"
+      ],
+      "related_concepts": [
+        "fork()",
+        "exec family",
+        "file descriptors",
+        "signals"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-026",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Memory Leaks",
+      "difficulty": "Easy",
+      "question": "Explain the difference between free and mmap in C.",
+      "ideal_answer": "free and mmap differ in several ways: free is memory deallocation (works by releasing heap memory) whereas mmap is memory mapping (works by mapping files/ devices to memory). free is typically used for undefined behavior on double-free, use-after-free, while mmap is used for shared memory, lazy loading. Example demonstrating free: free(ptr); ptr = NULL;. Example demonstrating mmap: mmap(NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);.",
+      "keywords": [
+        "free",
+        "mmap",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose free over mmap?",
+        "What is the performance or memory difference between free and mmap?"
+      ],
+      "related_concepts": [
+        "free",
+        "mmap",
+        "malloc vs calloc",
+        "realloc"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-027",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Syntax",
+      "difficulty": "Easy",
+      "question": "Explain the difference between enum and type casting in C.",
+      "ideal_answer": "enum and type casting differ in several ways: enum is user-defined type (works by named integer constants) whereas type casting is explicit conversion (works by converting between types). enum is typically used for type safety, readable code, while type casting is used for truncation, sign extension, pointer casting. Example demonstrating enum: enum Color {RED, GREEN, BLUE};. Example demonstrating type casting: (int*)ptr vs (void*)ptr.",
+      "keywords": [
+        "enum",
+        "type casting",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose enum over type casting?",
+        "What is the performance or memory difference between enum and type casting?"
+      ],
+      "related_concepts": [
+        "enum",
+        "type casting",
+        "static keyword",
+        "const qualifier"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-028",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Data Types",
+      "difficulty": "Easy",
+      "question": "Explain the difference between const qualifier and extern keyword in C.",
+      "ideal_answer": "const qualifier and extern keyword differ in several ways: const qualifier is a type qualifier (works by preventing modification of variables) whereas extern keyword is a storage class (works by declaring variables defined elsewhere). const qualifier is typically used for read-only access, compiler optimizations, while extern keyword is used for global scope, cross-file linkage. Example demonstrating const qualifier: const int MAX = 100;. Example demonstrating extern keyword: extern int global_var;.",
+      "keywords": [
+        "const qualifier",
+        "extern keyword",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose const qualifier over extern keyword?",
+        "What is the performance or memory difference between const qualifier and extern keyword?"
+      ],
+      "related_concepts": [
+        "const qualifier",
+        "extern keyword",
+        "static keyword",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-029",
+      "subject": "C",
+      "category": "System Programming",
+      "subcategory": "Process Management",
+      "difficulty": "Easy",
+      "question": "Explain the difference between fork() and signals in C.",
+      "ideal_answer": "fork() and signals differ in several ways: fork() is process creation (works by duplicating process) whereas signals is asynchronous notifications (works by inter-process communication). fork() is typically used for copy-on-write, returns PID, while signals is used for SIGINT, SIGSEGV, SIGKILL. Example demonstrating fork(): pid_t pid = fork(); if (pid == 0) { /* child */ }. Example demonstrating signals: signal(SIGINT, handler);.",
+      "keywords": [
+        "fork()",
+        "signals",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose fork() over signals?",
+        "What is the performance or memory difference between fork() and signals?"
+      ],
+      "related_concepts": [
+        "fork()",
+        "signals",
+        "file descriptors",
+        "exec family"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-030",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Syntax",
+      "difficulty": "Easy",
+      "question": "Explain the difference between enum and header guards in C.",
+      "ideal_answer": "enum and header guards differ in several ways: enum is user-defined type (works by named integer constants) whereas header guards is preprocessor technique (works by preventing multiple inclusion). enum is typically used for type safety, readable code, while header guards is used for #ifndef, #define, #endif pattern. Example demonstrating enum: enum Color {RED, GREEN, BLUE};. Example demonstrating header guards: #ifndef HEADER_H\n#define HEADER_H.",
+      "keywords": [
+        "enum",
+        "header guards",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose enum over header guards?",
+        "What is the performance or memory difference between enum and header guards?"
+      ],
+      "related_concepts": [
+        "enum",
+        "header guards",
+        "static keyword",
+        "const qualifier"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-031",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Pointer Arithmetic",
+      "difficulty": "Easy",
+      "question": "Explain the difference between function pointers and pointer to pointer in C.",
+      "ideal_answer": "function pointers and pointer to pointer differ in several ways: function pointers is pointers to functions (works by callbacks, polymorphism) whereas pointer to pointer is indirect addressing (works by modifying pointers in functions). function pointers is typically used for type signature must match, while pointer to pointer is used for 2D arrays, dynamic matrices. Example demonstrating function pointers: int (*cmp)(const void*, const void*);. Example demonstrating pointer to pointer: void allocate(int** arr, int n);.",
+      "keywords": [
+        "function pointers",
+        "pointer to pointer",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose function pointers over pointer to pointer?",
+        "What is the performance or memory difference between function pointers and pointer to pointer?"
+      ],
+      "related_concepts": [
+        "function pointers",
+        "pointer to pointer",
+        "pointer arithmetic",
+        "void pointer"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-032",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Control Flow",
+      "difficulty": "Easy",
+      "question": "Explain the difference between extern keyword and typedef in C.",
+      "ideal_answer": "extern keyword and typedef differ in several ways: extern keyword is a storage class (works by declaring variables defined elsewhere) whereas typedef is a keyword for type aliasing (works by creating new type names). extern keyword is typically used for global scope, cross-file linkage, while typedef is used for improved readability, abstraction. Example demonstrating extern keyword: extern int global_var;. Example demonstrating typedef: typedef unsigned int uint32_t;.",
+      "keywords": [
+        "extern keyword",
+        "typedef",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose extern keyword over typedef?",
+        "What is the performance or memory difference between extern keyword and typedef?"
+      ],
+      "related_concepts": [
+        "extern keyword",
+        "typedef",
+        "static keyword",
+        "const qualifier"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-033",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Operators",
+      "difficulty": "Easy",
+      "question": "Explain the difference between volatile keyword and type casting in C.",
+      "ideal_answer": "volatile keyword and type casting differ in several ways: volatile keyword is a type qualifier (works by telling compiler not to optimize access) whereas type casting is explicit conversion (works by converting between types). volatile keyword is typically used for hardware registers, signal handlers, multi-threaded variables, while type casting is used for truncation, sign extension, pointer casting. Example demonstrating volatile keyword: volatile int flag = 0;. Example demonstrating type casting: (int*)ptr vs (void*)ptr.",
+      "keywords": [
+        "volatile keyword",
+        "type casting",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose volatile keyword over type casting?",
+        "What is the performance or memory difference between volatile keyword and type casting?"
+      ],
+      "related_concepts": [
+        "volatile keyword",
+        "type casting",
+        "static keyword",
+        "const qualifier"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-034",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Stack vs Heap",
+      "difficulty": "Easy",
+      "question": "What are the common issues with malloc vs calloc in C and how do you debug them?",
+      "ideal_answer": "Common issues with malloc vs calloc in C include: not checking return value for NULL. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "malloc vs calloc",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to malloc vs calloc?",
+        "What tools can assist in detecting problems with malloc vs calloc at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "realloc",
+        "free",
+        "memory leak"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-035",
+      "subject": "C",
+      "category": "Advanced C",
+      "subcategory": "Bit Manipulation",
+      "difficulty": "Easy",
+      "question": "What is bit fields in C and how does it work?",
+      "ideal_answer": "bit fields in C refers to packed struct members. It works by memory-efficient flags. Key characteristics include implementation-defined alignment. Example: struct { unsigned int flag:1; };. Common pitfalls include endianness issues.",
+      "keywords": [
+        "bit fields",
+        "C programming",
+        "advanced c"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of bit fields in a production environment?",
+        "What are the common pitfalls or issues associated with bit fields?"
+      ],
+      "related_concepts": [
+        "flexible array members",
+        "restrict keyword",
+        "alignment"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-036",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Functions",
+      "difficulty": "Easy",
+      "question": "Explain the difference between typedef and sizeof operator in C.",
+      "ideal_answer": "typedef and sizeof operator differ in several ways: typedef is a keyword for type aliasing (works by creating new type names) whereas sizeof operator is compile-time operator (works by determining size of types/objects). typedef is typically used for improved readability, abstraction, while sizeof operator is used for platform-dependent, excludes flexible array members. Example demonstrating typedef: typedef unsigned int uint32_t;. Example demonstrating sizeof operator: sizeof(int) on 32-bit vs 64-bit.",
+      "keywords": [
+        "typedef",
+        "sizeof operator",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose typedef over sizeof operator?",
+        "What is the performance or memory difference between typedef and sizeof operator?"
+      ],
+      "related_concepts": [
+        "typedef",
+        "sizeof operator",
+        "static keyword",
+        "const qualifier"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "C-037",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Pointer Basics",
+      "difficulty": "Medium",
+      "question": "Explain the difference between pointer arithmetic and pointer to pointer in C.",
+      "ideal_answer": "pointer arithmetic and pointer to pointer differ in several ways: pointer arithmetic is arithmetic on addresses (works by navigating arrays/ buffers) whereas pointer to pointer is indirect addressing (works by modifying pointers in functions). pointer arithmetic is typically used for scales by sizeof(type), while pointer to pointer is used for 2D arrays, dynamic matrices. Example demonstrating pointer arithmetic: *(arr + i) == arr[i]. Example demonstrating pointer to pointer: void allocate(int** arr, int n);.",
+      "keywords": [
+        "pointer arithmetic",
+        "pointer to pointer",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose pointer arithmetic over pointer to pointer?",
+        "What is the performance or memory difference between pointer arithmetic and pointer to pointer?"
+      ],
+      "related_concepts": [
+        "pointer arithmetic",
+        "pointer to pointer",
+        "function pointers",
+        "void pointer"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-038",
+      "subject": "C",
+      "category": "Advanced C",
+      "subcategory": "Bit Manipulation",
+      "difficulty": "Medium",
+      "question": "What is inline functions in C and how does it work?",
+      "ideal_answer": "inline functions in C refers to function expansion at call site. It works by eliminating call overhead. Key characteristics include compiler hint, not command. Example: static inline int max(int a, int b) { return a>b?a:b; }. Common pitfalls include code bloat, ODR violations.",
+      "keywords": [
+        "inline functions",
+        "C programming",
+        "advanced c"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of inline functions in a production environment?",
+        "What are the common pitfalls or issues associated with inline functions?"
+      ],
+      "related_concepts": [
+        "bit fields",
+        "flexible array members",
+        "restrict keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-039",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Buffer Management",
+      "difficulty": "Medium",
+      "question": "Explain the difference between memory leak and mmap in C.",
+      "ideal_answer": "memory leak and mmap differ in several ways: memory leak is unreachable allocated memory (works by gradual memory consumption) whereas mmap is memory mapping (works by mapping files/ devices to memory). memory leak is typically used for lost pointers, missing free calls, while mmap is used for shared memory, lazy loading. Example demonstrating memory leak: void leak() { malloc(100); }. Example demonstrating mmap: mmap(NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);.",
+      "keywords": [
+        "memory leak",
+        "mmap",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose memory leak over mmap?",
+        "What is the performance or memory difference between memory leak and mmap?"
+      ],
+      "related_concepts": [
+        "memory leak",
+        "mmap",
+        "malloc vs calloc",
+        "realloc"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-040",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Operators",
+      "difficulty": "Medium",
+      "question": "Explain the difference between type casting and header guards in C.",
+      "ideal_answer": "type casting and header guards differ in several ways: type casting is explicit conversion (works by converting between types) whereas header guards is preprocessor technique (works by preventing multiple inclusion). type casting is typically used for truncation, sign extension, pointer casting, while header guards is used for #ifndef, #define, #endif pattern. Example demonstrating type casting: (int*)ptr vs (void*)ptr. Example demonstrating header guards: #ifndef HEADER_H\n#define HEADER_H.",
+      "keywords": [
+        "type casting",
+        "header guards",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose type casting over header guards?",
+        "What is the performance or memory difference between type casting and header guards?"
+      ],
+      "related_concepts": [
+        "type casting",
+        "header guards",
+        "static keyword",
+        "const qualifier"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-041",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Stack vs Heap",
+      "difficulty": "Medium",
+      "question": "Explain the difference between malloc vs calloc and memory leak in C.",
+      "ideal_answer": "malloc vs calloc and memory leak differ in several ways: malloc vs calloc is memory allocation functions (works by allocating dynamic memory) whereas memory leak is unreachable allocated memory (works by gradual memory consumption). malloc vs calloc is typically used for malloc: uninitialized, calloc: zero-initialized, while memory leak is used for lost pointers, missing free calls. Example demonstrating malloc vs calloc: int* arr = calloc(10, sizeof(int));. Example demonstrating memory leak: void leak() { malloc(100); }.",
+      "keywords": [
+        "malloc vs calloc",
+        "memory leak",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose malloc vs calloc over memory leak?",
+        "What is the performance or memory difference between malloc vs calloc and memory leak?"
+      ],
+      "related_concepts": [
+        "malloc vs calloc",
+        "memory leak",
+        "realloc",
+        "free"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-042",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Pointer Arithmetic",
+      "difficulty": "Medium",
+      "question": "Explain the difference between function pointers and const pointer vs pointer to const in C.",
+      "ideal_answer": "function pointers and const pointer vs pointer to const differ in several ways: function pointers is pointers to functions (works by callbacks, polymorphism) whereas const pointer vs pointer to const is different const placements (works by varying mutability). function pointers is typically used for type signature must match, while const pointer vs pointer to const is used for const int* p: data const, int* const p: pointer const. Example demonstrating function pointers: int (*cmp)(const void*, const void*);. Example demonstrating const pointer vs pointer to const: const int* const p;.",
+      "keywords": [
+        "function pointers",
+        "const pointer vs pointer to const",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose function pointers over const pointer vs pointer to const?",
+        "What is the performance or memory difference between function pointers and const pointer vs pointer to const?"
+      ],
+      "related_concepts": [
+        "function pointers",
+        "const pointer vs pointer to const",
+        "pointer arithmetic",
+        "void pointer"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-043",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Syntax",
+      "difficulty": "Medium",
+      "question": "What is static keyword in C and how does it work?",
+      "ideal_answer": "static keyword in C refers to a storage class specifier. It works by controlling variable lifetime and scope. Key characteristics include persistent storage across function calls, internal linkage. Example: static int count = 0;. Common pitfalls include misunderstanding linkage vs lifetime.",
+      "keywords": [
+        "static keyword",
+        "C programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of static keyword in a production environment?",
+        "What are the common pitfalls or issues associated with static keyword?"
+      ],
+      "related_concepts": [
+        "const qualifier",
+        "volatile keyword",
+        "extern keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-044",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Pointer Basics",
+      "difficulty": "Medium",
+      "question": "What is pointer to pointer in C and how does it work?",
+      "ideal_answer": "pointer to pointer in C refers to indirect addressing. It works by modifying pointers in functions. Key characteristics include 2D arrays, dynamic matrices. Example: void allocate(int** arr, int n);. Common pitfalls include multiple levels of indirection confusion.",
+      "keywords": [
+        "pointer to pointer",
+        "C programming",
+        "pointers"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of pointer to pointer in a production environment?",
+        "What are the common pitfalls or issues associated with pointer to pointer?"
+      ],
+      "related_concepts": [
+        "pointer arithmetic",
+        "function pointers",
+        "void pointer"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-045",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Operators",
+      "difficulty": "Medium",
+      "question": "What is type casting in C and how does it work?",
+      "ideal_answer": "type casting in C refers to explicit conversion. It works by converting between types. Key characteristics include truncation, sign extension, pointer casting. Example: (int*)ptr vs (void*)ptr. Common pitfalls include undefined behavior in invalid casts.",
+      "keywords": [
+        "type casting",
+        "C programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of type casting in a production environment?",
+        "What are the common pitfalls or issues associated with type casting?"
+      ],
+      "related_concepts": [
+        "static keyword",
+        "const qualifier",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-046",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Memory Leaks",
+      "difficulty": "Medium",
+      "question": "What is free in C and how does it work?",
+      "ideal_answer": "free in C refers to memory deallocation. It works by releasing heap memory. Key characteristics include undefined behavior on double-free, use-after-free. Example: free(ptr); ptr = NULL;. Common pitfalls include dangling pointers after free.",
+      "keywords": [
+        "free",
+        "C programming",
+        "memory management"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of free in a production environment?",
+        "What are the common pitfalls or issues associated with free?"
+      ],
+      "related_concepts": [
+        "malloc vs calloc",
+        "realloc",
+        "memory leak"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-047",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "malloc/free",
+      "difficulty": "Medium",
+      "question": "Explain the difference between realloc and stack overflow in C.",
+      "ideal_answer": "realloc and stack overflow differ in several ways: realloc is memory resizing function (works by changing size of allocated block) whereas stack overflow is exceeding stack limit (works by recursive calls, large local arrays). realloc is typically used for may move data, preserves contents, while stack overflow is used for segmentation fault, program crash. Example demonstrating realloc: arr = realloc(arr, new_size);. Example demonstrating stack overflow: int arr[1000000]; // on stack.",
+      "keywords": [
+        "realloc",
+        "stack overflow",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose realloc over stack overflow?",
+        "What is the performance or memory difference between realloc and stack overflow?"
+      ],
+      "related_concepts": [
+        "realloc",
+        "stack overflow",
+        "malloc vs calloc",
+        "free"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-048",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Double Pointers",
+      "difficulty": "Medium",
+      "question": "Explain the difference between NULL pointer and const pointer vs pointer to const in C.",
+      "ideal_answer": "NULL pointer and const pointer vs pointer to const differ in several ways: NULL pointer is pointer to nothing (works by indicating invalid/ uninitialized state) whereas const pointer vs pointer to const is different const placements (works by varying mutability). NULL pointer is typically used for dereference causes segfault, while const pointer vs pointer to const is used for const int* p: data const, int* const p: pointer const. Example demonstrating NULL pointer: if (ptr == NULL) return;. Example demonstrating const pointer vs pointer to const: const int* const p;.",
+      "keywords": [
+        "NULL pointer",
+        "const pointer vs pointer to const",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose NULL pointer over const pointer vs pointer to const?",
+        "What is the performance or memory difference between NULL pointer and const pointer vs pointer to const?"
+      ],
+      "related_concepts": [
+        "NULL pointer",
+        "const pointer vs pointer to const",
+        "pointer arithmetic",
+        "function pointers"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-049",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Pointer Arithmetic",
+      "difficulty": "Medium",
+      "question": "Explain the difference between function pointers and dangling pointer in C.",
+      "ideal_answer": "function pointers and dangling pointer differ in several ways: function pointers is pointers to functions (works by callbacks, polymorphism) whereas dangling pointer is pointer to freed memory (works by use-after-free vulnerability). function pointers is typically used for type signature must match, while dangling pointer is used for crash or data corruption. Example demonstrating function pointers: int (*cmp)(const void*, const void*);. Example demonstrating dangling pointer: free(ptr); ... *ptr = 5;.",
+      "keywords": [
+        "function pointers",
+        "dangling pointer",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose function pointers over dangling pointer?",
+        "What is the performance or memory difference between function pointers and dangling pointer?"
+      ],
+      "related_concepts": [
+        "function pointers",
+        "dangling pointer",
+        "pointer arithmetic",
+        "void pointer"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-050",
+      "subject": "C",
+      "category": "Advanced C",
+      "subcategory": "Inline Assembly",
+      "difficulty": "Medium",
+      "question": "Explain the difference between restrict keyword and inline functions in C.",
+      "ideal_answer": "restrict keyword and inline functions differ in several ways: restrict keyword is pointer aliasing hint (works by compiler optimization enablement) whereas inline functions is function expansion at call site (works by eliminating call overhead). restrict keyword is typically used for promise of non-overlapping access, while inline functions is used for compiler hint, not command. Example demonstrating restrict keyword: void copy(int* restrict dst, const int* restrict src);. Example demonstrating inline functions: static inline int max(int a, int b) { return a>b?a:b; }.",
+      "keywords": [
+        "restrict keyword",
+        "inline functions",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose restrict keyword over inline functions?",
+        "What is the performance or memory difference between restrict keyword and inline functions?"
+      ],
+      "related_concepts": [
+        "restrict keyword",
+        "inline functions",
+        "bit fields",
+        "flexible array members"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-051",
+      "subject": "C",
+      "category": "Advanced C",
+      "subcategory": "Volatile",
+      "difficulty": "Medium",
+      "question": "What are the common issues with flexible array members in C and how do you debug them?",
+      "ideal_answer": "Common issues with flexible array members in C include: must allocate manually. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "flexible array members",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to flexible array members?",
+        "What tools can assist in detecting problems with flexible array members at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "bit fields",
+        "restrict keyword",
+        "alignment"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-052",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Operators",
+      "difficulty": "Medium",
+      "question": "Explain the difference between volatile keyword and typedef in C.",
+      "ideal_answer": "volatile keyword and typedef differ in several ways: volatile keyword is a type qualifier (works by telling compiler not to optimize access) whereas typedef is a keyword for type aliasing (works by creating new type names). volatile keyword is typically used for hardware registers, signal handlers, multi-threaded variables, while typedef is used for improved readability, abstraction. Example demonstrating volatile keyword: volatile int flag = 0;. Example demonstrating typedef: typedef unsigned int uint32_t;.",
+      "keywords": [
+        "volatile keyword",
+        "typedef",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose volatile keyword over typedef?",
+        "What is the performance or memory difference between volatile keyword and typedef?"
+      ],
+      "related_concepts": [
+        "volatile keyword",
+        "typedef",
+        "static keyword",
+        "const qualifier"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-053",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Memory Leaks",
+      "difficulty": "Medium",
+      "question": "What are the common issues with memory fragmentation in C and how do you debug them?",
+      "ideal_answer": "Common issues with memory fragmentation in C include: memory pools, custom allocators. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "memory fragmentation",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to memory fragmentation?",
+        "What tools can assist in detecting problems with memory fragmentation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "malloc vs calloc",
+        "realloc",
+        "free"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-054",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Operators",
+      "difficulty": "Medium",
+      "question": "Explain the difference between volatile keyword and header guards in C.",
+      "ideal_answer": "volatile keyword and header guards differ in several ways: volatile keyword is a type qualifier (works by telling compiler not to optimize access) whereas header guards is preprocessor technique (works by preventing multiple inclusion). volatile keyword is typically used for hardware registers, signal handlers, multi-threaded variables, while header guards is used for #ifndef, #define, #endif pattern. Example demonstrating volatile keyword: volatile int flag = 0;. Example demonstrating header guards: #ifndef HEADER_H\n#define HEADER_H.",
+      "keywords": [
+        "volatile keyword",
+        "header guards",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose volatile keyword over header guards?",
+        "What is the performance or memory difference between volatile keyword and header guards?"
+      ],
+      "related_concepts": [
+        "volatile keyword",
+        "header guards",
+        "static keyword",
+        "const qualifier"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-055",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "malloc/free",
+      "difficulty": "Medium",
+      "question": "What are the common issues with buffer overflow in C and how do you debug them?",
+      "ideal_answer": "Common issues with buffer overflow in C include: use strncpy, fgets, bounded functions. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "buffer overflow",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to buffer overflow?",
+        "What tools can assist in detecting problems with buffer overflow at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "malloc vs calloc",
+        "realloc",
+        "free"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-056",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Pointer Basics",
+      "difficulty": "Medium",
+      "question": "Explain the difference between pointer arithmetic and NULL pointer in C.",
+      "ideal_answer": "pointer arithmetic and NULL pointer differ in several ways: pointer arithmetic is arithmetic on addresses (works by navigating arrays/ buffers) whereas NULL pointer is pointer to nothing (works by indicating invalid/ uninitialized state). pointer arithmetic is typically used for scales by sizeof(type), while NULL pointer is used for dereference causes segfault. Example demonstrating pointer arithmetic: *(arr + i) == arr[i]. Example demonstrating NULL pointer: if (ptr == NULL) return;.",
+      "keywords": [
+        "pointer arithmetic",
+        "NULL pointer",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose pointer arithmetic over NULL pointer?",
+        "What is the performance or memory difference between pointer arithmetic and NULL pointer?"
+      ],
+      "related_concepts": [
+        "pointer arithmetic",
+        "NULL pointer",
+        "function pointers",
+        "void pointer"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-057",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Buffer Management",
+      "difficulty": "Medium",
+      "question": "What is mmap in C and how does it work?",
+      "ideal_answer": "mmap in C refers to memory mapping. It works by mapping files/ devices to memory. Key characteristics include shared memory, lazy loading. Example: mmap(NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);. Common pitfalls include munmap synchronization.",
+      "keywords": [
+        "mmap",
+        "C programming",
+        "memory management"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of mmap in a production environment?",
+        "What are the common pitfalls or issues associated with mmap?"
+      ],
+      "related_concepts": [
+        "malloc vs calloc",
+        "realloc",
+        "free"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-058",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Stack vs Heap",
+      "difficulty": "Medium",
+      "question": "Explain the difference between stack overflow and mmap in C.",
+      "ideal_answer": "stack overflow and mmap differ in several ways: stack overflow is exceeding stack limit (works by recursive calls, large local arrays) whereas mmap is memory mapping (works by mapping files/ devices to memory). stack overflow is typically used for segmentation fault, program crash, while mmap is used for shared memory, lazy loading. Example demonstrating stack overflow: int arr[1000000]; // on stack. Example demonstrating mmap: mmap(NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);.",
+      "keywords": [
+        "stack overflow",
+        "mmap",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose stack overflow over mmap?",
+        "What is the performance or memory difference between stack overflow and mmap?"
+      ],
+      "related_concepts": [
+        "stack overflow",
+        "mmap",
+        "malloc vs calloc",
+        "realloc"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-059",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Buffer Management",
+      "difficulty": "Medium",
+      "question": "Explain the difference between memory leak and buffer overflow in C.",
+      "ideal_answer": "memory leak and buffer overflow differ in several ways: memory leak is unreachable allocated memory (works by gradual memory consumption) whereas buffer overflow is writing past buffer bounds (works by security vulnerability). memory leak is typically used for lost pointers, missing free calls, while buffer overflow is used for stack smashing, code injection. Example demonstrating memory leak: void leak() { malloc(100); }. Example demonstrating buffer overflow: char buf[10]; strcpy(buf, 'very long string');.",
+      "keywords": [
+        "memory leak",
+        "buffer overflow",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose memory leak over buffer overflow?",
+        "What is the performance or memory difference between memory leak and buffer overflow?"
+      ],
+      "related_concepts": [
+        "memory leak",
+        "buffer overflow",
+        "malloc vs calloc",
+        "realloc"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-060",
+      "subject": "C",
+      "category": "Advanced C",
+      "subcategory": "Inline Assembly",
+      "difficulty": "Medium",
+      "question": "What is restrict keyword in C and how does it work?",
+      "ideal_answer": "restrict keyword in C refers to pointer aliasing hint. It works by compiler optimization enablement. Key characteristics include promise of non-overlapping access. Example: void copy(int* restrict dst, const int* restrict src);. Common pitfalls include violating restrict contract.",
+      "keywords": [
+        "restrict keyword",
+        "C programming",
+        "advanced c"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of restrict keyword in a production environment?",
+        "What are the common pitfalls or issues associated with restrict keyword?"
+      ],
+      "related_concepts": [
+        "bit fields",
+        "flexible array members",
+        "alignment"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-061",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Data Types",
+      "difficulty": "Medium",
+      "question": "What are the common issues with const qualifier in C and how do you debug them?",
+      "ideal_answer": "Common issues with const qualifier in C include: const pointer vs pointer to const confusion. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "const qualifier",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to const qualifier?",
+        "What tools can assist in detecting problems with const qualifier at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "static keyword",
+        "volatile keyword",
+        "extern keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-062",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Function Pointers",
+      "difficulty": "Medium",
+      "question": "Explain the difference between void pointer and dangling pointer in C.",
+      "ideal_answer": "void pointer and dangling pointer differ in several ways: void pointer is generic pointer type (works by type-erased data handling) whereas dangling pointer is pointer to freed memory (works by use-after-free vulnerability). void pointer is typically used for cannot be dereferenced directly, while dangling pointer is used for crash or data corruption. Example demonstrating void pointer: void* generic_data;. Example demonstrating dangling pointer: free(ptr); ... *ptr = 5;.",
+      "keywords": [
+        "void pointer",
+        "dangling pointer",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose void pointer over dangling pointer?",
+        "What is the performance or memory difference between void pointer and dangling pointer?"
+      ],
+      "related_concepts": [
+        "void pointer",
+        "dangling pointer",
+        "pointer arithmetic",
+        "function pointers"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-063",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Operators",
+      "difficulty": "Medium",
+      "question": "What are the common issues with volatile keyword in C and how do you debug them?",
+      "ideal_answer": "Common issues with volatile keyword in C include: overusing volatile for thread safety. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "volatile keyword",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to volatile keyword?",
+        "What tools can assist in detecting problems with volatile keyword at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "static keyword",
+        "const qualifier",
+        "extern keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-064",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Stack vs Heap",
+      "difficulty": "Medium",
+      "question": "Explain the difference between stack overflow and memory fragmentation in C.",
+      "ideal_answer": "stack overflow and memory fragmentation differ in several ways: stack overflow is exceeding stack limit (works by recursive calls, large local arrays) whereas memory fragmentation is non-contiguous free blocks (works by inefficient memory utilization). stack overflow is typically used for segmentation fault, program crash, while memory fragmentation is used for external fragmentation in heap. Example demonstrating stack overflow: int arr[1000000]; // on stack. Example demonstrating memory fragmentation: frequent small allocations.",
+      "keywords": [
+        "stack overflow",
+        "memory fragmentation",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose stack overflow over memory fragmentation?",
+        "What is the performance or memory difference between stack overflow and memory fragmentation?"
+      ],
+      "related_concepts": [
+        "stack overflow",
+        "memory fragmentation",
+        "malloc vs calloc",
+        "realloc"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-065",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Buffer Management",
+      "difficulty": "Medium",
+      "question": "What are the common issues with mmap in C and how do you debug them?",
+      "ideal_answer": "Common issues with mmap in C include: munmap synchronization. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "mmap",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to mmap?",
+        "What tools can assist in detecting problems with mmap at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "malloc vs calloc",
+        "realloc",
+        "free"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-066",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Pointer to Arrays",
+      "difficulty": "Medium",
+      "question": "Explain the difference between dangling pointer and const pointer vs pointer to const in C.",
+      "ideal_answer": "dangling pointer and const pointer vs pointer to const differ in several ways: dangling pointer is pointer to freed memory (works by use-after-free vulnerability) whereas const pointer vs pointer to const is different const placements (works by varying mutability). dangling pointer is typically used for crash or data corruption, while const pointer vs pointer to const is used for const int* p: data const, int* const p: pointer const. Example demonstrating dangling pointer: free(ptr); ... *ptr = 5;. Example demonstrating const pointer vs pointer to const: const int* const p;.",
+      "keywords": [
+        "dangling pointer",
+        "const pointer vs pointer to const",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose dangling pointer over const pointer vs pointer to const?",
+        "What is the performance or memory difference between dangling pointer and const pointer vs pointer to const?"
+      ],
+      "related_concepts": [
+        "dangling pointer",
+        "const pointer vs pointer to const",
+        "pointer arithmetic",
+        "function pointers"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-067",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Double Pointers",
+      "difficulty": "Medium",
+      "question": "What is NULL pointer in C and how does it work?",
+      "ideal_answer": "NULL pointer in C refers to pointer to nothing. It works by indicating invalid/ uninitialized state. Key characteristics include dereference causes segfault. Example: if (ptr == NULL) return;. Common pitfalls include NULL vs 0 vs (void*)0.",
+      "keywords": [
+        "NULL pointer",
+        "C programming",
+        "pointers"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of NULL pointer in a production environment?",
+        "What are the common pitfalls or issues associated with NULL pointer?"
+      ],
+      "related_concepts": [
+        "pointer arithmetic",
+        "function pointers",
+        "void pointer"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-068",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Stack vs Heap",
+      "difficulty": "Medium",
+      "question": "Explain the difference between malloc vs calloc and stack overflow in C.",
+      "ideal_answer": "malloc vs calloc and stack overflow differ in several ways: malloc vs calloc is memory allocation functions (works by allocating dynamic memory) whereas stack overflow is exceeding stack limit (works by recursive calls, large local arrays). malloc vs calloc is typically used for malloc: uninitialized, calloc: zero-initialized, while stack overflow is used for segmentation fault, program crash. Example demonstrating malloc vs calloc: int* arr = calloc(10, sizeof(int));. Example demonstrating stack overflow: int arr[1000000]; // on stack.",
+      "keywords": [
+        "malloc vs calloc",
+        "stack overflow",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose malloc vs calloc over stack overflow?",
+        "What is the performance or memory difference between malloc vs calloc and stack overflow?"
+      ],
+      "related_concepts": [
+        "malloc vs calloc",
+        "stack overflow",
+        "realloc",
+        "free"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-069",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Functions",
+      "difficulty": "Medium",
+      "question": "Explain the difference between typedef and header guards in C.",
+      "ideal_answer": "typedef and header guards differ in several ways: typedef is a keyword for type aliasing (works by creating new type names) whereas header guards is preprocessor technique (works by preventing multiple inclusion). typedef is typically used for improved readability, abstraction, while header guards is used for #ifndef, #define, #endif pattern. Example demonstrating typedef: typedef unsigned int uint32_t;. Example demonstrating header guards: #ifndef HEADER_H\n#define HEADER_H.",
+      "keywords": [
+        "typedef",
+        "header guards",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose typedef over header guards?",
+        "What is the performance or memory difference between typedef and header guards?"
+      ],
+      "related_concepts": [
+        "typedef",
+        "header guards",
+        "static keyword",
+        "const qualifier"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-070",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Stack vs Heap",
+      "difficulty": "Medium",
+      "question": "What is stack overflow in C and how does it work?",
+      "ideal_answer": "stack overflow in C refers to exceeding stack limit. It works by recursive calls, large local arrays. Key characteristics include segmentation fault, program crash. Example: int arr[1000000]; // on stack. Common pitfalls include move large arrays to heap.",
+      "keywords": [
+        "stack overflow",
+        "C programming",
+        "memory management"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of stack overflow in a production environment?",
+        "What are the common pitfalls or issues associated with stack overflow?"
+      ],
+      "related_concepts": [
+        "malloc vs calloc",
+        "realloc",
+        "free"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-071",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Buffer Management",
+      "difficulty": "Medium",
+      "question": "Explain the difference between memory leak and memory fragmentation in C.",
+      "ideal_answer": "memory leak and memory fragmentation differ in several ways: memory leak is unreachable allocated memory (works by gradual memory consumption) whereas memory fragmentation is non-contiguous free blocks (works by inefficient memory utilization). memory leak is typically used for lost pointers, missing free calls, while memory fragmentation is used for external fragmentation in heap. Example demonstrating memory leak: void leak() { malloc(100); }. Example demonstrating memory fragmentation: frequent small allocations.",
+      "keywords": [
+        "memory leak",
+        "memory fragmentation",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose memory leak over memory fragmentation?",
+        "What is the performance or memory difference between memory leak and memory fragmentation?"
+      ],
+      "related_concepts": [
+        "memory leak",
+        "memory fragmentation",
+        "malloc vs calloc",
+        "realloc"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-072",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Buffer Management",
+      "difficulty": "Medium",
+      "question": "Explain the difference between memory leak and stack overflow in C.",
+      "ideal_answer": "memory leak and stack overflow differ in several ways: memory leak is unreachable allocated memory (works by gradual memory consumption) whereas stack overflow is exceeding stack limit (works by recursive calls, large local arrays). memory leak is typically used for lost pointers, missing free calls, while stack overflow is used for segmentation fault, program crash. Example demonstrating memory leak: void leak() { malloc(100); }. Example demonstrating stack overflow: int arr[1000000]; // on stack.",
+      "keywords": [
+        "memory leak",
+        "stack overflow",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose memory leak over stack overflow?",
+        "What is the performance or memory difference between memory leak and stack overflow?"
+      ],
+      "related_concepts": [
+        "memory leak",
+        "stack overflow",
+        "malloc vs calloc",
+        "realloc"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-073",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Pointer Arithmetic",
+      "difficulty": "Medium",
+      "question": "Explain the difference between function pointers and NULL pointer in C.",
+      "ideal_answer": "function pointers and NULL pointer differ in several ways: function pointers is pointers to functions (works by callbacks, polymorphism) whereas NULL pointer is pointer to nothing (works by indicating invalid/ uninitialized state). function pointers is typically used for type signature must match, while NULL pointer is used for dereference causes segfault. Example demonstrating function pointers: int (*cmp)(const void*, const void*);. Example demonstrating NULL pointer: if (ptr == NULL) return;.",
+      "keywords": [
+        "function pointers",
+        "NULL pointer",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose function pointers over NULL pointer?",
+        "What is the performance or memory difference between function pointers and NULL pointer?"
+      ],
+      "related_concepts": [
+        "function pointers",
+        "NULL pointer",
+        "pointer arithmetic",
+        "void pointer"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-074",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Data Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between const qualifier and enum in C.",
+      "ideal_answer": "const qualifier and enum differ in several ways: const qualifier is a type qualifier (works by preventing modification of variables) whereas enum is user-defined type (works by named integer constants). const qualifier is typically used for read-only access, compiler optimizations, while enum is used for type safety, readable code. Example demonstrating const qualifier: const int MAX = 100;. Example demonstrating enum: enum Color {RED, GREEN, BLUE};.",
+      "keywords": [
+        "const qualifier",
+        "enum",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose const qualifier over enum?",
+        "What is the performance or memory difference between const qualifier and enum?"
+      ],
+      "related_concepts": [
+        "const qualifier",
+        "enum",
+        "static keyword",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-075",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Control Flow",
+      "difficulty": "Medium",
+      "question": "What is header guards in C and how does it work?",
+      "ideal_answer": "header guards in C refers to preprocessor technique. It works by preventing multiple inclusion. Key characteristics include #ifndef, #define, #endif pattern. Example: #ifndef HEADER_H\n#define HEADER_H. Common pitfalls include pragma once portability.",
+      "keywords": [
+        "header guards",
+        "C programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of header guards in a production environment?",
+        "What are the common pitfalls or issues associated with header guards?"
+      ],
+      "related_concepts": [
+        "static keyword",
+        "const qualifier",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-076",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Pointer to Arrays",
+      "difficulty": "Medium",
+      "question": "What are the common issues with dangling pointer in C and how do you debug them?",
+      "ideal_answer": "Common issues with dangling pointer in C include: set to NULL after free. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "dangling pointer",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to dangling pointer?",
+        "What tools can assist in detecting problems with dangling pointer at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "pointer arithmetic",
+        "function pointers",
+        "void pointer"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-077",
+      "subject": "C",
+      "category": "Advanced C",
+      "subcategory": "Inline Assembly",
+      "difficulty": "Medium",
+      "question": "Explain the difference between restrict keyword and alignment in C.",
+      "ideal_answer": "restrict keyword and alignment differ in several ways: restrict keyword is pointer aliasing hint (works by compiler optimization enablement) whereas alignment is memory address divisibility (works by hardware requirements). restrict keyword is typically used for promise of non-overlapping access, while alignment is used for _Alignas, _Alignof. Example demonstrating restrict keyword: void copy(int* restrict dst, const int* restrict src);. Example demonstrating alignment: _Alignas(64) char buffer[1024];.",
+      "keywords": [
+        "restrict keyword",
+        "alignment",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose restrict keyword over alignment?",
+        "What is the performance or memory difference between restrict keyword and alignment?"
+      ],
+      "related_concepts": [
+        "restrict keyword",
+        "alignment",
+        "bit fields",
+        "flexible array members"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-078",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Data Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between sizeof operator and header guards in C.",
+      "ideal_answer": "sizeof operator and header guards differ in several ways: sizeof operator is compile-time operator (works by determining size of types/objects) whereas header guards is preprocessor technique (works by preventing multiple inclusion). sizeof operator is typically used for platform-dependent, excludes flexible array members, while header guards is used for #ifndef, #define, #endif pattern. Example demonstrating sizeof operator: sizeof(int) on 32-bit vs 64-bit. Example demonstrating header guards: #ifndef HEADER_H\n#define HEADER_H.",
+      "keywords": [
+        "sizeof operator",
+        "header guards",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sizeof operator over header guards?",
+        "What is the performance or memory difference between sizeof operator and header guards?"
+      ],
+      "related_concepts": [
+        "sizeof operator",
+        "header guards",
+        "static keyword",
+        "const qualifier"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-079",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Memory Leaks",
+      "difficulty": "Medium",
+      "question": "Explain the difference between free and memory leak in C.",
+      "ideal_answer": "free and memory leak differ in several ways: free is memory deallocation (works by releasing heap memory) whereas memory leak is unreachable allocated memory (works by gradual memory consumption). free is typically used for undefined behavior on double-free, use-after-free, while memory leak is used for lost pointers, missing free calls. Example demonstrating free: free(ptr); ptr = NULL;. Example demonstrating memory leak: void leak() { malloc(100); }.",
+      "keywords": [
+        "free",
+        "memory leak",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose free over memory leak?",
+        "What is the performance or memory difference between free and memory leak?"
+      ],
+      "related_concepts": [
+        "free",
+        "memory leak",
+        "malloc vs calloc",
+        "realloc"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-080",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Pointer Arithmetic",
+      "difficulty": "Medium",
+      "question": "What are the common issues with const pointer vs pointer to const in C and how do you debug them?",
+      "ideal_answer": "Common issues with const pointer vs pointer to const in C include: reading declarations right-to-left. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "const pointer vs pointer to const",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to const pointer vs pointer to const?",
+        "What tools can assist in detecting problems with const pointer vs pointer to const at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "pointer arithmetic",
+        "function pointers",
+        "void pointer"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-081",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Buffer Management",
+      "difficulty": "Medium",
+      "question": "What are the common issues with memory leak in C and how do you debug them?",
+      "ideal_answer": "Common issues with memory leak in C include: valgrind, address sanitizer detection. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "memory leak",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to memory leak?",
+        "What tools can assist in detecting problems with memory leak at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "malloc vs calloc",
+        "realloc",
+        "free"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-082",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Syntax",
+      "difficulty": "Medium",
+      "question": "Explain the difference between static keyword and type casting in C.",
+      "ideal_answer": "static keyword and type casting differ in several ways: static keyword is a storage class specifier (works by controlling variable lifetime and scope) whereas type casting is explicit conversion (works by converting between types). static keyword is typically used for persistent storage across function calls, internal linkage, while type casting is used for truncation, sign extension, pointer casting. Example demonstrating static keyword: static int count = 0;. Example demonstrating type casting: (int*)ptr vs (void*)ptr.",
+      "keywords": [
+        "static keyword",
+        "type casting",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose static keyword over type casting?",
+        "What is the performance or memory difference between static keyword and type casting?"
+      ],
+      "related_concepts": [
+        "static keyword",
+        "type casting",
+        "const qualifier",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-083",
+      "subject": "C",
+      "category": "System Programming",
+      "subcategory": "IPC",
+      "difficulty": "Medium",
+      "question": "What is signals in C and how does it work?",
+      "ideal_answer": "signals in C refers to asynchronous notifications. It works by inter-process communication. Key characteristics include SIGINT, SIGSEGV, SIGKILL. Example: signal(SIGINT, handler);. Common pitfalls include reentrancy, signal safety.",
+      "keywords": [
+        "signals",
+        "C programming",
+        "system programming"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of signals in a production environment?",
+        "What are the common pitfalls or issues associated with signals?"
+      ],
+      "related_concepts": [
+        "file descriptors",
+        "fork()",
+        "exec family"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-084",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Memory Leaks",
+      "difficulty": "Medium",
+      "question": "Explain the difference between free and stack overflow in C.",
+      "ideal_answer": "free and stack overflow differ in several ways: free is memory deallocation (works by releasing heap memory) whereas stack overflow is exceeding stack limit (works by recursive calls, large local arrays). free is typically used for undefined behavior on double-free, use-after-free, while stack overflow is used for segmentation fault, program crash. Example demonstrating free: free(ptr); ptr = NULL;. Example demonstrating stack overflow: int arr[1000000]; // on stack.",
+      "keywords": [
+        "free",
+        "stack overflow",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose free over stack overflow?",
+        "What is the performance or memory difference between free and stack overflow?"
+      ],
+      "related_concepts": [
+        "free",
+        "stack overflow",
+        "malloc vs calloc",
+        "realloc"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-085",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Functions",
+      "difficulty": "Medium",
+      "question": "Explain the difference between typedef and enum in C.",
+      "ideal_answer": "typedef and enum differ in several ways: typedef is a keyword for type aliasing (works by creating new type names) whereas enum is user-defined type (works by named integer constants). typedef is typically used for improved readability, abstraction, while enum is used for type safety, readable code. Example demonstrating typedef: typedef unsigned int uint32_t;. Example demonstrating enum: enum Color {RED, GREEN, BLUE};.",
+      "keywords": [
+        "typedef",
+        "enum",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose typedef over enum?",
+        "What is the performance or memory difference between typedef and enum?"
+      ],
+      "related_concepts": [
+        "typedef",
+        "enum",
+        "static keyword",
+        "const qualifier"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-086",
+      "subject": "C",
+      "category": "Advanced C",
+      "subcategory": "Bit Manipulation",
+      "difficulty": "Medium",
+      "question": "What are the common issues with inline functions in C and how do you debug them?",
+      "ideal_answer": "Common issues with inline functions in C include: code bloat, ODR violations. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "inline functions",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to inline functions?",
+        "What tools can assist in detecting problems with inline functions at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "bit fields",
+        "flexible array members",
+        "restrict keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-087",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Operators",
+      "difficulty": "Medium",
+      "question": "What is volatile keyword in C and how does it work?",
+      "ideal_answer": "volatile keyword in C refers to a type qualifier. It works by telling compiler not to optimize access. Key characteristics include hardware registers, signal handlers, multi-threaded variables. Example: volatile int flag = 0;. Common pitfalls include overusing volatile for thread safety.",
+      "keywords": [
+        "volatile keyword",
+        "C programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of volatile keyword in a production environment?",
+        "What are the common pitfalls or issues associated with volatile keyword?"
+      ],
+      "related_concepts": [
+        "static keyword",
+        "const qualifier",
+        "extern keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-088",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Pointer Basics",
+      "difficulty": "Medium",
+      "question": "Explain the difference between pointer arithmetic and function pointers in C.",
+      "ideal_answer": "pointer arithmetic and function pointers differ in several ways: pointer arithmetic is arithmetic on addresses (works by navigating arrays/ buffers) whereas function pointers is pointers to functions (works by callbacks, polymorphism). pointer arithmetic is typically used for scales by sizeof(type), while function pointers is used for type signature must match. Example demonstrating pointer arithmetic: *(arr + i) == arr[i]. Example demonstrating function pointers: int (*cmp)(const void*, const void*);.",
+      "keywords": [
+        "pointer arithmetic",
+        "function pointers",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose pointer arithmetic over function pointers?",
+        "What is the performance or memory difference between pointer arithmetic and function pointers?"
+      ],
+      "related_concepts": [
+        "pointer arithmetic",
+        "function pointers",
+        "void pointer",
+        "NULL pointer"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-089",
+      "subject": "C",
+      "category": "System Programming",
+      "subcategory": "Signals",
+      "difficulty": "Medium",
+      "question": "What are the common issues with exec family in C and how do you debug them?",
+      "ideal_answer": "Common issues with exec family in C include: environment inheritance. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "exec family",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to exec family?",
+        "What tools can assist in detecting problems with exec family at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "file descriptors",
+        "fork()",
+        "signals"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-090",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Operators",
+      "difficulty": "Medium",
+      "question": "Explain the difference between volatile keyword and sizeof operator in C.",
+      "ideal_answer": "volatile keyword and sizeof operator differ in several ways: volatile keyword is a type qualifier (works by telling compiler not to optimize access) whereas sizeof operator is compile-time operator (works by determining size of types/objects). volatile keyword is typically used for hardware registers, signal handlers, multi-threaded variables, while sizeof operator is used for platform-dependent, excludes flexible array members. Example demonstrating volatile keyword: volatile int flag = 0;. Example demonstrating sizeof operator: sizeof(int) on 32-bit vs 64-bit.",
+      "keywords": [
+        "volatile keyword",
+        "sizeof operator",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose volatile keyword over sizeof operator?",
+        "What is the performance or memory difference between volatile keyword and sizeof operator?"
+      ],
+      "related_concepts": [
+        "volatile keyword",
+        "sizeof operator",
+        "static keyword",
+        "const qualifier"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-091",
+      "subject": "C",
+      "category": "Advanced C",
+      "subcategory": "Volatile",
+      "difficulty": "Medium",
+      "question": "Explain the difference between flexible array members and alignment in C.",
+      "ideal_answer": "flexible array members and alignment differ in several ways: flexible array members is unsized array at struct end (works by variable-length structures) whereas alignment is memory address divisibility (works by hardware requirements). flexible array members is typically used for sizeof excludes FAM, while alignment is used for _Alignas, _Alignof. Example demonstrating flexible array members: struct { int len; int data[]; };. Example demonstrating alignment: _Alignas(64) char buffer[1024];.",
+      "keywords": [
+        "flexible array members",
+        "alignment",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose flexible array members over alignment?",
+        "What is the performance or memory difference between flexible array members and alignment?"
+      ],
+      "related_concepts": [
+        "flexible array members",
+        "alignment",
+        "bit fields",
+        "restrict keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-092",
+      "subject": "C",
+      "category": "System Programming",
+      "subcategory": "Signals",
+      "difficulty": "Medium",
+      "question": "Explain the difference between exec family and pipes in C.",
+      "ideal_answer": "exec family and pipes differ in several ways: exec family is program execution (works by replacing process image) whereas pipes is unidirectional data channels (works by inter-process communication). exec family is typically used for execl, execv, execvp variants, while pipes is used for anonymous and named pipes. Example demonstrating exec family: execl('/bin/ls', 'ls', '-l', NULL);. Example demonstrating pipes: pipe(fd); write(fd[1], data, len);.",
+      "keywords": [
+        "exec family",
+        "pipes",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose exec family over pipes?",
+        "What is the performance or memory difference between exec family and pipes?"
+      ],
+      "related_concepts": [
+        "exec family",
+        "pipes",
+        "file descriptors",
+        "fork()"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-093",
+      "subject": "C",
+      "category": "Advanced C",
+      "subcategory": "Bit Manipulation",
+      "difficulty": "Medium",
+      "question": "Explain the difference between bit fields and alignment in C.",
+      "ideal_answer": "bit fields and alignment differ in several ways: bit fields is packed struct members (works by memory-efficient flags) whereas alignment is memory address divisibility (works by hardware requirements). bit fields is typically used for implementation-defined alignment, while alignment is used for _Alignas, _Alignof. Example demonstrating bit fields: struct { unsigned int flag:1; };. Example demonstrating alignment: _Alignas(64) char buffer[1024];.",
+      "keywords": [
+        "bit fields",
+        "alignment",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose bit fields over alignment?",
+        "What is the performance or memory difference between bit fields and alignment?"
+      ],
+      "related_concepts": [
+        "bit fields",
+        "alignment",
+        "flexible array members",
+        "restrict keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-094",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Pointer to Arrays",
+      "difficulty": "Medium",
+      "question": "Explain the difference between dangling pointer and pointer to pointer in C.",
+      "ideal_answer": "dangling pointer and pointer to pointer differ in several ways: dangling pointer is pointer to freed memory (works by use-after-free vulnerability) whereas pointer to pointer is indirect addressing (works by modifying pointers in functions). dangling pointer is typically used for crash or data corruption, while pointer to pointer is used for 2D arrays, dynamic matrices. Example demonstrating dangling pointer: free(ptr); ... *ptr = 5;. Example demonstrating pointer to pointer: void allocate(int** arr, int n);.",
+      "keywords": [
+        "dangling pointer",
+        "pointer to pointer",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose dangling pointer over pointer to pointer?",
+        "What is the performance or memory difference between dangling pointer and pointer to pointer?"
+      ],
+      "related_concepts": [
+        "dangling pointer",
+        "pointer to pointer",
+        "pointer arithmetic",
+        "function pointers"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-095",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Stack vs Heap",
+      "difficulty": "Medium",
+      "question": "Explain the difference between stack overflow and buffer overflow in C.",
+      "ideal_answer": "stack overflow and buffer overflow differ in several ways: stack overflow is exceeding stack limit (works by recursive calls, large local arrays) whereas buffer overflow is writing past buffer bounds (works by security vulnerability). stack overflow is typically used for segmentation fault, program crash, while buffer overflow is used for stack smashing, code injection. Example demonstrating stack overflow: int arr[1000000]; // on stack. Example demonstrating buffer overflow: char buf[10]; strcpy(buf, 'very long string');.",
+      "keywords": [
+        "stack overflow",
+        "buffer overflow",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose stack overflow over buffer overflow?",
+        "What is the performance or memory difference between stack overflow and buffer overflow?"
+      ],
+      "related_concepts": [
+        "stack overflow",
+        "buffer overflow",
+        "malloc vs calloc",
+        "realloc"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-096",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Pointer Basics",
+      "difficulty": "Medium",
+      "question": "Explain the difference between pointer arithmetic and void pointer in C.",
+      "ideal_answer": "pointer arithmetic and void pointer differ in several ways: pointer arithmetic is arithmetic on addresses (works by navigating arrays/ buffers) whereas void pointer is generic pointer type (works by type-erased data handling). pointer arithmetic is typically used for scales by sizeof(type), while void pointer is used for cannot be dereferenced directly. Example demonstrating pointer arithmetic: *(arr + i) == arr[i]. Example demonstrating void pointer: void* generic_data;.",
+      "keywords": [
+        "pointer arithmetic",
+        "void pointer",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose pointer arithmetic over void pointer?",
+        "What is the performance or memory difference between pointer arithmetic and void pointer?"
+      ],
+      "related_concepts": [
+        "pointer arithmetic",
+        "void pointer",
+        "function pointers",
+        "NULL pointer"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "C-097",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Pointer Basics",
+      "difficulty": "Hard",
+      "question": "What are the common issues with pointer to pointer in C and how do you debug them?",
+      "ideal_answer": "Common issues with pointer to pointer in C include: multiple levels of indirection confusion. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "pointer to pointer",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to pointer to pointer?",
+        "What tools can assist in detecting problems with pointer to pointer at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "pointer arithmetic",
+        "function pointers",
+        "void pointer"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-098",
+      "subject": "C",
+      "category": "System Programming",
+      "subcategory": "Process Management",
+      "difficulty": "Hard",
+      "question": "What is fork() in C and how does it work?",
+      "ideal_answer": "fork() in C refers to process creation. It works by duplicating process. Key characteristics include copy-on-write, returns PID. Example: pid_t pid = fork(); if (pid == 0) { /* child */ }. Common pitfalls include zombie processes, wait() necessity.",
+      "keywords": [
+        "fork()",
+        "C programming",
+        "system programming"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of fork() in a production environment?",
+        "What are the common pitfalls or issues associated with fork()?"
+      ],
+      "related_concepts": [
+        "file descriptors",
+        "exec family",
+        "signals"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-099",
+      "subject": "C",
+      "category": "Advanced C",
+      "subcategory": "Bit Manipulation",
+      "difficulty": "Hard",
+      "question": "Explain the difference between bit fields and inline functions in C.",
+      "ideal_answer": "bit fields and inline functions differ in several ways: bit fields is packed struct members (works by memory-efficient flags) whereas inline functions is function expansion at call site (works by eliminating call overhead). bit fields is typically used for implementation-defined alignment, while inline functions is used for compiler hint, not command. Example demonstrating bit fields: struct { unsigned int flag:1; };. Example demonstrating inline functions: static inline int max(int a, int b) { return a>b?a:b; }.",
+      "keywords": [
+        "bit fields",
+        "inline functions",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose bit fields over inline functions?",
+        "What is the performance or memory difference between bit fields and inline functions?"
+      ],
+      "related_concepts": [
+        "bit fields",
+        "inline functions",
+        "flexible array members",
+        "restrict keyword"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-100",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Function Pointers",
+      "difficulty": "Hard",
+      "question": "Explain the difference between void pointer and pointer to pointer in C.",
+      "ideal_answer": "void pointer and pointer to pointer differ in several ways: void pointer is generic pointer type (works by type-erased data handling) whereas pointer to pointer is indirect addressing (works by modifying pointers in functions). void pointer is typically used for cannot be dereferenced directly, while pointer to pointer is used for 2D arrays, dynamic matrices. Example demonstrating void pointer: void* generic_data;. Example demonstrating pointer to pointer: void allocate(int** arr, int n);.",
+      "keywords": [
+        "void pointer",
+        "pointer to pointer",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose void pointer over pointer to pointer?",
+        "What is the performance or memory difference between void pointer and pointer to pointer?"
+      ],
+      "related_concepts": [
+        "void pointer",
+        "pointer to pointer",
+        "pointer arithmetic",
+        "function pointers"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-101",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "malloc/free",
+      "difficulty": "Hard",
+      "question": "Explain the difference between realloc and mmap in C.",
+      "ideal_answer": "realloc and mmap differ in several ways: realloc is memory resizing function (works by changing size of allocated block) whereas mmap is memory mapping (works by mapping files/ devices to memory). realloc is typically used for may move data, preserves contents, while mmap is used for shared memory, lazy loading. Example demonstrating realloc: arr = realloc(arr, new_size);. Example demonstrating mmap: mmap(NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);.",
+      "keywords": [
+        "realloc",
+        "mmap",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose realloc over mmap?",
+        "What is the performance or memory difference between realloc and mmap?"
+      ],
+      "related_concepts": [
+        "realloc",
+        "mmap",
+        "malloc vs calloc",
+        "free"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-102",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "malloc/free",
+      "difficulty": "Hard",
+      "question": "What are the common issues with realloc in C and how do you debug them?",
+      "ideal_answer": "Common issues with realloc in C include: memory leak if realloc fails. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "realloc",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to realloc?",
+        "What tools can assist in detecting problems with realloc at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "malloc vs calloc",
+        "free",
+        "memory leak"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-103",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Syntax",
+      "difficulty": "Hard",
+      "question": "Explain the difference between static keyword and volatile keyword in C.",
+      "ideal_answer": "static keyword and volatile keyword differ in several ways: static keyword is a storage class specifier (works by controlling variable lifetime and scope) whereas volatile keyword is a type qualifier (works by telling compiler not to optimize access). static keyword is typically used for persistent storage across function calls, internal linkage, while volatile keyword is used for hardware registers, signal handlers, multi-threaded variables. Example demonstrating static keyword: static int count = 0;. Example demonstrating volatile keyword: volatile int flag = 0;.",
+      "keywords": [
+        "static keyword",
+        "volatile keyword",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose static keyword over volatile keyword?",
+        "What is the performance or memory difference between static keyword and volatile keyword?"
+      ],
+      "related_concepts": [
+        "static keyword",
+        "volatile keyword",
+        "const qualifier",
+        "extern keyword"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-104",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Double Pointers",
+      "difficulty": "Hard",
+      "question": "Explain the difference between NULL pointer and dangling pointer in C.",
+      "ideal_answer": "NULL pointer and dangling pointer differ in several ways: NULL pointer is pointer to nothing (works by indicating invalid/ uninitialized state) whereas dangling pointer is pointer to freed memory (works by use-after-free vulnerability). NULL pointer is typically used for dereference causes segfault, while dangling pointer is used for crash or data corruption. Example demonstrating NULL pointer: if (ptr == NULL) return;. Example demonstrating dangling pointer: free(ptr); ... *ptr = 5;.",
+      "keywords": [
+        "NULL pointer",
+        "dangling pointer",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose NULL pointer over dangling pointer?",
+        "What is the performance or memory difference between NULL pointer and dangling pointer?"
+      ],
+      "related_concepts": [
+        "NULL pointer",
+        "dangling pointer",
+        "pointer arithmetic",
+        "function pointers"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-105",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Memory Leaks",
+      "difficulty": "Hard",
+      "question": "What is memory fragmentation in C and how does it work?",
+      "ideal_answer": "memory fragmentation in C refers to non-contiguous free blocks. It works by inefficient memory utilization. Key characteristics include external fragmentation in heap. Example: frequent small allocations. Common pitfalls include memory pools, custom allocators.",
+      "keywords": [
+        "memory fragmentation",
+        "C programming",
+        "memory management"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of memory fragmentation in a production environment?",
+        "What are the common pitfalls or issues associated with memory fragmentation?"
+      ],
+      "related_concepts": [
+        "malloc vs calloc",
+        "realloc",
+        "free"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-106",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Functions",
+      "difficulty": "Hard",
+      "question": "What are the common issues with typedef in C and how do you debug them?",
+      "ideal_answer": "Common issues with typedef in C include: hiding pointer types in typedef. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "typedef",
+        "troubleshooting",
+        "C"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to typedef?",
+        "What tools can assist in detecting problems with typedef at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "static keyword",
+        "const qualifier",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-107",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Stack vs Heap",
+      "difficulty": "Hard",
+      "question": "Explain the difference between malloc vs calloc and free in C.",
+      "ideal_answer": "malloc vs calloc and free differ in several ways: malloc vs calloc is memory allocation functions (works by allocating dynamic memory) whereas free is memory deallocation (works by releasing heap memory). malloc vs calloc is typically used for malloc: uninitialized, calloc: zero-initialized, while free is used for undefined behavior on double-free, use-after-free. Example demonstrating malloc vs calloc: int* arr = calloc(10, sizeof(int));. Example demonstrating free: free(ptr); ptr = NULL;.",
+      "keywords": [
+        "malloc vs calloc",
+        "free",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose malloc vs calloc over free?",
+        "What is the performance or memory difference between malloc vs calloc and free?"
+      ],
+      "related_concepts": [
+        "malloc vs calloc",
+        "free",
+        "realloc",
+        "memory leak"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-108",
+      "subject": "C",
+      "category": "System Programming",
+      "subcategory": "File I/O",
+      "difficulty": "Hard",
+      "question": "What is pipes in C and how does it work?",
+      "ideal_answer": "pipes in C refers to unidirectional data channels. It works by inter-process communication. Key characteristics include anonymous and named pipes. Example: pipe(fd); write(fd[1], data, len);. Common pitfalls include blocking behavior, buffer limits.",
+      "keywords": [
+        "pipes",
+        "C programming",
+        "system programming"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of pipes in a production environment?",
+        "What are the common pitfalls or issues associated with pipes?"
+      ],
+      "related_concepts": [
+        "file descriptors",
+        "fork()",
+        "exec family"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-109",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "malloc/free",
+      "difficulty": "Hard",
+      "question": "Explain the difference between realloc and memory leak in C.",
+      "ideal_answer": "realloc and memory leak differ in several ways: realloc is memory resizing function (works by changing size of allocated block) whereas memory leak is unreachable allocated memory (works by gradual memory consumption). realloc is typically used for may move data, preserves contents, while memory leak is used for lost pointers, missing free calls. Example demonstrating realloc: arr = realloc(arr, new_size);. Example demonstrating memory leak: void leak() { malloc(100); }.",
+      "keywords": [
+        "realloc",
+        "memory leak",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose realloc over memory leak?",
+        "What is the performance or memory difference between realloc and memory leak?"
+      ],
+      "related_concepts": [
+        "realloc",
+        "memory leak",
+        "malloc vs calloc",
+        "free"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-110",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Data Types",
+      "difficulty": "Hard",
+      "question": "Explain the difference between const qualifier and sizeof operator in C.",
+      "ideal_answer": "const qualifier and sizeof operator differ in several ways: const qualifier is a type qualifier (works by preventing modification of variables) whereas sizeof operator is compile-time operator (works by determining size of types/objects). const qualifier is typically used for read-only access, compiler optimizations, while sizeof operator is used for platform-dependent, excludes flexible array members. Example demonstrating const qualifier: const int MAX = 100;. Example demonstrating sizeof operator: sizeof(int) on 32-bit vs 64-bit.",
+      "keywords": [
+        "const qualifier",
+        "sizeof operator",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose const qualifier over sizeof operator?",
+        "What is the performance or memory difference between const qualifier and sizeof operator?"
+      ],
+      "related_concepts": [
+        "const qualifier",
+        "sizeof operator",
+        "static keyword",
+        "volatile keyword"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-111",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Stack vs Heap",
+      "difficulty": "Hard",
+      "question": "Explain the difference between malloc vs calloc and buffer overflow in C.",
+      "ideal_answer": "malloc vs calloc and buffer overflow differ in several ways: malloc vs calloc is memory allocation functions (works by allocating dynamic memory) whereas buffer overflow is writing past buffer bounds (works by security vulnerability). malloc vs calloc is typically used for malloc: uninitialized, calloc: zero-initialized, while buffer overflow is used for stack smashing, code injection. Example demonstrating malloc vs calloc: int* arr = calloc(10, sizeof(int));. Example demonstrating buffer overflow: char buf[10]; strcpy(buf, 'very long string');.",
+      "keywords": [
+        "malloc vs calloc",
+        "buffer overflow",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose malloc vs calloc over buffer overflow?",
+        "What is the performance or memory difference between malloc vs calloc and buffer overflow?"
+      ],
+      "related_concepts": [
+        "malloc vs calloc",
+        "buffer overflow",
+        "realloc",
+        "free"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-112",
+      "subject": "C",
+      "category": "Advanced C",
+      "subcategory": "Volatile",
+      "difficulty": "Hard",
+      "question": "What is flexible array members in C and how does it work?",
+      "ideal_answer": "flexible array members in C refers to unsized array at struct end. It works by variable-length structures. Key characteristics include sizeof excludes FAM. Example: struct { int len; int data[]; };. Common pitfalls include must allocate manually.",
+      "keywords": [
+        "flexible array members",
+        "C programming",
+        "advanced c"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of flexible array members in a production environment?",
+        "What are the common pitfalls or issues associated with flexible array members?"
+      ],
+      "related_concepts": [
+        "bit fields",
+        "restrict keyword",
+        "alignment"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-113",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Control Flow",
+      "difficulty": "Hard",
+      "question": "Explain the difference between extern keyword and struct vs union in C.",
+      "ideal_answer": "extern keyword and struct vs union differ in several ways: extern keyword is a storage class (works by declaring variables defined elsewhere) whereas struct vs union is composite data types (works by grouping related data). extern keyword is typically used for global scope, cross-file linkage, while struct vs union is used for struct: sum of members, union: shared memory. Example demonstrating extern keyword: extern int global_var;. Example demonstrating struct vs union: struct Point {int x, y;};.",
+      "keywords": [
+        "extern keyword",
+        "struct vs union",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose extern keyword over struct vs union?",
+        "What is the performance or memory difference between extern keyword and struct vs union?"
+      ],
+      "related_concepts": [
+        "extern keyword",
+        "struct vs union",
+        "static keyword",
+        "const qualifier"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-114",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Control Flow",
+      "difficulty": "Hard",
+      "question": "Explain the difference between extern keyword and sizeof operator in C.",
+      "ideal_answer": "extern keyword and sizeof operator differ in several ways: extern keyword is a storage class (works by declaring variables defined elsewhere) whereas sizeof operator is compile-time operator (works by determining size of types/objects). extern keyword is typically used for global scope, cross-file linkage, while sizeof operator is used for platform-dependent, excludes flexible array members. Example demonstrating extern keyword: extern int global_var;. Example demonstrating sizeof operator: sizeof(int) on 32-bit vs 64-bit.",
+      "keywords": [
+        "extern keyword",
+        "sizeof operator",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose extern keyword over sizeof operator?",
+        "What is the performance or memory difference between extern keyword and sizeof operator?"
+      ],
+      "related_concepts": [
+        "extern keyword",
+        "sizeof operator",
+        "static keyword",
+        "const qualifier"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-115",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Function Pointers",
+      "difficulty": "Hard",
+      "question": "Explain the difference between void pointer and NULL pointer in C.",
+      "ideal_answer": "void pointer and NULL pointer differ in several ways: void pointer is generic pointer type (works by type-erased data handling) whereas NULL pointer is pointer to nothing (works by indicating invalid/ uninitialized state). void pointer is typically used for cannot be dereferenced directly, while NULL pointer is used for dereference causes segfault. Example demonstrating void pointer: void* generic_data;. Example demonstrating NULL pointer: if (ptr == NULL) return;.",
+      "keywords": [
+        "void pointer",
+        "NULL pointer",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose void pointer over NULL pointer?",
+        "What is the performance or memory difference between void pointer and NULL pointer?"
+      ],
+      "related_concepts": [
+        "void pointer",
+        "NULL pointer",
+        "pointer arithmetic",
+        "function pointers"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-116",
+      "subject": "C",
+      "category": "Fundamentals",
+      "subcategory": "Control Flow",
+      "difficulty": "Hard",
+      "question": "Explain the difference between extern keyword and enum in C.",
+      "ideal_answer": "extern keyword and enum differ in several ways: extern keyword is a storage class (works by declaring variables defined elsewhere) whereas enum is user-defined type (works by named integer constants). extern keyword is typically used for global scope, cross-file linkage, while enum is used for type safety, readable code. Example demonstrating extern keyword: extern int global_var;. Example demonstrating enum: enum Color {RED, GREEN, BLUE};.",
+      "keywords": [
+        "extern keyword",
+        "enum",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose extern keyword over enum?",
+        "What is the performance or memory difference between extern keyword and enum?"
+      ],
+      "related_concepts": [
+        "extern keyword",
+        "enum",
+        "static keyword",
+        "const qualifier"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-117",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "malloc/free",
+      "difficulty": "Hard",
+      "question": "Explain the difference between buffer overflow and memory fragmentation in C.",
+      "ideal_answer": "buffer overflow and memory fragmentation differ in several ways: buffer overflow is writing past buffer bounds (works by security vulnerability) whereas memory fragmentation is non-contiguous free blocks (works by inefficient memory utilization). buffer overflow is typically used for stack smashing, code injection, while memory fragmentation is used for external fragmentation in heap. Example demonstrating buffer overflow: char buf[10]; strcpy(buf, 'very long string');. Example demonstrating memory fragmentation: frequent small allocations.",
+      "keywords": [
+        "buffer overflow",
+        "memory fragmentation",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose buffer overflow over memory fragmentation?",
+        "What is the performance or memory difference between buffer overflow and memory fragmentation?"
+      ],
+      "related_concepts": [
+        "buffer overflow",
+        "memory fragmentation",
+        "malloc vs calloc",
+        "realloc"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-118",
+      "subject": "C",
+      "category": "Memory Management",
+      "subcategory": "Stack vs Heap",
+      "difficulty": "Hard",
+      "question": "Explain the difference between malloc vs calloc and realloc in C.",
+      "ideal_answer": "malloc vs calloc and realloc differ in several ways: malloc vs calloc is memory allocation functions (works by allocating dynamic memory) whereas realloc is memory resizing function (works by changing size of allocated block). malloc vs calloc is typically used for malloc: uninitialized, calloc: zero-initialized, while realloc is used for may move data, preserves contents. Example demonstrating malloc vs calloc: int* arr = calloc(10, sizeof(int));. Example demonstrating realloc: arr = realloc(arr, new_size);.",
+      "keywords": [
+        "malloc vs calloc",
+        "realloc",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose malloc vs calloc over realloc?",
+        "What is the performance or memory difference between malloc vs calloc and realloc?"
+      ],
+      "related_concepts": [
+        "malloc vs calloc",
+        "realloc",
+        "free",
+        "memory leak"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-119",
+      "subject": "C",
+      "category": "Pointers",
+      "subcategory": "Pointer Basics",
+      "difficulty": "Hard",
+      "question": "Explain the difference between pointer arithmetic and const pointer vs pointer to const in C.",
+      "ideal_answer": "pointer arithmetic and const pointer vs pointer to const differ in several ways: pointer arithmetic is arithmetic on addresses (works by navigating arrays/ buffers) whereas const pointer vs pointer to const is different const placements (works by varying mutability). pointer arithmetic is typically used for scales by sizeof(type), while const pointer vs pointer to const is used for const int* p: data const, int* const p: pointer const. Example demonstrating pointer arithmetic: *(arr + i) == arr[i]. Example demonstrating const pointer vs pointer to const: const int* const p;.",
+      "keywords": [
+        "pointer arithmetic",
+        "const pointer vs pointer to const",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose pointer arithmetic over const pointer vs pointer to const?",
+        "What is the performance or memory difference between pointer arithmetic and const pointer vs pointer to const?"
+      ],
+      "related_concepts": [
+        "pointer arithmetic",
+        "const pointer vs pointer to const",
+        "function pointers",
+        "void pointer"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "C-120",
+      "subject": "C",
+      "category": "System Programming",
+      "subcategory": "File I/O",
+      "difficulty": "Hard",
+      "question": "Explain the difference between file descriptors and pipes in C.",
+      "ideal_answer": "file descriptors and pipes differ in several ways: file descriptors is integer handles for I/O (works by kernel resource abstraction) whereas pipes is unidirectional data channels (works by inter-process communication). file descriptors is typically used for 0: stdin, 1: stdout, 2: stderr, while pipes is used for anonymous and named pipes. Example demonstrating file descriptors: int fd = open('file.txt', O_RDONLY);. Example demonstrating pipes: pipe(fd); write(fd[1], data, len);.",
+      "keywords": [
+        "file descriptors",
+        "pipes",
+        "comparison",
+        "C"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose file descriptors over pipes?",
+        "What is the performance or memory difference between file descriptors and pipes?"
+      ],
+      "related_concepts": [
+        "file descriptors",
+        "pipes",
+        "fork()",
+        "exec family"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

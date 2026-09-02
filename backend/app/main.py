@@ -26,6 +26,7 @@ from app.core.logging import get_logger, setup_logging
 from app.db.mongo import mongo_manager
 from app.db.redis_client import redis_manager
 from app.middleware.security import add_security_headers
+from app.middleware.rate_limit import RateLimitMiddleware
 
 # ---------------------------------------------------------------------------
 # Module-level logger — initialised after setup_logging() in lifespan
@@ -63,6 +64,12 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
 
     # Connect to MongoDB
     await mongo_manager.connect()
+    try:
+        db = mongo_manager.get_database()
+        from app.utils.db_indexes import init_db_indexes
+        await init_db_indexes(db)
+    except Exception as exc:
+        logger.warning("Could not initialize DB indexes at startup", error=str(exc))
 
     # Connect to Redis
     await redis_manager.connect()
@@ -125,14 +132,18 @@ def create_application() -> FastAPI:
     application.add_middleware(
         CORSMiddleware,
         allow_origins=settings.CORS_ORIGINS,
+        allow_origin_regex=r"^https:\/\/.*\.vercel\.app$",
         allow_credentials=True,
-        allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-        allow_headers=["Authorization", "Content-Type", "X-Request-ID"],
+        allow_methods=["*"],
+        allow_headers=["*"],
         max_age=600,  # pre-flight cache: 10 minutes
     )
 
     # Security headers middleware (custom)
     application.middleware("http")(add_security_headers)
+
+    # Rate limiting middleware (custom)
+    application.add_middleware(RateLimitMiddleware)
 
     # ── Exception handlers ────────────────────────────────────────────────────
     register_exception_handlers(application)
@@ -151,7 +162,7 @@ app = create_application()
 
 
 # ---------------------------------------------------------------------------
-# Root redirect (not shown in OpenAPI schema)
+# Root and Healthz endpoints (for platform health checks and redirects)
 # ---------------------------------------------------------------------------
 
 @app.get("/", include_in_schema=False)
@@ -161,7 +172,13 @@ async def root(request: Request) -> JSONResponse:
         content={
             "service": settings.APP_NAME,
             "version": settings.APP_VERSION,
-            "docs": str(request.url_for("swagger_ui_html")),
+            "docs": "/docs",
             "health": "/api/v1/health",
         }
     )
+
+
+@app.get("/healthz", include_in_schema=False)
+async def healthz() -> dict:
+    """Instant health probe for Render and cloud load balancers."""
+    return {"status": "ok", "service": settings.APP_NAME}

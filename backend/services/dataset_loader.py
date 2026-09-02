@@ -2,7 +2,7 @@ import json
 import logging
 from pathlib import Path
 from typing import Optional
-from pydantic import BaseModel, ValidationError
+from pydantic import BaseModel, ValidationError, model_validator
 
 logger = logging.getLogger(__name__)
 
@@ -11,18 +11,53 @@ class DatasetQuestion(BaseModel):
     Standard data model representing a single interview question.
     Extensible and serialized to/from JSON.
     """
-    id: str
-    domain: str
+    question_id: str
+    subject: str
+    category: str = ""
     subcategory: str = ""
-    topic: str = ""
-    difficulty: str  # easy, medium, hard
+    difficulty: str  # Easy, Medium, Hard
     question: str
+    ideal_answer: str
+    keywords: list[str] = []
+    follow_up_questions: list[str] = []
+    related_concepts: list[str] = []
+    estimated_answer_time_minutes: int = 5
+    score_weight: int = 5
     options: Optional[dict[str, str]] = None
     correct_answer: str = ""
-    explanation: str = ""
     expected_concepts: list[str] = []
-    keywords: list[str] = []
     source: str = ""
+
+    @model_validator(mode='before')
+    @classmethod
+    def map_legacy_fields(cls, data):
+        if isinstance(data, dict):
+            if "id" in data and "question_id" not in data:
+                data["question_id"] = data["id"]
+            if "domain" in data and "subject" not in data:
+                data["subject"] = data["domain"]
+            if "topic" in data and "category" not in data:
+                data["category"] = data["topic"]
+            if "explanation" in data and "ideal_answer" not in data:
+                data["ideal_answer"] = data["explanation"]
+        return data
+
+    # For backwards compatibility with older code accessing id/domain/topic/explanation
+    @property
+    def id(self) -> str:
+        return self.question_id
+
+    @property
+    def domain(self) -> str:
+        return self.subject
+
+    @property
+    def topic(self) -> str:
+        return self.category
+
+    @property
+    def explanation(self) -> str:
+        return self.ideal_answer
 
 
 class DatasetLoader:

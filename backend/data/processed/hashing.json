@@ -1,0 +1,757 @@
+{
+  "metadata": {
+    "subject": "Hashing",
+    "domain": "Data Structures & Algorithms",
+    "total_questions": 28,
+    "difficulty_distribution": {
+      "Easy": 8,
+      "Medium": 14,
+      "Hard": 6
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "HASH-001",
+      "subject": "Hashing",
+      "category": "Collision Resolution",
+      "subcategory": "Chaining",
+      "difficulty": "Easy",
+      "question": "Explain the difference between separate chaining and linear probing in Hashing.",
+      "ideal_answer": "separate chaining and linear probing differ in several ways: separate chaining is linked list collision handling (works by each bucket is a list) whereas linear probing is sequential slot checking (works by simple but causes primary clustering). separate chaining is typically used for O(1 + alpha) average search, while linear probing is used for h(k, i) = (h(k) + i) % m. Example demonstrating separate chaining: List<Node>[] table; // array of linked lists. Example demonstrating linear probing: int idx = (hash + i) % capacity;.",
+      "keywords": [
+        "separate chaining",
+        "linear probing",
+        "comparison",
+        "Hashing"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose separate chaining over linear probing?",
+        "What is the performance or memory difference between separate chaining and linear probing?"
+      ],
+      "related_concepts": [
+        "separate chaining",
+        "linear probing",
+        "open addressing",
+        "double hashing"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HASH-002",
+      "subject": "Hashing",
+      "category": "Collision Resolution",
+      "subcategory": "Quadratic Probing",
+      "difficulty": "Easy",
+      "question": "What are the common issues with double hashing in Hashing and how do you debug them?",
+      "ideal_answer": "Common issues with double hashing in Hashing include: h2(k) must be relatively prime to m. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "double hashing",
+        "troubleshooting",
+        "Hashing"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to double hashing?",
+        "What tools can assist in detecting problems with double hashing at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "separate chaining",
+        "open addressing",
+        "linear probing"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HASH-003",
+      "subject": "Hashing",
+      "category": "Collision Resolution",
+      "subcategory": "Chaining",
+      "difficulty": "Easy",
+      "question": "What are the common issues with separate chaining in Hashing and how do you debug them?",
+      "ideal_answer": "Common issues with separate chaining in Hashing include: treeification at long chains (Java 8+). To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "separate chaining",
+        "troubleshooting",
+        "Hashing"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to separate chaining?",
+        "What tools can assist in detecting problems with separate chaining at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "open addressing",
+        "linear probing",
+        "double hashing"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HASH-004",
+      "subject": "Hashing",
+      "category": "Collision Resolution",
+      "subcategory": "Open Addressing",
+      "difficulty": "Easy",
+      "question": "Explain the difference between open addressing and double hashing in Hashing.",
+      "ideal_answer": "open addressing and double hashing differ in several ways: open addressing is probe sequence collision handling (works by finding next empty slot) whereas double hashing is two hash function probing (works by reducing clustering). open addressing is typically used for linear, quadratic, double hashing probes, while double hashing is used for h(k, i) = (h1(k) + i*h2(k)) % m. Example demonstrating open addressing: int probe(int h, int i) { return (h + i) % m; }. Example demonstrating double hashing: int idx = (hash1 + i * hash2) % capacity;.",
+      "keywords": [
+        "open addressing",
+        "double hashing",
+        "comparison",
+        "Hashing"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose open addressing over double hashing?",
+        "What is the performance or memory difference between open addressing and double hashing?"
+      ],
+      "related_concepts": [
+        "open addressing",
+        "double hashing",
+        "separate chaining",
+        "linear probing"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HASH-005",
+      "subject": "Hashing",
+      "category": "Applications",
+      "subcategory": "Frequency Count",
+      "difficulty": "Easy",
+      "question": "Explain the difference between consistent hashing and rolling hash in Hashing.",
+      "ideal_answer": "consistent hashing and rolling hash differ in several ways: consistent hashing is distributed hash table (works by minimal reorganization on node change) whereas rolling hash is sliding window hash computation (works by O(1) hash update). consistent hashing is typically used for hash ring, virtual nodes, while rolling hash is used for remove leftmost contribution, add rightmost. Example demonstrating consistent hashing: md5(key) mapped to ring; find clockwise node. Example demonstrating rolling hash: hash = (hash - leftChar * pow^(m-1)) * base + rightChar.",
+      "keywords": [
+        "consistent hashing",
+        "rolling hash",
+        "comparison",
+        "Hashing"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose consistent hashing over rolling hash?",
+        "What is the performance or memory difference between consistent hashing and rolling hash?"
+      ],
+      "related_concepts": [
+        "consistent hashing",
+        "rolling hash"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HASH-006",
+      "subject": "Hashing",
+      "category": "Fundamentals",
+      "subcategory": "Hash Table",
+      "difficulty": "Easy",
+      "question": "Explain the difference between hash table and load factor in Hashing.",
+      "ideal_answer": "hash table and load factor differ in several ways: hash table is key-value mapping structure (works by O(1) average case operations) whereas load factor is table occupancy ratio (works by performance degradation threshold). hash table is typically used for hash function + collision resolution, while load factor is used for alpha = n/m (entries/buckets). Example demonstrating hash table: Map<String, Integer> map = new HashMap<>();. Example demonstrating load factor: default 0.75 in Java HashMap.",
+      "keywords": [
+        "hash table",
+        "load factor",
+        "comparison",
+        "Hashing"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose hash table over load factor?",
+        "What is the performance or memory difference between hash table and load factor?"
+      ],
+      "related_concepts": [
+        "hash table",
+        "load factor",
+        "rehashing"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HASH-007",
+      "subject": "Hashing",
+      "category": "Fundamentals",
+      "subcategory": "Rehashing",
+      "difficulty": "Easy",
+      "question": "What are the common issues with rehashing in Hashing and how do you debug them?",
+      "ideal_answer": "Common issues with rehashing in Hashing include: amortized cost, concurrent modification. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "rehashing",
+        "troubleshooting",
+        "Hashing"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to rehashing?",
+        "What tools can assist in detecting problems with rehashing at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "hash table",
+        "load factor"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HASH-008",
+      "subject": "Hashing",
+      "category": "Collision Resolution",
+      "subcategory": "Open Addressing",
+      "difficulty": "Easy",
+      "question": "What is open addressing in Hashing and how does it work?",
+      "ideal_answer": "open addressing in Hashing refers to probe sequence collision handling. It works by finding next empty slot. Key characteristics include linear, quadratic, double hashing probes. Example: int probe(int h, int i) { return (h + i) % m; }. Common pitfalls include clustering problem.",
+      "keywords": [
+        "open addressing",
+        "Hashing programming",
+        "collision resolution"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of open addressing in a production environment?",
+        "What are the common pitfalls or issues associated with open addressing?"
+      ],
+      "related_concepts": [
+        "separate chaining",
+        "linear probing",
+        "double hashing"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "HASH-009",
+      "subject": "Hashing",
+      "category": "Collision Resolution",
+      "subcategory": "Linear Probing",
+      "difficulty": "Medium",
+      "question": "What are the common issues with linear probing in Hashing and how do you debug them?",
+      "ideal_answer": "Common issues with linear probing in Hashing include: deletion requires tombstones. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "linear probing",
+        "troubleshooting",
+        "Hashing"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to linear probing?",
+        "What tools can assist in detecting problems with linear probing at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "separate chaining",
+        "open addressing",
+        "double hashing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HASH-010",
+      "subject": "Hashing",
+      "category": "Collision Resolution",
+      "subcategory": "Chaining",
+      "difficulty": "Medium",
+      "question": "What is separate chaining in Hashing and how does it work?",
+      "ideal_answer": "separate chaining in Hashing refers to linked list collision handling. It works by each bucket is a list. Key characteristics include O(1 + alpha) average search. Example: List<Node>[] table; // array of linked lists. Common pitfalls include treeification at long chains (Java 8+).",
+      "keywords": [
+        "separate chaining",
+        "Hashing programming",
+        "collision resolution"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of separate chaining in a production environment?",
+        "What are the common pitfalls or issues associated with separate chaining?"
+      ],
+      "related_concepts": [
+        "open addressing",
+        "linear probing",
+        "double hashing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HASH-011",
+      "subject": "Hashing",
+      "category": "Applications",
+      "subcategory": "Frequency Count",
+      "difficulty": "Medium",
+      "question": "What are the common issues with consistent hashing in Hashing and how do you debug them?",
+      "ideal_answer": "Common issues with consistent hashing in Hashing include: Ketama, HRW (Rendezvous) hashing. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "consistent hashing",
+        "troubleshooting",
+        "Hashing"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to consistent hashing?",
+        "What tools can assist in detecting problems with consistent hashing at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "rolling hash"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HASH-012",
+      "subject": "Hashing",
+      "category": "Collision Resolution",
+      "subcategory": "Open Addressing",
+      "difficulty": "Medium",
+      "question": "What are the common issues with open addressing in Hashing and how do you debug them?",
+      "ideal_answer": "Common issues with open addressing in Hashing include: clustering problem. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "open addressing",
+        "troubleshooting",
+        "Hashing"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to open addressing?",
+        "What tools can assist in detecting problems with open addressing at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "separate chaining",
+        "linear probing",
+        "double hashing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HASH-013",
+      "subject": "Hashing",
+      "category": "Collision Resolution",
+      "subcategory": "Chaining",
+      "difficulty": "Medium",
+      "question": "Explain the difference between separate chaining and double hashing in Hashing.",
+      "ideal_answer": "separate chaining and double hashing differ in several ways: separate chaining is linked list collision handling (works by each bucket is a list) whereas double hashing is two hash function probing (works by reducing clustering). separate chaining is typically used for O(1 + alpha) average search, while double hashing is used for h(k, i) = (h1(k) + i*h2(k)) % m. Example demonstrating separate chaining: List<Node>[] table; // array of linked lists. Example demonstrating double hashing: int idx = (hash1 + i * hash2) % capacity;.",
+      "keywords": [
+        "separate chaining",
+        "double hashing",
+        "comparison",
+        "Hashing"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose separate chaining over double hashing?",
+        "What is the performance or memory difference between separate chaining and double hashing?"
+      ],
+      "related_concepts": [
+        "separate chaining",
+        "double hashing",
+        "open addressing",
+        "linear probing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HASH-014",
+      "subject": "Hashing",
+      "category": "Collision Resolution",
+      "subcategory": "Quadratic Probing",
+      "difficulty": "Medium",
+      "question": "What is double hashing in Hashing and how does it work?",
+      "ideal_answer": "double hashing in Hashing refers to two hash function probing. It works by reducing clustering. Key characteristics include h(k, i) = (h1(k) + i*h2(k)) % m. Example: int idx = (hash1 + i * hash2) % capacity;. Common pitfalls include h2(k) must be relatively prime to m.",
+      "keywords": [
+        "double hashing",
+        "Hashing programming",
+        "collision resolution"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of double hashing in a production environment?",
+        "What are the common pitfalls or issues associated with double hashing?"
+      ],
+      "related_concepts": [
+        "separate chaining",
+        "open addressing",
+        "linear probing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HASH-015",
+      "subject": "Hashing",
+      "category": "Applications",
+      "subcategory": "Two Sum",
+      "difficulty": "Medium",
+      "question": "What is rolling hash in Hashing and how does it work?",
+      "ideal_answer": "rolling hash in Hashing refers to sliding window hash computation. It works by O(1) hash update. Key characteristics include remove leftmost contribution, add rightmost. Example: hash = (hash - leftChar * pow^(m-1)) * base + rightChar. Common pitfalls include Rabin-Karp string matching.",
+      "keywords": [
+        "rolling hash",
+        "Hashing programming",
+        "applications"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of rolling hash in a production environment?",
+        "What are the common pitfalls or issues associated with rolling hash?"
+      ],
+      "related_concepts": [
+        "consistent hashing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HASH-016",
+      "subject": "Hashing",
+      "category": "Fundamentals",
+      "subcategory": "Hash Table",
+      "difficulty": "Medium",
+      "question": "What are the common issues with hash table in Hashing and how do you debug them?",
+      "ideal_answer": "Common issues with hash table in Hashing include: worst case O(n) with poor hash. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "hash table",
+        "troubleshooting",
+        "Hashing"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to hash table?",
+        "What tools can assist in detecting problems with hash table at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "load factor",
+        "rehashing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HASH-017",
+      "subject": "Hashing",
+      "category": "Collision Resolution",
+      "subcategory": "Linear Probing",
+      "difficulty": "Medium",
+      "question": "What is linear probing in Hashing and how does it work?",
+      "ideal_answer": "linear probing in Hashing refers to sequential slot checking. It works by simple but causes primary clustering. Key characteristics include h(k, i) = (h(k) + i) % m. Example: int idx = (hash + i) % capacity;. Common pitfalls include deletion requires tombstones.",
+      "keywords": [
+        "linear probing",
+        "Hashing programming",
+        "collision resolution"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of linear probing in a production environment?",
+        "What are the common pitfalls or issues associated with linear probing?"
+      ],
+      "related_concepts": [
+        "separate chaining",
+        "open addressing",
+        "double hashing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HASH-018",
+      "subject": "Hashing",
+      "category": "Fundamentals",
+      "subcategory": "Load Factor",
+      "difficulty": "Medium",
+      "question": "What is load factor in Hashing and how does it work?",
+      "ideal_answer": "load factor in Hashing refers to table occupancy ratio. It works by performance degradation threshold. Key characteristics include alpha = n/m (entries/buckets). Example: default 0.75 in Java HashMap. Common pitfalls include rehashing at threshold.",
+      "keywords": [
+        "load factor",
+        "Hashing programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of load factor in a production environment?",
+        "What are the common pitfalls or issues associated with load factor?"
+      ],
+      "related_concepts": [
+        "hash table",
+        "rehashing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HASH-019",
+      "subject": "Hashing",
+      "category": "Collision Resolution",
+      "subcategory": "Chaining",
+      "difficulty": "Medium",
+      "question": "Explain the difference between separate chaining and open addressing in Hashing.",
+      "ideal_answer": "separate chaining and open addressing differ in several ways: separate chaining is linked list collision handling (works by each bucket is a list) whereas open addressing is probe sequence collision handling (works by finding next empty slot). separate chaining is typically used for O(1 + alpha) average search, while open addressing is used for linear, quadratic, double hashing probes. Example demonstrating separate chaining: List<Node>[] table; // array of linked lists. Example demonstrating open addressing: int probe(int h, int i) { return (h + i) % m; }.",
+      "keywords": [
+        "separate chaining",
+        "open addressing",
+        "comparison",
+        "Hashing"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose separate chaining over open addressing?",
+        "What is the performance or memory difference between separate chaining and open addressing?"
+      ],
+      "related_concepts": [
+        "separate chaining",
+        "open addressing",
+        "linear probing",
+        "double hashing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HASH-020",
+      "subject": "Hashing",
+      "category": "Applications",
+      "subcategory": "Two Sum",
+      "difficulty": "Medium",
+      "question": "What are the common issues with rolling hash in Hashing and how do you debug them?",
+      "ideal_answer": "Common issues with rolling hash in Hashing include: Rabin-Karp string matching. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "rolling hash",
+        "troubleshooting",
+        "Hashing"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to rolling hash?",
+        "What tools can assist in detecting problems with rolling hash at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "consistent hashing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HASH-021",
+      "subject": "Hashing",
+      "category": "Fundamentals",
+      "subcategory": "Rehashing",
+      "difficulty": "Medium",
+      "question": "What is rehashing in Hashing and how does it work?",
+      "ideal_answer": "rehashing in Hashing refers to table resize operation. It works by maintaining performance. Key characteristics include create larger table, reinsert all elements. Example: newCapacity = oldCapacity * 2;. Common pitfalls include amortized cost, concurrent modification.",
+      "keywords": [
+        "rehashing",
+        "Hashing programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of rehashing in a production environment?",
+        "What are the common pitfalls or issues associated with rehashing?"
+      ],
+      "related_concepts": [
+        "hash table",
+        "load factor"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HASH-022",
+      "subject": "Hashing",
+      "category": "Collision Resolution",
+      "subcategory": "Linear Probing",
+      "difficulty": "Medium",
+      "question": "Explain the difference between linear probing and double hashing in Hashing.",
+      "ideal_answer": "linear probing and double hashing differ in several ways: linear probing is sequential slot checking (works by simple but causes primary clustering) whereas double hashing is two hash function probing (works by reducing clustering). linear probing is typically used for h(k, i) = (h(k) + i) % m, while double hashing is used for h(k, i) = (h1(k) + i*h2(k)) % m. Example demonstrating linear probing: int idx = (hash + i) % capacity;. Example demonstrating double hashing: int idx = (hash1 + i * hash2) % capacity;.",
+      "keywords": [
+        "linear probing",
+        "double hashing",
+        "comparison",
+        "Hashing"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose linear probing over double hashing?",
+        "What is the performance or memory difference between linear probing and double hashing?"
+      ],
+      "related_concepts": [
+        "linear probing",
+        "double hashing",
+        "separate chaining",
+        "open addressing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "HASH-023",
+      "subject": "Hashing",
+      "category": "Fundamentals",
+      "subcategory": "Hash Table",
+      "difficulty": "Hard",
+      "question": "Explain the difference between hash table and rehashing in Hashing.",
+      "ideal_answer": "hash table and rehashing differ in several ways: hash table is key-value mapping structure (works by O(1) average case operations) whereas rehashing is table resize operation (works by maintaining performance). hash table is typically used for hash function + collision resolution, while rehashing is used for create larger table, reinsert all elements. Example demonstrating hash table: Map<String, Integer> map = new HashMap<>();. Example demonstrating rehashing: newCapacity = oldCapacity * 2;.",
+      "keywords": [
+        "hash table",
+        "rehashing",
+        "comparison",
+        "Hashing"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose hash table over rehashing?",
+        "What is the performance or memory difference between hash table and rehashing?"
+      ],
+      "related_concepts": [
+        "hash table",
+        "rehashing",
+        "load factor"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "HASH-024",
+      "subject": "Hashing",
+      "category": "Fundamentals",
+      "subcategory": "Load Factor",
+      "difficulty": "Hard",
+      "question": "Explain the difference between load factor and rehashing in Hashing.",
+      "ideal_answer": "load factor and rehashing differ in several ways: load factor is table occupancy ratio (works by performance degradation threshold) whereas rehashing is table resize operation (works by maintaining performance). load factor is typically used for alpha = n/m (entries/buckets), while rehashing is used for create larger table, reinsert all elements. Example demonstrating load factor: default 0.75 in Java HashMap. Example demonstrating rehashing: newCapacity = oldCapacity * 2;.",
+      "keywords": [
+        "load factor",
+        "rehashing",
+        "comparison",
+        "Hashing"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose load factor over rehashing?",
+        "What is the performance or memory difference between load factor and rehashing?"
+      ],
+      "related_concepts": [
+        "load factor",
+        "rehashing",
+        "hash table"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "HASH-025",
+      "subject": "Hashing",
+      "category": "Applications",
+      "subcategory": "Frequency Count",
+      "difficulty": "Hard",
+      "question": "What is consistent hashing in Hashing and how does it work?",
+      "ideal_answer": "consistent hashing in Hashing refers to distributed hash table. It works by minimal reorganization on node change. Key characteristics include hash ring, virtual nodes. Example: md5(key) mapped to ring; find clockwise node. Common pitfalls include Ketama, HRW (Rendezvous) hashing.",
+      "keywords": [
+        "consistent hashing",
+        "Hashing programming",
+        "applications"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of consistent hashing in a production environment?",
+        "What are the common pitfalls or issues associated with consistent hashing?"
+      ],
+      "related_concepts": [
+        "rolling hash"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "HASH-026",
+      "subject": "Hashing",
+      "category": "Fundamentals",
+      "subcategory": "Hash Table",
+      "difficulty": "Hard",
+      "question": "What is hash table in Hashing and how does it work?",
+      "ideal_answer": "hash table in Hashing refers to key-value mapping structure. It works by O(1) average case operations. Key characteristics include hash function + collision resolution. Example: Map<String, Integer> map = new HashMap<>();. Common pitfalls include worst case O(n) with poor hash.",
+      "keywords": [
+        "hash table",
+        "Hashing programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of hash table in a production environment?",
+        "What are the common pitfalls or issues associated with hash table?"
+      ],
+      "related_concepts": [
+        "load factor",
+        "rehashing"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "HASH-027",
+      "subject": "Hashing",
+      "category": "Fundamentals",
+      "subcategory": "Load Factor",
+      "difficulty": "Hard",
+      "question": "What are the common issues with load factor in Hashing and how do you debug them?",
+      "ideal_answer": "Common issues with load factor in Hashing include: rehashing at threshold. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "load factor",
+        "troubleshooting",
+        "Hashing"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to load factor?",
+        "What tools can assist in detecting problems with load factor at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "hash table",
+        "rehashing"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "HASH-028",
+      "subject": "Hashing",
+      "category": "Collision Resolution",
+      "subcategory": "Open Addressing",
+      "difficulty": "Hard",
+      "question": "Explain the difference between open addressing and linear probing in Hashing.",
+      "ideal_answer": "open addressing and linear probing differ in several ways: open addressing is probe sequence collision handling (works by finding next empty slot) whereas linear probing is sequential slot checking (works by simple but causes primary clustering). open addressing is typically used for linear, quadratic, double hashing probes, while linear probing is used for h(k, i) = (h(k) + i) % m. Example demonstrating open addressing: int probe(int h, int i) { return (h + i) % m; }. Example demonstrating linear probing: int idx = (hash + i) % capacity;.",
+      "keywords": [
+        "open addressing",
+        "linear probing",
+        "comparison",
+        "Hashing"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose open addressing over linear probing?",
+        "What is the performance or memory difference between open addressing and linear probing?"
+      ],
+      "related_concepts": [
+        "open addressing",
+        "linear probing",
+        "separate chaining",
+        "double hashing"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

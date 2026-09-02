@@ -1,0 +1,3193 @@
+{
+  "metadata": {
+    "subject": "React",
+    "domain": "Web Development",
+    "total_questions": 120,
+    "difficulty_distribution": {
+      "Easy": 36,
+      "Medium": 60,
+      "Hard": 24
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:47Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "REACT-001",
+      "subject": "React",
+      "category": "Advanced Patterns",
+      "subcategory": "Portals",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Error Boundaries and Suspense in React.",
+      "ideal_answer": "Error Boundaries and Suspense differ in several ways: Error Boundaries is error catching components (works by preventing total UI crash) whereas Suspense is async loading state (works by declarative loading boundaries). Error Boundaries is typically used for componentDidCatch, static getDerivedStateFromError, while Suspense is used for lazy components, data fetching (experimental). Example demonstrating Error Boundaries: class ErrorBoundary extends React.Component { componentDidCatch(error, info) { ... } }. Example demonstrating Suspense: <Suspense fallback={<Spinner />}><LazyComponent /></Suspense>.",
+      "keywords": [
+        "Error Boundaries",
+        "Suspense",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Error Boundaries over Suspense?",
+        "What is the performance or memory difference between Error Boundaries and Suspense?"
+      ],
+      "related_concepts": [
+        "Error Boundaries",
+        "Suspense",
+        "Portals",
+        "Concurrent Mode"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-002",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "JSX",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Virtual DOM and keys in lists in React.",
+      "ideal_answer": "Virtual DOM and keys in lists differ in several ways: Virtual DOM is in-memory DOM representation (works by efficient UI updates) whereas keys in lists is element identification (works by efficient list reconciliation). Virtual DOM is typically used for reconciliation algorithm, diffing, while keys in lists is used for stable, unique, predictable identifiers. Example demonstrating Virtual DOM: React.createElement -> VDOM tree. Example demonstrating keys in lists: {items.map(item => <div key={item.id}>...</div>)}.",
+      "keywords": [
+        "Virtual DOM",
+        "keys in lists",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Virtual DOM over keys in lists?",
+        "What is the performance or memory difference between Virtual DOM and keys in lists?"
+      ],
+      "related_concepts": [
+        "Virtual DOM",
+        "keys in lists",
+        "reconciliation",
+        "JSX"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-003",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useMemo",
+      "difficulty": "Easy",
+      "question": "Explain the difference between useMemo and rules of hooks in React.",
+      "ideal_answer": "useMemo and rules of hooks differ in several ways: useMemo is memoization hook (works by caching expensive computations) whereas rules of hooks is hook usage constraints (works by ensuring consistent execution). useMemo is typically used for dependency array, reference equality, while rules of hooks is used for only call at top level, only in React functions. Example demonstrating useMemo: const memoizedValue = useMemo(() => compute(a, b), [a, b]);. Example demonstrating rules of hooks: eslint-plugin-react-hooks.",
+      "keywords": [
+        "useMemo",
+        "rules of hooks",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useMemo over rules of hooks?",
+        "What is the performance or memory difference between useMemo and rules of hooks?"
+      ],
+      "related_concepts": [
+        "useMemo",
+        "rules of hooks",
+        "useState",
+        "useEffect"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-004",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useState",
+      "difficulty": "Easy",
+      "question": "What is rules of hooks in React and how does it work?",
+      "ideal_answer": "rules of hooks in React refers to hook usage constraints. It works by ensuring consistent execution. Key characteristics include only call at top level, only in React functions. Example: eslint-plugin-react-hooks. Common pitfalls include conditional hook call errors.",
+      "keywords": [
+        "rules of hooks",
+        "React programming",
+        "hooks"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of rules of hooks in a production environment?",
+        "What are the common pitfalls or issues associated with rules of hooks?"
+      ],
+      "related_concepts": [
+        "useState",
+        "useEffect",
+        "useContext"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-005",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useReducer",
+      "difficulty": "Easy",
+      "question": "Explain the difference between useReducer and useMemo in React.",
+      "ideal_answer": "useReducer and useMemo differ in several ways: useReducer is complex state hook (works by state logic centralization) whereas useMemo is memoization hook (works by caching expensive computations). useReducer is typically used for reducer pattern, dispatch actions, while useMemo is used for dependency array, reference equality. Example demonstrating useReducer: const [state, dispatch] = useReducer(reducer, initialState);. Example demonstrating useMemo: const memoizedValue = useMemo(() => compute(a, b), [a, b]);.",
+      "keywords": [
+        "useReducer",
+        "useMemo",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useReducer over useMemo?",
+        "What is the performance or memory difference between useReducer and useMemo?"
+      ],
+      "related_concepts": [
+        "useReducer",
+        "useMemo",
+        "useState",
+        "useEffect"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-006",
+      "subject": "React",
+      "category": "Performance",
+      "subcategory": "Virtualization",
+      "difficulty": "Easy",
+      "question": "What is windowing/virtualization in React and how does it work?",
+      "ideal_answer": "windowing/virtualization in React refers to large list optimization. It works by rendering visible items only. Key characteristics include react-window, react-virtualized. Example: <FixedSizeList height={400} itemCount={1000} itemSize={35}>{Row}</FixedSizeList>. Common pitfalls include overscan for smooth scrolling.",
+      "keywords": [
+        "windowing/virtualization",
+        "React programming",
+        "performance"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of windowing/virtualization in a production environment?",
+        "What are the common pitfalls or issues associated with windowing/virtualization?"
+      ],
+      "related_concepts": [
+        "React.memo",
+        "useMemo vs useCallback",
+        "code splitting"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-007",
+      "subject": "React",
+      "category": "Advanced Patterns",
+      "subcategory": "Error Boundaries",
+      "difficulty": "Easy",
+      "question": "What are the common issues with Portals in React and how do you debug them?",
+      "ideal_answer": "Common issues with Portals in React include: event bubbling through portals. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Portals",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Portals?",
+        "What tools can assist in detecting problems with Portals at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Error Boundaries",
+        "Suspense",
+        "Concurrent Mode"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-008",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "Props",
+      "difficulty": "Easy",
+      "question": "Explain the difference between props vs state and keys in lists in React.",
+      "ideal_answer": "props vs state and keys in lists differ in several ways: props vs state is data flow mechanisms (works by external vs internal data) whereas keys in lists is element identification (works by efficient list reconciliation). props vs state is typically used for props: read-only, parent-to-child; state: mutable, component-local, while keys in lists is used for stable, unique, predictable identifiers. Example demonstrating props vs state: const [count, setCount] = useState(0);. Example demonstrating keys in lists: {items.map(item => <div key={item.id}>...</div>)}.",
+      "keywords": [
+        "props vs state",
+        "keys in lists",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose props vs state over keys in lists?",
+        "What is the performance or memory difference between props vs state and keys in lists?"
+      ],
+      "related_concepts": [
+        "props vs state",
+        "keys in lists",
+        "Virtual DOM",
+        "reconciliation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-009",
+      "subject": "React",
+      "category": "Advanced Patterns",
+      "subcategory": "Suspense",
+      "difficulty": "Easy",
+      "question": "What are the common issues with Concurrent Mode in React and how do you debug them?",
+      "ideal_answer": "Common issues with Concurrent Mode in React include: useTransition, useDeferredValue. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Concurrent Mode",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Concurrent Mode?",
+        "What tools can assist in detecting problems with Concurrent Mode at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Error Boundaries",
+        "Portals",
+        "Suspense"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-010",
+      "subject": "React",
+      "category": "Performance",
+      "subcategory": "Code Splitting",
+      "difficulty": "Easy",
+      "question": "Explain the difference between useMemo vs useCallback and code splitting in React.",
+      "ideal_answer": "useMemo vs useCallback and code splitting differ in several ways: useMemo vs useCallback is memoization hooks comparison (works by values vs functions caching) whereas code splitting is lazy loading components (works by reducing initial bundle size). useMemo vs useCallback is typically used for useMemo: cache value; useCallback: cache function, while code splitting is used for React.lazy, Suspense, dynamic imports. Example demonstrating useMemo vs useCallback: use for expensive computations. Example demonstrating code splitting: const LazyComponent = React.lazy(() => import('./Component'));.",
+      "keywords": [
+        "useMemo vs useCallback",
+        "code splitting",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useMemo vs useCallback over code splitting?",
+        "What is the performance or memory difference between useMemo vs useCallback and code splitting?"
+      ],
+      "related_concepts": [
+        "useMemo vs useCallback",
+        "code splitting",
+        "React.memo",
+        "windowing/virtualization"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-011",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useContext",
+      "difficulty": "Easy",
+      "question": "Explain the difference between useContext and custom hooks in React.",
+      "ideal_answer": "useContext and custom hooks differ in several ways: useContext is context consumption hook (works by avoiding prop drilling) whereas custom hooks is reusable logic extraction (works by sharing stateful logic). useContext is typically used for Provider/Consumer pattern simplification, while custom hooks is used for naming convention useXxx. Example demonstrating useContext: const theme = useContext(ThemeContext);. Example demonstrating custom hooks: function useWindowSize() { ... return [width, height]; }.",
+      "keywords": [
+        "useContext",
+        "custom hooks",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useContext over custom hooks?",
+        "What is the performance or memory difference between useContext and custom hooks?"
+      ],
+      "related_concepts": [
+        "useContext",
+        "custom hooks",
+        "useState",
+        "useEffect"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-012",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useContext",
+      "difficulty": "Easy",
+      "question": "Explain the difference between useContext and useMemo in React.",
+      "ideal_answer": "useContext and useMemo differ in several ways: useContext is context consumption hook (works by avoiding prop drilling) whereas useMemo is memoization hook (works by caching expensive computations). useContext is typically used for Provider/Consumer pattern simplification, while useMemo is used for dependency array, reference equality. Example demonstrating useContext: const theme = useContext(ThemeContext);. Example demonstrating useMemo: const memoizedValue = useMemo(() => compute(a, b), [a, b]);.",
+      "keywords": [
+        "useContext",
+        "useMemo",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useContext over useMemo?",
+        "What is the performance or memory difference between useContext and useMemo?"
+      ],
+      "related_concepts": [
+        "useContext",
+        "useMemo",
+        "useState",
+        "useEffect"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-013",
+      "subject": "React",
+      "category": "Advanced Patterns",
+      "subcategory": "Error Boundaries",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Portals and forwardRef in React.",
+      "ideal_answer": "Portals and forwardRef differ in several ways: Portals is DOM tree escape (works by rendering outside parent hierarchy) whereas forwardRef is ref passing through components (works by exposing DOM nodes to parent). Portals is typically used for modals, tooltips, overlays, while forwardRef is used for React.forwardRef. Example demonstrating Portals: ReactDOM.createPortal(child, domNode). Example demonstrating forwardRef: const FancyButton = React.forwardRef((props, ref) => (<button ref={ref}>{props.label}</button>));.",
+      "keywords": [
+        "Portals",
+        "forwardRef",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Portals over forwardRef?",
+        "What is the performance or memory difference between Portals and forwardRef?"
+      ],
+      "related_concepts": [
+        "Portals",
+        "forwardRef",
+        "Error Boundaries",
+        "Suspense"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-014",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useEffect",
+      "difficulty": "Easy",
+      "question": "What are the common issues with useEffect in React and how do you debug them?",
+      "ideal_answer": "Common issues with useEffect in React include: missing dependencies, infinite loops. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "useEffect",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to useEffect?",
+        "What tools can assist in detecting problems with useEffect at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "useState",
+        "useContext",
+        "useReducer"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-015",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useCallback",
+      "difficulty": "Easy",
+      "question": "Explain the difference between useCallback and useRef in React.",
+      "ideal_answer": "useCallback and useRef differ in several ways: useCallback is function memoization hook (works by stable function references) whereas useRef is mutable reference hook (works by persisting values across renders). useCallback is typically used for prevents child re-renders, while useRef is used for DOM references, previous values, intervals. Example demonstrating useCallback: const handleClick = useCallback(() => { ... }, [deps]);. Example demonstrating useRef: const inputRef = useRef(null);.",
+      "keywords": [
+        "useCallback",
+        "useRef",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useCallback over useRef?",
+        "What is the performance or memory difference between useCallback and useRef?"
+      ],
+      "related_concepts": [
+        "useCallback",
+        "useRef",
+        "useState",
+        "useEffect"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-016",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "State",
+      "difficulty": "Easy",
+      "question": "Explain the difference between controlled vs uncontrolled components and keys in lists in React.",
+      "ideal_answer": "controlled vs uncontrolled components and keys in lists differ in several ways: controlled vs uncontrolled components is form input management (works by React state vs DOM state) whereas keys in lists is element identification (works by efficient list reconciliation). controlled vs uncontrolled components is typically used for controlled: value + onChange; uncontrolled: ref + defaultValue, while keys in lists is used for stable, unique, predictable identifiers. Example demonstrating controlled vs uncontrolled components: <input value={name} onChange={e => setName(e.target.value)} />. Example demonstrating keys in lists: {items.map(item => <div key={item.id}>...</div>)}.",
+      "keywords": [
+        "controlled vs uncontrolled components",
+        "keys in lists",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose controlled vs uncontrolled components over keys in lists?",
+        "What is the performance or memory difference between controlled vs uncontrolled components and keys in lists?"
+      ],
+      "related_concepts": [
+        "controlled vs uncontrolled components",
+        "keys in lists",
+        "Virtual DOM",
+        "reconciliation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-017",
+      "subject": "React",
+      "category": "Component Patterns",
+      "subcategory": "Class Components",
+      "difficulty": "Easy",
+      "question": "What are the common issues with render props in React and how do you debug them?",
+      "ideal_answer": "Common issues with render props in React include: wrapper hell, React 16.3+ alternatives. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "render props",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to render props?",
+        "What tools can assist in detecting problems with render props at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Higher-Order Components",
+        "compound components"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-018",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useEffect",
+      "difficulty": "Easy",
+      "question": "Explain the difference between useEffect and useContext in React.",
+      "ideal_answer": "useEffect and useContext differ in several ways: useEffect is side effect hook (works by synchronization with external systems) whereas useContext is context consumption hook (works by avoiding prop drilling). useEffect is typically used for cleanup function, dependency array, while useContext is used for Provider/Consumer pattern simplification. Example demonstrating useEffect: useEffect(() => { subscribe(); return () => unsubscribe(); }, [id]);. Example demonstrating useContext: const theme = useContext(ThemeContext);.",
+      "keywords": [
+        "useEffect",
+        "useContext",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useEffect over useContext?",
+        "What is the performance or memory difference between useEffect and useContext?"
+      ],
+      "related_concepts": [
+        "useEffect",
+        "useContext",
+        "useState",
+        "useReducer"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-019",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useReducer",
+      "difficulty": "Easy",
+      "question": "What are the common issues with useReducer in React and how do you debug them?",
+      "ideal_answer": "Common issues with useReducer in React include: vs useState for complex objects. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "useReducer",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to useReducer?",
+        "What tools can assist in detecting problems with useReducer at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "useState",
+        "useEffect",
+        "useContext"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-020",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useRef",
+      "difficulty": "Easy",
+      "question": "Explain the difference between useRef and custom hooks in React.",
+      "ideal_answer": "useRef and custom hooks differ in several ways: useRef is mutable reference hook (works by persisting values across renders) whereas custom hooks is reusable logic extraction (works by sharing stateful logic). useRef is typically used for DOM references, previous values, intervals, while custom hooks is used for naming convention useXxx. Example demonstrating useRef: const inputRef = useRef(null);. Example demonstrating custom hooks: function useWindowSize() { ... return [width, height]; }.",
+      "keywords": [
+        "useRef",
+        "custom hooks",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useRef over custom hooks?",
+        "What is the performance or memory difference between useRef and custom hooks?"
+      ],
+      "related_concepts": [
+        "useRef",
+        "custom hooks",
+        "useState",
+        "useEffect"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-021",
+      "subject": "React",
+      "category": "Performance",
+      "subcategory": "Virtualization",
+      "difficulty": "Easy",
+      "question": "Explain the difference between windowing/virtualization and Profiler API in React.",
+      "ideal_answer": "windowing/virtualization and Profiler API differ in several ways: windowing/virtualization is large list optimization (works by rendering visible items only) whereas Profiler API is performance measurement (works by identifying slow components). windowing/virtualization is typically used for react-window, react-virtualized, while Profiler API is used for onRender callback. Example demonstrating windowing/virtualization: <FixedSizeList height={400} itemCount={1000} itemSize={35}>{Row}</FixedSizeList>. Example demonstrating Profiler API: <Profiler id=\"App\" onRender={onRenderCallback}>.",
+      "keywords": [
+        "windowing/virtualization",
+        "Profiler API",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose windowing/virtualization over Profiler API?",
+        "What is the performance or memory difference between windowing/virtualization and Profiler API?"
+      ],
+      "related_concepts": [
+        "windowing/virtualization",
+        "Profiler API",
+        "React.memo",
+        "useMemo vs useCallback"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-022",
+      "subject": "React",
+      "category": "Advanced Patterns",
+      "subcategory": "Suspense",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Concurrent Mode and forwardRef in React.",
+      "ideal_answer": "Concurrent Mode and forwardRef differ in several ways: Concurrent Mode is interruptible rendering (works by priority-based updates) whereas forwardRef is ref passing through components (works by exposing DOM nodes to parent). Concurrent Mode is typically used for Time Slicing, Suspense integration, while forwardRef is used for React.forwardRef. Example demonstrating Concurrent Mode: ReactDOM.createRoot(document.getElementById('root')).render(<App />);. Example demonstrating forwardRef: const FancyButton = React.forwardRef((props, ref) => (<button ref={ref}>{props.label}</button>));.",
+      "keywords": [
+        "Concurrent Mode",
+        "forwardRef",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Concurrent Mode over forwardRef?",
+        "What is the performance or memory difference between Concurrent Mode and forwardRef?"
+      ],
+      "related_concepts": [
+        "Concurrent Mode",
+        "forwardRef",
+        "Error Boundaries",
+        "Portals"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-023",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useState",
+      "difficulty": "Easy",
+      "question": "What are the common issues with rules of hooks in React and how do you debug them?",
+      "ideal_answer": "Common issues with rules of hooks in React include: conditional hook call errors. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "rules of hooks",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to rules of hooks?",
+        "What tools can assist in detecting problems with rules of hooks at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "useState",
+        "useEffect",
+        "useContext"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-024",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "JSX",
+      "difficulty": "Easy",
+      "question": "What are the common issues with Virtual DOM in React and how do you debug them?",
+      "ideal_answer": "Common issues with Virtual DOM in React include: not always faster than direct DOM manipulation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Virtual DOM",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Virtual DOM?",
+        "What tools can assist in detecting problems with Virtual DOM at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "reconciliation",
+        "JSX",
+        "props vs state"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-025",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "Custom Hooks",
+      "difficulty": "Easy",
+      "question": "Explain the difference between custom hooks and rules of hooks in React.",
+      "ideal_answer": "custom hooks and rules of hooks differ in several ways: custom hooks is reusable logic extraction (works by sharing stateful logic) whereas rules of hooks is hook usage constraints (works by ensuring consistent execution). custom hooks is typically used for naming convention useXxx, while rules of hooks is used for only call at top level, only in React functions. Example demonstrating custom hooks: function useWindowSize() { ... return [width, height]; }. Example demonstrating rules of hooks: eslint-plugin-react-hooks.",
+      "keywords": [
+        "custom hooks",
+        "rules of hooks",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose custom hooks over rules of hooks?",
+        "What is the performance or memory difference between custom hooks and rules of hooks?"
+      ],
+      "related_concepts": [
+        "custom hooks",
+        "rules of hooks",
+        "useState",
+        "useEffect"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-026",
+      "subject": "React",
+      "category": "Advanced Patterns",
+      "subcategory": "Refs Forwarding",
+      "difficulty": "Easy",
+      "question": "What is Suspense in React and how does it work?",
+      "ideal_answer": "Suspense in React refers to async loading state. It works by declarative loading boundaries. Key characteristics include lazy components, data fetching (experimental). Example: <Suspense fallback={<Spinner />}><LazyComponent /></Suspense>. Common pitfalls include ErrorBoundary + Suspense pattern.",
+      "keywords": [
+        "Suspense",
+        "React programming",
+        "advanced patterns"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Suspense in a production environment?",
+        "What are the common pitfalls or issues associated with Suspense?"
+      ],
+      "related_concepts": [
+        "Error Boundaries",
+        "Portals",
+        "Concurrent Mode"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-027",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useEffect",
+      "difficulty": "Easy",
+      "question": "Explain the difference between useEffect and useMemo in React.",
+      "ideal_answer": "useEffect and useMemo differ in several ways: useEffect is side effect hook (works by synchronization with external systems) whereas useMemo is memoization hook (works by caching expensive computations). useEffect is typically used for cleanup function, dependency array, while useMemo is used for dependency array, reference equality. Example demonstrating useEffect: useEffect(() => { subscribe(); return () => unsubscribe(); }, [id]);. Example demonstrating useMemo: const memoizedValue = useMemo(() => compute(a, b), [a, b]);.",
+      "keywords": [
+        "useEffect",
+        "useMemo",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useEffect over useMemo?",
+        "What is the performance or memory difference between useEffect and useMemo?"
+      ],
+      "related_concepts": [
+        "useEffect",
+        "useMemo",
+        "useState",
+        "useContext"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-028",
+      "subject": "React",
+      "category": "State Management",
+      "subcategory": "Zustand",
+      "difficulty": "Easy",
+      "question": "What is React Query in React and how does it work?",
+      "ideal_answer": "React Query in React refers to server state management. It works by caching and synchronization. Key characteristics include stale-while-revalidate, background updates. Example: const { data, isLoading } = useQuery(['todos'], fetchTodos);. Common pitfalls include cache invalidation strategies.",
+      "keywords": [
+        "React Query",
+        "React programming",
+        "state management"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of React Query in a production environment?",
+        "What are the common pitfalls or issues associated with React Query?"
+      ],
+      "related_concepts": [
+        "Context API",
+        "Redux"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-029",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useReducer",
+      "difficulty": "Easy",
+      "question": "Explain the difference between useReducer and useRef in React.",
+      "ideal_answer": "useReducer and useRef differ in several ways: useReducer is complex state hook (works by state logic centralization) whereas useRef is mutable reference hook (works by persisting values across renders). useReducer is typically used for reducer pattern, dispatch actions, while useRef is used for DOM references, previous values, intervals. Example demonstrating useReducer: const [state, dispatch] = useReducer(reducer, initialState);. Example demonstrating useRef: const inputRef = useRef(null);.",
+      "keywords": [
+        "useReducer",
+        "useRef",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useReducer over useRef?",
+        "What is the performance or memory difference between useReducer and useRef?"
+      ],
+      "related_concepts": [
+        "useReducer",
+        "useRef",
+        "useState",
+        "useEffect"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-030",
+      "subject": "React",
+      "category": "Advanced Patterns",
+      "subcategory": "Concurrent Features",
+      "difficulty": "Easy",
+      "question": "What is forwardRef in React and how does it work?",
+      "ideal_answer": "forwardRef in React refers to ref passing through components. It works by exposing DOM nodes to parent. Key characteristics include React.forwardRef. Example: const FancyButton = React.forwardRef((props, ref) => (<button ref={ref}>{props.label}</button>));. Common pitfalls include useImperativeHandle.",
+      "keywords": [
+        "forwardRef",
+        "React programming",
+        "advanced patterns"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of forwardRef in a production environment?",
+        "What are the common pitfalls or issues associated with forwardRef?"
+      ],
+      "related_concepts": [
+        "Error Boundaries",
+        "Portals",
+        "Suspense"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-031",
+      "subject": "React",
+      "category": "Advanced Patterns",
+      "subcategory": "Portals",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Error Boundaries and Portals in React.",
+      "ideal_answer": "Error Boundaries and Portals differ in several ways: Error Boundaries is error catching components (works by preventing total UI crash) whereas Portals is DOM tree escape (works by rendering outside parent hierarchy). Error Boundaries is typically used for componentDidCatch, static getDerivedStateFromError, while Portals is used for modals, tooltips, overlays. Example demonstrating Error Boundaries: class ErrorBoundary extends React.Component { componentDidCatch(error, info) { ... } }. Example demonstrating Portals: ReactDOM.createPortal(child, domNode).",
+      "keywords": [
+        "Error Boundaries",
+        "Portals",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Error Boundaries over Portals?",
+        "What is the performance or memory difference between Error Boundaries and Portals?"
+      ],
+      "related_concepts": [
+        "Error Boundaries",
+        "Portals",
+        "Suspense",
+        "Concurrent Mode"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-032",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useContext",
+      "difficulty": "Easy",
+      "question": "What is useContext in React and how does it work?",
+      "ideal_answer": "useContext in React refers to context consumption hook. It works by avoiding prop drilling. Key characteristics include Provider/Consumer pattern simplification. Example: const theme = useContext(ThemeContext);. Common pitfalls include context re-renders all consumers.",
+      "keywords": [
+        "useContext",
+        "React programming",
+        "hooks"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of useContext in a production environment?",
+        "What are the common pitfalls or issues associated with useContext?"
+      ],
+      "related_concepts": [
+        "useState",
+        "useEffect",
+        "useReducer"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-033",
+      "subject": "React",
+      "category": "Performance",
+      "subcategory": "Lazy Loading",
+      "difficulty": "Easy",
+      "question": "What are the common issues with code splitting in React and how do you debug them?",
+      "ideal_answer": "Common issues with code splitting in React include: fallback UI during load. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "code splitting",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to code splitting?",
+        "What tools can assist in detecting problems with code splitting at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "React.memo",
+        "useMemo vs useCallback",
+        "windowing/virtualization"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-034",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useState",
+      "difficulty": "Easy",
+      "question": "Explain the difference between useState and rules of hooks in React.",
+      "ideal_answer": "useState and rules of hooks differ in several ways: useState is state hook (works by functional component state) whereas rules of hooks is hook usage constraints (works by ensuring consistent execution). useState is typically used for array destructuring, updater function, while rules of hooks is used for only call at top level, only in React functions. Example demonstrating useState: const [count, setCount] = useState(0);. Example demonstrating rules of hooks: eslint-plugin-react-hooks.",
+      "keywords": [
+        "useState",
+        "rules of hooks",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useState over rules of hooks?",
+        "What is the performance or memory difference between useState and rules of hooks?"
+      ],
+      "related_concepts": [
+        "useState",
+        "rules of hooks",
+        "useEffect",
+        "useContext"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-035",
+      "subject": "React",
+      "category": "Performance",
+      "subcategory": "Code Splitting",
+      "difficulty": "Easy",
+      "question": "Explain the difference between useMemo vs useCallback and windowing/virtualization in React.",
+      "ideal_answer": "useMemo vs useCallback and windowing/virtualization differ in several ways: useMemo vs useCallback is memoization hooks comparison (works by values vs functions caching) whereas windowing/virtualization is large list optimization (works by rendering visible items only). useMemo vs useCallback is typically used for useMemo: cache value; useCallback: cache function, while windowing/virtualization is used for react-window, react-virtualized. Example demonstrating useMemo vs useCallback: use for expensive computations. Example demonstrating windowing/virtualization: <FixedSizeList height={400} itemCount={1000} itemSize={35}>{Row}</FixedSizeList>.",
+      "keywords": [
+        "useMemo vs useCallback",
+        "windowing/virtualization",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useMemo vs useCallback over windowing/virtualization?",
+        "What is the performance or memory difference between useMemo vs useCallback and windowing/virtualization?"
+      ],
+      "related_concepts": [
+        "useMemo vs useCallback",
+        "windowing/virtualization",
+        "React.memo",
+        "code splitting"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-036",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useRef",
+      "difficulty": "Easy",
+      "question": "Explain the difference between useRef and rules of hooks in React.",
+      "ideal_answer": "useRef and rules of hooks differ in several ways: useRef is mutable reference hook (works by persisting values across renders) whereas rules of hooks is hook usage constraints (works by ensuring consistent execution). useRef is typically used for DOM references, previous values, intervals, while rules of hooks is used for only call at top level, only in React functions. Example demonstrating useRef: const inputRef = useRef(null);. Example demonstrating rules of hooks: eslint-plugin-react-hooks.",
+      "keywords": [
+        "useRef",
+        "rules of hooks",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useRef over rules of hooks?",
+        "What is the performance or memory difference between useRef and rules of hooks?"
+      ],
+      "related_concepts": [
+        "useRef",
+        "rules of hooks",
+        "useState",
+        "useEffect"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "REACT-037",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "JSX",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Virtual DOM and props vs state in React.",
+      "ideal_answer": "Virtual DOM and props vs state differ in several ways: Virtual DOM is in-memory DOM representation (works by efficient UI updates) whereas props vs state is data flow mechanisms (works by external vs internal data). Virtual DOM is typically used for reconciliation algorithm, diffing, while props vs state is used for props: read-only, parent-to-child; state: mutable, component-local. Example demonstrating Virtual DOM: React.createElement -> VDOM tree. Example demonstrating props vs state: const [count, setCount] = useState(0);.",
+      "keywords": [
+        "Virtual DOM",
+        "props vs state",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Virtual DOM over props vs state?",
+        "What is the performance or memory difference between Virtual DOM and props vs state?"
+      ],
+      "related_concepts": [
+        "Virtual DOM",
+        "props vs state",
+        "reconciliation",
+        "JSX"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-038",
+      "subject": "React",
+      "category": "Component Patterns",
+      "subcategory": "HOC",
+      "difficulty": "Medium",
+      "question": "What are the common issues with compound components in React and how do you debug them?",
+      "ideal_answer": "Common issues with compound components in React include: flexible composition. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "compound components",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to compound components?",
+        "What tools can assist in detecting problems with compound components at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Higher-Order Components",
+        "render props"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-039",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useMemo",
+      "difficulty": "Medium",
+      "question": "Explain the difference between useMemo and custom hooks in React.",
+      "ideal_answer": "useMemo and custom hooks differ in several ways: useMemo is memoization hook (works by caching expensive computations) whereas custom hooks is reusable logic extraction (works by sharing stateful logic). useMemo is typically used for dependency array, reference equality, while custom hooks is used for naming convention useXxx. Example demonstrating useMemo: const memoizedValue = useMemo(() => compute(a, b), [a, b]);. Example demonstrating custom hooks: function useWindowSize() { ... return [width, height]; }.",
+      "keywords": [
+        "useMemo",
+        "custom hooks",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useMemo over custom hooks?",
+        "What is the performance or memory difference between useMemo and custom hooks?"
+      ],
+      "related_concepts": [
+        "useMemo",
+        "custom hooks",
+        "useState",
+        "useEffect"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-040",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useEffect",
+      "difficulty": "Medium",
+      "question": "Explain the difference between useEffect and useCallback in React.",
+      "ideal_answer": "useEffect and useCallback differ in several ways: useEffect is side effect hook (works by synchronization with external systems) whereas useCallback is function memoization hook (works by stable function references). useEffect is typically used for cleanup function, dependency array, while useCallback is used for prevents child re-renders. Example demonstrating useEffect: useEffect(() => { subscribe(); return () => unsubscribe(); }, [id]);. Example demonstrating useCallback: const handleClick = useCallback(() => { ... }, [deps]);.",
+      "keywords": [
+        "useEffect",
+        "useCallback",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useEffect over useCallback?",
+        "What is the performance or memory difference between useEffect and useCallback?"
+      ],
+      "related_concepts": [
+        "useEffect",
+        "useCallback",
+        "useState",
+        "useContext"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-041",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useEffect",
+      "difficulty": "Medium",
+      "question": "Explain the difference between useEffect and rules of hooks in React.",
+      "ideal_answer": "useEffect and rules of hooks differ in several ways: useEffect is side effect hook (works by synchronization with external systems) whereas rules of hooks is hook usage constraints (works by ensuring consistent execution). useEffect is typically used for cleanup function, dependency array, while rules of hooks is used for only call at top level, only in React functions. Example demonstrating useEffect: useEffect(() => { subscribe(); return () => unsubscribe(); }, [id]);. Example demonstrating rules of hooks: eslint-plugin-react-hooks.",
+      "keywords": [
+        "useEffect",
+        "rules of hooks",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useEffect over rules of hooks?",
+        "What is the performance or memory difference between useEffect and rules of hooks?"
+      ],
+      "related_concepts": [
+        "useEffect",
+        "rules of hooks",
+        "useState",
+        "useContext"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-042",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useReducer",
+      "difficulty": "Medium",
+      "question": "What is useReducer in React and how does it work?",
+      "ideal_answer": "useReducer in React refers to complex state hook. It works by state logic centralization. Key characteristics include reducer pattern, dispatch actions. Example: const [state, dispatch] = useReducer(reducer, initialState);. Common pitfalls include vs useState for complex objects.",
+      "keywords": [
+        "useReducer",
+        "React programming",
+        "hooks"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of useReducer in a production environment?",
+        "What are the common pitfalls or issues associated with useReducer?"
+      ],
+      "related_concepts": [
+        "useState",
+        "useEffect",
+        "useContext"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-043",
+      "subject": "React",
+      "category": "Performance",
+      "subcategory": "Memoization",
+      "difficulty": "Medium",
+      "question": "Explain the difference between React.memo and useMemo vs useCallback in React.",
+      "ideal_answer": "React.memo and useMemo vs useCallback differ in several ways: React.memo is component memoization (works by preventing unnecessary re-renders) whereas useMemo vs useCallback is memoization hooks comparison (works by values vs functions caching). React.memo is typically used for shallow prop comparison, while useMemo vs useCallback is used for useMemo: cache value; useCallback: cache function. Example demonstrating React.memo: const MemoizedComponent = React.memo(Component, areEqual);. Example demonstrating useMemo vs useCallback: use for expensive computations.",
+      "keywords": [
+        "React.memo",
+        "useMemo vs useCallback",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose React.memo over useMemo vs useCallback?",
+        "What is the performance or memory difference between React.memo and useMemo vs useCallback?"
+      ],
+      "related_concepts": [
+        "React.memo",
+        "useMemo vs useCallback",
+        "code splitting",
+        "windowing/virtualization"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-044",
+      "subject": "React",
+      "category": "Advanced Patterns",
+      "subcategory": "Suspense",
+      "difficulty": "Medium",
+      "question": "What is Concurrent Mode in React and how does it work?",
+      "ideal_answer": "Concurrent Mode in React refers to interruptible rendering. It works by priority-based updates. Key characteristics include Time Slicing, Suspense integration. Example: ReactDOM.createRoot(document.getElementById('root')).render(<App />);. Common pitfalls include useTransition, useDeferredValue.",
+      "keywords": [
+        "Concurrent Mode",
+        "React programming",
+        "advanced patterns"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Concurrent Mode in a production environment?",
+        "What are the common pitfalls or issues associated with Concurrent Mode?"
+      ],
+      "related_concepts": [
+        "Error Boundaries",
+        "Portals",
+        "Suspense"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-045",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useState",
+      "difficulty": "Medium",
+      "question": "What are the common issues with useState in React and how do you debug them?",
+      "ideal_answer": "Common issues with useState in React include: stale closure with state. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "useState",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to useState?",
+        "What tools can assist in detecting problems with useState at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "useEffect",
+        "useContext",
+        "useReducer"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-046",
+      "subject": "React",
+      "category": "Performance",
+      "subcategory": "Code Splitting",
+      "difficulty": "Medium",
+      "question": "What is useMemo vs useCallback in React and how does it work?",
+      "ideal_answer": "useMemo vs useCallback in React refers to memoization hooks comparison. It works by values vs functions caching. Key characteristics include useMemo: cache value; useCallback: cache function. Example: use for expensive computations. Common pitfalls include dependency array correctness.",
+      "keywords": [
+        "useMemo vs useCallback",
+        "React programming",
+        "performance"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of useMemo vs useCallback in a production environment?",
+        "What are the common pitfalls or issues associated with useMemo vs useCallback?"
+      ],
+      "related_concepts": [
+        "React.memo",
+        "code splitting",
+        "windowing/virtualization"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-047",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "What is JSX in React and how does it work?",
+      "ideal_answer": "JSX in React refers to JavaScript XML syntax. It works by declarative UI description. Key characteristics include transpiled to React.createElement. Example: const element = <h1>Hello</h1>;. Common pitfalls include JSX expressions must have one parent.",
+      "keywords": [
+        "JSX",
+        "React programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of JSX in a production environment?",
+        "What are the common pitfalls or issues associated with JSX?"
+      ],
+      "related_concepts": [
+        "Virtual DOM",
+        "reconciliation",
+        "props vs state"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-048",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "JSX",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Virtual DOM and controlled vs uncontrolled components in React.",
+      "ideal_answer": "Virtual DOM and controlled vs uncontrolled components differ in several ways: Virtual DOM is in-memory DOM representation (works by efficient UI updates) whereas controlled vs uncontrolled components is form input management (works by React state vs DOM state). Virtual DOM is typically used for reconciliation algorithm, diffing, while controlled vs uncontrolled components is used for controlled: value + onChange; uncontrolled: ref + defaultValue. Example demonstrating Virtual DOM: React.createElement -> VDOM tree. Example demonstrating controlled vs uncontrolled components: <input value={name} onChange={e => setName(e.target.value)} />.",
+      "keywords": [
+        "Virtual DOM",
+        "controlled vs uncontrolled components",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Virtual DOM over controlled vs uncontrolled components?",
+        "What is the performance or memory difference between Virtual DOM and controlled vs uncontrolled components?"
+      ],
+      "related_concepts": [
+        "Virtual DOM",
+        "controlled vs uncontrolled components",
+        "reconciliation",
+        "JSX"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-049",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "Explain the difference between JSX and props vs state in React.",
+      "ideal_answer": "JSX and props vs state differ in several ways: JSX is JavaScript XML syntax (works by declarative UI description) whereas props vs state is data flow mechanisms (works by external vs internal data). JSX is typically used for transpiled to React.createElement, while props vs state is used for props: read-only, parent-to-child; state: mutable, component-local. Example demonstrating JSX: const element = <h1>Hello</h1>;. Example demonstrating props vs state: const [count, setCount] = useState(0);.",
+      "keywords": [
+        "JSX",
+        "props vs state",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose JSX over props vs state?",
+        "What is the performance or memory difference between JSX and props vs state?"
+      ],
+      "related_concepts": [
+        "JSX",
+        "props vs state",
+        "Virtual DOM",
+        "reconciliation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-050",
+      "subject": "React",
+      "category": "Advanced Patterns",
+      "subcategory": "Portals",
+      "difficulty": "Medium",
+      "question": "What is Error Boundaries in React and how does it work?",
+      "ideal_answer": "Error Boundaries in React refers to error catching components. It works by preventing total UI crash. Key characteristics include componentDidCatch, static getDerivedStateFromError. Example: class ErrorBoundary extends React.Component { componentDidCatch(error, info) { ... } }. Common pitfalls include limitations: event handlers, async.",
+      "keywords": [
+        "Error Boundaries",
+        "React programming",
+        "advanced patterns"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Error Boundaries in a production environment?",
+        "What are the common pitfalls or issues associated with Error Boundaries?"
+      ],
+      "related_concepts": [
+        "Portals",
+        "Suspense",
+        "Concurrent Mode"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-051",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "Virtual DOM",
+      "difficulty": "Medium",
+      "question": "What is reconciliation in React and how does it work?",
+      "ideal_answer": "reconciliation in React refers to VDOM diffing process. It works by determining minimal DOM updates. Key characteristics include key prop, Fiber architecture. Example: <li key={item.id}>{item.name}</li>. Common pitfalls include key stability importance.",
+      "keywords": [
+        "reconciliation",
+        "React programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of reconciliation in a production environment?",
+        "What are the common pitfalls or issues associated with reconciliation?"
+      ],
+      "related_concepts": [
+        "Virtual DOM",
+        "JSX",
+        "props vs state"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-052",
+      "subject": "React",
+      "category": "Performance",
+      "subcategory": "Memoization",
+      "difficulty": "Medium",
+      "question": "Explain the difference between React.memo and windowing/virtualization in React.",
+      "ideal_answer": "React.memo and windowing/virtualization differ in several ways: React.memo is component memoization (works by preventing unnecessary re-renders) whereas windowing/virtualization is large list optimization (works by rendering visible items only). React.memo is typically used for shallow prop comparison, while windowing/virtualization is used for react-window, react-virtualized. Example demonstrating React.memo: const MemoizedComponent = React.memo(Component, areEqual);. Example demonstrating windowing/virtualization: <FixedSizeList height={400} itemCount={1000} itemSize={35}>{Row}</FixedSizeList>.",
+      "keywords": [
+        "React.memo",
+        "windowing/virtualization",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose React.memo over windowing/virtualization?",
+        "What is the performance or memory difference between React.memo and windowing/virtualization?"
+      ],
+      "related_concepts": [
+        "React.memo",
+        "windowing/virtualization",
+        "useMemo vs useCallback",
+        "code splitting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-053",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "Virtual DOM",
+      "difficulty": "Medium",
+      "question": "What are the common issues with reconciliation in React and how do you debug them?",
+      "ideal_answer": "Common issues with reconciliation in React include: key stability importance. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "reconciliation",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to reconciliation?",
+        "What tools can assist in detecting problems with reconciliation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Virtual DOM",
+        "JSX",
+        "props vs state"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-054",
+      "subject": "React",
+      "category": "Performance",
+      "subcategory": "Reconciliation",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Profiler API in React and how do you debug them?",
+      "ideal_answer": "Common issues with Profiler API in React include: production profiling. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Profiler API",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Profiler API?",
+        "What tools can assist in detecting problems with Profiler API at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "React.memo",
+        "useMemo vs useCallback",
+        "code splitting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-055",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "Custom Hooks",
+      "difficulty": "Medium",
+      "question": "What is custom hooks in React and how does it work?",
+      "ideal_answer": "custom hooks in React refers to reusable logic extraction. It works by sharing stateful logic. Key characteristics include naming convention useXxx. Example: function useWindowSize() { ... return [width, height]; }. Common pitfalls include rules of hooks application.",
+      "keywords": [
+        "custom hooks",
+        "React programming",
+        "hooks"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of custom hooks in a production environment?",
+        "What are the common pitfalls or issues associated with custom hooks?"
+      ],
+      "related_concepts": [
+        "useState",
+        "useEffect",
+        "useContext"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-056",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useState",
+      "difficulty": "Medium",
+      "question": "Explain the difference between useState and useEffect in React.",
+      "ideal_answer": "useState and useEffect differ in several ways: useState is state hook (works by functional component state) whereas useEffect is side effect hook (works by synchronization with external systems). useState is typically used for array destructuring, updater function, while useEffect is used for cleanup function, dependency array. Example demonstrating useState: const [count, setCount] = useState(0);. Example demonstrating useEffect: useEffect(() => { subscribe(); return () => unsubscribe(); }, [id]);.",
+      "keywords": [
+        "useState",
+        "useEffect",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useState over useEffect?",
+        "What is the performance or memory difference between useState and useEffect?"
+      ],
+      "related_concepts": [
+        "useState",
+        "useEffect",
+        "useContext",
+        "useReducer"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-057",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useEffect",
+      "difficulty": "Medium",
+      "question": "Explain the difference between useEffect and custom hooks in React.",
+      "ideal_answer": "useEffect and custom hooks differ in several ways: useEffect is side effect hook (works by synchronization with external systems) whereas custom hooks is reusable logic extraction (works by sharing stateful logic). useEffect is typically used for cleanup function, dependency array, while custom hooks is used for naming convention useXxx. Example demonstrating useEffect: useEffect(() => { subscribe(); return () => unsubscribe(); }, [id]);. Example demonstrating custom hooks: function useWindowSize() { ... return [width, height]; }.",
+      "keywords": [
+        "useEffect",
+        "custom hooks",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useEffect over custom hooks?",
+        "What is the performance or memory difference between useEffect and custom hooks?"
+      ],
+      "related_concepts": [
+        "useEffect",
+        "custom hooks",
+        "useState",
+        "useContext"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-058",
+      "subject": "React",
+      "category": "Performance",
+      "subcategory": "Code Splitting",
+      "difficulty": "Medium",
+      "question": "What are the common issues with useMemo vs useCallback in React and how do you debug them?",
+      "ideal_answer": "Common issues with useMemo vs useCallback in React include: dependency array correctness. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "useMemo vs useCallback",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to useMemo vs useCallback?",
+        "What tools can assist in detecting problems with useMemo vs useCallback at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "React.memo",
+        "code splitting",
+        "windowing/virtualization"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-059",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "JSX",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Virtual DOM and reconciliation in React.",
+      "ideal_answer": "Virtual DOM and reconciliation differ in several ways: Virtual DOM is in-memory DOM representation (works by efficient UI updates) whereas reconciliation is VDOM diffing process (works by determining minimal DOM updates). Virtual DOM is typically used for reconciliation algorithm, diffing, while reconciliation is used for key prop, Fiber architecture. Example demonstrating Virtual DOM: React.createElement -> VDOM tree. Example demonstrating reconciliation: <li key={item.id}>{item.name}</li>.",
+      "keywords": [
+        "Virtual DOM",
+        "reconciliation",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Virtual DOM over reconciliation?",
+        "What is the performance or memory difference between Virtual DOM and reconciliation?"
+      ],
+      "related_concepts": [
+        "Virtual DOM",
+        "reconciliation",
+        "JSX",
+        "props vs state"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-060",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useReducer",
+      "difficulty": "Medium",
+      "question": "Explain the difference between useReducer and rules of hooks in React.",
+      "ideal_answer": "useReducer and rules of hooks differ in several ways: useReducer is complex state hook (works by state logic centralization) whereas rules of hooks is hook usage constraints (works by ensuring consistent execution). useReducer is typically used for reducer pattern, dispatch actions, while rules of hooks is used for only call at top level, only in React functions. Example demonstrating useReducer: const [state, dispatch] = useReducer(reducer, initialState);. Example demonstrating rules of hooks: eslint-plugin-react-hooks.",
+      "keywords": [
+        "useReducer",
+        "rules of hooks",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useReducer over rules of hooks?",
+        "What is the performance or memory difference between useReducer and rules of hooks?"
+      ],
+      "related_concepts": [
+        "useReducer",
+        "rules of hooks",
+        "useState",
+        "useEffect"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-061",
+      "subject": "React",
+      "category": "State Management",
+      "subcategory": "Context API",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Context API and Redux in React.",
+      "ideal_answer": "Context API and Redux differ in several ways: Context API is built-in state sharing (works by avoiding prop drilling) whereas Redux is predictable state container (works by centralized state management). Context API is typically used for createContext, Provider, useContext, while Redux is used for actions, reducers, store, middleware. Example demonstrating Context API: const ThemeContext = createContext(defaultValue);. Example demonstrating Redux: const store = createStore(reducer, applyMiddleware(thunk));.",
+      "keywords": [
+        "Context API",
+        "Redux",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Context API over Redux?",
+        "What is the performance or memory difference between Context API and Redux?"
+      ],
+      "related_concepts": [
+        "Context API",
+        "Redux",
+        "React Query"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-062",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useContext",
+      "difficulty": "Medium",
+      "question": "What are the common issues with useContext in React and how do you debug them?",
+      "ideal_answer": "Common issues with useContext in React include: context re-renders all consumers. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "useContext",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to useContext?",
+        "What tools can assist in detecting problems with useContext at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "useState",
+        "useEffect",
+        "useReducer"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-063",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useEffect",
+      "difficulty": "Medium",
+      "question": "Explain the difference between useEffect and useRef in React.",
+      "ideal_answer": "useEffect and useRef differ in several ways: useEffect is side effect hook (works by synchronization with external systems) whereas useRef is mutable reference hook (works by persisting values across renders). useEffect is typically used for cleanup function, dependency array, while useRef is used for DOM references, previous values, intervals. Example demonstrating useEffect: useEffect(() => { subscribe(); return () => unsubscribe(); }, [id]);. Example demonstrating useRef: const inputRef = useRef(null);.",
+      "keywords": [
+        "useEffect",
+        "useRef",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useEffect over useRef?",
+        "What is the performance or memory difference between useEffect and useRef?"
+      ],
+      "related_concepts": [
+        "useEffect",
+        "useRef",
+        "useState",
+        "useContext"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-064",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useContext",
+      "difficulty": "Medium",
+      "question": "Explain the difference between useContext and useRef in React.",
+      "ideal_answer": "useContext and useRef differ in several ways: useContext is context consumption hook (works by avoiding prop drilling) whereas useRef is mutable reference hook (works by persisting values across renders). useContext is typically used for Provider/Consumer pattern simplification, while useRef is used for DOM references, previous values, intervals. Example demonstrating useContext: const theme = useContext(ThemeContext);. Example demonstrating useRef: const inputRef = useRef(null);.",
+      "keywords": [
+        "useContext",
+        "useRef",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useContext over useRef?",
+        "What is the performance or memory difference between useContext and useRef?"
+      ],
+      "related_concepts": [
+        "useContext",
+        "useRef",
+        "useState",
+        "useEffect"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-065",
+      "subject": "React",
+      "category": "Component Patterns",
+      "subcategory": "Class Components",
+      "difficulty": "Medium",
+      "question": "What is render props in React and how does it work?",
+      "ideal_answer": "render props in React refers to component logic sharing. It works by passing function as prop. Key characteristics include inversion of control. Example: <DataProvider render={data => <List data={data} />} />. Common pitfalls include wrapper hell, React 16.3+ alternatives.",
+      "keywords": [
+        "render props",
+        "React programming",
+        "component patterns"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of render props in a production environment?",
+        "What are the common pitfalls or issues associated with render props?"
+      ],
+      "related_concepts": [
+        "Higher-Order Components",
+        "compound components"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-066",
+      "subject": "React",
+      "category": "Advanced Patterns",
+      "subcategory": "Refs Forwarding",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Suspense in React and how do you debug them?",
+      "ideal_answer": "Common issues with Suspense in React include: ErrorBoundary + Suspense pattern. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Suspense",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Suspense?",
+        "What tools can assist in detecting problems with Suspense at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Error Boundaries",
+        "Portals",
+        "Concurrent Mode"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-067",
+      "subject": "React",
+      "category": "Performance",
+      "subcategory": "Lazy Loading",
+      "difficulty": "Medium",
+      "question": "Explain the difference between code splitting and Profiler API in React.",
+      "ideal_answer": "code splitting and Profiler API differ in several ways: code splitting is lazy loading components (works by reducing initial bundle size) whereas Profiler API is performance measurement (works by identifying slow components). code splitting is typically used for React.lazy, Suspense, dynamic imports, while Profiler API is used for onRender callback. Example demonstrating code splitting: const LazyComponent = React.lazy(() => import('./Component'));. Example demonstrating Profiler API: <Profiler id=\"App\" onRender={onRenderCallback}>.",
+      "keywords": [
+        "code splitting",
+        "Profiler API",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose code splitting over Profiler API?",
+        "What is the performance or memory difference between code splitting and Profiler API?"
+      ],
+      "related_concepts": [
+        "code splitting",
+        "Profiler API",
+        "React.memo",
+        "useMemo vs useCallback"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-068",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "Props",
+      "difficulty": "Medium",
+      "question": "Explain the difference between props vs state and lifting state up in React.",
+      "ideal_answer": "props vs state and lifting state up differ in several ways: props vs state is data flow mechanisms (works by external vs internal data) whereas lifting state up is shared state management (works by moving state to common ancestor). props vs state is typically used for props: read-only, parent-to-child; state: mutable, component-local, while lifting state up is used for single source of truth. Example demonstrating props vs state: const [count, setCount] = useState(0);. Example demonstrating lifting state up: Parent holds state, passes to siblings via props.",
+      "keywords": [
+        "props vs state",
+        "lifting state up",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose props vs state over lifting state up?",
+        "What is the performance or memory difference between props vs state and lifting state up?"
+      ],
+      "related_concepts": [
+        "props vs state",
+        "lifting state up",
+        "Virtual DOM",
+        "reconciliation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-069",
+      "subject": "React",
+      "category": "State Management",
+      "subcategory": "Context API",
+      "difficulty": "Medium",
+      "question": "What is Context API in React and how does it work?",
+      "ideal_answer": "Context API in React refers to built-in state sharing. It works by avoiding prop drilling. Key characteristics include createContext, Provider, useContext. Example: const ThemeContext = createContext(defaultValue);. Common pitfalls include performance with frequent updates.",
+      "keywords": [
+        "Context API",
+        "React programming",
+        "state management"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Context API in a production environment?",
+        "What are the common pitfalls or issues associated with Context API?"
+      ],
+      "related_concepts": [
+        "Redux",
+        "React Query"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-070",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "Virtual DOM",
+      "difficulty": "Medium",
+      "question": "Explain the difference between reconciliation and props vs state in React.",
+      "ideal_answer": "reconciliation and props vs state differ in several ways: reconciliation is VDOM diffing process (works by determining minimal DOM updates) whereas props vs state is data flow mechanisms (works by external vs internal data). reconciliation is typically used for key prop, Fiber architecture, while props vs state is used for props: read-only, parent-to-child; state: mutable, component-local. Example demonstrating reconciliation: <li key={item.id}>{item.name}</li>. Example demonstrating props vs state: const [count, setCount] = useState(0);.",
+      "keywords": [
+        "reconciliation",
+        "props vs state",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose reconciliation over props vs state?",
+        "What is the performance or memory difference between reconciliation and props vs state?"
+      ],
+      "related_concepts": [
+        "reconciliation",
+        "props vs state",
+        "Virtual DOM",
+        "JSX"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-071",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "State",
+      "difficulty": "Medium",
+      "question": "What are the common issues with controlled vs uncontrolled components in React and how do you debug them?",
+      "ideal_answer": "Common issues with controlled vs uncontrolled components in React include: hybrid approaches. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "controlled vs uncontrolled components",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to controlled vs uncontrolled components?",
+        "What tools can assist in detecting problems with controlled vs uncontrolled components at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Virtual DOM",
+        "reconciliation",
+        "JSX"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-072",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "Lifecycle",
+      "difficulty": "Medium",
+      "question": "Explain the difference between keys in lists and lifting state up in React.",
+      "ideal_answer": "keys in lists and lifting state up differ in several ways: keys in lists is element identification (works by efficient list reconciliation) whereas lifting state up is shared state management (works by moving state to common ancestor). keys in lists is typically used for stable, unique, predictable identifiers, while lifting state up is used for single source of truth. Example demonstrating keys in lists: {items.map(item => <div key={item.id}>...</div>)}. Example demonstrating lifting state up: Parent holds state, passes to siblings via props.",
+      "keywords": [
+        "keys in lists",
+        "lifting state up",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose keys in lists over lifting state up?",
+        "What is the performance or memory difference between keys in lists and lifting state up?"
+      ],
+      "related_concepts": [
+        "keys in lists",
+        "lifting state up",
+        "Virtual DOM",
+        "reconciliation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-073",
+      "subject": "React",
+      "category": "Advanced Patterns",
+      "subcategory": "Portals",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Error Boundaries and forwardRef in React.",
+      "ideal_answer": "Error Boundaries and forwardRef differ in several ways: Error Boundaries is error catching components (works by preventing total UI crash) whereas forwardRef is ref passing through components (works by exposing DOM nodes to parent). Error Boundaries is typically used for componentDidCatch, static getDerivedStateFromError, while forwardRef is used for React.forwardRef. Example demonstrating Error Boundaries: class ErrorBoundary extends React.Component { componentDidCatch(error, info) { ... } }. Example demonstrating forwardRef: const FancyButton = React.forwardRef((props, ref) => (<button ref={ref}>{props.label}</button>));.",
+      "keywords": [
+        "Error Boundaries",
+        "forwardRef",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Error Boundaries over forwardRef?",
+        "What is the performance or memory difference between Error Boundaries and forwardRef?"
+      ],
+      "related_concepts": [
+        "Error Boundaries",
+        "forwardRef",
+        "Portals",
+        "Suspense"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-074",
+      "subject": "React",
+      "category": "State Management",
+      "subcategory": "Context API",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Context API and React Query in React.",
+      "ideal_answer": "Context API and React Query differ in several ways: Context API is built-in state sharing (works by avoiding prop drilling) whereas React Query is server state management (works by caching and synchronization). Context API is typically used for createContext, Provider, useContext, while React Query is used for stale-while-revalidate, background updates. Example demonstrating Context API: const ThemeContext = createContext(defaultValue);. Example demonstrating React Query: const { data, isLoading } = useQuery(['todos'], fetchTodos);.",
+      "keywords": [
+        "Context API",
+        "React Query",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Context API over React Query?",
+        "What is the performance or memory difference between Context API and React Query?"
+      ],
+      "related_concepts": [
+        "Context API",
+        "React Query",
+        "Redux"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-075",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useRef",
+      "difficulty": "Medium",
+      "question": "What is useRef in React and how does it work?",
+      "ideal_answer": "useRef in React refers to mutable reference hook. It works by persisting values across renders. Key characteristics include DOM references, previous values, intervals. Example: const inputRef = useRef(null);. Common pitfalls include ref.current mutation doesn't trigger re-render.",
+      "keywords": [
+        "useRef",
+        "React programming",
+        "hooks"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of useRef in a production environment?",
+        "What are the common pitfalls or issues associated with useRef?"
+      ],
+      "related_concepts": [
+        "useState",
+        "useEffect",
+        "useContext"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-076",
+      "subject": "React",
+      "category": "Performance",
+      "subcategory": "Memoization",
+      "difficulty": "Medium",
+      "question": "Explain the difference between React.memo and code splitting in React.",
+      "ideal_answer": "React.memo and code splitting differ in several ways: React.memo is component memoization (works by preventing unnecessary re-renders) whereas code splitting is lazy loading components (works by reducing initial bundle size). React.memo is typically used for shallow prop comparison, while code splitting is used for React.lazy, Suspense, dynamic imports. Example demonstrating React.memo: const MemoizedComponent = React.memo(Component, areEqual);. Example demonstrating code splitting: const LazyComponent = React.lazy(() => import('./Component'));.",
+      "keywords": [
+        "React.memo",
+        "code splitting",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose React.memo over code splitting?",
+        "What is the performance or memory difference between React.memo and code splitting?"
+      ],
+      "related_concepts": [
+        "React.memo",
+        "code splitting",
+        "useMemo vs useCallback",
+        "windowing/virtualization"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-077",
+      "subject": "React",
+      "category": "Component Patterns",
+      "subcategory": "Functional Components",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Higher-Order Components in React and how do you debug them?",
+      "ideal_answer": "Common issues with Higher-Order Components in React include: prop name collision, ref forwarding. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Higher-Order Components",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Higher-Order Components?",
+        "What tools can assist in detecting problems with Higher-Order Components at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "render props",
+        "compound components"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-078",
+      "subject": "React",
+      "category": "State Management",
+      "subcategory": "Context API",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Context API in React and how do you debug them?",
+      "ideal_answer": "Common issues with Context API in React include: performance with frequent updates. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Context API",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Context API?",
+        "What tools can assist in detecting problems with Context API at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Redux",
+        "React Query"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-079",
+      "subject": "React",
+      "category": "Performance",
+      "subcategory": "Virtualization",
+      "difficulty": "Medium",
+      "question": "What are the common issues with windowing/virtualization in React and how do you debug them?",
+      "ideal_answer": "Common issues with windowing/virtualization in React include: overscan for smooth scrolling. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "windowing/virtualization",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to windowing/virtualization?",
+        "What tools can assist in detecting problems with windowing/virtualization at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "React.memo",
+        "useMemo vs useCallback",
+        "code splitting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-080",
+      "subject": "React",
+      "category": "Component Patterns",
+      "subcategory": "Functional Components",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Higher-Order Components and compound components in React.",
+      "ideal_answer": "Higher-Order Components and compound components differ in several ways: Higher-Order Components is component composition pattern (works by cross-cutting concerns reuse) whereas compound components is implicit state sharing (works by related components working together). Higher-Order Components is typically used for function returning component, while compound components is used for Context API for communication. Example demonstrating Higher-Order Components: const withAuth = (Component) => (props) => { ... }. Example demonstrating compound components: <Select><Option value=\"1\">One</Option></Select>.",
+      "keywords": [
+        "Higher-Order Components",
+        "compound components",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Higher-Order Components over compound components?",
+        "What is the performance or memory difference between Higher-Order Components and compound components?"
+      ],
+      "related_concepts": [
+        "Higher-Order Components",
+        "compound components",
+        "render props"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-081",
+      "subject": "React",
+      "category": "State Management",
+      "subcategory": "Redux",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Redux and React Query in React.",
+      "ideal_answer": "Redux and React Query differ in several ways: Redux is predictable state container (works by centralized state management) whereas React Query is server state management (works by caching and synchronization). Redux is typically used for actions, reducers, store, middleware, while React Query is used for stale-while-revalidate, background updates. Example demonstrating Redux: const store = createStore(reducer, applyMiddleware(thunk));. Example demonstrating React Query: const { data, isLoading } = useQuery(['todos'], fetchTodos);.",
+      "keywords": [
+        "Redux",
+        "React Query",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Redux over React Query?",
+        "What is the performance or memory difference between Redux and React Query?"
+      ],
+      "related_concepts": [
+        "Redux",
+        "React Query",
+        "Context API"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-082",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useCallback",
+      "difficulty": "Medium",
+      "question": "Explain the difference between useCallback and rules of hooks in React.",
+      "ideal_answer": "useCallback and rules of hooks differ in several ways: useCallback is function memoization hook (works by stable function references) whereas rules of hooks is hook usage constraints (works by ensuring consistent execution). useCallback is typically used for prevents child re-renders, while rules of hooks is used for only call at top level, only in React functions. Example demonstrating useCallback: const handleClick = useCallback(() => { ... }, [deps]);. Example demonstrating rules of hooks: eslint-plugin-react-hooks.",
+      "keywords": [
+        "useCallback",
+        "rules of hooks",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useCallback over rules of hooks?",
+        "What is the performance or memory difference between useCallback and rules of hooks?"
+      ],
+      "related_concepts": [
+        "useCallback",
+        "rules of hooks",
+        "useState",
+        "useEffect"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-083",
+      "subject": "React",
+      "category": "Component Patterns",
+      "subcategory": "Functional Components",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Higher-Order Components and render props in React.",
+      "ideal_answer": "Higher-Order Components and render props differ in several ways: Higher-Order Components is component composition pattern (works by cross-cutting concerns reuse) whereas render props is component logic sharing (works by passing function as prop). Higher-Order Components is typically used for function returning component, while render props is used for inversion of control. Example demonstrating Higher-Order Components: const withAuth = (Component) => (props) => { ... }. Example demonstrating render props: <DataProvider render={data => <List data={data} />} />.",
+      "keywords": [
+        "Higher-Order Components",
+        "render props",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Higher-Order Components over render props?",
+        "What is the performance or memory difference between Higher-Order Components and render props?"
+      ],
+      "related_concepts": [
+        "Higher-Order Components",
+        "render props",
+        "compound components"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-084",
+      "subject": "React",
+      "category": "State Management",
+      "subcategory": "Redux",
+      "difficulty": "Medium",
+      "question": "What is Redux in React and how does it work?",
+      "ideal_answer": "Redux in React refers to predictable state container. It works by centralized state management. Key characteristics include actions, reducers, store, middleware. Example: const store = createStore(reducer, applyMiddleware(thunk));. Common pitfalls include boilerplate, Redux Toolkit simplification.",
+      "keywords": [
+        "Redux",
+        "React programming",
+        "state management"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Redux in a production environment?",
+        "What are the common pitfalls or issues associated with Redux?"
+      ],
+      "related_concepts": [
+        "Context API",
+        "React Query"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-085",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "Props",
+      "difficulty": "Medium",
+      "question": "Explain the difference between props vs state and controlled vs uncontrolled components in React.",
+      "ideal_answer": "props vs state and controlled vs uncontrolled components differ in several ways: props vs state is data flow mechanisms (works by external vs internal data) whereas controlled vs uncontrolled components is form input management (works by React state vs DOM state). props vs state is typically used for props: read-only, parent-to-child; state: mutable, component-local, while controlled vs uncontrolled components is used for controlled: value + onChange; uncontrolled: ref + defaultValue. Example demonstrating props vs state: const [count, setCount] = useState(0);. Example demonstrating controlled vs uncontrolled components: <input value={name} onChange={e => setName(e.target.value)} />.",
+      "keywords": [
+        "props vs state",
+        "controlled vs uncontrolled components",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose props vs state over controlled vs uncontrolled components?",
+        "What is the performance or memory difference between props vs state and controlled vs uncontrolled components?"
+      ],
+      "related_concepts": [
+        "props vs state",
+        "controlled vs uncontrolled components",
+        "Virtual DOM",
+        "reconciliation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-086",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useCallback",
+      "difficulty": "Medium",
+      "question": "Explain the difference between useCallback and custom hooks in React.",
+      "ideal_answer": "useCallback and custom hooks differ in several ways: useCallback is function memoization hook (works by stable function references) whereas custom hooks is reusable logic extraction (works by sharing stateful logic). useCallback is typically used for prevents child re-renders, while custom hooks is used for naming convention useXxx. Example demonstrating useCallback: const handleClick = useCallback(() => { ... }, [deps]);. Example demonstrating custom hooks: function useWindowSize() { ... return [width, height]; }.",
+      "keywords": [
+        "useCallback",
+        "custom hooks",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useCallback over custom hooks?",
+        "What is the performance or memory difference between useCallback and custom hooks?"
+      ],
+      "related_concepts": [
+        "useCallback",
+        "custom hooks",
+        "useState",
+        "useEffect"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-087",
+      "subject": "React",
+      "category": "State Management",
+      "subcategory": "Redux",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Redux in React and how do you debug them?",
+      "ideal_answer": "Common issues with Redux in React include: boilerplate, Redux Toolkit simplification. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Redux",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Redux?",
+        "What tools can assist in detecting problems with Redux at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Context API",
+        "React Query"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-088",
+      "subject": "React",
+      "category": "Advanced Patterns",
+      "subcategory": "Concurrent Features",
+      "difficulty": "Medium",
+      "question": "What are the common issues with forwardRef in React and how do you debug them?",
+      "ideal_answer": "Common issues with forwardRef in React include: useImperativeHandle. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "forwardRef",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to forwardRef?",
+        "What tools can assist in detecting problems with forwardRef at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Error Boundaries",
+        "Portals",
+        "Suspense"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-089",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "Virtual DOM",
+      "difficulty": "Medium",
+      "question": "Explain the difference between reconciliation and lifting state up in React.",
+      "ideal_answer": "reconciliation and lifting state up differ in several ways: reconciliation is VDOM diffing process (works by determining minimal DOM updates) whereas lifting state up is shared state management (works by moving state to common ancestor). reconciliation is typically used for key prop, Fiber architecture, while lifting state up is used for single source of truth. Example demonstrating reconciliation: <li key={item.id}>{item.name}</li>. Example demonstrating lifting state up: Parent holds state, passes to siblings via props.",
+      "keywords": [
+        "reconciliation",
+        "lifting state up",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose reconciliation over lifting state up?",
+        "What is the performance or memory difference between reconciliation and lifting state up?"
+      ],
+      "related_concepts": [
+        "reconciliation",
+        "lifting state up",
+        "Virtual DOM",
+        "JSX"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-090",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useContext",
+      "difficulty": "Medium",
+      "question": "Explain the difference between useContext and rules of hooks in React.",
+      "ideal_answer": "useContext and rules of hooks differ in several ways: useContext is context consumption hook (works by avoiding prop drilling) whereas rules of hooks is hook usage constraints (works by ensuring consistent execution). useContext is typically used for Provider/Consumer pattern simplification, while rules of hooks is used for only call at top level, only in React functions. Example demonstrating useContext: const theme = useContext(ThemeContext);. Example demonstrating rules of hooks: eslint-plugin-react-hooks.",
+      "keywords": [
+        "useContext",
+        "rules of hooks",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useContext over rules of hooks?",
+        "What is the performance or memory difference between useContext and rules of hooks?"
+      ],
+      "related_concepts": [
+        "useContext",
+        "rules of hooks",
+        "useState",
+        "useEffect"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-091",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useCallback",
+      "difficulty": "Medium",
+      "question": "What are the common issues with useCallback in React and how do you debug them?",
+      "ideal_answer": "Common issues with useCallback in React include: useCallback without useMemo on children. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "useCallback",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to useCallback?",
+        "What tools can assist in detecting problems with useCallback at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "useState",
+        "useEffect",
+        "useContext"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-092",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useMemo",
+      "difficulty": "Medium",
+      "question": "Explain the difference between useMemo and useCallback in React.",
+      "ideal_answer": "useMemo and useCallback differ in several ways: useMemo is memoization hook (works by caching expensive computations) whereas useCallback is function memoization hook (works by stable function references). useMemo is typically used for dependency array, reference equality, while useCallback is used for prevents child re-renders. Example demonstrating useMemo: const memoizedValue = useMemo(() => compute(a, b), [a, b]);. Example demonstrating useCallback: const handleClick = useCallback(() => { ... }, [deps]);.",
+      "keywords": [
+        "useMemo",
+        "useCallback",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useMemo over useCallback?",
+        "What is the performance or memory difference between useMemo and useCallback?"
+      ],
+      "related_concepts": [
+        "useMemo",
+        "useCallback",
+        "useState",
+        "useEffect"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-093",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useMemo",
+      "difficulty": "Medium",
+      "question": "Explain the difference between useMemo and useRef in React.",
+      "ideal_answer": "useMemo and useRef differ in several ways: useMemo is memoization hook (works by caching expensive computations) whereas useRef is mutable reference hook (works by persisting values across renders). useMemo is typically used for dependency array, reference equality, while useRef is used for DOM references, previous values, intervals. Example demonstrating useMemo: const memoizedValue = useMemo(() => compute(a, b), [a, b]);. Example demonstrating useRef: const inputRef = useRef(null);.",
+      "keywords": [
+        "useMemo",
+        "useRef",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useMemo over useRef?",
+        "What is the performance or memory difference between useMemo and useRef?"
+      ],
+      "related_concepts": [
+        "useMemo",
+        "useRef",
+        "useState",
+        "useEffect"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-094",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useEffect",
+      "difficulty": "Medium",
+      "question": "What is useEffect in React and how does it work?",
+      "ideal_answer": "useEffect in React refers to side effect hook. It works by synchronization with external systems. Key characteristics include cleanup function, dependency array. Example: useEffect(() => { subscribe(); return () => unsubscribe(); }, [id]);. Common pitfalls include missing dependencies, infinite loops.",
+      "keywords": [
+        "useEffect",
+        "React programming",
+        "hooks"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of useEffect in a production environment?",
+        "What are the common pitfalls or issues associated with useEffect?"
+      ],
+      "related_concepts": [
+        "useState",
+        "useContext",
+        "useReducer"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-095",
+      "subject": "React",
+      "category": "Advanced Patterns",
+      "subcategory": "Refs Forwarding",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Suspense and Concurrent Mode in React.",
+      "ideal_answer": "Suspense and Concurrent Mode differ in several ways: Suspense is async loading state (works by declarative loading boundaries) whereas Concurrent Mode is interruptible rendering (works by priority-based updates). Suspense is typically used for lazy components, data fetching (experimental), while Concurrent Mode is used for Time Slicing, Suspense integration. Example demonstrating Suspense: <Suspense fallback={<Spinner />}><LazyComponent /></Suspense>. Example demonstrating Concurrent Mode: ReactDOM.createRoot(document.getElementById('root')).render(<App />);.",
+      "keywords": [
+        "Suspense",
+        "Concurrent Mode",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Suspense over Concurrent Mode?",
+        "What is the performance or memory difference between Suspense and Concurrent Mode?"
+      ],
+      "related_concepts": [
+        "Suspense",
+        "Concurrent Mode",
+        "Error Boundaries",
+        "Portals"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-096",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "Lifecycle",
+      "difficulty": "Medium",
+      "question": "What is keys in lists in React and how does it work?",
+      "ideal_answer": "keys in lists in React refers to element identification. It works by efficient list reconciliation. Key characteristics include stable, unique, predictable identifiers. Example: {items.map(item => <div key={item.id}>...</div>)}. Common pitfalls include index as key anti-pattern.",
+      "keywords": [
+        "keys in lists",
+        "React programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of keys in lists in a production environment?",
+        "What are the common pitfalls or issues associated with keys in lists?"
+      ],
+      "related_concepts": [
+        "Virtual DOM",
+        "reconciliation",
+        "JSX"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "REACT-097",
+      "subject": "React",
+      "category": "Advanced Patterns",
+      "subcategory": "Portals",
+      "difficulty": "Hard",
+      "question": "What are the common issues with Error Boundaries in React and how do you debug them?",
+      "ideal_answer": "Common issues with Error Boundaries in React include: limitations: event handlers, async. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Error Boundaries",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Error Boundaries?",
+        "What tools can assist in detecting problems with Error Boundaries at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Portals",
+        "Suspense",
+        "Concurrent Mode"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-098",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "JSX",
+      "difficulty": "Hard",
+      "question": "Explain the difference between Virtual DOM and JSX in React.",
+      "ideal_answer": "Virtual DOM and JSX differ in several ways: Virtual DOM is in-memory DOM representation (works by efficient UI updates) whereas JSX is JavaScript XML syntax (works by declarative UI description). Virtual DOM is typically used for reconciliation algorithm, diffing, while JSX is used for transpiled to React.createElement. Example demonstrating Virtual DOM: React.createElement -> VDOM tree. Example demonstrating JSX: const element = <h1>Hello</h1>;.",
+      "keywords": [
+        "Virtual DOM",
+        "JSX",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Virtual DOM over JSX?",
+        "What is the performance or memory difference between Virtual DOM and JSX?"
+      ],
+      "related_concepts": [
+        "Virtual DOM",
+        "JSX",
+        "reconciliation",
+        "props vs state"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-099",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useContext",
+      "difficulty": "Hard",
+      "question": "Explain the difference between useContext and useReducer in React.",
+      "ideal_answer": "useContext and useReducer differ in several ways: useContext is context consumption hook (works by avoiding prop drilling) whereas useReducer is complex state hook (works by state logic centralization). useContext is typically used for Provider/Consumer pattern simplification, while useReducer is used for reducer pattern, dispatch actions. Example demonstrating useContext: const theme = useContext(ThemeContext);. Example demonstrating useReducer: const [state, dispatch] = useReducer(reducer, initialState);.",
+      "keywords": [
+        "useContext",
+        "useReducer",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useContext over useReducer?",
+        "What is the performance or memory difference between useContext and useReducer?"
+      ],
+      "related_concepts": [
+        "useContext",
+        "useReducer",
+        "useState",
+        "useEffect"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-100",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useState",
+      "difficulty": "Hard",
+      "question": "Explain the difference between useState and useRef in React.",
+      "ideal_answer": "useState and useRef differ in several ways: useState is state hook (works by functional component state) whereas useRef is mutable reference hook (works by persisting values across renders). useState is typically used for array destructuring, updater function, while useRef is used for DOM references, previous values, intervals. Example demonstrating useState: const [count, setCount] = useState(0);. Example demonstrating useRef: const inputRef = useRef(null);.",
+      "keywords": [
+        "useState",
+        "useRef",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useState over useRef?",
+        "What is the performance or memory difference between useState and useRef?"
+      ],
+      "related_concepts": [
+        "useState",
+        "useRef",
+        "useEffect",
+        "useContext"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-101",
+      "subject": "React",
+      "category": "Component Patterns",
+      "subcategory": "HOC",
+      "difficulty": "Hard",
+      "question": "What is compound components in React and how does it work?",
+      "ideal_answer": "compound components in React refers to implicit state sharing. It works by related components working together. Key characteristics include Context API for communication. Example: <Select><Option value=\"1\">One</Option></Select>. Common pitfalls include flexible composition.",
+      "keywords": [
+        "compound components",
+        "React programming",
+        "component patterns"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of compound components in a production environment?",
+        "What are the common pitfalls or issues associated with compound components?"
+      ],
+      "related_concepts": [
+        "Higher-Order Components",
+        "render props"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-102",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "Components",
+      "difficulty": "Hard",
+      "question": "What are the common issues with JSX in React and how do you debug them?",
+      "ideal_answer": "Common issues with JSX in React include: JSX expressions must have one parent. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "JSX",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to JSX?",
+        "What tools can assist in detecting problems with JSX at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Virtual DOM",
+        "reconciliation",
+        "props vs state"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-103",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "State",
+      "difficulty": "Hard",
+      "question": "Explain the difference between controlled vs uncontrolled components and lifting state up in React.",
+      "ideal_answer": "controlled vs uncontrolled components and lifting state up differ in several ways: controlled vs uncontrolled components is form input management (works by React state vs DOM state) whereas lifting state up is shared state management (works by moving state to common ancestor). controlled vs uncontrolled components is typically used for controlled: value + onChange; uncontrolled: ref + defaultValue, while lifting state up is used for single source of truth. Example demonstrating controlled vs uncontrolled components: <input value={name} onChange={e => setName(e.target.value)} />. Example demonstrating lifting state up: Parent holds state, passes to siblings via props.",
+      "keywords": [
+        "controlled vs uncontrolled components",
+        "lifting state up",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose controlled vs uncontrolled components over lifting state up?",
+        "What is the performance or memory difference between controlled vs uncontrolled components and lifting state up?"
+      ],
+      "related_concepts": [
+        "controlled vs uncontrolled components",
+        "lifting state up",
+        "Virtual DOM",
+        "reconciliation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-104",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useReducer",
+      "difficulty": "Hard",
+      "question": "Explain the difference between useReducer and custom hooks in React.",
+      "ideal_answer": "useReducer and custom hooks differ in several ways: useReducer is complex state hook (works by state logic centralization) whereas custom hooks is reusable logic extraction (works by sharing stateful logic). useReducer is typically used for reducer pattern, dispatch actions, while custom hooks is used for naming convention useXxx. Example demonstrating useReducer: const [state, dispatch] = useReducer(reducer, initialState);. Example demonstrating custom hooks: function useWindowSize() { ... return [width, height]; }.",
+      "keywords": [
+        "useReducer",
+        "custom hooks",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useReducer over custom hooks?",
+        "What is the performance or memory difference between useReducer and custom hooks?"
+      ],
+      "related_concepts": [
+        "useReducer",
+        "custom hooks",
+        "useState",
+        "useEffect"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-105",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useMemo",
+      "difficulty": "Hard",
+      "question": "What are the common issues with useMemo in React and how do you debug them?",
+      "ideal_answer": "Common issues with useMemo in React include: over-memoization overhead. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "useMemo",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to useMemo?",
+        "What tools can assist in detecting problems with useMemo at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "useState",
+        "useEffect",
+        "useContext"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-106",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useCallback",
+      "difficulty": "Hard",
+      "question": "What is useCallback in React and how does it work?",
+      "ideal_answer": "useCallback in React refers to function memoization hook. It works by stable function references. Key characteristics include prevents child re-renders. Example: const handleClick = useCallback(() => { ... }, [deps]);. Common pitfalls include useCallback without useMemo on children.",
+      "keywords": [
+        "useCallback",
+        "React programming",
+        "hooks"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of useCallback in a production environment?",
+        "What are the common pitfalls or issues associated with useCallback?"
+      ],
+      "related_concepts": [
+        "useState",
+        "useEffect",
+        "useContext"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-107",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "JSX",
+      "difficulty": "Hard",
+      "question": "What is lifting state up in React and how does it work?",
+      "ideal_answer": "lifting state up in React refers to shared state management. It works by moving state to common ancestor. Key characteristics include single source of truth. Example: Parent holds state, passes to siblings via props. Common pitfalls include prop drilling problem.",
+      "keywords": [
+        "lifting state up",
+        "React programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of lifting state up in a production environment?",
+        "What are the common pitfalls or issues associated with lifting state up?"
+      ],
+      "related_concepts": [
+        "Virtual DOM",
+        "reconciliation",
+        "JSX"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-108",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useRef",
+      "difficulty": "Hard",
+      "question": "What are the common issues with useRef in React and how do you debug them?",
+      "ideal_answer": "Common issues with useRef in React include: ref.current mutation doesn't trigger re-render. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "useRef",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to useRef?",
+        "What tools can assist in detecting problems with useRef at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "useState",
+        "useEffect",
+        "useContext"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-109",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "Lifecycle",
+      "difficulty": "Hard",
+      "question": "What are the common issues with keys in lists in React and how do you debug them?",
+      "ideal_answer": "Common issues with keys in lists in React include: index as key anti-pattern. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "keys in lists",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to keys in lists?",
+        "What tools can assist in detecting problems with keys in lists at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Virtual DOM",
+        "reconciliation",
+        "JSX"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-110",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "JSX",
+      "difficulty": "Hard",
+      "question": "What are the common issues with lifting state up in React and how do you debug them?",
+      "ideal_answer": "Common issues with lifting state up in React include: prop drilling problem. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "lifting state up",
+        "troubleshooting",
+        "React"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to lifting state up?",
+        "What tools can assist in detecting problems with lifting state up at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Virtual DOM",
+        "reconciliation",
+        "JSX"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-111",
+      "subject": "React",
+      "category": "Performance",
+      "subcategory": "Reconciliation",
+      "difficulty": "Hard",
+      "question": "What is Profiler API in React and how does it work?",
+      "ideal_answer": "Profiler API in React refers to performance measurement. It works by identifying slow components. Key characteristics include onRender callback. Example: <Profiler id=\"App\" onRender={onRenderCallback}>. Common pitfalls include production profiling.",
+      "keywords": [
+        "Profiler API",
+        "React programming",
+        "performance"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Profiler API in a production environment?",
+        "What are the common pitfalls or issues associated with Profiler API?"
+      ],
+      "related_concepts": [
+        "React.memo",
+        "useMemo vs useCallback",
+        "code splitting"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-112",
+      "subject": "React",
+      "category": "Performance",
+      "subcategory": "Memoization",
+      "difficulty": "Hard",
+      "question": "Explain the difference between React.memo and Profiler API in React.",
+      "ideal_answer": "React.memo and Profiler API differ in several ways: React.memo is component memoization (works by preventing unnecessary re-renders) whereas Profiler API is performance measurement (works by identifying slow components). React.memo is typically used for shallow prop comparison, while Profiler API is used for onRender callback. Example demonstrating React.memo: const MemoizedComponent = React.memo(Component, areEqual);. Example demonstrating Profiler API: <Profiler id=\"App\" onRender={onRenderCallback}>.",
+      "keywords": [
+        "React.memo",
+        "Profiler API",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose React.memo over Profiler API?",
+        "What is the performance or memory difference between React.memo and Profiler API?"
+      ],
+      "related_concepts": [
+        "React.memo",
+        "Profiler API",
+        "useMemo vs useCallback",
+        "code splitting"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-113",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "Components",
+      "difficulty": "Hard",
+      "question": "Explain the difference between JSX and keys in lists in React.",
+      "ideal_answer": "JSX and keys in lists differ in several ways: JSX is JavaScript XML syntax (works by declarative UI description) whereas keys in lists is element identification (works by efficient list reconciliation). JSX is typically used for transpiled to React.createElement, while keys in lists is used for stable, unique, predictable identifiers. Example demonstrating JSX: const element = <h1>Hello</h1>;. Example demonstrating keys in lists: {items.map(item => <div key={item.id}>...</div>)}.",
+      "keywords": [
+        "JSX",
+        "keys in lists",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose JSX over keys in lists?",
+        "What is the performance or memory difference between JSX and keys in lists?"
+      ],
+      "related_concepts": [
+        "JSX",
+        "keys in lists",
+        "Virtual DOM",
+        "reconciliation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-114",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "JSX",
+      "difficulty": "Hard",
+      "question": "Explain the difference between Virtual DOM and lifting state up in React.",
+      "ideal_answer": "Virtual DOM and lifting state up differ in several ways: Virtual DOM is in-memory DOM representation (works by efficient UI updates) whereas lifting state up is shared state management (works by moving state to common ancestor). Virtual DOM is typically used for reconciliation algorithm, diffing, while lifting state up is used for single source of truth. Example demonstrating Virtual DOM: React.createElement -> VDOM tree. Example demonstrating lifting state up: Parent holds state, passes to siblings via props.",
+      "keywords": [
+        "Virtual DOM",
+        "lifting state up",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Virtual DOM over lifting state up?",
+        "What is the performance or memory difference between Virtual DOM and lifting state up?"
+      ],
+      "related_concepts": [
+        "Virtual DOM",
+        "lifting state up",
+        "reconciliation",
+        "JSX"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-115",
+      "subject": "React",
+      "category": "Performance",
+      "subcategory": "Lazy Loading",
+      "difficulty": "Hard",
+      "question": "Explain the difference between code splitting and windowing/virtualization in React.",
+      "ideal_answer": "code splitting and windowing/virtualization differ in several ways: code splitting is lazy loading components (works by reducing initial bundle size) whereas windowing/virtualization is large list optimization (works by rendering visible items only). code splitting is typically used for React.lazy, Suspense, dynamic imports, while windowing/virtualization is used for react-window, react-virtualized. Example demonstrating code splitting: const LazyComponent = React.lazy(() => import('./Component'));. Example demonstrating windowing/virtualization: <FixedSizeList height={400} itemCount={1000} itemSize={35}>{Row}</FixedSizeList>.",
+      "keywords": [
+        "code splitting",
+        "windowing/virtualization",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose code splitting over windowing/virtualization?",
+        "What is the performance or memory difference between code splitting and windowing/virtualization?"
+      ],
+      "related_concepts": [
+        "code splitting",
+        "windowing/virtualization",
+        "React.memo",
+        "useMemo vs useCallback"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-116",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useMemo",
+      "difficulty": "Hard",
+      "question": "What is useMemo in React and how does it work?",
+      "ideal_answer": "useMemo in React refers to memoization hook. It works by caching expensive computations. Key characteristics include dependency array, reference equality. Example: const memoizedValue = useMemo(() => compute(a, b), [a, b]);. Common pitfalls include over-memoization overhead.",
+      "keywords": [
+        "useMemo",
+        "React programming",
+        "hooks"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of useMemo in a production environment?",
+        "What are the common pitfalls or issues associated with useMemo?"
+      ],
+      "related_concepts": [
+        "useState",
+        "useEffect",
+        "useContext"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-117",
+      "subject": "React",
+      "category": "Hooks",
+      "subcategory": "useState",
+      "difficulty": "Hard",
+      "question": "Explain the difference between useState and useContext in React.",
+      "ideal_answer": "useState and useContext differ in several ways: useState is state hook (works by functional component state) whereas useContext is context consumption hook (works by avoiding prop drilling). useState is typically used for array destructuring, updater function, while useContext is used for Provider/Consumer pattern simplification. Example demonstrating useState: const [count, setCount] = useState(0);. Example demonstrating useContext: const theme = useContext(ThemeContext);.",
+      "keywords": [
+        "useState",
+        "useContext",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useState over useContext?",
+        "What is the performance or memory difference between useState and useContext?"
+      ],
+      "related_concepts": [
+        "useState",
+        "useContext",
+        "useEffect",
+        "useReducer"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-118",
+      "subject": "React",
+      "category": "Component Patterns",
+      "subcategory": "Functional Components",
+      "difficulty": "Hard",
+      "question": "What is Higher-Order Components in React and how does it work?",
+      "ideal_answer": "Higher-Order Components in React refers to component composition pattern. It works by cross-cutting concerns reuse. Key characteristics include function returning component. Example: const withAuth = (Component) => (props) => { ... }. Common pitfalls include prop name collision, ref forwarding.",
+      "keywords": [
+        "Higher-Order Components",
+        "React programming",
+        "component patterns"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Higher-Order Components in a production environment?",
+        "What are the common pitfalls or issues associated with Higher-Order Components?"
+      ],
+      "related_concepts": [
+        "render props",
+        "compound components"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-119",
+      "subject": "React",
+      "category": "Core Concepts",
+      "subcategory": "Virtual DOM",
+      "difficulty": "Hard",
+      "question": "Explain the difference between reconciliation and JSX in React.",
+      "ideal_answer": "reconciliation and JSX differ in several ways: reconciliation is VDOM diffing process (works by determining minimal DOM updates) whereas JSX is JavaScript XML syntax (works by declarative UI description). reconciliation is typically used for key prop, Fiber architecture, while JSX is used for transpiled to React.createElement. Example demonstrating reconciliation: <li key={item.id}>{item.name}</li>. Example demonstrating JSX: const element = <h1>Hello</h1>;.",
+      "keywords": [
+        "reconciliation",
+        "JSX",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose reconciliation over JSX?",
+        "What is the performance or memory difference between reconciliation and JSX?"
+      ],
+      "related_concepts": [
+        "reconciliation",
+        "JSX",
+        "Virtual DOM",
+        "props vs state"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "REACT-120",
+      "subject": "React",
+      "category": "Performance",
+      "subcategory": "Code Splitting",
+      "difficulty": "Hard",
+      "question": "Explain the difference between useMemo vs useCallback and Profiler API in React.",
+      "ideal_answer": "useMemo vs useCallback and Profiler API differ in several ways: useMemo vs useCallback is memoization hooks comparison (works by values vs functions caching) whereas Profiler API is performance measurement (works by identifying slow components). useMemo vs useCallback is typically used for useMemo: cache value; useCallback: cache function, while Profiler API is used for onRender callback. Example demonstrating useMemo vs useCallback: use for expensive computations. Example demonstrating Profiler API: <Profiler id=\"App\" onRender={onRenderCallback}>.",
+      "keywords": [
+        "useMemo vs useCallback",
+        "Profiler API",
+        "comparison",
+        "React"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose useMemo vs useCallback over Profiler API?",
+        "What is the performance or memory difference between useMemo vs useCallback and Profiler API?"
+      ],
+      "related_concepts": [
+        "useMemo vs useCallback",
+        "Profiler API",
+        "React.memo",
+        "code splitting"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

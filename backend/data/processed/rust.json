@@ -1,0 +1,3185 @@
+{
+  "metadata": {
+    "subject": "Rust",
+    "domain": "Software Engineering",
+    "total_questions": 120,
+    "difficulty_distribution": {
+      "Easy": 36,
+      "Medium": 60,
+      "Hard": 24
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:47Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "RUST-001",
+      "subject": "Rust",
+      "category": "Borrowing",
+      "subcategory": "References",
+      "difficulty": "Easy",
+      "question": "What are the common issues with references in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with references in Rust include: dangling references prevented. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "references",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to references?",
+        "What tools can assist in detecting problems with references at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "mutable references",
+        "slices",
+        "deref coercion"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-002",
+      "subject": "Rust",
+      "category": "Concurrency",
+      "subcategory": "Threads",
+      "difficulty": "Easy",
+      "question": "Explain the difference between ownership for concurrency and channels in Rust.",
+      "ideal_answer": "ownership for concurrency and channels differ in several ways: ownership for concurrency is compile-time thread safety (works by preventing data races) whereas channels is message passing (works by thread communication). ownership for concurrency is typically used for Send and Sync traits, while channels is used for mpsc: multiple producer, single consumer. Example demonstrating ownership for concurrency: unsafe impl Send for MyType {}. Example demonstrating channels: let (tx, rx) = mpsc::channel(); tx.send(val).unwrap();.",
+      "keywords": [
+        "ownership for concurrency",
+        "channels",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ownership for concurrency over channels?",
+        "What is the performance or memory difference between ownership for concurrency and channels?"
+      ],
+      "related_concepts": [
+        "ownership for concurrency",
+        "channels",
+        "Arc",
+        "Mutex"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-003",
+      "subject": "Rust",
+      "category": "Concurrency",
+      "subcategory": "RwLock",
+      "difficulty": "Easy",
+      "question": "What is Rayon in Rust and how does it work?",
+      "ideal_answer": "Rayon in Rust refers to data parallelism library. It works by parallel iterators. Key characteristics include join, par_iter, par_map. Example: vec.par_iter().map(|x| x * x).collect();. Common pitfalls include work-stealing scheduler.",
+      "keywords": [
+        "Rayon",
+        "Rust programming",
+        "concurrency"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Rayon in a production environment?",
+        "What are the common pitfalls or issues associated with Rayon?"
+      ],
+      "related_concepts": [
+        "ownership for concurrency",
+        "Arc",
+        "Mutex"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-004",
+      "subject": "Rust",
+      "category": "Types",
+      "subcategory": "Structs",
+      "difficulty": "Easy",
+      "question": "What are the common issues with enum variants in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with enum variants in Rust include: memory layout optimization (niche). To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "enum variants",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to enum variants?",
+        "What tools can assist in detecting problems with enum variants at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Option<T>",
+        "Result<T, E>",
+        "pattern matching"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-005",
+      "subject": "Rust",
+      "category": "Concurrency",
+      "subcategory": "Channels",
+      "difficulty": "Easy",
+      "question": "What is Arc in Rust and how does it work?",
+      "ideal_answer": "Arc in Rust refers to atomic reference counting. It works by shared ownership across threads. Key characteristics include thread-safe Rc. Example: let data = Arc::new(Mutex::new(0));. Common pitfalls include Arc::clone vs .clone().",
+      "keywords": [
+        "Arc",
+        "Rust programming",
+        "concurrency"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Arc in a production environment?",
+        "What are the common pitfalls or issues associated with Arc?"
+      ],
+      "related_concepts": [
+        "ownership for concurrency",
+        "Mutex",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-006",
+      "subject": "Rust",
+      "category": "Concurrency",
+      "subcategory": "Arc",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Mutex and Rayon in Rust.",
+      "ideal_answer": "Mutex and Rayon differ in several ways: Mutex is mutual exclusion (works by protected data access) whereas Rayon is data parallelism library (works by parallel iterators). Mutex is typically used for poisoning on panic, while Rayon is used for join, par_iter, par_map. Example demonstrating Mutex: let mut num = data.lock().unwrap(); *num += 1;. Example demonstrating Rayon: vec.par_iter().map(|x| x * x).collect();.",
+      "keywords": [
+        "Mutex",
+        "Rayon",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Mutex over Rayon?",
+        "What is the performance or memory difference between Mutex and Rayon?"
+      ],
+      "related_concepts": [
+        "Mutex",
+        "Rayon",
+        "ownership for concurrency",
+        "Arc"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-007",
+      "subject": "Rust",
+      "category": "Ownership",
+      "subcategory": "Move Semantics",
+      "difficulty": "Easy",
+      "question": "What are the common issues with ownership rules in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with ownership rules in Rust include: ownership transfer in function calls. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "ownership rules",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to ownership rules?",
+        "What tools can assist in detecting problems with ownership rules at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "move semantics",
+        "Copy trait",
+        "Drop trait"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-008",
+      "subject": "Rust",
+      "category": "Traits",
+      "subcategory": "Defining Traits",
+      "difficulty": "Easy",
+      "question": "Explain the difference between trait system and Derive macro in Rust.",
+      "ideal_answer": "trait system and Derive macro differ in several ways: trait system is interface definition (works by shared behavior contracts) whereas Derive macro is automatic trait implementation (works by code generation for traits). trait system is typically used for define requirements, implement for types, while Derive macro is used for Debug, Clone, Copy, PartialEq, Eq. Example demonstrating trait system: trait Drawable { fn draw(&self); }. Example demonstrating Derive macro: #[derive(Debug, Clone)].",
+      "keywords": [
+        "trait system",
+        "Derive macro",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose trait system over Derive macro?",
+        "What is the performance or memory difference between trait system and Derive macro?"
+      ],
+      "related_concepts": [
+        "trait system",
+        "Derive macro",
+        "trait bounds",
+        "associated types"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-009",
+      "subject": "Rust",
+      "category": "Lifetimes",
+      "subcategory": "'static",
+      "difficulty": "Easy",
+      "question": "What are the common issues with 'static lifetime in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with 'static lifetime in Rust include: not everything 'static lives forever on heap. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "'static lifetime",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to 'static lifetime?",
+        "What tools can assist in detecting problems with 'static lifetime at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "lifetime annotation",
+        "lifetime elision",
+        "lifetime bounds"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-010",
+      "subject": "Rust",
+      "category": "Types",
+      "subcategory": "Generics",
+      "difficulty": "Easy",
+      "question": "What are the common issues with pattern matching in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with pattern matching in Rust include: refutable vs irrefutable patterns. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "pattern matching",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to pattern matching?",
+        "What tools can assist in detecting problems with pattern matching at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "enum variants",
+        "Option<T>",
+        "Result<T, E>"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-011",
+      "subject": "Rust",
+      "category": "Ownership",
+      "subcategory": "Move Semantics",
+      "difficulty": "Easy",
+      "question": "What are the common issues with RAII in Rust in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with RAII in Rust in Rust include: early returns and ? operator. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "RAII in Rust",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to RAII in Rust?",
+        "What tools can assist in detecting problems with RAII in Rust at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ownership rules",
+        "move semantics",
+        "Copy trait"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-012",
+      "subject": "Rust",
+      "category": "Ownership",
+      "subcategory": "Copy Trait",
+      "difficulty": "Easy",
+      "question": "Explain the difference between move semantics and RAII in Rust in Rust.",
+      "ideal_answer": "move semantics and RAII in Rust differ in several ways: move semantics is ownership transfer (works by non-Copy types transfer ownership) whereas RAII in Rust is resource acquisition is initialization (works by automatic cleanup via ownership). move semantics is typically used for shallow copy + invalidate source, while RAII in Rust is used for scope-bound resource management. Example demonstrating move semantics: let s2 = s1; // s1 no longer valid. Example demonstrating RAII in Rust: { let file = File::open(\"data.txt\")?; } // auto-closed.",
+      "keywords": [
+        "move semantics",
+        "RAII in Rust",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose move semantics over RAII in Rust?",
+        "What is the performance or memory difference between move semantics and RAII in Rust?"
+      ],
+      "related_concepts": [
+        "move semantics",
+        "RAII in Rust",
+        "ownership rules",
+        "Copy trait"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-013",
+      "subject": "Rust",
+      "category": "Traits",
+      "subcategory": "Defining Traits",
+      "difficulty": "Easy",
+      "question": "Explain the difference between trait system and trait bounds in Rust.",
+      "ideal_answer": "trait system and trait bounds differ in several ways: trait system is interface definition (works by shared behavior contracts) whereas trait bounds is generic constraints (works by requiring trait implementation). trait system is typically used for define requirements, implement for types, while trait bounds is used for where clauses for readability. Example demonstrating trait system: trait Drawable { fn draw(&self); }. Example demonstrating trait bounds: fn notify<T: Summary>(item: &T) {}.",
+      "keywords": [
+        "trait system",
+        "trait bounds",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose trait system over trait bounds?",
+        "What is the performance or memory difference between trait system and trait bounds?"
+      ],
+      "related_concepts": [
+        "trait system",
+        "trait bounds",
+        "associated types",
+        "trait objects"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-014",
+      "subject": "Rust",
+      "category": "Concurrency",
+      "subcategory": "Mutex",
+      "difficulty": "Easy",
+      "question": "Explain the difference between channels and Rayon in Rust.",
+      "ideal_answer": "channels and Rayon differ in several ways: channels is message passing (works by thread communication) whereas Rayon is data parallelism library (works by parallel iterators). channels is typically used for mpsc: multiple producer, single consumer, while Rayon is used for join, par_iter, par_map. Example demonstrating channels: let (tx, rx) = mpsc::channel(); tx.send(val).unwrap();. Example demonstrating Rayon: vec.par_iter().map(|x| x * x).collect();.",
+      "keywords": [
+        "channels",
+        "Rayon",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose channels over Rayon?",
+        "What is the performance or memory difference between channels and Rayon?"
+      ],
+      "related_concepts": [
+        "channels",
+        "Rayon",
+        "ownership for concurrency",
+        "Arc"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-015",
+      "subject": "Rust",
+      "category": "Ecosystem",
+      "subcategory": "Cargo",
+      "difficulty": "Easy",
+      "question": "What is Cargo in Rust and how does it work?",
+      "ideal_answer": "Cargo in Rust refers to build system and package manager. It works by dependency management. Key characteristics include Cargo.toml, Cargo.lock, workspaces. Example: [dependencies]\nserde = \"1.0\". Common pitfalls include feature flags, cargo expand.",
+      "keywords": [
+        "Cargo",
+        "Rust programming",
+        "ecosystem"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Cargo in a production environment?",
+        "What are the common pitfalls or issues associated with Cargo?"
+      ],
+      "related_concepts": [
+        "error handling patterns",
+        "modules"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-016",
+      "subject": "Rust",
+      "category": "Ownership",
+      "subcategory": "Ownership Transfer",
+      "difficulty": "Easy",
+      "question": "What are the common issues with Drop trait in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with Drop trait in Rust include: std::mem::forget, ManuallyDrop. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Drop trait",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Drop trait?",
+        "What tools can assist in detecting problems with Drop trait at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ownership rules",
+        "move semantics",
+        "Copy trait"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-017",
+      "subject": "Rust",
+      "category": "Borrowing",
+      "subcategory": "Slices",
+      "difficulty": "Easy",
+      "question": "What is deref coercion in Rust and how does it work?",
+      "ideal_answer": "deref coercion in Rust refers to automatic dereferencing. It works by convenience for smart pointers. Key characteristics include &Box<T> -> &T, &String -> &str. Example: fn hello(name: &str) { ... } hello(&String::from(\"world\"));. Common pitfalls include custom Deref implementation.",
+      "keywords": [
+        "deref coercion",
+        "Rust programming",
+        "borrowing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of deref coercion in a production environment?",
+        "What are the common pitfalls or issues associated with deref coercion?"
+      ],
+      "related_concepts": [
+        "references",
+        "mutable references",
+        "slices"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-018",
+      "subject": "Rust",
+      "category": "Concurrency",
+      "subcategory": "Channels",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Arc and Rayon in Rust.",
+      "ideal_answer": "Arc and Rayon differ in several ways: Arc is atomic reference counting (works by shared ownership across threads) whereas Rayon is data parallelism library (works by parallel iterators). Arc is typically used for thread-safe Rc, while Rayon is used for join, par_iter, par_map. Example demonstrating Arc: let data = Arc::new(Mutex::new(0));. Example demonstrating Rayon: vec.par_iter().map(|x| x * x).collect();.",
+      "keywords": [
+        "Arc",
+        "Rayon",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Arc over Rayon?",
+        "What is the performance or memory difference between Arc and Rayon?"
+      ],
+      "related_concepts": [
+        "Arc",
+        "Rayon",
+        "ownership for concurrency",
+        "Mutex"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-019",
+      "subject": "Rust",
+      "category": "Lifetimes",
+      "subcategory": "'static",
+      "difficulty": "Easy",
+      "question": "Explain the difference between 'static lifetime and lifetime bounds in Rust.",
+      "ideal_answer": "'static lifetime and lifetime bounds differ in several ways: 'static lifetime is entire program duration (works by longest possible lifetime) whereas lifetime bounds is constrained generic lifetimes (works by ensuring outlives relationships). 'static lifetime is typically used for string literals, global variables, while lifetime bounds is used for T: 'a means T outlives 'a. Example demonstrating 'static lifetime: let s: &'static str = \"I have a static lifetime.\";. Example demonstrating lifetime bounds: struct Ref<'a, T: 'a>(&'a T);.",
+      "keywords": [
+        "'static lifetime",
+        "lifetime bounds",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose 'static lifetime over lifetime bounds?",
+        "What is the performance or memory difference between 'static lifetime and lifetime bounds?"
+      ],
+      "related_concepts": [
+        "'static lifetime",
+        "lifetime bounds",
+        "lifetime annotation",
+        "lifetime elision"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-020",
+      "subject": "Rust",
+      "category": "Traits",
+      "subcategory": "Defining Traits",
+      "difficulty": "Easy",
+      "question": "Explain the difference between trait system and trait objects in Rust.",
+      "ideal_answer": "trait system and trait objects differ in several ways: trait system is interface definition (works by shared behavior contracts) whereas trait objects is dynamic dispatch (works by runtime polymorphism). trait system is typically used for define requirements, implement for types, while trait objects is used for Box<dyn Trait>, &dyn Trait. Example demonstrating trait system: trait Drawable { fn draw(&self); }. Example demonstrating trait objects: fn draw(item: &dyn Drawable) {}.",
+      "keywords": [
+        "trait system",
+        "trait objects",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose trait system over trait objects?",
+        "What is the performance or memory difference between trait system and trait objects?"
+      ],
+      "related_concepts": [
+        "trait system",
+        "trait objects",
+        "trait bounds",
+        "associated types"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-021",
+      "subject": "Rust",
+      "category": "Borrowing",
+      "subcategory": "References",
+      "difficulty": "Easy",
+      "question": "Explain the difference between references and deref coercion in Rust.",
+      "ideal_answer": "references and deref coercion differ in several ways: references is non-owning pointers (works by borrowing without taking ownership) whereas deref coercion is automatic dereferencing (works by convenience for smart pointers). references is typically used for immutable by default, one mutable or many immutable, while deref coercion is used for &Box<T> -> &T, &String -> &str. Example demonstrating references: let len = calculate_length(&s);. Example demonstrating deref coercion: fn hello(name: &str) { ... } hello(&String::from(\"world\"));.",
+      "keywords": [
+        "references",
+        "deref coercion",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose references over deref coercion?",
+        "What is the performance or memory difference between references and deref coercion?"
+      ],
+      "related_concepts": [
+        "references",
+        "deref coercion",
+        "mutable references",
+        "slices"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-022",
+      "subject": "Rust",
+      "category": "Types",
+      "subcategory": "Pattern Matching",
+      "difficulty": "Easy",
+      "question": "What is Result<T, E> in Rust and how does it work?",
+      "ideal_answer": "Result<T, E> in Rust refers to error handling type. It works by explicit success/failure. Key characteristics include Ok(T) or Err(E). Example: let result: Result<i32, ParseIntError> = \"5\".parse();. Common pitfalls include ? operator for propagation.",
+      "keywords": [
+        "Result<T, E>",
+        "Rust programming",
+        "types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Result<T, E> in a production environment?",
+        "What are the common pitfalls or issues associated with Result<T, E>?"
+      ],
+      "related_concepts": [
+        "enum variants",
+        "Option<T>",
+        "pattern matching"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-023",
+      "subject": "Rust",
+      "category": "Borrowing",
+      "subcategory": "Mutable References",
+      "difficulty": "Easy",
+      "question": "Explain the difference between mutable references and slices in Rust.",
+      "ideal_answer": "mutable references and slices differ in several ways: mutable references is exclusive borrow (works by modifying borrowed data) whereas slices is contiguous sequence reference (works by view into collection). mutable references is typically used for only one mutable reference at a time, while slices is used for string slices, array slices. Example demonstrating mutable references: fn change(some_string: &mut String) { some_string.push_str(\", world\"); }. Example demonstrating slices: let hello = &s[0..5];.",
+      "keywords": [
+        "mutable references",
+        "slices",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose mutable references over slices?",
+        "What is the performance or memory difference between mutable references and slices?"
+      ],
+      "related_concepts": [
+        "mutable references",
+        "slices",
+        "references",
+        "deref coercion"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-024",
+      "subject": "Rust",
+      "category": "Memory Safety",
+      "subcategory": " FFI",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Rc<T> and RefCell<T> in Rust.",
+      "ideal_answer": "Rc<T> and RefCell<T> differ in several ways: Rc<T> is reference counting (works by multiple ownership single-threaded) whereas RefCell<T> is interior mutability (works by runtime borrow checking). Rc<T> is typically used for non-atomic counters, while RefCell<T> is used for single-threaded only. Example demonstrating Rc<T>: let data = Rc::new(vec![1, 2, 3]);. Example demonstrating RefCell<T>: let mut_ref = data.borrow_mut();.",
+      "keywords": [
+        "Rc<T>",
+        "RefCell<T>",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Rc<T> over RefCell<T>?",
+        "What is the performance or memory difference between Rc<T> and RefCell<T>?"
+      ],
+      "related_concepts": [
+        "Rc<T>",
+        "RefCell<T>",
+        "unsafe Rust",
+        "Box<T>"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-025",
+      "subject": "Rust",
+      "category": "Concurrency",
+      "subcategory": "Threads",
+      "difficulty": "Easy",
+      "question": "Explain the difference between ownership for concurrency and Arc in Rust.",
+      "ideal_answer": "ownership for concurrency and Arc differ in several ways: ownership for concurrency is compile-time thread safety (works by preventing data races) whereas Arc is atomic reference counting (works by shared ownership across threads). ownership for concurrency is typically used for Send and Sync traits, while Arc is used for thread-safe Rc. Example demonstrating ownership for concurrency: unsafe impl Send for MyType {}. Example demonstrating Arc: let data = Arc::new(Mutex::new(0));.",
+      "keywords": [
+        "ownership for concurrency",
+        "Arc",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ownership for concurrency over Arc?",
+        "What is the performance or memory difference between ownership for concurrency and Arc?"
+      ],
+      "related_concepts": [
+        "ownership for concurrency",
+        "Arc",
+        "Mutex",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-026",
+      "subject": "Rust",
+      "category": "Concurrency",
+      "subcategory": "Arc",
+      "difficulty": "Easy",
+      "question": "What are the common issues with Mutex in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with Mutex in Rust include: deadlock potential. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Mutex",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Mutex?",
+        "What tools can assist in detecting problems with Mutex at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ownership for concurrency",
+        "Arc",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-027",
+      "subject": "Rust",
+      "category": "Ownership",
+      "subcategory": "Drop Trait",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Copy trait and RAII in Rust in Rust.",
+      "ideal_answer": "Copy trait and RAII in Rust differ in several ways: Copy trait is implicit bitwise copy (works by stack-only types) whereas RAII in Rust is resource acquisition is initialization (works by automatic cleanup via ownership). Copy trait is typically used for primitive types, tuples of Copy types, while RAII in Rust is used for scope-bound resource management. Example demonstrating Copy trait: let x = 5; let y = x; // both valid. Example demonstrating RAII in Rust: { let file = File::open(\"data.txt\")?; } // auto-closed.",
+      "keywords": [
+        "Copy trait",
+        "RAII in Rust",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Copy trait over RAII in Rust?",
+        "What is the performance or memory difference between Copy trait and RAII in Rust?"
+      ],
+      "related_concepts": [
+        "Copy trait",
+        "RAII in Rust",
+        "ownership rules",
+        "move semantics"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-028",
+      "subject": "Rust",
+      "category": "Ecosystem",
+      "subcategory": "Cargo",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Cargo and modules in Rust.",
+      "ideal_answer": "Cargo and modules differ in several ways: Cargo is build system and package manager (works by dependency management) whereas modules is code organization (works by visibility and encapsulation). Cargo is typically used for Cargo.toml, Cargo.lock, workspaces, while modules is used for mod, pub, use, super, crate. Example demonstrating Cargo: [dependencies]\nserde = \"1.0\". Example demonstrating modules: mod utils; pub use utils::helper;.",
+      "keywords": [
+        "Cargo",
+        "modules",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Cargo over modules?",
+        "What is the performance or memory difference between Cargo and modules?"
+      ],
+      "related_concepts": [
+        "Cargo",
+        "modules",
+        "error handling patterns"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-029",
+      "subject": "Rust",
+      "category": "Borrowing",
+      "subcategory": "Mutable References",
+      "difficulty": "Easy",
+      "question": "Explain the difference between mutable references and deref coercion in Rust.",
+      "ideal_answer": "mutable references and deref coercion differ in several ways: mutable references is exclusive borrow (works by modifying borrowed data) whereas deref coercion is automatic dereferencing (works by convenience for smart pointers). mutable references is typically used for only one mutable reference at a time, while deref coercion is used for &Box<T> -> &T, &String -> &str. Example demonstrating mutable references: fn change(some_string: &mut String) { some_string.push_str(\", world\"); }. Example demonstrating deref coercion: fn hello(name: &str) { ... } hello(&String::from(\"world\"));.",
+      "keywords": [
+        "mutable references",
+        "deref coercion",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose mutable references over deref coercion?",
+        "What is the performance or memory difference between mutable references and deref coercion?"
+      ],
+      "related_concepts": [
+        "mutable references",
+        "deref coercion",
+        "references",
+        "slices"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-030",
+      "subject": "Rust",
+      "category": "Concurrency",
+      "subcategory": "Channels",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Arc and Mutex in Rust.",
+      "ideal_answer": "Arc and Mutex differ in several ways: Arc is atomic reference counting (works by shared ownership across threads) whereas Mutex is mutual exclusion (works by protected data access). Arc is typically used for thread-safe Rc, while Mutex is used for poisoning on panic. Example demonstrating Arc: let data = Arc::new(Mutex::new(0));. Example demonstrating Mutex: let mut num = data.lock().unwrap(); *num += 1;.",
+      "keywords": [
+        "Arc",
+        "Mutex",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Arc over Mutex?",
+        "What is the performance or memory difference between Arc and Mutex?"
+      ],
+      "related_concepts": [
+        "Arc",
+        "Mutex",
+        "ownership for concurrency",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-031",
+      "subject": "Rust",
+      "category": "Types",
+      "subcategory": "Enums",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Option<T> and pattern matching in Rust.",
+      "ideal_answer": "Option<T> and pattern matching differ in several ways: Option<T> is null alternative (works by explicit presence/absence) whereas pattern matching is exhaustive value decomposition (works by control flow with destructuring). Option<T> is typically used for Some(T) or None, while pattern matching is used for match, if let, while let. Example demonstrating Option<T>: let maybe_num: Option<i32> = Some(5);. Example demonstrating pattern matching: match x { Some(n) => ..., None => ... }.",
+      "keywords": [
+        "Option<T>",
+        "pattern matching",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Option<T> over pattern matching?",
+        "What is the performance or memory difference between Option<T> and pattern matching?"
+      ],
+      "related_concepts": [
+        "Option<T>",
+        "pattern matching",
+        "enum variants",
+        "Result<T, E>"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-032",
+      "subject": "Rust",
+      "category": "Types",
+      "subcategory": "Pattern Matching",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Result<T, E> and generics in Rust.",
+      "ideal_answer": "Result<T, E> and generics differ in several ways: Result<T, E> is error handling type (works by explicit success/failure) whereas generics is parametric polymorphism (works by type-safe abstraction). Result<T, E> is typically used for Ok(T) or Err(E), while generics is used for monomorphization at compile time. Example demonstrating Result<T, E>: let result: Result<i32, ParseIntError> = \"5\".parse();. Example demonstrating generics: fn largest<T: PartialOrd>(list: &[T]) -> &T {}.",
+      "keywords": [
+        "Result<T, E>",
+        "generics",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Result<T, E> over generics?",
+        "What is the performance or memory difference between Result<T, E> and generics?"
+      ],
+      "related_concepts": [
+        "Result<T, E>",
+        "generics",
+        "enum variants",
+        "Option<T>"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-033",
+      "subject": "Rust",
+      "category": "Ownership",
+      "subcategory": "Copy Trait",
+      "difficulty": "Easy",
+      "question": "What is move semantics in Rust and how does it work?",
+      "ideal_answer": "move semantics in Rust refers to ownership transfer. It works by non-Copy types transfer ownership. Key characteristics include shallow copy + invalidate source. Example: let s2 = s1; // s1 no longer valid. Common pitfalls include clone for deep copy.",
+      "keywords": [
+        "move semantics",
+        "Rust programming",
+        "ownership"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of move semantics in a production environment?",
+        "What are the common pitfalls or issues associated with move semantics?"
+      ],
+      "related_concepts": [
+        "ownership rules",
+        "Copy trait",
+        "Drop trait"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-034",
+      "subject": "Rust",
+      "category": "Lifetimes",
+      "subcategory": "Lifetime Elision",
+      "difficulty": "Easy",
+      "question": "What is lifetime elision in Rust and how does it work?",
+      "ideal_answer": "lifetime elision in Rust refers to automatic lifetime inference. It works by reducing annotation boilerplate. Key characteristics include three rules: input lifetimes assigned, output from input if one, from self if &self. Example: fn first_word(s: &str) -> &str {}. Common pitfalls include when elision doesn't apply.",
+      "keywords": [
+        "lifetime elision",
+        "Rust programming",
+        "lifetimes"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of lifetime elision in a production environment?",
+        "What are the common pitfalls or issues associated with lifetime elision?"
+      ],
+      "related_concepts": [
+        "lifetime annotation",
+        "'static lifetime",
+        "lifetime bounds"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-035",
+      "subject": "Rust",
+      "category": "Memory Safety",
+      "subcategory": "Unsafe Rust",
+      "difficulty": "Easy",
+      "question": "What is unsafe Rust in Rust and how does it work?",
+      "ideal_answer": "unsafe Rust in Rust refers to opt-out of safety guarantees. It works by necessary for low-level operations. Key characteristics include raw pointers, FFI, inline assembly. Example: unsafe { *raw_ptr = value; }. Common pitfalls include unsafe blocks should be minimal.",
+      "keywords": [
+        "unsafe Rust",
+        "Rust programming",
+        "memory safety"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of unsafe Rust in a production environment?",
+        "What are the common pitfalls or issues associated with unsafe Rust?"
+      ],
+      "related_concepts": [
+        "Box<T>",
+        "Rc<T>",
+        "RefCell<T>"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-036",
+      "subject": "Rust",
+      "category": "Concurrency",
+      "subcategory": "Mutex",
+      "difficulty": "Easy",
+      "question": "What are the common issues with channels in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with channels in Rust include: bounded vs unbounded channels. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "channels",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to channels?",
+        "What tools can assist in detecting problems with channels at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ownership for concurrency",
+        "Arc",
+        "Mutex"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RUST-037",
+      "subject": "Rust",
+      "category": "Ownership",
+      "subcategory": "Copy Trait",
+      "difficulty": "Medium",
+      "question": "Explain the difference between move semantics and Copy trait in Rust.",
+      "ideal_answer": "move semantics and Copy trait differ in several ways: move semantics is ownership transfer (works by non-Copy types transfer ownership) whereas Copy trait is implicit bitwise copy (works by stack-only types). move semantics is typically used for shallow copy + invalidate source, while Copy trait is used for primitive types, tuples of Copy types. Example demonstrating move semantics: let s2 = s1; // s1 no longer valid. Example demonstrating Copy trait: let x = 5; let y = x; // both valid.",
+      "keywords": [
+        "move semantics",
+        "Copy trait",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose move semantics over Copy trait?",
+        "What is the performance or memory difference between move semantics and Copy trait?"
+      ],
+      "related_concepts": [
+        "move semantics",
+        "Copy trait",
+        "ownership rules",
+        "Drop trait"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-038",
+      "subject": "Rust",
+      "category": "Concurrency",
+      "subcategory": "Arc",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Mutex and channels in Rust.",
+      "ideal_answer": "Mutex and channels differ in several ways: Mutex is mutual exclusion (works by protected data access) whereas channels is message passing (works by thread communication). Mutex is typically used for poisoning on panic, while channels is used for mpsc: multiple producer, single consumer. Example demonstrating Mutex: let mut num = data.lock().unwrap(); *num += 1;. Example demonstrating channels: let (tx, rx) = mpsc::channel(); tx.send(val).unwrap();.",
+      "keywords": [
+        "Mutex",
+        "channels",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Mutex over channels?",
+        "What is the performance or memory difference between Mutex and channels?"
+      ],
+      "related_concepts": [
+        "Mutex",
+        "channels",
+        "ownership for concurrency",
+        "Arc"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-039",
+      "subject": "Rust",
+      "category": "Types",
+      "subcategory": "Enums",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Option<T> in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with Option<T> in Rust include: unwrap, expect, match, ? operator. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Option<T>",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Option<T>?",
+        "What tools can assist in detecting problems with Option<T> at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "enum variants",
+        "Result<T, E>",
+        "pattern matching"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-040",
+      "subject": "Rust",
+      "category": "Ecosystem",
+      "subcategory": "Modules",
+      "difficulty": "Medium",
+      "question": "What are the common issues with modules in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with modules in Rust include: module tree vs filesystem tree. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "modules",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to modules?",
+        "What tools can assist in detecting problems with modules at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Cargo",
+        "error handling patterns"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-041",
+      "subject": "Rust",
+      "category": "Types",
+      "subcategory": "Structs",
+      "difficulty": "Medium",
+      "question": "Explain the difference between enum variants and pattern matching in Rust.",
+      "ideal_answer": "enum variants and pattern matching differ in several ways: enum variants is algebraic data types (works by sum types with data) whereas pattern matching is exhaustive value decomposition (works by control flow with destructuring). enum variants is typically used for can hold data, C-like, unit variants, while pattern matching is used for match, if let, while let. Example demonstrating enum variants: enum Message { Quit, Move { x: i32, y: i32 }, Write(String) }. Example demonstrating pattern matching: match x { Some(n) => ..., None => ... }.",
+      "keywords": [
+        "enum variants",
+        "pattern matching",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose enum variants over pattern matching?",
+        "What is the performance or memory difference between enum variants and pattern matching?"
+      ],
+      "related_concepts": [
+        "enum variants",
+        "pattern matching",
+        "Option<T>",
+        "Result<T, E>"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-042",
+      "subject": "Rust",
+      "category": "Types",
+      "subcategory": "Enums",
+      "difficulty": "Medium",
+      "question": "What is Option<T> in Rust and how does it work?",
+      "ideal_answer": "Option<T> in Rust refers to null alternative. It works by explicit presence/absence. Key characteristics include Some(T) or None. Example: let maybe_num: Option<i32> = Some(5);. Common pitfalls include unwrap, expect, match, ? operator.",
+      "keywords": [
+        "Option<T>",
+        "Rust programming",
+        "types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Option<T> in a production environment?",
+        "What are the common pitfalls or issues associated with Option<T>?"
+      ],
+      "related_concepts": [
+        "enum variants",
+        "Result<T, E>",
+        "pattern matching"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-043",
+      "subject": "Rust",
+      "category": "Traits",
+      "subcategory": "Defining Traits",
+      "difficulty": "Medium",
+      "question": "What is Derive macro in Rust and how does it work?",
+      "ideal_answer": "Derive macro in Rust refers to automatic trait implementation. It works by code generation for traits. Key characteristics include Debug, Clone, Copy, PartialEq, Eq. Example: #[derive(Debug, Clone)]. Common pitfalls include custom derive macros.",
+      "keywords": [
+        "Derive macro",
+        "Rust programming",
+        "traits"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Derive macro in a production environment?",
+        "What are the common pitfalls or issues associated with Derive macro?"
+      ],
+      "related_concepts": [
+        "trait system",
+        "trait bounds",
+        "associated types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-044",
+      "subject": "Rust",
+      "category": "Lifetimes",
+      "subcategory": "Lifetime Annotation",
+      "difficulty": "Medium",
+      "question": "What is lifetime annotation in Rust and how does it work?",
+      "ideal_answer": "lifetime annotation in Rust refers to explicit reference validity. It works by preventing dangling references. Key characteristics include 'a syntax, relationship specification. Example: fn longest<'a>(x: &'a str, y: &'a str) -> &'a str. Common pitfalls include lifetime elision rules.",
+      "keywords": [
+        "lifetime annotation",
+        "Rust programming",
+        "lifetimes"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of lifetime annotation in a production environment?",
+        "What are the common pitfalls or issues associated with lifetime annotation?"
+      ],
+      "related_concepts": [
+        "lifetime elision",
+        "'static lifetime",
+        "lifetime bounds"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-045",
+      "subject": "Rust",
+      "category": "Types",
+      "subcategory": "Type Aliases",
+      "difficulty": "Medium",
+      "question": "What is generics in Rust and how does it work?",
+      "ideal_answer": "generics in Rust refers to parametric polymorphism. It works by type-safe abstraction. Key characteristics include monomorphization at compile time. Example: fn largest<T: PartialOrd>(list: &[T]) -> &T {}. Common pitfalls include zero-cost abstraction.",
+      "keywords": [
+        "generics",
+        "Rust programming",
+        "types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of generics in a production environment?",
+        "What are the common pitfalls or issues associated with generics?"
+      ],
+      "related_concepts": [
+        "enum variants",
+        "Option<T>",
+        "Result<T, E>"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-046",
+      "subject": "Rust",
+      "category": "Types",
+      "subcategory": "Structs",
+      "difficulty": "Medium",
+      "question": "Explain the difference between enum variants and Result<T, E> in Rust.",
+      "ideal_answer": "enum variants and Result<T, E> differ in several ways: enum variants is algebraic data types (works by sum types with data) whereas Result<T, E> is error handling type (works by explicit success/failure). enum variants is typically used for can hold data, C-like, unit variants, while Result<T, E> is used for Ok(T) or Err(E). Example demonstrating enum variants: enum Message { Quit, Move { x: i32, y: i32 }, Write(String) }. Example demonstrating Result<T, E>: let result: Result<i32, ParseIntError> = \"5\".parse();.",
+      "keywords": [
+        "enum variants",
+        "Result<T, E>",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose enum variants over Result<T, E>?",
+        "What is the performance or memory difference between enum variants and Result<T, E>?"
+      ],
+      "related_concepts": [
+        "enum variants",
+        "Result<T, E>",
+        "Option<T>",
+        "pattern matching"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-047",
+      "subject": "Rust",
+      "category": "Lifetimes",
+      "subcategory": "'static",
+      "difficulty": "Medium",
+      "question": "What is 'static lifetime in Rust and how does it work?",
+      "ideal_answer": "'static lifetime in Rust refers to entire program duration. It works by longest possible lifetime. Key characteristics include string literals, global variables. Example: let s: &'static str = \"I have a static lifetime.\";. Common pitfalls include not everything 'static lives forever on heap.",
+      "keywords": [
+        "'static lifetime",
+        "Rust programming",
+        "lifetimes"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of 'static lifetime in a production environment?",
+        "What are the common pitfalls or issues associated with 'static lifetime?"
+      ],
+      "related_concepts": [
+        "lifetime annotation",
+        "lifetime elision",
+        "lifetime bounds"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-048",
+      "subject": "Rust",
+      "category": "Memory Safety",
+      "subcategory": "Smart Pointers",
+      "difficulty": "Medium",
+      "question": "What are the common issues with RefCell<T> in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with RefCell<T> in Rust include: panic on double mutable borrow. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "RefCell<T>",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to RefCell<T>?",
+        "What tools can assist in detecting problems with RefCell<T> at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "unsafe Rust",
+        "Box<T>",
+        "Rc<T>"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-049",
+      "subject": "Rust",
+      "category": "Lifetimes",
+      "subcategory": "Lifetime Bounds",
+      "difficulty": "Medium",
+      "question": "What are the common issues with lifetime bounds in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with lifetime bounds in Rust include: higher-ranked trait bounds for<'a>. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "lifetime bounds",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to lifetime bounds?",
+        "What tools can assist in detecting problems with lifetime bounds at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "lifetime annotation",
+        "lifetime elision",
+        "'static lifetime"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-050",
+      "subject": "Rust",
+      "category": "Concurrency",
+      "subcategory": "Threads",
+      "difficulty": "Medium",
+      "question": "What is ownership for concurrency in Rust and how does it work?",
+      "ideal_answer": "ownership for concurrency in Rust refers to compile-time thread safety. It works by preventing data races. Key characteristics include Send and Sync traits. Example: unsafe impl Send for MyType {}. Common pitfalls include Arc<Mutex<T>> pattern.",
+      "keywords": [
+        "ownership for concurrency",
+        "Rust programming",
+        "concurrency"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of ownership for concurrency in a production environment?",
+        "What are the common pitfalls or issues associated with ownership for concurrency?"
+      ],
+      "related_concepts": [
+        "Arc",
+        "Mutex",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-051",
+      "subject": "Rust",
+      "category": "Traits",
+      "subcategory": "Implementing Traits",
+      "difficulty": "Medium",
+      "question": "Explain the difference between trait bounds and associated types in Rust.",
+      "ideal_answer": "trait bounds and associated types differ in several ways: trait bounds is generic constraints (works by requiring trait implementation) whereas associated types is type placeholder in trait (works by output type specification). trait bounds is typically used for where clauses for readability, while associated types is used for each implementation has one associated type. Example demonstrating trait bounds: fn notify<T: Summary>(item: &T) {}. Example demonstrating associated types: trait Iterator { type Item; fn next(&mut self) -> Option<Self::Item>; }.",
+      "keywords": [
+        "trait bounds",
+        "associated types",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose trait bounds over associated types?",
+        "What is the performance or memory difference between trait bounds and associated types?"
+      ],
+      "related_concepts": [
+        "trait bounds",
+        "associated types",
+        "trait system",
+        "trait objects"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-052",
+      "subject": "Rust",
+      "category": "Types",
+      "subcategory": "Structs",
+      "difficulty": "Medium",
+      "question": "Explain the difference between enum variants and generics in Rust.",
+      "ideal_answer": "enum variants and generics differ in several ways: enum variants is algebraic data types (works by sum types with data) whereas generics is parametric polymorphism (works by type-safe abstraction). enum variants is typically used for can hold data, C-like, unit variants, while generics is used for monomorphization at compile time. Example demonstrating enum variants: enum Message { Quit, Move { x: i32, y: i32 }, Write(String) }. Example demonstrating generics: fn largest<T: PartialOrd>(list: &[T]) -> &T {}.",
+      "keywords": [
+        "enum variants",
+        "generics",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose enum variants over generics?",
+        "What is the performance or memory difference between enum variants and generics?"
+      ],
+      "related_concepts": [
+        "enum variants",
+        "generics",
+        "Option<T>",
+        "Result<T, E>"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-053",
+      "subject": "Rust",
+      "category": "Lifetimes",
+      "subcategory": "Lifetime Annotation",
+      "difficulty": "Medium",
+      "question": "Explain the difference between lifetime annotation and lifetime elision in Rust.",
+      "ideal_answer": "lifetime annotation and lifetime elision differ in several ways: lifetime annotation is explicit reference validity (works by preventing dangling references) whereas lifetime elision is automatic lifetime inference (works by reducing annotation boilerplate). lifetime annotation is typically used for 'a syntax, relationship specification, while lifetime elision is used for three rules: input lifetimes assigned, output from input if one, from self if &self. Example demonstrating lifetime annotation: fn longest<'a>(x: &'a str, y: &'a str) -> &'a str. Example demonstrating lifetime elision: fn first_word(s: &str) -> &str {}.",
+      "keywords": [
+        "lifetime annotation",
+        "lifetime elision",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose lifetime annotation over lifetime elision?",
+        "What is the performance or memory difference between lifetime annotation and lifetime elision?"
+      ],
+      "related_concepts": [
+        "lifetime annotation",
+        "lifetime elision",
+        "'static lifetime",
+        "lifetime bounds"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-054",
+      "subject": "Rust",
+      "category": "Traits",
+      "subcategory": "Associated Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between trait objects and Derive macro in Rust.",
+      "ideal_answer": "trait objects and Derive macro differ in several ways: trait objects is dynamic dispatch (works by runtime polymorphism) whereas Derive macro is automatic trait implementation (works by code generation for traits). trait objects is typically used for Box<dyn Trait>, &dyn Trait, while Derive macro is used for Debug, Clone, Copy, PartialEq, Eq. Example demonstrating trait objects: fn draw(item: &dyn Drawable) {}. Example demonstrating Derive macro: #[derive(Debug, Clone)].",
+      "keywords": [
+        "trait objects",
+        "Derive macro",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose trait objects over Derive macro?",
+        "What is the performance or memory difference between trait objects and Derive macro?"
+      ],
+      "related_concepts": [
+        "trait objects",
+        "Derive macro",
+        "trait system",
+        "trait bounds"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-055",
+      "subject": "Rust",
+      "category": "Borrowing",
+      "subcategory": "Mutable References",
+      "difficulty": "Medium",
+      "question": "What is mutable references in Rust and how does it work?",
+      "ideal_answer": "mutable references in Rust refers to exclusive borrow. It works by modifying borrowed data. Key characteristics include only one mutable reference at a time. Example: fn change(some_string: &mut String) { some_string.push_str(\", world\"); }. Common pitfalls include preventing data races at compile time.",
+      "keywords": [
+        "mutable references",
+        "Rust programming",
+        "borrowing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of mutable references in a production environment?",
+        "What are the common pitfalls or issues associated with mutable references?"
+      ],
+      "related_concepts": [
+        "references",
+        "slices",
+        "deref coercion"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-056",
+      "subject": "Rust",
+      "category": "Concurrency",
+      "subcategory": "Threads",
+      "difficulty": "Medium",
+      "question": "Explain the difference between ownership for concurrency and Mutex in Rust.",
+      "ideal_answer": "ownership for concurrency and Mutex differ in several ways: ownership for concurrency is compile-time thread safety (works by preventing data races) whereas Mutex is mutual exclusion (works by protected data access). ownership for concurrency is typically used for Send and Sync traits, while Mutex is used for poisoning on panic. Example demonstrating ownership for concurrency: unsafe impl Send for MyType {}. Example demonstrating Mutex: let mut num = data.lock().unwrap(); *num += 1;.",
+      "keywords": [
+        "ownership for concurrency",
+        "Mutex",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ownership for concurrency over Mutex?",
+        "What is the performance or memory difference between ownership for concurrency and Mutex?"
+      ],
+      "related_concepts": [
+        "ownership for concurrency",
+        "Mutex",
+        "Arc",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-057",
+      "subject": "Rust",
+      "category": "Types",
+      "subcategory": "Pattern Matching",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Result<T, E> and pattern matching in Rust.",
+      "ideal_answer": "Result<T, E> and pattern matching differ in several ways: Result<T, E> is error handling type (works by explicit success/failure) whereas pattern matching is exhaustive value decomposition (works by control flow with destructuring). Result<T, E> is typically used for Ok(T) or Err(E), while pattern matching is used for match, if let, while let. Example demonstrating Result<T, E>: let result: Result<i32, ParseIntError> = \"5\".parse();. Example demonstrating pattern matching: match x { Some(n) => ..., None => ... }.",
+      "keywords": [
+        "Result<T, E>",
+        "pattern matching",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Result<T, E> over pattern matching?",
+        "What is the performance or memory difference between Result<T, E> and pattern matching?"
+      ],
+      "related_concepts": [
+        "Result<T, E>",
+        "pattern matching",
+        "enum variants",
+        "Option<T>"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-058",
+      "subject": "Rust",
+      "category": "Borrowing",
+      "subcategory": "Mutable References",
+      "difficulty": "Medium",
+      "question": "What are the common issues with mutable references in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with mutable references in Rust include: preventing data races at compile time. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "mutable references",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to mutable references?",
+        "What tools can assist in detecting problems with mutable references at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "references",
+        "slices",
+        "deref coercion"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-059",
+      "subject": "Rust",
+      "category": "Concurrency",
+      "subcategory": "Threads",
+      "difficulty": "Medium",
+      "question": "Explain the difference between ownership for concurrency and Rayon in Rust.",
+      "ideal_answer": "ownership for concurrency and Rayon differ in several ways: ownership for concurrency is compile-time thread safety (works by preventing data races) whereas Rayon is data parallelism library (works by parallel iterators). ownership for concurrency is typically used for Send and Sync traits, while Rayon is used for join, par_iter, par_map. Example demonstrating ownership for concurrency: unsafe impl Send for MyType {}. Example demonstrating Rayon: vec.par_iter().map(|x| x * x).collect();.",
+      "keywords": [
+        "ownership for concurrency",
+        "Rayon",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ownership for concurrency over Rayon?",
+        "What is the performance or memory difference between ownership for concurrency and Rayon?"
+      ],
+      "related_concepts": [
+        "ownership for concurrency",
+        "Rayon",
+        "Arc",
+        "Mutex"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-060",
+      "subject": "Rust",
+      "category": "Lifetimes",
+      "subcategory": "Lifetime Bounds",
+      "difficulty": "Medium",
+      "question": "What is lifetime bounds in Rust and how does it work?",
+      "ideal_answer": "lifetime bounds in Rust refers to constrained generic lifetimes. It works by ensuring outlives relationships. Key characteristics include T: 'a means T outlives 'a. Example: struct Ref<'a, T: 'a>(&'a T);. Common pitfalls include higher-ranked trait bounds for<'a>.",
+      "keywords": [
+        "lifetime bounds",
+        "Rust programming",
+        "lifetimes"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of lifetime bounds in a production environment?",
+        "What are the common pitfalls or issues associated with lifetime bounds?"
+      ],
+      "related_concepts": [
+        "lifetime annotation",
+        "lifetime elision",
+        "'static lifetime"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-061",
+      "subject": "Rust",
+      "category": "Memory Safety",
+      "subcategory": "Raw Pointers",
+      "difficulty": "Medium",
+      "question": "What is Box<T> in Rust and how does it work?",
+      "ideal_answer": "Box<T> in Rust refers to heap allocation. It works by single ownership heap pointer. Key characteristics include automatic deallocation. Example: let b = Box::new(5);. Common pitfalls include Box::leak for static lifetime.",
+      "keywords": [
+        "Box<T>",
+        "Rust programming",
+        "memory safety"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Box<T> in a production environment?",
+        "What are the common pitfalls or issues associated with Box<T>?"
+      ],
+      "related_concepts": [
+        "unsafe Rust",
+        "Rc<T>",
+        "RefCell<T>"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-062",
+      "subject": "Rust",
+      "category": "Ecosystem",
+      "subcategory": "Crates",
+      "difficulty": "Medium",
+      "question": "What are the common issues with error handling patterns in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with error handling patterns in Rust include: anyhow for application errors. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "error handling patterns",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to error handling patterns?",
+        "What tools can assist in detecting problems with error handling patterns at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Cargo",
+        "modules"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-063",
+      "subject": "Rust",
+      "category": "Traits",
+      "subcategory": "Trait Bounds",
+      "difficulty": "Medium",
+      "question": "What are the common issues with associated types in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with associated types in Rust include: vs generics for trait flexibility. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "associated types",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to associated types?",
+        "What tools can assist in detecting problems with associated types at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "trait system",
+        "trait bounds",
+        "trait objects"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-064",
+      "subject": "Rust",
+      "category": "Traits",
+      "subcategory": "Implementing Traits",
+      "difficulty": "Medium",
+      "question": "Explain the difference between trait bounds and Derive macro in Rust.",
+      "ideal_answer": "trait bounds and Derive macro differ in several ways: trait bounds is generic constraints (works by requiring trait implementation) whereas Derive macro is automatic trait implementation (works by code generation for traits). trait bounds is typically used for where clauses for readability, while Derive macro is used for Debug, Clone, Copy, PartialEq, Eq. Example demonstrating trait bounds: fn notify<T: Summary>(item: &T) {}. Example demonstrating Derive macro: #[derive(Debug, Clone)].",
+      "keywords": [
+        "trait bounds",
+        "Derive macro",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose trait bounds over Derive macro?",
+        "What is the performance or memory difference between trait bounds and Derive macro?"
+      ],
+      "related_concepts": [
+        "trait bounds",
+        "Derive macro",
+        "trait system",
+        "associated types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-065",
+      "subject": "Rust",
+      "category": "Types",
+      "subcategory": "Generics",
+      "difficulty": "Medium",
+      "question": "Explain the difference between pattern matching and generics in Rust.",
+      "ideal_answer": "pattern matching and generics differ in several ways: pattern matching is exhaustive value decomposition (works by control flow with destructuring) whereas generics is parametric polymorphism (works by type-safe abstraction). pattern matching is typically used for match, if let, while let, while generics is used for monomorphization at compile time. Example demonstrating pattern matching: match x { Some(n) => ..., None => ... }. Example demonstrating generics: fn largest<T: PartialOrd>(list: &[T]) -> &T {}.",
+      "keywords": [
+        "pattern matching",
+        "generics",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose pattern matching over generics?",
+        "What is the performance or memory difference between pattern matching and generics?"
+      ],
+      "related_concepts": [
+        "pattern matching",
+        "generics",
+        "enum variants",
+        "Option<T>"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-066",
+      "subject": "Rust",
+      "category": "Traits",
+      "subcategory": "Associated Types",
+      "difficulty": "Medium",
+      "question": "What is trait objects in Rust and how does it work?",
+      "ideal_answer": "trait objects in Rust refers to dynamic dispatch. It works by runtime polymorphism. Key characteristics include Box<dyn Trait>, &dyn Trait. Example: fn draw(item: &dyn Drawable) {}. Common pitfalls include object safety requirements, vtable.",
+      "keywords": [
+        "trait objects",
+        "Rust programming",
+        "traits"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of trait objects in a production environment?",
+        "What are the common pitfalls or issues associated with trait objects?"
+      ],
+      "related_concepts": [
+        "trait system",
+        "trait bounds",
+        "associated types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-067",
+      "subject": "Rust",
+      "category": "Traits",
+      "subcategory": "Trait Bounds",
+      "difficulty": "Medium",
+      "question": "What is associated types in Rust and how does it work?",
+      "ideal_answer": "associated types in Rust refers to type placeholder in trait. It works by output type specification. Key characteristics include each implementation has one associated type. Example: trait Iterator { type Item; fn next(&mut self) -> Option<Self::Item>; }. Common pitfalls include vs generics for trait flexibility.",
+      "keywords": [
+        "associated types",
+        "Rust programming",
+        "traits"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of associated types in a production environment?",
+        "What are the common pitfalls or issues associated with associated types?"
+      ],
+      "related_concepts": [
+        "trait system",
+        "trait bounds",
+        "trait objects"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-068",
+      "subject": "Rust",
+      "category": "Memory Safety",
+      "subcategory": "Raw Pointers",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Box<T> in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with Box<T> in Rust include: Box::leak for static lifetime. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Box<T>",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Box<T>?",
+        "What tools can assist in detecting problems with Box<T> at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "unsafe Rust",
+        "Rc<T>",
+        "RefCell<T>"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-069",
+      "subject": "Rust",
+      "category": "Traits",
+      "subcategory": "Defining Traits",
+      "difficulty": "Medium",
+      "question": "Explain the difference between trait system and associated types in Rust.",
+      "ideal_answer": "trait system and associated types differ in several ways: trait system is interface definition (works by shared behavior contracts) whereas associated types is type placeholder in trait (works by output type specification). trait system is typically used for define requirements, implement for types, while associated types is used for each implementation has one associated type. Example demonstrating trait system: trait Drawable { fn draw(&self); }. Example demonstrating associated types: trait Iterator { type Item; fn next(&mut self) -> Option<Self::Item>; }.",
+      "keywords": [
+        "trait system",
+        "associated types",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose trait system over associated types?",
+        "What is the performance or memory difference between trait system and associated types?"
+      ],
+      "related_concepts": [
+        "trait system",
+        "associated types",
+        "trait bounds",
+        "trait objects"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-070",
+      "subject": "Rust",
+      "category": "Ownership",
+      "subcategory": "Move Semantics",
+      "difficulty": "Medium",
+      "question": "What is RAII in Rust in Rust and how does it work?",
+      "ideal_answer": "RAII in Rust in Rust refers to resource acquisition is initialization. It works by automatic cleanup via ownership. Key characteristics include scope-bound resource management. Example: { let file = File::open(\"data.txt\")?; } // auto-closed. Common pitfalls include early returns and ? operator.",
+      "keywords": [
+        "RAII in Rust",
+        "Rust programming",
+        "ownership"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of RAII in Rust in a production environment?",
+        "What are the common pitfalls or issues associated with RAII in Rust?"
+      ],
+      "related_concepts": [
+        "ownership rules",
+        "move semantics",
+        "Copy trait"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-071",
+      "subject": "Rust",
+      "category": "Borrowing",
+      "subcategory": "Deref",
+      "difficulty": "Medium",
+      "question": "What is slices in Rust and how does it work?",
+      "ideal_answer": "slices in Rust refers to contiguous sequence reference. It works by view into collection. Key characteristics include string slices, array slices. Example: let hello = &s[0..5];. Common pitfalls include slice bounds checking.",
+      "keywords": [
+        "slices",
+        "Rust programming",
+        "borrowing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of slices in a production environment?",
+        "What are the common pitfalls or issues associated with slices?"
+      ],
+      "related_concepts": [
+        "references",
+        "mutable references",
+        "deref coercion"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-072",
+      "subject": "Rust",
+      "category": "Lifetimes",
+      "subcategory": "Lifetime Elision",
+      "difficulty": "Medium",
+      "question": "Explain the difference between lifetime elision and lifetime bounds in Rust.",
+      "ideal_answer": "lifetime elision and lifetime bounds differ in several ways: lifetime elision is automatic lifetime inference (works by reducing annotation boilerplate) whereas lifetime bounds is constrained generic lifetimes (works by ensuring outlives relationships). lifetime elision is typically used for three rules: input lifetimes assigned, output from input if one, from self if &self, while lifetime bounds is used for T: 'a means T outlives 'a. Example demonstrating lifetime elision: fn first_word(s: &str) -> &str {}. Example demonstrating lifetime bounds: struct Ref<'a, T: 'a>(&'a T);.",
+      "keywords": [
+        "lifetime elision",
+        "lifetime bounds",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose lifetime elision over lifetime bounds?",
+        "What is the performance or memory difference between lifetime elision and lifetime bounds?"
+      ],
+      "related_concepts": [
+        "lifetime elision",
+        "lifetime bounds",
+        "lifetime annotation",
+        "'static lifetime"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-073",
+      "subject": "Rust",
+      "category": "Lifetimes",
+      "subcategory": "Lifetime Elision",
+      "difficulty": "Medium",
+      "question": "What are the common issues with lifetime elision in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with lifetime elision in Rust include: when elision doesn't apply. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "lifetime elision",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to lifetime elision?",
+        "What tools can assist in detecting problems with lifetime elision at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "lifetime annotation",
+        "'static lifetime",
+        "lifetime bounds"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-074",
+      "subject": "Rust",
+      "category": "Ecosystem",
+      "subcategory": "Cargo",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Cargo and error handling patterns in Rust.",
+      "ideal_answer": "Cargo and error handling patterns differ in several ways: Cargo is build system and package manager (works by dependency management) whereas error handling patterns is Result propagation (works by ergonomic error management). Cargo is typically used for Cargo.toml, Cargo.lock, workspaces, while error handling patterns is used for ? operator, custom error types, thiserror. Example demonstrating Cargo: [dependencies]\nserde = \"1.0\". Example demonstrating error handling patterns: fn read_file() -> Result<String, io::Error> { let content = fs::read_to_string(\"file.txt\")?; Ok(content) }.",
+      "keywords": [
+        "Cargo",
+        "error handling patterns",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Cargo over error handling patterns?",
+        "What is the performance or memory difference between Cargo and error handling patterns?"
+      ],
+      "related_concepts": [
+        "Cargo",
+        "error handling patterns",
+        "modules"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-075",
+      "subject": "Rust",
+      "category": "Ownership",
+      "subcategory": "Move Semantics",
+      "difficulty": "Medium",
+      "question": "Explain the difference between ownership rules and move semantics in Rust.",
+      "ideal_answer": "ownership rules and move semantics differ in several ways: ownership rules is memory management paradigm (works by compile-time memory safety) whereas move semantics is ownership transfer (works by non-Copy types transfer ownership). ownership rules is typically used for each value has one owner, owner dropped -> value dropped, while move semantics is used for shallow copy + invalidate source. Example demonstrating ownership rules: let s1 = String::from(\"hello\"); let s2 = s1; // s1 moved. Example demonstrating move semantics: let s2 = s1; // s1 no longer valid.",
+      "keywords": [
+        "ownership rules",
+        "move semantics",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ownership rules over move semantics?",
+        "What is the performance or memory difference between ownership rules and move semantics?"
+      ],
+      "related_concepts": [
+        "ownership rules",
+        "move semantics",
+        "Copy trait",
+        "Drop trait"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-076",
+      "subject": "Rust",
+      "category": "Traits",
+      "subcategory": "Trait Bounds",
+      "difficulty": "Medium",
+      "question": "Explain the difference between associated types and trait objects in Rust.",
+      "ideal_answer": "associated types and trait objects differ in several ways: associated types is type placeholder in trait (works by output type specification) whereas trait objects is dynamic dispatch (works by runtime polymorphism). associated types is typically used for each implementation has one associated type, while trait objects is used for Box<dyn Trait>, &dyn Trait. Example demonstrating associated types: trait Iterator { type Item; fn next(&mut self) -> Option<Self::Item>; }. Example demonstrating trait objects: fn draw(item: &dyn Drawable) {}.",
+      "keywords": [
+        "associated types",
+        "trait objects",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose associated types over trait objects?",
+        "What is the performance or memory difference between associated types and trait objects?"
+      ],
+      "related_concepts": [
+        "associated types",
+        "trait objects",
+        "trait system",
+        "trait bounds"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-077",
+      "subject": "Rust",
+      "category": "Ownership",
+      "subcategory": "Copy Trait",
+      "difficulty": "Medium",
+      "question": "Explain the difference between move semantics and Drop trait in Rust.",
+      "ideal_answer": "move semantics and Drop trait differ in several ways: move semantics is ownership transfer (works by non-Copy types transfer ownership) whereas Drop trait is destructor mechanism (works by resource cleanup). move semantics is typically used for shallow copy + invalidate source, while Drop trait is used for called when value goes out of scope. Example demonstrating move semantics: let s2 = s1; // s1 no longer valid. Example demonstrating Drop trait: impl Drop for MyType { fn drop(&mut self) { ... } }.",
+      "keywords": [
+        "move semantics",
+        "Drop trait",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose move semantics over Drop trait?",
+        "What is the performance or memory difference between move semantics and Drop trait?"
+      ],
+      "related_concepts": [
+        "move semantics",
+        "Drop trait",
+        "ownership rules",
+        "Copy trait"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-078",
+      "subject": "Rust",
+      "category": "Traits",
+      "subcategory": "Defining Traits",
+      "difficulty": "Medium",
+      "question": "What is trait system in Rust and how does it work?",
+      "ideal_answer": "trait system in Rust refers to interface definition. It works by shared behavior contracts. Key characteristics include define requirements, implement for types. Example: trait Drawable { fn draw(&self); }. Common pitfalls include orphan rule, coherence.",
+      "keywords": [
+        "trait system",
+        "Rust programming",
+        "traits"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of trait system in a production environment?",
+        "What are the common pitfalls or issues associated with trait system?"
+      ],
+      "related_concepts": [
+        "trait bounds",
+        "associated types",
+        "trait objects"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-079",
+      "subject": "Rust",
+      "category": "Types",
+      "subcategory": "Structs",
+      "difficulty": "Medium",
+      "question": "Explain the difference between enum variants and Option<T> in Rust.",
+      "ideal_answer": "enum variants and Option<T> differ in several ways: enum variants is algebraic data types (works by sum types with data) whereas Option<T> is null alternative (works by explicit presence/absence). enum variants is typically used for can hold data, C-like, unit variants, while Option<T> is used for Some(T) or None. Example demonstrating enum variants: enum Message { Quit, Move { x: i32, y: i32 }, Write(String) }. Example demonstrating Option<T>: let maybe_num: Option<i32> = Some(5);.",
+      "keywords": [
+        "enum variants",
+        "Option<T>",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose enum variants over Option<T>?",
+        "What is the performance or memory difference between enum variants and Option<T>?"
+      ],
+      "related_concepts": [
+        "enum variants",
+        "Option<T>",
+        "Result<T, E>",
+        "pattern matching"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-080",
+      "subject": "Rust",
+      "category": "Ownership",
+      "subcategory": "Drop Trait",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Copy trait in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with Copy trait in Rust include: deriving Copy, Drop conflict. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Copy trait",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Copy trait?",
+        "What tools can assist in detecting problems with Copy trait at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ownership rules",
+        "move semantics",
+        "Drop trait"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-081",
+      "subject": "Rust",
+      "category": "Borrowing",
+      "subcategory": "Deref",
+      "difficulty": "Medium",
+      "question": "Explain the difference between slices and deref coercion in Rust.",
+      "ideal_answer": "slices and deref coercion differ in several ways: slices is contiguous sequence reference (works by view into collection) whereas deref coercion is automatic dereferencing (works by convenience for smart pointers). slices is typically used for string slices, array slices, while deref coercion is used for &Box<T> -> &T, &String -> &str. Example demonstrating slices: let hello = &s[0..5];. Example demonstrating deref coercion: fn hello(name: &str) { ... } hello(&String::from(\"world\"));.",
+      "keywords": [
+        "slices",
+        "deref coercion",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose slices over deref coercion?",
+        "What is the performance or memory difference between slices and deref coercion?"
+      ],
+      "related_concepts": [
+        "slices",
+        "deref coercion",
+        "references",
+        "mutable references"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-082",
+      "subject": "Rust",
+      "category": "Memory Safety",
+      "subcategory": "Unsafe Rust",
+      "difficulty": "Medium",
+      "question": "What are the common issues with unsafe Rust in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with unsafe Rust in Rust include: unsafe blocks should be minimal. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "unsafe Rust",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to unsafe Rust?",
+        "What tools can assist in detecting problems with unsafe Rust at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Box<T>",
+        "Rc<T>",
+        "RefCell<T>"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-083",
+      "subject": "Rust",
+      "category": "Lifetimes",
+      "subcategory": "Lifetime Annotation",
+      "difficulty": "Medium",
+      "question": "Explain the difference between lifetime annotation and lifetime bounds in Rust.",
+      "ideal_answer": "lifetime annotation and lifetime bounds differ in several ways: lifetime annotation is explicit reference validity (works by preventing dangling references) whereas lifetime bounds is constrained generic lifetimes (works by ensuring outlives relationships). lifetime annotation is typically used for 'a syntax, relationship specification, while lifetime bounds is used for T: 'a means T outlives 'a. Example demonstrating lifetime annotation: fn longest<'a>(x: &'a str, y: &'a str) -> &'a str. Example demonstrating lifetime bounds: struct Ref<'a, T: 'a>(&'a T);.",
+      "keywords": [
+        "lifetime annotation",
+        "lifetime bounds",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose lifetime annotation over lifetime bounds?",
+        "What is the performance or memory difference between lifetime annotation and lifetime bounds?"
+      ],
+      "related_concepts": [
+        "lifetime annotation",
+        "lifetime bounds",
+        "lifetime elision",
+        "'static lifetime"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-084",
+      "subject": "Rust",
+      "category": "Lifetimes",
+      "subcategory": "Lifetime Elision",
+      "difficulty": "Medium",
+      "question": "Explain the difference between lifetime elision and 'static lifetime in Rust.",
+      "ideal_answer": "lifetime elision and 'static lifetime differ in several ways: lifetime elision is automatic lifetime inference (works by reducing annotation boilerplate) whereas 'static lifetime is entire program duration (works by longest possible lifetime). lifetime elision is typically used for three rules: input lifetimes assigned, output from input if one, from self if &self, while 'static lifetime is used for string literals, global variables. Example demonstrating lifetime elision: fn first_word(s: &str) -> &str {}. Example demonstrating 'static lifetime: let s: &'static str = \"I have a static lifetime.\";.",
+      "keywords": [
+        "lifetime elision",
+        "'static lifetime",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose lifetime elision over 'static lifetime?",
+        "What is the performance or memory difference between lifetime elision and 'static lifetime?"
+      ],
+      "related_concepts": [
+        "lifetime elision",
+        "'static lifetime",
+        "lifetime annotation",
+        "lifetime bounds"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-085",
+      "subject": "Rust",
+      "category": "Ownership",
+      "subcategory": "Move Semantics",
+      "difficulty": "Medium",
+      "question": "Explain the difference between ownership rules and Drop trait in Rust.",
+      "ideal_answer": "ownership rules and Drop trait differ in several ways: ownership rules is memory management paradigm (works by compile-time memory safety) whereas Drop trait is destructor mechanism (works by resource cleanup). ownership rules is typically used for each value has one owner, owner dropped -> value dropped, while Drop trait is used for called when value goes out of scope. Example demonstrating ownership rules: let s1 = String::from(\"hello\"); let s2 = s1; // s1 moved. Example demonstrating Drop trait: impl Drop for MyType { fn drop(&mut self) { ... } }.",
+      "keywords": [
+        "ownership rules",
+        "Drop trait",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ownership rules over Drop trait?",
+        "What is the performance or memory difference between ownership rules and Drop trait?"
+      ],
+      "related_concepts": [
+        "ownership rules",
+        "Drop trait",
+        "move semantics",
+        "Copy trait"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-086",
+      "subject": "Rust",
+      "category": "Types",
+      "subcategory": "Structs",
+      "difficulty": "Medium",
+      "question": "What is enum variants in Rust and how does it work?",
+      "ideal_answer": "enum variants in Rust refers to algebraic data types. It works by sum types with data. Key characteristics include can hold data, C-like, unit variants. Example: enum Message { Quit, Move { x: i32, y: i32 }, Write(String) }. Common pitfalls include memory layout optimization (niche).",
+      "keywords": [
+        "enum variants",
+        "Rust programming",
+        "types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of enum variants in a production environment?",
+        "What are the common pitfalls or issues associated with enum variants?"
+      ],
+      "related_concepts": [
+        "Option<T>",
+        "Result<T, E>",
+        "pattern matching"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-087",
+      "subject": "Rust",
+      "category": "Memory Safety",
+      "subcategory": " FFI",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Rc<T> in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with Rc<T> in Rust include: circular references with RefCell. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Rc<T>",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Rc<T>?",
+        "What tools can assist in detecting problems with Rc<T> at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "unsafe Rust",
+        "Box<T>",
+        "RefCell<T>"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-088",
+      "subject": "Rust",
+      "category": "Ecosystem",
+      "subcategory": "Cargo",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Cargo in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with Cargo in Rust include: feature flags, cargo expand. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Cargo",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Cargo?",
+        "What tools can assist in detecting problems with Cargo at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "error handling patterns",
+        "modules"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-089",
+      "subject": "Rust",
+      "category": "Concurrency",
+      "subcategory": "Arc",
+      "difficulty": "Medium",
+      "question": "What is Mutex in Rust and how does it work?",
+      "ideal_answer": "Mutex in Rust refers to mutual exclusion. It works by protected data access. Key characteristics include poisoning on panic. Example: let mut num = data.lock().unwrap(); *num += 1;. Common pitfalls include deadlock potential.",
+      "keywords": [
+        "Mutex",
+        "Rust programming",
+        "concurrency"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Mutex in a production environment?",
+        "What are the common pitfalls or issues associated with Mutex?"
+      ],
+      "related_concepts": [
+        "ownership for concurrency",
+        "Arc",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-090",
+      "subject": "Rust",
+      "category": "Memory Safety",
+      "subcategory": " FFI",
+      "difficulty": "Medium",
+      "question": "What is Rc<T> in Rust and how does it work?",
+      "ideal_answer": "Rc<T> in Rust refers to reference counting. It works by multiple ownership single-threaded. Key characteristics include non-atomic counters. Example: let data = Rc::new(vec![1, 2, 3]);. Common pitfalls include circular references with RefCell.",
+      "keywords": [
+        "Rc<T>",
+        "Rust programming",
+        "memory safety"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Rc<T> in a production environment?",
+        "What are the common pitfalls or issues associated with Rc<T>?"
+      ],
+      "related_concepts": [
+        "unsafe Rust",
+        "Box<T>",
+        "RefCell<T>"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-091",
+      "subject": "Rust",
+      "category": "Ownership",
+      "subcategory": "Ownership Transfer",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Drop trait and RAII in Rust in Rust.",
+      "ideal_answer": "Drop trait and RAII in Rust differ in several ways: Drop trait is destructor mechanism (works by resource cleanup) whereas RAII in Rust is resource acquisition is initialization (works by automatic cleanup via ownership). Drop trait is typically used for called when value goes out of scope, while RAII in Rust is used for scope-bound resource management. Example demonstrating Drop trait: impl Drop for MyType { fn drop(&mut self) { ... } }. Example demonstrating RAII in Rust: { let file = File::open(\"data.txt\")?; } // auto-closed.",
+      "keywords": [
+        "Drop trait",
+        "RAII in Rust",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Drop trait over RAII in Rust?",
+        "What is the performance or memory difference between Drop trait and RAII in Rust?"
+      ],
+      "related_concepts": [
+        "Drop trait",
+        "RAII in Rust",
+        "ownership rules",
+        "move semantics"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-092",
+      "subject": "Rust",
+      "category": "Concurrency",
+      "subcategory": "RwLock",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Rayon in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with Rayon in Rust include: work-stealing scheduler. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Rayon",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Rayon?",
+        "What tools can assist in detecting problems with Rayon at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ownership for concurrency",
+        "Arc",
+        "Mutex"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-093",
+      "subject": "Rust",
+      "category": "Lifetimes",
+      "subcategory": "Lifetime Annotation",
+      "difficulty": "Medium",
+      "question": "Explain the difference between lifetime annotation and 'static lifetime in Rust.",
+      "ideal_answer": "lifetime annotation and 'static lifetime differ in several ways: lifetime annotation is explicit reference validity (works by preventing dangling references) whereas 'static lifetime is entire program duration (works by longest possible lifetime). lifetime annotation is typically used for 'a syntax, relationship specification, while 'static lifetime is used for string literals, global variables. Example demonstrating lifetime annotation: fn longest<'a>(x: &'a str, y: &'a str) -> &'a str. Example demonstrating 'static lifetime: let s: &'static str = \"I have a static lifetime.\";.",
+      "keywords": [
+        "lifetime annotation",
+        "'static lifetime",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose lifetime annotation over 'static lifetime?",
+        "What is the performance or memory difference between lifetime annotation and 'static lifetime?"
+      ],
+      "related_concepts": [
+        "lifetime annotation",
+        "'static lifetime",
+        "lifetime elision",
+        "lifetime bounds"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-094",
+      "subject": "Rust",
+      "category": "Memory Safety",
+      "subcategory": "Unsafe Rust",
+      "difficulty": "Medium",
+      "question": "Explain the difference between unsafe Rust and Box<T> in Rust.",
+      "ideal_answer": "unsafe Rust and Box<T> differ in several ways: unsafe Rust is opt-out of safety guarantees (works by necessary for low-level operations) whereas Box<T> is heap allocation (works by single ownership heap pointer). unsafe Rust is typically used for raw pointers, FFI, inline assembly, while Box<T> is used for automatic deallocation. Example demonstrating unsafe Rust: unsafe { *raw_ptr = value; }. Example demonstrating Box<T>: let b = Box::new(5);.",
+      "keywords": [
+        "unsafe Rust",
+        "Box<T>",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose unsafe Rust over Box<T>?",
+        "What is the performance or memory difference between unsafe Rust and Box<T>?"
+      ],
+      "related_concepts": [
+        "unsafe Rust",
+        "Box<T>",
+        "Rc<T>",
+        "RefCell<T>"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-095",
+      "subject": "Rust",
+      "category": "Concurrency",
+      "subcategory": "Channels",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Arc and channels in Rust.",
+      "ideal_answer": "Arc and channels differ in several ways: Arc is atomic reference counting (works by shared ownership across threads) whereas channels is message passing (works by thread communication). Arc is typically used for thread-safe Rc, while channels is used for mpsc: multiple producer, single consumer. Example demonstrating Arc: let data = Arc::new(Mutex::new(0));. Example demonstrating channels: let (tx, rx) = mpsc::channel(); tx.send(val).unwrap();.",
+      "keywords": [
+        "Arc",
+        "channels",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Arc over channels?",
+        "What is the performance or memory difference between Arc and channels?"
+      ],
+      "related_concepts": [
+        "Arc",
+        "channels",
+        "ownership for concurrency",
+        "Mutex"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-096",
+      "subject": "Rust",
+      "category": "Borrowing",
+      "subcategory": "References",
+      "difficulty": "Medium",
+      "question": "What is references in Rust and how does it work?",
+      "ideal_answer": "references in Rust refers to non-owning pointers. It works by borrowing without taking ownership. Key characteristics include immutable by default, one mutable or many immutable. Example: let len = calculate_length(&s);. Common pitfalls include dangling references prevented.",
+      "keywords": [
+        "references",
+        "Rust programming",
+        "borrowing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of references in a production environment?",
+        "What are the common pitfalls or issues associated with references?"
+      ],
+      "related_concepts": [
+        "mutable references",
+        "slices",
+        "deref coercion"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RUST-097",
+      "subject": "Rust",
+      "category": "Ownership",
+      "subcategory": "Move Semantics",
+      "difficulty": "Hard",
+      "question": "What is ownership rules in Rust and how does it work?",
+      "ideal_answer": "ownership rules in Rust refers to memory management paradigm. It works by compile-time memory safety. Key characteristics include each value has one owner, owner dropped -> value dropped. Example: let s1 = String::from(\"hello\"); let s2 = s1; // s1 moved. Common pitfalls include ownership transfer in function calls.",
+      "keywords": [
+        "ownership rules",
+        "Rust programming",
+        "ownership"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of ownership rules in a production environment?",
+        "What are the common pitfalls or issues associated with ownership rules?"
+      ],
+      "related_concepts": [
+        "move semantics",
+        "Copy trait",
+        "Drop trait"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-098",
+      "subject": "Rust",
+      "category": "Lifetimes",
+      "subcategory": "Lifetime Annotation",
+      "difficulty": "Hard",
+      "question": "What are the common issues with lifetime annotation in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with lifetime annotation in Rust include: lifetime elision rules. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "lifetime annotation",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to lifetime annotation?",
+        "What tools can assist in detecting problems with lifetime annotation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "lifetime elision",
+        "'static lifetime",
+        "lifetime bounds"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-099",
+      "subject": "Rust",
+      "category": "Memory Safety",
+      "subcategory": "Unsafe Rust",
+      "difficulty": "Hard",
+      "question": "Explain the difference between unsafe Rust and Rc<T> in Rust.",
+      "ideal_answer": "unsafe Rust and Rc<T> differ in several ways: unsafe Rust is opt-out of safety guarantees (works by necessary for low-level operations) whereas Rc<T> is reference counting (works by multiple ownership single-threaded). unsafe Rust is typically used for raw pointers, FFI, inline assembly, while Rc<T> is used for non-atomic counters. Example demonstrating unsafe Rust: unsafe { *raw_ptr = value; }. Example demonstrating Rc<T>: let data = Rc::new(vec![1, 2, 3]);.",
+      "keywords": [
+        "unsafe Rust",
+        "Rc<T>",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose unsafe Rust over Rc<T>?",
+        "What is the performance or memory difference between unsafe Rust and Rc<T>?"
+      ],
+      "related_concepts": [
+        "unsafe Rust",
+        "Rc<T>",
+        "Box<T>",
+        "RefCell<T>"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-100",
+      "subject": "Rust",
+      "category": "Types",
+      "subcategory": "Type Aliases",
+      "difficulty": "Hard",
+      "question": "What are the common issues with generics in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with generics in Rust include: zero-cost abstraction. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "generics",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to generics?",
+        "What tools can assist in detecting problems with generics at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "enum variants",
+        "Option<T>",
+        "Result<T, E>"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-101",
+      "subject": "Rust",
+      "category": "Ecosystem",
+      "subcategory": "Modules",
+      "difficulty": "Hard",
+      "question": "What is modules in Rust and how does it work?",
+      "ideal_answer": "modules in Rust refers to code organization. It works by visibility and encapsulation. Key characteristics include mod, pub, use, super, crate. Example: mod utils; pub use utils::helper;. Common pitfalls include module tree vs filesystem tree.",
+      "keywords": [
+        "modules",
+        "Rust programming",
+        "ecosystem"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of modules in a production environment?",
+        "What are the common pitfalls or issues associated with modules?"
+      ],
+      "related_concepts": [
+        "Cargo",
+        "error handling patterns"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-102",
+      "subject": "Rust",
+      "category": "Types",
+      "subcategory": "Pattern Matching",
+      "difficulty": "Hard",
+      "question": "What are the common issues with Result<T, E> in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with Result<T, E> in Rust include: ? operator for propagation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Result<T, E>",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Result<T, E>?",
+        "What tools can assist in detecting problems with Result<T, E> at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "enum variants",
+        "Option<T>",
+        "pattern matching"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-103",
+      "subject": "Rust",
+      "category": "Memory Safety",
+      "subcategory": "Raw Pointers",
+      "difficulty": "Hard",
+      "question": "Explain the difference between Box<T> and Rc<T> in Rust.",
+      "ideal_answer": "Box<T> and Rc<T> differ in several ways: Box<T> is heap allocation (works by single ownership heap pointer) whereas Rc<T> is reference counting (works by multiple ownership single-threaded). Box<T> is typically used for automatic deallocation, while Rc<T> is used for non-atomic counters. Example demonstrating Box<T>: let b = Box::new(5);. Example demonstrating Rc<T>: let data = Rc::new(vec![1, 2, 3]);.",
+      "keywords": [
+        "Box<T>",
+        "Rc<T>",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Box<T> over Rc<T>?",
+        "What is the performance or memory difference between Box<T> and Rc<T>?"
+      ],
+      "related_concepts": [
+        "Box<T>",
+        "Rc<T>",
+        "unsafe Rust",
+        "RefCell<T>"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-104",
+      "subject": "Rust",
+      "category": "Concurrency",
+      "subcategory": "Threads",
+      "difficulty": "Hard",
+      "question": "What are the common issues with ownership for concurrency in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with ownership for concurrency in Rust include: Arc<Mutex<T>> pattern. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "ownership for concurrency",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to ownership for concurrency?",
+        "What tools can assist in detecting problems with ownership for concurrency at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Arc",
+        "Mutex",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-105",
+      "subject": "Rust",
+      "category": "Traits",
+      "subcategory": "Implementing Traits",
+      "difficulty": "Hard",
+      "question": "Explain the difference between trait bounds and trait objects in Rust.",
+      "ideal_answer": "trait bounds and trait objects differ in several ways: trait bounds is generic constraints (works by requiring trait implementation) whereas trait objects is dynamic dispatch (works by runtime polymorphism). trait bounds is typically used for where clauses for readability, while trait objects is used for Box<dyn Trait>, &dyn Trait. Example demonstrating trait bounds: fn notify<T: Summary>(item: &T) {}. Example demonstrating trait objects: fn draw(item: &dyn Drawable) {}.",
+      "keywords": [
+        "trait bounds",
+        "trait objects",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose trait bounds over trait objects?",
+        "What is the performance or memory difference between trait bounds and trait objects?"
+      ],
+      "related_concepts": [
+        "trait bounds",
+        "trait objects",
+        "trait system",
+        "associated types"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-106",
+      "subject": "Rust",
+      "category": "Concurrency",
+      "subcategory": "Channels",
+      "difficulty": "Hard",
+      "question": "What are the common issues with Arc in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with Arc in Rust include: Arc::clone vs .clone(). To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Arc",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Arc?",
+        "What tools can assist in detecting problems with Arc at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ownership for concurrency",
+        "Mutex",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-107",
+      "subject": "Rust",
+      "category": "Borrowing",
+      "subcategory": "Deref",
+      "difficulty": "Hard",
+      "question": "What are the common issues with slices in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with slices in Rust include: slice bounds checking. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "slices",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to slices?",
+        "What tools can assist in detecting problems with slices at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "references",
+        "mutable references",
+        "deref coercion"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-108",
+      "subject": "Rust",
+      "category": "Traits",
+      "subcategory": "Implementing Traits",
+      "difficulty": "Hard",
+      "question": "What are the common issues with trait bounds in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with trait bounds in Rust include: multiple trait bounds with +. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "trait bounds",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to trait bounds?",
+        "What tools can assist in detecting problems with trait bounds at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "trait system",
+        "associated types",
+        "trait objects"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-109",
+      "subject": "Rust",
+      "category": "Memory Safety",
+      "subcategory": "Raw Pointers",
+      "difficulty": "Hard",
+      "question": "Explain the difference between Box<T> and RefCell<T> in Rust.",
+      "ideal_answer": "Box<T> and RefCell<T> differ in several ways: Box<T> is heap allocation (works by single ownership heap pointer) whereas RefCell<T> is interior mutability (works by runtime borrow checking). Box<T> is typically used for automatic deallocation, while RefCell<T> is used for single-threaded only. Example demonstrating Box<T>: let b = Box::new(5);. Example demonstrating RefCell<T>: let mut_ref = data.borrow_mut();.",
+      "keywords": [
+        "Box<T>",
+        "RefCell<T>",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Box<T> over RefCell<T>?",
+        "What is the performance or memory difference between Box<T> and RefCell<T>?"
+      ],
+      "related_concepts": [
+        "Box<T>",
+        "RefCell<T>",
+        "unsafe Rust",
+        "Rc<T>"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-110",
+      "subject": "Rust",
+      "category": "Traits",
+      "subcategory": "Defining Traits",
+      "difficulty": "Hard",
+      "question": "What are the common issues with Derive macro in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with Derive macro in Rust include: custom derive macros. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Derive macro",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Derive macro?",
+        "What tools can assist in detecting problems with Derive macro at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "trait system",
+        "trait bounds",
+        "associated types"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-111",
+      "subject": "Rust",
+      "category": "Types",
+      "subcategory": "Enums",
+      "difficulty": "Hard",
+      "question": "Explain the difference between Option<T> and generics in Rust.",
+      "ideal_answer": "Option<T> and generics differ in several ways: Option<T> is null alternative (works by explicit presence/absence) whereas generics is parametric polymorphism (works by type-safe abstraction). Option<T> is typically used for Some(T) or None, while generics is used for monomorphization at compile time. Example demonstrating Option<T>: let maybe_num: Option<i32> = Some(5);. Example demonstrating generics: fn largest<T: PartialOrd>(list: &[T]) -> &T {}.",
+      "keywords": [
+        "Option<T>",
+        "generics",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Option<T> over generics?",
+        "What is the performance or memory difference between Option<T> and generics?"
+      ],
+      "related_concepts": [
+        "Option<T>",
+        "generics",
+        "enum variants",
+        "Result<T, E>"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-112",
+      "subject": "Rust",
+      "category": "Borrowing",
+      "subcategory": "References",
+      "difficulty": "Hard",
+      "question": "Explain the difference between references and slices in Rust.",
+      "ideal_answer": "references and slices differ in several ways: references is non-owning pointers (works by borrowing without taking ownership) whereas slices is contiguous sequence reference (works by view into collection). references is typically used for immutable by default, one mutable or many immutable, while slices is used for string slices, array slices. Example demonstrating references: let len = calculate_length(&s);. Example demonstrating slices: let hello = &s[0..5];.",
+      "keywords": [
+        "references",
+        "slices",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose references over slices?",
+        "What is the performance or memory difference between references and slices?"
+      ],
+      "related_concepts": [
+        "references",
+        "slices",
+        "mutable references",
+        "deref coercion"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-113",
+      "subject": "Rust",
+      "category": "Borrowing",
+      "subcategory": "Slices",
+      "difficulty": "Hard",
+      "question": "What are the common issues with deref coercion in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with deref coercion in Rust include: custom Deref implementation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "deref coercion",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to deref coercion?",
+        "What tools can assist in detecting problems with deref coercion at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "references",
+        "mutable references",
+        "slices"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-114",
+      "subject": "Rust",
+      "category": "Memory Safety",
+      "subcategory": "Unsafe Rust",
+      "difficulty": "Hard",
+      "question": "Explain the difference between unsafe Rust and RefCell<T> in Rust.",
+      "ideal_answer": "unsafe Rust and RefCell<T> differ in several ways: unsafe Rust is opt-out of safety guarantees (works by necessary for low-level operations) whereas RefCell<T> is interior mutability (works by runtime borrow checking). unsafe Rust is typically used for raw pointers, FFI, inline assembly, while RefCell<T> is used for single-threaded only. Example demonstrating unsafe Rust: unsafe { *raw_ptr = value; }. Example demonstrating RefCell<T>: let mut_ref = data.borrow_mut();.",
+      "keywords": [
+        "unsafe Rust",
+        "RefCell<T>",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose unsafe Rust over RefCell<T>?",
+        "What is the performance or memory difference between unsafe Rust and RefCell<T>?"
+      ],
+      "related_concepts": [
+        "unsafe Rust",
+        "RefCell<T>",
+        "Box<T>",
+        "Rc<T>"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-115",
+      "subject": "Rust",
+      "category": "Ownership",
+      "subcategory": "Copy Trait",
+      "difficulty": "Hard",
+      "question": "What are the common issues with move semantics in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with move semantics in Rust include: clone for deep copy. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "move semantics",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to move semantics?",
+        "What tools can assist in detecting problems with move semantics at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ownership rules",
+        "Copy trait",
+        "Drop trait"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-116",
+      "subject": "Rust",
+      "category": "Ownership",
+      "subcategory": "Drop Trait",
+      "difficulty": "Hard",
+      "question": "What is Copy trait in Rust and how does it work?",
+      "ideal_answer": "Copy trait in Rust refers to implicit bitwise copy. It works by stack-only types. Key characteristics include primitive types, tuples of Copy types. Example: let x = 5; let y = x; // both valid. Common pitfalls include deriving Copy, Drop conflict.",
+      "keywords": [
+        "Copy trait",
+        "Rust programming",
+        "ownership"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Copy trait in a production environment?",
+        "What are the common pitfalls or issues associated with Copy trait?"
+      ],
+      "related_concepts": [
+        "ownership rules",
+        "move semantics",
+        "Drop trait"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-117",
+      "subject": "Rust",
+      "category": "Types",
+      "subcategory": "Generics",
+      "difficulty": "Hard",
+      "question": "What is pattern matching in Rust and how does it work?",
+      "ideal_answer": "pattern matching in Rust refers to exhaustive value decomposition. It works by control flow with destructuring. Key characteristics include match, if let, while let. Example: match x { Some(n) => ..., None => ... }. Common pitfalls include refutable vs irrefutable patterns.",
+      "keywords": [
+        "pattern matching",
+        "Rust programming",
+        "types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of pattern matching in a production environment?",
+        "What are the common pitfalls or issues associated with pattern matching?"
+      ],
+      "related_concepts": [
+        "enum variants",
+        "Option<T>",
+        "Result<T, E>"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-118",
+      "subject": "Rust",
+      "category": "Traits",
+      "subcategory": "Associated Types",
+      "difficulty": "Hard",
+      "question": "What are the common issues with trait objects in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with trait objects in Rust include: object safety requirements, vtable. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "trait objects",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to trait objects?",
+        "What tools can assist in detecting problems with trait objects at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "trait system",
+        "trait bounds",
+        "associated types"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-119",
+      "subject": "Rust",
+      "category": "Ownership",
+      "subcategory": "Move Semantics",
+      "difficulty": "Hard",
+      "question": "Explain the difference between ownership rules and Copy trait in Rust.",
+      "ideal_answer": "ownership rules and Copy trait differ in several ways: ownership rules is memory management paradigm (works by compile-time memory safety) whereas Copy trait is implicit bitwise copy (works by stack-only types). ownership rules is typically used for each value has one owner, owner dropped -> value dropped, while Copy trait is used for primitive types, tuples of Copy types. Example demonstrating ownership rules: let s1 = String::from(\"hello\"); let s2 = s1; // s1 moved. Example demonstrating Copy trait: let x = 5; let y = x; // both valid.",
+      "keywords": [
+        "ownership rules",
+        "Copy trait",
+        "comparison",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ownership rules over Copy trait?",
+        "What is the performance or memory difference between ownership rules and Copy trait?"
+      ],
+      "related_concepts": [
+        "ownership rules",
+        "Copy trait",
+        "move semantics",
+        "Drop trait"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RUST-120",
+      "subject": "Rust",
+      "category": "Traits",
+      "subcategory": "Defining Traits",
+      "difficulty": "Hard",
+      "question": "What are the common issues with trait system in Rust and how do you debug them?",
+      "ideal_answer": "Common issues with trait system in Rust include: orphan rule, coherence. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "trait system",
+        "troubleshooting",
+        "Rust"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to trait system?",
+        "What tools can assist in detecting problems with trait system at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "trait bounds",
+        "associated types",
+        "trait objects"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

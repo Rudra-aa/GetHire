@@ -1,0 +1,1361 @@
+{
+  "metadata": {
+    "subject": "PostgreSQL",
+    "domain": "Databases",
+    "total_questions": 52,
+    "difficulty_distribution": {
+      "Easy": 15,
+      "Medium": 26,
+      "Hard": 11
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "PSQL-001",
+      "subject": "PostgreSQL",
+      "category": "Architecture",
+      "subcategory": "Processes",
+      "difficulty": "Easy",
+      "question": "Explain the difference between process architecture and vacuum in PostgreSQL.",
+      "ideal_answer": "process architecture and vacuum differ in several ways: process architecture is multi-process model (works by connection = process) whereas vacuum is dead tuple cleanup (works by storage reclamation and transaction ID wraparound). process architecture is typically used for postmaster, backend processes, background writer, WAL writer, autovacuum, while vacuum is used for VACUUM, VACUUM FULL, autovacuum. Example demonstrating process architecture: max_connections, shared_buffers. Example demonstrating vacuum: autovacuum_vacuum_scale_factor.",
+      "keywords": [
+        "process architecture",
+        "vacuum",
+        "comparison",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose process architecture over vacuum?",
+        "What is the performance or memory difference between process architecture and vacuum?"
+      ],
+      "related_concepts": [
+        "process architecture",
+        "vacuum",
+        "WAL",
+        "MVCC implementation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "PSQL-002",
+      "subject": "PostgreSQL",
+      "category": "Indexing",
+      "subcategory": "B-Tree",
+      "difficulty": "Easy",
+      "question": "What is GIN index in PostgreSQL and how does it work?",
+      "ideal_answer": "GIN index in PostgreSQL refers to Generalized Inverted Index. It works by composite value indexing. Key characteristics include full-text search, array, jsonb. Example: CREATE INDEX idx ON docs USING GIN (to_tsvector('english', content));. Common pitfalls include fast update, pending list.",
+      "keywords": [
+        "GIN index",
+        "PostgreSQL programming",
+        "indexing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of GIN index in a production environment?",
+        "What are the common pitfalls or issues associated with GIN index?"
+      ],
+      "related_concepts": [
+        "GiST index",
+        "BRIN index",
+        "partial index"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "PSQL-003",
+      "subject": "PostgreSQL",
+      "category": "Indexing",
+      "subcategory": "Hash",
+      "difficulty": "Easy",
+      "question": "What is GiST index in PostgreSQL and how does it work?",
+      "ideal_answer": "GiST index in PostgreSQL refers to Generalized Search Tree. It works by balanced tree for complex data. Key characteristics include geometric, range, full-text. Example: CREATE INDEX idx ON locations USING GiST (coordinates);. Common pitfalls include lossy indexing.",
+      "keywords": [
+        "GiST index",
+        "PostgreSQL programming",
+        "indexing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of GiST index in a production environment?",
+        "What are the common pitfalls or issues associated with GiST index?"
+      ],
+      "related_concepts": [
+        "GIN index",
+        "BRIN index",
+        "partial index"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "PSQL-004",
+      "subject": "PostgreSQL",
+      "category": "Architecture",
+      "subcategory": "Shared Memory",
+      "difficulty": "Easy",
+      "question": "What are the common issues with WAL in PostgreSQL and how do you debug them?",
+      "ideal_answer": "Common issues with WAL in PostgreSQL include: WAL archiving for PITR. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "WAL",
+        "troubleshooting",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to WAL?",
+        "What tools can assist in detecting problems with WAL at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "process architecture",
+        "vacuum",
+        "MVCC implementation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "PSQL-005",
+      "subject": "PostgreSQL",
+      "category": "Data Types",
+      "subcategory": "Arrays",
+      "difficulty": "Easy",
+      "question": "Explain the difference between JSONB and range types in PostgreSQL.",
+      "ideal_answer": "JSONB and range types differ in several ways: JSONB is binary JSON storage (works by efficient JSON querying and indexing) whereas range types is interval data representation (works by contiguous data ranges). JSONB is typically used for decomposed binary format, GIN indexing, while range types is used for int4range, tsrange, daterange, overlap operators. Example demonstrating JSONB: SELECT data->>'name' FROM users WHERE data @> '{\"active\": true}';. Example demonstrating range types: SELECT * FROM events WHERE during @> '2023-01-01'::date;.",
+      "keywords": [
+        "JSONB",
+        "range types",
+        "comparison",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose JSONB over range types?",
+        "What is the performance or memory difference between JSONB and range types?"
+      ],
+      "related_concepts": [
+        "JSONB",
+        "range types",
+        "arrays"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "PSQL-006",
+      "subject": "PostgreSQL",
+      "category": "Advanced SQL",
+      "subcategory": "CTEs",
+      "difficulty": "Easy",
+      "question": "What are the common issues with LATERAL join in PostgreSQL and how do you debug them?",
+      "ideal_answer": "Common issues with LATERAL join in PostgreSQL include: vs correlated subquery performance. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "LATERAL join",
+        "troubleshooting",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to LATERAL join?",
+        "What tools can assist in detecting problems with LATERAL join at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "recursive CTE"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "PSQL-007",
+      "subject": "PostgreSQL",
+      "category": "Data Types",
+      "subcategory": "JSON/JSONB",
+      "difficulty": "Easy",
+      "question": "What is arrays in PostgreSQL and how does it work?",
+      "ideal_answer": "arrays in PostgreSQL refers to native array support. It works by multi-value columns. Key characteristics include array operators, indexing, unnest. Example: SELECT * FROM table WHERE tags && ARRAY['python', 'sql'];. Common pitfalls include multidimensional arrays.",
+      "keywords": [
+        "arrays",
+        "PostgreSQL programming",
+        "data types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of arrays in a production environment?",
+        "What are the common pitfalls or issues associated with arrays?"
+      ],
+      "related_concepts": [
+        "JSONB",
+        "range types"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "PSQL-008",
+      "subject": "PostgreSQL",
+      "category": "Advanced SQL",
+      "subcategory": "Window Functions",
+      "difficulty": "Easy",
+      "question": "What is recursive CTE in PostgreSQL and how does it work?",
+      "ideal_answer": "recursive CTE in PostgreSQL refers to hierarchical query support. It works by tree/graph traversal in SQL. Key characteristics include WITH RECURSIVE. Example: WITH RECURSIVE tree AS (SELECT id, name, 0 as depth FROM categories WHERE parent_id IS NULL UNION ALL SELECT c.id, c.name, t.depth + 1 FROM categories c JOIN tree t ON c.parent_id = t.id) SELECT * FROM tree;. Common pitfalls include cycle detection.",
+      "keywords": [
+        "recursive CTE",
+        "PostgreSQL programming",
+        "advanced sql"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of recursive CTE in a production environment?",
+        "What are the common pitfalls or issues associated with recursive CTE?"
+      ],
+      "related_concepts": [
+        "LATERAL join"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "PSQL-009",
+      "subject": "PostgreSQL",
+      "category": "Data Types",
+      "subcategory": "UUID",
+      "difficulty": "Easy",
+      "question": "What are the common issues with range types in PostgreSQL and how do you debug them?",
+      "ideal_answer": "Common issues with range types in PostgreSQL include: temporal ranges, exclusion constraints. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "range types",
+        "troubleshooting",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to range types?",
+        "What tools can assist in detecting problems with range types at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "JSONB",
+        "arrays"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "PSQL-010",
+      "subject": "PostgreSQL",
+      "category": "Architecture",
+      "subcategory": "Shared Memory",
+      "difficulty": "Easy",
+      "question": "Explain the difference between WAL and vacuum in PostgreSQL.",
+      "ideal_answer": "WAL and vacuum differ in several ways: WAL is Write-Ahead Logging (works by durability mechanism) whereas vacuum is dead tuple cleanup (works by storage reclamation and transaction ID wraparound). WAL is typically used for changes written to log before data files, while vacuum is used for VACUUM, VACUUM FULL, autovacuum. Example demonstrating WAL: wal_level, max_wal_size, archive_mode. Example demonstrating vacuum: autovacuum_vacuum_scale_factor.",
+      "keywords": [
+        "WAL",
+        "vacuum",
+        "comparison",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose WAL over vacuum?",
+        "What is the performance or memory difference between WAL and vacuum?"
+      ],
+      "related_concepts": [
+        "WAL",
+        "vacuum",
+        "process architecture",
+        "MVCC implementation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "PSQL-011",
+      "subject": "PostgreSQL",
+      "category": "Replication",
+      "subcategory": "Streaming",
+      "difficulty": "Easy",
+      "question": "Explain the difference between streaming replication and logical replication in PostgreSQL.",
+      "ideal_answer": "streaming replication and logical replication differ in several ways: streaming replication is WAL-based replication (works by hot standby, read scaling) whereas logical replication is publish-subscribe replication (works by selective table replication). streaming replication is typically used for synchronous, asynchronous, cascading, while logical replication is used for publication, subscription, replication slots. Example demonstrating streaming replication: primary_conninfo, recovery.conf. Example demonstrating logical replication: CREATE PUBLICATION mypub FOR TABLE users, orders;.",
+      "keywords": [
+        "streaming replication",
+        "logical replication",
+        "comparison",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose streaming replication over logical replication?",
+        "What is the performance or memory difference between streaming replication and logical replication?"
+      ],
+      "related_concepts": [
+        "streaming replication",
+        "logical replication"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "PSQL-012",
+      "subject": "PostgreSQL",
+      "category": "Indexing",
+      "subcategory": "B-Tree",
+      "difficulty": "Easy",
+      "question": "What are the common issues with GIN index in PostgreSQL and how do you debug them?",
+      "ideal_answer": "Common issues with GIN index in PostgreSQL include: fast update, pending list. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "GIN index",
+        "troubleshooting",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to GIN index?",
+        "What tools can assist in detecting problems with GIN index at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "GiST index",
+        "BRIN index",
+        "partial index"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "PSQL-013",
+      "subject": "PostgreSQL",
+      "category": "Indexing",
+      "subcategory": "B-Tree",
+      "difficulty": "Easy",
+      "question": "Explain the difference between GIN index and partial index in PostgreSQL.",
+      "ideal_answer": "GIN index and partial index differ in several ways: GIN index is Generalized Inverted Index (works by composite value indexing) whereas partial index is subset table indexing (works by indexing frequently accessed subset). GIN index is typically used for full-text search, array, jsonb, while partial index is used for WHERE clause in index definition. Example demonstrating GIN index: CREATE INDEX idx ON docs USING GIN (to_tsvector('english', content));. Example demonstrating partial index: CREATE INDEX idx ON orders (created_at) WHERE status = 'pending';.",
+      "keywords": [
+        "GIN index",
+        "partial index",
+        "comparison",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose GIN index over partial index?",
+        "What is the performance or memory difference between GIN index and partial index?"
+      ],
+      "related_concepts": [
+        "GIN index",
+        "partial index",
+        "GiST index",
+        "BRIN index"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "PSQL-014",
+      "subject": "PostgreSQL",
+      "category": "Indexing",
+      "subcategory": "GIN",
+      "difficulty": "Easy",
+      "question": "What is partial index in PostgreSQL and how does it work?",
+      "ideal_answer": "partial index in PostgreSQL refers to subset table indexing. It works by indexing frequently accessed subset. Key characteristics include WHERE clause in index definition. Example: CREATE INDEX idx ON orders (created_at) WHERE status = 'pending';. Common pitfalls include smaller index, faster queries.",
+      "keywords": [
+        "partial index",
+        "PostgreSQL programming",
+        "indexing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of partial index in a production environment?",
+        "What are the common pitfalls or issues associated with partial index?"
+      ],
+      "related_concepts": [
+        "GIN index",
+        "GiST index",
+        "BRIN index"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "PSQL-015",
+      "subject": "PostgreSQL",
+      "category": "Indexing",
+      "subcategory": "B-Tree",
+      "difficulty": "Easy",
+      "question": "Explain the difference between GIN index and GiST index in PostgreSQL.",
+      "ideal_answer": "GIN index and GiST index differ in several ways: GIN index is Generalized Inverted Index (works by composite value indexing) whereas GiST index is Generalized Search Tree (works by balanced tree for complex data). GIN index is typically used for full-text search, array, jsonb, while GiST index is used for geometric, range, full-text. Example demonstrating GIN index: CREATE INDEX idx ON docs USING GIN (to_tsvector('english', content));. Example demonstrating GiST index: CREATE INDEX idx ON locations USING GiST (coordinates);.",
+      "keywords": [
+        "GIN index",
+        "GiST index",
+        "comparison",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose GIN index over GiST index?",
+        "What is the performance or memory difference between GIN index and GiST index?"
+      ],
+      "related_concepts": [
+        "GIN index",
+        "GiST index",
+        "BRIN index",
+        "partial index"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "PSQL-016",
+      "subject": "PostgreSQL",
+      "category": "Replication",
+      "subcategory": "Streaming",
+      "difficulty": "Medium",
+      "question": "What are the common issues with streaming replication in PostgreSQL and how do you debug them?",
+      "ideal_answer": "Common issues with streaming replication in PostgreSQL include: replication lag monitoring. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "streaming replication",
+        "troubleshooting",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to streaming replication?",
+        "What tools can assist in detecting problems with streaming replication at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "logical replication"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-017",
+      "subject": "PostgreSQL",
+      "category": "Architecture",
+      "subcategory": "WAL",
+      "difficulty": "Medium",
+      "question": "What is vacuum in PostgreSQL and how does it work?",
+      "ideal_answer": "vacuum in PostgreSQL refers to dead tuple cleanup. It works by storage reclamation and transaction ID wraparound. Key characteristics include VACUUM, VACUUM FULL, autovacuum. Example: autovacuum_vacuum_scale_factor. Common pitfalls include transaction ID wraparound, freeze.",
+      "keywords": [
+        "vacuum",
+        "PostgreSQL programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of vacuum in a production environment?",
+        "What are the common pitfalls or issues associated with vacuum?"
+      ],
+      "related_concepts": [
+        "process architecture",
+        "WAL",
+        "MVCC implementation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-018",
+      "subject": "PostgreSQL",
+      "category": "Indexing",
+      "subcategory": "GiST",
+      "difficulty": "Medium",
+      "question": "What are the common issues with BRIN index in PostgreSQL and how do you debug them?",
+      "ideal_answer": "Common issues with BRIN index in PostgreSQL include: correlation requirement. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "BRIN index",
+        "troubleshooting",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to BRIN index?",
+        "What tools can assist in detecting problems with BRIN index at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "GIN index",
+        "GiST index",
+        "partial index"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-019",
+      "subject": "PostgreSQL",
+      "category": "Architecture",
+      "subcategory": "Processes",
+      "difficulty": "Medium",
+      "question": "Explain the difference between process architecture and MVCC implementation in PostgreSQL.",
+      "ideal_answer": "process architecture and MVCC implementation differ in several ways: process architecture is multi-process model (works by connection = process) whereas MVCC implementation is multi-version concurrency (works by reader doesn't block writer). process architecture is typically used for postmaster, backend processes, background writer, WAL writer, autovacuum, while MVCC implementation is used for xmin, xmax system columns, snapshot isolation. Example demonstrating process architecture: max_connections, shared_buffers. Example demonstrating MVCC implementation: SELECT xmin, xmax, * FROM table;.",
+      "keywords": [
+        "process architecture",
+        "MVCC implementation",
+        "comparison",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose process architecture over MVCC implementation?",
+        "What is the performance or memory difference between process architecture and MVCC implementation?"
+      ],
+      "related_concepts": [
+        "process architecture",
+        "MVCC implementation",
+        "WAL",
+        "vacuum"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-020",
+      "subject": "PostgreSQL",
+      "category": "Indexing",
+      "subcategory": "Hash",
+      "difficulty": "Medium",
+      "question": "What are the common issues with GiST index in PostgreSQL and how do you debug them?",
+      "ideal_answer": "Common issues with GiST index in PostgreSQL include: lossy indexing. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "GiST index",
+        "troubleshooting",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to GiST index?",
+        "What tools can assist in detecting problems with GiST index at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "GIN index",
+        "BRIN index",
+        "partial index"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-021",
+      "subject": "PostgreSQL",
+      "category": "Indexing",
+      "subcategory": "GiST",
+      "difficulty": "Medium",
+      "question": "Explain the difference between BRIN index and partial index in PostgreSQL.",
+      "ideal_answer": "BRIN index and partial index differ in several ways: BRIN index is Block Range Index (works by large sorted dataset indexing) whereas partial index is subset table indexing (works by indexing frequently accessed subset). BRIN index is typically used for summary per page range, tiny size, while partial index is used for WHERE clause in index definition. Example demonstrating BRIN index: CREATE INDEX idx ON measurements USING BRIN (created_at);. Example demonstrating partial index: CREATE INDEX idx ON orders (created_at) WHERE status = 'pending';.",
+      "keywords": [
+        "BRIN index",
+        "partial index",
+        "comparison",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose BRIN index over partial index?",
+        "What is the performance or memory difference between BRIN index and partial index?"
+      ],
+      "related_concepts": [
+        "BRIN index",
+        "partial index",
+        "GIN index",
+        "GiST index"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-022",
+      "subject": "PostgreSQL",
+      "category": "Architecture",
+      "subcategory": "Processes",
+      "difficulty": "Medium",
+      "question": "What is process architecture in PostgreSQL and how does it work?",
+      "ideal_answer": "process architecture in PostgreSQL refers to multi-process model. It works by connection = process. Key characteristics include postmaster, backend processes, background writer, WAL writer, autovacuum. Example: max_connections, shared_buffers. Common pitfalls include connection pooling necessity.",
+      "keywords": [
+        "process architecture",
+        "PostgreSQL programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of process architecture in a production environment?",
+        "What are the common pitfalls or issues associated with process architecture?"
+      ],
+      "related_concepts": [
+        "WAL",
+        "vacuum",
+        "MVCC implementation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-023",
+      "subject": "PostgreSQL",
+      "category": "Replication",
+      "subcategory": "Logical",
+      "difficulty": "Medium",
+      "question": "What is logical replication in PostgreSQL and how does it work?",
+      "ideal_answer": "logical replication in PostgreSQL refers to publish-subscribe replication. It works by selective table replication. Key characteristics include publication, subscription, replication slots. Example: CREATE PUBLICATION mypub FOR TABLE users, orders;. Common pitfalls include conflict resolution, DDL limitations.",
+      "keywords": [
+        "logical replication",
+        "PostgreSQL programming",
+        "replication"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of logical replication in a production environment?",
+        "What are the common pitfalls or issues associated with logical replication?"
+      ],
+      "related_concepts": [
+        "streaming replication"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-024",
+      "subject": "PostgreSQL",
+      "category": "Data Types",
+      "subcategory": "UUID",
+      "difficulty": "Medium",
+      "question": "What is range types in PostgreSQL and how does it work?",
+      "ideal_answer": "range types in PostgreSQL refers to interval data representation. It works by contiguous data ranges. Key characteristics include int4range, tsrange, daterange, overlap operators. Example: SELECT * FROM events WHERE during @> '2023-01-01'::date;. Common pitfalls include temporal ranges, exclusion constraints.",
+      "keywords": [
+        "range types",
+        "PostgreSQL programming",
+        "data types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of range types in a production environment?",
+        "What are the common pitfalls or issues associated with range types?"
+      ],
+      "related_concepts": [
+        "JSONB",
+        "arrays"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-025",
+      "subject": "PostgreSQL",
+      "category": "Replication",
+      "subcategory": "Streaming",
+      "difficulty": "Medium",
+      "question": "What is streaming replication in PostgreSQL and how does it work?",
+      "ideal_answer": "streaming replication in PostgreSQL refers to WAL-based replication. It works by hot standby, read scaling. Key characteristics include synchronous, asynchronous, cascading. Example: primary_conninfo, recovery.conf. Common pitfalls include replication lag monitoring.",
+      "keywords": [
+        "streaming replication",
+        "PostgreSQL programming",
+        "replication"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of streaming replication in a production environment?",
+        "What are the common pitfalls or issues associated with streaming replication?"
+      ],
+      "related_concepts": [
+        "logical replication"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-026",
+      "subject": "PostgreSQL",
+      "category": "Performance",
+      "subcategory": "VACUUM",
+      "difficulty": "Medium",
+      "question": "What are the common issues with partitioning in PostgreSQL and how do you debug them?",
+      "ideal_answer": "Common issues with partitioning in PostgreSQL include: partition pruning, partition-wise join. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "partitioning",
+        "troubleshooting",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to partitioning?",
+        "What tools can assist in detecting problems with partitioning at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "parallel query"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-027",
+      "subject": "PostgreSQL",
+      "category": "Indexing",
+      "subcategory": "Hash",
+      "difficulty": "Medium",
+      "question": "Explain the difference between GiST index and partial index in PostgreSQL.",
+      "ideal_answer": "GiST index and partial index differ in several ways: GiST index is Generalized Search Tree (works by balanced tree for complex data) whereas partial index is subset table indexing (works by indexing frequently accessed subset). GiST index is typically used for geometric, range, full-text, while partial index is used for WHERE clause in index definition. Example demonstrating GiST index: CREATE INDEX idx ON locations USING GiST (coordinates);. Example demonstrating partial index: CREATE INDEX idx ON orders (created_at) WHERE status = 'pending';.",
+      "keywords": [
+        "GiST index",
+        "partial index",
+        "comparison",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose GiST index over partial index?",
+        "What is the performance or memory difference between GiST index and partial index?"
+      ],
+      "related_concepts": [
+        "GiST index",
+        "partial index",
+        "GIN index",
+        "BRIN index"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-028",
+      "subject": "PostgreSQL",
+      "category": "Performance",
+      "subcategory": "EXPLAIN",
+      "difficulty": "Medium",
+      "question": "What are the common issues with parallel query in PostgreSQL and how do you debug them?",
+      "ideal_answer": "Common issues with parallel query in PostgreSQL include: when not to use parallel query. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "parallel query",
+        "troubleshooting",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to parallel query?",
+        "What tools can assist in detecting problems with parallel query at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "partitioning"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-029",
+      "subject": "PostgreSQL",
+      "category": "Indexing",
+      "subcategory": "GIN",
+      "difficulty": "Medium",
+      "question": "What are the common issues with partial index in PostgreSQL and how do you debug them?",
+      "ideal_answer": "Common issues with partial index in PostgreSQL include: smaller index, faster queries. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "partial index",
+        "troubleshooting",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to partial index?",
+        "What tools can assist in detecting problems with partial index at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "GIN index",
+        "GiST index",
+        "BRIN index"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-030",
+      "subject": "PostgreSQL",
+      "category": "Data Types",
+      "subcategory": "Arrays",
+      "difficulty": "Medium",
+      "question": "Explain the difference between JSONB and arrays in PostgreSQL.",
+      "ideal_answer": "JSONB and arrays differ in several ways: JSONB is binary JSON storage (works by efficient JSON querying and indexing) whereas arrays is native array support (works by multi-value columns). JSONB is typically used for decomposed binary format, GIN indexing, while arrays is used for array operators, indexing, unnest. Example demonstrating JSONB: SELECT data->>'name' FROM users WHERE data @> '{\"active\": true}';. Example demonstrating arrays: SELECT * FROM table WHERE tags && ARRAY['python', 'sql'];.",
+      "keywords": [
+        "JSONB",
+        "arrays",
+        "comparison",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose JSONB over arrays?",
+        "What is the performance or memory difference between JSONB and arrays?"
+      ],
+      "related_concepts": [
+        "JSONB",
+        "arrays",
+        "range types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-031",
+      "subject": "PostgreSQL",
+      "category": "Data Types",
+      "subcategory": "JSON/JSONB",
+      "difficulty": "Medium",
+      "question": "Explain the difference between arrays and range types in PostgreSQL.",
+      "ideal_answer": "arrays and range types differ in several ways: arrays is native array support (works by multi-value columns) whereas range types is interval data representation (works by contiguous data ranges). arrays is typically used for array operators, indexing, unnest, while range types is used for int4range, tsrange, daterange, overlap operators. Example demonstrating arrays: SELECT * FROM table WHERE tags && ARRAY['python', 'sql'];. Example demonstrating range types: SELECT * FROM events WHERE during @> '2023-01-01'::date;.",
+      "keywords": [
+        "arrays",
+        "range types",
+        "comparison",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose arrays over range types?",
+        "What is the performance or memory difference between arrays and range types?"
+      ],
+      "related_concepts": [
+        "arrays",
+        "range types",
+        "JSONB"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-032",
+      "subject": "PostgreSQL",
+      "category": "Architecture",
+      "subcategory": "Shared Memory",
+      "difficulty": "Medium",
+      "question": "Explain the difference between WAL and MVCC implementation in PostgreSQL.",
+      "ideal_answer": "WAL and MVCC implementation differ in several ways: WAL is Write-Ahead Logging (works by durability mechanism) whereas MVCC implementation is multi-version concurrency (works by reader doesn't block writer). WAL is typically used for changes written to log before data files, while MVCC implementation is used for xmin, xmax system columns, snapshot isolation. Example demonstrating WAL: wal_level, max_wal_size, archive_mode. Example demonstrating MVCC implementation: SELECT xmin, xmax, * FROM table;.",
+      "keywords": [
+        "WAL",
+        "MVCC implementation",
+        "comparison",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose WAL over MVCC implementation?",
+        "What is the performance or memory difference between WAL and MVCC implementation?"
+      ],
+      "related_concepts": [
+        "WAL",
+        "MVCC implementation",
+        "process architecture",
+        "vacuum"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-033",
+      "subject": "PostgreSQL",
+      "category": "Performance",
+      "subcategory": "EXPLAIN",
+      "difficulty": "Medium",
+      "question": "Explain the difference between parallel query and partitioning in PostgreSQL.",
+      "ideal_answer": "parallel query and partitioning differ in several ways: parallel query is multi-worker execution (works by CPU-intensive query acceleration) whereas partitioning is table splitting strategies (works by large table management). parallel query is typically used for parallel seq scan, parallel index scan, parallel join, while partitioning is used for declarative partitioning: range, list, hash. Example demonstrating parallel query: SET max_parallel_workers_per_gather = 4;. Example demonstrating partitioning: CREATE TABLE measurements (logdate date, peaktemp int) PARTITION BY RANGE (logdate);.",
+      "keywords": [
+        "parallel query",
+        "partitioning",
+        "comparison",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose parallel query over partitioning?",
+        "What is the performance or memory difference between parallel query and partitioning?"
+      ],
+      "related_concepts": [
+        "parallel query",
+        "partitioning"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-034",
+      "subject": "PostgreSQL",
+      "category": "Indexing",
+      "subcategory": "B-Tree",
+      "difficulty": "Medium",
+      "question": "Explain the difference between GIN index and BRIN index in PostgreSQL.",
+      "ideal_answer": "GIN index and BRIN index differ in several ways: GIN index is Generalized Inverted Index (works by composite value indexing) whereas BRIN index is Block Range Index (works by large sorted dataset indexing). GIN index is typically used for full-text search, array, jsonb, while BRIN index is used for summary per page range, tiny size. Example demonstrating GIN index: CREATE INDEX idx ON docs USING GIN (to_tsvector('english', content));. Example demonstrating BRIN index: CREATE INDEX idx ON measurements USING BRIN (created_at);.",
+      "keywords": [
+        "GIN index",
+        "BRIN index",
+        "comparison",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose GIN index over BRIN index?",
+        "What is the performance or memory difference between GIN index and BRIN index?"
+      ],
+      "related_concepts": [
+        "GIN index",
+        "BRIN index",
+        "GiST index",
+        "partial index"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-035",
+      "subject": "PostgreSQL",
+      "category": "Replication",
+      "subcategory": "Logical",
+      "difficulty": "Medium",
+      "question": "What are the common issues with logical replication in PostgreSQL and how do you debug them?",
+      "ideal_answer": "Common issues with logical replication in PostgreSQL include: conflict resolution, DDL limitations. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "logical replication",
+        "troubleshooting",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to logical replication?",
+        "What tools can assist in detecting problems with logical replication at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "streaming replication"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-036",
+      "subject": "PostgreSQL",
+      "category": "Architecture",
+      "subcategory": "WAL",
+      "difficulty": "Medium",
+      "question": "Explain the difference between vacuum and MVCC implementation in PostgreSQL.",
+      "ideal_answer": "vacuum and MVCC implementation differ in several ways: vacuum is dead tuple cleanup (works by storage reclamation and transaction ID wraparound) whereas MVCC implementation is multi-version concurrency (works by reader doesn't block writer). vacuum is typically used for VACUUM, VACUUM FULL, autovacuum, while MVCC implementation is used for xmin, xmax system columns, snapshot isolation. Example demonstrating vacuum: autovacuum_vacuum_scale_factor. Example demonstrating MVCC implementation: SELECT xmin, xmax, * FROM table;.",
+      "keywords": [
+        "vacuum",
+        "MVCC implementation",
+        "comparison",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose vacuum over MVCC implementation?",
+        "What is the performance or memory difference between vacuum and MVCC implementation?"
+      ],
+      "related_concepts": [
+        "vacuum",
+        "MVCC implementation",
+        "process architecture",
+        "WAL"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-037",
+      "subject": "PostgreSQL",
+      "category": "Advanced SQL",
+      "subcategory": "CTEs",
+      "difficulty": "Medium",
+      "question": "Explain the difference between LATERAL join and recursive CTE in PostgreSQL.",
+      "ideal_answer": "LATERAL join and recursive CTE differ in several ways: LATERAL join is correlated subquery in FROM (works by row-by-row dependent join) whereas recursive CTE is hierarchical query support (works by tree/graph traversal in SQL). LATERAL join is typically used for right side can reference left side, while recursive CTE is used for WITH RECURSIVE. Example demonstrating LATERAL join: SELECT u.name, p.title FROM users u, LATERAL (SELECT title FROM posts WHERE user_id = u.id ORDER BY created_at DESC LIMIT 3) p;. Example demonstrating recursive CTE: WITH RECURSIVE tree AS (SELECT id, name, 0 as depth FROM categories WHERE parent_id IS NULL UNION ALL SELECT c.id, c.name, t.depth + 1 FROM categories c JOIN tree t ON c.parent_id = t.id) SELECT * FROM tree;.",
+      "keywords": [
+        "LATERAL join",
+        "recursive CTE",
+        "comparison",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose LATERAL join over recursive CTE?",
+        "What is the performance or memory difference between LATERAL join and recursive CTE?"
+      ],
+      "related_concepts": [
+        "LATERAL join",
+        "recursive CTE"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-038",
+      "subject": "PostgreSQL",
+      "category": "Performance",
+      "subcategory": "VACUUM",
+      "difficulty": "Medium",
+      "question": "What is partitioning in PostgreSQL and how does it work?",
+      "ideal_answer": "partitioning in PostgreSQL refers to table splitting strategies. It works by large table management. Key characteristics include declarative partitioning: range, list, hash. Example: CREATE TABLE measurements (logdate date, peaktemp int) PARTITION BY RANGE (logdate);. Common pitfalls include partition pruning, partition-wise join.",
+      "keywords": [
+        "partitioning",
+        "PostgreSQL programming",
+        "performance"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of partitioning in a production environment?",
+        "What are the common pitfalls or issues associated with partitioning?"
+      ],
+      "related_concepts": [
+        "parallel query"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-039",
+      "subject": "PostgreSQL",
+      "category": "Architecture",
+      "subcategory": "Shared Memory",
+      "difficulty": "Medium",
+      "question": "What is WAL in PostgreSQL and how does it work?",
+      "ideal_answer": "WAL in PostgreSQL refers to Write-Ahead Logging. It works by durability mechanism. Key characteristics include changes written to log before data files. Example: wal_level, max_wal_size, archive_mode. Common pitfalls include WAL archiving for PITR.",
+      "keywords": [
+        "WAL",
+        "PostgreSQL programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of WAL in a production environment?",
+        "What are the common pitfalls or issues associated with WAL?"
+      ],
+      "related_concepts": [
+        "process architecture",
+        "vacuum",
+        "MVCC implementation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-040",
+      "subject": "PostgreSQL",
+      "category": "Indexing",
+      "subcategory": "GiST",
+      "difficulty": "Medium",
+      "question": "What is BRIN index in PostgreSQL and how does it work?",
+      "ideal_answer": "BRIN index in PostgreSQL refers to Block Range Index. It works by large sorted dataset indexing. Key characteristics include summary per page range, tiny size. Example: CREATE INDEX idx ON measurements USING BRIN (created_at);. Common pitfalls include correlation requirement.",
+      "keywords": [
+        "BRIN index",
+        "PostgreSQL programming",
+        "indexing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of BRIN index in a production environment?",
+        "What are the common pitfalls or issues associated with BRIN index?"
+      ],
+      "related_concepts": [
+        "GIN index",
+        "GiST index",
+        "partial index"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-041",
+      "subject": "PostgreSQL",
+      "category": "Advanced SQL",
+      "subcategory": "CTEs",
+      "difficulty": "Medium",
+      "question": "What is LATERAL join in PostgreSQL and how does it work?",
+      "ideal_answer": "LATERAL join in PostgreSQL refers to correlated subquery in FROM. It works by row-by-row dependent join. Key characteristics include right side can reference left side. Example: SELECT u.name, p.title FROM users u, LATERAL (SELECT title FROM posts WHERE user_id = u.id ORDER BY created_at DESC LIMIT 3) p;. Common pitfalls include vs correlated subquery performance.",
+      "keywords": [
+        "LATERAL join",
+        "PostgreSQL programming",
+        "advanced sql"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of LATERAL join in a production environment?",
+        "What are the common pitfalls or issues associated with LATERAL join?"
+      ],
+      "related_concepts": [
+        "recursive CTE"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PSQL-042",
+      "subject": "PostgreSQL",
+      "category": "Architecture",
+      "subcategory": "WAL",
+      "difficulty": "Hard",
+      "question": "What are the common issues with vacuum in PostgreSQL and how do you debug them?",
+      "ideal_answer": "Common issues with vacuum in PostgreSQL include: transaction ID wraparound, freeze. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "vacuum",
+        "troubleshooting",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to vacuum?",
+        "What tools can assist in detecting problems with vacuum at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "process architecture",
+        "WAL",
+        "MVCC implementation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "PSQL-043",
+      "subject": "PostgreSQL",
+      "category": "Indexing",
+      "subcategory": "Hash",
+      "difficulty": "Hard",
+      "question": "Explain the difference between GiST index and BRIN index in PostgreSQL.",
+      "ideal_answer": "GiST index and BRIN index differ in several ways: GiST index is Generalized Search Tree (works by balanced tree for complex data) whereas BRIN index is Block Range Index (works by large sorted dataset indexing). GiST index is typically used for geometric, range, full-text, while BRIN index is used for summary per page range, tiny size. Example demonstrating GiST index: CREATE INDEX idx ON locations USING GiST (coordinates);. Example demonstrating BRIN index: CREATE INDEX idx ON measurements USING BRIN (created_at);.",
+      "keywords": [
+        "GiST index",
+        "BRIN index",
+        "comparison",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose GiST index over BRIN index?",
+        "What is the performance or memory difference between GiST index and BRIN index?"
+      ],
+      "related_concepts": [
+        "GiST index",
+        "BRIN index",
+        "GIN index",
+        "partial index"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "PSQL-044",
+      "subject": "PostgreSQL",
+      "category": "Architecture",
+      "subcategory": "Vacuum",
+      "difficulty": "Hard",
+      "question": "What is MVCC implementation in PostgreSQL and how does it work?",
+      "ideal_answer": "MVCC implementation in PostgreSQL refers to multi-version concurrency. It works by reader doesn't block writer. Key characteristics include xmin, xmax system columns, snapshot isolation. Example: SELECT xmin, xmax, * FROM table;. Common pitfalls include bloat from dead tuples.",
+      "keywords": [
+        "MVCC implementation",
+        "PostgreSQL programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of MVCC implementation in a production environment?",
+        "What are the common pitfalls or issues associated with MVCC implementation?"
+      ],
+      "related_concepts": [
+        "process architecture",
+        "WAL",
+        "vacuum"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "PSQL-045",
+      "subject": "PostgreSQL",
+      "category": "Architecture",
+      "subcategory": "Processes",
+      "difficulty": "Hard",
+      "question": "Explain the difference between process architecture and WAL in PostgreSQL.",
+      "ideal_answer": "process architecture and WAL differ in several ways: process architecture is multi-process model (works by connection = process) whereas WAL is Write-Ahead Logging (works by durability mechanism). process architecture is typically used for postmaster, backend processes, background writer, WAL writer, autovacuum, while WAL is used for changes written to log before data files. Example demonstrating process architecture: max_connections, shared_buffers. Example demonstrating WAL: wal_level, max_wal_size, archive_mode.",
+      "keywords": [
+        "process architecture",
+        "WAL",
+        "comparison",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose process architecture over WAL?",
+        "What is the performance or memory difference between process architecture and WAL?"
+      ],
+      "related_concepts": [
+        "process architecture",
+        "WAL",
+        "vacuum",
+        "MVCC implementation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "PSQL-046",
+      "subject": "PostgreSQL",
+      "category": "Data Types",
+      "subcategory": "Arrays",
+      "difficulty": "Hard",
+      "question": "What is JSONB in PostgreSQL and how does it work?",
+      "ideal_answer": "JSONB in PostgreSQL refers to binary JSON storage. It works by efficient JSON querying and indexing. Key characteristics include decomposed binary format, GIN indexing. Example: SELECT data->>'name' FROM users WHERE data @> '{\"active\": true}';. Common pitfalls include JSON vs JSONB: storage and performance.",
+      "keywords": [
+        "JSONB",
+        "PostgreSQL programming",
+        "data types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of JSONB in a production environment?",
+        "What are the common pitfalls or issues associated with JSONB?"
+      ],
+      "related_concepts": [
+        "arrays",
+        "range types"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "PSQL-047",
+      "subject": "PostgreSQL",
+      "category": "Data Types",
+      "subcategory": "Arrays",
+      "difficulty": "Hard",
+      "question": "What are the common issues with JSONB in PostgreSQL and how do you debug them?",
+      "ideal_answer": "Common issues with JSONB in PostgreSQL include: JSON vs JSONB: storage and performance. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "JSONB",
+        "troubleshooting",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to JSONB?",
+        "What tools can assist in detecting problems with JSONB at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "arrays",
+        "range types"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "PSQL-048",
+      "subject": "PostgreSQL",
+      "category": "Data Types",
+      "subcategory": "JSON/JSONB",
+      "difficulty": "Hard",
+      "question": "What are the common issues with arrays in PostgreSQL and how do you debug them?",
+      "ideal_answer": "Common issues with arrays in PostgreSQL include: multidimensional arrays. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "arrays",
+        "troubleshooting",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to arrays?",
+        "What tools can assist in detecting problems with arrays at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "JSONB",
+        "range types"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "PSQL-049",
+      "subject": "PostgreSQL",
+      "category": "Performance",
+      "subcategory": "EXPLAIN",
+      "difficulty": "Hard",
+      "question": "What is parallel query in PostgreSQL and how does it work?",
+      "ideal_answer": "parallel query in PostgreSQL refers to multi-worker execution. It works by CPU-intensive query acceleration. Key characteristics include parallel seq scan, parallel index scan, parallel join. Example: SET max_parallel_workers_per_gather = 4;. Common pitfalls include when not to use parallel query.",
+      "keywords": [
+        "parallel query",
+        "PostgreSQL programming",
+        "performance"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of parallel query in a production environment?",
+        "What are the common pitfalls or issues associated with parallel query?"
+      ],
+      "related_concepts": [
+        "partitioning"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "PSQL-050",
+      "subject": "PostgreSQL",
+      "category": "Architecture",
+      "subcategory": "Processes",
+      "difficulty": "Hard",
+      "question": "What are the common issues with process architecture in PostgreSQL and how do you debug them?",
+      "ideal_answer": "Common issues with process architecture in PostgreSQL include: connection pooling necessity. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "process architecture",
+        "troubleshooting",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to process architecture?",
+        "What tools can assist in detecting problems with process architecture at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "WAL",
+        "vacuum",
+        "MVCC implementation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "PSQL-051",
+      "subject": "PostgreSQL",
+      "category": "Architecture",
+      "subcategory": "Vacuum",
+      "difficulty": "Hard",
+      "question": "What are the common issues with MVCC implementation in PostgreSQL and how do you debug them?",
+      "ideal_answer": "Common issues with MVCC implementation in PostgreSQL include: bloat from dead tuples. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "MVCC implementation",
+        "troubleshooting",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to MVCC implementation?",
+        "What tools can assist in detecting problems with MVCC implementation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "process architecture",
+        "WAL",
+        "vacuum"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "PSQL-052",
+      "subject": "PostgreSQL",
+      "category": "Advanced SQL",
+      "subcategory": "Window Functions",
+      "difficulty": "Hard",
+      "question": "What are the common issues with recursive CTE in PostgreSQL and how do you debug them?",
+      "ideal_answer": "Common issues with recursive CTE in PostgreSQL include: cycle detection. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "recursive CTE",
+        "troubleshooting",
+        "PostgreSQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to recursive CTE?",
+        "What tools can assist in detecting problems with recursive CTE at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "LATERAL join"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

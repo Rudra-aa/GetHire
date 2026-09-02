@@ -1,0 +1,391 @@
+{
+  "metadata": {
+    "subject": "Computer Vision",
+    "domain": "Artificial Intelligence",
+    "total_questions": 14,
+    "difficulty_distribution": {
+      "Easy": 4,
+      "Medium": 7,
+      "Hard": 3
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "CV-001",
+      "subject": "Computer Vision",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Easy",
+      "question": "Explain the difference between object detection and semantic segmentation in Computer Vision.",
+      "ideal_answer": "object detection and semantic segmentation differ in several ways: object detection is object localization and classification (works by bounding box + class prediction) whereas semantic segmentation is pixel-level classification (works by class label for each pixel). object detection is typically used for R-CNN, Fast R-CNN, Faster R-CNN, YOLO, SSD, while semantic segmentation is used for FCN, U-Net, DeepLab, Mask R-CNN. Example demonstrating object detection: IoU, mAP metrics. Example demonstrating semantic segmentation: dice loss, IoU loss.",
+      "keywords": [
+        "object detection",
+        "semantic segmentation",
+        "comparison",
+        "Computer Vision"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose object detection over semantic segmentation?",
+        "What is the performance or memory difference between object detection and semantic segmentation?"
+      ],
+      "related_concepts": [
+        "object detection",
+        "semantic segmentation",
+        "image classification"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CV-002",
+      "subject": "Computer Vision",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Easy",
+      "question": "What are the common issues with feature extraction in Computer Vision and how do you debug them?",
+      "ideal_answer": "Common issues with feature extraction in Computer Vision include: self-supervised pretraining. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "feature extraction",
+        "troubleshooting",
+        "Computer Vision"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to feature extraction?",
+        "What tools can assist in detecting problems with feature extraction at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "image augmentation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CV-003",
+      "subject": "Computer Vision",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Easy",
+      "question": "Explain the difference between image classification and semantic segmentation in Computer Vision.",
+      "ideal_answer": "image classification and semantic segmentation differ in several ways: image classification is object category prediction (works by assigning labels to images) whereas semantic segmentation is pixel-level classification (works by class label for each pixel). image classification is typically used for single label, multi-label, hierarchical, while semantic segmentation is used for FCN, U-Net, DeepLab, Mask R-CNN. Example demonstrating image classification: ImageNet challenge, top-1/top-5 accuracy. Example demonstrating semantic segmentation: dice loss, IoU loss.",
+      "keywords": [
+        "image classification",
+        "semantic segmentation",
+        "comparison",
+        "Computer Vision"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose image classification over semantic segmentation?",
+        "What is the performance or memory difference between image classification and semantic segmentation?"
+      ],
+      "related_concepts": [
+        "image classification",
+        "semantic segmentation",
+        "object detection"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CV-004",
+      "subject": "Computer Vision",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Easy",
+      "question": "Explain the difference between image classification and object detection in Computer Vision.",
+      "ideal_answer": "image classification and object detection differ in several ways: image classification is object category prediction (works by assigning labels to images) whereas object detection is object localization and classification (works by bounding box + class prediction). image classification is typically used for single label, multi-label, hierarchical, while object detection is used for R-CNN, Fast R-CNN, Faster R-CNN, YOLO, SSD. Example demonstrating image classification: ImageNet challenge, top-1/top-5 accuracy. Example demonstrating object detection: IoU, mAP metrics.",
+      "keywords": [
+        "image classification",
+        "object detection",
+        "comparison",
+        "Computer Vision"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose image classification over object detection?",
+        "What is the performance or memory difference between image classification and object detection?"
+      ],
+      "related_concepts": [
+        "image classification",
+        "object detection",
+        "semantic segmentation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CV-005",
+      "subject": "Computer Vision",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "Explain the difference between image augmentation and feature extraction in Computer Vision.",
+      "ideal_answer": "image augmentation and feature extraction differ in several ways: image augmentation is training data diversity (works by geometric and photometric transforms) whereas feature extraction is meaningful representation learning (works by transferable visual features). image augmentation is typically used for flip, rotate, crop, color jitter, cutout, mixup, while feature extraction is used for pretrained CNN backbone, ViT patches. Example demonstrating image augmentation: Albumentations library. Example demonstrating feature extraction: ResNet50 features for downstream tasks.",
+      "keywords": [
+        "image augmentation",
+        "feature extraction",
+        "comparison",
+        "Computer Vision"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose image augmentation over feature extraction?",
+        "What is the performance or memory difference between image augmentation and feature extraction?"
+      ],
+      "related_concepts": [
+        "image augmentation",
+        "feature extraction"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CV-006",
+      "subject": "Computer Vision",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Medium",
+      "question": "What is feature extraction in Computer Vision and how does it work?",
+      "ideal_answer": "feature extraction in Computer Vision refers to meaningful representation learning. It works by transferable visual features. Key characteristics include pretrained CNN backbone, ViT patches. Example: ResNet50 features for downstream tasks. Common pitfalls include self-supervised pretraining.",
+      "keywords": [
+        "feature extraction",
+        "Computer Vision programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of feature extraction in a production environment?",
+        "What are the common pitfalls or issues associated with feature extraction?"
+      ],
+      "related_concepts": [
+        "image augmentation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CV-007",
+      "subject": "Computer Vision",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What are the common issues with semantic segmentation in Computer Vision and how do you debug them?",
+      "ideal_answer": "Common issues with semantic segmentation in Computer Vision include: instance vs semantic segmentation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "semantic segmentation",
+        "troubleshooting",
+        "Computer Vision"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to semantic segmentation?",
+        "What tools can assist in detecting problems with semantic segmentation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "image classification",
+        "object detection"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CV-008",
+      "subject": "Computer Vision",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Medium",
+      "question": "What is object detection in Computer Vision and how does it work?",
+      "ideal_answer": "object detection in Computer Vision refers to object localization and classification. It works by bounding box + class prediction. Key characteristics include R-CNN, Fast R-CNN, Faster R-CNN, YOLO, SSD. Example: IoU, mAP metrics. Common pitfalls include anchor boxes, NMS.",
+      "keywords": [
+        "object detection",
+        "Computer Vision programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of object detection in a production environment?",
+        "What are the common pitfalls or issues associated with object detection?"
+      ],
+      "related_concepts": [
+        "image classification",
+        "semantic segmentation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CV-009",
+      "subject": "Computer Vision",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "What is image augmentation in Computer Vision and how does it work?",
+      "ideal_answer": "image augmentation in Computer Vision refers to training data diversity. It works by geometric and photometric transforms. Key characteristics include flip, rotate, crop, color jitter, cutout, mixup. Example: Albumentations library. Common pitfalls include autoaugment, randaugment.",
+      "keywords": [
+        "image augmentation",
+        "Computer Vision programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of image augmentation in a production environment?",
+        "What are the common pitfalls or issues associated with image augmentation?"
+      ],
+      "related_concepts": [
+        "feature extraction"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CV-010",
+      "subject": "Computer Vision",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Medium",
+      "question": "What are the common issues with object detection in Computer Vision and how do you debug them?",
+      "ideal_answer": "Common issues with object detection in Computer Vision include: anchor boxes, NMS. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "object detection",
+        "troubleshooting",
+        "Computer Vision"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to object detection?",
+        "What tools can assist in detecting problems with object detection at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "image classification",
+        "semantic segmentation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CV-011",
+      "subject": "Computer Vision",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What is semantic segmentation in Computer Vision and how does it work?",
+      "ideal_answer": "semantic segmentation in Computer Vision refers to pixel-level classification. It works by class label for each pixel. Key characteristics include FCN, U-Net, DeepLab, Mask R-CNN. Example: dice loss, IoU loss. Common pitfalls include instance vs semantic segmentation.",
+      "keywords": [
+        "semantic segmentation",
+        "Computer Vision programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of semantic segmentation in a production environment?",
+        "What are the common pitfalls or issues associated with semantic segmentation?"
+      ],
+      "related_concepts": [
+        "image classification",
+        "object detection"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CV-012",
+      "subject": "Computer Vision",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What is image classification in Computer Vision and how does it work?",
+      "ideal_answer": "image classification in Computer Vision refers to object category prediction. It works by assigning labels to images. Key characteristics include single label, multi-label, hierarchical. Example: ImageNet challenge, top-1/top-5 accuracy. Common pitfalls include open set recognition.",
+      "keywords": [
+        "image classification",
+        "Computer Vision programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of image classification in a production environment?",
+        "What are the common pitfalls or issues associated with image classification?"
+      ],
+      "related_concepts": [
+        "object detection",
+        "semantic segmentation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CV-013",
+      "subject": "Computer Vision",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What are the common issues with image classification in Computer Vision and how do you debug them?",
+      "ideal_answer": "Common issues with image classification in Computer Vision include: open set recognition. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "image classification",
+        "troubleshooting",
+        "Computer Vision"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to image classification?",
+        "What tools can assist in detecting problems with image classification at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "object detection",
+        "semantic segmentation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CV-014",
+      "subject": "Computer Vision",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Hard",
+      "question": "What are the common issues with image augmentation in Computer Vision and how do you debug them?",
+      "ideal_answer": "Common issues with image augmentation in Computer Vision include: autoaugment, randaugment. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "image augmentation",
+        "troubleshooting",
+        "Computer Vision"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to image augmentation?",
+        "What tools can assist in detecting problems with image augmentation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "feature extraction"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

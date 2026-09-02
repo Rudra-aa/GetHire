@@ -1,0 +1,497 @@
+{
+  "metadata": {
+    "subject": "Transformers",
+    "domain": "Artificial Intelligence",
+    "total_questions": 18,
+    "difficulty_distribution": {
+      "Easy": 5,
+      "Medium": 9,
+      "Hard": 4
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "TRANS-001",
+      "subject": "Transformers",
+      "category": "Architecture",
+      "subcategory": "Implementation",
+      "difficulty": "Easy",
+      "question": "What is GPT in Transformers and how does it work?",
+      "ideal_answer": "GPT in Transformers refers to generative pre-trained transformer. It works by autoregressive language modeling. Key characteristics include left-to-right context, next token prediction. Example: GPT-3: 175B parameters, few-shot learning. Common pitfalls include emergent abilities, in-context learning.",
+      "keywords": [
+        "GPT",
+        "Transformers programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of GPT in a production environment?",
+        "What are the common pitfalls or issues associated with GPT?"
+      ],
+      "related_concepts": [
+        "Transformer architecture",
+        "BERT"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TRANS-002",
+      "subject": "Transformers",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Easy",
+      "question": "What are the common issues with BERT in Transformers and how do you debug them?",
+      "ideal_answer": "Common issues with BERT in Transformers include: WordPiece tokenization. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "BERT",
+        "troubleshooting",
+        "Transformers"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to BERT?",
+        "What tools can assist in detecting problems with BERT at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Transformer architecture",
+        "GPT"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TRANS-003",
+      "subject": "Transformers",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Easy",
+      "question": "What is positional encoding in Transformers and how does it work?",
+      "ideal_answer": "positional encoding in Transformers refers to sequence order injection. It works by adding position information. Key characteristics include sinusoidal or learned embeddings. Example: PE(pos, 2i) = sin(pos / 10000^(2i/d_model)). Common pitfalls include relative positional encodings.",
+      "keywords": [
+        "positional encoding",
+        "Transformers programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of positional encoding in a production environment?",
+        "What are the common pitfalls or issues associated with positional encoding?"
+      ],
+      "related_concepts": [
+        "self-attention",
+        "multi-head attention"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TRANS-004",
+      "subject": "Transformers",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Easy",
+      "question": "What is Transformer architecture in Transformers and how does it work?",
+      "ideal_answer": "Transformer architecture in Transformers refers to attention-based sequence model. It works by encoder-decoder or encoder-only or decoder-only. Key characteristics include self-attention, feed-forward, layer norm, residual. Example: BERT (encoder), GPT (decoder), T5 (encoder-decoder). Common pitfalls include scaling laws.",
+      "keywords": [
+        "Transformer architecture",
+        "Transformers programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Transformer architecture in a production environment?",
+        "What are the common pitfalls or issues associated with Transformer architecture?"
+      ],
+      "related_concepts": [
+        "BERT",
+        "GPT"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TRANS-005",
+      "subject": "Transformers",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Easy",
+      "question": "What are the common issues with positional encoding in Transformers and how do you debug them?",
+      "ideal_answer": "Common issues with positional encoding in Transformers include: relative positional encodings. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "positional encoding",
+        "troubleshooting",
+        "Transformers"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to positional encoding?",
+        "What tools can assist in detecting problems with positional encoding at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "self-attention",
+        "multi-head attention"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TRANS-006",
+      "subject": "Transformers",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Medium",
+      "question": "Explain the difference between self-attention and positional encoding in Transformers.",
+      "ideal_answer": "self-attention and positional encoding differ in several ways: self-attention is intra-sequence attention (works by relating positions within sequence) whereas positional encoding is sequence order injection (works by adding position information). self-attention is typically used for Query, Key, Value matrices, softmax normalization, while positional encoding is used for sinusoidal or learned embeddings. Example demonstrating self-attention: Attention(Q,K,V) = softmax(QK^T / sqrt(d_k))V. Example demonstrating positional encoding: PE(pos, 2i) = sin(pos / 10000^(2i/d_model)).",
+      "keywords": [
+        "self-attention",
+        "positional encoding",
+        "comparison",
+        "Transformers"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose self-attention over positional encoding?",
+        "What is the performance or memory difference between self-attention and positional encoding?"
+      ],
+      "related_concepts": [
+        "self-attention",
+        "positional encoding",
+        "multi-head attention"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TRANS-007",
+      "subject": "Transformers",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Transformer architecture and GPT in Transformers.",
+      "ideal_answer": "Transformer architecture and GPT differ in several ways: Transformer architecture is attention-based sequence model (works by encoder-decoder or encoder-only or decoder-only) whereas GPT is generative pre-trained transformer (works by autoregressive language modeling). Transformer architecture is typically used for self-attention, feed-forward, layer norm, residual, while GPT is used for left-to-right context, next token prediction. Example demonstrating Transformer architecture: BERT (encoder), GPT (decoder), T5 (encoder-decoder). Example demonstrating GPT: GPT-3: 175B parameters, few-shot learning.",
+      "keywords": [
+        "Transformer architecture",
+        "GPT",
+        "comparison",
+        "Transformers"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Transformer architecture over GPT?",
+        "What is the performance or memory difference between Transformer architecture and GPT?"
+      ],
+      "related_concepts": [
+        "Transformer architecture",
+        "GPT",
+        "BERT"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TRANS-008",
+      "subject": "Transformers",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Medium",
+      "question": "Explain the difference between self-attention and multi-head attention in Transformers.",
+      "ideal_answer": "self-attention and multi-head attention differ in several ways: self-attention is intra-sequence attention (works by relating positions within sequence) whereas multi-head attention is parallel attention mechanisms (works by diverse representation subspaces). self-attention is typically used for Query, Key, Value matrices, softmax normalization, while multi-head attention is used for h heads with different W_Q, W_K, W_V. Example demonstrating self-attention: Attention(Q,K,V) = softmax(QK^T / sqrt(d_k))V. Example demonstrating multi-head attention: MultiHead(Q,K,V) = Concat(head_1,...,head_h)W^O.",
+      "keywords": [
+        "self-attention",
+        "multi-head attention",
+        "comparison",
+        "Transformers"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose self-attention over multi-head attention?",
+        "What is the performance or memory difference between self-attention and multi-head attention?"
+      ],
+      "related_concepts": [
+        "self-attention",
+        "multi-head attention",
+        "positional encoding"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TRANS-009",
+      "subject": "Transformers",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Transformer architecture in Transformers and how do you debug them?",
+      "ideal_answer": "Common issues with Transformer architecture in Transformers include: scaling laws. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Transformer architecture",
+        "troubleshooting",
+        "Transformers"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Transformer architecture?",
+        "What tools can assist in detecting problems with Transformer architecture at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "BERT",
+        "GPT"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TRANS-010",
+      "subject": "Transformers",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Transformer architecture and BERT in Transformers.",
+      "ideal_answer": "Transformer architecture and BERT differ in several ways: Transformer architecture is attention-based sequence model (works by encoder-decoder or encoder-only or decoder-only) whereas BERT is bidirectional encoder representations (works by pretraining + fine-tuning paradigm). Transformer architecture is typically used for self-attention, feed-forward, layer norm, residual, while BERT is used for MLM (masked language modeling), NSP (next sentence prediction). Example demonstrating Transformer architecture: BERT (encoder), GPT (decoder), T5 (encoder-decoder). Example demonstrating BERT: [CLS] token for classification.",
+      "keywords": [
+        "Transformer architecture",
+        "BERT",
+        "comparison",
+        "Transformers"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Transformer architecture over BERT?",
+        "What is the performance or memory difference between Transformer architecture and BERT?"
+      ],
+      "related_concepts": [
+        "Transformer architecture",
+        "BERT",
+        "GPT"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TRANS-011",
+      "subject": "Transformers",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Medium",
+      "question": "What are the common issues with self-attention in Transformers and how do you debug them?",
+      "ideal_answer": "Common issues with self-attention in Transformers include: O(n^2) complexity. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "self-attention",
+        "troubleshooting",
+        "Transformers"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to self-attention?",
+        "What tools can assist in detecting problems with self-attention at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "multi-head attention",
+        "positional encoding"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TRANS-012",
+      "subject": "Transformers",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Medium",
+      "question": "What is BERT in Transformers and how does it work?",
+      "ideal_answer": "BERT in Transformers refers to bidirectional encoder representations. It works by pretraining + fine-tuning paradigm. Key characteristics include MLM (masked language modeling), NSP (next sentence prediction). Example: [CLS] token for classification. Common pitfalls include WordPiece tokenization.",
+      "keywords": [
+        "BERT",
+        "Transformers programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of BERT in a production environment?",
+        "What are the common pitfalls or issues associated with BERT?"
+      ],
+      "related_concepts": [
+        "Transformer architecture",
+        "GPT"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TRANS-013",
+      "subject": "Transformers",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Medium",
+      "question": "What is multi-head attention in Transformers and how does it work?",
+      "ideal_answer": "multi-head attention in Transformers refers to parallel attention mechanisms. It works by diverse representation subspaces. Key characteristics include h heads with different W_Q, W_K, W_V. Example: MultiHead(Q,K,V) = Concat(head_1,...,head_h)W^O. Common pitfalls include head specialization.",
+      "keywords": [
+        "multi-head attention",
+        "Transformers programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of multi-head attention in a production environment?",
+        "What are the common pitfalls or issues associated with multi-head attention?"
+      ],
+      "related_concepts": [
+        "self-attention",
+        "positional encoding"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TRANS-014",
+      "subject": "Transformers",
+      "category": "Architecture",
+      "subcategory": "Implementation",
+      "difficulty": "Medium",
+      "question": "What are the common issues with GPT in Transformers and how do you debug them?",
+      "ideal_answer": "Common issues with GPT in Transformers include: emergent abilities, in-context learning. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "GPT",
+        "troubleshooting",
+        "Transformers"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to GPT?",
+        "What tools can assist in detecting problems with GPT at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Transformer architecture",
+        "BERT"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TRANS-015",
+      "subject": "Transformers",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Hard",
+      "question": "Explain the difference between BERT and GPT in Transformers.",
+      "ideal_answer": "BERT and GPT differ in several ways: BERT is bidirectional encoder representations (works by pretraining + fine-tuning paradigm) whereas GPT is generative pre-trained transformer (works by autoregressive language modeling). BERT is typically used for MLM (masked language modeling), NSP (next sentence prediction), while GPT is used for left-to-right context, next token prediction. Example demonstrating BERT: [CLS] token for classification. Example demonstrating GPT: GPT-3: 175B parameters, few-shot learning.",
+      "keywords": [
+        "BERT",
+        "GPT",
+        "comparison",
+        "Transformers"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose BERT over GPT?",
+        "What is the performance or memory difference between BERT and GPT?"
+      ],
+      "related_concepts": [
+        "BERT",
+        "GPT",
+        "Transformer architecture"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TRANS-016",
+      "subject": "Transformers",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Hard",
+      "question": "Explain the difference between multi-head attention and positional encoding in Transformers.",
+      "ideal_answer": "multi-head attention and positional encoding differ in several ways: multi-head attention is parallel attention mechanisms (works by diverse representation subspaces) whereas positional encoding is sequence order injection (works by adding position information). multi-head attention is typically used for h heads with different W_Q, W_K, W_V, while positional encoding is used for sinusoidal or learned embeddings. Example demonstrating multi-head attention: MultiHead(Q,K,V) = Concat(head_1,...,head_h)W^O. Example demonstrating positional encoding: PE(pos, 2i) = sin(pos / 10000^(2i/d_model)).",
+      "keywords": [
+        "multi-head attention",
+        "positional encoding",
+        "comparison",
+        "Transformers"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose multi-head attention over positional encoding?",
+        "What is the performance or memory difference between multi-head attention and positional encoding?"
+      ],
+      "related_concepts": [
+        "multi-head attention",
+        "positional encoding",
+        "self-attention"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TRANS-017",
+      "subject": "Transformers",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What is self-attention in Transformers and how does it work?",
+      "ideal_answer": "self-attention in Transformers refers to intra-sequence attention. It works by relating positions within sequence. Key characteristics include Query, Key, Value matrices, softmax normalization. Example: Attention(Q,K,V) = softmax(QK^T / sqrt(d_k))V. Common pitfalls include O(n^2) complexity.",
+      "keywords": [
+        "self-attention",
+        "Transformers programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of self-attention in a production environment?",
+        "What are the common pitfalls or issues associated with self-attention?"
+      ],
+      "related_concepts": [
+        "multi-head attention",
+        "positional encoding"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TRANS-018",
+      "subject": "Transformers",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Hard",
+      "question": "What are the common issues with multi-head attention in Transformers and how do you debug them?",
+      "ideal_answer": "Common issues with multi-head attention in Transformers include: head specialization. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "multi-head attention",
+        "troubleshooting",
+        "Transformers"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to multi-head attention?",
+        "What tools can assist in detecting problems with multi-head attention at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "self-attention",
+        "positional encoding"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

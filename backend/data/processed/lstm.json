@@ -1,0 +1,272 @@
+{
+  "metadata": {
+    "subject": "LSTM",
+    "domain": "Artificial Intelligence",
+    "total_questions": 9,
+    "difficulty_distribution": {
+      "Easy": 2,
+      "Medium": 5,
+      "Hard": 2
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "LSTM-001",
+      "subject": "LSTM",
+      "category": "Architecture",
+      "subcategory": "Implementation",
+      "difficulty": "Easy",
+      "question": "What is GRU in LSTM and how does it work?",
+      "ideal_answer": "GRU in LSTM refers to gated recurrent unit. It works by simplified LSTM variant. Key characteristics include update gate, reset gate; no separate cell state. Example: z_t = sigmoid(W_z · [h_{t-1}, x_t]); r_t = sigmoid(W_r · [h_{t-1}, x_t]). Common pitfalls include LSTM vs GRU performance.",
+      "keywords": [
+        "GRU",
+        "LSTM programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of GRU in a production environment?",
+        "What are the common pitfalls or issues associated with GRU?"
+      ],
+      "related_concepts": [
+        "LSTM cell",
+        "cell state"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "LSTM-002",
+      "subject": "LSTM",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Easy",
+      "question": "What are the common issues with cell state in LSTM and how do you debug them?",
+      "ideal_answer": "Common issues with cell state in LSTM include: long-term dependency learning. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "cell state",
+        "troubleshooting",
+        "LSTM"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to cell state?",
+        "What tools can assist in detecting problems with cell state at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "LSTM cell",
+        "GRU"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "LSTM-003",
+      "subject": "LSTM",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "What is LSTM cell in LSTM and how does it work?",
+      "ideal_answer": "LSTM cell in LSTM refers to long short-term memory. It works by gated recurrent architecture. Key characteristics include forget gate, input gate, output gate, cell state. Example: f_t = sigmoid(W_f · [h_{t-1}, x_t] + b_f). Common pitfalls include peephole connections.",
+      "keywords": [
+        "LSTM cell",
+        "LSTM programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of LSTM cell in a production environment?",
+        "What are the common pitfalls or issues associated with LSTM cell?"
+      ],
+      "related_concepts": [
+        "cell state",
+        "GRU"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LSTM-004",
+      "subject": "LSTM",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What are the common issues with GRU in LSTM and how do you debug them?",
+      "ideal_answer": "Common issues with GRU in LSTM include: LSTM vs GRU performance. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "GRU",
+        "troubleshooting",
+        "LSTM"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to GRU?",
+        "What tools can assist in detecting problems with GRU at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "LSTM cell",
+        "cell state"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LSTM-005",
+      "subject": "LSTM",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Medium",
+      "question": "Explain the difference between LSTM cell and GRU in LSTM.",
+      "ideal_answer": "LSTM cell and GRU differ in several ways: LSTM cell is long short-term memory (works by gated recurrent architecture) whereas GRU is gated recurrent unit (works by simplified LSTM variant). LSTM cell is typically used for forget gate, input gate, output gate, cell state, while GRU is used for update gate, reset gate; no separate cell state. Example demonstrating LSTM cell: f_t = sigmoid(W_f · [h_{t-1}, x_t] + b_f). Example demonstrating GRU: z_t = sigmoid(W_z · [h_{t-1}, x_t]); r_t = sigmoid(W_r · [h_{t-1}, x_t]).",
+      "keywords": [
+        "LSTM cell",
+        "GRU",
+        "comparison",
+        "LSTM"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose LSTM cell over GRU?",
+        "What is the performance or memory difference between LSTM cell and GRU?"
+      ],
+      "related_concepts": [
+        "LSTM cell",
+        "GRU",
+        "cell state"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LSTM-006",
+      "subject": "LSTM",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Medium",
+      "question": "Explain the difference between LSTM cell and cell state in LSTM.",
+      "ideal_answer": "LSTM cell and cell state differ in several ways: LSTM cell is long short-term memory (works by gated recurrent architecture) whereas cell state is memory highway (works by linear information flow). LSTM cell is typically used for forget gate, input gate, output gate, cell state, while cell state is used for additive updates, minimal gradient flow obstruction. Example demonstrating LSTM cell: f_t = sigmoid(W_f · [h_{t-1}, x_t] + b_f). Example demonstrating cell state: C_t = f_t * C_{t-1} + i_t * tanh(W_C · [h_{t-1}, x_t] + b_C).",
+      "keywords": [
+        "LSTM cell",
+        "cell state",
+        "comparison",
+        "LSTM"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose LSTM cell over cell state?",
+        "What is the performance or memory difference between LSTM cell and cell state?"
+      ],
+      "related_concepts": [
+        "LSTM cell",
+        "cell state",
+        "GRU"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LSTM-007",
+      "subject": "LSTM",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "What are the common issues with LSTM cell in LSTM and how do you debug them?",
+      "ideal_answer": "Common issues with LSTM cell in LSTM include: peephole connections. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "LSTM cell",
+        "troubleshooting",
+        "LSTM"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to LSTM cell?",
+        "What tools can assist in detecting problems with LSTM cell at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "cell state",
+        "GRU"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LSTM-008",
+      "subject": "LSTM",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Hard",
+      "question": "What is cell state in LSTM and how does it work?",
+      "ideal_answer": "cell state in LSTM refers to memory highway. It works by linear information flow. Key characteristics include additive updates, minimal gradient flow obstruction. Example: C_t = f_t * C_{t-1} + i_t * tanh(W_C · [h_{t-1}, x_t] + b_C). Common pitfalls include long-term dependency learning.",
+      "keywords": [
+        "cell state",
+        "LSTM programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of cell state in a production environment?",
+        "What are the common pitfalls or issues associated with cell state?"
+      ],
+      "related_concepts": [
+        "LSTM cell",
+        "GRU"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "LSTM-009",
+      "subject": "LSTM",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Hard",
+      "question": "Explain the difference between cell state and GRU in LSTM.",
+      "ideal_answer": "cell state and GRU differ in several ways: cell state is memory highway (works by linear information flow) whereas GRU is gated recurrent unit (works by simplified LSTM variant). cell state is typically used for additive updates, minimal gradient flow obstruction, while GRU is used for update gate, reset gate; no separate cell state. Example demonstrating cell state: C_t = f_t * C_{t-1} + i_t * tanh(W_C · [h_{t-1}, x_t] + b_C). Example demonstrating GRU: z_t = sigmoid(W_z · [h_{t-1}, x_t]); r_t = sigmoid(W_r · [h_{t-1}, x_t]).",
+      "keywords": [
+        "cell state",
+        "GRU",
+        "comparison",
+        "LSTM"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose cell state over GRU?",
+        "What is the performance or memory difference between cell state and GRU?"
+      ],
+      "related_concepts": [
+        "cell state",
+        "GRU",
+        "LSTM cell"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

@@ -115,9 +115,21 @@ def _build_error_response(
 ) -> JSONResponse:
     """Build the standard GetHire JSON error envelope."""
     request_id = getattr(request.state, "request_id", str(uuid.uuid4()))
+    errors_list = []
+    if details and "fields" in details and isinstance(details["fields"], dict):
+        for field_name, msgs in details["fields"].items():
+            for m in msgs:
+                errors_list.append({"code": code, "field": field_name, "message": m})
+    else:
+        errors_list.append({"code": code, "message": message})
+
     return JSONResponse(
         status_code=status_code,
         content={
+            "success": False,
+            "message": message,
+            "data": None,
+            "errors": errors_list,
             "error": {
                 "code": code,
                 "message": message,
@@ -194,6 +206,28 @@ async def unhandled_exception_handler(request: Request, exc: Exception) -> JSONR
     )
 
 
+from starlette.exceptions import HTTPException as StarletteHTTPException
+
+
+async def http_exception_handler(request: Request, exc: StarletteHTTPException) -> JSONResponse:
+    """Handle standard HTTPException and unwrap structured dictionaries."""
+    if isinstance(exc.detail, dict):
+        body = {
+            "success": exc.detail.get("success", False),
+            "message": exc.detail.get("message", "Request failed."),
+            "data": exc.detail.get("data", None),
+            "errors": exc.detail.get("errors", []),
+        }
+        return JSONResponse(status_code=exc.status_code, content=body)
+
+    return _build_error_response(
+        request,
+        status_code=exc.status_code,
+        code=f"HTTP_{exc.status_code}",
+        message=str(exc.detail),
+    )
+
+
 # ---------------------------------------------------------------------------
 # Registration helper
 # ---------------------------------------------------------------------------
@@ -204,6 +238,7 @@ def register_exception_handlers(app: FastAPI) -> None:
 
     Call this once during application creation (in create_application()).
     """
+    app.add_exception_handler(StarletteHTTPException, http_exception_handler)  # type: ignore[arg-type]
     app.add_exception_handler(GetHireException, gethire_exception_handler)  # type: ignore[arg-type]
     app.add_exception_handler(RequestValidationError, validation_exception_handler)  # type: ignore[arg-type]
     app.add_exception_handler(Exception, unhandled_exception_handler)  # type: ignore[arg-type]

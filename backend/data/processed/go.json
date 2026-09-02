@@ -1,0 +1,3052 @@
+{
+  "metadata": {
+    "subject": "Go",
+    "domain": "Software Engineering",
+    "total_questions": 115,
+    "difficulty_distribution": {
+      "Easy": 34,
+      "Medium": 58,
+      "Hard": 23
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:47Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "GO-001",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Channels",
+      "difficulty": "Easy",
+      "question": "What is sync.RWMutex in Go and how does it work?",
+      "ideal_answer": "sync.RWMutex in Go refers to read-write lock. It works by multiple readers, single writer. Key characteristics include RLock/RUnlock, Lock/Unlock. Example: var rwmu sync.RWMutex. Common pitfalls include writer starvation.",
+      "keywords": [
+        "sync.RWMutex",
+        "Go programming",
+        "concurrency"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of sync.RWMutex in a production environment?",
+        "What are the common pitfalls or issues associated with sync.RWMutex?"
+      ],
+      "related_concepts": [
+        "sync.Mutex",
+        "sync.WaitGroup",
+        "context package"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-002",
+      "subject": "Go",
+      "category": "Standard Library",
+      "subcategory": "database/sql",
+      "difficulty": "Easy",
+      "question": "What are the common issues with database/sql in Go and how do you debug them?",
+      "ideal_answer": "Common issues with database/sql in Go include: NULL handling with sql.NullString. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "database/sql",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to database/sql?",
+        "What tools can assist in detecting problems with database/sql at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "net/http",
+        "reflect package"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-003",
+      "subject": "Go",
+      "category": "Standard Library",
+      "subcategory": "database/sql",
+      "difficulty": "Easy",
+      "question": "Explain the difference between database/sql and reflect package in Go.",
+      "ideal_answer": "database/sql and reflect package differ in several ways: database/sql is SQL database access (works by database-agnostic SQL operations) whereas reflect package is runtime type introspection (works by examining types and values). database/sql is typically used for connection pooling, prepared statements, while reflect package is used for TypeOf, ValueOf, struct tags. Example demonstrating database/sql: db.QueryContext(ctx, \"SELECT ...\", args...). Example demonstrating reflect package: reflect.TypeOf(obj).Kind().",
+      "keywords": [
+        "database/sql",
+        "reflect package",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose database/sql over reflect package?",
+        "What is the performance or memory difference between database/sql and reflect package?"
+      ],
+      "related_concepts": [
+        "database/sql",
+        "reflect package",
+        "net/http"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-004",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Functions",
+      "difficulty": "Easy",
+      "question": "Explain the difference between interfaces and nil interface in Go.",
+      "ideal_answer": "interfaces and nil interface differ in several ways: interfaces is implicit contract types (works by structural subtyping) whereas nil interface is empty interface value (works by type and value both nil). interfaces is typically used for satisfied by method set, not declaration, while nil interface is used for different from typed nil. Example demonstrating interfaces: type Reader interface { Read(p []byte) (n int, err error) }. Example demonstrating nil interface: var i interface{} = (*int)(nil); // i != nil.",
+      "keywords": [
+        "interfaces",
+        "nil interface",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose interfaces over nil interface?",
+        "What is the performance or memory difference between interfaces and nil interface?"
+      ],
+      "related_concepts": [
+        "interfaces",
+        "nil interface",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-005",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Goroutines",
+      "difficulty": "Easy",
+      "question": "What is sync.Mutex in Go and how does it work?",
+      "ideal_answer": "sync.Mutex in Go refers to mutual exclusion lock. It works by protecting shared state. Key characteristics include Lock/Unlock pairs. Example: var mu sync.Mutex; mu.Lock(); defer mu.Unlock(). Common pitfalls include defer unlock pattern.",
+      "keywords": [
+        "sync.Mutex",
+        "Go programming",
+        "concurrency"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of sync.Mutex in a production environment?",
+        "What are the common pitfalls or issues associated with sync.Mutex?"
+      ],
+      "related_concepts": [
+        "sync.RWMutex",
+        "sync.WaitGroup",
+        "context package"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-006",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Control Flow",
+      "difficulty": "Easy",
+      "question": "What is panic and recover in Go and how does it work?",
+      "ideal_answer": "panic and recover in Go refers to exception-like mechanism. It works by unwinding the stack. Key characteristics include panic: stop normal flow; recover: catch in deferred function. Example: defer func() { if r := recover(); r != nil { ... } }(). Common pitfalls include avoid using for control flow.",
+      "keywords": [
+        "panic and recover",
+        "Go programming",
+        "core language"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of panic and recover in a production environment?",
+        "What are the common pitfalls or issues associated with panic and recover?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-007",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Easy",
+      "question": "Explain the difference between defer and nil interface in Go.",
+      "ideal_answer": "defer and nil interface differ in several ways: defer is delayed execution statement (works by resource cleanup guarantee) whereas nil interface is empty interface value (works by type and value both nil). defer is typically used for LIFO order, evaluated immediately, while nil interface is used for different from typed nil. Example demonstrating defer: defer file.Close(). Example demonstrating nil interface: var i interface{} = (*int)(nil); // i != nil.",
+      "keywords": [
+        "defer",
+        "nil interface",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose defer over nil interface?",
+        "What is the performance or memory difference between defer and nil interface?"
+      ],
+      "related_concepts": [
+        "defer",
+        "nil interface",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-008",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Context",
+      "difficulty": "Easy",
+      "question": "What are the common issues with sync.Once in Go and how do you debug them?",
+      "ideal_answer": "Common issues with sync.Once in Go include: cannot reset. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "sync.Once",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to sync.Once?",
+        "What tools can assist in detecting problems with sync.Once at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "sync.Mutex",
+        "sync.RWMutex",
+        "sync.WaitGroup"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-009",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Goroutines",
+      "difficulty": "Easy",
+      "question": "What are the common issues with sync.Pool in Go and how do you debug them?",
+      "ideal_answer": "Common issues with sync.Pool in Go include: object eviction unpredictability. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "sync.Pool",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to sync.Pool?",
+        "What tools can assist in detecting problems with sync.Pool at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "sync.Mutex",
+        "sync.RWMutex",
+        "sync.WaitGroup"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-010",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Easy",
+      "question": "Explain the difference between maps and nil interface in Go.",
+      "ideal_answer": "maps and nil interface differ in several ways: maps is hash table implementation (works by key-value storage) whereas nil interface is empty interface value (works by type and value both nil). maps is typically used for reference type, not safe for concurrent use, while nil interface is used for different from typed nil. Example demonstrating maps: m := make(map[string]int). Example demonstrating nil interface: var i interface{} = (*int)(nil); // i != nil.",
+      "keywords": [
+        "maps",
+        "nil interface",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose maps over nil interface?",
+        "What is the performance or memory difference between maps and nil interface?"
+      ],
+      "related_concepts": [
+        "maps",
+        "nil interface",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-011",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Easy",
+      "question": "Explain the difference between channels and interfaces in Go.",
+      "ideal_answer": "channels and interfaces differ in several ways: channels is typed communication pipes (works by goroutine synchronization) whereas interfaces is implicit contract types (works by structural subtyping). channels is typically used for unbuffered (synchronous) vs buffered, while interfaces is used for satisfied by method set, not declaration. Example demonstrating channels: ch := make(chan int, 10). Example demonstrating interfaces: type Reader interface { Read(p []byte) (n int, err error) }.",
+      "keywords": [
+        "channels",
+        "interfaces",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose channels over interfaces?",
+        "What is the performance or memory difference between channels and interfaces?"
+      ],
+      "related_concepts": [
+        "channels",
+        "interfaces",
+        "goroutines",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-012",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Sync Package",
+      "difficulty": "Easy",
+      "question": "What are the common issues with context package in Go and how do you debug them?",
+      "ideal_answer": "Common issues with context package in Go include: context value abuse. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "context package",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to context package?",
+        "What tools can assist in detecting problems with context package at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "sync.Mutex",
+        "sync.RWMutex",
+        "sync.WaitGroup"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-013",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Structs",
+      "difficulty": "Easy",
+      "question": "What are the common issues with structs in Go and how do you debug them?",
+      "ideal_answer": "Common issues with structs in Go include: struct tags for reflection. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "structs",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to structs?",
+        "What tools can assist in detecting problems with structs at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-014",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Context",
+      "difficulty": "Easy",
+      "question": "Explain the difference between sync.Once and sync.Pool in Go.",
+      "ideal_answer": "sync.Once and sync.Pool differ in several ways: sync.Once is one-time initialization (works by guaranteed single execution) whereas sync.Pool is object reuse pool (works by reducing GC pressure). sync.Once is typically used for thread-safe lazy initialization, while sync.Pool is used for Get/Put operations. Example demonstrating sync.Once: var once sync.Once; once.Do(initFunc). Example demonstrating sync.Pool: var pool = sync.Pool{ New: func() interface{} { return make([]byte, 1024) } }.",
+      "keywords": [
+        "sync.Once",
+        "sync.Pool",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sync.Once over sync.Pool?",
+        "What is the performance or memory difference between sync.Once and sync.Pool?"
+      ],
+      "related_concepts": [
+        "sync.Once",
+        "sync.Pool",
+        "sync.Mutex",
+        "sync.RWMutex"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-015",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Functions",
+      "difficulty": "Easy",
+      "question": "Explain the difference between interfaces and maps in Go.",
+      "ideal_answer": "interfaces and maps differ in several ways: interfaces is implicit contract types (works by structural subtyping) whereas maps is hash table implementation (works by key-value storage). interfaces is typically used for satisfied by method set, not declaration, while maps is used for reference type, not safe for concurrent use. Example demonstrating interfaces: type Reader interface { Read(p []byte) (n int, err error) }. Example demonstrating maps: m := make(map[string]int).",
+      "keywords": [
+        "interfaces",
+        "maps",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose interfaces over maps?",
+        "What is the performance or memory difference between interfaces and maps?"
+      ],
+      "related_concepts": [
+        "interfaces",
+        "maps",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-016",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Select",
+      "difficulty": "Easy",
+      "question": "Explain the difference between sync.WaitGroup and sync.Pool in Go.",
+      "ideal_answer": "sync.WaitGroup and sync.Pool differ in several ways: sync.WaitGroup is goroutine completion waiter (works by blocking until group finishes) whereas sync.Pool is object reuse pool (works by reducing GC pressure). sync.WaitGroup is typically used for Add, Done, Wait, while sync.Pool is used for Get/Put operations. Example demonstrating sync.WaitGroup: var wg sync.WaitGroup; wg.Add(1); go func() { defer wg.Done(); ... }(). Example demonstrating sync.Pool: var pool = sync.Pool{ New: func() interface{} { return make([]byte, 1024) } }.",
+      "keywords": [
+        "sync.WaitGroup",
+        "sync.Pool",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sync.WaitGroup over sync.Pool?",
+        "What is the performance or memory difference between sync.WaitGroup and sync.Pool?"
+      ],
+      "related_concepts": [
+        "sync.WaitGroup",
+        "sync.Pool",
+        "sync.Mutex",
+        "sync.RWMutex"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-017",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Channels",
+      "difficulty": "Easy",
+      "question": "Explain the difference between sync.RWMutex and sync.Pool in Go.",
+      "ideal_answer": "sync.RWMutex and sync.Pool differ in several ways: sync.RWMutex is read-write lock (works by multiple readers, single writer) whereas sync.Pool is object reuse pool (works by reducing GC pressure). sync.RWMutex is typically used for RLock/RUnlock, Lock/Unlock, while sync.Pool is used for Get/Put operations. Example demonstrating sync.RWMutex: var rwmu sync.RWMutex. Example demonstrating sync.Pool: var pool = sync.Pool{ New: func() interface{} { return make([]byte, 1024) } }.",
+      "keywords": [
+        "sync.RWMutex",
+        "sync.Pool",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sync.RWMutex over sync.Pool?",
+        "What is the performance or memory difference between sync.RWMutex and sync.Pool?"
+      ],
+      "related_concepts": [
+        "sync.RWMutex",
+        "sync.Pool",
+        "sync.Mutex",
+        "sync.WaitGroup"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-018",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Sync Package",
+      "difficulty": "Easy",
+      "question": "Explain the difference between context package and sync.Once in Go.",
+      "ideal_answer": "context package and sync.Once differ in several ways: context package is request-scoped values (works by cancellation and deadlines) whereas sync.Once is one-time initialization (works by guaranteed single execution). context package is typically used for WithCancel, WithTimeout, WithValue, while sync.Once is used for thread-safe lazy initialization. Example demonstrating context package: ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second). Example demonstrating sync.Once: var once sync.Once; once.Do(initFunc).",
+      "keywords": [
+        "context package",
+        "sync.Once",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose context package over sync.Once?",
+        "What is the performance or memory difference between context package and sync.Once?"
+      ],
+      "related_concepts": [
+        "context package",
+        "sync.Once",
+        "sync.Mutex",
+        "sync.RWMutex"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-019",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Easy",
+      "question": "Explain the difference between goroutines and defer in Go.",
+      "ideal_answer": "goroutines and defer differ in several ways: goroutines is lightweight threads (works by concurrent execution units) whereas defer is delayed execution statement (works by resource cleanup guarantee). goroutines is typically used for multiplexed onto OS threads by Go runtime, while defer is used for LIFO order, evaluated immediately. Example demonstrating goroutines: go func() { /* work */ }(). Example demonstrating defer: defer file.Close().",
+      "keywords": [
+        "goroutines",
+        "defer",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose goroutines over defer?",
+        "What is the performance or memory difference between goroutines and defer?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "defer",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-020",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Control Flow",
+      "difficulty": "Easy",
+      "question": "Explain the difference between select statement and interfaces in Go.",
+      "ideal_answer": "select statement and interfaces differ in several ways: select statement is channel multiplexing (works by waiting on multiple channel operations) whereas interfaces is implicit contract types (works by structural subtyping). select statement is typically used for random fair selection, default case, while interfaces is used for satisfied by method set, not declaration. Example demonstrating select statement: select { case v := <-ch1: ... case ch2 <- v: ... }. Example demonstrating interfaces: type Reader interface { Read(p []byte) (n int, err error) }.",
+      "keywords": [
+        "select statement",
+        "interfaces",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose select statement over interfaces?",
+        "What is the performance or memory difference between select statement and interfaces?"
+      ],
+      "related_concepts": [
+        "select statement",
+        "interfaces",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-021",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Easy",
+      "question": "What are the common issues with goroutines in Go and how do you debug them?",
+      "ideal_answer": "Common issues with goroutines in Go include: goroutine leaks. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "goroutines",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to goroutines?",
+        "What tools can assist in detecting problems with goroutines at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "channels",
+        "select statement",
+        "interfaces"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-022",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Easy",
+      "question": "Explain the difference between channels and slices in Go.",
+      "ideal_answer": "channels and slices differ in several ways: channels is typed communication pipes (works by goroutine synchronization) whereas slices is dynamic array views (works by flexible sequence type). channels is typically used for unbuffered (synchronous) vs buffered, while slices is used for pointer, length, capacity triple. Example demonstrating channels: ch := make(chan int, 10). Example demonstrating slices: slice := array[1:4].",
+      "keywords": [
+        "channels",
+        "slices",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose channels over slices?",
+        "What is the performance or memory difference between channels and slices?"
+      ],
+      "related_concepts": [
+        "channels",
+        "slices",
+        "goroutines",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-023",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Easy",
+      "question": "Explain the difference between goroutines and select statement in Go.",
+      "ideal_answer": "goroutines and select statement differ in several ways: goroutines is lightweight threads (works by concurrent execution units) whereas select statement is channel multiplexing (works by waiting on multiple channel operations). goroutines is typically used for multiplexed onto OS threads by Go runtime, while select statement is used for random fair selection, default case. Example demonstrating goroutines: go func() { /* work */ }(). Example demonstrating select statement: select { case v := <-ch1: ... case ch2 <- v: ... }.",
+      "keywords": [
+        "goroutines",
+        "select statement",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose goroutines over select statement?",
+        "What is the performance or memory difference between goroutines and select statement?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "select statement",
+        "channels",
+        "interfaces"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-024",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Functions",
+      "difficulty": "Easy",
+      "question": "What are the common issues with interfaces in Go and how do you debug them?",
+      "ideal_answer": "Common issues with interfaces in Go include: empty interface as any. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "interfaces",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to interfaces?",
+        "What tools can assist in detecting problems with interfaces at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-025",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Easy",
+      "question": "Explain the difference between channels and defer in Go.",
+      "ideal_answer": "channels and defer differ in several ways: channels is typed communication pipes (works by goroutine synchronization) whereas defer is delayed execution statement (works by resource cleanup guarantee). channels is typically used for unbuffered (synchronous) vs buffered, while defer is used for LIFO order, evaluated immediately. Example demonstrating channels: ch := make(chan int, 10). Example demonstrating defer: defer file.Close().",
+      "keywords": [
+        "channels",
+        "defer",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose channels over defer?",
+        "What is the performance or memory difference between channels and defer?"
+      ],
+      "related_concepts": [
+        "channels",
+        "defer",
+        "goroutines",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-026",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Easy",
+      "question": "Explain the difference between maps and defer in Go.",
+      "ideal_answer": "maps and defer differ in several ways: maps is hash table implementation (works by key-value storage) whereas defer is delayed execution statement (works by resource cleanup guarantee). maps is typically used for reference type, not safe for concurrent use, while defer is used for LIFO order, evaluated immediately. Example demonstrating maps: m := make(map[string]int). Example demonstrating defer: defer file.Close().",
+      "keywords": [
+        "maps",
+        "defer",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose maps over defer?",
+        "What is the performance or memory difference between maps and defer?"
+      ],
+      "related_concepts": [
+        "maps",
+        "defer",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-027",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Goroutines",
+      "difficulty": "Easy",
+      "question": "Explain the difference between sync.Mutex and sync.Once in Go.",
+      "ideal_answer": "sync.Mutex and sync.Once differ in several ways: sync.Mutex is mutual exclusion lock (works by protecting shared state) whereas sync.Once is one-time initialization (works by guaranteed single execution). sync.Mutex is typically used for Lock/Unlock pairs, while sync.Once is used for thread-safe lazy initialization. Example demonstrating sync.Mutex: var mu sync.Mutex; mu.Lock(); defer mu.Unlock(). Example demonstrating sync.Once: var once sync.Once; once.Do(initFunc).",
+      "keywords": [
+        "sync.Mutex",
+        "sync.Once",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sync.Mutex over sync.Once?",
+        "What is the performance or memory difference between sync.Mutex and sync.Once?"
+      ],
+      "related_concepts": [
+        "sync.Mutex",
+        "sync.Once",
+        "sync.RWMutex",
+        "sync.WaitGroup"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-028",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Structs",
+      "difficulty": "Easy",
+      "question": "What is structs in Go and how does it work?",
+      "ideal_answer": "structs in Go refers to composite data types. It works by grouping related fields. Key characteristics include embedded fields for composition. Example: type Person struct { Name string; Age int }. Common pitfalls include struct tags for reflection.",
+      "keywords": [
+        "structs",
+        "Go programming",
+        "core language"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of structs in a production environment?",
+        "What are the common pitfalls or issues associated with structs?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-029",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Structs",
+      "difficulty": "Easy",
+      "question": "Explain the difference between structs and defer in Go.",
+      "ideal_answer": "structs and defer differ in several ways: structs is composite data types (works by grouping related fields) whereas defer is delayed execution statement (works by resource cleanup guarantee). structs is typically used for embedded fields for composition, while defer is used for LIFO order, evaluated immediately. Example demonstrating structs: type Person struct { Name string; Age int }. Example demonstrating defer: defer file.Close().",
+      "keywords": [
+        "structs",
+        "defer",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose structs over defer?",
+        "What is the performance or memory difference between structs and defer?"
+      ],
+      "related_concepts": [
+        "structs",
+        "defer",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-030",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Channels",
+      "difficulty": "Easy",
+      "question": "What are the common issues with sync.RWMutex in Go and how do you debug them?",
+      "ideal_answer": "Common issues with sync.RWMutex in Go include: writer starvation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "sync.RWMutex",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to sync.RWMutex?",
+        "What tools can assist in detecting problems with sync.RWMutex at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "sync.Mutex",
+        "sync.WaitGroup",
+        "context package"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-031",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Structs",
+      "difficulty": "Easy",
+      "question": "Explain the difference between structs and maps in Go.",
+      "ideal_answer": "structs and maps differ in several ways: structs is composite data types (works by grouping related fields) whereas maps is hash table implementation (works by key-value storage). structs is typically used for embedded fields for composition, while maps is used for reference type, not safe for concurrent use. Example demonstrating structs: type Person struct { Name string; Age int }. Example demonstrating maps: m := make(map[string]int).",
+      "keywords": [
+        "structs",
+        "maps",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose structs over maps?",
+        "What is the performance or memory difference between structs and maps?"
+      ],
+      "related_concepts": [
+        "structs",
+        "maps",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-032",
+      "subject": "Go",
+      "category": "Memory Model",
+      "subcategory": "Pointers",
+      "difficulty": "Easy",
+      "question": "What are the common issues with slice internals in Go and how do you debug them?",
+      "ideal_answer": "Common issues with slice internals in Go include: slice growth algorithm. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "slice internals",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to slice internals?",
+        "What tools can assist in detecting problems with slice internals at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "pointer receivers vs value receivers",
+        "escape analysis"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-033",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Control Flow",
+      "difficulty": "Easy",
+      "question": "Explain the difference between select statement and structs in Go.",
+      "ideal_answer": "select statement and structs differ in several ways: select statement is channel multiplexing (works by waiting on multiple channel operations) whereas structs is composite data types (works by grouping related fields). select statement is typically used for random fair selection, default case, while structs is used for embedded fields for composition. Example demonstrating select statement: select { case v := <-ch1: ... case ch2 <- v: ... }. Example demonstrating structs: type Person struct { Name string; Age int }.",
+      "keywords": [
+        "select statement",
+        "structs",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose select statement over structs?",
+        "What is the performance or memory difference between select statement and structs?"
+      ],
+      "related_concepts": [
+        "select statement",
+        "structs",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-034",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Structs",
+      "difficulty": "Easy",
+      "question": "Explain the difference between structs and slices in Go.",
+      "ideal_answer": "structs and slices differ in several ways: structs is composite data types (works by grouping related fields) whereas slices is dynamic array views (works by flexible sequence type). structs is typically used for embedded fields for composition, while slices is used for pointer, length, capacity triple. Example demonstrating structs: type Person struct { Name string; Age int }. Example demonstrating slices: slice := array[1:4].",
+      "keywords": [
+        "structs",
+        "slices",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose structs over slices?",
+        "What is the performance or memory difference between structs and slices?"
+      ],
+      "related_concepts": [
+        "structs",
+        "slices",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GO-035",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Control Flow",
+      "difficulty": "Medium",
+      "question": "Explain the difference between select statement and defer in Go.",
+      "ideal_answer": "select statement and defer differ in several ways: select statement is channel multiplexing (works by waiting on multiple channel operations) whereas defer is delayed execution statement (works by resource cleanup guarantee). select statement is typically used for random fair selection, default case, while defer is used for LIFO order, evaluated immediately. Example demonstrating select statement: select { case v := <-ch1: ... case ch2 <- v: ... }. Example demonstrating defer: defer file.Close().",
+      "keywords": [
+        "select statement",
+        "defer",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose select statement over defer?",
+        "What is the performance or memory difference between select statement and defer?"
+      ],
+      "related_concepts": [
+        "select statement",
+        "defer",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-036",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Context",
+      "difficulty": "Medium",
+      "question": "What is sync.Once in Go and how does it work?",
+      "ideal_answer": "sync.Once in Go refers to one-time initialization. It works by guaranteed single execution. Key characteristics include thread-safe lazy initialization. Example: var once sync.Once; once.Do(initFunc). Common pitfalls include cannot reset.",
+      "keywords": [
+        "sync.Once",
+        "Go programming",
+        "concurrency"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of sync.Once in a production environment?",
+        "What are the common pitfalls or issues associated with sync.Once?"
+      ],
+      "related_concepts": [
+        "sync.Mutex",
+        "sync.RWMutex",
+        "sync.WaitGroup"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-037",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Medium",
+      "question": "Explain the difference between goroutines and interfaces in Go.",
+      "ideal_answer": "goroutines and interfaces differ in several ways: goroutines is lightweight threads (works by concurrent execution units) whereas interfaces is implicit contract types (works by structural subtyping). goroutines is typically used for multiplexed onto OS threads by Go runtime, while interfaces is used for satisfied by method set, not declaration. Example demonstrating goroutines: go func() { /* work */ }(). Example demonstrating interfaces: type Reader interface { Read(p []byte) (n int, err error) }.",
+      "keywords": [
+        "goroutines",
+        "interfaces",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose goroutines over interfaces?",
+        "What is the performance or memory difference between goroutines and interfaces?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "interfaces",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-038",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Channels",
+      "difficulty": "Medium",
+      "question": "Explain the difference between sync.RWMutex and sync.Once in Go.",
+      "ideal_answer": "sync.RWMutex and sync.Once differ in several ways: sync.RWMutex is read-write lock (works by multiple readers, single writer) whereas sync.Once is one-time initialization (works by guaranteed single execution). sync.RWMutex is typically used for RLock/RUnlock, Lock/Unlock, while sync.Once is used for thread-safe lazy initialization. Example demonstrating sync.RWMutex: var rwmu sync.RWMutex. Example demonstrating sync.Once: var once sync.Once; once.Do(initFunc).",
+      "keywords": [
+        "sync.RWMutex",
+        "sync.Once",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sync.RWMutex over sync.Once?",
+        "What is the performance or memory difference between sync.RWMutex and sync.Once?"
+      ],
+      "related_concepts": [
+        "sync.RWMutex",
+        "sync.Once",
+        "sync.Mutex",
+        "sync.WaitGroup"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-039",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Interfaces",
+      "difficulty": "Medium",
+      "question": "What is slices in Go and how does it work?",
+      "ideal_answer": "slices in Go refers to dynamic array views. It works by flexible sequence type. Key characteristics include pointer, length, capacity triple. Example: slice := array[1:4]. Common pitfalls include append behavior, underlying array sharing.",
+      "keywords": [
+        "slices",
+        "Go programming",
+        "core language"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of slices in a production environment?",
+        "What are the common pitfalls or issues associated with slices?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-040",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Goroutines",
+      "difficulty": "Medium",
+      "question": "Explain the difference between sync.Mutex and context package in Go.",
+      "ideal_answer": "sync.Mutex and context package differ in several ways: sync.Mutex is mutual exclusion lock (works by protecting shared state) whereas context package is request-scoped values (works by cancellation and deadlines). sync.Mutex is typically used for Lock/Unlock pairs, while context package is used for WithCancel, WithTimeout, WithValue. Example demonstrating sync.Mutex: var mu sync.Mutex; mu.Lock(); defer mu.Unlock(). Example demonstrating context package: ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second).",
+      "keywords": [
+        "sync.Mutex",
+        "context package",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sync.Mutex over context package?",
+        "What is the performance or memory difference between sync.Mutex and context package?"
+      ],
+      "related_concepts": [
+        "sync.Mutex",
+        "context package",
+        "sync.RWMutex",
+        "sync.WaitGroup"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-041",
+      "subject": "Go",
+      "category": "Error Handling",
+      "subcategory": "Panic/Recover",
+      "difficulty": "Medium",
+      "question": "What is custom error types in Go and how does it work?",
+      "ideal_answer": "custom error types in Go refers to structured error information. It works by error type assertions. Key characteristics include implementing error interface. Example: type NotFoundError struct { Resource string }. Common pitfalls include errors.Is and errors.As.",
+      "keywords": [
+        "custom error types",
+        "Go programming",
+        "error handling"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of custom error types in a production environment?",
+        "What are the common pitfalls or issues associated with custom error types?"
+      ],
+      "related_concepts": [
+        "error interface"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-042",
+      "subject": "Go",
+      "category": "Standard Library",
+      "subcategory": "net/http",
+      "difficulty": "Medium",
+      "question": "What are the common issues with net/http in Go and how do you debug them?",
+      "ideal_answer": "Common issues with net/http in Go include: middleware pattern, timeout handling. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "net/http",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to net/http?",
+        "What tools can assist in detecting problems with net/http at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "database/sql",
+        "reflect package"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-043",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Medium",
+      "question": "Explain the difference between goroutines and slices in Go.",
+      "ideal_answer": "goroutines and slices differ in several ways: goroutines is lightweight threads (works by concurrent execution units) whereas slices is dynamic array views (works by flexible sequence type). goroutines is typically used for multiplexed onto OS threads by Go runtime, while slices is used for pointer, length, capacity triple. Example demonstrating goroutines: go func() { /* work */ }(). Example demonstrating slices: slice := array[1:4].",
+      "keywords": [
+        "goroutines",
+        "slices",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose goroutines over slices?",
+        "What is the performance or memory difference between goroutines and slices?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "slices",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-044",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Functions",
+      "difficulty": "Medium",
+      "question": "What is interfaces in Go and how does it work?",
+      "ideal_answer": "interfaces in Go refers to implicit contract types. It works by structural subtyping. Key characteristics include satisfied by method set, not declaration. Example: type Reader interface { Read(p []byte) (n int, err error) }. Common pitfalls include empty interface as any.",
+      "keywords": [
+        "interfaces",
+        "Go programming",
+        "core language"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of interfaces in a production environment?",
+        "What are the common pitfalls or issues associated with interfaces?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-045",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Functions",
+      "difficulty": "Medium",
+      "question": "Explain the difference between interfaces and defer in Go.",
+      "ideal_answer": "interfaces and defer differ in several ways: interfaces is implicit contract types (works by structural subtyping) whereas defer is delayed execution statement (works by resource cleanup guarantee). interfaces is typically used for satisfied by method set, not declaration, while defer is used for LIFO order, evaluated immediately. Example demonstrating interfaces: type Reader interface { Read(p []byte) (n int, err error) }. Example demonstrating defer: defer file.Close().",
+      "keywords": [
+        "interfaces",
+        "defer",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose interfaces over defer?",
+        "What is the performance or memory difference between interfaces and defer?"
+      ],
+      "related_concepts": [
+        "interfaces",
+        "defer",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-046",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between defer and panic and recover in Go.",
+      "ideal_answer": "defer and panic and recover differ in several ways: defer is delayed execution statement (works by resource cleanup guarantee) whereas panic and recover is exception-like mechanism (works by unwinding the stack). defer is typically used for LIFO order, evaluated immediately, while panic and recover is used for panic: stop normal flow; recover: catch in deferred function. Example demonstrating defer: defer file.Close(). Example demonstrating panic and recover: defer func() { if r := recover(); r != nil { ... } }().",
+      "keywords": [
+        "defer",
+        "panic and recover",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose defer over panic and recover?",
+        "What is the performance or memory difference between defer and panic and recover?"
+      ],
+      "related_concepts": [
+        "defer",
+        "panic and recover",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-047",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Medium",
+      "question": "Explain the difference between maps and panic and recover in Go.",
+      "ideal_answer": "maps and panic and recover differ in several ways: maps is hash table implementation (works by key-value storage) whereas panic and recover is exception-like mechanism (works by unwinding the stack). maps is typically used for reference type, not safe for concurrent use, while panic and recover is used for panic: stop normal flow; recover: catch in deferred function. Example demonstrating maps: m := make(map[string]int). Example demonstrating panic and recover: defer func() { if r := recover(); r != nil { ... } }().",
+      "keywords": [
+        "maps",
+        "panic and recover",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose maps over panic and recover?",
+        "What is the performance or memory difference between maps and panic and recover?"
+      ],
+      "related_concepts": [
+        "maps",
+        "panic and recover",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-048",
+      "subject": "Go",
+      "category": "Standard Library",
+      "subcategory": "net/http",
+      "difficulty": "Medium",
+      "question": "Explain the difference between net/http and reflect package in Go.",
+      "ideal_answer": "net/http and reflect package differ in several ways: net/http is HTTP server/client (works by building web services) whereas reflect package is runtime type introspection (works by examining types and values). net/http is typically used for ServeMux, Handler interface, http.Client, while reflect package is used for TypeOf, ValueOf, struct tags. Example demonstrating net/http: http.HandleFunc(\"/\", handler). Example demonstrating reflect package: reflect.TypeOf(obj).Kind().",
+      "keywords": [
+        "net/http",
+        "reflect package",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose net/http over reflect package?",
+        "What is the performance or memory difference between net/http and reflect package?"
+      ],
+      "related_concepts": [
+        "net/http",
+        "reflect package",
+        "database/sql"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-049",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Control Flow",
+      "difficulty": "Medium",
+      "question": "Explain the difference between select statement and panic and recover in Go.",
+      "ideal_answer": "select statement and panic and recover differ in several ways: select statement is channel multiplexing (works by waiting on multiple channel operations) whereas panic and recover is exception-like mechanism (works by unwinding the stack). select statement is typically used for random fair selection, default case, while panic and recover is used for panic: stop normal flow; recover: catch in deferred function. Example demonstrating select statement: select { case v := <-ch1: ... case ch2 <- v: ... }. Example demonstrating panic and recover: defer func() { if r := recover(); r != nil { ... } }().",
+      "keywords": [
+        "select statement",
+        "panic and recover",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose select statement over panic and recover?",
+        "What is the performance or memory difference between select statement and panic and recover?"
+      ],
+      "related_concepts": [
+        "select statement",
+        "panic and recover",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-050",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Medium",
+      "question": "What is channels in Go and how does it work?",
+      "ideal_answer": "channels in Go refers to typed communication pipes. It works by goroutine synchronization. Key characteristics include unbuffered (synchronous) vs buffered. Example: ch := make(chan int, 10). Common pitfalls include closing channels, nil channel behavior.",
+      "keywords": [
+        "channels",
+        "Go programming",
+        "core language"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of channels in a production environment?",
+        "What are the common pitfalls or issues associated with channels?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "select statement",
+        "interfaces"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-051",
+      "subject": "Go",
+      "category": "Memory Model",
+      "subcategory": "Pointers",
+      "difficulty": "Medium",
+      "question": "Explain the difference between slice internals and pointer receivers vs value receivers in Go.",
+      "ideal_answer": "slice internals and pointer receivers vs value receivers differ in several ways: slice internals is slice header structure (works by pointer, len, cap) whereas pointer receivers vs value receivers is method receiver types (works by mutability and interface satisfaction). slice internals is typically used for sharing underlying arrays, while pointer receivers vs value receivers is used for pointer: can modify, value: copy. Example demonstrating slice internals: s := make([]int, 5, 10). Example demonstrating pointer receivers vs value receivers: func (p *Point) Move().",
+      "keywords": [
+        "slice internals",
+        "pointer receivers vs value receivers",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose slice internals over pointer receivers vs value receivers?",
+        "What is the performance or memory difference between slice internals and pointer receivers vs value receivers?"
+      ],
+      "related_concepts": [
+        "slice internals",
+        "pointer receivers vs value receivers",
+        "escape analysis"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-052",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Select",
+      "difficulty": "Medium",
+      "question": "Explain the difference between sync.WaitGroup and sync.Once in Go.",
+      "ideal_answer": "sync.WaitGroup and sync.Once differ in several ways: sync.WaitGroup is goroutine completion waiter (works by blocking until group finishes) whereas sync.Once is one-time initialization (works by guaranteed single execution). sync.WaitGroup is typically used for Add, Done, Wait, while sync.Once is used for thread-safe lazy initialization. Example demonstrating sync.WaitGroup: var wg sync.WaitGroup; wg.Add(1); go func() { defer wg.Done(); ... }(). Example demonstrating sync.Once: var once sync.Once; once.Do(initFunc).",
+      "keywords": [
+        "sync.WaitGroup",
+        "sync.Once",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sync.WaitGroup over sync.Once?",
+        "What is the performance or memory difference between sync.WaitGroup and sync.Once?"
+      ],
+      "related_concepts": [
+        "sync.WaitGroup",
+        "sync.Once",
+        "sync.Mutex",
+        "sync.RWMutex"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-053",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Select",
+      "difficulty": "Medium",
+      "question": "What are the common issues with sync.WaitGroup in Go and how do you debug them?",
+      "ideal_answer": "Common issues with sync.WaitGroup in Go include: Add must be called before goroutine starts. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "sync.WaitGroup",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to sync.WaitGroup?",
+        "What tools can assist in detecting problems with sync.WaitGroup at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "sync.Mutex",
+        "sync.RWMutex",
+        "context package"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-054",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between channels and nil interface in Go.",
+      "ideal_answer": "channels and nil interface differ in several ways: channels is typed communication pipes (works by goroutine synchronization) whereas nil interface is empty interface value (works by type and value both nil). channels is typically used for unbuffered (synchronous) vs buffered, while nil interface is used for different from typed nil. Example demonstrating channels: ch := make(chan int, 10). Example demonstrating nil interface: var i interface{} = (*int)(nil); // i != nil.",
+      "keywords": [
+        "channels",
+        "nil interface",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose channels over nil interface?",
+        "What is the performance or memory difference between channels and nil interface?"
+      ],
+      "related_concepts": [
+        "channels",
+        "nil interface",
+        "goroutines",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-055",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Medium",
+      "question": "Explain the difference between goroutines and structs in Go.",
+      "ideal_answer": "goroutines and structs differ in several ways: goroutines is lightweight threads (works by concurrent execution units) whereas structs is composite data types (works by grouping related fields). goroutines is typically used for multiplexed onto OS threads by Go runtime, while structs is used for embedded fields for composition. Example demonstrating goroutines: go func() { /* work */ }(). Example demonstrating structs: type Person struct { Name string; Age int }.",
+      "keywords": [
+        "goroutines",
+        "structs",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose goroutines over structs?",
+        "What is the performance or memory difference between goroutines and structs?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "structs",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-056",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Interfaces",
+      "difficulty": "Medium",
+      "question": "Explain the difference between slices and maps in Go.",
+      "ideal_answer": "slices and maps differ in several ways: slices is dynamic array views (works by flexible sequence type) whereas maps is hash table implementation (works by key-value storage). slices is typically used for pointer, length, capacity triple, while maps is used for reference type, not safe for concurrent use. Example demonstrating slices: slice := array[1:4]. Example demonstrating maps: m := make(map[string]int).",
+      "keywords": [
+        "slices",
+        "maps",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose slices over maps?",
+        "What is the performance or memory difference between slices and maps?"
+      ],
+      "related_concepts": [
+        "slices",
+        "maps",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-057",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Interfaces",
+      "difficulty": "Medium",
+      "question": "Explain the difference between slices and defer in Go.",
+      "ideal_answer": "slices and defer differ in several ways: slices is dynamic array views (works by flexible sequence type) whereas defer is delayed execution statement (works by resource cleanup guarantee). slices is typically used for pointer, length, capacity triple, while defer is used for LIFO order, evaluated immediately. Example demonstrating slices: slice := array[1:4]. Example demonstrating defer: defer file.Close().",
+      "keywords": [
+        "slices",
+        "defer",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose slices over defer?",
+        "What is the performance or memory difference between slices and defer?"
+      ],
+      "related_concepts": [
+        "slices",
+        "defer",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-058",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Control Flow",
+      "difficulty": "Medium",
+      "question": "Explain the difference between select statement and slices in Go.",
+      "ideal_answer": "select statement and slices differ in several ways: select statement is channel multiplexing (works by waiting on multiple channel operations) whereas slices is dynamic array views (works by flexible sequence type). select statement is typically used for random fair selection, default case, while slices is used for pointer, length, capacity triple. Example demonstrating select statement: select { case v := <-ch1: ... case ch2 <- v: ... }. Example demonstrating slices: slice := array[1:4].",
+      "keywords": [
+        "select statement",
+        "slices",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose select statement over slices?",
+        "What is the performance or memory difference between select statement and slices?"
+      ],
+      "related_concepts": [
+        "select statement",
+        "slices",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-059",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Control Flow",
+      "difficulty": "Medium",
+      "question": "Explain the difference between select statement and maps in Go.",
+      "ideal_answer": "select statement and maps differ in several ways: select statement is channel multiplexing (works by waiting on multiple channel operations) whereas maps is hash table implementation (works by key-value storage). select statement is typically used for random fair selection, default case, while maps is used for reference type, not safe for concurrent use. Example demonstrating select statement: select { case v := <-ch1: ... case ch2 <- v: ... }. Example demonstrating maps: m := make(map[string]int).",
+      "keywords": [
+        "select statement",
+        "maps",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose select statement over maps?",
+        "What is the performance or memory difference between select statement and maps?"
+      ],
+      "related_concepts": [
+        "select statement",
+        "maps",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-060",
+      "subject": "Go",
+      "category": "Error Handling",
+      "subcategory": "Panic/Recover",
+      "difficulty": "Medium",
+      "question": "What are the common issues with custom error types in Go and how do you debug them?",
+      "ideal_answer": "Common issues with custom error types in Go include: errors.Is and errors.As. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "custom error types",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to custom error types?",
+        "What tools can assist in detecting problems with custom error types at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "error interface"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-061",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Functions",
+      "difficulty": "Medium",
+      "question": "What is nil interface in Go and how does it work?",
+      "ideal_answer": "nil interface in Go refers to empty interface value. It works by type and value both nil. Key characteristics include different from typed nil. Example: var i interface{} = (*int)(nil); // i != nil. Common pitfalls include common bug source.",
+      "keywords": [
+        "nil interface",
+        "Go programming",
+        "core language"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of nil interface in a production environment?",
+        "What are the common pitfalls or issues associated with nil interface?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-062",
+      "subject": "Go",
+      "category": "Memory Model",
+      "subcategory": "Pointers",
+      "difficulty": "Medium",
+      "question": "What is slice internals in Go and how does it work?",
+      "ideal_answer": "slice internals in Go refers to slice header structure. It works by pointer, len, cap. Key characteristics include sharing underlying arrays. Example: s := make([]int, 5, 10). Common pitfalls include slice growth algorithm.",
+      "keywords": [
+        "slice internals",
+        "Go programming",
+        "memory model"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of slice internals in a production environment?",
+        "What are the common pitfalls or issues associated with slice internals?"
+      ],
+      "related_concepts": [
+        "pointer receivers vs value receivers",
+        "escape analysis"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-063",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Goroutines",
+      "difficulty": "Medium",
+      "question": "What are the common issues with sync.Mutex in Go and how do you debug them?",
+      "ideal_answer": "Common issues with sync.Mutex in Go include: defer unlock pattern. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "sync.Mutex",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to sync.Mutex?",
+        "What tools can assist in detecting problems with sync.Mutex at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "sync.RWMutex",
+        "sync.WaitGroup",
+        "context package"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-064",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Sync Package",
+      "difficulty": "Medium",
+      "question": "Explain the difference between context package and sync.Pool in Go.",
+      "ideal_answer": "context package and sync.Pool differ in several ways: context package is request-scoped values (works by cancellation and deadlines) whereas sync.Pool is object reuse pool (works by reducing GC pressure). context package is typically used for WithCancel, WithTimeout, WithValue, while sync.Pool is used for Get/Put operations. Example demonstrating context package: ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second). Example demonstrating sync.Pool: var pool = sync.Pool{ New: func() interface{} { return make([]byte, 1024) } }.",
+      "keywords": [
+        "context package",
+        "sync.Pool",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose context package over sync.Pool?",
+        "What is the performance or memory difference between context package and sync.Pool?"
+      ],
+      "related_concepts": [
+        "context package",
+        "sync.Pool",
+        "sync.Mutex",
+        "sync.RWMutex"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-065",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Medium",
+      "question": "What are the common issues with defer in Go and how do you debug them?",
+      "ideal_answer": "Common issues with defer in Go include: defer in loops, panic behavior. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "defer",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to defer?",
+        "What tools can assist in detecting problems with defer at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-066",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Interfaces",
+      "difficulty": "Medium",
+      "question": "Explain the difference between slices and nil interface in Go.",
+      "ideal_answer": "slices and nil interface differ in several ways: slices is dynamic array views (works by flexible sequence type) whereas nil interface is empty interface value (works by type and value both nil). slices is typically used for pointer, length, capacity triple, while nil interface is used for different from typed nil. Example demonstrating slices: slice := array[1:4]. Example demonstrating nil interface: var i interface{} = (*int)(nil); // i != nil.",
+      "keywords": [
+        "slices",
+        "nil interface",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose slices over nil interface?",
+        "What is the performance or memory difference between slices and nil interface?"
+      ],
+      "related_concepts": [
+        "slices",
+        "nil interface",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-067",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Control Flow",
+      "difficulty": "Medium",
+      "question": "What are the common issues with select statement in Go and how do you debug them?",
+      "ideal_answer": "Common issues with select statement in Go include: non-blocking select with default. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "select statement",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to select statement?",
+        "What tools can assist in detecting problems with select statement at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "channels",
+        "interfaces"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-068",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between channels and maps in Go.",
+      "ideal_answer": "channels and maps differ in several ways: channels is typed communication pipes (works by goroutine synchronization) whereas maps is hash table implementation (works by key-value storage). channels is typically used for unbuffered (synchronous) vs buffered, while maps is used for reference type, not safe for concurrent use. Example demonstrating channels: ch := make(chan int, 10). Example demonstrating maps: m := make(map[string]int).",
+      "keywords": [
+        "channels",
+        "maps",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose channels over maps?",
+        "What is the performance or memory difference between channels and maps?"
+      ],
+      "related_concepts": [
+        "channels",
+        "maps",
+        "goroutines",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-069",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Functions",
+      "difficulty": "Medium",
+      "question": "Explain the difference between interfaces and structs in Go.",
+      "ideal_answer": "interfaces and structs differ in several ways: interfaces is implicit contract types (works by structural subtyping) whereas structs is composite data types (works by grouping related fields). interfaces is typically used for satisfied by method set, not declaration, while structs is used for embedded fields for composition. Example demonstrating interfaces: type Reader interface { Read(p []byte) (n int, err error) }. Example demonstrating structs: type Person struct { Name string; Age int }.",
+      "keywords": [
+        "interfaces",
+        "structs",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose interfaces over structs?",
+        "What is the performance or memory difference between interfaces and structs?"
+      ],
+      "related_concepts": [
+        "interfaces",
+        "structs",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-070",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Functions",
+      "difficulty": "Medium",
+      "question": "Explain the difference between interfaces and slices in Go.",
+      "ideal_answer": "interfaces and slices differ in several ways: interfaces is implicit contract types (works by structural subtyping) whereas slices is dynamic array views (works by flexible sequence type). interfaces is typically used for satisfied by method set, not declaration, while slices is used for pointer, length, capacity triple. Example demonstrating interfaces: type Reader interface { Read(p []byte) (n int, err error) }. Example demonstrating slices: slice := array[1:4].",
+      "keywords": [
+        "interfaces",
+        "slices",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose interfaces over slices?",
+        "What is the performance or memory difference between interfaces and slices?"
+      ],
+      "related_concepts": [
+        "interfaces",
+        "slices",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-071",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Medium",
+      "question": "What is maps in Go and how does it work?",
+      "ideal_answer": "maps in Go refers to hash table implementation. It works by key-value storage. Key characteristics include reference type, not safe for concurrent use. Example: m := make(map[string]int). Common pitfalls include zero value is nil, not empty.",
+      "keywords": [
+        "maps",
+        "Go programming",
+        "core language"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of maps in a production environment?",
+        "What are the common pitfalls or issues associated with maps?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-072",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Functions",
+      "difficulty": "Medium",
+      "question": "Explain the difference between interfaces and panic and recover in Go.",
+      "ideal_answer": "interfaces and panic and recover differ in several ways: interfaces is implicit contract types (works by structural subtyping) whereas panic and recover is exception-like mechanism (works by unwinding the stack). interfaces is typically used for satisfied by method set, not declaration, while panic and recover is used for panic: stop normal flow; recover: catch in deferred function. Example demonstrating interfaces: type Reader interface { Read(p []byte) (n int, err error) }. Example demonstrating panic and recover: defer func() { if r := recover(); r != nil { ... } }().",
+      "keywords": [
+        "interfaces",
+        "panic and recover",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose interfaces over panic and recover?",
+        "What is the performance or memory difference between interfaces and panic and recover?"
+      ],
+      "related_concepts": [
+        "interfaces",
+        "panic and recover",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-073",
+      "subject": "Go",
+      "category": "Memory Model",
+      "subcategory": "Maps",
+      "difficulty": "Medium",
+      "question": "What is escape analysis in Go and how does it work?",
+      "ideal_answer": "escape analysis in Go refers to stack vs heap allocation. It works by compiler optimization. Key characteristics include escaping variables allocated on heap. Example: returning local variable address. Common pitfalls include pprof heap profiling.",
+      "keywords": [
+        "escape analysis",
+        "Go programming",
+        "memory model"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of escape analysis in a production environment?",
+        "What are the common pitfalls or issues associated with escape analysis?"
+      ],
+      "related_concepts": [
+        "slice internals",
+        "pointer receivers vs value receivers"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-074",
+      "subject": "Go",
+      "category": "Error Handling",
+      "subcategory": "error interface",
+      "difficulty": "Medium",
+      "question": "Explain the difference between error interface and custom error types in Go.",
+      "ideal_answer": "error interface and custom error types differ in several ways: error interface is standard error type (works by minimal error contract) whereas custom error types is structured error information (works by error type assertions). error interface is typically used for Error() string method, while custom error types is used for implementing error interface. Example demonstrating error interface: if err != nil { return err }. Example demonstrating custom error types: type NotFoundError struct { Resource string }.",
+      "keywords": [
+        "error interface",
+        "custom error types",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose error interface over custom error types?",
+        "What is the performance or memory difference between error interface and custom error types?"
+      ],
+      "related_concepts": [
+        "error interface",
+        "custom error types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-075",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Goroutines",
+      "difficulty": "Medium",
+      "question": "Explain the difference between sync.Mutex and sync.WaitGroup in Go.",
+      "ideal_answer": "sync.Mutex and sync.WaitGroup differ in several ways: sync.Mutex is mutual exclusion lock (works by protecting shared state) whereas sync.WaitGroup is goroutine completion waiter (works by blocking until group finishes). sync.Mutex is typically used for Lock/Unlock pairs, while sync.WaitGroup is used for Add, Done, Wait. Example demonstrating sync.Mutex: var mu sync.Mutex; mu.Lock(); defer mu.Unlock(). Example demonstrating sync.WaitGroup: var wg sync.WaitGroup; wg.Add(1); go func() { defer wg.Done(); ... }().",
+      "keywords": [
+        "sync.Mutex",
+        "sync.WaitGroup",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sync.Mutex over sync.WaitGroup?",
+        "What is the performance or memory difference between sync.Mutex and sync.WaitGroup?"
+      ],
+      "related_concepts": [
+        "sync.Mutex",
+        "sync.WaitGroup",
+        "sync.RWMutex",
+        "context package"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-076",
+      "subject": "Go",
+      "category": "Memory Model",
+      "subcategory": "Slices",
+      "difficulty": "Medium",
+      "question": "What are the common issues with pointer receivers vs value receivers in Go and how do you debug them?",
+      "ideal_answer": "Common issues with pointer receivers vs value receivers in Go include: consistency in receiver types. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "pointer receivers vs value receivers",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to pointer receivers vs value receivers?",
+        "What tools can assist in detecting problems with pointer receivers vs value receivers at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "slice internals",
+        "escape analysis"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-077",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Functions",
+      "difficulty": "Medium",
+      "question": "What are the common issues with nil interface in Go and how do you debug them?",
+      "ideal_answer": "Common issues with nil interface in Go include: common bug source. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "nil interface",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to nil interface?",
+        "What tools can assist in detecting problems with nil interface at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-078",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Channels",
+      "difficulty": "Medium",
+      "question": "Explain the difference between sync.RWMutex and sync.WaitGroup in Go.",
+      "ideal_answer": "sync.RWMutex and sync.WaitGroup differ in several ways: sync.RWMutex is read-write lock (works by multiple readers, single writer) whereas sync.WaitGroup is goroutine completion waiter (works by blocking until group finishes). sync.RWMutex is typically used for RLock/RUnlock, Lock/Unlock, while sync.WaitGroup is used for Add, Done, Wait. Example demonstrating sync.RWMutex: var rwmu sync.RWMutex. Example demonstrating sync.WaitGroup: var wg sync.WaitGroup; wg.Add(1); go func() { defer wg.Done(); ... }().",
+      "keywords": [
+        "sync.RWMutex",
+        "sync.WaitGroup",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sync.RWMutex over sync.WaitGroup?",
+        "What is the performance or memory difference between sync.RWMutex and sync.WaitGroup?"
+      ],
+      "related_concepts": [
+        "sync.RWMutex",
+        "sync.WaitGroup",
+        "sync.Mutex",
+        "context package"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-079",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Control Flow",
+      "difficulty": "Medium",
+      "question": "Explain the difference between select statement and nil interface in Go.",
+      "ideal_answer": "select statement and nil interface differ in several ways: select statement is channel multiplexing (works by waiting on multiple channel operations) whereas nil interface is empty interface value (works by type and value both nil). select statement is typically used for random fair selection, default case, while nil interface is used for different from typed nil. Example demonstrating select statement: select { case v := <-ch1: ... case ch2 <- v: ... }. Example demonstrating nil interface: var i interface{} = (*int)(nil); // i != nil.",
+      "keywords": [
+        "select statement",
+        "nil interface",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose select statement over nil interface?",
+        "What is the performance or memory difference between select statement and nil interface?"
+      ],
+      "related_concepts": [
+        "select statement",
+        "nil interface",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-080",
+      "subject": "Go",
+      "category": "Memory Model",
+      "subcategory": "Pointers",
+      "difficulty": "Medium",
+      "question": "Explain the difference between slice internals and escape analysis in Go.",
+      "ideal_answer": "slice internals and escape analysis differ in several ways: slice internals is slice header structure (works by pointer, len, cap) whereas escape analysis is stack vs heap allocation (works by compiler optimization). slice internals is typically used for sharing underlying arrays, while escape analysis is used for escaping variables allocated on heap. Example demonstrating slice internals: s := make([]int, 5, 10). Example demonstrating escape analysis: returning local variable address.",
+      "keywords": [
+        "slice internals",
+        "escape analysis",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose slice internals over escape analysis?",
+        "What is the performance or memory difference between slice internals and escape analysis?"
+      ],
+      "related_concepts": [
+        "slice internals",
+        "escape analysis",
+        "pointer receivers vs value receivers"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-081",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Medium",
+      "question": "Explain the difference between goroutines and channels in Go.",
+      "ideal_answer": "goroutines and channels differ in several ways: goroutines is lightweight threads (works by concurrent execution units) whereas channels is typed communication pipes (works by goroutine synchronization). goroutines is typically used for multiplexed onto OS threads by Go runtime, while channels is used for unbuffered (synchronous) vs buffered. Example demonstrating goroutines: go func() { /* work */ }(). Example demonstrating channels: ch := make(chan int, 10).",
+      "keywords": [
+        "goroutines",
+        "channels",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose goroutines over channels?",
+        "What is the performance or memory difference between goroutines and channels?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "channels",
+        "select statement",
+        "interfaces"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-082",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Medium",
+      "question": "What is goroutines in Go and how does it work?",
+      "ideal_answer": "goroutines in Go refers to lightweight threads. It works by concurrent execution units. Key characteristics include multiplexed onto OS threads by Go runtime. Example: go func() { /* work */ }(). Common pitfalls include goroutine leaks.",
+      "keywords": [
+        "goroutines",
+        "Go programming",
+        "core language"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of goroutines in a production environment?",
+        "What are the common pitfalls or issues associated with goroutines?"
+      ],
+      "related_concepts": [
+        "channels",
+        "select statement",
+        "interfaces"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-083",
+      "subject": "Go",
+      "category": "Standard Library",
+      "subcategory": "encoding/json",
+      "difficulty": "Medium",
+      "question": "What is reflect package in Go and how does it work?",
+      "ideal_answer": "reflect package in Go refers to runtime type introspection. It works by examining types and values. Key characteristics include TypeOf, ValueOf, struct tags. Example: reflect.TypeOf(obj).Kind(). Common pitfalls include performance cost, brittle code.",
+      "keywords": [
+        "reflect package",
+        "Go programming",
+        "standard library"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of reflect package in a production environment?",
+        "What are the common pitfalls or issues associated with reflect package?"
+      ],
+      "related_concepts": [
+        "net/http",
+        "database/sql"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-084",
+      "subject": "Go",
+      "category": "Memory Model",
+      "subcategory": "Slices",
+      "difficulty": "Medium",
+      "question": "Explain the difference between pointer receivers vs value receivers and escape analysis in Go.",
+      "ideal_answer": "pointer receivers vs value receivers and escape analysis differ in several ways: pointer receivers vs value receivers is method receiver types (works by mutability and interface satisfaction) whereas escape analysis is stack vs heap allocation (works by compiler optimization). pointer receivers vs value receivers is typically used for pointer: can modify, value: copy, while escape analysis is used for escaping variables allocated on heap. Example demonstrating pointer receivers vs value receivers: func (p *Point) Move(). Example demonstrating escape analysis: returning local variable address.",
+      "keywords": [
+        "pointer receivers vs value receivers",
+        "escape analysis",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose pointer receivers vs value receivers over escape analysis?",
+        "What is the performance or memory difference between pointer receivers vs value receivers and escape analysis?"
+      ],
+      "related_concepts": [
+        "pointer receivers vs value receivers",
+        "escape analysis",
+        "slice internals"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-085",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Interfaces",
+      "difficulty": "Medium",
+      "question": "Explain the difference between slices and panic and recover in Go.",
+      "ideal_answer": "slices and panic and recover differ in several ways: slices is dynamic array views (works by flexible sequence type) whereas panic and recover is exception-like mechanism (works by unwinding the stack). slices is typically used for pointer, length, capacity triple, while panic and recover is used for panic: stop normal flow; recover: catch in deferred function. Example demonstrating slices: slice := array[1:4]. Example demonstrating panic and recover: defer func() { if r := recover(); r != nil { ... } }().",
+      "keywords": [
+        "slices",
+        "panic and recover",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose slices over panic and recover?",
+        "What is the performance or memory difference between slices and panic and recover?"
+      ],
+      "related_concepts": [
+        "slices",
+        "panic and recover",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-086",
+      "subject": "Go",
+      "category": "Standard Library",
+      "subcategory": "database/sql",
+      "difficulty": "Medium",
+      "question": "What is database/sql in Go and how does it work?",
+      "ideal_answer": "database/sql in Go refers to SQL database access. It works by database-agnostic SQL operations. Key characteristics include connection pooling, prepared statements. Example: db.QueryContext(ctx, \"SELECT ...\", args...). Common pitfalls include NULL handling with sql.NullString.",
+      "keywords": [
+        "database/sql",
+        "Go programming",
+        "standard library"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of database/sql in a production environment?",
+        "What are the common pitfalls or issues associated with database/sql?"
+      ],
+      "related_concepts": [
+        "net/http",
+        "reflect package"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-087",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Structs",
+      "difficulty": "Medium",
+      "question": "Explain the difference between structs and panic and recover in Go.",
+      "ideal_answer": "structs and panic and recover differ in several ways: structs is composite data types (works by grouping related fields) whereas panic and recover is exception-like mechanism (works by unwinding the stack). structs is typically used for embedded fields for composition, while panic and recover is used for panic: stop normal flow; recover: catch in deferred function. Example demonstrating structs: type Person struct { Name string; Age int }. Example demonstrating panic and recover: defer func() { if r := recover(); r != nil { ... } }().",
+      "keywords": [
+        "structs",
+        "panic and recover",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose structs over panic and recover?",
+        "What is the performance or memory difference between structs and panic and recover?"
+      ],
+      "related_concepts": [
+        "structs",
+        "panic and recover",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-088",
+      "subject": "Go",
+      "category": "Error Handling",
+      "subcategory": "error interface",
+      "difficulty": "Medium",
+      "question": "What are the common issues with error interface in Go and how do you debug them?",
+      "ideal_answer": "Common issues with error interface in Go include: error wrapping with fmt.Errorf %w. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "error interface",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to error interface?",
+        "What tools can assist in detecting problems with error interface at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "custom error types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-089",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Channels",
+      "difficulty": "Medium",
+      "question": "Explain the difference between sync.RWMutex and context package in Go.",
+      "ideal_answer": "sync.RWMutex and context package differ in several ways: sync.RWMutex is read-write lock (works by multiple readers, single writer) whereas context package is request-scoped values (works by cancellation and deadlines). sync.RWMutex is typically used for RLock/RUnlock, Lock/Unlock, while context package is used for WithCancel, WithTimeout, WithValue. Example demonstrating sync.RWMutex: var rwmu sync.RWMutex. Example demonstrating context package: ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second).",
+      "keywords": [
+        "sync.RWMutex",
+        "context package",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sync.RWMutex over context package?",
+        "What is the performance or memory difference between sync.RWMutex and context package?"
+      ],
+      "related_concepts": [
+        "sync.RWMutex",
+        "context package",
+        "sync.Mutex",
+        "sync.WaitGroup"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-090",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Medium",
+      "question": "Explain the difference between goroutines and maps in Go.",
+      "ideal_answer": "goroutines and maps differ in several ways: goroutines is lightweight threads (works by concurrent execution units) whereas maps is hash table implementation (works by key-value storage). goroutines is typically used for multiplexed onto OS threads by Go runtime, while maps is used for reference type, not safe for concurrent use. Example demonstrating goroutines: go func() { /* work */ }(). Example demonstrating maps: m := make(map[string]int).",
+      "keywords": [
+        "goroutines",
+        "maps",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose goroutines over maps?",
+        "What is the performance or memory difference between goroutines and maps?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "maps",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-091",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Sync Package",
+      "difficulty": "Medium",
+      "question": "What is context package in Go and how does it work?",
+      "ideal_answer": "context package in Go refers to request-scoped values. It works by cancellation and deadlines. Key characteristics include WithCancel, WithTimeout, WithValue. Example: ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second). Common pitfalls include context value abuse.",
+      "keywords": [
+        "context package",
+        "Go programming",
+        "concurrency"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of context package in a production environment?",
+        "What are the common pitfalls or issues associated with context package?"
+      ],
+      "related_concepts": [
+        "sync.Mutex",
+        "sync.RWMutex",
+        "sync.WaitGroup"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-092",
+      "subject": "Go",
+      "category": "Memory Model",
+      "subcategory": "Maps",
+      "difficulty": "Medium",
+      "question": "What are the common issues with escape analysis in Go and how do you debug them?",
+      "ideal_answer": "Common issues with escape analysis in Go include: pprof heap profiling. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "escape analysis",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to escape analysis?",
+        "What tools can assist in detecting problems with escape analysis at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "slice internals",
+        "pointer receivers vs value receivers"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GO-093",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Goroutines",
+      "difficulty": "Hard",
+      "question": "Explain the difference between sync.Mutex and sync.RWMutex in Go.",
+      "ideal_answer": "sync.Mutex and sync.RWMutex differ in several ways: sync.Mutex is mutual exclusion lock (works by protecting shared state) whereas sync.RWMutex is read-write lock (works by multiple readers, single writer). sync.Mutex is typically used for Lock/Unlock pairs, while sync.RWMutex is used for RLock/RUnlock, Lock/Unlock. Example demonstrating sync.Mutex: var mu sync.Mutex; mu.Lock(); defer mu.Unlock(). Example demonstrating sync.RWMutex: var rwmu sync.RWMutex.",
+      "keywords": [
+        "sync.Mutex",
+        "sync.RWMutex",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sync.Mutex over sync.RWMutex?",
+        "What is the performance or memory difference between sync.Mutex and sync.RWMutex?"
+      ],
+      "related_concepts": [
+        "sync.Mutex",
+        "sync.RWMutex",
+        "sync.WaitGroup",
+        "context package"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-094",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Control Flow",
+      "difficulty": "Hard",
+      "question": "Explain the difference between panic and recover and nil interface in Go.",
+      "ideal_answer": "panic and recover and nil interface differ in several ways: panic and recover is exception-like mechanism (works by unwinding the stack) whereas nil interface is empty interface value (works by type and value both nil). panic and recover is typically used for panic: stop normal flow; recover: catch in deferred function, while nil interface is used for different from typed nil. Example demonstrating panic and recover: defer func() { if r := recover(); r != nil { ... } }(). Example demonstrating nil interface: var i interface{} = (*int)(nil); // i != nil.",
+      "keywords": [
+        "panic and recover",
+        "nil interface",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose panic and recover over nil interface?",
+        "What is the performance or memory difference between panic and recover and nil interface?"
+      ],
+      "related_concepts": [
+        "panic and recover",
+        "nil interface",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-095",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Hard",
+      "question": "Explain the difference between channels and select statement in Go.",
+      "ideal_answer": "channels and select statement differ in several ways: channels is typed communication pipes (works by goroutine synchronization) whereas select statement is channel multiplexing (works by waiting on multiple channel operations). channels is typically used for unbuffered (synchronous) vs buffered, while select statement is used for random fair selection, default case. Example demonstrating channels: ch := make(chan int, 10). Example demonstrating select statement: select { case v := <-ch1: ... case ch2 <- v: ... }.",
+      "keywords": [
+        "channels",
+        "select statement",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose channels over select statement?",
+        "What is the performance or memory difference between channels and select statement?"
+      ],
+      "related_concepts": [
+        "channels",
+        "select statement",
+        "goroutines",
+        "interfaces"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-096",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Hard",
+      "question": "Explain the difference between goroutines and panic and recover in Go.",
+      "ideal_answer": "goroutines and panic and recover differ in several ways: goroutines is lightweight threads (works by concurrent execution units) whereas panic and recover is exception-like mechanism (works by unwinding the stack). goroutines is typically used for multiplexed onto OS threads by Go runtime, while panic and recover is used for panic: stop normal flow; recover: catch in deferred function. Example demonstrating goroutines: go func() { /* work */ }(). Example demonstrating panic and recover: defer func() { if r := recover(); r != nil { ... } }().",
+      "keywords": [
+        "goroutines",
+        "panic and recover",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose goroutines over panic and recover?",
+        "What is the performance or memory difference between goroutines and panic and recover?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "panic and recover",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-097",
+      "subject": "Go",
+      "category": "Error Handling",
+      "subcategory": "error interface",
+      "difficulty": "Hard",
+      "question": "What is error interface in Go and how does it work?",
+      "ideal_answer": "error interface in Go refers to standard error type. It works by minimal error contract. Key characteristics include Error() string method. Example: if err != nil { return err }. Common pitfalls include error wrapping with fmt.Errorf %w.",
+      "keywords": [
+        "error interface",
+        "Go programming",
+        "error handling"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of error interface in a production environment?",
+        "What are the common pitfalls or issues associated with error interface?"
+      ],
+      "related_concepts": [
+        "custom error types"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-098",
+      "subject": "Go",
+      "category": "Standard Library",
+      "subcategory": "net/http",
+      "difficulty": "Hard",
+      "question": "Explain the difference between net/http and database/sql in Go.",
+      "ideal_answer": "net/http and database/sql differ in several ways: net/http is HTTP server/client (works by building web services) whereas database/sql is SQL database access (works by database-agnostic SQL operations). net/http is typically used for ServeMux, Handler interface, http.Client, while database/sql is used for connection pooling, prepared statements. Example demonstrating net/http: http.HandleFunc(\"/\", handler). Example demonstrating database/sql: db.QueryContext(ctx, \"SELECT ...\", args...).",
+      "keywords": [
+        "net/http",
+        "database/sql",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose net/http over database/sql?",
+        "What is the performance or memory difference between net/http and database/sql?"
+      ],
+      "related_concepts": [
+        "net/http",
+        "database/sql",
+        "reflect package"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-099",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Control Flow",
+      "difficulty": "Hard",
+      "question": "What is select statement in Go and how does it work?",
+      "ideal_answer": "select statement in Go refers to channel multiplexing. It works by waiting on multiple channel operations. Key characteristics include random fair selection, default case. Example: select { case v := <-ch1: ... case ch2 <- v: ... }. Common pitfalls include non-blocking select with default.",
+      "keywords": [
+        "select statement",
+        "Go programming",
+        "core language"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of select statement in a production environment?",
+        "What are the common pitfalls or issues associated with select statement?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "channels",
+        "interfaces"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-100",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Structs",
+      "difficulty": "Hard",
+      "question": "Explain the difference between structs and nil interface in Go.",
+      "ideal_answer": "structs and nil interface differ in several ways: structs is composite data types (works by grouping related fields) whereas nil interface is empty interface value (works by type and value both nil). structs is typically used for embedded fields for composition, while nil interface is used for different from typed nil. Example demonstrating structs: type Person struct { Name string; Age int }. Example demonstrating nil interface: var i interface{} = (*int)(nil); // i != nil.",
+      "keywords": [
+        "structs",
+        "nil interface",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose structs over nil interface?",
+        "What is the performance or memory difference between structs and nil interface?"
+      ],
+      "related_concepts": [
+        "structs",
+        "nil interface",
+        "goroutines",
+        "channels"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-101",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Goroutines",
+      "difficulty": "Hard",
+      "question": "What is sync.Pool in Go and how does it work?",
+      "ideal_answer": "sync.Pool in Go refers to object reuse pool. It works by reducing GC pressure. Key characteristics include Get/Put operations. Example: var pool = sync.Pool{ New: func() interface{} { return make([]byte, 1024) } }. Common pitfalls include object eviction unpredictability.",
+      "keywords": [
+        "sync.Pool",
+        "Go programming",
+        "concurrency"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of sync.Pool in a production environment?",
+        "What are the common pitfalls or issues associated with sync.Pool?"
+      ],
+      "related_concepts": [
+        "sync.Mutex",
+        "sync.RWMutex",
+        "sync.WaitGroup"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-102",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Interfaces",
+      "difficulty": "Hard",
+      "question": "What are the common issues with slices in Go and how do you debug them?",
+      "ideal_answer": "Common issues with slices in Go include: append behavior, underlying array sharing. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "slices",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to slices?",
+        "What tools can assist in detecting problems with slices at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-103",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Select",
+      "difficulty": "Hard",
+      "question": "What is sync.WaitGroup in Go and how does it work?",
+      "ideal_answer": "sync.WaitGroup in Go refers to goroutine completion waiter. It works by blocking until group finishes. Key characteristics include Add, Done, Wait. Example: var wg sync.WaitGroup; wg.Add(1); go func() { defer wg.Done(); ... }(). Common pitfalls include Add must be called before goroutine starts.",
+      "keywords": [
+        "sync.WaitGroup",
+        "Go programming",
+        "concurrency"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of sync.WaitGroup in a production environment?",
+        "What are the common pitfalls or issues associated with sync.WaitGroup?"
+      ],
+      "related_concepts": [
+        "sync.Mutex",
+        "sync.RWMutex",
+        "context package"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-104",
+      "subject": "Go",
+      "category": "Standard Library",
+      "subcategory": "net/http",
+      "difficulty": "Hard",
+      "question": "What is net/http in Go and how does it work?",
+      "ideal_answer": "net/http in Go refers to HTTP server/client. It works by building web services. Key characteristics include ServeMux, Handler interface, http.Client. Example: http.HandleFunc(\"/\", handler). Common pitfalls include middleware pattern, timeout handling.",
+      "keywords": [
+        "net/http",
+        "Go programming",
+        "standard library"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of net/http in a production environment?",
+        "What are the common pitfalls or issues associated with net/http?"
+      ],
+      "related_concepts": [
+        "database/sql",
+        "reflect package"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-105",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Select",
+      "difficulty": "Hard",
+      "question": "Explain the difference between sync.WaitGroup and context package in Go.",
+      "ideal_answer": "sync.WaitGroup and context package differ in several ways: sync.WaitGroup is goroutine completion waiter (works by blocking until group finishes) whereas context package is request-scoped values (works by cancellation and deadlines). sync.WaitGroup is typically used for Add, Done, Wait, while context package is used for WithCancel, WithTimeout, WithValue. Example demonstrating sync.WaitGroup: var wg sync.WaitGroup; wg.Add(1); go func() { defer wg.Done(); ... }(). Example demonstrating context package: ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second).",
+      "keywords": [
+        "sync.WaitGroup",
+        "context package",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sync.WaitGroup over context package?",
+        "What is the performance or memory difference between sync.WaitGroup and context package?"
+      ],
+      "related_concepts": [
+        "sync.WaitGroup",
+        "context package",
+        "sync.Mutex",
+        "sync.RWMutex"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-106",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Hard",
+      "question": "What are the common issues with maps in Go and how do you debug them?",
+      "ideal_answer": "Common issues with maps in Go include: zero value is nil, not empty. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "maps",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to maps?",
+        "What tools can assist in detecting problems with maps at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-107",
+      "subject": "Go",
+      "category": "Standard Library",
+      "subcategory": "encoding/json",
+      "difficulty": "Hard",
+      "question": "What are the common issues with reflect package in Go and how do you debug them?",
+      "ideal_answer": "Common issues with reflect package in Go include: performance cost, brittle code. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "reflect package",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to reflect package?",
+        "What tools can assist in detecting problems with reflect package at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "net/http",
+        "database/sql"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-108",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Control Flow",
+      "difficulty": "Hard",
+      "question": "What are the common issues with panic and recover in Go and how do you debug them?",
+      "ideal_answer": "Common issues with panic and recover in Go include: avoid using for control flow. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "panic and recover",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to panic and recover?",
+        "What tools can assist in detecting problems with panic and recover at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-109",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Variables",
+      "difficulty": "Hard",
+      "question": "Explain the difference between goroutines and nil interface in Go.",
+      "ideal_answer": "goroutines and nil interface differ in several ways: goroutines is lightweight threads (works by concurrent execution units) whereas nil interface is empty interface value (works by type and value both nil). goroutines is typically used for multiplexed onto OS threads by Go runtime, while nil interface is used for different from typed nil. Example demonstrating goroutines: go func() { /* work */ }(). Example demonstrating nil interface: var i interface{} = (*int)(nil); // i != nil.",
+      "keywords": [
+        "goroutines",
+        "nil interface",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose goroutines over nil interface?",
+        "What is the performance or memory difference between goroutines and nil interface?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "nil interface",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-110",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Hard",
+      "question": "Explain the difference between channels and structs in Go.",
+      "ideal_answer": "channels and structs differ in several ways: channels is typed communication pipes (works by goroutine synchronization) whereas structs is composite data types (works by grouping related fields). channels is typically used for unbuffered (synchronous) vs buffered, while structs is used for embedded fields for composition. Example demonstrating channels: ch := make(chan int, 10). Example demonstrating structs: type Person struct { Name string; Age int }.",
+      "keywords": [
+        "channels",
+        "structs",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose channels over structs?",
+        "What is the performance or memory difference between channels and structs?"
+      ],
+      "related_concepts": [
+        "channels",
+        "structs",
+        "goroutines",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-111",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Hard",
+      "question": "Explain the difference between channels and panic and recover in Go.",
+      "ideal_answer": "channels and panic and recover differ in several ways: channels is typed communication pipes (works by goroutine synchronization) whereas panic and recover is exception-like mechanism (works by unwinding the stack). channels is typically used for unbuffered (synchronous) vs buffered, while panic and recover is used for panic: stop normal flow; recover: catch in deferred function. Example demonstrating channels: ch := make(chan int, 10). Example demonstrating panic and recover: defer func() { if r := recover(); r != nil { ... } }().",
+      "keywords": [
+        "channels",
+        "panic and recover",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose channels over panic and recover?",
+        "What is the performance or memory difference between channels and panic and recover?"
+      ],
+      "related_concepts": [
+        "channels",
+        "panic and recover",
+        "goroutines",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-112",
+      "subject": "Go",
+      "category": "Memory Model",
+      "subcategory": "Slices",
+      "difficulty": "Hard",
+      "question": "What is pointer receivers vs value receivers in Go and how does it work?",
+      "ideal_answer": "pointer receivers vs value receivers in Go refers to method receiver types. It works by mutability and interface satisfaction. Key characteristics include pointer: can modify, value: copy. Example: func (p *Point) Move(). Common pitfalls include consistency in receiver types.",
+      "keywords": [
+        "pointer receivers vs value receivers",
+        "Go programming",
+        "memory model"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of pointer receivers vs value receivers in a production environment?",
+        "What are the common pitfalls or issues associated with pointer receivers vs value receivers?"
+      ],
+      "related_concepts": [
+        "slice internals",
+        "escape analysis"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-113",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Hard",
+      "question": "What are the common issues with channels in Go and how do you debug them?",
+      "ideal_answer": "Common issues with channels in Go include: closing channels, nil channel behavior. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "channels",
+        "troubleshooting",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to channels?",
+        "What tools can assist in detecting problems with channels at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "select statement",
+        "interfaces"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-114",
+      "subject": "Go",
+      "category": "Core Language",
+      "subcategory": "Types",
+      "difficulty": "Hard",
+      "question": "What is defer in Go and how does it work?",
+      "ideal_answer": "defer in Go refers to delayed execution statement. It works by resource cleanup guarantee. Key characteristics include LIFO order, evaluated immediately. Example: defer file.Close(). Common pitfalls include defer in loops, panic behavior.",
+      "keywords": [
+        "defer",
+        "Go programming",
+        "core language"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of defer in a production environment?",
+        "What are the common pitfalls or issues associated with defer?"
+      ],
+      "related_concepts": [
+        "goroutines",
+        "channels",
+        "select statement"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GO-115",
+      "subject": "Go",
+      "category": "Concurrency",
+      "subcategory": "Goroutines",
+      "difficulty": "Hard",
+      "question": "Explain the difference between sync.Mutex and sync.Pool in Go.",
+      "ideal_answer": "sync.Mutex and sync.Pool differ in several ways: sync.Mutex is mutual exclusion lock (works by protecting shared state) whereas sync.Pool is object reuse pool (works by reducing GC pressure). sync.Mutex is typically used for Lock/Unlock pairs, while sync.Pool is used for Get/Put operations. Example demonstrating sync.Mutex: var mu sync.Mutex; mu.Lock(); defer mu.Unlock(). Example demonstrating sync.Pool: var pool = sync.Pool{ New: func() interface{} { return make([]byte, 1024) } }.",
+      "keywords": [
+        "sync.Mutex",
+        "sync.Pool",
+        "comparison",
+        "Go"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose sync.Mutex over sync.Pool?",
+        "What is the performance or memory difference between sync.Mutex and sync.Pool?"
+      ],
+      "related_concepts": [
+        "sync.Mutex",
+        "sync.Pool",
+        "sync.RWMutex",
+        "sync.WaitGroup"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

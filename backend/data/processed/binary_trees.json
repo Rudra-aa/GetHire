@@ -1,0 +1,757 @@
+{
+  "metadata": {
+    "subject": "Binary Trees",
+    "domain": "Data Structures & Algorithms",
+    "total_questions": 28,
+    "difficulty_distribution": {
+      "Easy": 8,
+      "Medium": 14,
+      "Hard": 6
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "BT-001",
+      "subject": "Binary Trees",
+      "category": "Problems",
+      "subcategory": "Max Path Sum",
+      "difficulty": "Easy",
+      "question": "What is serialize and deserialize in Binary Trees and how does it work?",
+      "ideal_answer": "serialize and deserialize in Binary Trees refers to tree to string and back. It works by persistence and transmission. Key characteristics include preorder with null markers, or level order. Example: String serialize(Node root) { if (root == null) return \"null,\"; return root.val + \",\" + serialize(root.left) + serialize(root.right); }. Common pitfalls include compact encoding strategies.",
+      "keywords": [
+        "serialize and deserialize",
+        "Binary Trees programming",
+        "problems"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of serialize and deserialize in a production environment?",
+        "What are the common pitfalls or issues associated with serialize and deserialize?"
+      ],
+      "related_concepts": [
+        "lowest common ancestor",
+        "maximum path sum",
+        "flatten to linked list"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "BT-002",
+      "subject": "Binary Trees",
+      "category": "Problems",
+      "subcategory": "Path Sum",
+      "difficulty": "Easy",
+      "question": "What is maximum path sum in Binary Trees and how does it work?",
+      "ideal_answer": "maximum path sum in Binary Trees refers to highest sum any path. It works by path can start and end at any nodes. Key characteristics include max of left+root+right, or extending to parent. Example: int maxPathSum(Node root) { int[] max = new int[]{Integer.MIN_VALUE}; helper(root, max); return max[0]; }. Common pitfalls include negative value handling.",
+      "keywords": [
+        "maximum path sum",
+        "Binary Trees programming",
+        "problems"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of maximum path sum in a production environment?",
+        "What are the common pitfalls or issues associated with maximum path sum?"
+      ],
+      "related_concepts": [
+        "lowest common ancestor",
+        "serialize and deserialize",
+        "flatten to linked list"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "BT-003",
+      "subject": "Binary Trees",
+      "category": "Traversal",
+      "subcategory": "Recursive",
+      "difficulty": "Easy",
+      "question": "What are the common issues with zigzag level order in Binary Trees and how do you debug them?",
+      "ideal_answer": "Common issues with zigzag level order in Binary Trees include: two-stack approach. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "zigzag level order",
+        "troubleshooting",
+        "Binary Trees"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to zigzag level order?",
+        "What tools can assist in detecting problems with zigzag level order at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "boundary traversal"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "BT-004",
+      "subject": "Binary Trees",
+      "category": "Problems",
+      "subcategory": "Serialize/Deserialize",
+      "difficulty": "Easy",
+      "question": "What are the common issues with flatten to linked list in Binary Trees and how do you debug them?",
+      "ideal_answer": "Common issues with flatten to linked list in Binary Trees include: O(1) space Morris-like approach. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "flatten to linked list",
+        "troubleshooting",
+        "Binary Trees"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to flatten to linked list?",
+        "What tools can assist in detecting problems with flatten to linked list at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "lowest common ancestor",
+        "maximum path sum",
+        "serialize and deserialize"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "BT-005",
+      "subject": "Binary Trees",
+      "category": "Problems",
+      "subcategory": "Max Path Sum",
+      "difficulty": "Easy",
+      "question": "Explain the difference between serialize and deserialize and flatten to linked list in Binary Trees.",
+      "ideal_answer": "serialize and deserialize and flatten to linked list differ in several ways: serialize and deserialize is tree to string and back (works by persistence and transmission) whereas flatten to linked list is in-place right-skewed conversion (works by preorder sequence as right child chain). serialize and deserialize is typically used for preorder with null markers, or level order, while flatten to linked list is used for recursive: flatten right, save left, attach flattened left to right. Example demonstrating serialize and deserialize: String serialize(Node root) { if (root == null) return \"null,\"; return root.val + \",\" + serialize(root.left) + serialize(root.right); }. Example demonstrating flatten to linked list: Node right = root.right; root.right = flatten(root.left); root.left = null; attach right;.",
+      "keywords": [
+        "serialize and deserialize",
+        "flatten to linked list",
+        "comparison",
+        "Binary Trees"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose serialize and deserialize over flatten to linked list?",
+        "What is the performance or memory difference between serialize and deserialize and flatten to linked list?"
+      ],
+      "related_concepts": [
+        "serialize and deserialize",
+        "flatten to linked list",
+        "lowest common ancestor",
+        "maximum path sum"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "BT-006",
+      "subject": "Binary Trees",
+      "category": "Properties",
+      "subcategory": "Types",
+      "difficulty": "Easy",
+      "question": "Explain the difference between complete binary tree and tree height and diameter in Binary Trees.",
+      "ideal_answer": "complete binary tree and tree height and diameter differ in several ways: complete binary tree is level-filled tree structure (works by all levels full except last, left-filled) whereas tree height and diameter is longest path metrics (works by height: max root-to-leaf edges; diameter: max any-node-to-any-node edges). complete binary tree is typically used for array representation: parent at i, children at 2i+1, 2i+2, while tree height and diameter is used for diameter = max(left height + right height, left diameter, right diameter). Example demonstrating complete binary tree: heap structure, binary heap. Example demonstrating tree height and diameter: int height(Node root) { return root == null ? 0 : 1 + Math.max(height(root.left), height(root.right)); }.",
+      "keywords": [
+        "complete binary tree",
+        "tree height and diameter",
+        "comparison",
+        "Binary Trees"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose complete binary tree over tree height and diameter?",
+        "What is the performance or memory difference between complete binary tree and tree height and diameter?"
+      ],
+      "related_concepts": [
+        "complete binary tree",
+        "tree height and diameter",
+        "balanced binary tree"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "BT-007",
+      "subject": "Binary Trees",
+      "category": "Properties",
+      "subcategory": "Diameter",
+      "difficulty": "Easy",
+      "question": "What are the common issues with balanced binary tree in Binary Trees and how do you debug them?",
+      "ideal_answer": "Common issues with balanced binary tree in Binary Trees include: bottom-up height calculation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "balanced binary tree",
+        "troubleshooting",
+        "Binary Trees"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to balanced binary tree?",
+        "What tools can assist in detecting problems with balanced binary tree at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "complete binary tree",
+        "tree height and diameter"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "BT-008",
+      "subject": "Binary Trees",
+      "category": "Traversal",
+      "subcategory": "Iterative",
+      "difficulty": "Easy",
+      "question": "What is boundary traversal in Binary Trees and how does it work?",
+      "ideal_answer": "boundary traversal in Binary Trees refers to anti-clockwise boundary nodes. It works by left boundary + leaves + right boundary. Key characteristics include excluding duplicates at corners. Example: printLeftBoundary(root); printLeaves(root); printRightBoundary(root.right);. Common pitfalls include edge case: single node tree.",
+      "keywords": [
+        "boundary traversal",
+        "Binary Trees programming",
+        "traversal"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of boundary traversal in a production environment?",
+        "What are the common pitfalls or issues associated with boundary traversal?"
+      ],
+      "related_concepts": [
+        "zigzag level order"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "BT-009",
+      "subject": "Binary Trees",
+      "category": "Problems",
+      "subcategory": "LCA",
+      "difficulty": "Medium",
+      "question": "What is lowest common ancestor in Binary Trees and how does it work?",
+      "ideal_answer": "lowest common ancestor in Binary Trees refers to LCA finding. It works by deepest shared ancestor of two nodes. Key characteristics include recursive search in subtrees. Example: if (root == null || root == p || root == q) return root; Node left = lca(root.left, p, q); Node right = lca(root.right, p, q); if (left != null && right != null) return root;. Common pitfalls include BST LCA optimization.",
+      "keywords": [
+        "lowest common ancestor",
+        "Binary Trees programming",
+        "problems"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of lowest common ancestor in a production environment?",
+        "What are the common pitfalls or issues associated with lowest common ancestor?"
+      ],
+      "related_concepts": [
+        "maximum path sum",
+        "serialize and deserialize",
+        "flatten to linked list"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BT-010",
+      "subject": "Binary Trees",
+      "category": "Traversal",
+      "subcategory": "Recursive",
+      "difficulty": "Medium",
+      "question": "What is zigzag level order in Binary Trees and how does it work?",
+      "ideal_answer": "zigzag level order in Binary Trees refers to alternating direction traversal. It works by left-to-right then right-to-left per level. Key characteristics include deque or reversed level list. Example: boolean leftToRight = true; for (int i = 0; i < size; i++) { if (leftToRight) list.add(node.val); else list.add(0, node.val); }. Common pitfalls include two-stack approach.",
+      "keywords": [
+        "zigzag level order",
+        "Binary Trees programming",
+        "traversal"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of zigzag level order in a production environment?",
+        "What are the common pitfalls or issues associated with zigzag level order?"
+      ],
+      "related_concepts": [
+        "boundary traversal"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BT-011",
+      "subject": "Binary Trees",
+      "category": "Problems",
+      "subcategory": "LCA",
+      "difficulty": "Medium",
+      "question": "Explain the difference between lowest common ancestor and flatten to linked list in Binary Trees.",
+      "ideal_answer": "lowest common ancestor and flatten to linked list differ in several ways: lowest common ancestor is LCA finding (works by deepest shared ancestor of two nodes) whereas flatten to linked list is in-place right-skewed conversion (works by preorder sequence as right child chain). lowest common ancestor is typically used for recursive search in subtrees, while flatten to linked list is used for recursive: flatten right, save left, attach flattened left to right. Example demonstrating lowest common ancestor: if (root == null || root == p || root == q) return root; Node left = lca(root.left, p, q); Node right = lca(root.right, p, q); if (left != null && right != null) return root;. Example demonstrating flatten to linked list: Node right = root.right; root.right = flatten(root.left); root.left = null; attach right;.",
+      "keywords": [
+        "lowest common ancestor",
+        "flatten to linked list",
+        "comparison",
+        "Binary Trees"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose lowest common ancestor over flatten to linked list?",
+        "What is the performance or memory difference between lowest common ancestor and flatten to linked list?"
+      ],
+      "related_concepts": [
+        "lowest common ancestor",
+        "flatten to linked list",
+        "maximum path sum",
+        "serialize and deserialize"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BT-012",
+      "subject": "Binary Trees",
+      "category": "Traversal",
+      "subcategory": "Iterative",
+      "difficulty": "Medium",
+      "question": "What are the common issues with boundary traversal in Binary Trees and how do you debug them?",
+      "ideal_answer": "Common issues with boundary traversal in Binary Trees include: edge case: single node tree. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "boundary traversal",
+        "troubleshooting",
+        "Binary Trees"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to boundary traversal?",
+        "What tools can assist in detecting problems with boundary traversal at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "zigzag level order"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BT-013",
+      "subject": "Binary Trees",
+      "category": "Problems",
+      "subcategory": "Max Path Sum",
+      "difficulty": "Medium",
+      "question": "What are the common issues with serialize and deserialize in Binary Trees and how do you debug them?",
+      "ideal_answer": "Common issues with serialize and deserialize in Binary Trees include: compact encoding strategies. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "serialize and deserialize",
+        "troubleshooting",
+        "Binary Trees"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to serialize and deserialize?",
+        "What tools can assist in detecting problems with serialize and deserialize at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "lowest common ancestor",
+        "maximum path sum",
+        "flatten to linked list"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BT-014",
+      "subject": "Binary Trees",
+      "category": "Problems",
+      "subcategory": "LCA",
+      "difficulty": "Medium",
+      "question": "What are the common issues with lowest common ancestor in Binary Trees and how do you debug them?",
+      "ideal_answer": "Common issues with lowest common ancestor in Binary Trees include: BST LCA optimization. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "lowest common ancestor",
+        "troubleshooting",
+        "Binary Trees"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to lowest common ancestor?",
+        "What tools can assist in detecting problems with lowest common ancestor at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "maximum path sum",
+        "serialize and deserialize",
+        "flatten to linked list"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BT-015",
+      "subject": "Binary Trees",
+      "category": "Problems",
+      "subcategory": "Path Sum",
+      "difficulty": "Medium",
+      "question": "Explain the difference between maximum path sum and serialize and deserialize in Binary Trees.",
+      "ideal_answer": "maximum path sum and serialize and deserialize differ in several ways: maximum path sum is highest sum any path (works by path can start and end at any nodes) whereas serialize and deserialize is tree to string and back (works by persistence and transmission). maximum path sum is typically used for max of left+root+right, or extending to parent, while serialize and deserialize is used for preorder with null markers, or level order. Example demonstrating maximum path sum: int maxPathSum(Node root) { int[] max = new int[]{Integer.MIN_VALUE}; helper(root, max); return max[0]; }. Example demonstrating serialize and deserialize: String serialize(Node root) { if (root == null) return \"null,\"; return root.val + \",\" + serialize(root.left) + serialize(root.right); }.",
+      "keywords": [
+        "maximum path sum",
+        "serialize and deserialize",
+        "comparison",
+        "Binary Trees"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose maximum path sum over serialize and deserialize?",
+        "What is the performance or memory difference between maximum path sum and serialize and deserialize?"
+      ],
+      "related_concepts": [
+        "maximum path sum",
+        "serialize and deserialize",
+        "lowest common ancestor",
+        "flatten to linked list"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BT-016",
+      "subject": "Binary Trees",
+      "category": "Properties",
+      "subcategory": "Types",
+      "difficulty": "Medium",
+      "question": "What are the common issues with complete binary tree in Binary Trees and how do you debug them?",
+      "ideal_answer": "Common issues with complete binary tree in Binary Trees include: node count vs height relationship. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "complete binary tree",
+        "troubleshooting",
+        "Binary Trees"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to complete binary tree?",
+        "What tools can assist in detecting problems with complete binary tree at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "tree height and diameter",
+        "balanced binary tree"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BT-017",
+      "subject": "Binary Trees",
+      "category": "Traversal",
+      "subcategory": "Recursive",
+      "difficulty": "Medium",
+      "question": "Explain the difference between zigzag level order and boundary traversal in Binary Trees.",
+      "ideal_answer": "zigzag level order and boundary traversal differ in several ways: zigzag level order is alternating direction traversal (works by left-to-right then right-to-left per level) whereas boundary traversal is anti-clockwise boundary nodes (works by left boundary + leaves + right boundary). zigzag level order is typically used for deque or reversed level list, while boundary traversal is used for excluding duplicates at corners. Example demonstrating zigzag level order: boolean leftToRight = true; for (int i = 0; i < size; i++) { if (leftToRight) list.add(node.val); else list.add(0, node.val); }. Example demonstrating boundary traversal: printLeftBoundary(root); printLeaves(root); printRightBoundary(root.right);.",
+      "keywords": [
+        "zigzag level order",
+        "boundary traversal",
+        "comparison",
+        "Binary Trees"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose zigzag level order over boundary traversal?",
+        "What is the performance or memory difference between zigzag level order and boundary traversal?"
+      ],
+      "related_concepts": [
+        "zigzag level order",
+        "boundary traversal"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BT-018",
+      "subject": "Binary Trees",
+      "category": "Properties",
+      "subcategory": "Height",
+      "difficulty": "Medium",
+      "question": "What is tree height and diameter in Binary Trees and how does it work?",
+      "ideal_answer": "tree height and diameter in Binary Trees refers to longest path metrics. It works by height: max root-to-leaf edges; diameter: max any-node-to-any-node edges. Key characteristics include diameter = max(left height + right height, left diameter, right diameter). Example: int height(Node root) { return root == null ? 0 : 1 + Math.max(height(root.left), height(root.right)); }. Common pitfalls include O(n) single-pass diameter.",
+      "keywords": [
+        "tree height and diameter",
+        "Binary Trees programming",
+        "properties"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of tree height and diameter in a production environment?",
+        "What are the common pitfalls or issues associated with tree height and diameter?"
+      ],
+      "related_concepts": [
+        "complete binary tree",
+        "balanced binary tree"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BT-019",
+      "subject": "Binary Trees",
+      "category": "Problems",
+      "subcategory": "Path Sum",
+      "difficulty": "Medium",
+      "question": "What are the common issues with maximum path sum in Binary Trees and how do you debug them?",
+      "ideal_answer": "Common issues with maximum path sum in Binary Trees include: negative value handling. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "maximum path sum",
+        "troubleshooting",
+        "Binary Trees"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to maximum path sum?",
+        "What tools can assist in detecting problems with maximum path sum at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "lowest common ancestor",
+        "serialize and deserialize",
+        "flatten to linked list"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BT-020",
+      "subject": "Binary Trees",
+      "category": "Problems",
+      "subcategory": "Path Sum",
+      "difficulty": "Medium",
+      "question": "Explain the difference between maximum path sum and flatten to linked list in Binary Trees.",
+      "ideal_answer": "maximum path sum and flatten to linked list differ in several ways: maximum path sum is highest sum any path (works by path can start and end at any nodes) whereas flatten to linked list is in-place right-skewed conversion (works by preorder sequence as right child chain). maximum path sum is typically used for max of left+root+right, or extending to parent, while flatten to linked list is used for recursive: flatten right, save left, attach flattened left to right. Example demonstrating maximum path sum: int maxPathSum(Node root) { int[] max = new int[]{Integer.MIN_VALUE}; helper(root, max); return max[0]; }. Example demonstrating flatten to linked list: Node right = root.right; root.right = flatten(root.left); root.left = null; attach right;.",
+      "keywords": [
+        "maximum path sum",
+        "flatten to linked list",
+        "comparison",
+        "Binary Trees"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose maximum path sum over flatten to linked list?",
+        "What is the performance or memory difference between maximum path sum and flatten to linked list?"
+      ],
+      "related_concepts": [
+        "maximum path sum",
+        "flatten to linked list",
+        "lowest common ancestor",
+        "serialize and deserialize"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BT-021",
+      "subject": "Binary Trees",
+      "category": "Properties",
+      "subcategory": "Diameter",
+      "difficulty": "Medium",
+      "question": "What is balanced binary tree in Binary Trees and how does it work?",
+      "ideal_answer": "balanced binary tree in Binary Trees refers to height-balanced property. It works by left and right subtree heights differ by at most 1. Key characteristics include AVL: strictly balanced; Red-Black: loosely balanced. Example: boolean isBalanced(Node root) { ... }. Common pitfalls include bottom-up height calculation.",
+      "keywords": [
+        "balanced binary tree",
+        "Binary Trees programming",
+        "properties"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of balanced binary tree in a production environment?",
+        "What are the common pitfalls or issues associated with balanced binary tree?"
+      ],
+      "related_concepts": [
+        "complete binary tree",
+        "tree height and diameter"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BT-022",
+      "subject": "Binary Trees",
+      "category": "Problems",
+      "subcategory": "LCA",
+      "difficulty": "Medium",
+      "question": "Explain the difference between lowest common ancestor and maximum path sum in Binary Trees.",
+      "ideal_answer": "lowest common ancestor and maximum path sum differ in several ways: lowest common ancestor is LCA finding (works by deepest shared ancestor of two nodes) whereas maximum path sum is highest sum any path (works by path can start and end at any nodes). lowest common ancestor is typically used for recursive search in subtrees, while maximum path sum is used for max of left+root+right, or extending to parent. Example demonstrating lowest common ancestor: if (root == null || root == p || root == q) return root; Node left = lca(root.left, p, q); Node right = lca(root.right, p, q); if (left != null && right != null) return root;. Example demonstrating maximum path sum: int maxPathSum(Node root) { int[] max = new int[]{Integer.MIN_VALUE}; helper(root, max); return max[0]; }.",
+      "keywords": [
+        "lowest common ancestor",
+        "maximum path sum",
+        "comparison",
+        "Binary Trees"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose lowest common ancestor over maximum path sum?",
+        "What is the performance or memory difference between lowest common ancestor and maximum path sum?"
+      ],
+      "related_concepts": [
+        "lowest common ancestor",
+        "maximum path sum",
+        "serialize and deserialize",
+        "flatten to linked list"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "BT-023",
+      "subject": "Binary Trees",
+      "category": "Properties",
+      "subcategory": "Types",
+      "difficulty": "Hard",
+      "question": "Explain the difference between complete binary tree and balanced binary tree in Binary Trees.",
+      "ideal_answer": "complete binary tree and balanced binary tree differ in several ways: complete binary tree is level-filled tree structure (works by all levels full except last, left-filled) whereas balanced binary tree is height-balanced property (works by left and right subtree heights differ by at most 1). complete binary tree is typically used for array representation: parent at i, children at 2i+1, 2i+2, while balanced binary tree is used for AVL: strictly balanced; Red-Black: loosely balanced. Example demonstrating complete binary tree: heap structure, binary heap. Example demonstrating balanced binary tree: boolean isBalanced(Node root) { ... }.",
+      "keywords": [
+        "complete binary tree",
+        "balanced binary tree",
+        "comparison",
+        "Binary Trees"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose complete binary tree over balanced binary tree?",
+        "What is the performance or memory difference between complete binary tree and balanced binary tree?"
+      ],
+      "related_concepts": [
+        "complete binary tree",
+        "balanced binary tree",
+        "tree height and diameter"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "BT-024",
+      "subject": "Binary Trees",
+      "category": "Properties",
+      "subcategory": "Height",
+      "difficulty": "Hard",
+      "question": "Explain the difference between tree height and diameter and balanced binary tree in Binary Trees.",
+      "ideal_answer": "tree height and diameter and balanced binary tree differ in several ways: tree height and diameter is longest path metrics (works by height: max root-to-leaf edges; diameter: max any-node-to-any-node edges) whereas balanced binary tree is height-balanced property (works by left and right subtree heights differ by at most 1). tree height and diameter is typically used for diameter = max(left height + right height, left diameter, right diameter), while balanced binary tree is used for AVL: strictly balanced; Red-Black: loosely balanced. Example demonstrating tree height and diameter: int height(Node root) { return root == null ? 0 : 1 + Math.max(height(root.left), height(root.right)); }. Example demonstrating balanced binary tree: boolean isBalanced(Node root) { ... }.",
+      "keywords": [
+        "tree height and diameter",
+        "balanced binary tree",
+        "comparison",
+        "Binary Trees"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose tree height and diameter over balanced binary tree?",
+        "What is the performance or memory difference between tree height and diameter and balanced binary tree?"
+      ],
+      "related_concepts": [
+        "tree height and diameter",
+        "balanced binary tree",
+        "complete binary tree"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "BT-025",
+      "subject": "Binary Trees",
+      "category": "Problems",
+      "subcategory": "LCA",
+      "difficulty": "Hard",
+      "question": "Explain the difference between lowest common ancestor and serialize and deserialize in Binary Trees.",
+      "ideal_answer": "lowest common ancestor and serialize and deserialize differ in several ways: lowest common ancestor is LCA finding (works by deepest shared ancestor of two nodes) whereas serialize and deserialize is tree to string and back (works by persistence and transmission). lowest common ancestor is typically used for recursive search in subtrees, while serialize and deserialize is used for preorder with null markers, or level order. Example demonstrating lowest common ancestor: if (root == null || root == p || root == q) return root; Node left = lca(root.left, p, q); Node right = lca(root.right, p, q); if (left != null && right != null) return root;. Example demonstrating serialize and deserialize: String serialize(Node root) { if (root == null) return \"null,\"; return root.val + \",\" + serialize(root.left) + serialize(root.right); }.",
+      "keywords": [
+        "lowest common ancestor",
+        "serialize and deserialize",
+        "comparison",
+        "Binary Trees"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose lowest common ancestor over serialize and deserialize?",
+        "What is the performance or memory difference between lowest common ancestor and serialize and deserialize?"
+      ],
+      "related_concepts": [
+        "lowest common ancestor",
+        "serialize and deserialize",
+        "maximum path sum",
+        "flatten to linked list"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "BT-026",
+      "subject": "Binary Trees",
+      "category": "Properties",
+      "subcategory": "Types",
+      "difficulty": "Hard",
+      "question": "What is complete binary tree in Binary Trees and how does it work?",
+      "ideal_answer": "complete binary tree in Binary Trees refers to level-filled tree structure. It works by all levels full except last, left-filled. Key characteristics include array representation: parent at i, children at 2i+1, 2i+2. Example: heap structure, binary heap. Common pitfalls include node count vs height relationship.",
+      "keywords": [
+        "complete binary tree",
+        "Binary Trees programming",
+        "properties"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of complete binary tree in a production environment?",
+        "What are the common pitfalls or issues associated with complete binary tree?"
+      ],
+      "related_concepts": [
+        "tree height and diameter",
+        "balanced binary tree"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "BT-027",
+      "subject": "Binary Trees",
+      "category": "Properties",
+      "subcategory": "Height",
+      "difficulty": "Hard",
+      "question": "What are the common issues with tree height and diameter in Binary Trees and how do you debug them?",
+      "ideal_answer": "Common issues with tree height and diameter in Binary Trees include: O(n) single-pass diameter. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "tree height and diameter",
+        "troubleshooting",
+        "Binary Trees"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to tree height and diameter?",
+        "What tools can assist in detecting problems with tree height and diameter at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "complete binary tree",
+        "balanced binary tree"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "BT-028",
+      "subject": "Binary Trees",
+      "category": "Problems",
+      "subcategory": "Serialize/Deserialize",
+      "difficulty": "Hard",
+      "question": "What is flatten to linked list in Binary Trees and how does it work?",
+      "ideal_answer": "flatten to linked list in Binary Trees refers to in-place right-skewed conversion. It works by preorder sequence as right child chain. Key characteristics include recursive: flatten right, save left, attach flattened left to right. Example: Node right = root.right; root.right = flatten(root.left); root.left = null; attach right;. Common pitfalls include O(1) space Morris-like approach.",
+      "keywords": [
+        "flatten to linked list",
+        "Binary Trees programming",
+        "problems"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of flatten to linked list in a production environment?",
+        "What are the common pitfalls or issues associated with flatten to linked list?"
+      ],
+      "related_concepts": [
+        "lowest common ancestor",
+        "maximum path sum",
+        "serialize and deserialize"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

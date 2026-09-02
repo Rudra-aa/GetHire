@@ -28,8 +28,11 @@ def merge_datasets():
             if isinstance(data, list):
                 all_questions.extend(data)
                 print(f"   -> Added {len(data)} questions.")
+            elif isinstance(data, dict) and "questions" in data:
+                all_questions.extend(data["questions"])
+                print(f"   -> Added {len(data['questions'])} questions.")
             else:
-                print(f"   ⚠️ WARNING: {filepath.name} root element is not a list. Skipping.")
+                print(f"   ⚠️ WARNING: {filepath.name} root element is not a list or conforming dict. Skipping.")
         except Exception as e:
             print(f"   🚨 ERROR: Failed to load {filepath.name}: {e}")
 

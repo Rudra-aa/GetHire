@@ -1,0 +1,391 @@
+{
+  "metadata": {
+    "subject": "RAG",
+    "domain": "Artificial Intelligence",
+    "total_questions": 14,
+    "difficulty_distribution": {
+      "Easy": 4,
+      "Medium": 7,
+      "Hard": 3
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "RAG-001",
+      "subject": "RAG",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Easy",
+      "question": "Explain the difference between vector database and chunking strategies in RAG.",
+      "ideal_answer": "vector database and chunking strategies differ in several ways: vector database is semantic search storage (works by embedding-based retrieval) whereas chunking strategies is document segmentation (works by optimal retrieval unit size). vector database is typically used for FAISS, Pinecone, Weaviate, Chroma, Milvus, while chunking strategies is used for fixed size, semantic, recursive, agentic. Example demonstrating vector database: indexing: IVF, HNSW, flat. Example demonstrating chunking strategies: chunk_size=512, chunk_overlap=50.",
+      "keywords": [
+        "vector database",
+        "chunking strategies",
+        "comparison",
+        "RAG"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose vector database over chunking strategies?",
+        "What is the performance or memory difference between vector database and chunking strategies?"
+      ],
+      "related_concepts": [
+        "vector database",
+        "chunking strategies",
+        "retrieval-augmented generation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RAG-002",
+      "subject": "RAG",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Easy",
+      "question": "What are the common issues with reranking in RAG and how do you debug them?",
+      "ideal_answer": "Common issues with reranking in RAG include: latency vs accuracy tradeoff. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "reranking",
+        "troubleshooting",
+        "RAG"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to reranking?",
+        "What tools can assist in detecting problems with reranking at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "embedding models"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RAG-003",
+      "subject": "RAG",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Easy",
+      "question": "Explain the difference between retrieval-augmented generation and chunking strategies in RAG.",
+      "ideal_answer": "retrieval-augmented generation and chunking strategies differ in several ways: retrieval-augmented generation is external knowledge grounding (works by combining retrieval with generation) whereas chunking strategies is document segmentation (works by optimal retrieval unit size). retrieval-augmented generation is typically used for retrieve relevant docs, concatenate with query, generate, while chunking strategies is used for fixed size, semantic, recursive, agentic. Example demonstrating retrieval-augmented generation: query -> retriever -> [doc1, doc2] -> generator -> answer. Example demonstrating chunking strategies: chunk_size=512, chunk_overlap=50.",
+      "keywords": [
+        "retrieval-augmented generation",
+        "chunking strategies",
+        "comparison",
+        "RAG"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose retrieval-augmented generation over chunking strategies?",
+        "What is the performance or memory difference between retrieval-augmented generation and chunking strategies?"
+      ],
+      "related_concepts": [
+        "retrieval-augmented generation",
+        "chunking strategies",
+        "vector database"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RAG-004",
+      "subject": "RAG",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Easy",
+      "question": "Explain the difference between retrieval-augmented generation and vector database in RAG.",
+      "ideal_answer": "retrieval-augmented generation and vector database differ in several ways: retrieval-augmented generation is external knowledge grounding (works by combining retrieval with generation) whereas vector database is semantic search storage (works by embedding-based retrieval). retrieval-augmented generation is typically used for retrieve relevant docs, concatenate with query, generate, while vector database is used for FAISS, Pinecone, Weaviate, Chroma, Milvus. Example demonstrating retrieval-augmented generation: query -> retriever -> [doc1, doc2] -> generator -> answer. Example demonstrating vector database: indexing: IVF, HNSW, flat.",
+      "keywords": [
+        "retrieval-augmented generation",
+        "vector database",
+        "comparison",
+        "RAG"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose retrieval-augmented generation over vector database?",
+        "What is the performance or memory difference between retrieval-augmented generation and vector database?"
+      ],
+      "related_concepts": [
+        "retrieval-augmented generation",
+        "vector database",
+        "chunking strategies"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "RAG-005",
+      "subject": "RAG",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "Explain the difference between embedding models and reranking in RAG.",
+      "ideal_answer": "embedding models and reranking differ in several ways: embedding models is text vector representation (works by semantic similarity encoding) whereas reranking is retrieval result refinement (works by improving top-k relevance). embedding models is typically used for sentence-transformers, OpenAI embeddings, E5, BGE, while reranking is used for cross-encoder reranker, ColBERT. Example demonstrating embedding models: cosine similarity for retrieval. Example demonstrating reranking: initial retrieval: 100 docs -> reranker -> top 5.",
+      "keywords": [
+        "embedding models",
+        "reranking",
+        "comparison",
+        "RAG"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose embedding models over reranking?",
+        "What is the performance or memory difference between embedding models and reranking?"
+      ],
+      "related_concepts": [
+        "embedding models",
+        "reranking"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RAG-006",
+      "subject": "RAG",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Medium",
+      "question": "What is reranking in RAG and how does it work?",
+      "ideal_answer": "reranking in RAG refers to retrieval result refinement. It works by improving top-k relevance. Key characteristics include cross-encoder reranker, ColBERT. Example: initial retrieval: 100 docs -> reranker -> top 5. Common pitfalls include latency vs accuracy tradeoff.",
+      "keywords": [
+        "reranking",
+        "RAG programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of reranking in a production environment?",
+        "What are the common pitfalls or issues associated with reranking?"
+      ],
+      "related_concepts": [
+        "embedding models"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RAG-007",
+      "subject": "RAG",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What are the common issues with chunking strategies in RAG and how do you debug them?",
+      "ideal_answer": "Common issues with chunking strategies in RAG include: context boundary preservation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "chunking strategies",
+        "troubleshooting",
+        "RAG"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to chunking strategies?",
+        "What tools can assist in detecting problems with chunking strategies at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "retrieval-augmented generation",
+        "vector database"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RAG-008",
+      "subject": "RAG",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Medium",
+      "question": "What is vector database in RAG and how does it work?",
+      "ideal_answer": "vector database in RAG refers to semantic search storage. It works by embedding-based retrieval. Key characteristics include FAISS, Pinecone, Weaviate, Chroma, Milvus. Example: indexing: IVF, HNSW, flat. Common pitfalls include approximate nearest neighbors.",
+      "keywords": [
+        "vector database",
+        "RAG programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of vector database in a production environment?",
+        "What are the common pitfalls or issues associated with vector database?"
+      ],
+      "related_concepts": [
+        "retrieval-augmented generation",
+        "chunking strategies"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RAG-009",
+      "subject": "RAG",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "What is embedding models in RAG and how does it work?",
+      "ideal_answer": "embedding models in RAG refers to text vector representation. It works by semantic similarity encoding. Key characteristics include sentence-transformers, OpenAI embeddings, E5, BGE. Example: cosine similarity for retrieval. Common pitfalls include multilingual embeddings.",
+      "keywords": [
+        "embedding models",
+        "RAG programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of embedding models in a production environment?",
+        "What are the common pitfalls or issues associated with embedding models?"
+      ],
+      "related_concepts": [
+        "reranking"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RAG-010",
+      "subject": "RAG",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Medium",
+      "question": "What are the common issues with vector database in RAG and how do you debug them?",
+      "ideal_answer": "Common issues with vector database in RAG include: approximate nearest neighbors. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "vector database",
+        "troubleshooting",
+        "RAG"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to vector database?",
+        "What tools can assist in detecting problems with vector database at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "retrieval-augmented generation",
+        "chunking strategies"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RAG-011",
+      "subject": "RAG",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What is chunking strategies in RAG and how does it work?",
+      "ideal_answer": "chunking strategies in RAG refers to document segmentation. It works by optimal retrieval unit size. Key characteristics include fixed size, semantic, recursive, agentic. Example: chunk_size=512, chunk_overlap=50. Common pitfalls include context boundary preservation.",
+      "keywords": [
+        "chunking strategies",
+        "RAG programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of chunking strategies in a production environment?",
+        "What are the common pitfalls or issues associated with chunking strategies?"
+      ],
+      "related_concepts": [
+        "retrieval-augmented generation",
+        "vector database"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "RAG-012",
+      "subject": "RAG",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What is retrieval-augmented generation in RAG and how does it work?",
+      "ideal_answer": "retrieval-augmented generation in RAG refers to external knowledge grounding. It works by combining retrieval with generation. Key characteristics include retrieve relevant docs, concatenate with query, generate. Example: query -> retriever -> [doc1, doc2] -> generator -> answer. Common pitfalls include end-to-end vs modular RAG.",
+      "keywords": [
+        "retrieval-augmented generation",
+        "RAG programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of retrieval-augmented generation in a production environment?",
+        "What are the common pitfalls or issues associated with retrieval-augmented generation?"
+      ],
+      "related_concepts": [
+        "vector database",
+        "chunking strategies"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RAG-013",
+      "subject": "RAG",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What are the common issues with retrieval-augmented generation in RAG and how do you debug them?",
+      "ideal_answer": "Common issues with retrieval-augmented generation in RAG include: end-to-end vs modular RAG. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "retrieval-augmented generation",
+        "troubleshooting",
+        "RAG"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to retrieval-augmented generation?",
+        "What tools can assist in detecting problems with retrieval-augmented generation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "vector database",
+        "chunking strategies"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "RAG-014",
+      "subject": "RAG",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Hard",
+      "question": "What are the common issues with embedding models in RAG and how do you debug them?",
+      "ideal_answer": "Common issues with embedding models in RAG include: multilingual embeddings. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "embedding models",
+        "troubleshooting",
+        "RAG"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to embedding models?",
+        "What tools can assist in detecting problems with embedding models at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "reranking"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

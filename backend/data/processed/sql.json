@@ -1,0 +1,1714 @@
+{
+  "metadata": {
+    "subject": "SQL",
+    "domain": "Databases",
+    "total_questions": 65,
+    "difficulty_distribution": {
+      "Easy": 19,
+      "Medium": 33,
+      "Hard": 13
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "SQL-001",
+      "subject": "SQL",
+      "category": "Indexes",
+      "subcategory": "Covering",
+      "difficulty": "Easy",
+      "question": "What are the common issues with index scan vs table scan in SQL and how do you debug them?",
+      "ideal_answer": "Common issues with index scan vs table scan in SQL include: statistics and cardinality. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "index scan vs table scan",
+        "troubleshooting",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to index scan vs table scan?",
+        "What tools can assist in detecting problems with index scan vs table scan at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "B-Tree index",
+        "composite index",
+        "covering index"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SQL-002",
+      "subject": "SQL",
+      "category": "Transactions",
+      "subcategory": "ROLLBACK",
+      "difficulty": "Easy",
+      "question": "What is MVCC in SQL and how does it work?",
+      "ideal_answer": "MVCC in SQL refers to Multi-Version Concurrency Control. It works by non-blocking reads. Key characteristics include maintaining multiple versions of data. Example: PostgreSQL, InnoDB implementation. Common pitfalls include vacuum/ purge necessity.",
+      "keywords": [
+        "MVCC",
+        "SQL programming",
+        "transactions"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of MVCC in a production environment?",
+        "What are the common pitfalls or issues associated with MVCC?"
+      ],
+      "related_concepts": [
+        "isolation levels",
+        "deadlock"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SQL-003",
+      "subject": "SQL",
+      "category": "Core Concepts",
+      "subcategory": "Constraints",
+      "difficulty": "Easy",
+      "question": "What are the common issues with constraints in SQL and how do you debug them?",
+      "ideal_answer": "Common issues with constraints in SQL include: constraint validation overhead. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "constraints",
+        "troubleshooting",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to constraints?",
+        "What tools can assist in detecting problems with constraints at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "normalization",
+        "ACID properties",
+        "primary key vs foreign key"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SQL-004",
+      "subject": "SQL",
+      "category": "DQL",
+      "subcategory": "SELECT",
+      "difficulty": "Easy",
+      "question": "Explain the difference between window functions and CTE in SQL.",
+      "ideal_answer": "window functions and CTE differ in several ways: window functions is analytical computations (works by calculations across row sets) whereas CTE is Common Table Expressions (works by named temporary result sets). window functions is typically used for ROW_NUMBER, RANK, DENSE_RANK, LEAD, LAG, SUM() OVER, while CTE is used for recursive CTEs for hierarchies. Example demonstrating window functions: SELECT name, salary, RANK() OVER (ORDER BY salary DESC) as rank FROM employees;. Example demonstrating CTE: WITH RECURSIVE subordinates AS (SELECT id FROM employees WHERE manager_id IS NULL UNION ALL SELECT e.id FROM employees e JOIN subordinates s ON e.manager_id = s.id) SELECT * FROM subordinates;.",
+      "keywords": [
+        "window functions",
+        "CTE",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose window functions over CTE?",
+        "What is the performance or memory difference between window functions and CTE?"
+      ],
+      "related_concepts": [
+        "window functions",
+        "CTE",
+        "GROUP BY vs DISTINCT",
+        "EXISTS vs IN"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SQL-005",
+      "subject": "SQL",
+      "category": "Indexes",
+      "subcategory": "B-Tree",
+      "difficulty": "Easy",
+      "question": "Explain the difference between B-Tree index and covering index in SQL.",
+      "ideal_answer": "B-Tree index and covering index differ in several ways: B-Tree index is balanced tree structure (works by default index type) whereas covering index is index with all query columns (works by avoiding table access). B-Tree index is typically used for O(log n) search, range queries, sorted order, while covering index is used for INCLUDE clause or composite covering. Example demonstrating B-Tree index: CREATE INDEX idx_name ON users(name);. Example demonstrating covering index: CREATE INDEX idx_cover ON orders(user_id) INCLUDE (total, date);.",
+      "keywords": [
+        "B-Tree index",
+        "covering index",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose B-Tree index over covering index?",
+        "What is the performance or memory difference between B-Tree index and covering index?"
+      ],
+      "related_concepts": [
+        "B-Tree index",
+        "covering index",
+        "composite index",
+        "index scan vs table scan"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SQL-006",
+      "subject": "SQL",
+      "category": "Indexes",
+      "subcategory": "Hash",
+      "difficulty": "Easy",
+      "question": "What is composite index in SQL and how does it work?",
+      "ideal_answer": "composite index in SQL refers to multi-column index. It works by covering multiple query predicates. Key characteristics include column order matters (leading edge). Example: CREATE INDEX idx_name_age ON users(name, age);. Common pitfalls include index-only scans.",
+      "keywords": [
+        "composite index",
+        "SQL programming",
+        "indexes"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of composite index in a production environment?",
+        "What are the common pitfalls or issues associated with composite index?"
+      ],
+      "related_concepts": [
+        "B-Tree index",
+        "covering index",
+        "index scan vs table scan"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SQL-007",
+      "subject": "SQL",
+      "category": "DQL",
+      "subcategory": "HAVING",
+      "difficulty": "Easy",
+      "question": "What is EXISTS vs IN in SQL and how does it work?",
+      "ideal_answer": "EXISTS vs IN in SQL refers to subquery existence checking. It works by semantically similar, different performance. Key characteristics include EXISTS: stops at first match; IN: builds complete result set. Example: SELECT * FROM customers WHERE EXISTS (SELECT 1 FROM orders WHERE orders.customer_id = customers.id);. Common pitfalls include NULL handling differences.",
+      "keywords": [
+        "EXISTS vs IN",
+        "SQL programming",
+        "dql"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of EXISTS vs IN in a production environment?",
+        "What are the common pitfalls or issues associated with EXISTS vs IN?"
+      ],
+      "related_concepts": [
+        "window functions",
+        "GROUP BY vs DISTINCT",
+        "CTE"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SQL-008",
+      "subject": "SQL",
+      "category": "Optimization",
+      "subcategory": "Query Plans",
+      "difficulty": "Easy",
+      "question": "What is query execution plan in SQL and how does it work?",
+      "ideal_answer": "query execution plan in SQL refers to optimizer's chosen strategy. It works by understanding query performance. Key characteristics include EXPLAIN, EXPLAIN ANALYZE, cost estimation. Example: EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) SELECT ...;. Common pitfalls include cost model limitations.",
+      "keywords": [
+        "query execution plan",
+        "SQL programming",
+        "optimization"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of query execution plan in a production environment?",
+        "What are the common pitfalls or issues associated with query execution plan?"
+      ],
+      "related_concepts": [
+        "partitioning"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SQL-009",
+      "subject": "SQL",
+      "category": "Transactions",
+      "subcategory": "COMMIT",
+      "difficulty": "Easy",
+      "question": "What are the common issues with deadlock in SQL and how do you debug them?",
+      "ideal_answer": "Common issues with deadlock in SQL include: deadlock victim selection. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "deadlock",
+        "troubleshooting",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to deadlock?",
+        "What tools can assist in detecting problems with deadlock at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "isolation levels",
+        "MVCC"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SQL-010",
+      "subject": "SQL",
+      "category": "Core Concepts",
+      "subcategory": "Relational Model",
+      "difficulty": "Easy",
+      "question": "Explain the difference between normalization and primary key vs foreign key in SQL.",
+      "ideal_answer": "normalization and primary key vs foreign key differ in several ways: normalization is database design process (works by reducing redundancy and dependency) whereas primary key vs foreign key is key type comparison (works by entity identification vs relationship). normalization is typically used for 1NF, 2NF, 3NF, BCNF, 4NF, 5NF, while primary key vs foreign key is used for PK: unique, not null; FK: references PK, maintains referential integrity. Example demonstrating normalization: decomposing tables to eliminate partial and transitive dependencies. Example demonstrating primary key vs foreign key: CREATE TABLE orders (id INT PRIMARY KEY, user_id INT REFERENCES users(id));.",
+      "keywords": [
+        "normalization",
+        "primary key vs foreign key",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose normalization over primary key vs foreign key?",
+        "What is the performance or memory difference between normalization and primary key vs foreign key?"
+      ],
+      "related_concepts": [
+        "normalization",
+        "primary key vs foreign key",
+        "ACID properties",
+        "constraints"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SQL-011",
+      "subject": "SQL",
+      "category": "Joins",
+      "subcategory": "INNER",
+      "difficulty": "Easy",
+      "question": "What are the common issues with JOIN types in SQL and how do you debug them?",
+      "ideal_answer": "Common issues with JOIN types in SQL include: NULL handling in outer joins. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "JOIN types",
+        "troubleshooting",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to JOIN types?",
+        "What tools can assist in detecting problems with JOIN types at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "CROSS JOIN",
+        "SELF JOIN"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SQL-012",
+      "subject": "SQL",
+      "category": "DQL",
+      "subcategory": "GROUP BY",
+      "difficulty": "Easy",
+      "question": "What is CTE in SQL and how does it work?",
+      "ideal_answer": "CTE in SQL refers to Common Table Expressions. It works by named temporary result sets. Key characteristics include recursive CTEs for hierarchies. Example: WITH RECURSIVE subordinates AS (SELECT id FROM employees WHERE manager_id IS NULL UNION ALL SELECT e.id FROM employees e JOIN subordinates s ON e.manager_id = s.id) SELECT * FROM subordinates;. Common pitfalls include CTE vs subquery performance.",
+      "keywords": [
+        "CTE",
+        "SQL programming",
+        "dql"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of CTE in a production environment?",
+        "What are the common pitfalls or issues associated with CTE?"
+      ],
+      "related_concepts": [
+        "window functions",
+        "GROUP BY vs DISTINCT",
+        "EXISTS vs IN"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SQL-013",
+      "subject": "SQL",
+      "category": "Indexes",
+      "subcategory": "Composite",
+      "difficulty": "Easy",
+      "question": "What is covering index in SQL and how does it work?",
+      "ideal_answer": "covering index in SQL refers to index with all query columns. It works by avoiding table access. Key characteristics include INCLUDE clause or composite covering. Example: CREATE INDEX idx_cover ON orders(user_id) INCLUDE (total, date);. Common pitfalls include index size tradeoff.",
+      "keywords": [
+        "covering index",
+        "SQL programming",
+        "indexes"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of covering index in a production environment?",
+        "What are the common pitfalls or issues associated with covering index?"
+      ],
+      "related_concepts": [
+        "B-Tree index",
+        "composite index",
+        "index scan vs table scan"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SQL-014",
+      "subject": "SQL",
+      "category": "Joins",
+      "subcategory": "LEFT",
+      "difficulty": "Easy",
+      "question": "Explain the difference between CROSS JOIN and SELF JOIN in SQL.",
+      "ideal_answer": "CROSS JOIN and SELF JOIN differ in several ways: CROSS JOIN is Cartesian product (works by all row combinations) whereas SELF JOIN is table joined with itself (works by hierarchical or comparative queries). CROSS JOIN is typically used for explicit vs implicit (comma syntax), while SELF JOIN is used for aliasing required. Example demonstrating CROSS JOIN: SELECT * FROM colors CROSS JOIN sizes;. Example demonstrating SELF JOIN: SELECT e.name, m.name as manager FROM employees e JOIN employees m ON e.manager_id = m.id;.",
+      "keywords": [
+        "CROSS JOIN",
+        "SELF JOIN",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CROSS JOIN over SELF JOIN?",
+        "What is the performance or memory difference between CROSS JOIN and SELF JOIN?"
+      ],
+      "related_concepts": [
+        "CROSS JOIN",
+        "SELF JOIN",
+        "JOIN types"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SQL-015",
+      "subject": "SQL",
+      "category": "DQL",
+      "subcategory": "WHERE",
+      "difficulty": "Easy",
+      "question": "What is GROUP BY vs DISTINCT in SQL and how does it work?",
+      "ideal_answer": "GROUP BY vs DISTINCT in SQL refers to duplication elimination methods. It works by different use cases and performance. Key characteristics include GROUP BY: aggregation; DISTINCT: unique rows. Example: SELECT DISTINCT department FROM employees;. Common pitfalls include GROUP BY with HAVING filter.",
+      "keywords": [
+        "GROUP BY vs DISTINCT",
+        "SQL programming",
+        "dql"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of GROUP BY vs DISTINCT in a production environment?",
+        "What are the common pitfalls or issues associated with GROUP BY vs DISTINCT?"
+      ],
+      "related_concepts": [
+        "window functions",
+        "CTE",
+        "EXISTS vs IN"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SQL-016",
+      "subject": "SQL",
+      "category": "DQL",
+      "subcategory": "SELECT",
+      "difficulty": "Easy",
+      "question": "Explain the difference between window functions and GROUP BY vs DISTINCT in SQL.",
+      "ideal_answer": "window functions and GROUP BY vs DISTINCT differ in several ways: window functions is analytical computations (works by calculations across row sets) whereas GROUP BY vs DISTINCT is duplication elimination methods (works by different use cases and performance). window functions is typically used for ROW_NUMBER, RANK, DENSE_RANK, LEAD, LAG, SUM() OVER, while GROUP BY vs DISTINCT is used for GROUP BY: aggregation; DISTINCT: unique rows. Example demonstrating window functions: SELECT name, salary, RANK() OVER (ORDER BY salary DESC) as rank FROM employees;. Example demonstrating GROUP BY vs DISTINCT: SELECT DISTINCT department FROM employees;.",
+      "keywords": [
+        "window functions",
+        "GROUP BY vs DISTINCT",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose window functions over GROUP BY vs DISTINCT?",
+        "What is the performance or memory difference between window functions and GROUP BY vs DISTINCT?"
+      ],
+      "related_concepts": [
+        "window functions",
+        "GROUP BY vs DISTINCT",
+        "CTE",
+        "EXISTS vs IN"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SQL-017",
+      "subject": "SQL",
+      "category": "Transactions",
+      "subcategory": "BEGIN",
+      "difficulty": "Easy",
+      "question": "What is isolation levels in SQL and how does it work?",
+      "ideal_answer": "isolation levels in SQL refers to transaction isolation degrees. It works by concurrency control tradeoffs. Key characteristics include READ UNCOMMITTED, READ COMMITTED, REPEATABLE READ, SERIALIZABLE. Example: SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;. Common pitfalls include phantom reads, non-repeatable reads, dirty reads.",
+      "keywords": [
+        "isolation levels",
+        "SQL programming",
+        "transactions"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of isolation levels in a production environment?",
+        "What are the common pitfalls or issues associated with isolation levels?"
+      ],
+      "related_concepts": [
+        "deadlock",
+        "MVCC"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SQL-018",
+      "subject": "SQL",
+      "category": "Indexes",
+      "subcategory": "Composite",
+      "difficulty": "Easy",
+      "question": "What are the common issues with covering index in SQL and how do you debug them?",
+      "ideal_answer": "Common issues with covering index in SQL include: index size tradeoff. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "covering index",
+        "troubleshooting",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to covering index?",
+        "What tools can assist in detecting problems with covering index at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "B-Tree index",
+        "composite index",
+        "index scan vs table scan"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SQL-019",
+      "subject": "SQL",
+      "category": "Joins",
+      "subcategory": "LEFT",
+      "difficulty": "Easy",
+      "question": "What is CROSS JOIN in SQL and how does it work?",
+      "ideal_answer": "CROSS JOIN in SQL refers to Cartesian product. It works by all row combinations. Key characteristics include explicit vs implicit (comma syntax). Example: SELECT * FROM colors CROSS JOIN sizes;. Common pitfalls include accidental Cartesian products.",
+      "keywords": [
+        "CROSS JOIN",
+        "SQL programming",
+        "joins"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of CROSS JOIN in a production environment?",
+        "What are the common pitfalls or issues associated with CROSS JOIN?"
+      ],
+      "related_concepts": [
+        "JOIN types",
+        "SELF JOIN"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "SQL-020",
+      "subject": "SQL",
+      "category": "DQL",
+      "subcategory": "GROUP BY",
+      "difficulty": "Medium",
+      "question": "What are the common issues with CTE in SQL and how do you debug them?",
+      "ideal_answer": "Common issues with CTE in SQL include: CTE vs subquery performance. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "CTE",
+        "troubleshooting",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to CTE?",
+        "What tools can assist in detecting problems with CTE at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "window functions",
+        "GROUP BY vs DISTINCT",
+        "EXISTS vs IN"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-021",
+      "subject": "SQL",
+      "category": "Joins",
+      "subcategory": "LEFT",
+      "difficulty": "Medium",
+      "question": "What are the common issues with CROSS JOIN in SQL and how do you debug them?",
+      "ideal_answer": "Common issues with CROSS JOIN in SQL include: accidental Cartesian products. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "CROSS JOIN",
+        "troubleshooting",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to CROSS JOIN?",
+        "What tools can assist in detecting problems with CROSS JOIN at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "JOIN types",
+        "SELF JOIN"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-022",
+      "subject": "SQL",
+      "category": "Core Concepts",
+      "subcategory": "Normalization",
+      "difficulty": "Medium",
+      "question": "Explain the difference between ACID properties and primary key vs foreign key in SQL.",
+      "ideal_answer": "ACID properties and primary key vs foreign key differ in several ways: ACID properties is transaction guarantees (works by reliability and consistency) whereas primary key vs foreign key is key type comparison (works by entity identification vs relationship). ACID properties is typically used for Atomicity, Consistency, Isolation, Durability, while primary key vs foreign key is used for PK: unique, not null; FK: references PK, maintains referential integrity. Example demonstrating ACID properties: BEGIN; UPDATE accounts SET balance = balance - 100 WHERE id = 1; COMMIT;. Example demonstrating primary key vs foreign key: CREATE TABLE orders (id INT PRIMARY KEY, user_id INT REFERENCES users(id));.",
+      "keywords": [
+        "ACID properties",
+        "primary key vs foreign key",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ACID properties over primary key vs foreign key?",
+        "What is the performance or memory difference between ACID properties and primary key vs foreign key?"
+      ],
+      "related_concepts": [
+        "ACID properties",
+        "primary key vs foreign key",
+        "normalization",
+        "constraints"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-023",
+      "subject": "SQL",
+      "category": "DQL",
+      "subcategory": "WHERE",
+      "difficulty": "Medium",
+      "question": "Explain the difference between GROUP BY vs DISTINCT and CTE in SQL.",
+      "ideal_answer": "GROUP BY vs DISTINCT and CTE differ in several ways: GROUP BY vs DISTINCT is duplication elimination methods (works by different use cases and performance) whereas CTE is Common Table Expressions (works by named temporary result sets). GROUP BY vs DISTINCT is typically used for GROUP BY: aggregation; DISTINCT: unique rows, while CTE is used for recursive CTEs for hierarchies. Example demonstrating GROUP BY vs DISTINCT: SELECT DISTINCT department FROM employees;. Example demonstrating CTE: WITH RECURSIVE subordinates AS (SELECT id FROM employees WHERE manager_id IS NULL UNION ALL SELECT e.id FROM employees e JOIN subordinates s ON e.manager_id = s.id) SELECT * FROM subordinates;.",
+      "keywords": [
+        "GROUP BY vs DISTINCT",
+        "CTE",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose GROUP BY vs DISTINCT over CTE?",
+        "What is the performance or memory difference between GROUP BY vs DISTINCT and CTE?"
+      ],
+      "related_concepts": [
+        "GROUP BY vs DISTINCT",
+        "CTE",
+        "window functions",
+        "EXISTS vs IN"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-024",
+      "subject": "SQL",
+      "category": "Indexes",
+      "subcategory": "Hash",
+      "difficulty": "Medium",
+      "question": "What are the common issues with composite index in SQL and how do you debug them?",
+      "ideal_answer": "Common issues with composite index in SQL include: index-only scans. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "composite index",
+        "troubleshooting",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to composite index?",
+        "What tools can assist in detecting problems with composite index at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "B-Tree index",
+        "covering index",
+        "index scan vs table scan"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-025",
+      "subject": "SQL",
+      "category": "Indexes",
+      "subcategory": "Hash",
+      "difficulty": "Medium",
+      "question": "Explain the difference between composite index and index scan vs table scan in SQL.",
+      "ideal_answer": "composite index and index scan vs table scan differ in several ways: composite index is multi-column index (works by covering multiple query predicates) whereas index scan vs table scan is data access methods (works by query plan choices). composite index is typically used for column order matters (leading edge), while index scan vs table scan is used for index scan: read index then table; index-only scan: read index only; seq scan: read entire table. Example demonstrating composite index: CREATE INDEX idx_name_age ON users(name, age);. Example demonstrating index scan vs table scan: EXPLAIN ANALYZE SELECT * FROM large_table WHERE non_indexed_col = 1;.",
+      "keywords": [
+        "composite index",
+        "index scan vs table scan",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose composite index over index scan vs table scan?",
+        "What is the performance or memory difference between composite index and index scan vs table scan?"
+      ],
+      "related_concepts": [
+        "composite index",
+        "index scan vs table scan",
+        "B-Tree index",
+        "covering index"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-026",
+      "subject": "SQL",
+      "category": "Optimization",
+      "subcategory": "EXPLAIN",
+      "difficulty": "Medium",
+      "question": "What are the common issues with partitioning in SQL and how do you debug them?",
+      "ideal_answer": "Common issues with partitioning in SQL include: partition pruning, partition-wise joins. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "partitioning",
+        "troubleshooting",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to partitioning?",
+        "What tools can assist in detecting problems with partitioning at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "query execution plan"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-027",
+      "subject": "SQL",
+      "category": "Joins",
+      "subcategory": "RIGHT",
+      "difficulty": "Medium",
+      "question": "What are the common issues with SELF JOIN in SQL and how do you debug them?",
+      "ideal_answer": "Common issues with SELF JOIN in SQL include: performance on large tables. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "SELF JOIN",
+        "troubleshooting",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to SELF JOIN?",
+        "What tools can assist in detecting problems with SELF JOIN at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "JOIN types",
+        "CROSS JOIN"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-028",
+      "subject": "SQL",
+      "category": "DQL",
+      "subcategory": "SELECT",
+      "difficulty": "Medium",
+      "question": "Explain the difference between window functions and EXISTS vs IN in SQL.",
+      "ideal_answer": "window functions and EXISTS vs IN differ in several ways: window functions is analytical computations (works by calculations across row sets) whereas EXISTS vs IN is subquery existence checking (works by semantically similar, different performance). window functions is typically used for ROW_NUMBER, RANK, DENSE_RANK, LEAD, LAG, SUM() OVER, while EXISTS vs IN is used for EXISTS: stops at first match; IN: builds complete result set. Example demonstrating window functions: SELECT name, salary, RANK() OVER (ORDER BY salary DESC) as rank FROM employees;. Example demonstrating EXISTS vs IN: SELECT * FROM customers WHERE EXISTS (SELECT 1 FROM orders WHERE orders.customer_id = customers.id);.",
+      "keywords": [
+        "window functions",
+        "EXISTS vs IN",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose window functions over EXISTS vs IN?",
+        "What is the performance or memory difference between window functions and EXISTS vs IN?"
+      ],
+      "related_concepts": [
+        "window functions",
+        "EXISTS vs IN",
+        "GROUP BY vs DISTINCT",
+        "CTE"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-029",
+      "subject": "SQL",
+      "category": "Transactions",
+      "subcategory": "ROLLBACK",
+      "difficulty": "Medium",
+      "question": "What are the common issues with MVCC in SQL and how do you debug them?",
+      "ideal_answer": "Common issues with MVCC in SQL include: vacuum/ purge necessity. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "MVCC",
+        "troubleshooting",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to MVCC?",
+        "What tools can assist in detecting problems with MVCC at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "isolation levels",
+        "deadlock"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-030",
+      "subject": "SQL",
+      "category": "Core Concepts",
+      "subcategory": "ACID",
+      "difficulty": "Medium",
+      "question": "What is primary key vs foreign key in SQL and how does it work?",
+      "ideal_answer": "primary key vs foreign key in SQL refers to key type comparison. It works by entity identification vs relationship. Key characteristics include PK: unique, not null; FK: references PK, maintains referential integrity. Example: CREATE TABLE orders (id INT PRIMARY KEY, user_id INT REFERENCES users(id));. Common pitfalls include surrogate vs natural keys.",
+      "keywords": [
+        "primary key vs foreign key",
+        "SQL programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of primary key vs foreign key in a production environment?",
+        "What are the common pitfalls or issues associated with primary key vs foreign key?"
+      ],
+      "related_concepts": [
+        "normalization",
+        "ACID properties",
+        "constraints"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-031",
+      "subject": "SQL",
+      "category": "Transactions",
+      "subcategory": "BEGIN",
+      "difficulty": "Medium",
+      "question": "Explain the difference between isolation levels and MVCC in SQL.",
+      "ideal_answer": "isolation levels and MVCC differ in several ways: isolation levels is transaction isolation degrees (works by concurrency control tradeoffs) whereas MVCC is Multi-Version Concurrency Control (works by non-blocking reads). isolation levels is typically used for READ UNCOMMITTED, READ COMMITTED, REPEATABLE READ, SERIALIZABLE, while MVCC is used for maintaining multiple versions of data. Example demonstrating isolation levels: SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;. Example demonstrating MVCC: PostgreSQL, InnoDB implementation.",
+      "keywords": [
+        "isolation levels",
+        "MVCC",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose isolation levels over MVCC?",
+        "What is the performance or memory difference between isolation levels and MVCC?"
+      ],
+      "related_concepts": [
+        "isolation levels",
+        "MVCC",
+        "deadlock"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-032",
+      "subject": "SQL",
+      "category": "DQL",
+      "subcategory": "HAVING",
+      "difficulty": "Medium",
+      "question": "What are the common issues with EXISTS vs IN in SQL and how do you debug them?",
+      "ideal_answer": "Common issues with EXISTS vs IN in SQL include: NULL handling differences. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "EXISTS vs IN",
+        "troubleshooting",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to EXISTS vs IN?",
+        "What tools can assist in detecting problems with EXISTS vs IN at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "window functions",
+        "GROUP BY vs DISTINCT",
+        "CTE"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-033",
+      "subject": "SQL",
+      "category": "Indexes",
+      "subcategory": "Composite",
+      "difficulty": "Medium",
+      "question": "Explain the difference between covering index and index scan vs table scan in SQL.",
+      "ideal_answer": "covering index and index scan vs table scan differ in several ways: covering index is index with all query columns (works by avoiding table access) whereas index scan vs table scan is data access methods (works by query plan choices). covering index is typically used for INCLUDE clause or composite covering, while index scan vs table scan is used for index scan: read index then table; index-only scan: read index only; seq scan: read entire table. Example demonstrating covering index: CREATE INDEX idx_cover ON orders(user_id) INCLUDE (total, date);. Example demonstrating index scan vs table scan: EXPLAIN ANALYZE SELECT * FROM large_table WHERE non_indexed_col = 1;.",
+      "keywords": [
+        "covering index",
+        "index scan vs table scan",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose covering index over index scan vs table scan?",
+        "What is the performance or memory difference between covering index and index scan vs table scan?"
+      ],
+      "related_concepts": [
+        "covering index",
+        "index scan vs table scan",
+        "B-Tree index",
+        "composite index"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-034",
+      "subject": "SQL",
+      "category": "Core Concepts",
+      "subcategory": "Relational Model",
+      "difficulty": "Medium",
+      "question": "Explain the difference between normalization and constraints in SQL.",
+      "ideal_answer": "normalization and constraints differ in several ways: normalization is database design process (works by reducing redundancy and dependency) whereas constraints is data integrity rules (works by enforcing business rules). normalization is typically used for 1NF, 2NF, 3NF, BCNF, 4NF, 5NF, while constraints is used for NOT NULL, UNIQUE, CHECK, DEFAULT, FOREIGN KEY. Example demonstrating normalization: decomposing tables to eliminate partial and transitive dependencies. Example demonstrating constraints: ALTER TABLE products ADD CONSTRAINT chk_price CHECK (price > 0);.",
+      "keywords": [
+        "normalization",
+        "constraints",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose normalization over constraints?",
+        "What is the performance or memory difference between normalization and constraints?"
+      ],
+      "related_concepts": [
+        "normalization",
+        "constraints",
+        "ACID properties",
+        "primary key vs foreign key"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-035",
+      "subject": "SQL",
+      "category": "Core Concepts",
+      "subcategory": "Relational Model",
+      "difficulty": "Medium",
+      "question": "What is normalization in SQL and how does it work?",
+      "ideal_answer": "normalization in SQL refers to database design process. It works by reducing redundancy and dependency. Key characteristics include 1NF, 2NF, 3NF, BCNF, 4NF, 5NF. Example: decomposing tables to eliminate partial and transitive dependencies. Common pitfalls include over-normalization causing join overhead.",
+      "keywords": [
+        "normalization",
+        "SQL programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of normalization in a production environment?",
+        "What are the common pitfalls or issues associated with normalization?"
+      ],
+      "related_concepts": [
+        "ACID properties",
+        "primary key vs foreign key",
+        "constraints"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-036",
+      "subject": "SQL",
+      "category": "Optimization",
+      "subcategory": "Query Plans",
+      "difficulty": "Medium",
+      "question": "What are the common issues with query execution plan in SQL and how do you debug them?",
+      "ideal_answer": "Common issues with query execution plan in SQL include: cost model limitations. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "query execution plan",
+        "troubleshooting",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to query execution plan?",
+        "What tools can assist in detecting problems with query execution plan at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "partitioning"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-037",
+      "subject": "SQL",
+      "category": "Joins",
+      "subcategory": "INNER",
+      "difficulty": "Medium",
+      "question": "What is JOIN types in SQL and how does it work?",
+      "ideal_answer": "JOIN types in SQL refers to table combination methods. It works by different result sets from joins. Key characteristics include INNER: matching only; LEFT: all left + matching right; RIGHT: all right + matching left; FULL: all from both. Example: SELECT * FROM A LEFT JOIN B ON A.id = B.id;. Common pitfalls include NULL handling in outer joins.",
+      "keywords": [
+        "JOIN types",
+        "SQL programming",
+        "joins"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of JOIN types in a production environment?",
+        "What are the common pitfalls or issues associated with JOIN types?"
+      ],
+      "related_concepts": [
+        "CROSS JOIN",
+        "SELF JOIN"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-038",
+      "subject": "SQL",
+      "category": "Indexes",
+      "subcategory": "B-Tree",
+      "difficulty": "Medium",
+      "question": "Explain the difference between B-Tree index and composite index in SQL.",
+      "ideal_answer": "B-Tree index and composite index differ in several ways: B-Tree index is balanced tree structure (works by default index type) whereas composite index is multi-column index (works by covering multiple query predicates). B-Tree index is typically used for O(log n) search, range queries, sorted order, while composite index is used for column order matters (leading edge). Example demonstrating B-Tree index: CREATE INDEX idx_name ON users(name);. Example demonstrating composite index: CREATE INDEX idx_name_age ON users(name, age);.",
+      "keywords": [
+        "B-Tree index",
+        "composite index",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose B-Tree index over composite index?",
+        "What is the performance or memory difference between B-Tree index and composite index?"
+      ],
+      "related_concepts": [
+        "B-Tree index",
+        "composite index",
+        "covering index",
+        "index scan vs table scan"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-039",
+      "subject": "SQL",
+      "category": "DQL",
+      "subcategory": "WHERE",
+      "difficulty": "Medium",
+      "question": "Explain the difference between GROUP BY vs DISTINCT and EXISTS vs IN in SQL.",
+      "ideal_answer": "GROUP BY vs DISTINCT and EXISTS vs IN differ in several ways: GROUP BY vs DISTINCT is duplication elimination methods (works by different use cases and performance) whereas EXISTS vs IN is subquery existence checking (works by semantically similar, different performance). GROUP BY vs DISTINCT is typically used for GROUP BY: aggregation; DISTINCT: unique rows, while EXISTS vs IN is used for EXISTS: stops at first match; IN: builds complete result set. Example demonstrating GROUP BY vs DISTINCT: SELECT DISTINCT department FROM employees;. Example demonstrating EXISTS vs IN: SELECT * FROM customers WHERE EXISTS (SELECT 1 FROM orders WHERE orders.customer_id = customers.id);.",
+      "keywords": [
+        "GROUP BY vs DISTINCT",
+        "EXISTS vs IN",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose GROUP BY vs DISTINCT over EXISTS vs IN?",
+        "What is the performance or memory difference between GROUP BY vs DISTINCT and EXISTS vs IN?"
+      ],
+      "related_concepts": [
+        "GROUP BY vs DISTINCT",
+        "EXISTS vs IN",
+        "window functions",
+        "CTE"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-040",
+      "subject": "SQL",
+      "category": "Transactions",
+      "subcategory": "COMMIT",
+      "difficulty": "Medium",
+      "question": "What is deadlock in SQL and how does it work?",
+      "ideal_answer": "deadlock in SQL refers to circular dependency blocking. It works by transaction mutual blocking. Key characteristics include detection (timeout/graph) vs prevention (ordering). Example: Transaction A locks X waits for Y; Transaction B locks Y waits for X. Common pitfalls include deadlock victim selection.",
+      "keywords": [
+        "deadlock",
+        "SQL programming",
+        "transactions"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of deadlock in a production environment?",
+        "What are the common pitfalls or issues associated with deadlock?"
+      ],
+      "related_concepts": [
+        "isolation levels",
+        "MVCC"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-041",
+      "subject": "SQL",
+      "category": "Core Concepts",
+      "subcategory": "Normalization",
+      "difficulty": "Medium",
+      "question": "Explain the difference between ACID properties and constraints in SQL.",
+      "ideal_answer": "ACID properties and constraints differ in several ways: ACID properties is transaction guarantees (works by reliability and consistency) whereas constraints is data integrity rules (works by enforcing business rules). ACID properties is typically used for Atomicity, Consistency, Isolation, Durability, while constraints is used for NOT NULL, UNIQUE, CHECK, DEFAULT, FOREIGN KEY. Example demonstrating ACID properties: BEGIN; UPDATE accounts SET balance = balance - 100 WHERE id = 1; COMMIT;. Example demonstrating constraints: ALTER TABLE products ADD CONSTRAINT chk_price CHECK (price > 0);.",
+      "keywords": [
+        "ACID properties",
+        "constraints",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ACID properties over constraints?",
+        "What is the performance or memory difference between ACID properties and constraints?"
+      ],
+      "related_concepts": [
+        "ACID properties",
+        "constraints",
+        "normalization",
+        "primary key vs foreign key"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-042",
+      "subject": "SQL",
+      "category": "Joins",
+      "subcategory": "INNER",
+      "difficulty": "Medium",
+      "question": "Explain the difference between JOIN types and SELF JOIN in SQL.",
+      "ideal_answer": "JOIN types and SELF JOIN differ in several ways: JOIN types is table combination methods (works by different result sets from joins) whereas SELF JOIN is table joined with itself (works by hierarchical or comparative queries). JOIN types is typically used for INNER: matching only; LEFT: all left + matching right; RIGHT: all right + matching left; FULL: all from both, while SELF JOIN is used for aliasing required. Example demonstrating JOIN types: SELECT * FROM A LEFT JOIN B ON A.id = B.id;. Example demonstrating SELF JOIN: SELECT e.name, m.name as manager FROM employees e JOIN employees m ON e.manager_id = m.id;.",
+      "keywords": [
+        "JOIN types",
+        "SELF JOIN",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose JOIN types over SELF JOIN?",
+        "What is the performance or memory difference between JOIN types and SELF JOIN?"
+      ],
+      "related_concepts": [
+        "JOIN types",
+        "SELF JOIN",
+        "CROSS JOIN"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-043",
+      "subject": "SQL",
+      "category": "Indexes",
+      "subcategory": "Hash",
+      "difficulty": "Medium",
+      "question": "Explain the difference between composite index and covering index in SQL.",
+      "ideal_answer": "composite index and covering index differ in several ways: composite index is multi-column index (works by covering multiple query predicates) whereas covering index is index with all query columns (works by avoiding table access). composite index is typically used for column order matters (leading edge), while covering index is used for INCLUDE clause or composite covering. Example demonstrating composite index: CREATE INDEX idx_name_age ON users(name, age);. Example demonstrating covering index: CREATE INDEX idx_cover ON orders(user_id) INCLUDE (total, date);.",
+      "keywords": [
+        "composite index",
+        "covering index",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose composite index over covering index?",
+        "What is the performance or memory difference between composite index and covering index?"
+      ],
+      "related_concepts": [
+        "composite index",
+        "covering index",
+        "B-Tree index",
+        "index scan vs table scan"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-044",
+      "subject": "SQL",
+      "category": "Indexes",
+      "subcategory": "B-Tree",
+      "difficulty": "Medium",
+      "question": "What are the common issues with B-Tree index in SQL and how do you debug them?",
+      "ideal_answer": "Common issues with B-Tree index in SQL include: write overhead, fill factor. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "B-Tree index",
+        "troubleshooting",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to B-Tree index?",
+        "What tools can assist in detecting problems with B-Tree index at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "composite index",
+        "covering index",
+        "index scan vs table scan"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-045",
+      "subject": "SQL",
+      "category": "Joins",
+      "subcategory": "RIGHT",
+      "difficulty": "Medium",
+      "question": "What is SELF JOIN in SQL and how does it work?",
+      "ideal_answer": "SELF JOIN in SQL refers to table joined with itself. It works by hierarchical or comparative queries. Key characteristics include aliasing required. Example: SELECT e.name, m.name as manager FROM employees e JOIN employees m ON e.manager_id = m.id;. Common pitfalls include performance on large tables.",
+      "keywords": [
+        "SELF JOIN",
+        "SQL programming",
+        "joins"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of SELF JOIN in a production environment?",
+        "What are the common pitfalls or issues associated with SELF JOIN?"
+      ],
+      "related_concepts": [
+        "JOIN types",
+        "CROSS JOIN"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-046",
+      "subject": "SQL",
+      "category": "Transactions",
+      "subcategory": "COMMIT",
+      "difficulty": "Medium",
+      "question": "Explain the difference between deadlock and MVCC in SQL.",
+      "ideal_answer": "deadlock and MVCC differ in several ways: deadlock is circular dependency blocking (works by transaction mutual blocking) whereas MVCC is Multi-Version Concurrency Control (works by non-blocking reads). deadlock is typically used for detection (timeout/graph) vs prevention (ordering), while MVCC is used for maintaining multiple versions of data. Example demonstrating deadlock: Transaction A locks X waits for Y; Transaction B locks Y waits for X. Example demonstrating MVCC: PostgreSQL, InnoDB implementation.",
+      "keywords": [
+        "deadlock",
+        "MVCC",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose deadlock over MVCC?",
+        "What is the performance or memory difference between deadlock and MVCC?"
+      ],
+      "related_concepts": [
+        "deadlock",
+        "MVCC",
+        "isolation levels"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-047",
+      "subject": "SQL",
+      "category": "Core Concepts",
+      "subcategory": "ACID",
+      "difficulty": "Medium",
+      "question": "Explain the difference between primary key vs foreign key and constraints in SQL.",
+      "ideal_answer": "primary key vs foreign key and constraints differ in several ways: primary key vs foreign key is key type comparison (works by entity identification vs relationship) whereas constraints is data integrity rules (works by enforcing business rules). primary key vs foreign key is typically used for PK: unique, not null; FK: references PK, maintains referential integrity, while constraints is used for NOT NULL, UNIQUE, CHECK, DEFAULT, FOREIGN KEY. Example demonstrating primary key vs foreign key: CREATE TABLE orders (id INT PRIMARY KEY, user_id INT REFERENCES users(id));. Example demonstrating constraints: ALTER TABLE products ADD CONSTRAINT chk_price CHECK (price > 0);.",
+      "keywords": [
+        "primary key vs foreign key",
+        "constraints",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose primary key vs foreign key over constraints?",
+        "What is the performance or memory difference between primary key vs foreign key and constraints?"
+      ],
+      "related_concepts": [
+        "primary key vs foreign key",
+        "constraints",
+        "normalization",
+        "ACID properties"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-048",
+      "subject": "SQL",
+      "category": "Transactions",
+      "subcategory": "BEGIN",
+      "difficulty": "Medium",
+      "question": "What are the common issues with isolation levels in SQL and how do you debug them?",
+      "ideal_answer": "Common issues with isolation levels in SQL include: phantom reads, non-repeatable reads, dirty reads. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "isolation levels",
+        "troubleshooting",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to isolation levels?",
+        "What tools can assist in detecting problems with isolation levels at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "deadlock",
+        "MVCC"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-049",
+      "subject": "SQL",
+      "category": "Core Concepts",
+      "subcategory": "Relational Model",
+      "difficulty": "Medium",
+      "question": "What are the common issues with normalization in SQL and how do you debug them?",
+      "ideal_answer": "Common issues with normalization in SQL include: over-normalization causing join overhead. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "normalization",
+        "troubleshooting",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to normalization?",
+        "What tools can assist in detecting problems with normalization at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ACID properties",
+        "primary key vs foreign key",
+        "constraints"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-050",
+      "subject": "SQL",
+      "category": "Core Concepts",
+      "subcategory": "Normalization",
+      "difficulty": "Medium",
+      "question": "What is ACID properties in SQL and how does it work?",
+      "ideal_answer": "ACID properties in SQL refers to transaction guarantees. It works by reliability and consistency. Key characteristics include Atomicity, Consistency, Isolation, Durability. Example: BEGIN; UPDATE accounts SET balance = balance - 100 WHERE id = 1; COMMIT;. Common pitfalls include BASE vs ACID in distributed systems.",
+      "keywords": [
+        "ACID properties",
+        "SQL programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of ACID properties in a production environment?",
+        "What are the common pitfalls or issues associated with ACID properties?"
+      ],
+      "related_concepts": [
+        "normalization",
+        "primary key vs foreign key",
+        "constraints"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-051",
+      "subject": "SQL",
+      "category": "DQL",
+      "subcategory": "GROUP BY",
+      "difficulty": "Medium",
+      "question": "Explain the difference between CTE and EXISTS vs IN in SQL.",
+      "ideal_answer": "CTE and EXISTS vs IN differ in several ways: CTE is Common Table Expressions (works by named temporary result sets) whereas EXISTS vs IN is subquery existence checking (works by semantically similar, different performance). CTE is typically used for recursive CTEs for hierarchies, while EXISTS vs IN is used for EXISTS: stops at first match; IN: builds complete result set. Example demonstrating CTE: WITH RECURSIVE subordinates AS (SELECT id FROM employees WHERE manager_id IS NULL UNION ALL SELECT e.id FROM employees e JOIN subordinates s ON e.manager_id = s.id) SELECT * FROM subordinates;. Example demonstrating EXISTS vs IN: SELECT * FROM customers WHERE EXISTS (SELECT 1 FROM orders WHERE orders.customer_id = customers.id);.",
+      "keywords": [
+        "CTE",
+        "EXISTS vs IN",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CTE over EXISTS vs IN?",
+        "What is the performance or memory difference between CTE and EXISTS vs IN?"
+      ],
+      "related_concepts": [
+        "CTE",
+        "EXISTS vs IN",
+        "window functions",
+        "GROUP BY vs DISTINCT"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-052",
+      "subject": "SQL",
+      "category": "Indexes",
+      "subcategory": "B-Tree",
+      "difficulty": "Medium",
+      "question": "What is B-Tree index in SQL and how does it work?",
+      "ideal_answer": "B-Tree index in SQL refers to balanced tree structure. It works by default index type. Key characteristics include O(log n) search, range queries, sorted order. Example: CREATE INDEX idx_name ON users(name);. Common pitfalls include write overhead, fill factor.",
+      "keywords": [
+        "B-Tree index",
+        "SQL programming",
+        "indexes"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of B-Tree index in a production environment?",
+        "What are the common pitfalls or issues associated with B-Tree index?"
+      ],
+      "related_concepts": [
+        "composite index",
+        "covering index",
+        "index scan vs table scan"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "SQL-053",
+      "subject": "SQL",
+      "category": "Core Concepts",
+      "subcategory": "ACID",
+      "difficulty": "Hard",
+      "question": "What are the common issues with primary key vs foreign key in SQL and how do you debug them?",
+      "ideal_answer": "Common issues with primary key vs foreign key in SQL include: surrogate vs natural keys. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "primary key vs foreign key",
+        "troubleshooting",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to primary key vs foreign key?",
+        "What tools can assist in detecting problems with primary key vs foreign key at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "normalization",
+        "ACID properties",
+        "constraints"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "SQL-054",
+      "subject": "SQL",
+      "category": "Joins",
+      "subcategory": "INNER",
+      "difficulty": "Hard",
+      "question": "Explain the difference between JOIN types and CROSS JOIN in SQL.",
+      "ideal_answer": "JOIN types and CROSS JOIN differ in several ways: JOIN types is table combination methods (works by different result sets from joins) whereas CROSS JOIN is Cartesian product (works by all row combinations). JOIN types is typically used for INNER: matching only; LEFT: all left + matching right; RIGHT: all right + matching left; FULL: all from both, while CROSS JOIN is used for explicit vs implicit (comma syntax). Example demonstrating JOIN types: SELECT * FROM A LEFT JOIN B ON A.id = B.id;. Example demonstrating CROSS JOIN: SELECT * FROM colors CROSS JOIN sizes;.",
+      "keywords": [
+        "JOIN types",
+        "CROSS JOIN",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose JOIN types over CROSS JOIN?",
+        "What is the performance or memory difference between JOIN types and CROSS JOIN?"
+      ],
+      "related_concepts": [
+        "JOIN types",
+        "CROSS JOIN",
+        "SELF JOIN"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "SQL-055",
+      "subject": "SQL",
+      "category": "Transactions",
+      "subcategory": "BEGIN",
+      "difficulty": "Hard",
+      "question": "Explain the difference between isolation levels and deadlock in SQL.",
+      "ideal_answer": "isolation levels and deadlock differ in several ways: isolation levels is transaction isolation degrees (works by concurrency control tradeoffs) whereas deadlock is circular dependency blocking (works by transaction mutual blocking). isolation levels is typically used for READ UNCOMMITTED, READ COMMITTED, REPEATABLE READ, SERIALIZABLE, while deadlock is used for detection (timeout/graph) vs prevention (ordering). Example demonstrating isolation levels: SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;. Example demonstrating deadlock: Transaction A locks X waits for Y; Transaction B locks Y waits for X.",
+      "keywords": [
+        "isolation levels",
+        "deadlock",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose isolation levels over deadlock?",
+        "What is the performance or memory difference between isolation levels and deadlock?"
+      ],
+      "related_concepts": [
+        "isolation levels",
+        "deadlock",
+        "MVCC"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "SQL-056",
+      "subject": "SQL",
+      "category": "Indexes",
+      "subcategory": "Covering",
+      "difficulty": "Hard",
+      "question": "What is index scan vs table scan in SQL and how does it work?",
+      "ideal_answer": "index scan vs table scan in SQL refers to data access methods. It works by query plan choices. Key characteristics include index scan: read index then table; index-only scan: read index only; seq scan: read entire table. Example: EXPLAIN ANALYZE SELECT * FROM large_table WHERE non_indexed_col = 1;. Common pitfalls include statistics and cardinality.",
+      "keywords": [
+        "index scan vs table scan",
+        "SQL programming",
+        "indexes"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of index scan vs table scan in a production environment?",
+        "What are the common pitfalls or issues associated with index scan vs table scan?"
+      ],
+      "related_concepts": [
+        "B-Tree index",
+        "composite index",
+        "covering index"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "SQL-057",
+      "subject": "SQL",
+      "category": "Core Concepts",
+      "subcategory": "Constraints",
+      "difficulty": "Hard",
+      "question": "What is constraints in SQL and how does it work?",
+      "ideal_answer": "constraints in SQL refers to data integrity rules. It works by enforcing business rules. Key characteristics include NOT NULL, UNIQUE, CHECK, DEFAULT, FOREIGN KEY. Example: ALTER TABLE products ADD CONSTRAINT chk_price CHECK (price > 0);. Common pitfalls include constraint validation overhead.",
+      "keywords": [
+        "constraints",
+        "SQL programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of constraints in a production environment?",
+        "What are the common pitfalls or issues associated with constraints?"
+      ],
+      "related_concepts": [
+        "normalization",
+        "ACID properties",
+        "primary key vs foreign key"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "SQL-058",
+      "subject": "SQL",
+      "category": "Optimization",
+      "subcategory": "EXPLAIN",
+      "difficulty": "Hard",
+      "question": "What is partitioning in SQL and how does it work?",
+      "ideal_answer": "partitioning in SQL refers to table horizontal splitting. It works by improving query performance and maintenance. Key characteristics include range, list, hash partitioning. Example: CREATE TABLE measurements (logdate date not null, peaktemp int) PARTITION BY RANGE (logdate);. Common pitfalls include partition pruning, partition-wise joins.",
+      "keywords": [
+        "partitioning",
+        "SQL programming",
+        "optimization"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of partitioning in a production environment?",
+        "What are the common pitfalls or issues associated with partitioning?"
+      ],
+      "related_concepts": [
+        "query execution plan"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "SQL-059",
+      "subject": "SQL",
+      "category": "Core Concepts",
+      "subcategory": "Relational Model",
+      "difficulty": "Hard",
+      "question": "Explain the difference between normalization and ACID properties in SQL.",
+      "ideal_answer": "normalization and ACID properties differ in several ways: normalization is database design process (works by reducing redundancy and dependency) whereas ACID properties is transaction guarantees (works by reliability and consistency). normalization is typically used for 1NF, 2NF, 3NF, BCNF, 4NF, 5NF, while ACID properties is used for Atomicity, Consistency, Isolation, Durability. Example demonstrating normalization: decomposing tables to eliminate partial and transitive dependencies. Example demonstrating ACID properties: BEGIN; UPDATE accounts SET balance = balance - 100 WHERE id = 1; COMMIT;.",
+      "keywords": [
+        "normalization",
+        "ACID properties",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose normalization over ACID properties?",
+        "What is the performance or memory difference between normalization and ACID properties?"
+      ],
+      "related_concepts": [
+        "normalization",
+        "ACID properties",
+        "primary key vs foreign key",
+        "constraints"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "SQL-060",
+      "subject": "SQL",
+      "category": "Optimization",
+      "subcategory": "Query Plans",
+      "difficulty": "Hard",
+      "question": "Explain the difference between query execution plan and partitioning in SQL.",
+      "ideal_answer": "query execution plan and partitioning differ in several ways: query execution plan is optimizer's chosen strategy (works by understanding query performance) whereas partitioning is table horizontal splitting (works by improving query performance and maintenance). query execution plan is typically used for EXPLAIN, EXPLAIN ANALYZE, cost estimation, while partitioning is used for range, list, hash partitioning. Example demonstrating query execution plan: EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) SELECT ...;. Example demonstrating partitioning: CREATE TABLE measurements (logdate date not null, peaktemp int) PARTITION BY RANGE (logdate);.",
+      "keywords": [
+        "query execution plan",
+        "partitioning",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose query execution plan over partitioning?",
+        "What is the performance or memory difference between query execution plan and partitioning?"
+      ],
+      "related_concepts": [
+        "query execution plan",
+        "partitioning"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "SQL-061",
+      "subject": "SQL",
+      "category": "DQL",
+      "subcategory": "SELECT",
+      "difficulty": "Hard",
+      "question": "What are the common issues with window functions in SQL and how do you debug them?",
+      "ideal_answer": "Common issues with window functions in SQL include: PARTITION BY vs GROUP BY. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "window functions",
+        "troubleshooting",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to window functions?",
+        "What tools can assist in detecting problems with window functions at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "GROUP BY vs DISTINCT",
+        "CTE",
+        "EXISTS vs IN"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "SQL-062",
+      "subject": "SQL",
+      "category": "DQL",
+      "subcategory": "WHERE",
+      "difficulty": "Hard",
+      "question": "What are the common issues with GROUP BY vs DISTINCT in SQL and how do you debug them?",
+      "ideal_answer": "Common issues with GROUP BY vs DISTINCT in SQL include: GROUP BY with HAVING filter. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "GROUP BY vs DISTINCT",
+        "troubleshooting",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to GROUP BY vs DISTINCT?",
+        "What tools can assist in detecting problems with GROUP BY vs DISTINCT at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "window functions",
+        "CTE",
+        "EXISTS vs IN"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "SQL-063",
+      "subject": "SQL",
+      "category": "Indexes",
+      "subcategory": "B-Tree",
+      "difficulty": "Hard",
+      "question": "Explain the difference between B-Tree index and index scan vs table scan in SQL.",
+      "ideal_answer": "B-Tree index and index scan vs table scan differ in several ways: B-Tree index is balanced tree structure (works by default index type) whereas index scan vs table scan is data access methods (works by query plan choices). B-Tree index is typically used for O(log n) search, range queries, sorted order, while index scan vs table scan is used for index scan: read index then table; index-only scan: read index only; seq scan: read entire table. Example demonstrating B-Tree index: CREATE INDEX idx_name ON users(name);. Example demonstrating index scan vs table scan: EXPLAIN ANALYZE SELECT * FROM large_table WHERE non_indexed_col = 1;.",
+      "keywords": [
+        "B-Tree index",
+        "index scan vs table scan",
+        "comparison",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose B-Tree index over index scan vs table scan?",
+        "What is the performance or memory difference between B-Tree index and index scan vs table scan?"
+      ],
+      "related_concepts": [
+        "B-Tree index",
+        "index scan vs table scan",
+        "composite index",
+        "covering index"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "SQL-064",
+      "subject": "SQL",
+      "category": "Core Concepts",
+      "subcategory": "Normalization",
+      "difficulty": "Hard",
+      "question": "What are the common issues with ACID properties in SQL and how do you debug them?",
+      "ideal_answer": "Common issues with ACID properties in SQL include: BASE vs ACID in distributed systems. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "ACID properties",
+        "troubleshooting",
+        "SQL"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to ACID properties?",
+        "What tools can assist in detecting problems with ACID properties at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "normalization",
+        "primary key vs foreign key",
+        "constraints"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "SQL-065",
+      "subject": "SQL",
+      "category": "DQL",
+      "subcategory": "SELECT",
+      "difficulty": "Hard",
+      "question": "What is window functions in SQL and how does it work?",
+      "ideal_answer": "window functions in SQL refers to analytical computations. It works by calculations across row sets. Key characteristics include ROW_NUMBER, RANK, DENSE_RANK, LEAD, LAG, SUM() OVER. Example: SELECT name, salary, RANK() OVER (ORDER BY salary DESC) as rank FROM employees;. Common pitfalls include PARTITION BY vs GROUP BY.",
+      "keywords": [
+        "window functions",
+        "SQL programming",
+        "dql"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of window functions in a production environment?",
+        "What are the common pitfalls or issues associated with window functions?"
+      ],
+      "related_concepts": [
+        "GROUP BY vs DISTINCT",
+        "CTE",
+        "EXISTS vs IN"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

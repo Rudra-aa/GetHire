@@ -1,0 +1,391 @@
+{
+  "metadata": {
+    "subject": "NLP",
+    "domain": "Artificial Intelligence",
+    "total_questions": 14,
+    "difficulty_distribution": {
+      "Easy": 4,
+      "Medium": 7,
+      "Hard": 3
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "NLP-001",
+      "subject": "NLP",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Easy",
+      "question": "Explain the difference between word embeddings and attention mechanism in NLP.",
+      "ideal_answer": "word embeddings and attention mechanism differ in several ways: word embeddings is dense vector representations (works by sentiment similarity in vector space) whereas attention mechanism is context-aware weighting (works by focusing on relevant input parts). word embeddings is typically used for Word2Vec, GloVe, FastText, while attention mechanism is used for soft alignment between encoder and decoder. Example demonstrating word embeddings: king - man + woman ≈ queen. Example demonstrating attention mechanism: Bahdanau attention, Luong attention.",
+      "keywords": [
+        "word embeddings",
+        "attention mechanism",
+        "comparison",
+        "NLP"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose word embeddings over attention mechanism?",
+        "What is the performance or memory difference between word embeddings and attention mechanism?"
+      ],
+      "related_concepts": [
+        "word embeddings",
+        "attention mechanism",
+        "tokenization"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NLP-002",
+      "subject": "NLP",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Easy",
+      "question": "What are the common issues with sentiment analysis in NLP and how do you debug them?",
+      "ideal_answer": "Common issues with sentiment analysis in NLP include: sarcasm detection challenge. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "sentiment analysis",
+        "troubleshooting",
+        "NLP"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to sentiment analysis?",
+        "What tools can assist in detecting problems with sentiment analysis at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "named entity recognition"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NLP-003",
+      "subject": "NLP",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Easy",
+      "question": "Explain the difference between tokenization and attention mechanism in NLP.",
+      "ideal_answer": "tokenization and attention mechanism differ in several ways: tokenization is text segmentation (works by breaking text into units) whereas attention mechanism is context-aware weighting (works by focusing on relevant input parts). tokenization is typically used for word, subword (BPE, WordPiece, SentencePiece), character, while attention mechanism is used for soft alignment between encoder and decoder. Example demonstrating tokenization: 'Hello world' -> ['Hello', 'world']. Example demonstrating attention mechanism: Bahdanau attention, Luong attention.",
+      "keywords": [
+        "tokenization",
+        "attention mechanism",
+        "comparison",
+        "NLP"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose tokenization over attention mechanism?",
+        "What is the performance or memory difference between tokenization and attention mechanism?"
+      ],
+      "related_concepts": [
+        "tokenization",
+        "attention mechanism",
+        "word embeddings"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NLP-004",
+      "subject": "NLP",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Easy",
+      "question": "Explain the difference between tokenization and word embeddings in NLP.",
+      "ideal_answer": "tokenization and word embeddings differ in several ways: tokenization is text segmentation (works by breaking text into units) whereas word embeddings is dense vector representations (works by sentiment similarity in vector space). tokenization is typically used for word, subword (BPE, WordPiece, SentencePiece), character, while word embeddings is used for Word2Vec, GloVe, FastText. Example demonstrating tokenization: 'Hello world' -> ['Hello', 'world']. Example demonstrating word embeddings: king - man + woman ≈ queen.",
+      "keywords": [
+        "tokenization",
+        "word embeddings",
+        "comparison",
+        "NLP"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose tokenization over word embeddings?",
+        "What is the performance or memory difference between tokenization and word embeddings?"
+      ],
+      "related_concepts": [
+        "tokenization",
+        "word embeddings",
+        "attention mechanism"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NLP-005",
+      "subject": "NLP",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "Explain the difference between named entity recognition and sentiment analysis in NLP.",
+      "ideal_answer": "named entity recognition and sentiment analysis differ in several ways: named entity recognition is entity extraction task (works by identifying proper nouns) whereas sentiment analysis is opinion polarity detection (works by positive/negative/neutral classification). named entity recognition is typically used for BIO tagging, CRF, transformer-based, while sentiment analysis is used for lexicon-based, ML, deep learning approaches. Example demonstrating named entity recognition: B-PER, I-PER, O tags. Example demonstrating sentiment analysis: fine-grained: aspect-based sentiment.",
+      "keywords": [
+        "named entity recognition",
+        "sentiment analysis",
+        "comparison",
+        "NLP"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose named entity recognition over sentiment analysis?",
+        "What is the performance or memory difference between named entity recognition and sentiment analysis?"
+      ],
+      "related_concepts": [
+        "named entity recognition",
+        "sentiment analysis"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NLP-006",
+      "subject": "NLP",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Medium",
+      "question": "What is sentiment analysis in NLP and how does it work?",
+      "ideal_answer": "sentiment analysis in NLP refers to opinion polarity detection. It works by positive/negative/neutral classification. Key characteristics include lexicon-based, ML, deep learning approaches. Example: fine-grained: aspect-based sentiment. Common pitfalls include sarcasm detection challenge.",
+      "keywords": [
+        "sentiment analysis",
+        "NLP programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of sentiment analysis in a production environment?",
+        "What are the common pitfalls or issues associated with sentiment analysis?"
+      ],
+      "related_concepts": [
+        "named entity recognition"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NLP-007",
+      "subject": "NLP",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What are the common issues with attention mechanism in NLP and how do you debug them?",
+      "ideal_answer": "Common issues with attention mechanism in NLP include: self-attention evolution. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "attention mechanism",
+        "troubleshooting",
+        "NLP"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to attention mechanism?",
+        "What tools can assist in detecting problems with attention mechanism at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "tokenization",
+        "word embeddings"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NLP-008",
+      "subject": "NLP",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Medium",
+      "question": "What is word embeddings in NLP and how does it work?",
+      "ideal_answer": "word embeddings in NLP refers to dense vector representations. It works by sentiment similarity in vector space. Key characteristics include Word2Vec, GloVe, FastText. Example: king - man + woman ≈ queen. Common pitfalls include contextual vs static embeddings.",
+      "keywords": [
+        "word embeddings",
+        "NLP programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of word embeddings in a production environment?",
+        "What are the common pitfalls or issues associated with word embeddings?"
+      ],
+      "related_concepts": [
+        "tokenization",
+        "attention mechanism"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NLP-009",
+      "subject": "NLP",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "What is named entity recognition in NLP and how does it work?",
+      "ideal_answer": "named entity recognition in NLP refers to entity extraction task. It works by identifying proper nouns. Key characteristics include BIO tagging, CRF, transformer-based. Example: B-PER, I-PER, O tags. Common pitfalls include nested entities, fine-grained NER.",
+      "keywords": [
+        "named entity recognition",
+        "NLP programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of named entity recognition in a production environment?",
+        "What are the common pitfalls or issues associated with named entity recognition?"
+      ],
+      "related_concepts": [
+        "sentiment analysis"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NLP-010",
+      "subject": "NLP",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Medium",
+      "question": "What are the common issues with word embeddings in NLP and how do you debug them?",
+      "ideal_answer": "Common issues with word embeddings in NLP include: contextual vs static embeddings. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "word embeddings",
+        "troubleshooting",
+        "NLP"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to word embeddings?",
+        "What tools can assist in detecting problems with word embeddings at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "tokenization",
+        "attention mechanism"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NLP-011",
+      "subject": "NLP",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What is attention mechanism in NLP and how does it work?",
+      "ideal_answer": "attention mechanism in NLP refers to context-aware weighting. It works by focusing on relevant input parts. Key characteristics include soft alignment between encoder and decoder. Example: Bahdanau attention, Luong attention. Common pitfalls include self-attention evolution.",
+      "keywords": [
+        "attention mechanism",
+        "NLP programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of attention mechanism in a production environment?",
+        "What are the common pitfalls or issues associated with attention mechanism?"
+      ],
+      "related_concepts": [
+        "tokenization",
+        "word embeddings"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NLP-012",
+      "subject": "NLP",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What is tokenization in NLP and how does it work?",
+      "ideal_answer": "tokenization in NLP refers to text segmentation. It works by breaking text into units. Key characteristics include word, subword (BPE, WordPiece, SentencePiece), character. Example: 'Hello world' -> ['Hello', 'world']. Common pitfalls include OOV handling, multilingual tokenization.",
+      "keywords": [
+        "tokenization",
+        "NLP programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of tokenization in a production environment?",
+        "What are the common pitfalls or issues associated with tokenization?"
+      ],
+      "related_concepts": [
+        "word embeddings",
+        "attention mechanism"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NLP-013",
+      "subject": "NLP",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What are the common issues with tokenization in NLP and how do you debug them?",
+      "ideal_answer": "Common issues with tokenization in NLP include: OOV handling, multilingual tokenization. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "tokenization",
+        "troubleshooting",
+        "NLP"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to tokenization?",
+        "What tools can assist in detecting problems with tokenization at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "word embeddings",
+        "attention mechanism"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NLP-014",
+      "subject": "NLP",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Hard",
+      "question": "What are the common issues with named entity recognition in NLP and how do you debug them?",
+      "ideal_answer": "Common issues with named entity recognition in NLP include: nested entities, fine-grained NER. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "named entity recognition",
+        "troubleshooting",
+        "NLP"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to named entity recognition?",
+        "What tools can assist in detecting problems with named entity recognition at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "sentiment analysis"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

@@ -1,0 +1,3200 @@
+{
+  "metadata": {
+    "subject": "JavaScript",
+    "domain": "Software Engineering",
+    "total_questions": 120,
+    "difficulty_distribution": {
+      "Easy": 36,
+      "Medium": 60,
+      "Hard": 24
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:47Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "JS-001",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Type Coercion",
+      "difficulty": "Easy",
+      "question": "What is hoisting in JavaScript and how does it work?",
+      "ideal_answer": "hoisting in JavaScript refers to declaration lifting behavior. It works by moving declarations to top of scope. Key characteristics include var: hoisted and initialized undefined; let/const: hoisted but TDZ. Example: console.log(x); var x = 5; // undefined. Common pitfalls include TDZ with let/const.",
+      "keywords": [
+        "hoisting",
+        "JavaScript programming",
+        "core js"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of hoisting in a production environment?",
+        "What are the common pitfalls or issues associated with hoisting?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "closure",
+        "this keyword"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-002",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Operators",
+      "difficulty": "Easy",
+      "question": "What is NaN in JavaScript and how does it work?",
+      "ideal_answer": "NaN in JavaScript refers to Not-a-Number value. It works by invalid numeric operation result. Key characteristics include typeof NaN === 'number', NaN !== NaN. Example: isNaN() vs Number.isNaN(). Common pitfalls include NaN propagation in calculations.",
+      "keywords": [
+        "NaN",
+        "JavaScript programming",
+        "core js"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of NaN in a production environment?",
+        "What are the common pitfalls or issues associated with NaN?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "hoisting",
+        "closure"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-003",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "Destructuring",
+      "difficulty": "Easy",
+      "question": "What is spread operator in JavaScript and how does it work?",
+      "ideal_answer": "spread operator in JavaScript refers to element expansion. It works by copying/merging iterables. Key characteristics include shallow copy, function arguments. Example: const newArr = [...arr1, ...arr2];. Common pitfalls include object spread vs Object.assign.",
+      "keywords": [
+        "spread operator",
+        "JavaScript programming",
+        "es6+"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of spread operator in a production environment?",
+        "What are the common pitfalls or issues associated with spread operator?"
+      ],
+      "related_concepts": [
+        "destructuring",
+        "rest parameters",
+        "modules"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-004",
+      "subject": "JavaScript",
+      "category": "DOM",
+      "subcategory": "DOM Manipulation",
+      "difficulty": "Easy",
+      "question": "What are the common issues with event delegation in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with event delegation in JavaScript include: stopPropagation vs stopImmediatePropagation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "event delegation",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to event delegation?",
+        "What tools can assist in detecting problems with event delegation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "event bubbling vs capturing",
+        "DOM reflow vs repaint"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-005",
+      "subject": "JavaScript",
+      "category": "Objects & Prototypes",
+      "subcategory": "Prototypal Inheritance",
+      "difficulty": "Easy",
+      "question": "What are the common issues with property descriptors in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with property descriptors in JavaScript include: seal vs freeze vs preventExtensions. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "property descriptors",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to property descriptors?",
+        "What tools can assist in detecting problems with property descriptors at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Object.create",
+        "class syntax",
+        "Symbol"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-006",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Strict Mode",
+      "difficulty": "Easy",
+      "question": "Explain the difference between prototype chain and type coercion in JavaScript.",
+      "ideal_answer": "prototype chain and type coercion differ in several ways: prototype chain is inheritance lookup mechanism (works by delegation-based inheritance) whereas type coercion is implicit type conversion (works by == vs === behavior). prototype chain is typically used for __proto__ links up to Object.prototype, while type coercion is used for string + number, falsy values, abstract equality. Example demonstrating prototype chain: obj.toString() // found on prototype. Example demonstrating type coercion: [] + {} // '[object Object]'.",
+      "keywords": [
+        "prototype chain",
+        "type coercion",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose prototype chain over type coercion?",
+        "What is the performance or memory difference between prototype chain and type coercion?"
+      ],
+      "related_concepts": [
+        "prototype chain",
+        "type coercion",
+        "event loop",
+        "hoisting"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-007",
+      "subject": "JavaScript",
+      "category": "Node.js",
+      "subcategory": "Cluster",
+      "difficulty": "Easy",
+      "question": "What are the common issues with cluster module in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with cluster module in JavaScript include: shared state challenges. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "cluster module",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to cluster module?",
+        "What tools can assist in detecting problems with cluster module at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "EventEmitter",
+        "streams",
+        "Buffer"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-008",
+      "subject": "JavaScript",
+      "category": "Functions & Scope",
+      "subcategory": "Closures",
+      "difficulty": "Easy",
+      "question": "Explain the difference between arrow functions and IIFE in JavaScript.",
+      "ideal_answer": "arrow functions and IIFE differ in several ways: arrow functions is concise function syntax (works by lexical this binding) whereas IIFE is Immediately Invoked Function Expression (works by creating private scope). arrow functions is typically used for no own this, arguments, super, new.target, while IIFE is used for (function() { ... })();. Example demonstrating arrow functions: const add = (a, b) => a + b;. Example demonstrating IIFE: const module = (function() { let private = 1; return { get: () => private }; })();.",
+      "keywords": [
+        "arrow functions",
+        "IIFE",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose arrow functions over IIFE?",
+        "What is the performance or memory difference between arrow functions and IIFE?"
+      ],
+      "related_concepts": [
+        "arrow functions",
+        "IIFE",
+        "higher-order functions",
+        "Function.prototype.bind"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-009",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "Proxies",
+      "difficulty": "Easy",
+      "question": "What are the common issues with Map vs Object in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with Map vs Object in JavaScript include: Object key collision with prototype. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Map vs Object",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Map vs Object?",
+        "What tools can assist in detecting problems with Map vs Object at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "destructuring",
+        "spread operator",
+        "rest parameters"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-010",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Type Coercion",
+      "difficulty": "Easy",
+      "question": "What are the common issues with strict mode in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with strict mode in JavaScript include: module auto-strict. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "strict mode",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to strict mode?",
+        "What tools can assist in detecting problems with strict mode at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "hoisting",
+        "closure"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-011",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "Proxies",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Map vs Object and Set in JavaScript.",
+      "ideal_answer": "Map vs Object and Set differ in several ways: Map vs Object is key-value storage comparison (works by different use cases) whereas Set is unique value collection (works by duplicate elimination). Map vs Object is typically used for Map: any key type, ordered, size property; Object: string/symbol keys, while Set is used for add, delete, has, size. Example demonstrating Map vs Object: const map = new Map(); map.set(obj, value);. Example demonstrating Set: const set = new Set([1, 2, 2, 3]); // {1, 2, 3}.",
+      "keywords": [
+        "Map vs Object",
+        "Set",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Map vs Object over Set?",
+        "What is the performance or memory difference between Map vs Object and Set?"
+      ],
+      "related_concepts": [
+        "Map vs Object",
+        "Set",
+        "destructuring",
+        "spread operator"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-012",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Operators",
+      "difficulty": "Easy",
+      "question": "What are the common issues with NaN in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with NaN in JavaScript include: NaN propagation in calculations. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "NaN",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to NaN?",
+        "What tools can assist in detecting problems with NaN at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "hoisting",
+        "closure"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-013",
+      "subject": "JavaScript",
+      "category": "Node.js",
+      "subcategory": "EventEmitter",
+      "difficulty": "Easy",
+      "question": "Explain the difference between streams and module system in JavaScript.",
+      "ideal_answer": "streams and module system differ in several ways: streams is data processing abstraction (works by handling large data efficiently) whereas module system is CommonJS require/exports (works by synchronous module loading). streams is typically used for Readable, Writable, Duplex, Transform, while module system is used for require.cache, module.exports. Example demonstrating streams: fs.createReadStream('file.txt').pipe(process.stdout);. Example demonstrating module system: const fs = require('fs'); module.exports = { foo };.",
+      "keywords": [
+        "streams",
+        "module system",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose streams over module system?",
+        "What is the performance or memory difference between streams and module system?"
+      ],
+      "related_concepts": [
+        "streams",
+        "module system",
+        "EventEmitter",
+        "Buffer"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-014",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Operators",
+      "difficulty": "Easy",
+      "question": "Explain the difference between closure and NaN in JavaScript.",
+      "ideal_answer": "closure and NaN differ in several ways: closure is function + lexical environment (works by preserving outer scope access) whereas NaN is Not-a-Number value (works by invalid numeric operation result). closure is typically used for data privacy, factory functions, module pattern, while NaN is used for typeof NaN === 'number', NaN !== NaN. Example demonstrating closure: function outer() { let x = 1; return () => x; }. Example demonstrating NaN: isNaN() vs Number.isNaN().",
+      "keywords": [
+        "closure",
+        "NaN",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose closure over NaN?",
+        "What is the performance or memory difference between closure and NaN?"
+      ],
+      "related_concepts": [
+        "closure",
+        "NaN",
+        "event loop",
+        "hoisting"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-015",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Data Types",
+      "difficulty": "Easy",
+      "question": "Explain the difference between event loop and undefined vs null in JavaScript.",
+      "ideal_answer": "event loop and undefined vs null differ in several ways: event loop is concurrency model mechanism (works by handling async operations) whereas undefined vs null is empty value types (works by representing absence). event loop is typically used for call stack, task queue, microtask queue, while undefined vs null is used for undefined: declared but not assigned; null: intentional absence. Example demonstrating event loop: setTimeout(() => {}, 0);. Example demonstrating undefined vs null: let x; // undefined.",
+      "keywords": [
+        "event loop",
+        "undefined vs null",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose event loop over undefined vs null?",
+        "What is the performance or memory difference between event loop and undefined vs null?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "undefined vs null",
+        "hoisting",
+        "closure"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-016",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "Destructuring",
+      "difficulty": "Easy",
+      "question": "Explain the difference between spread operator and rest parameters in JavaScript.",
+      "ideal_answer": "spread operator and rest parameters differ in several ways: spread operator is element expansion (works by copying/merging iterables) whereas rest parameters is remaining arguments collection (works by variadic functions). spread operator is typically used for shallow copy, function arguments, while rest parameters is used for must be last parameter. Example demonstrating spread operator: const newArr = [...arr1, ...arr2];. Example demonstrating rest parameters: function sum(...numbers) { return numbers.reduce((a, b) => a + b); }.",
+      "keywords": [
+        "spread operator",
+        "rest parameters",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose spread operator over rest parameters?",
+        "What is the performance or memory difference between spread operator and rest parameters?"
+      ],
+      "related_concepts": [
+        "spread operator",
+        "rest parameters",
+        "destructuring",
+        "modules"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-017",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "Spread/Rest",
+      "difficulty": "Easy",
+      "question": "Explain the difference between rest parameters and modules in JavaScript.",
+      "ideal_answer": "rest parameters and modules differ in several ways: rest parameters is remaining arguments collection (works by variadic functions) whereas modules is code organization system (works by encapsulation and reuse). rest parameters is typically used for must be last parameter, while modules is used for import/export, static analysis. Example demonstrating rest parameters: function sum(...numbers) { return numbers.reduce((a, b) => a + b); }. Example demonstrating modules: import { foo } from './module.js'; export default class {}.",
+      "keywords": [
+        "rest parameters",
+        "modules",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose rest parameters over modules?",
+        "What is the performance or memory difference between rest parameters and modules?"
+      ],
+      "related_concepts": [
+        "rest parameters",
+        "modules",
+        "destructuring",
+        "spread operator"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-018",
+      "subject": "JavaScript",
+      "category": "Node.js",
+      "subcategory": "EventEmitter",
+      "difficulty": "Easy",
+      "question": "Explain the difference between streams and Buffer in JavaScript.",
+      "ideal_answer": "streams and Buffer differ in several ways: streams is data processing abstraction (works by handling large data efficiently) whereas Buffer is binary data representation (works by handling raw bytes). streams is typically used for Readable, Writable, Duplex, Transform, while Buffer is used for fixed-size, pool allocation. Example demonstrating streams: fs.createReadStream('file.txt').pipe(process.stdout);. Example demonstrating Buffer: Buffer.from('hello'); Buffer.alloc(10);.",
+      "keywords": [
+        "streams",
+        "Buffer",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose streams over Buffer?",
+        "What is the performance or memory difference between streams and Buffer?"
+      ],
+      "related_concepts": [
+        "streams",
+        "Buffer",
+        "EventEmitter",
+        "module system"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-019",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Operators",
+      "difficulty": "Easy",
+      "question": "What are the common issues with closure in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with closure in JavaScript include: memory leaks with closures. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "closure",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to closure?",
+        "What tools can assist in detecting problems with closure at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "hoisting",
+        "this keyword"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-020",
+      "subject": "JavaScript",
+      "category": "Functions & Scope",
+      "subcategory": "this Keyword",
+      "difficulty": "Easy",
+      "question": "Explain the difference between IIFE and call vs apply vs bind in JavaScript.",
+      "ideal_answer": "IIFE and call vs apply vs bind differ in several ways: IIFE is Immediately Invoked Function Expression (works by creating private scope) whereas call vs apply vs bind is function invocation methods (works by controlling this and arguments). IIFE is typically used for (function() { ... })();, while call vs apply vs bind is used for call: spread args, apply: array args, bind: returns function. Example demonstrating IIFE: const module = (function() { let private = 1; return { get: () => private }; })();. Example demonstrating call vs apply vs bind: fn.call(obj, 1, 2); fn.apply(obj, [1, 2]);.",
+      "keywords": [
+        "IIFE",
+        "call vs apply vs bind",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose IIFE over call vs apply vs bind?",
+        "What is the performance or memory difference between IIFE and call vs apply vs bind?"
+      ],
+      "related_concepts": [
+        "IIFE",
+        "call vs apply vs bind",
+        "arrow functions",
+        "higher-order functions"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-021",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "Symbols",
+      "difficulty": "Easy",
+      "question": "Explain the difference between template literals and Map vs Object in JavaScript.",
+      "ideal_answer": "template literals and Map vs Object differ in several ways: template literals is string interpolation syntax (works by embedded expressions and multiline) whereas Map vs Object is key-value storage comparison (works by different use cases). template literals is typically used for backticks, ${expression}, while Map vs Object is used for Map: any key type, ordered, size property; Object: string/symbol keys. Example demonstrating template literals: const msg = `Hello ${name}`;. Example demonstrating Map vs Object: const map = new Map(); map.set(obj, value);.",
+      "keywords": [
+        "template literals",
+        "Map vs Object",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose template literals over Map vs Object?",
+        "What is the performance or memory difference between template literals and Map vs Object?"
+      ],
+      "related_concepts": [
+        "template literals",
+        "Map vs Object",
+        "destructuring",
+        "spread operator"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-022",
+      "subject": "JavaScript",
+      "category": "DOM",
+      "subcategory": "Events",
+      "difficulty": "Easy",
+      "question": "Explain the difference between event bubbling vs capturing and DOM reflow vs repaint in JavaScript.",
+      "ideal_answer": "event bubbling vs capturing and DOM reflow vs repaint differ in several ways: event bubbling vs capturing is event propagation phases (works by order of event handling) whereas DOM reflow vs repaint is rendering operations (works by layout vs visual changes). event bubbling vs capturing is typically used for capturing (root to target) vs bubbling (target to root), while DOM reflow vs repaint is used for reflow: geometry calculation; repaint: visual update. Example demonstrating event bubbling vs capturing: element.addEventListener('click', handler, true); // capture. Example demonstrating DOM reflow vs repaint: element.style.width = '100px'; // reflow.",
+      "keywords": [
+        "event bubbling vs capturing",
+        "DOM reflow vs repaint",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose event bubbling vs capturing over DOM reflow vs repaint?",
+        "What is the performance or memory difference between event bubbling vs capturing and DOM reflow vs repaint?"
+      ],
+      "related_concepts": [
+        "event bubbling vs capturing",
+        "DOM reflow vs repaint",
+        "event delegation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-023",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Data Types",
+      "difficulty": "Easy",
+      "question": "Explain the difference between event loop and closure in JavaScript.",
+      "ideal_answer": "event loop and closure differ in several ways: event loop is concurrency model mechanism (works by handling async operations) whereas closure is function + lexical environment (works by preserving outer scope access). event loop is typically used for call stack, task queue, microtask queue, while closure is used for data privacy, factory functions, module pattern. Example demonstrating event loop: setTimeout(() => {}, 0);. Example demonstrating closure: function outer() { let x = 1; return () => x; }.",
+      "keywords": [
+        "event loop",
+        "closure",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose event loop over closure?",
+        "What is the performance or memory difference between event loop and closure?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "closure",
+        "hoisting",
+        "this keyword"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-024",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Type Coercion",
+      "difficulty": "Easy",
+      "question": "Explain the difference between hoisting and strict mode in JavaScript.",
+      "ideal_answer": "hoisting and strict mode differ in several ways: hoisting is declaration lifting behavior (works by moving declarations to top of scope) whereas strict mode is restricted JavaScript variant (works by eliminating silent errors). hoisting is typically used for var: hoisted and initialized undefined; let/const: hoisted but TDZ, while strict mode is used for 'use strict'; prevents implicit globals, this coercion. Example demonstrating hoisting: console.log(x); var x = 5; // undefined. Example demonstrating strict mode: function() { 'use strict'; ... }.",
+      "keywords": [
+        "hoisting",
+        "strict mode",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose hoisting over strict mode?",
+        "What is the performance or memory difference between hoisting and strict mode?"
+      ],
+      "related_concepts": [
+        "hoisting",
+        "strict mode",
+        "event loop",
+        "closure"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-025",
+      "subject": "JavaScript",
+      "category": "Async Programming",
+      "subcategory": "Callbacks",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Promises and microtask queue in JavaScript.",
+      "ideal_answer": "Promises and microtask queue differ in several ways: Promises is async operation representation (works by future value container) whereas microtask queue is high-priority async queue (works by promise callbacks execution). Promises is typically used for pending, fulfilled, rejected states, while microtask queue is used for processed before macrotasks, can starve. Example demonstrating Promises: fetch('/api').then(res => res.json()).catch(err => console.error(err));. Example demonstrating microtask queue: queueMicrotask(() => console.log('micro'));.",
+      "keywords": [
+        "Promises",
+        "microtask queue",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Promises over microtask queue?",
+        "What is the performance or memory difference between Promises and microtask queue?"
+      ],
+      "related_concepts": [
+        "Promises",
+        "microtask queue",
+        "async/await",
+        "Promise.all vs Promise.allSettled"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-026",
+      "subject": "JavaScript",
+      "category": "Async Programming",
+      "subcategory": "async/await",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Promise.all vs Promise.allSettled and microtask queue in JavaScript.",
+      "ideal_answer": "Promise.all vs Promise.allSettled and microtask queue differ in several ways: Promise.all vs Promise.allSettled is concurrent promise handling (works by aggregating multiple promises) whereas microtask queue is high-priority async queue (works by promise callbacks execution). Promise.all vs Promise.allSettled is typically used for all: rejects on first failure; allSettled: waits for all, while microtask queue is used for processed before macrotasks, can starve. Example demonstrating Promise.all vs Promise.allSettled: Promise.all([p1, p2, p3]). Example demonstrating microtask queue: queueMicrotask(() => console.log('micro'));.",
+      "keywords": [
+        "Promise.all vs Promise.allSettled",
+        "microtask queue",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Promise.all vs Promise.allSettled over microtask queue?",
+        "What is the performance or memory difference between Promise.all vs Promise.allSettled and microtask queue?"
+      ],
+      "related_concepts": [
+        "Promise.all vs Promise.allSettled",
+        "microtask queue",
+        "Promises",
+        "async/await"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-027",
+      "subject": "JavaScript",
+      "category": "Objects & Prototypes",
+      "subcategory": "Class Syntax",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Symbol and Proxy in JavaScript.",
+      "ideal_answer": "Symbol and Proxy differ in several ways: Symbol is unique primitive type (works by non-string property keys) whereas Proxy is object interception mechanism (works by customizing object behavior). Symbol is typically used for guaranteed uniqueness, well-known symbols, while Proxy is used for traps for get, set, apply, construct. Example demonstrating Symbol: const sym = Symbol('desc'); obj[sym] = value;. Example demonstrating Proxy: new Proxy(target, { get(t, p) { return t[p] * 2; } });.",
+      "keywords": [
+        "Symbol",
+        "Proxy",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Symbol over Proxy?",
+        "What is the performance or memory difference between Symbol and Proxy?"
+      ],
+      "related_concepts": [
+        "Symbol",
+        "Proxy",
+        "Object.create",
+        "property descriptors"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-028",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Operators",
+      "difficulty": "Easy",
+      "question": "Explain the difference between closure and strict mode in JavaScript.",
+      "ideal_answer": "closure and strict mode differ in several ways: closure is function + lexical environment (works by preserving outer scope access) whereas strict mode is restricted JavaScript variant (works by eliminating silent errors). closure is typically used for data privacy, factory functions, module pattern, while strict mode is used for 'use strict'; prevents implicit globals, this coercion. Example demonstrating closure: function outer() { let x = 1; return () => x; }. Example demonstrating strict mode: function() { 'use strict'; ... }.",
+      "keywords": [
+        "closure",
+        "strict mode",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose closure over strict mode?",
+        "What is the performance or memory difference between closure and strict mode?"
+      ],
+      "related_concepts": [
+        "closure",
+        "strict mode",
+        "event loop",
+        "hoisting"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-029",
+      "subject": "JavaScript",
+      "category": "Functions & Scope",
+      "subcategory": "IIFE",
+      "difficulty": "Easy",
+      "question": "What are the common issues with Function.prototype.bind in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with Function.prototype.bind in JavaScript include: partial application with bind. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Function.prototype.bind",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Function.prototype.bind?",
+        "What tools can assist in detecting problems with Function.prototype.bind at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "arrow functions",
+        "IIFE",
+        "higher-order functions"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-030",
+      "subject": "JavaScript",
+      "category": "Node.js",
+      "subcategory": "Buffer",
+      "difficulty": "Easy",
+      "question": "Explain the difference between module system and cluster module in JavaScript.",
+      "ideal_answer": "module system and cluster module differ in several ways: module system is CommonJS require/exports (works by synchronous module loading) whereas cluster module is multi-process scaling (works by utilizing multiple CPU cores). module system is typically used for require.cache, module.exports, while cluster module is used for master-worker pattern, round-robin. Example demonstrating module system: const fs = require('fs'); module.exports = { foo };. Example demonstrating cluster module: cluster.fork();.",
+      "keywords": [
+        "module system",
+        "cluster module",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose module system over cluster module?",
+        "What is the performance or memory difference between module system and cluster module?"
+      ],
+      "related_concepts": [
+        "module system",
+        "cluster module",
+        "EventEmitter",
+        "streams"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-031",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Type Coercion",
+      "difficulty": "Easy",
+      "question": "Explain the difference between hoisting and undefined vs null in JavaScript.",
+      "ideal_answer": "hoisting and undefined vs null differ in several ways: hoisting is declaration lifting behavior (works by moving declarations to top of scope) whereas undefined vs null is empty value types (works by representing absence). hoisting is typically used for var: hoisted and initialized undefined; let/const: hoisted but TDZ, while undefined vs null is used for undefined: declared but not assigned; null: intentional absence. Example demonstrating hoisting: console.log(x); var x = 5; // undefined. Example demonstrating undefined vs null: let x; // undefined.",
+      "keywords": [
+        "hoisting",
+        "undefined vs null",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose hoisting over undefined vs null?",
+        "What is the performance or memory difference between hoisting and undefined vs null?"
+      ],
+      "related_concepts": [
+        "hoisting",
+        "undefined vs null",
+        "event loop",
+        "closure"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-032",
+      "subject": "JavaScript",
+      "category": "Functions & Scope",
+      "subcategory": "Closures",
+      "difficulty": "Easy",
+      "question": "What is lexical scope in JavaScript and how does it work?",
+      "ideal_answer": "lexical scope in JavaScript refers to static scoping. It works by scope determined by source position. Key characteristics include nested functions access outer variables. Example: function outer() { let x = 1; function inner() { console.log(x); } }. Common pitfalls include vs dynamic scope.",
+      "keywords": [
+        "lexical scope",
+        "JavaScript programming",
+        "functions & scope"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of lexical scope in a production environment?",
+        "What are the common pitfalls or issues associated with lexical scope?"
+      ],
+      "related_concepts": [
+        "arrow functions",
+        "IIFE",
+        "higher-order functions"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-033",
+      "subject": "JavaScript",
+      "category": "DOM",
+      "subcategory": "Events",
+      "difficulty": "Easy",
+      "question": "What is event bubbling vs capturing in JavaScript and how does it work?",
+      "ideal_answer": "event bubbling vs capturing in JavaScript refers to event propagation phases. It works by order of event handling. Key characteristics include capturing (root to target) vs bubbling (target to root). Example: element.addEventListener('click', handler, true); // capture. Common pitfalls include event delegation relies on bubbling.",
+      "keywords": [
+        "event bubbling vs capturing",
+        "JavaScript programming",
+        "dom"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of event bubbling vs capturing in a production environment?",
+        "What are the common pitfalls or issues associated with event bubbling vs capturing?"
+      ],
+      "related_concepts": [
+        "event delegation",
+        "DOM reflow vs repaint"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-034",
+      "subject": "JavaScript",
+      "category": "Functions & Scope",
+      "subcategory": "Closures",
+      "difficulty": "Easy",
+      "question": "Explain the difference between arrow functions and call vs apply vs bind in JavaScript.",
+      "ideal_answer": "arrow functions and call vs apply vs bind differ in several ways: arrow functions is concise function syntax (works by lexical this binding) whereas call vs apply vs bind is function invocation methods (works by controlling this and arguments). arrow functions is typically used for no own this, arguments, super, new.target, while call vs apply vs bind is used for call: spread args, apply: array args, bind: returns function. Example demonstrating arrow functions: const add = (a, b) => a + b;. Example demonstrating call vs apply vs bind: fn.call(obj, 1, 2); fn.apply(obj, [1, 2]);.",
+      "keywords": [
+        "arrow functions",
+        "call vs apply vs bind",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose arrow functions over call vs apply vs bind?",
+        "What is the performance or memory difference between arrow functions and call vs apply vs bind?"
+      ],
+      "related_concepts": [
+        "arrow functions",
+        "call vs apply vs bind",
+        "IIFE",
+        "higher-order functions"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-035",
+      "subject": "JavaScript",
+      "category": "Async Programming",
+      "subcategory": "Promises",
+      "difficulty": "Easy",
+      "question": "Explain the difference between async/await and Promise.all vs Promise.allSettled in JavaScript.",
+      "ideal_answer": "async/await and Promise.all vs Promise.allSettled differ in several ways: async/await is promise syntactic sugar (works by writing async code synchronously) whereas Promise.all vs Promise.allSettled is concurrent promise handling (works by aggregating multiple promises). async/await is typically used for async functions return promises, await unwraps, while Promise.all vs Promise.allSettled is used for all: rejects on first failure; allSettled: waits for all. Example demonstrating async/await: async function getData() { const res = await fetch('/api'); return res.json(); }. Example demonstrating Promise.all vs Promise.allSettled: Promise.all([p1, p2, p3]).",
+      "keywords": [
+        "async/await",
+        "Promise.all vs Promise.allSettled",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose async/await over Promise.all vs Promise.allSettled?",
+        "What is the performance or memory difference between async/await and Promise.all vs Promise.allSettled?"
+      ],
+      "related_concepts": [
+        "async/await",
+        "Promise.all vs Promise.allSettled",
+        "Promises",
+        "microtask queue"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-036",
+      "subject": "JavaScript",
+      "category": "DOM",
+      "subcategory": "Events",
+      "difficulty": "Easy",
+      "question": "What are the common issues with event bubbling vs capturing in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with event bubbling vs capturing in JavaScript include: event delegation relies on bubbling. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "event bubbling vs capturing",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to event bubbling vs capturing?",
+        "What tools can assist in detecting problems with event bubbling vs capturing at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "event delegation",
+        "DOM reflow vs repaint"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "JS-037",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Operators",
+      "difficulty": "Medium",
+      "question": "Explain the difference between NaN and undefined vs null in JavaScript.",
+      "ideal_answer": "NaN and undefined vs null differ in several ways: NaN is Not-a-Number value (works by invalid numeric operation result) whereas undefined vs null is empty value types (works by representing absence). NaN is typically used for typeof NaN === 'number', NaN !== NaN, while undefined vs null is used for undefined: declared but not assigned; null: intentional absence. Example demonstrating NaN: isNaN() vs Number.isNaN(). Example demonstrating undefined vs null: let x; // undefined.",
+      "keywords": [
+        "NaN",
+        "undefined vs null",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose NaN over undefined vs null?",
+        "What is the performance or memory difference between NaN and undefined vs null?"
+      ],
+      "related_concepts": [
+        "NaN",
+        "undefined vs null",
+        "event loop",
+        "hoisting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-038",
+      "subject": "JavaScript",
+      "category": "Functions & Scope",
+      "subcategory": "Arrow Functions",
+      "difficulty": "Medium",
+      "question": "Explain the difference between higher-order functions and call vs apply vs bind in JavaScript.",
+      "ideal_answer": "higher-order functions and call vs apply vs bind differ in several ways: higher-order functions is functions taking/returning functions (works by abstraction and composition) whereas call vs apply vs bind is function invocation methods (works by controlling this and arguments). higher-order functions is typically used for map, filter, reduce, compose, while call vs apply vs bind is used for call: spread args, apply: array args, bind: returns function. Example demonstrating higher-order functions: const compose = (...fns) => x => fns.reduceRight((v, f) => f(v), x);. Example demonstrating call vs apply vs bind: fn.call(obj, 1, 2); fn.apply(obj, [1, 2]);.",
+      "keywords": [
+        "higher-order functions",
+        "call vs apply vs bind",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose higher-order functions over call vs apply vs bind?",
+        "What is the performance or memory difference between higher-order functions and call vs apply vs bind?"
+      ],
+      "related_concepts": [
+        "higher-order functions",
+        "call vs apply vs bind",
+        "arrow functions",
+        "IIFE"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-039",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Control Flow",
+      "difficulty": "Medium",
+      "question": "Explain the difference between this keyword and NaN in JavaScript.",
+      "ideal_answer": "this keyword and NaN differ in several ways: this keyword is context reference (works by dynamic binding based on call site) whereas NaN is Not-a-Number value (works by invalid numeric operation result). this keyword is typically used for global, object method, constructor, call/apply/bind, while NaN is used for typeof NaN === 'number', NaN !== NaN. Example demonstrating this keyword: obj.method(); // this = obj. Example demonstrating NaN: isNaN() vs Number.isNaN().",
+      "keywords": [
+        "this keyword",
+        "NaN",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose this keyword over NaN?",
+        "What is the performance or memory difference between this keyword and NaN?"
+      ],
+      "related_concepts": [
+        "this keyword",
+        "NaN",
+        "event loop",
+        "hoisting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-040",
+      "subject": "JavaScript",
+      "category": "Async Programming",
+      "subcategory": "Promises",
+      "difficulty": "Medium",
+      "question": "What are the common issues with async/await in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with async/await in JavaScript include: error handling with try/catch. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "async/await",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to async/await?",
+        "What tools can assist in detecting problems with async/await at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Promises",
+        "Promise.all vs Promise.allSettled",
+        "microtask queue"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-041",
+      "subject": "JavaScript",
+      "category": "Functions & Scope",
+      "subcategory": "Closures",
+      "difficulty": "Medium",
+      "question": "What are the common issues with lexical scope in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with lexical scope in JavaScript include: vs dynamic scope. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "lexical scope",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to lexical scope?",
+        "What tools can assist in detecting problems with lexical scope at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "arrow functions",
+        "IIFE",
+        "higher-order functions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-042",
+      "subject": "JavaScript",
+      "category": "Async Programming",
+      "subcategory": "Callbacks",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Promises and Promise.all vs Promise.allSettled in JavaScript.",
+      "ideal_answer": "Promises and Promise.all vs Promise.allSettled differ in several ways: Promises is async operation representation (works by future value container) whereas Promise.all vs Promise.allSettled is concurrent promise handling (works by aggregating multiple promises). Promises is typically used for pending, fulfilled, rejected states, while Promise.all vs Promise.allSettled is used for all: rejects on first failure; allSettled: waits for all. Example demonstrating Promises: fetch('/api').then(res => res.json()).catch(err => console.error(err));. Example demonstrating Promise.all vs Promise.allSettled: Promise.all([p1, p2, p3]).",
+      "keywords": [
+        "Promises",
+        "Promise.all vs Promise.allSettled",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Promises over Promise.all vs Promise.allSettled?",
+        "What is the performance or memory difference between Promises and Promise.all vs Promise.allSettled?"
+      ],
+      "related_concepts": [
+        "Promises",
+        "Promise.all vs Promise.allSettled",
+        "async/await",
+        "microtask queue"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-043",
+      "subject": "JavaScript",
+      "category": "Objects & Prototypes",
+      "subcategory": "Property Descriptors",
+      "difficulty": "Medium",
+      "question": "Explain the difference between class syntax and Proxy in JavaScript.",
+      "ideal_answer": "class syntax and Proxy differ in several ways: class syntax is syntactic sugar over prototypes (works by OOP-style class definition) whereas Proxy is object interception mechanism (works by customizing object behavior). class syntax is typically used for constructor, extends, super, static, while Proxy is used for traps for get, set, apply, construct. Example demonstrating class syntax: class MyClass extends Base { constructor() { super(); } }. Example demonstrating Proxy: new Proxy(target, { get(t, p) { return t[p] * 2; } });.",
+      "keywords": [
+        "class syntax",
+        "Proxy",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose class syntax over Proxy?",
+        "What is the performance or memory difference between class syntax and Proxy?"
+      ],
+      "related_concepts": [
+        "class syntax",
+        "Proxy",
+        "Object.create",
+        "property descriptors"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-044",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Data Types",
+      "difficulty": "Medium",
+      "question": "What is event loop in JavaScript and how does it work?",
+      "ideal_answer": "event loop in JavaScript refers to concurrency model mechanism. It works by handling async operations. Key characteristics include call stack, task queue, microtask queue. Example: setTimeout(() => {}, 0);. Common pitfalls include starvation of macrotasks.",
+      "keywords": [
+        "event loop",
+        "JavaScript programming",
+        "core js"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of event loop in a production environment?",
+        "What are the common pitfalls or issues associated with event loop?"
+      ],
+      "related_concepts": [
+        "hoisting",
+        "closure",
+        "this keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-045",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "let/const",
+      "difficulty": "Medium",
+      "question": "What is destructuring in JavaScript and how does it work?",
+      "ideal_answer": "destructuring in JavaScript refers to pattern-based extraction. It works by unpacking values from objects/arrays. Key characteristics include const {a, b} = obj; const [x, y] = arr;. Example: const {name: n, age = 18} = person;. Common pitfalls include nested destructuring.",
+      "keywords": [
+        "destructuring",
+        "JavaScript programming",
+        "es6+"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of destructuring in a production environment?",
+        "What are the common pitfalls or issues associated with destructuring?"
+      ],
+      "related_concepts": [
+        "spread operator",
+        "rest parameters",
+        "modules"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-046",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Control Flow",
+      "difficulty": "Medium",
+      "question": "What is undefined vs null in JavaScript and how does it work?",
+      "ideal_answer": "undefined vs null in JavaScript refers to empty value types. It works by representing absence. Key characteristics include undefined: declared but not assigned; null: intentional absence. Example: let x; // undefined. Common pitfalls include null == undefined but null !== undefined.",
+      "keywords": [
+        "undefined vs null",
+        "JavaScript programming",
+        "core js"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of undefined vs null in a production environment?",
+        "What are the common pitfalls or issues associated with undefined vs null?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "hoisting",
+        "closure"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-047",
+      "subject": "JavaScript",
+      "category": "Node.js",
+      "subcategory": "EventEmitter",
+      "difficulty": "Medium",
+      "question": "Explain the difference between streams and cluster module in JavaScript.",
+      "ideal_answer": "streams and cluster module differ in several ways: streams is data processing abstraction (works by handling large data efficiently) whereas cluster module is multi-process scaling (works by utilizing multiple CPU cores). streams is typically used for Readable, Writable, Duplex, Transform, while cluster module is used for master-worker pattern, round-robin. Example demonstrating streams: fs.createReadStream('file.txt').pipe(process.stdout);. Example demonstrating cluster module: cluster.fork();.",
+      "keywords": [
+        "streams",
+        "cluster module",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose streams over cluster module?",
+        "What is the performance or memory difference between streams and cluster module?"
+      ],
+      "related_concepts": [
+        "streams",
+        "cluster module",
+        "EventEmitter",
+        "Buffer"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-048",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "Destructuring",
+      "difficulty": "Medium",
+      "question": "What are the common issues with spread operator in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with spread operator in JavaScript include: object spread vs Object.assign. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "spread operator",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to spread operator?",
+        "What tools can assist in detecting problems with spread operator at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "destructuring",
+        "rest parameters",
+        "modules"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-049",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Type Coercion",
+      "difficulty": "Medium",
+      "question": "Explain the difference between strict mode and undefined vs null in JavaScript.",
+      "ideal_answer": "strict mode and undefined vs null differ in several ways: strict mode is restricted JavaScript variant (works by eliminating silent errors) whereas undefined vs null is empty value types (works by representing absence). strict mode is typically used for 'use strict'; prevents implicit globals, this coercion, while undefined vs null is used for undefined: declared but not assigned; null: intentional absence. Example demonstrating strict mode: function() { 'use strict'; ... }. Example demonstrating undefined vs null: let x; // undefined.",
+      "keywords": [
+        "strict mode",
+        "undefined vs null",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose strict mode over undefined vs null?",
+        "What is the performance or memory difference between strict mode and undefined vs null?"
+      ],
+      "related_concepts": [
+        "strict mode",
+        "undefined vs null",
+        "event loop",
+        "hoisting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-050",
+      "subject": "JavaScript",
+      "category": "Functions & Scope",
+      "subcategory": "IIFE",
+      "difficulty": "Medium",
+      "question": "What is Function.prototype.bind in JavaScript and how does it work?",
+      "ideal_answer": "Function.prototype.bind in JavaScript refers to context binding method. It works by permanent this attachment. Key characteristics include returns new function with fixed this. Example: const boundFn = fn.bind(thisArg);. Common pitfalls include partial application with bind.",
+      "keywords": [
+        "Function.prototype.bind",
+        "JavaScript programming",
+        "functions & scope"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Function.prototype.bind in a production environment?",
+        "What are the common pitfalls or issues associated with Function.prototype.bind?"
+      ],
+      "related_concepts": [
+        "arrow functions",
+        "IIFE",
+        "higher-order functions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-051",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "Destructuring",
+      "difficulty": "Medium",
+      "question": "Explain the difference between spread operator and Map vs Object in JavaScript.",
+      "ideal_answer": "spread operator and Map vs Object differ in several ways: spread operator is element expansion (works by copying/merging iterables) whereas Map vs Object is key-value storage comparison (works by different use cases). spread operator is typically used for shallow copy, function arguments, while Map vs Object is used for Map: any key type, ordered, size property; Object: string/symbol keys. Example demonstrating spread operator: const newArr = [...arr1, ...arr2];. Example demonstrating Map vs Object: const map = new Map(); map.set(obj, value);.",
+      "keywords": [
+        "spread operator",
+        "Map vs Object",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose spread operator over Map vs Object?",
+        "What is the performance or memory difference between spread operator and Map vs Object?"
+      ],
+      "related_concepts": [
+        "spread operator",
+        "Map vs Object",
+        "destructuring",
+        "rest parameters"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-052",
+      "subject": "JavaScript",
+      "category": "Objects & Prototypes",
+      "subcategory": "Prototypal Inheritance",
+      "difficulty": "Medium",
+      "question": "Explain the difference between property descriptors and class syntax in JavaScript.",
+      "ideal_answer": "property descriptors and class syntax differ in several ways: property descriptors is object property metadata (works by controlling property behavior) whereas class syntax is syntactic sugar over prototypes (works by OOP-style class definition). property descriptors is typically used for writable, enumerable, configurable, value/get/set, while class syntax is used for constructor, extends, super, static. Example demonstrating property descriptors: Object.defineProperty(obj, 'x', { writable: false });. Example demonstrating class syntax: class MyClass extends Base { constructor() { super(); } }.",
+      "keywords": [
+        "property descriptors",
+        "class syntax",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose property descriptors over class syntax?",
+        "What is the performance or memory difference between property descriptors and class syntax?"
+      ],
+      "related_concepts": [
+        "property descriptors",
+        "class syntax",
+        "Object.create",
+        "Symbol"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-053",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Operators",
+      "difficulty": "Medium",
+      "question": "Explain the difference between closure and undefined vs null in JavaScript.",
+      "ideal_answer": "closure and undefined vs null differ in several ways: closure is function + lexical environment (works by preserving outer scope access) whereas undefined vs null is empty value types (works by representing absence). closure is typically used for data privacy, factory functions, module pattern, while undefined vs null is used for undefined: declared but not assigned; null: intentional absence. Example demonstrating closure: function outer() { let x = 1; return () => x; }. Example demonstrating undefined vs null: let x; // undefined.",
+      "keywords": [
+        "closure",
+        "undefined vs null",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose closure over undefined vs null?",
+        "What is the performance or memory difference between closure and undefined vs null?"
+      ],
+      "related_concepts": [
+        "closure",
+        "undefined vs null",
+        "event loop",
+        "hoisting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-054",
+      "subject": "JavaScript",
+      "category": "Functions & Scope",
+      "subcategory": "Higher-Order Functions",
+      "difficulty": "Medium",
+      "question": "Explain the difference between call vs apply vs bind and lexical scope in JavaScript.",
+      "ideal_answer": "call vs apply vs bind and lexical scope differ in several ways: call vs apply vs bind is function invocation methods (works by controlling this and arguments) whereas lexical scope is static scoping (works by scope determined by source position). call vs apply vs bind is typically used for call: spread args, apply: array args, bind: returns function, while lexical scope is used for nested functions access outer variables. Example demonstrating call vs apply vs bind: fn.call(obj, 1, 2); fn.apply(obj, [1, 2]);. Example demonstrating lexical scope: function outer() { let x = 1; function inner() { console.log(x); } }.",
+      "keywords": [
+        "call vs apply vs bind",
+        "lexical scope",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose call vs apply vs bind over lexical scope?",
+        "What is the performance or memory difference between call vs apply vs bind and lexical scope?"
+      ],
+      "related_concepts": [
+        "call vs apply vs bind",
+        "lexical scope",
+        "arrow functions",
+        "IIFE"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-055",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Control Flow",
+      "difficulty": "Medium",
+      "question": "Explain the difference between this keyword and undefined vs null in JavaScript.",
+      "ideal_answer": "this keyword and undefined vs null differ in several ways: this keyword is context reference (works by dynamic binding based on call site) whereas undefined vs null is empty value types (works by representing absence). this keyword is typically used for global, object method, constructor, call/apply/bind, while undefined vs null is used for undefined: declared but not assigned; null: intentional absence. Example demonstrating this keyword: obj.method(); // this = obj. Example demonstrating undefined vs null: let x; // undefined.",
+      "keywords": [
+        "this keyword",
+        "undefined vs null",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose this keyword over undefined vs null?",
+        "What is the performance or memory difference between this keyword and undefined vs null?"
+      ],
+      "related_concepts": [
+        "this keyword",
+        "undefined vs null",
+        "event loop",
+        "hoisting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-056",
+      "subject": "JavaScript",
+      "category": "Functions & Scope",
+      "subcategory": "IIFE",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Function.prototype.bind and call vs apply vs bind in JavaScript.",
+      "ideal_answer": "Function.prototype.bind and call vs apply vs bind differ in several ways: Function.prototype.bind is context binding method (works by permanent this attachment) whereas call vs apply vs bind is function invocation methods (works by controlling this and arguments). Function.prototype.bind is typically used for returns new function with fixed this, while call vs apply vs bind is used for call: spread args, apply: array args, bind: returns function. Example demonstrating Function.prototype.bind: const boundFn = fn.bind(thisArg);. Example demonstrating call vs apply vs bind: fn.call(obj, 1, 2); fn.apply(obj, [1, 2]);.",
+      "keywords": [
+        "Function.prototype.bind",
+        "call vs apply vs bind",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Function.prototype.bind over call vs apply vs bind?",
+        "What is the performance or memory difference between Function.prototype.bind and call vs apply vs bind?"
+      ],
+      "related_concepts": [
+        "Function.prototype.bind",
+        "call vs apply vs bind",
+        "arrow functions",
+        "IIFE"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-057",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Data Types",
+      "difficulty": "Medium",
+      "question": "What is type coercion in JavaScript and how does it work?",
+      "ideal_answer": "type coercion in JavaScript refers to implicit type conversion. It works by == vs === behavior. Key characteristics include string + number, falsy values, abstract equality. Example: [] + {} // '[object Object]'. Common pitfalls include surprising coercion results.",
+      "keywords": [
+        "type coercion",
+        "JavaScript programming",
+        "core js"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of type coercion in a production environment?",
+        "What are the common pitfalls or issues associated with type coercion?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "hoisting",
+        "closure"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-058",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "let/const",
+      "difficulty": "Medium",
+      "question": "Explain the difference between destructuring and rest parameters in JavaScript.",
+      "ideal_answer": "destructuring and rest parameters differ in several ways: destructuring is pattern-based extraction (works by unpacking values from objects/arrays) whereas rest parameters is remaining arguments collection (works by variadic functions). destructuring is typically used for const {a, b} = obj; const [x, y] = arr;, while rest parameters is used for must be last parameter. Example demonstrating destructuring: const {name: n, age = 18} = person;. Example demonstrating rest parameters: function sum(...numbers) { return numbers.reduce((a, b) => a + b); }.",
+      "keywords": [
+        "destructuring",
+        "rest parameters",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose destructuring over rest parameters?",
+        "What is the performance or memory difference between destructuring and rest parameters?"
+      ],
+      "related_concepts": [
+        "destructuring",
+        "rest parameters",
+        "spread operator",
+        "modules"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-059",
+      "subject": "JavaScript",
+      "category": "DOM",
+      "subcategory": "Event Delegation",
+      "difficulty": "Medium",
+      "question": "What is DOM reflow vs repaint in JavaScript and how does it work?",
+      "ideal_answer": "DOM reflow vs repaint in JavaScript refers to rendering operations. It works by layout vs visual changes. Key characteristics include reflow: geometry calculation; repaint: visual update. Example: element.style.width = '100px'; // reflow. Common pitfalls include minimizing reflows with DocumentFragment.",
+      "keywords": [
+        "DOM reflow vs repaint",
+        "JavaScript programming",
+        "dom"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of DOM reflow vs repaint in a production environment?",
+        "What are the common pitfalls or issues associated with DOM reflow vs repaint?"
+      ],
+      "related_concepts": [
+        "event delegation",
+        "event bubbling vs capturing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-060",
+      "subject": "JavaScript",
+      "category": "Objects & Prototypes",
+      "subcategory": "Object Creation",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Proxy in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with Proxy in JavaScript include: performance overhead, revocable proxies. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Proxy",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Proxy?",
+        "What tools can assist in detecting problems with Proxy at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Object.create",
+        "property descriptors",
+        "class syntax"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-061",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "Spread/Rest",
+      "difficulty": "Medium",
+      "question": "Explain the difference between rest parameters and Set in JavaScript.",
+      "ideal_answer": "rest parameters and Set differ in several ways: rest parameters is remaining arguments collection (works by variadic functions) whereas Set is unique value collection (works by duplicate elimination). rest parameters is typically used for must be last parameter, while Set is used for add, delete, has, size. Example demonstrating rest parameters: function sum(...numbers) { return numbers.reduce((a, b) => a + b); }. Example demonstrating Set: const set = new Set([1, 2, 2, 3]); // {1, 2, 3}.",
+      "keywords": [
+        "rest parameters",
+        "Set",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose rest parameters over Set?",
+        "What is the performance or memory difference between rest parameters and Set?"
+      ],
+      "related_concepts": [
+        "rest parameters",
+        "Set",
+        "destructuring",
+        "spread operator"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-062",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Type Coercion",
+      "difficulty": "Medium",
+      "question": "What are the common issues with hoisting in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with hoisting in JavaScript include: TDZ with let/const. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "hoisting",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to hoisting?",
+        "What tools can assist in detecting problems with hoisting at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "closure",
+        "this keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-063",
+      "subject": "JavaScript",
+      "category": "Objects & Prototypes",
+      "subcategory": "Property Descriptors",
+      "difficulty": "Medium",
+      "question": "Explain the difference between class syntax and Symbol in JavaScript.",
+      "ideal_answer": "class syntax and Symbol differ in several ways: class syntax is syntactic sugar over prototypes (works by OOP-style class definition) whereas Symbol is unique primitive type (works by non-string property keys). class syntax is typically used for constructor, extends, super, static, while Symbol is used for guaranteed uniqueness, well-known symbols. Example demonstrating class syntax: class MyClass extends Base { constructor() { super(); } }. Example demonstrating Symbol: const sym = Symbol('desc'); obj[sym] = value;.",
+      "keywords": [
+        "class syntax",
+        "Symbol",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose class syntax over Symbol?",
+        "What is the performance or memory difference between class syntax and Symbol?"
+      ],
+      "related_concepts": [
+        "class syntax",
+        "Symbol",
+        "Object.create",
+        "property descriptors"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-064",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "Symbols",
+      "difficulty": "Medium",
+      "question": "What are the common issues with template literals in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with template literals in JavaScript include: tagged templates. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "template literals",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to template literals?",
+        "What tools can assist in detecting problems with template literals at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "destructuring",
+        "spread operator",
+        "rest parameters"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-065",
+      "subject": "JavaScript",
+      "category": "Functions & Scope",
+      "subcategory": "IIFE",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Function.prototype.bind and lexical scope in JavaScript.",
+      "ideal_answer": "Function.prototype.bind and lexical scope differ in several ways: Function.prototype.bind is context binding method (works by permanent this attachment) whereas lexical scope is static scoping (works by scope determined by source position). Function.prototype.bind is typically used for returns new function with fixed this, while lexical scope is used for nested functions access outer variables. Example demonstrating Function.prototype.bind: const boundFn = fn.bind(thisArg);. Example demonstrating lexical scope: function outer() { let x = 1; function inner() { console.log(x); } }.",
+      "keywords": [
+        "Function.prototype.bind",
+        "lexical scope",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Function.prototype.bind over lexical scope?",
+        "What is the performance or memory difference between Function.prototype.bind and lexical scope?"
+      ],
+      "related_concepts": [
+        "Function.prototype.bind",
+        "lexical scope",
+        "arrow functions",
+        "IIFE"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-066",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "Modules",
+      "difficulty": "Medium",
+      "question": "What are the common issues with modules in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with modules in JavaScript include: tree shaking, dynamic import(). To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "modules",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to modules?",
+        "What tools can assist in detecting problems with modules at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "destructuring",
+        "spread operator",
+        "rest parameters"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-067",
+      "subject": "JavaScript",
+      "category": "Async Programming",
+      "subcategory": "Callbacks",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Promises in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with Promises in JavaScript include: chaining, Promise.all, Promise.race. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Promises",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Promises?",
+        "What tools can assist in detecting problems with Promises at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "async/await",
+        "Promise.all vs Promise.allSettled",
+        "microtask queue"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-068",
+      "subject": "JavaScript",
+      "category": "DOM",
+      "subcategory": "Event Delegation",
+      "difficulty": "Medium",
+      "question": "What are the common issues with DOM reflow vs repaint in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with DOM reflow vs repaint in JavaScript include: minimizing reflows with DocumentFragment. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "DOM reflow vs repaint",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to DOM reflow vs repaint?",
+        "What tools can assist in detecting problems with DOM reflow vs repaint at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "event delegation",
+        "event bubbling vs capturing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-069",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "Spread/Rest",
+      "difficulty": "Medium",
+      "question": "Explain the difference between rest parameters and Map vs Object in JavaScript.",
+      "ideal_answer": "rest parameters and Map vs Object differ in several ways: rest parameters is remaining arguments collection (works by variadic functions) whereas Map vs Object is key-value storage comparison (works by different use cases). rest parameters is typically used for must be last parameter, while Map vs Object is used for Map: any key type, ordered, size property; Object: string/symbol keys. Example demonstrating rest parameters: function sum(...numbers) { return numbers.reduce((a, b) => a + b); }. Example demonstrating Map vs Object: const map = new Map(); map.set(obj, value);.",
+      "keywords": [
+        "rest parameters",
+        "Map vs Object",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose rest parameters over Map vs Object?",
+        "What is the performance or memory difference between rest parameters and Map vs Object?"
+      ],
+      "related_concepts": [
+        "rest parameters",
+        "Map vs Object",
+        "destructuring",
+        "spread operator"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-070",
+      "subject": "JavaScript",
+      "category": "Functions & Scope",
+      "subcategory": "Closures",
+      "difficulty": "Medium",
+      "question": "What is arrow functions in JavaScript and how does it work?",
+      "ideal_answer": "arrow functions in JavaScript refers to concise function syntax. It works by lexical this binding. Key characteristics include no own this, arguments, super, new.target. Example: const add = (a, b) => a + b;. Common pitfalls include cannot be used as constructors.",
+      "keywords": [
+        "arrow functions",
+        "JavaScript programming",
+        "functions & scope"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of arrow functions in a production environment?",
+        "What are the common pitfalls or issues associated with arrow functions?"
+      ],
+      "related_concepts": [
+        "IIFE",
+        "higher-order functions",
+        "Function.prototype.bind"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-071",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "let/const",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Set in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with Set in JavaScript include: Set operations implementation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Set",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Set?",
+        "What tools can assist in detecting problems with Set at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "destructuring",
+        "spread operator",
+        "rest parameters"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-072",
+      "subject": "JavaScript",
+      "category": "Async Programming",
+      "subcategory": "Promises",
+      "difficulty": "Medium",
+      "question": "What is async/await in JavaScript and how does it work?",
+      "ideal_answer": "async/await in JavaScript refers to promise syntactic sugar. It works by writing async code synchronously. Key characteristics include async functions return promises, await unwraps. Example: async function getData() { const res = await fetch('/api'); return res.json(); }. Common pitfalls include error handling with try/catch.",
+      "keywords": [
+        "async/await",
+        "JavaScript programming",
+        "async programming"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of async/await in a production environment?",
+        "What are the common pitfalls or issues associated with async/await?"
+      ],
+      "related_concepts": [
+        "Promises",
+        "Promise.all vs Promise.allSettled",
+        "microtask queue"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-073",
+      "subject": "JavaScript",
+      "category": "Objects & Prototypes",
+      "subcategory": "Object Creation",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Object.create and Proxy in JavaScript.",
+      "ideal_answer": "Object.create and Proxy differ in several ways: Object.create is prototypal inheritance creation (works by creating objects with specified prototype) whereas Proxy is object interception mechanism (works by customizing object behavior). Object.create is typically used for null prototype, property descriptors, while Proxy is used for traps for get, set, apply, construct. Example demonstrating Object.create: Object.create(null, { x: { value: 1 } });. Example demonstrating Proxy: new Proxy(target, { get(t, p) { return t[p] * 2; } });.",
+      "keywords": [
+        "Object.create",
+        "Proxy",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Object.create over Proxy?",
+        "What is the performance or memory difference between Object.create and Proxy?"
+      ],
+      "related_concepts": [
+        "Object.create",
+        "Proxy",
+        "property descriptors",
+        "class syntax"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-074",
+      "subject": "JavaScript",
+      "category": "Async Programming",
+      "subcategory": "Callbacks",
+      "difficulty": "Medium",
+      "question": "What is Promises in JavaScript and how does it work?",
+      "ideal_answer": "Promises in JavaScript refers to async operation representation. It works by future value container. Key characteristics include pending, fulfilled, rejected states. Example: fetch('/api').then(res => res.json()).catch(err => console.error(err));. Common pitfalls include chaining, Promise.all, Promise.race.",
+      "keywords": [
+        "Promises",
+        "JavaScript programming",
+        "async programming"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Promises in a production environment?",
+        "What are the common pitfalls or issues associated with Promises?"
+      ],
+      "related_concepts": [
+        "async/await",
+        "Promise.all vs Promise.allSettled",
+        "microtask queue"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-075",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "Proxies",
+      "difficulty": "Medium",
+      "question": "What is Map vs Object in JavaScript and how does it work?",
+      "ideal_answer": "Map vs Object in JavaScript refers to key-value storage comparison. It works by different use cases. Key characteristics include Map: any key type, ordered, size property; Object: string/symbol keys. Example: const map = new Map(); map.set(obj, value);. Common pitfalls include Object key collision with prototype.",
+      "keywords": [
+        "Map vs Object",
+        "JavaScript programming",
+        "es6+"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Map vs Object in a production environment?",
+        "What are the common pitfalls or issues associated with Map vs Object?"
+      ],
+      "related_concepts": [
+        "destructuring",
+        "spread operator",
+        "rest parameters"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-076",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Operators",
+      "difficulty": "Medium",
+      "question": "Explain the difference between closure and this keyword in JavaScript.",
+      "ideal_answer": "closure and this keyword differ in several ways: closure is function + lexical environment (works by preserving outer scope access) whereas this keyword is context reference (works by dynamic binding based on call site). closure is typically used for data privacy, factory functions, module pattern, while this keyword is used for global, object method, constructor, call/apply/bind. Example demonstrating closure: function outer() { let x = 1; return () => x; }. Example demonstrating this keyword: obj.method(); // this = obj.",
+      "keywords": [
+        "closure",
+        "this keyword",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose closure over this keyword?",
+        "What is the performance or memory difference between closure and this keyword?"
+      ],
+      "related_concepts": [
+        "closure",
+        "this keyword",
+        "event loop",
+        "hoisting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-077",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Data Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between event loop and hoisting in JavaScript.",
+      "ideal_answer": "event loop and hoisting differ in several ways: event loop is concurrency model mechanism (works by handling async operations) whereas hoisting is declaration lifting behavior (works by moving declarations to top of scope). event loop is typically used for call stack, task queue, microtask queue, while hoisting is used for var: hoisted and initialized undefined; let/const: hoisted but TDZ. Example demonstrating event loop: setTimeout(() => {}, 0);. Example demonstrating hoisting: console.log(x); var x = 5; // undefined.",
+      "keywords": [
+        "event loop",
+        "hoisting",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose event loop over hoisting?",
+        "What is the performance or memory difference between event loop and hoisting?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "hoisting",
+        "closure",
+        "this keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-078",
+      "subject": "JavaScript",
+      "category": "Async Programming",
+      "subcategory": "Event Loop",
+      "difficulty": "Medium",
+      "question": "Explain the difference between microtask queue and callback hell in JavaScript.",
+      "ideal_answer": "microtask queue and callback hell differ in several ways: microtask queue is high-priority async queue (works by promise callbacks execution) whereas callback hell is nested callback pyramid (works by poor async code structure). microtask queue is typically used for processed before macrotasks, can starve, while callback hell is used for difficult error handling, readability. Example demonstrating microtask queue: queueMicrotask(() => console.log('micro'));. Example demonstrating callback hell: readFile(a, (err, data) => { readFile(b, (err, data) => { ... }) }).",
+      "keywords": [
+        "microtask queue",
+        "callback hell",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose microtask queue over callback hell?",
+        "What is the performance or memory difference between microtask queue and callback hell?"
+      ],
+      "related_concepts": [
+        "microtask queue",
+        "callback hell",
+        "Promises",
+        "async/await"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-079",
+      "subject": "JavaScript",
+      "category": "DOM",
+      "subcategory": "DOM Manipulation",
+      "difficulty": "Medium",
+      "question": "Explain the difference between event delegation and event bubbling vs capturing in JavaScript.",
+      "ideal_answer": "event delegation and event bubbling vs capturing differ in several ways: event delegation is parent-level event handling (works by efficient dynamic element handling) whereas event bubbling vs capturing is event propagation phases (works by order of event handling). event delegation is typically used for bubbling phase, event.target, while event bubbling vs capturing is used for capturing (root to target) vs bubbling (target to root). Example demonstrating event delegation: ul.addEventListener('click', e => { if (e.target.matches('li')) { ... } });. Example demonstrating event bubbling vs capturing: element.addEventListener('click', handler, true); // capture.",
+      "keywords": [
+        "event delegation",
+        "event bubbling vs capturing",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose event delegation over event bubbling vs capturing?",
+        "What is the performance or memory difference between event delegation and event bubbling vs capturing?"
+      ],
+      "related_concepts": [
+        "event delegation",
+        "event bubbling vs capturing",
+        "DOM reflow vs repaint"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-080",
+      "subject": "JavaScript",
+      "category": "Functions & Scope",
+      "subcategory": "Higher-Order Functions",
+      "difficulty": "Medium",
+      "question": "What are the common issues with call vs apply vs bind in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with call vs apply vs bind in JavaScript include: performance difference minimal. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "call vs apply vs bind",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to call vs apply vs bind?",
+        "What tools can assist in detecting problems with call vs apply vs bind at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "arrow functions",
+        "IIFE",
+        "higher-order functions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-081",
+      "subject": "JavaScript",
+      "category": "Objects & Prototypes",
+      "subcategory": "Prototypal Inheritance",
+      "difficulty": "Medium",
+      "question": "What is property descriptors in JavaScript and how does it work?",
+      "ideal_answer": "property descriptors in JavaScript refers to object property metadata. It works by controlling property behavior. Key characteristics include writable, enumerable, configurable, value/get/set. Example: Object.defineProperty(obj, 'x', { writable: false });. Common pitfalls include seal vs freeze vs preventExtensions.",
+      "keywords": [
+        "property descriptors",
+        "JavaScript programming",
+        "objects & prototypes"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of property descriptors in a production environment?",
+        "What are the common pitfalls or issues associated with property descriptors?"
+      ],
+      "related_concepts": [
+        "Object.create",
+        "class syntax",
+        "Symbol"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-082",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "let/const",
+      "difficulty": "Medium",
+      "question": "What is Set in JavaScript and how does it work?",
+      "ideal_answer": "Set in JavaScript refers to unique value collection. It works by duplicate elimination. Key characteristics include add, delete, has, size. Example: const set = new Set([1, 2, 2, 3]); // {1, 2, 3}. Common pitfalls include Set operations implementation.",
+      "keywords": [
+        "Set",
+        "JavaScript programming",
+        "es6+"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Set in a production environment?",
+        "What are the common pitfalls or issues associated with Set?"
+      ],
+      "related_concepts": [
+        "destructuring",
+        "spread operator",
+        "rest parameters"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-083",
+      "subject": "JavaScript",
+      "category": "Functions & Scope",
+      "subcategory": "this Keyword",
+      "difficulty": "Medium",
+      "question": "Explain the difference between IIFE and Function.prototype.bind in JavaScript.",
+      "ideal_answer": "IIFE and Function.prototype.bind differ in several ways: IIFE is Immediately Invoked Function Expression (works by creating private scope) whereas Function.prototype.bind is context binding method (works by permanent this attachment). IIFE is typically used for (function() { ... })();, while Function.prototype.bind is used for returns new function with fixed this. Example demonstrating IIFE: const module = (function() { let private = 1; return { get: () => private }; })();. Example demonstrating Function.prototype.bind: const boundFn = fn.bind(thisArg);.",
+      "keywords": [
+        "IIFE",
+        "Function.prototype.bind",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose IIFE over Function.prototype.bind?",
+        "What is the performance or memory difference between IIFE and Function.prototype.bind?"
+      ],
+      "related_concepts": [
+        "IIFE",
+        "Function.prototype.bind",
+        "arrow functions",
+        "higher-order functions"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-084",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Type Coercion",
+      "difficulty": "Medium",
+      "question": "Explain the difference between hoisting and this keyword in JavaScript.",
+      "ideal_answer": "hoisting and this keyword differ in several ways: hoisting is declaration lifting behavior (works by moving declarations to top of scope) whereas this keyword is context reference (works by dynamic binding based on call site). hoisting is typically used for var: hoisted and initialized undefined; let/const: hoisted but TDZ, while this keyword is used for global, object method, constructor, call/apply/bind. Example demonstrating hoisting: console.log(x); var x = 5; // undefined. Example demonstrating this keyword: obj.method(); // this = obj.",
+      "keywords": [
+        "hoisting",
+        "this keyword",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose hoisting over this keyword?",
+        "What is the performance or memory difference between hoisting and this keyword?"
+      ],
+      "related_concepts": [
+        "hoisting",
+        "this keyword",
+        "event loop",
+        "closure"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-085",
+      "subject": "JavaScript",
+      "category": "Node.js",
+      "subcategory": "Buffer",
+      "difficulty": "Medium",
+      "question": "What is module system in JavaScript and how does it work?",
+      "ideal_answer": "module system in JavaScript refers to CommonJS require/exports. It works by synchronous module loading. Key characteristics include require.cache, module.exports. Example: const fs = require('fs'); module.exports = { foo };. Common pitfalls include ESM vs CJS interoperability.",
+      "keywords": [
+        "module system",
+        "JavaScript programming",
+        "node.js"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of module system in a production environment?",
+        "What are the common pitfalls or issues associated with module system?"
+      ],
+      "related_concepts": [
+        "EventEmitter",
+        "streams",
+        "Buffer"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-086",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "Destructuring",
+      "difficulty": "Medium",
+      "question": "Explain the difference between spread operator and Set in JavaScript.",
+      "ideal_answer": "spread operator and Set differ in several ways: spread operator is element expansion (works by copying/merging iterables) whereas Set is unique value collection (works by duplicate elimination). spread operator is typically used for shallow copy, function arguments, while Set is used for add, delete, has, size. Example demonstrating spread operator: const newArr = [...arr1, ...arr2];. Example demonstrating Set: const set = new Set([1, 2, 2, 3]); // {1, 2, 3}.",
+      "keywords": [
+        "spread operator",
+        "Set",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose spread operator over Set?",
+        "What is the performance or memory difference between spread operator and Set?"
+      ],
+      "related_concepts": [
+        "spread operator",
+        "Set",
+        "destructuring",
+        "rest parameters"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-087",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Type Coercion",
+      "difficulty": "Medium",
+      "question": "Explain the difference between strict mode and NaN in JavaScript.",
+      "ideal_answer": "strict mode and NaN differ in several ways: strict mode is restricted JavaScript variant (works by eliminating silent errors) whereas NaN is Not-a-Number value (works by invalid numeric operation result). strict mode is typically used for 'use strict'; prevents implicit globals, this coercion, while NaN is used for typeof NaN === 'number', NaN !== NaN. Example demonstrating strict mode: function() { 'use strict'; ... }. Example demonstrating NaN: isNaN() vs Number.isNaN().",
+      "keywords": [
+        "strict mode",
+        "NaN",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose strict mode over NaN?",
+        "What is the performance or memory difference between strict mode and NaN?"
+      ],
+      "related_concepts": [
+        "strict mode",
+        "NaN",
+        "event loop",
+        "hoisting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-088",
+      "subject": "JavaScript",
+      "category": "Node.js",
+      "subcategory": "Modules",
+      "difficulty": "Medium",
+      "question": "What is EventEmitter in JavaScript and how does it work?",
+      "ideal_answer": "EventEmitter in JavaScript refers to event-driven architecture. It works by pub/sub pattern implementation. Key characteristics include on, emit, once, removeListener. Example: const emitter = new EventEmitter(); emitter.on('data', handler);. Common pitfalls include memory leak with many listeners.",
+      "keywords": [
+        "EventEmitter",
+        "JavaScript programming",
+        "node.js"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of EventEmitter in a production environment?",
+        "What are the common pitfalls or issues associated with EventEmitter?"
+      ],
+      "related_concepts": [
+        "streams",
+        "Buffer",
+        "module system"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-089",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Operators",
+      "difficulty": "Medium",
+      "question": "What is closure in JavaScript and how does it work?",
+      "ideal_answer": "closure in JavaScript refers to function + lexical environment. It works by preserving outer scope access. Key characteristics include data privacy, factory functions, module pattern. Example: function outer() { let x = 1; return () => x; }. Common pitfalls include memory leaks with closures.",
+      "keywords": [
+        "closure",
+        "JavaScript programming",
+        "core js"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of closure in a production environment?",
+        "What are the common pitfalls or issues associated with closure?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "hoisting",
+        "this keyword"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-090",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "Spread/Rest",
+      "difficulty": "Medium",
+      "question": "What is rest parameters in JavaScript and how does it work?",
+      "ideal_answer": "rest parameters in JavaScript refers to remaining arguments collection. It works by variadic functions. Key characteristics include must be last parameter. Example: function sum(...numbers) { return numbers.reduce((a, b) => a + b); }. Common pitfalls include vs arguments object.",
+      "keywords": [
+        "rest parameters",
+        "JavaScript programming",
+        "es6+"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of rest parameters in a production environment?",
+        "What are the common pitfalls or issues associated with rest parameters?"
+      ],
+      "related_concepts": [
+        "destructuring",
+        "spread operator",
+        "modules"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-091",
+      "subject": "JavaScript",
+      "category": "Node.js",
+      "subcategory": "Streams",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Buffer in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with Buffer in JavaScript include: Buffer vs TypedArray. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Buffer",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Buffer?",
+        "What tools can assist in detecting problems with Buffer at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "EventEmitter",
+        "streams",
+        "module system"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-092",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Control Flow",
+      "difficulty": "Medium",
+      "question": "Explain the difference between this keyword and strict mode in JavaScript.",
+      "ideal_answer": "this keyword and strict mode differ in several ways: this keyword is context reference (works by dynamic binding based on call site) whereas strict mode is restricted JavaScript variant (works by eliminating silent errors). this keyword is typically used for global, object method, constructor, call/apply/bind, while strict mode is used for 'use strict'; prevents implicit globals, this coercion. Example demonstrating this keyword: obj.method(); // this = obj. Example demonstrating strict mode: function() { 'use strict'; ... }.",
+      "keywords": [
+        "this keyword",
+        "strict mode",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose this keyword over strict mode?",
+        "What is the performance or memory difference between this keyword and strict mode?"
+      ],
+      "related_concepts": [
+        "this keyword",
+        "strict mode",
+        "event loop",
+        "hoisting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-093",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "Spread/Rest",
+      "difficulty": "Medium",
+      "question": "What are the common issues with rest parameters in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with rest parameters in JavaScript include: vs arguments object. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "rest parameters",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to rest parameters?",
+        "What tools can assist in detecting problems with rest parameters at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "destructuring",
+        "spread operator",
+        "modules"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-094",
+      "subject": "JavaScript",
+      "category": "Node.js",
+      "subcategory": "Streams",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Buffer and cluster module in JavaScript.",
+      "ideal_answer": "Buffer and cluster module differ in several ways: Buffer is binary data representation (works by handling raw bytes) whereas cluster module is multi-process scaling (works by utilizing multiple CPU cores). Buffer is typically used for fixed-size, pool allocation, while cluster module is used for master-worker pattern, round-robin. Example demonstrating Buffer: Buffer.from('hello'); Buffer.alloc(10);. Example demonstrating cluster module: cluster.fork();.",
+      "keywords": [
+        "Buffer",
+        "cluster module",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Buffer over cluster module?",
+        "What is the performance or memory difference between Buffer and cluster module?"
+      ],
+      "related_concepts": [
+        "Buffer",
+        "cluster module",
+        "EventEmitter",
+        "streams"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-095",
+      "subject": "JavaScript",
+      "category": "Node.js",
+      "subcategory": "Modules",
+      "difficulty": "Medium",
+      "question": "Explain the difference between EventEmitter and Buffer in JavaScript.",
+      "ideal_answer": "EventEmitter and Buffer differ in several ways: EventEmitter is event-driven architecture (works by pub/sub pattern implementation) whereas Buffer is binary data representation (works by handling raw bytes). EventEmitter is typically used for on, emit, once, removeListener, while Buffer is used for fixed-size, pool allocation. Example demonstrating EventEmitter: const emitter = new EventEmitter(); emitter.on('data', handler);. Example demonstrating Buffer: Buffer.from('hello'); Buffer.alloc(10);.",
+      "keywords": [
+        "EventEmitter",
+        "Buffer",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose EventEmitter over Buffer?",
+        "What is the performance or memory difference between EventEmitter and Buffer?"
+      ],
+      "related_concepts": [
+        "EventEmitter",
+        "Buffer",
+        "streams",
+        "module system"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-096",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "Destructuring",
+      "difficulty": "Medium",
+      "question": "Explain the difference between spread operator and modules in JavaScript.",
+      "ideal_answer": "spread operator and modules differ in several ways: spread operator is element expansion (works by copying/merging iterables) whereas modules is code organization system (works by encapsulation and reuse). spread operator is typically used for shallow copy, function arguments, while modules is used for import/export, static analysis. Example demonstrating spread operator: const newArr = [...arr1, ...arr2];. Example demonstrating modules: import { foo } from './module.js'; export default class {}.",
+      "keywords": [
+        "spread operator",
+        "modules",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose spread operator over modules?",
+        "What is the performance or memory difference between spread operator and modules?"
+      ],
+      "related_concepts": [
+        "spread operator",
+        "modules",
+        "destructuring",
+        "rest parameters"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "JS-097",
+      "subject": "JavaScript",
+      "category": "Async Programming",
+      "subcategory": "async/await",
+      "difficulty": "Hard",
+      "question": "What is Promise.all vs Promise.allSettled in JavaScript and how does it work?",
+      "ideal_answer": "Promise.all vs Promise.allSettled in JavaScript refers to concurrent promise handling. It works by aggregating multiple promises. Key characteristics include all: rejects on first failure; allSettled: waits for all. Example: Promise.all([p1, p2, p3]). Common pitfalls include handling partial failures.",
+      "keywords": [
+        "Promise.all vs Promise.allSettled",
+        "JavaScript programming",
+        "async programming"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Promise.all vs Promise.allSettled in a production environment?",
+        "What are the common pitfalls or issues associated with Promise.all vs Promise.allSettled?"
+      ],
+      "related_concepts": [
+        "Promises",
+        "async/await",
+        "microtask queue"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-098",
+      "subject": "JavaScript",
+      "category": "Async Programming",
+      "subcategory": "Callbacks",
+      "difficulty": "Hard",
+      "question": "Explain the difference between Promises and async/await in JavaScript.",
+      "ideal_answer": "Promises and async/await differ in several ways: Promises is async operation representation (works by future value container) whereas async/await is promise syntactic sugar (works by writing async code synchronously). Promises is typically used for pending, fulfilled, rejected states, while async/await is used for async functions return promises, await unwraps. Example demonstrating Promises: fetch('/api').then(res => res.json()).catch(err => console.error(err));. Example demonstrating async/await: async function getData() { const res = await fetch('/api'); return res.json(); }.",
+      "keywords": [
+        "Promises",
+        "async/await",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Promises over async/await?",
+        "What is the performance or memory difference between Promises and async/await?"
+      ],
+      "related_concepts": [
+        "Promises",
+        "async/await",
+        "Promise.all vs Promise.allSettled",
+        "microtask queue"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-099",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "let/const",
+      "difficulty": "Hard",
+      "question": "What are the common issues with destructuring in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with destructuring in JavaScript include: nested destructuring. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "destructuring",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to destructuring?",
+        "What tools can assist in detecting problems with destructuring at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "spread operator",
+        "rest parameters",
+        "modules"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-100",
+      "subject": "JavaScript",
+      "category": "Node.js",
+      "subcategory": "EventEmitter",
+      "difficulty": "Hard",
+      "question": "What is streams in JavaScript and how does it work?",
+      "ideal_answer": "streams in JavaScript refers to data processing abstraction. It works by handling large data efficiently. Key characteristics include Readable, Writable, Duplex, Transform. Example: fs.createReadStream('file.txt').pipe(process.stdout);. Common pitfalls include backpressure handling.",
+      "keywords": [
+        "streams",
+        "JavaScript programming",
+        "node.js"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of streams in a production environment?",
+        "What are the common pitfalls or issues associated with streams?"
+      ],
+      "related_concepts": [
+        "EventEmitter",
+        "Buffer",
+        "module system"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-101",
+      "subject": "JavaScript",
+      "category": "Async Programming",
+      "subcategory": "Promises",
+      "difficulty": "Hard",
+      "question": "Explain the difference between async/await and microtask queue in JavaScript.",
+      "ideal_answer": "async/await and microtask queue differ in several ways: async/await is promise syntactic sugar (works by writing async code synchronously) whereas microtask queue is high-priority async queue (works by promise callbacks execution). async/await is typically used for async functions return promises, await unwraps, while microtask queue is used for processed before macrotasks, can starve. Example demonstrating async/await: async function getData() { const res = await fetch('/api'); return res.json(); }. Example demonstrating microtask queue: queueMicrotask(() => console.log('micro'));.",
+      "keywords": [
+        "async/await",
+        "microtask queue",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose async/await over microtask queue?",
+        "What is the performance or memory difference between async/await and microtask queue?"
+      ],
+      "related_concepts": [
+        "async/await",
+        "microtask queue",
+        "Promises",
+        "Promise.all vs Promise.allSettled"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-102",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "let/const",
+      "difficulty": "Hard",
+      "question": "Explain the difference between destructuring and template literals in JavaScript.",
+      "ideal_answer": "destructuring and template literals differ in several ways: destructuring is pattern-based extraction (works by unpacking values from objects/arrays) whereas template literals is string interpolation syntax (works by embedded expressions and multiline). destructuring is typically used for const {a, b} = obj; const [x, y] = arr;, while template literals is used for backticks, ${expression}. Example demonstrating destructuring: const {name: n, age = 18} = person;. Example demonstrating template literals: const msg = `Hello ${name}`;.",
+      "keywords": [
+        "destructuring",
+        "template literals",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose destructuring over template literals?",
+        "What is the performance or memory difference between destructuring and template literals?"
+      ],
+      "related_concepts": [
+        "destructuring",
+        "template literals",
+        "spread operator",
+        "rest parameters"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-103",
+      "subject": "JavaScript",
+      "category": "Objects & Prototypes",
+      "subcategory": "Object Creation",
+      "difficulty": "Hard",
+      "question": "Explain the difference between Object.create and Symbol in JavaScript.",
+      "ideal_answer": "Object.create and Symbol differ in several ways: Object.create is prototypal inheritance creation (works by creating objects with specified prototype) whereas Symbol is unique primitive type (works by non-string property keys). Object.create is typically used for null prototype, property descriptors, while Symbol is used for guaranteed uniqueness, well-known symbols. Example demonstrating Object.create: Object.create(null, { x: { value: 1 } });. Example demonstrating Symbol: const sym = Symbol('desc'); obj[sym] = value;.",
+      "keywords": [
+        "Object.create",
+        "Symbol",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Object.create over Symbol?",
+        "What is the performance or memory difference between Object.create and Symbol?"
+      ],
+      "related_concepts": [
+        "Object.create",
+        "Symbol",
+        "property descriptors",
+        "class syntax"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-104",
+      "subject": "JavaScript",
+      "category": "Functions & Scope",
+      "subcategory": "Closures",
+      "difficulty": "Hard",
+      "question": "Explain the difference between arrow functions and Function.prototype.bind in JavaScript.",
+      "ideal_answer": "arrow functions and Function.prototype.bind differ in several ways: arrow functions is concise function syntax (works by lexical this binding) whereas Function.prototype.bind is context binding method (works by permanent this attachment). arrow functions is typically used for no own this, arguments, super, new.target, while Function.prototype.bind is used for returns new function with fixed this. Example demonstrating arrow functions: const add = (a, b) => a + b;. Example demonstrating Function.prototype.bind: const boundFn = fn.bind(thisArg);.",
+      "keywords": [
+        "arrow functions",
+        "Function.prototype.bind",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose arrow functions over Function.prototype.bind?",
+        "What is the performance or memory difference between arrow functions and Function.prototype.bind?"
+      ],
+      "related_concepts": [
+        "arrow functions",
+        "Function.prototype.bind",
+        "IIFE",
+        "higher-order functions"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-105",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Data Types",
+      "difficulty": "Hard",
+      "question": "Explain the difference between event loop and prototype chain in JavaScript.",
+      "ideal_answer": "event loop and prototype chain differ in several ways: event loop is concurrency model mechanism (works by handling async operations) whereas prototype chain is inheritance lookup mechanism (works by delegation-based inheritance). event loop is typically used for call stack, task queue, microtask queue, while prototype chain is used for __proto__ links up to Object.prototype. Example demonstrating event loop: setTimeout(() => {}, 0);. Example demonstrating prototype chain: obj.toString() // found on prototype.",
+      "keywords": [
+        "event loop",
+        "prototype chain",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose event loop over prototype chain?",
+        "What is the performance or memory difference between event loop and prototype chain?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "prototype chain",
+        "hoisting",
+        "closure"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-106",
+      "subject": "JavaScript",
+      "category": "Async Programming",
+      "subcategory": "async/await",
+      "difficulty": "Hard",
+      "question": "Explain the difference between Promise.all vs Promise.allSettled and callback hell in JavaScript.",
+      "ideal_answer": "Promise.all vs Promise.allSettled and callback hell differ in several ways: Promise.all vs Promise.allSettled is concurrent promise handling (works by aggregating multiple promises) whereas callback hell is nested callback pyramid (works by poor async code structure). Promise.all vs Promise.allSettled is typically used for all: rejects on first failure; allSettled: waits for all, while callback hell is used for difficult error handling, readability. Example demonstrating Promise.all vs Promise.allSettled: Promise.all([p1, p2, p3]). Example demonstrating callback hell: readFile(a, (err, data) => { readFile(b, (err, data) => { ... }) }).",
+      "keywords": [
+        "Promise.all vs Promise.allSettled",
+        "callback hell",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Promise.all vs Promise.allSettled over callback hell?",
+        "What is the performance or memory difference between Promise.all vs Promise.allSettled and callback hell?"
+      ],
+      "related_concepts": [
+        "Promise.all vs Promise.allSettled",
+        "callback hell",
+        "Promises",
+        "async/await"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-107",
+      "subject": "JavaScript",
+      "category": "Functions & Scope",
+      "subcategory": "Arrow Functions",
+      "difficulty": "Hard",
+      "question": "Explain the difference between higher-order functions and lexical scope in JavaScript.",
+      "ideal_answer": "higher-order functions and lexical scope differ in several ways: higher-order functions is functions taking/returning functions (works by abstraction and composition) whereas lexical scope is static scoping (works by scope determined by source position). higher-order functions is typically used for map, filter, reduce, compose, while lexical scope is used for nested functions access outer variables. Example demonstrating higher-order functions: const compose = (...fns) => x => fns.reduceRight((v, f) => f(v), x);. Example demonstrating lexical scope: function outer() { let x = 1; function inner() { console.log(x); } }.",
+      "keywords": [
+        "higher-order functions",
+        "lexical scope",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose higher-order functions over lexical scope?",
+        "What is the performance or memory difference between higher-order functions and lexical scope?"
+      ],
+      "related_concepts": [
+        "higher-order functions",
+        "lexical scope",
+        "arrow functions",
+        "IIFE"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-108",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Strict Mode",
+      "difficulty": "Hard",
+      "question": "What are the common issues with prototype chain in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with prototype chain in JavaScript include: hasOwnProperty vs in operator. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "prototype chain",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to prototype chain?",
+        "What tools can assist in detecting problems with prototype chain at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "event loop",
+        "hoisting",
+        "closure"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-109",
+      "subject": "JavaScript",
+      "category": "Objects & Prototypes",
+      "subcategory": "Object Creation",
+      "difficulty": "Hard",
+      "question": "What are the common issues with Object.create in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with Object.create in JavaScript include: shallow vs deep inheritance. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Object.create",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Object.create?",
+        "What tools can assist in detecting problems with Object.create at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "property descriptors",
+        "class syntax",
+        "Symbol"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-110",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "Modules",
+      "difficulty": "Hard",
+      "question": "Explain the difference between modules and Set in JavaScript.",
+      "ideal_answer": "modules and Set differ in several ways: modules is code organization system (works by encapsulation and reuse) whereas Set is unique value collection (works by duplicate elimination). modules is typically used for import/export, static analysis, while Set is used for add, delete, has, size. Example demonstrating modules: import { foo } from './module.js'; export default class {}. Example demonstrating Set: const set = new Set([1, 2, 2, 3]); // {1, 2, 3}.",
+      "keywords": [
+        "modules",
+        "Set",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose modules over Set?",
+        "What is the performance or memory difference between modules and Set?"
+      ],
+      "related_concepts": [
+        "modules",
+        "Set",
+        "destructuring",
+        "spread operator"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-111",
+      "subject": "JavaScript",
+      "category": "Objects & Prototypes",
+      "subcategory": "Object Creation",
+      "difficulty": "Hard",
+      "question": "What is Proxy in JavaScript and how does it work?",
+      "ideal_answer": "Proxy in JavaScript refers to object interception mechanism. It works by customizing object behavior. Key characteristics include traps for get, set, apply, construct. Example: new Proxy(target, { get(t, p) { return t[p] * 2; } });. Common pitfalls include performance overhead, revocable proxies.",
+      "keywords": [
+        "Proxy",
+        "JavaScript programming",
+        "objects & prototypes"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Proxy in a production environment?",
+        "What are the common pitfalls or issues associated with Proxy?"
+      ],
+      "related_concepts": [
+        "Object.create",
+        "property descriptors",
+        "class syntax"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-112",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Operators",
+      "difficulty": "Hard",
+      "question": "Explain the difference between closure and prototype chain in JavaScript.",
+      "ideal_answer": "closure and prototype chain differ in several ways: closure is function + lexical environment (works by preserving outer scope access) whereas prototype chain is inheritance lookup mechanism (works by delegation-based inheritance). closure is typically used for data privacy, factory functions, module pattern, while prototype chain is used for __proto__ links up to Object.prototype. Example demonstrating closure: function outer() { let x = 1; return () => x; }. Example demonstrating prototype chain: obj.toString() // found on prototype.",
+      "keywords": [
+        "closure",
+        "prototype chain",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose closure over prototype chain?",
+        "What is the performance or memory difference between closure and prototype chain?"
+      ],
+      "related_concepts": [
+        "closure",
+        "prototype chain",
+        "event loop",
+        "hoisting"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-113",
+      "subject": "JavaScript",
+      "category": "Objects & Prototypes",
+      "subcategory": "Property Descriptors",
+      "difficulty": "Hard",
+      "question": "What is class syntax in JavaScript and how does it work?",
+      "ideal_answer": "class syntax in JavaScript refers to syntactic sugar over prototypes. It works by OOP-style class definition. Key characteristics include constructor, extends, super, static. Example: class MyClass extends Base { constructor() { super(); } }. Common pitfalls include not true classes, still prototype-based.",
+      "keywords": [
+        "class syntax",
+        "JavaScript programming",
+        "objects & prototypes"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of class syntax in a production environment?",
+        "What are the common pitfalls or issues associated with class syntax?"
+      ],
+      "related_concepts": [
+        "Object.create",
+        "property descriptors",
+        "Symbol"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-114",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "Spread/Rest",
+      "difficulty": "Hard",
+      "question": "Explain the difference between rest parameters and template literals in JavaScript.",
+      "ideal_answer": "rest parameters and template literals differ in several ways: rest parameters is remaining arguments collection (works by variadic functions) whereas template literals is string interpolation syntax (works by embedded expressions and multiline). rest parameters is typically used for must be last parameter, while template literals is used for backticks, ${expression}. Example demonstrating rest parameters: function sum(...numbers) { return numbers.reduce((a, b) => a + b); }. Example demonstrating template literals: const msg = `Hello ${name}`;.",
+      "keywords": [
+        "rest parameters",
+        "template literals",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose rest parameters over template literals?",
+        "What is the performance or memory difference between rest parameters and template literals?"
+      ],
+      "related_concepts": [
+        "rest parameters",
+        "template literals",
+        "destructuring",
+        "spread operator"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-115",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Strict Mode",
+      "difficulty": "Hard",
+      "question": "Explain the difference between prototype chain and strict mode in JavaScript.",
+      "ideal_answer": "prototype chain and strict mode differ in several ways: prototype chain is inheritance lookup mechanism (works by delegation-based inheritance) whereas strict mode is restricted JavaScript variant (works by eliminating silent errors). prototype chain is typically used for __proto__ links up to Object.prototype, while strict mode is used for 'use strict'; prevents implicit globals, this coercion. Example demonstrating prototype chain: obj.toString() // found on prototype. Example demonstrating strict mode: function() { 'use strict'; ... }.",
+      "keywords": [
+        "prototype chain",
+        "strict mode",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose prototype chain over strict mode?",
+        "What is the performance or memory difference between prototype chain and strict mode?"
+      ],
+      "related_concepts": [
+        "prototype chain",
+        "strict mode",
+        "event loop",
+        "hoisting"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-116",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Strict Mode",
+      "difficulty": "Hard",
+      "question": "Explain the difference between prototype chain and undefined vs null in JavaScript.",
+      "ideal_answer": "prototype chain and undefined vs null differ in several ways: prototype chain is inheritance lookup mechanism (works by delegation-based inheritance) whereas undefined vs null is empty value types (works by representing absence). prototype chain is typically used for __proto__ links up to Object.prototype, while undefined vs null is used for undefined: declared but not assigned; null: intentional absence. Example demonstrating prototype chain: obj.toString() // found on prototype. Example demonstrating undefined vs null: let x; // undefined.",
+      "keywords": [
+        "prototype chain",
+        "undefined vs null",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose prototype chain over undefined vs null?",
+        "What is the performance or memory difference between prototype chain and undefined vs null?"
+      ],
+      "related_concepts": [
+        "prototype chain",
+        "undefined vs null",
+        "event loop",
+        "hoisting"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-117",
+      "subject": "JavaScript",
+      "category": "ES6+",
+      "subcategory": "Modules",
+      "difficulty": "Hard",
+      "question": "What is modules in JavaScript and how does it work?",
+      "ideal_answer": "modules in JavaScript refers to code organization system. It works by encapsulation and reuse. Key characteristics include import/export, static analysis. Example: import { foo } from './module.js'; export default class {}. Common pitfalls include tree shaking, dynamic import().",
+      "keywords": [
+        "modules",
+        "JavaScript programming",
+        "es6+"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of modules in a production environment?",
+        "What are the common pitfalls or issues associated with modules?"
+      ],
+      "related_concepts": [
+        "destructuring",
+        "spread operator",
+        "rest parameters"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-118",
+      "subject": "JavaScript",
+      "category": "Core JS",
+      "subcategory": "Strict Mode",
+      "difficulty": "Hard",
+      "question": "Explain the difference between prototype chain and NaN in JavaScript.",
+      "ideal_answer": "prototype chain and NaN differ in several ways: prototype chain is inheritance lookup mechanism (works by delegation-based inheritance) whereas NaN is Not-a-Number value (works by invalid numeric operation result). prototype chain is typically used for __proto__ links up to Object.prototype, while NaN is used for typeof NaN === 'number', NaN !== NaN. Example demonstrating prototype chain: obj.toString() // found on prototype. Example demonstrating NaN: isNaN() vs Number.isNaN().",
+      "keywords": [
+        "prototype chain",
+        "NaN",
+        "comparison",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose prototype chain over NaN?",
+        "What is the performance or memory difference between prototype chain and NaN?"
+      ],
+      "related_concepts": [
+        "prototype chain",
+        "NaN",
+        "event loop",
+        "hoisting"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-119",
+      "subject": "JavaScript",
+      "category": "Async Programming",
+      "subcategory": "async/await",
+      "difficulty": "Hard",
+      "question": "What are the common issues with Promise.all vs Promise.allSettled in JavaScript and how do you debug them?",
+      "ideal_answer": "Common issues with Promise.all vs Promise.allSettled in JavaScript include: handling partial failures. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Promise.all vs Promise.allSettled",
+        "troubleshooting",
+        "JavaScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Promise.all vs Promise.allSettled?",
+        "What tools can assist in detecting problems with Promise.all vs Promise.allSettled at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Promises",
+        "async/await",
+        "microtask queue"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "JS-120",
+      "subject": "JavaScript",
+      "category": "Objects & Prototypes",
+      "subcategory": "Object Creation",
+      "difficulty": "Hard",
+      "question": "What is Object.create in JavaScript and how does it work?",
+      "ideal_answer": "Object.create in JavaScript refers to prototypal inheritance creation. It works by creating objects with specified prototype. Key characteristics include null prototype, property descriptors. Example: Object.create(null, { x: { value: 1 } });. Common pitfalls include shallow vs deep inheritance.",
+      "keywords": [
+        "Object.create",
+        "JavaScript programming",
+        "objects & prototypes"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Object.create in a production environment?",
+        "What are the common pitfalls or issues associated with Object.create?"
+      ],
+      "related_concepts": [
+        "property descriptors",
+        "class syntax",
+        "Symbol"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

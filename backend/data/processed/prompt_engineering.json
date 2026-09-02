@@ -1,0 +1,391 @@
+{
+  "metadata": {
+    "subject": "Prompt Engineering",
+    "domain": "Artificial Intelligence",
+    "total_questions": 14,
+    "difficulty_distribution": {
+      "Easy": 4,
+      "Medium": 7,
+      "Hard": 3
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "PROMPT-001",
+      "subject": "Prompt Engineering",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Easy",
+      "question": "Explain the difference between few-shot prompting and chain-of-thought in Prompt Engineering.",
+      "ideal_answer": "few-shot prompting and chain-of-thought differ in several ways: few-shot prompting is example-based learning (works by demonstrating desired pattern) whereas chain-of-thought is reasoning step elicitation (works by intermediate reasoning generation). few-shot prompting is typically used for input-output pairs in prompt, while chain-of-thought is used for \"Let's think step by step\" or explicit reasoning examples. Example demonstrating few-shot prompting: \"English: Hello -> French: Bonjour\nEnglish: Goodbye -> French: ...\". Example demonstrating chain-of-thought: improves arithmetic, commonsense, symbolic reasoning.",
+      "keywords": [
+        "few-shot prompting",
+        "chain-of-thought",
+        "comparison",
+        "Prompt Engineering"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose few-shot prompting over chain-of-thought?",
+        "What is the performance or memory difference between few-shot prompting and chain-of-thought?"
+      ],
+      "related_concepts": [
+        "few-shot prompting",
+        "chain-of-thought",
+        "zero-shot prompting"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "PROMPT-002",
+      "subject": "Prompt Engineering",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Easy",
+      "question": "What are the common issues with prompt chaining in Prompt Engineering and how do you debug them?",
+      "ideal_answer": "Common issues with prompt chaining in Prompt Engineering include: error propagation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "prompt chaining",
+        "troubleshooting",
+        "Prompt Engineering"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to prompt chaining?",
+        "What tools can assist in detecting problems with prompt chaining at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ReAct"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "PROMPT-003",
+      "subject": "Prompt Engineering",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Easy",
+      "question": "Explain the difference between zero-shot prompting and chain-of-thought in Prompt Engineering.",
+      "ideal_answer": "zero-shot prompting and chain-of-thought differ in several ways: zero-shot prompting is no-example instruction (works by direct task description) whereas chain-of-thought is reasoning step elicitation (works by intermediate reasoning generation). zero-shot prompting is typically used for clear, specific, structured instructions, while chain-of-thought is used for \"Let's think step by step\" or explicit reasoning examples. Example demonstrating zero-shot prompting: \"Translate the following to French: {text}\". Example demonstrating chain-of-thought: improves arithmetic, commonsense, symbolic reasoning.",
+      "keywords": [
+        "zero-shot prompting",
+        "chain-of-thought",
+        "comparison",
+        "Prompt Engineering"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose zero-shot prompting over chain-of-thought?",
+        "What is the performance or memory difference between zero-shot prompting and chain-of-thought?"
+      ],
+      "related_concepts": [
+        "zero-shot prompting",
+        "chain-of-thought",
+        "few-shot prompting"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "PROMPT-004",
+      "subject": "Prompt Engineering",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Easy",
+      "question": "Explain the difference between zero-shot prompting and few-shot prompting in Prompt Engineering.",
+      "ideal_answer": "zero-shot prompting and few-shot prompting differ in several ways: zero-shot prompting is no-example instruction (works by direct task description) whereas few-shot prompting is example-based learning (works by demonstrating desired pattern). zero-shot prompting is typically used for clear, specific, structured instructions, while few-shot prompting is used for input-output pairs in prompt. Example demonstrating zero-shot prompting: \"Translate the following to French: {text}\". Example demonstrating few-shot prompting: \"English: Hello -> French: Bonjour\nEnglish: Goodbye -> French: ...\".",
+      "keywords": [
+        "zero-shot prompting",
+        "few-shot prompting",
+        "comparison",
+        "Prompt Engineering"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose zero-shot prompting over few-shot prompting?",
+        "What is the performance or memory difference between zero-shot prompting and few-shot prompting?"
+      ],
+      "related_concepts": [
+        "zero-shot prompting",
+        "few-shot prompting",
+        "chain-of-thought"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "PROMPT-005",
+      "subject": "Prompt Engineering",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "Explain the difference between ReAct and prompt chaining in Prompt Engineering.",
+      "ideal_answer": "ReAct and prompt chaining differ in several ways: ReAct is reasoning and acting (works by interleaving thought and action) whereas prompt chaining is multi-step prompt decomposition (works by breaking complex tasks into subtasks). ReAct is typically used for LLM generates reasoning traces and actions, while prompt chaining is used for output of one prompt feeds into next. Example demonstrating ReAct: Thought: I need to search for X. Action: search[X]. Example demonstrating prompt chaining: extract -> summarize -> format pipeline.",
+      "keywords": [
+        "ReAct",
+        "prompt chaining",
+        "comparison",
+        "Prompt Engineering"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ReAct over prompt chaining?",
+        "What is the performance or memory difference between ReAct and prompt chaining?"
+      ],
+      "related_concepts": [
+        "ReAct",
+        "prompt chaining"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PROMPT-006",
+      "subject": "Prompt Engineering",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Medium",
+      "question": "What is prompt chaining in Prompt Engineering and how does it work?",
+      "ideal_answer": "prompt chaining in Prompt Engineering refers to multi-step prompt decomposition. It works by breaking complex tasks into subtasks. Key characteristics include output of one prompt feeds into next. Example: extract -> summarize -> format pipeline. Common pitfalls include error propagation.",
+      "keywords": [
+        "prompt chaining",
+        "Prompt Engineering programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of prompt chaining in a production environment?",
+        "What are the common pitfalls or issues associated with prompt chaining?"
+      ],
+      "related_concepts": [
+        "ReAct"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PROMPT-007",
+      "subject": "Prompt Engineering",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What are the common issues with chain-of-thought in Prompt Engineering and how do you debug them?",
+      "ideal_answer": "Common issues with chain-of-thought in Prompt Engineering include: self-consistency decoding. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "chain-of-thought",
+        "troubleshooting",
+        "Prompt Engineering"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to chain-of-thought?",
+        "What tools can assist in detecting problems with chain-of-thought at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "zero-shot prompting",
+        "few-shot prompting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PROMPT-008",
+      "subject": "Prompt Engineering",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Medium",
+      "question": "What is few-shot prompting in Prompt Engineering and how does it work?",
+      "ideal_answer": "few-shot prompting in Prompt Engineering refers to example-based learning. It works by demonstrating desired pattern. Key characteristics include input-output pairs in prompt. Example: \"English: Hello -> French: Bonjour\nEnglish: Goodbye -> French: ...\". Common pitfalls include example quality and diversity.",
+      "keywords": [
+        "few-shot prompting",
+        "Prompt Engineering programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of few-shot prompting in a production environment?",
+        "What are the common pitfalls or issues associated with few-shot prompting?"
+      ],
+      "related_concepts": [
+        "zero-shot prompting",
+        "chain-of-thought"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PROMPT-009",
+      "subject": "Prompt Engineering",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "What is ReAct in Prompt Engineering and how does it work?",
+      "ideal_answer": "ReAct in Prompt Engineering refers to reasoning and acting. It works by interleaving thought and action. Key characteristics include LLM generates reasoning traces and actions. Example: Thought: I need to search for X. Action: search[X]. Common pitfalls include tool use integration.",
+      "keywords": [
+        "ReAct",
+        "Prompt Engineering programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of ReAct in a production environment?",
+        "What are the common pitfalls or issues associated with ReAct?"
+      ],
+      "related_concepts": [
+        "prompt chaining"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PROMPT-010",
+      "subject": "Prompt Engineering",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Medium",
+      "question": "What are the common issues with few-shot prompting in Prompt Engineering and how do you debug them?",
+      "ideal_answer": "Common issues with few-shot prompting in Prompt Engineering include: example quality and diversity. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "few-shot prompting",
+        "troubleshooting",
+        "Prompt Engineering"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to few-shot prompting?",
+        "What tools can assist in detecting problems with few-shot prompting at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "zero-shot prompting",
+        "chain-of-thought"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PROMPT-011",
+      "subject": "Prompt Engineering",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What is chain-of-thought in Prompt Engineering and how does it work?",
+      "ideal_answer": "chain-of-thought in Prompt Engineering refers to reasoning step elicitation. It works by intermediate reasoning generation. Key characteristics include \"Let's think step by step\" or explicit reasoning examples. Example: improves arithmetic, commonsense, symbolic reasoning. Common pitfalls include self-consistency decoding.",
+      "keywords": [
+        "chain-of-thought",
+        "Prompt Engineering programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of chain-of-thought in a production environment?",
+        "What are the common pitfalls or issues associated with chain-of-thought?"
+      ],
+      "related_concepts": [
+        "zero-shot prompting",
+        "few-shot prompting"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "PROMPT-012",
+      "subject": "Prompt Engineering",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What is zero-shot prompting in Prompt Engineering and how does it work?",
+      "ideal_answer": "zero-shot prompting in Prompt Engineering refers to no-example instruction. It works by direct task description. Key characteristics include clear, specific, structured instructions. Example: \"Translate the following to French: {text}\". Common pitfalls include task clarity importance.",
+      "keywords": [
+        "zero-shot prompting",
+        "Prompt Engineering programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of zero-shot prompting in a production environment?",
+        "What are the common pitfalls or issues associated with zero-shot prompting?"
+      ],
+      "related_concepts": [
+        "few-shot prompting",
+        "chain-of-thought"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "PROMPT-013",
+      "subject": "Prompt Engineering",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What are the common issues with zero-shot prompting in Prompt Engineering and how do you debug them?",
+      "ideal_answer": "Common issues with zero-shot prompting in Prompt Engineering include: task clarity importance. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "zero-shot prompting",
+        "troubleshooting",
+        "Prompt Engineering"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to zero-shot prompting?",
+        "What tools can assist in detecting problems with zero-shot prompting at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "few-shot prompting",
+        "chain-of-thought"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "PROMPT-014",
+      "subject": "Prompt Engineering",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Hard",
+      "question": "What are the common issues with ReAct in Prompt Engineering and how do you debug them?",
+      "ideal_answer": "Common issues with ReAct in Prompt Engineering include: tool use integration. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "ReAct",
+        "troubleshooting",
+        "Prompt Engineering"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to ReAct?",
+        "What tools can assist in detecting problems with ReAct at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "prompt chaining"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

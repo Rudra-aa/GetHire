@@ -1,0 +1,832 @@
+{
+  "metadata": {
+    "subject": "Dynamic Programming",
+    "domain": "Data Structures & Algorithms",
+    "total_questions": 31,
+    "difficulty_distribution": {
+      "Easy": 9,
+      "Medium": 15,
+      "Hard": 7
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "DP-001",
+      "subject": "Dynamic Programming",
+      "category": "Fundamentals",
+      "subcategory": "Overlapping Subproblems",
+      "difficulty": "Easy",
+      "question": "Explain the difference between tabulation and state definition in Dynamic Programming.",
+      "ideal_answer": "tabulation and state definition differ in several ways: tabulation is bottom-up DP approach (works by iterative table filling) whereas state definition is DP subproblem formulation (works by critical design decision). tabulation is typically used for O(n) time, O(n) or optimized space, while state definition is used for dp[i] = max value considering first i elements. Example demonstrating tabulation: dp[0] = 0; dp[1] = 1; for (int i = 2; i <= n; i++) dp[i] = dp[i-1] + dp[i-2];. Example demonstrating state definition: dp[i][j] = LCS of first i chars of A and j chars of B.",
+      "keywords": [
+        "tabulation",
+        "state definition",
+        "comparison",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose tabulation over state definition?",
+        "What is the performance or memory difference between tabulation and state definition?"
+      ],
+      "related_concepts": [
+        "tabulation",
+        "state definition",
+        "optimal substructure",
+        "overlapping subproblems"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DP-002",
+      "subject": "Dynamic Programming",
+      "category": "Fundamentals",
+      "subcategory": "Tabulation",
+      "difficulty": "Easy",
+      "question": "Explain the difference between overlapping subproblems and memoization in Dynamic Programming.",
+      "ideal_answer": "overlapping subproblems and memoization differ in several ways: overlapping subproblems is repeated subproblem computation (works by motivation for memoization) whereas memoization is top-down DP approach (works by recursive with cache). overlapping subproblems is typically used for same subproblems encountered multiple times, while memoization is used for O(n) time with memo, O(2^n) without. Example demonstrating overlapping subproblems: fibonacci: fib(3) computed multiple times. Example demonstrating memoization: int[] memo; int fib(int n) { if (memo[n] != 0) return memo[n]; return memo[n] = fib(n-1) + fib(n-2); }.",
+      "keywords": [
+        "overlapping subproblems",
+        "memoization",
+        "comparison",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose overlapping subproblems over memoization?",
+        "What is the performance or memory difference between overlapping subproblems and memoization?"
+      ],
+      "related_concepts": [
+        "overlapping subproblems",
+        "memoization",
+        "optimal substructure",
+        "tabulation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DP-003",
+      "subject": "Dynamic Programming",
+      "category": "Fundamentals",
+      "subcategory": "Memoization",
+      "difficulty": "Easy",
+      "question": "Explain the difference between optimal substructure and overlapping subproblems in Dynamic Programming.",
+      "ideal_answer": "optimal substructure and overlapping subproblems differ in several ways: optimal substructure is optimal solution property (works by optimal solution contains optimal subsolutions) whereas overlapping subproblems is repeated subproblem computation (works by motivation for memoization). optimal substructure is typically used for can be solved recursively from subproblems, while overlapping subproblems is used for same subproblems encountered multiple times. Example demonstrating optimal substructure: shortest path: subpath is shortest. Example demonstrating overlapping subproblems: fibonacci: fib(3) computed multiple times.",
+      "keywords": [
+        "optimal substructure",
+        "overlapping subproblems",
+        "comparison",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose optimal substructure over overlapping subproblems?",
+        "What is the performance or memory difference between optimal substructure and overlapping subproblems?"
+      ],
+      "related_concepts": [
+        "optimal substructure",
+        "overlapping subproblems",
+        "memoization",
+        "tabulation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DP-004",
+      "subject": "Dynamic Programming",
+      "category": "Knapsack",
+      "subcategory": "0/1 Knapsack",
+      "difficulty": "Easy",
+      "question": "Explain the difference between 0/1 knapsack and unbounded knapsack in Dynamic Programming.",
+      "ideal_answer": "0/1 knapsack and unbounded knapsack differ in several ways: 0/1 knapsack is item inclusion binary choice (works by each item at most once) whereas unbounded knapsack is unlimited item copies (works by complete knapsack). 0/1 knapsack is typically used for dp[i][w] = max(dp[i-1][w], val[i] + dp[i-1][w-wt[i]]), while unbounded knapsack is used for dp[w] = max over all items of (val[i] + dp[w-wt[i]]). Example demonstrating 0/1 knapsack: for (int i = 1; i <= n; i++) for (int w = W; w >= wt[i]; w--) dp[w] = Math.max(dp[w], dp[w-wt[i]] + val[i]);. Example demonstrating unbounded knapsack: for (int w = 0; w <= W; w++) for (int i = 0; i < n; i++) if (wt[i] <= w) dp[w] = Math.max(dp[w], dp[w-wt[i]] + val[i]);.",
+      "keywords": [
+        "0/1 knapsack",
+        "unbounded knapsack",
+        "comparison",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose 0/1 knapsack over unbounded knapsack?",
+        "What is the performance or memory difference between 0/1 knapsack and unbounded knapsack?"
+      ],
+      "related_concepts": [
+        "0/1 knapsack",
+        "unbounded knapsack"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DP-005",
+      "subject": "Dynamic Programming",
+      "category": "String DP",
+      "subcategory": "LCS",
+      "difficulty": "Easy",
+      "question": "What is LCS in Dynamic Programming and how does it work?",
+      "ideal_answer": "LCS in Dynamic Programming refers to longest common subsequence. It works by classic 2D DP. Key characteristics include dp[i][j] = dp[i-1][j-1]+1 if match else max(dp[i-1][j], dp[i][j-1]). Example: for (int i = 1; i <= m; i++) for (int j = 1; j <= n; j++) if (a[i-1] == b[j-1]) dp[i][j] = dp[i-1][j-1] + 1; else dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);. Common pitfalls include space optimization.",
+      "keywords": [
+        "LCS",
+        "Dynamic Programming programming",
+        "string dp"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of LCS in a production environment?",
+        "What are the common pitfalls or issues associated with LCS?"
+      ],
+      "related_concepts": [
+        "LCS"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DP-006",
+      "subject": "Dynamic Programming",
+      "category": "Fundamentals",
+      "subcategory": "Overlapping Subproblems",
+      "difficulty": "Easy",
+      "question": "What is tabulation in Dynamic Programming and how does it work?",
+      "ideal_answer": "tabulation in Dynamic Programming refers to bottom-up DP approach. It works by iterative table filling. Key characteristics include O(n) time, O(n) or optimized space. Example: dp[0] = 0; dp[1] = 1; for (int i = 2; i <= n; i++) dp[i] = dp[i-1] + dp[i-2];. Common pitfalls include space optimization possible.",
+      "keywords": [
+        "tabulation",
+        "Dynamic Programming programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of tabulation in a production environment?",
+        "What are the common pitfalls or issues associated with tabulation?"
+      ],
+      "related_concepts": [
+        "optimal substructure",
+        "overlapping subproblems",
+        "memoization"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DP-007",
+      "subject": "Dynamic Programming",
+      "category": "Fundamentals",
+      "subcategory": "Optimal Substructure",
+      "difficulty": "Easy",
+      "question": "What are the common issues with memoization in Dynamic Programming and how do you debug them?",
+      "ideal_answer": "Common issues with memoization in Dynamic Programming include: stack depth limitation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "memoization",
+        "troubleshooting",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to memoization?",
+        "What tools can assist in detecting problems with memoization at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "optimal substructure",
+        "overlapping subproblems",
+        "tabulation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DP-008",
+      "subject": "Dynamic Programming",
+      "category": "Fundamentals",
+      "subcategory": "Memoization",
+      "difficulty": "Easy",
+      "question": "Explain the difference between optimal substructure and tabulation in Dynamic Programming.",
+      "ideal_answer": "optimal substructure and tabulation differ in several ways: optimal substructure is optimal solution property (works by optimal solution contains optimal subsolutions) whereas tabulation is bottom-up DP approach (works by iterative table filling). optimal substructure is typically used for can be solved recursively from subproblems, while tabulation is used for O(n) time, O(n) or optimized space. Example demonstrating optimal substructure: shortest path: subpath is shortest. Example demonstrating tabulation: dp[0] = 0; dp[1] = 1; for (int i = 2; i <= n; i++) dp[i] = dp[i-1] + dp[i-2];.",
+      "keywords": [
+        "optimal substructure",
+        "tabulation",
+        "comparison",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose optimal substructure over tabulation?",
+        "What is the performance or memory difference between optimal substructure and tabulation?"
+      ],
+      "related_concepts": [
+        "optimal substructure",
+        "tabulation",
+        "overlapping subproblems",
+        "memoization"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DP-009",
+      "subject": "Dynamic Programming",
+      "category": "Fundamentals",
+      "subcategory": "Memoization",
+      "difficulty": "Easy",
+      "question": "Explain the difference between optimal substructure and memoization in Dynamic Programming.",
+      "ideal_answer": "optimal substructure and memoization differ in several ways: optimal substructure is optimal solution property (works by optimal solution contains optimal subsolutions) whereas memoization is top-down DP approach (works by recursive with cache). optimal substructure is typically used for can be solved recursively from subproblems, while memoization is used for O(n) time with memo, O(2^n) without. Example demonstrating optimal substructure: shortest path: subpath is shortest. Example demonstrating memoization: int[] memo; int fib(int n) { if (memo[n] != 0) return memo[n]; return memo[n] = fib(n-1) + fib(n-2); }.",
+      "keywords": [
+        "optimal substructure",
+        "memoization",
+        "comparison",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose optimal substructure over memoization?",
+        "What is the performance or memory difference between optimal substructure and memoization?"
+      ],
+      "related_concepts": [
+        "optimal substructure",
+        "memoization",
+        "overlapping subproblems",
+        "tabulation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "DP-010",
+      "subject": "Dynamic Programming",
+      "category": "Fundamentals",
+      "subcategory": "Tabulation",
+      "difficulty": "Medium",
+      "question": "Explain the difference between overlapping subproblems and tabulation in Dynamic Programming.",
+      "ideal_answer": "overlapping subproblems and tabulation differ in several ways: overlapping subproblems is repeated subproblem computation (works by motivation for memoization) whereas tabulation is bottom-up DP approach (works by iterative table filling). overlapping subproblems is typically used for same subproblems encountered multiple times, while tabulation is used for O(n) time, O(n) or optimized space. Example demonstrating overlapping subproblems: fibonacci: fib(3) computed multiple times. Example demonstrating tabulation: dp[0] = 0; dp[1] = 1; for (int i = 2; i <= n; i++) dp[i] = dp[i-1] + dp[i-2];.",
+      "keywords": [
+        "overlapping subproblems",
+        "tabulation",
+        "comparison",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose overlapping subproblems over tabulation?",
+        "What is the performance or memory difference between overlapping subproblems and tabulation?"
+      ],
+      "related_concepts": [
+        "overlapping subproblems",
+        "tabulation",
+        "optimal substructure",
+        "memoization"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DP-011",
+      "subject": "Dynamic Programming",
+      "category": "Fundamentals",
+      "subcategory": "State Definition",
+      "difficulty": "Medium",
+      "question": "What are the common issues with state definition in Dynamic Programming and how do you debug them?",
+      "ideal_answer": "Common issues with state definition in Dynamic Programming include: state space dimension impact. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "state definition",
+        "troubleshooting",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to state definition?",
+        "What tools can assist in detecting problems with state definition at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "optimal substructure",
+        "overlapping subproblems",
+        "memoization"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DP-012",
+      "subject": "Dynamic Programming",
+      "category": "LIS",
+      "subcategory": "O(n^2) DP",
+      "difficulty": "Medium",
+      "question": "What are the common issues with LIS O(n log n) in Dynamic Programming and how do you debug them?",
+      "ideal_answer": "Common issues with LIS O(n log n) in Dynamic Programming include: strict vs non-strict increasing. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "LIS O(n log n)",
+        "troubleshooting",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to LIS O(n log n)?",
+        "What tools can assist in detecting problems with LIS O(n log n) at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "LIS O(n log n)"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DP-013",
+      "subject": "Dynamic Programming",
+      "category": "State Machine",
+      "subcategory": "Best Time to Buy/Sell Stock",
+      "difficulty": "Medium",
+      "question": "What are the common issues with stock trading DP in Dynamic Programming and how do you debug them?",
+      "ideal_answer": "Common issues with stock trading DP in Dynamic Programming include: k transactions generalization. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "stock trading DP",
+        "troubleshooting",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to stock trading DP?",
+        "What tools can assist in detecting problems with stock trading DP at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "stock trading DP"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DP-014",
+      "subject": "Dynamic Programming",
+      "category": "Knapsack",
+      "subcategory": "Unbounded Knapsack",
+      "difficulty": "Medium",
+      "question": "What is unbounded knapsack in Dynamic Programming and how does it work?",
+      "ideal_answer": "unbounded knapsack in Dynamic Programming refers to unlimited item copies. It works by complete knapsack. Key characteristics include dp[w] = max over all items of (val[i] + dp[w-wt[i]]). Example: for (int w = 0; w <= W; w++) for (int i = 0; i < n; i++) if (wt[i] <= w) dp[w] = Math.max(dp[w], dp[w-wt[i]] + val[i]);. Common pitfalls include coin change, rod cutting variants.",
+      "keywords": [
+        "unbounded knapsack",
+        "Dynamic Programming programming",
+        "knapsack"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of unbounded knapsack in a production environment?",
+        "What are the common pitfalls or issues associated with unbounded knapsack?"
+      ],
+      "related_concepts": [
+        "0/1 knapsack"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DP-015",
+      "subject": "Dynamic Programming",
+      "category": "Fundamentals",
+      "subcategory": "Tabulation",
+      "difficulty": "Medium",
+      "question": "Explain the difference between overlapping subproblems and state definition in Dynamic Programming.",
+      "ideal_answer": "overlapping subproblems and state definition differ in several ways: overlapping subproblems is repeated subproblem computation (works by motivation for memoization) whereas state definition is DP subproblem formulation (works by critical design decision). overlapping subproblems is typically used for same subproblems encountered multiple times, while state definition is used for dp[i] = max value considering first i elements. Example demonstrating overlapping subproblems: fibonacci: fib(3) computed multiple times. Example demonstrating state definition: dp[i][j] = LCS of first i chars of A and j chars of B.",
+      "keywords": [
+        "overlapping subproblems",
+        "state definition",
+        "comparison",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose overlapping subproblems over state definition?",
+        "What is the performance or memory difference between overlapping subproblems and state definition?"
+      ],
+      "related_concepts": [
+        "overlapping subproblems",
+        "state definition",
+        "optimal substructure",
+        "memoization"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DP-016",
+      "subject": "Dynamic Programming",
+      "category": "String DP",
+      "subcategory": "LCS",
+      "difficulty": "Medium",
+      "question": "What are the common issues with LCS in Dynamic Programming and how do you debug them?",
+      "ideal_answer": "Common issues with LCS in Dynamic Programming include: space optimization. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "LCS",
+        "troubleshooting",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to LCS?",
+        "What tools can assist in detecting problems with LCS at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "LCS"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DP-017",
+      "subject": "Dynamic Programming",
+      "category": "Fundamentals",
+      "subcategory": "Memoization",
+      "difficulty": "Medium",
+      "question": "What are the common issues with optimal substructure in Dynamic Programming and how do you debug them?",
+      "ideal_answer": "Common issues with optimal substructure in Dynamic Programming include: greedy vs DP distinction. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "optimal substructure",
+        "troubleshooting",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to optimal substructure?",
+        "What tools can assist in detecting problems with optimal substructure at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "overlapping subproblems",
+        "memoization",
+        "tabulation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DP-018",
+      "subject": "Dynamic Programming",
+      "category": "Fundamentals",
+      "subcategory": "Memoization",
+      "difficulty": "Medium",
+      "question": "Explain the difference between optimal substructure and state definition in Dynamic Programming.",
+      "ideal_answer": "optimal substructure and state definition differ in several ways: optimal substructure is optimal solution property (works by optimal solution contains optimal subsolutions) whereas state definition is DP subproblem formulation (works by critical design decision). optimal substructure is typically used for can be solved recursively from subproblems, while state definition is used for dp[i] = max value considering first i elements. Example demonstrating optimal substructure: shortest path: subpath is shortest. Example demonstrating state definition: dp[i][j] = LCS of first i chars of A and j chars of B.",
+      "keywords": [
+        "optimal substructure",
+        "state definition",
+        "comparison",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose optimal substructure over state definition?",
+        "What is the performance or memory difference between optimal substructure and state definition?"
+      ],
+      "related_concepts": [
+        "optimal substructure",
+        "state definition",
+        "overlapping subproblems",
+        "memoization"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DP-019",
+      "subject": "Dynamic Programming",
+      "category": "Fundamentals",
+      "subcategory": "Optimal Substructure",
+      "difficulty": "Medium",
+      "question": "Explain the difference between memoization and state definition in Dynamic Programming.",
+      "ideal_answer": "memoization and state definition differ in several ways: memoization is top-down DP approach (works by recursive with cache) whereas state definition is DP subproblem formulation (works by critical design decision). memoization is typically used for O(n) time with memo, O(2^n) without, while state definition is used for dp[i] = max value considering first i elements. Example demonstrating memoization: int[] memo; int fib(int n) { if (memo[n] != 0) return memo[n]; return memo[n] = fib(n-1) + fib(n-2); }. Example demonstrating state definition: dp[i][j] = LCS of first i chars of A and j chars of B.",
+      "keywords": [
+        "memoization",
+        "state definition",
+        "comparison",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose memoization over state definition?",
+        "What is the performance or memory difference between memoization and state definition?"
+      ],
+      "related_concepts": [
+        "memoization",
+        "state definition",
+        "optimal substructure",
+        "overlapping subproblems"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DP-020",
+      "subject": "Dynamic Programming",
+      "category": "Fundamentals",
+      "subcategory": "Tabulation",
+      "difficulty": "Medium",
+      "question": "What is overlapping subproblems in Dynamic Programming and how does it work?",
+      "ideal_answer": "overlapping subproblems in Dynamic Programming refers to repeated subproblem computation. It works by motivation for memoization. Key characteristics include same subproblems encountered multiple times. Example: fibonacci: fib(3) computed multiple times. Common pitfalls include tabulation vs memoization tradeoffs.",
+      "keywords": [
+        "overlapping subproblems",
+        "Dynamic Programming programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of overlapping subproblems in a production environment?",
+        "What are the common pitfalls or issues associated with overlapping subproblems?"
+      ],
+      "related_concepts": [
+        "optimal substructure",
+        "memoization",
+        "tabulation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DP-021",
+      "subject": "Dynamic Programming",
+      "category": "Fundamentals",
+      "subcategory": "Optimal Substructure",
+      "difficulty": "Medium",
+      "question": "Explain the difference between memoization and tabulation in Dynamic Programming.",
+      "ideal_answer": "memoization and tabulation differ in several ways: memoization is top-down DP approach (works by recursive with cache) whereas tabulation is bottom-up DP approach (works by iterative table filling). memoization is typically used for O(n) time with memo, O(2^n) without, while tabulation is used for O(n) time, O(n) or optimized space. Example demonstrating memoization: int[] memo; int fib(int n) { if (memo[n] != 0) return memo[n]; return memo[n] = fib(n-1) + fib(n-2); }. Example demonstrating tabulation: dp[0] = 0; dp[1] = 1; for (int i = 2; i <= n; i++) dp[i] = dp[i-1] + dp[i-2];.",
+      "keywords": [
+        "memoization",
+        "tabulation",
+        "comparison",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose memoization over tabulation?",
+        "What is the performance or memory difference between memoization and tabulation?"
+      ],
+      "related_concepts": [
+        "memoization",
+        "tabulation",
+        "optimal substructure",
+        "overlapping subproblems"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DP-022",
+      "subject": "Dynamic Programming",
+      "category": "Knapsack",
+      "subcategory": "0/1 Knapsack",
+      "difficulty": "Medium",
+      "question": "What are the common issues with 0/1 knapsack in Dynamic Programming and how do you debug them?",
+      "ideal_answer": "Common issues with 0/1 knapsack in Dynamic Programming include: space optimization to 1D. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "0/1 knapsack",
+        "troubleshooting",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to 0/1 knapsack?",
+        "What tools can assist in detecting problems with 0/1 knapsack at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "unbounded knapsack"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DP-023",
+      "subject": "Dynamic Programming",
+      "category": "State Machine",
+      "subcategory": "Best Time to Buy/Sell Stock",
+      "difficulty": "Medium",
+      "question": "What is stock trading DP in Dynamic Programming and how does it work?",
+      "ideal_answer": "stock trading DP in Dynamic Programming refers to state machine modeling. It works by hold/sold/rest states. Key characteristics include max profit with cooldown/fee/transaction limits. Example: dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i]); dp[i][1] = max(dp[i-1][1], dp[i-1][0] - prices[i]);. Common pitfalls include k transactions generalization.",
+      "keywords": [
+        "stock trading DP",
+        "Dynamic Programming programming",
+        "state machine"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of stock trading DP in a production environment?",
+        "What are the common pitfalls or issues associated with stock trading DP?"
+      ],
+      "related_concepts": [
+        "stock trading DP"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DP-024",
+      "subject": "Dynamic Programming",
+      "category": "Fundamentals",
+      "subcategory": "Optimal Substructure",
+      "difficulty": "Medium",
+      "question": "What is memoization in Dynamic Programming and how does it work?",
+      "ideal_answer": "memoization in Dynamic Programming refers to top-down DP approach. It works by recursive with cache. Key characteristics include O(n) time with memo, O(2^n) without. Example: int[] memo; int fib(int n) { if (memo[n] != 0) return memo[n]; return memo[n] = fib(n-1) + fib(n-2); }. Common pitfalls include stack depth limitation.",
+      "keywords": [
+        "memoization",
+        "Dynamic Programming programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of memoization in a production environment?",
+        "What are the common pitfalls or issues associated with memoization?"
+      ],
+      "related_concepts": [
+        "optimal substructure",
+        "overlapping subproblems",
+        "tabulation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "DP-025",
+      "subject": "Dynamic Programming",
+      "category": "LIS",
+      "subcategory": "O(n^2) DP",
+      "difficulty": "Hard",
+      "question": "What is LIS O(n log n) in Dynamic Programming and how does it work?",
+      "ideal_answer": "LIS O(n log n) in Dynamic Programming refers to longest increasing subsequence. It works by patience sorting with binary search. Key characteristics include maintain tails array, replace or extend. Example: int[] tails = new int[n]; int size = 0; for (int x : nums) { int i = Arrays.binarySearch(tails, 0, size, x); if (i < 0) i = -(i + 1); tails[i] = x; if (i == size) size++; }. Common pitfalls include strict vs non-strict increasing.",
+      "keywords": [
+        "LIS O(n log n)",
+        "Dynamic Programming programming",
+        "lis"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of LIS O(n log n) in a production environment?",
+        "What are the common pitfalls or issues associated with LIS O(n log n)?"
+      ],
+      "related_concepts": [
+        "LIS O(n log n)"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "DP-026",
+      "subject": "Dynamic Programming",
+      "category": "Fundamentals",
+      "subcategory": "Overlapping Subproblems",
+      "difficulty": "Hard",
+      "question": "What are the common issues with tabulation in Dynamic Programming and how do you debug them?",
+      "ideal_answer": "Common issues with tabulation in Dynamic Programming include: space optimization possible. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "tabulation",
+        "troubleshooting",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to tabulation?",
+        "What tools can assist in detecting problems with tabulation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "optimal substructure",
+        "overlapping subproblems",
+        "memoization"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "DP-027",
+      "subject": "Dynamic Programming",
+      "category": "Fundamentals",
+      "subcategory": "State Definition",
+      "difficulty": "Hard",
+      "question": "What is state definition in Dynamic Programming and how does it work?",
+      "ideal_answer": "state definition in Dynamic Programming refers to DP subproblem formulation. It works by critical design decision. Key characteristics include dp[i] = max value considering first i elements. Example: dp[i][j] = LCS of first i chars of A and j chars of B. Common pitfalls include state space dimension impact.",
+      "keywords": [
+        "state definition",
+        "Dynamic Programming programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of state definition in a production environment?",
+        "What are the common pitfalls or issues associated with state definition?"
+      ],
+      "related_concepts": [
+        "optimal substructure",
+        "overlapping subproblems",
+        "memoization"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "DP-028",
+      "subject": "Dynamic Programming",
+      "category": "Knapsack",
+      "subcategory": "Unbounded Knapsack",
+      "difficulty": "Hard",
+      "question": "What are the common issues with unbounded knapsack in Dynamic Programming and how do you debug them?",
+      "ideal_answer": "Common issues with unbounded knapsack in Dynamic Programming include: coin change, rod cutting variants. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "unbounded knapsack",
+        "troubleshooting",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to unbounded knapsack?",
+        "What tools can assist in detecting problems with unbounded knapsack at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "0/1 knapsack"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "DP-029",
+      "subject": "Dynamic Programming",
+      "category": "Fundamentals",
+      "subcategory": "Memoization",
+      "difficulty": "Hard",
+      "question": "What is optimal substructure in Dynamic Programming and how does it work?",
+      "ideal_answer": "optimal substructure in Dynamic Programming refers to optimal solution property. It works by optimal solution contains optimal subsolutions. Key characteristics include can be solved recursively from subproblems. Example: shortest path: subpath is shortest. Common pitfalls include greedy vs DP distinction.",
+      "keywords": [
+        "optimal substructure",
+        "Dynamic Programming programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of optimal substructure in a production environment?",
+        "What are the common pitfalls or issues associated with optimal substructure?"
+      ],
+      "related_concepts": [
+        "overlapping subproblems",
+        "memoization",
+        "tabulation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "DP-030",
+      "subject": "Dynamic Programming",
+      "category": "Fundamentals",
+      "subcategory": "Tabulation",
+      "difficulty": "Hard",
+      "question": "What are the common issues with overlapping subproblems in Dynamic Programming and how do you debug them?",
+      "ideal_answer": "Common issues with overlapping subproblems in Dynamic Programming include: tabulation vs memoization tradeoffs. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "overlapping subproblems",
+        "troubleshooting",
+        "Dynamic Programming"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to overlapping subproblems?",
+        "What tools can assist in detecting problems with overlapping subproblems at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "optimal substructure",
+        "memoization",
+        "tabulation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "DP-031",
+      "subject": "Dynamic Programming",
+      "category": "Knapsack",
+      "subcategory": "0/1 Knapsack",
+      "difficulty": "Hard",
+      "question": "What is 0/1 knapsack in Dynamic Programming and how does it work?",
+      "ideal_answer": "0/1 knapsack in Dynamic Programming refers to item inclusion binary choice. It works by each item at most once. Key characteristics include dp[i][w] = max(dp[i-1][w], val[i] + dp[i-1][w-wt[i]]). Example: for (int i = 1; i <= n; i++) for (int w = W; w >= wt[i]; w--) dp[w] = Math.max(dp[w], dp[w-wt[i]] + val[i]);. Common pitfalls include space optimization to 1D.",
+      "keywords": [
+        "0/1 knapsack",
+        "Dynamic Programming programming",
+        "knapsack"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of 0/1 knapsack in a production environment?",
+        "What are the common pitfalls or issues associated with 0/1 knapsack?"
+      ],
+      "related_concepts": [
+        "unbounded knapsack"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

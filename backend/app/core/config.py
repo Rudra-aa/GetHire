@@ -15,7 +15,7 @@ Usage:
 from __future__ import annotations
 
 from functools import lru_cache
-from typing import List
+from typing import Any, List
 
 from pydantic import AnyHttpUrl, Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -30,7 +30,7 @@ class Settings(BaseSettings):
     """
 
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=(".env", "../.env"),
         env_file_encoding="utf-8",
         case_sensitive=False,
         extra="ignore",  # silently discard unknown env vars
@@ -54,19 +54,19 @@ class Settings(BaseSettings):
         description="JWT signing secret — must be random and ≥32 chars in production",
     )
     ALLOWED_HOSTS: List[str] = Field(
-        default=["localhost", "127.0.0.1"],
+        default=["*", "localhost", "127.0.0.1", "*.onrender.com", "*.render.com"],
         description="Trusted host allowlist (used by TrustedHostMiddleware in production)",
     )
 
     # ── CORS ───────────────────────────────────────────────────────────────
     CORS_ORIGINS: List[str] = Field(
-        default=["http://localhost:5173", "http://localhost:3000"],
+        default=["http://localhost:5173", "http://localhost:3000", "https://*.vercel.app"],
         description="Allowed CORS origins for the frontend",
     )
 
     # ── MongoDB ────────────────────────────────────────────────────────────
     MONGODB_URI: str = Field(
-        default="mongodb://mongo:27017",
+        default="mongodb://localhost:27017",
         description="MongoDB connection URI (Atlas or local)",
     )
     MONGODB_DB_NAME: str = Field(
@@ -84,7 +84,7 @@ class Settings(BaseSettings):
 
     # ── Redis ──────────────────────────────────────────────────────────────
     REDIS_URL: str = Field(
-        default="redis://redis:6379/0",
+        default="redis://localhost:6379/0",
         description="Redis connection URL",
     )
     REDIS_MAX_CONNECTIONS: int = Field(
@@ -92,6 +92,12 @@ class Settings(BaseSettings):
         description="Maximum Redis connection pool size",
     )
 
+    # ── AI Providers ───────────────────────────────────────────────────────
+    GEMINI_API_KEY: str = Field(
+        default="",
+        description="Google Gemini API Key for AI Interview Engine",
+    )
+    
     # ── Ollama (prepared, not implemented in Sprint 0) ─────────────────────
     OLLAMA_BASE_URL: str = Field(
         default="http://ollama:11434",
@@ -138,6 +144,20 @@ class Settings(BaseSettings):
         if v_upper not in allowed:
             raise ValueError(f"LOG_LEVEL must be one of: {', '.join(allowed)}")
         return v_upper
+
+    @field_validator("ALLOWED_HOSTS", "CORS_ORIGINS", mode="before")
+    @classmethod
+    def parse_list_fields(cls, v: Any) -> Any:
+        if isinstance(v, str):
+            v = v.strip()
+            if v.startswith("[") and v.endswith("]"):
+                import json
+                try:
+                    return json.loads(v)
+                except Exception:
+                    pass
+            return [item.strip() for item in v.split(",") if item.strip()]
+        return v
 
     # ── Computed properties ────────────────────────────────────────────────
 

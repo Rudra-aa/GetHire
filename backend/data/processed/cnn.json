@@ -1,0 +1,391 @@
+{
+  "metadata": {
+    "subject": "CNN",
+    "domain": "Artificial Intelligence",
+    "total_questions": 14,
+    "difficulty_distribution": {
+      "Easy": 4,
+      "Medium": 7,
+      "Hard": 3
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "CNN-001",
+      "subject": "CNN",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Easy",
+      "question": "Explain the difference between pooling layers and feature maps in CNN.",
+      "ideal_answer": "pooling layers and feature maps differ in several ways: pooling layers is spatial dimensionality reduction (works by translation invariance) whereas feature maps is convolution output channels (works by hierarchical feature learning). pooling layers is typically used for max pooling, average pooling, while feature maps is used for edges -> textures -> patterns -> objects. Example demonstrating pooling layers: 2x2 max pool with stride 2. Example demonstrating feature maps: visualizing layer activations.",
+      "keywords": [
+        "pooling layers",
+        "feature maps",
+        "comparison",
+        "CNN"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose pooling layers over feature maps?",
+        "What is the performance or memory difference between pooling layers and feature maps?"
+      ],
+      "related_concepts": [
+        "pooling layers",
+        "feature maps",
+        "convolution operation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CNN-002",
+      "subject": "CNN",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Easy",
+      "question": "What are the common issues with ResNet in CNN and how do you debug them?",
+      "ideal_answer": "Common issues with ResNet in CNN include: ResNet-50, ResNet-101, bottleneck design. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "ResNet",
+        "troubleshooting",
+        "CNN"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to ResNet?",
+        "What tools can assist in detecting problems with ResNet at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "receptive field"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CNN-003",
+      "subject": "CNN",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Easy",
+      "question": "Explain the difference between convolution operation and feature maps in CNN.",
+      "ideal_answer": "convolution operation and feature maps differ in several ways: convolution operation is filter-based feature extraction (works by local receptive fields, weight sharing) whereas feature maps is convolution output channels (works by hierarchical feature learning). convolution operation is typically used for kernel slides over input, element-wise multiply and sum, while feature maps is used for edges -> textures -> patterns -> objects. Example demonstrating convolution operation: output_size = (W - F + 2P) / S + 1. Example demonstrating feature maps: visualizing layer activations.",
+      "keywords": [
+        "convolution operation",
+        "feature maps",
+        "comparison",
+        "CNN"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose convolution operation over feature maps?",
+        "What is the performance or memory difference between convolution operation and feature maps?"
+      ],
+      "related_concepts": [
+        "convolution operation",
+        "feature maps",
+        "pooling layers"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CNN-004",
+      "subject": "CNN",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Easy",
+      "question": "Explain the difference between convolution operation and pooling layers in CNN.",
+      "ideal_answer": "convolution operation and pooling layers differ in several ways: convolution operation is filter-based feature extraction (works by local receptive fields, weight sharing) whereas pooling layers is spatial dimensionality reduction (works by translation invariance). convolution operation is typically used for kernel slides over input, element-wise multiply and sum, while pooling layers is used for max pooling, average pooling. Example demonstrating convolution operation: output_size = (W - F + 2P) / S + 1. Example demonstrating pooling layers: 2x2 max pool with stride 2.",
+      "keywords": [
+        "convolution operation",
+        "pooling layers",
+        "comparison",
+        "CNN"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose convolution operation over pooling layers?",
+        "What is the performance or memory difference between convolution operation and pooling layers?"
+      ],
+      "related_concepts": [
+        "convolution operation",
+        "pooling layers",
+        "feature maps"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CNN-005",
+      "subject": "CNN",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "Explain the difference between receptive field and ResNet in CNN.",
+      "ideal_answer": "receptive field and ResNet differ in several ways: receptive field is input region influencing neuron (works by effective area of influence) whereas ResNet is residual network (works by skip connection architecture). receptive field is typically used for stacked convolutions increase RF, while ResNet is used for solving vanishing gradient in deep networks. Example demonstrating receptive field: RF = RF_prev + (kernel - 1) * stride_product. Example demonstrating ResNet: F(x) + x identity mapping.",
+      "keywords": [
+        "receptive field",
+        "ResNet",
+        "comparison",
+        "CNN"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose receptive field over ResNet?",
+        "What is the performance or memory difference between receptive field and ResNet?"
+      ],
+      "related_concepts": [
+        "receptive field",
+        "ResNet"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CNN-006",
+      "subject": "CNN",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Medium",
+      "question": "What is ResNet in CNN and how does it work?",
+      "ideal_answer": "ResNet in CNN refers to residual network. It works by skip connection architecture. Key characteristics include solving vanishing gradient in deep networks. Example: F(x) + x identity mapping. Common pitfalls include ResNet-50, ResNet-101, bottleneck design.",
+      "keywords": [
+        "ResNet",
+        "CNN programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of ResNet in a production environment?",
+        "What are the common pitfalls or issues associated with ResNet?"
+      ],
+      "related_concepts": [
+        "receptive field"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CNN-007",
+      "subject": "CNN",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What are the common issues with feature maps in CNN and how do you debug them?",
+      "ideal_answer": "Common issues with feature maps in CNN include: feature map dimensionality. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "feature maps",
+        "troubleshooting",
+        "CNN"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to feature maps?",
+        "What tools can assist in detecting problems with feature maps at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "convolution operation",
+        "pooling layers"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CNN-008",
+      "subject": "CNN",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Medium",
+      "question": "What is pooling layers in CNN and how does it work?",
+      "ideal_answer": "pooling layers in CNN refers to spatial dimensionality reduction. It works by translation invariance. Key characteristics include max pooling, average pooling. Example: 2x2 max pool with stride 2. Common pitfalls include global average pooling.",
+      "keywords": [
+        "pooling layers",
+        "CNN programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of pooling layers in a production environment?",
+        "What are the common pitfalls or issues associated with pooling layers?"
+      ],
+      "related_concepts": [
+        "convolution operation",
+        "feature maps"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CNN-009",
+      "subject": "CNN",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "What is receptive field in CNN and how does it work?",
+      "ideal_answer": "receptive field in CNN refers to input region influencing neuron. It works by effective area of influence. Key characteristics include stacked convolutions increase RF. Example: RF = RF_prev + (kernel - 1) * stride_product. Common pitfalls include dilated convolutions for larger RF.",
+      "keywords": [
+        "receptive field",
+        "CNN programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of receptive field in a production environment?",
+        "What are the common pitfalls or issues associated with receptive field?"
+      ],
+      "related_concepts": [
+        "ResNet"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CNN-010",
+      "subject": "CNN",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Medium",
+      "question": "What are the common issues with pooling layers in CNN and how do you debug them?",
+      "ideal_answer": "Common issues with pooling layers in CNN include: global average pooling. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "pooling layers",
+        "troubleshooting",
+        "CNN"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to pooling layers?",
+        "What tools can assist in detecting problems with pooling layers at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "convolution operation",
+        "feature maps"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CNN-011",
+      "subject": "CNN",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What is feature maps in CNN and how does it work?",
+      "ideal_answer": "feature maps in CNN refers to convolution output channels. It works by hierarchical feature learning. Key characteristics include edges -> textures -> patterns -> objects. Example: visualizing layer activations. Common pitfalls include feature map dimensionality.",
+      "keywords": [
+        "feature maps",
+        "CNN programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of feature maps in a production environment?",
+        "What are the common pitfalls or issues associated with feature maps?"
+      ],
+      "related_concepts": [
+        "convolution operation",
+        "pooling layers"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CNN-012",
+      "subject": "CNN",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What is convolution operation in CNN and how does it work?",
+      "ideal_answer": "convolution operation in CNN refers to filter-based feature extraction. It works by local receptive fields, weight sharing. Key characteristics include kernel slides over input, element-wise multiply and sum. Example: output_size = (W - F + 2P) / S + 1. Common pitfalls include dilated convolutions.",
+      "keywords": [
+        "convolution operation",
+        "CNN programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of convolution operation in a production environment?",
+        "What are the common pitfalls or issues associated with convolution operation?"
+      ],
+      "related_concepts": [
+        "pooling layers",
+        "feature maps"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CNN-013",
+      "subject": "CNN",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What are the common issues with convolution operation in CNN and how do you debug them?",
+      "ideal_answer": "Common issues with convolution operation in CNN include: dilated convolutions. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "convolution operation",
+        "troubleshooting",
+        "CNN"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to convolution operation?",
+        "What tools can assist in detecting problems with convolution operation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "pooling layers",
+        "feature maps"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CNN-014",
+      "subject": "CNN",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Hard",
+      "question": "What are the common issues with receptive field in CNN and how do you debug them?",
+      "ideal_answer": "Common issues with receptive field in CNN include: dilated convolutions for larger RF. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "receptive field",
+        "troubleshooting",
+        "CNN"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to receptive field?",
+        "What tools can assist in detecting problems with receptive field at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ResNet"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

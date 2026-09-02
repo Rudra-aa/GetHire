@@ -66,9 +66,28 @@ class RedisManager:
                 max_connections=settings.REDIS_MAX_CONNECTIONS,
             )
         except (RedisConnectionError, Exception) as exc:
-            logger.error("Redis connection failed", error=str(exc))
+            logger.error("Primary Redis connection failed", error=str(exc))
+            if not settings.is_production:
+                try:
+                    logger.info("Attempting local Redis fallback at redis://localhost:6379/0")
+                    self._client = aioredis.from_url(
+                        "redis://localhost:6379/0",
+                        max_connections=settings.REDIS_MAX_CONNECTIONS,
+                        decode_responses=True,
+                        socket_connect_timeout=2,
+                        socket_timeout=2,
+                    )
+                    await self._client.ping()
+                    logger.info("Redis connected successfully via local fallback")
+                    return
+                except Exception as fallback_err:
+                    logger.error("Local Redis fallback also failed", error=str(fallback_err))
+                    self._client = None
             if settings.is_production:
-                raise
+                logger.warning(
+                    "Redis connection could not be established at startup. Service is running in degraded mode without Redis cache.",
+                    error=str(exc),
+                )
 
     async def disconnect(self) -> None:
         """Close the connection pool gracefully."""

@@ -16,7 +16,10 @@ The report contains:
 from pathlib import Path
 from datetime import datetime, timezone
 
-import fitz  # PyMuPDF
+try:
+    import fitz  # PyMuPDF
+except ImportError:
+    fitz = None
 
 
 # ---------------------------------------------------------------------------
@@ -79,6 +82,10 @@ class PDFReport:
     BLACK       = (0, 0, 0)
 
     def __init__(self):
+        if fitz is None:
+            raise RuntimeError(
+                "PyMuPDF (fitz) is required for PDF generation. Please run 'pip install PyMuPDF'."
+            )
         self.doc = fitz.open()
         self._new_page()
 

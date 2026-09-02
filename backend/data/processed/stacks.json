@@ -1,0 +1,557 @@
+{
+  "metadata": {
+    "subject": "Stacks",
+    "domain": "Data Structures & Algorithms",
+    "total_questions": 21,
+    "difficulty_distribution": {
+      "Easy": 6,
+      "Medium": 10,
+      "Hard": 5
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "STACK-001",
+      "subject": "Stacks",
+      "category": "Problems",
+      "subcategory": "Min Stack",
+      "difficulty": "Easy",
+      "question": "What is min stack in Stacks and how does it work?",
+      "ideal_answer": "min stack in Stacks refers to O(1) min retrieval. It works by auxiliary min tracking stack. Key characteristics include push min of current and new min onto minStack. Example: if (x <= minStack.peek()) minStack.push(x);. Common pitfalls include space optimization with pair encoding.",
+      "keywords": [
+        "min stack",
+        "Stacks programming",
+        "problems"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of min stack in a production environment?",
+        "What are the common pitfalls or issues associated with min stack?"
+      ],
+      "related_concepts": [
+        "min stack"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "STACK-002",
+      "subject": "Stacks",
+      "category": "Applications",
+      "subcategory": "Expression Evaluation",
+      "difficulty": "Easy",
+      "question": "What is infix to postfix conversion in Stacks and how does it work?",
+      "ideal_answer": "infix to postfix conversion in Stacks refers to Shunting Yard algorithm. It works by operator precedence handling. Key characteristics include stack for operators, output for operands. Example: while (!ops.isEmpty() && precedence(ops.peek()) >= precedence(curr)) output.push(ops.pop());. Common pitfalls include parentheses handling.",
+      "keywords": [
+        "infix to postfix conversion",
+        "Stacks programming",
+        "applications"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of infix to postfix conversion in a production environment?",
+        "What are the common pitfalls or issues associated with infix to postfix conversion?"
+      ],
+      "related_concepts": [
+        "expression evaluation",
+        "parenthesis matching"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "STACK-003",
+      "subject": "Stacks",
+      "category": "Monotonic Stack",
+      "subcategory": "Next Greater Element",
+      "difficulty": "Easy",
+      "question": "What is next greater element in Stacks and how does it work?",
+      "ideal_answer": "next greater element in Stacks refers to nearest greater to right. It works by monotonic decreasing stack. Key characteristics include pop smaller elements, current is NGE for popped. Example: while (!stack.isEmpty() && arr[i] > arr[stack.peek()]) result[stack.pop()] = arr[i]; stack.push(i);. Common pitfalls include circular array variant.",
+      "keywords": [
+        "next greater element",
+        "Stacks programming",
+        "monotonic stack"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of next greater element in a production environment?",
+        "What are the common pitfalls or issues associated with next greater element?"
+      ],
+      "related_concepts": [
+        "largest rectangle in histogram"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "STACK-004",
+      "subject": "Stacks",
+      "category": "Implementation",
+      "subcategory": "Array-based",
+      "difficulty": "Easy",
+      "question": "Explain the difference between array-based stack and two stacks in array in Stacks.",
+      "ideal_answer": "array-based stack and two stacks in array differ in several ways: array-based stack is contiguous memory implementation (works by top pointer management) whereas two stacks in array is space-efficient dual stack (works by growing from opposite ends). array-based stack is typically used for O(1) push/pop, O(n) dynamic resize, while two stacks in array is used for stack1 from left, stack2 from right. Example demonstrating array-based stack: int[] stack = new int[capacity]; int top = -1;. Example demonstrating two stacks in array: top1 = -1, top2 = n; push1: arr[++top1]; push2: arr[--top2];.",
+      "keywords": [
+        "array-based stack",
+        "two stacks in array",
+        "comparison",
+        "Stacks"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose array-based stack over two stacks in array?",
+        "What is the performance or memory difference between array-based stack and two stacks in array?"
+      ],
+      "related_concepts": [
+        "array-based stack",
+        "two stacks in array"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "STACK-005",
+      "subject": "Stacks",
+      "category": "Applications",
+      "subcategory": "Backtracking",
+      "difficulty": "Easy",
+      "question": "What is parenthesis matching in Stacks and how does it work?",
+      "ideal_answer": "parenthesis matching in Stacks refers to balanced brackets checking. It works by stack for opening brackets. Key characteristics include push on open, pop and match on close. Example: Map<Character, Character> pairs = Map.of(')', '(', '}', '{', ']', '[');. Common pitfalls include multiple bracket types.",
+      "keywords": [
+        "parenthesis matching",
+        "Stacks programming",
+        "applications"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of parenthesis matching in a production environment?",
+        "What are the common pitfalls or issues associated with parenthesis matching?"
+      ],
+      "related_concepts": [
+        "infix to postfix conversion",
+        "expression evaluation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "STACK-006",
+      "subject": "Stacks",
+      "category": "Applications",
+      "subcategory": "Parenthesis Matching",
+      "difficulty": "Easy",
+      "question": "Explain the difference between expression evaluation and parenthesis matching in Stacks.",
+      "ideal_answer": "expression evaluation and parenthesis matching differ in several ways: expression evaluation is postfix evaluation (works by stack-based operand processing) whereas parenthesis matching is balanced brackets checking (works by stack for opening brackets). expression evaluation is typically used for push operands, apply operator to top two, while parenthesis matching is used for push on open, pop and match on close. Example demonstrating expression evaluation: switch (token) { case '+': stack.push(b + a); }. Example demonstrating parenthesis matching: Map<Character, Character> pairs = Map.of(')', '(', '}', '{', ']', '[');.",
+      "keywords": [
+        "expression evaluation",
+        "parenthesis matching",
+        "comparison",
+        "Stacks"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose expression evaluation over parenthesis matching?",
+        "What is the performance or memory difference between expression evaluation and parenthesis matching?"
+      ],
+      "related_concepts": [
+        "expression evaluation",
+        "parenthesis matching",
+        "infix to postfix conversion"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "STACK-007",
+      "subject": "Stacks",
+      "category": "Monotonic Stack",
+      "subcategory": "Next Greater Element",
+      "difficulty": "Medium",
+      "question": "What are the common issues with next greater element in Stacks and how do you debug them?",
+      "ideal_answer": "Common issues with next greater element in Stacks include: circular array variant. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "next greater element",
+        "troubleshooting",
+        "Stacks"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to next greater element?",
+        "What tools can assist in detecting problems with next greater element at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "largest rectangle in histogram"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "STACK-008",
+      "subject": "Stacks",
+      "category": "Monotonic Stack",
+      "subcategory": "Next Greater Element",
+      "difficulty": "Medium",
+      "question": "Explain the difference between next greater element and largest rectangle in histogram in Stacks.",
+      "ideal_answer": "next greater element and largest rectangle in histogram differ in several ways: next greater element is nearest greater to right (works by monotonic decreasing stack) whereas largest rectangle in histogram is max area under histogram (works by monotonic increasing stack). next greater element is typically used for pop smaller elements, current is NGE for popped, while largest rectangle in histogram is used for calculate area with each bar as minimum. Example demonstrating next greater element: while (!stack.isEmpty() && arr[i] > arr[stack.peek()]) result[stack.pop()] = arr[i]; stack.push(i);. Example demonstrating largest rectangle in histogram: while (!stack.isEmpty() && heights[i] < heights[stack.peek()]) { h = heights[stack.pop()]; w = stack.isEmpty() ? i : i - stack.peek() - 1; max = Math.max(max, h * w); }.",
+      "keywords": [
+        "next greater element",
+        "largest rectangle in histogram",
+        "comparison",
+        "Stacks"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose next greater element over largest rectangle in histogram?",
+        "What is the performance or memory difference between next greater element and largest rectangle in histogram?"
+      ],
+      "related_concepts": [
+        "next greater element",
+        "largest rectangle in histogram"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "STACK-009",
+      "subject": "Stacks",
+      "category": "Applications",
+      "subcategory": "Expression Evaluation",
+      "difficulty": "Medium",
+      "question": "What are the common issues with infix to postfix conversion in Stacks and how do you debug them?",
+      "ideal_answer": "Common issues with infix to postfix conversion in Stacks include: parentheses handling. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "infix to postfix conversion",
+        "troubleshooting",
+        "Stacks"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to infix to postfix conversion?",
+        "What tools can assist in detecting problems with infix to postfix conversion at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "expression evaluation",
+        "parenthesis matching"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "STACK-010",
+      "subject": "Stacks",
+      "category": "Applications",
+      "subcategory": "Expression Evaluation",
+      "difficulty": "Medium",
+      "question": "Explain the difference between infix to postfix conversion and parenthesis matching in Stacks.",
+      "ideal_answer": "infix to postfix conversion and parenthesis matching differ in several ways: infix to postfix conversion is Shunting Yard algorithm (works by operator precedence handling) whereas parenthesis matching is balanced brackets checking (works by stack for opening brackets). infix to postfix conversion is typically used for stack for operators, output for operands, while parenthesis matching is used for push on open, pop and match on close. Example demonstrating infix to postfix conversion: while (!ops.isEmpty() && precedence(ops.peek()) >= precedence(curr)) output.push(ops.pop());. Example demonstrating parenthesis matching: Map<Character, Character> pairs = Map.of(')', '(', '}', '{', ']', '[');.",
+      "keywords": [
+        "infix to postfix conversion",
+        "parenthesis matching",
+        "comparison",
+        "Stacks"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose infix to postfix conversion over parenthesis matching?",
+        "What is the performance or memory difference between infix to postfix conversion and parenthesis matching?"
+      ],
+      "related_concepts": [
+        "infix to postfix conversion",
+        "parenthesis matching",
+        "expression evaluation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "STACK-011",
+      "subject": "Stacks",
+      "category": "Monotonic Stack",
+      "subcategory": "Previous Smaller",
+      "difficulty": "Medium",
+      "question": "What are the common issues with largest rectangle in histogram in Stacks and how do you debug them?",
+      "ideal_answer": "Common issues with largest rectangle in histogram in Stacks include: O(n) optimal solution. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "largest rectangle in histogram",
+        "troubleshooting",
+        "Stacks"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to largest rectangle in histogram?",
+        "What tools can assist in detecting problems with largest rectangle in histogram at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "next greater element"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "STACK-012",
+      "subject": "Stacks",
+      "category": "Applications",
+      "subcategory": "Backtracking",
+      "difficulty": "Medium",
+      "question": "What are the common issues with parenthesis matching in Stacks and how do you debug them?",
+      "ideal_answer": "Common issues with parenthesis matching in Stacks include: multiple bracket types. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "parenthesis matching",
+        "troubleshooting",
+        "Stacks"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to parenthesis matching?",
+        "What tools can assist in detecting problems with parenthesis matching at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "infix to postfix conversion",
+        "expression evaluation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "STACK-013",
+      "subject": "Stacks",
+      "category": "Implementation",
+      "subcategory": "Array-based",
+      "difficulty": "Medium",
+      "question": "What are the common issues with array-based stack in Stacks and how do you debug them?",
+      "ideal_answer": "Common issues with array-based stack in Stacks include: stack overflow, underflow. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "array-based stack",
+        "troubleshooting",
+        "Stacks"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to array-based stack?",
+        "What tools can assist in detecting problems with array-based stack at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "two stacks in array"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "STACK-014",
+      "subject": "Stacks",
+      "category": "Applications",
+      "subcategory": "Expression Evaluation",
+      "difficulty": "Medium",
+      "question": "Explain the difference between infix to postfix conversion and expression evaluation in Stacks.",
+      "ideal_answer": "infix to postfix conversion and expression evaluation differ in several ways: infix to postfix conversion is Shunting Yard algorithm (works by operator precedence handling) whereas expression evaluation is postfix evaluation (works by stack-based operand processing). infix to postfix conversion is typically used for stack for operators, output for operands, while expression evaluation is used for push operands, apply operator to top two. Example demonstrating infix to postfix conversion: while (!ops.isEmpty() && precedence(ops.peek()) >= precedence(curr)) output.push(ops.pop());. Example demonstrating expression evaluation: switch (token) { case '+': stack.push(b + a); }.",
+      "keywords": [
+        "infix to postfix conversion",
+        "expression evaluation",
+        "comparison",
+        "Stacks"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose infix to postfix conversion over expression evaluation?",
+        "What is the performance or memory difference between infix to postfix conversion and expression evaluation?"
+      ],
+      "related_concepts": [
+        "infix to postfix conversion",
+        "expression evaluation",
+        "parenthesis matching"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "STACK-015",
+      "subject": "Stacks",
+      "category": "Implementation",
+      "subcategory": "Linked List-based",
+      "difficulty": "Medium",
+      "question": "What is two stacks in array in Stacks and how does it work?",
+      "ideal_answer": "two stacks in array in Stacks refers to space-efficient dual stack. It works by growing from opposite ends. Key characteristics include stack1 from left, stack2 from right. Example: top1 = -1, top2 = n; push1: arr[++top1]; push2: arr[--top2];. Common pitfalls include overflow when top1 + 1 == top2.",
+      "keywords": [
+        "two stacks in array",
+        "Stacks programming",
+        "implementation"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of two stacks in array in a production environment?",
+        "What are the common pitfalls or issues associated with two stacks in array?"
+      ],
+      "related_concepts": [
+        "array-based stack"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "STACK-016",
+      "subject": "Stacks",
+      "category": "Monotonic Stack",
+      "subcategory": "Previous Smaller",
+      "difficulty": "Medium",
+      "question": "What is largest rectangle in histogram in Stacks and how does it work?",
+      "ideal_answer": "largest rectangle in histogram in Stacks refers to max area under histogram. It works by monotonic increasing stack. Key characteristics include calculate area with each bar as minimum. Example: while (!stack.isEmpty() && heights[i] < heights[stack.peek()]) { h = heights[stack.pop()]; w = stack.isEmpty() ? i : i - stack.peek() - 1; max = Math.max(max, h * w); }. Common pitfalls include O(n) optimal solution.",
+      "keywords": [
+        "largest rectangle in histogram",
+        "Stacks programming",
+        "monotonic stack"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of largest rectangle in histogram in a production environment?",
+        "What are the common pitfalls or issues associated with largest rectangle in histogram?"
+      ],
+      "related_concepts": [
+        "next greater element"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "STACK-017",
+      "subject": "Stacks",
+      "category": "Applications",
+      "subcategory": "Parenthesis Matching",
+      "difficulty": "Hard",
+      "question": "What is expression evaluation in Stacks and how does it work?",
+      "ideal_answer": "expression evaluation in Stacks refers to postfix evaluation. It works by stack-based operand processing. Key characteristics include push operands, apply operator to top two. Example: switch (token) { case '+': stack.push(b + a); }. Common pitfalls include prefix evaluation variant.",
+      "keywords": [
+        "expression evaluation",
+        "Stacks programming",
+        "applications"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of expression evaluation in a production environment?",
+        "What are the common pitfalls or issues associated with expression evaluation?"
+      ],
+      "related_concepts": [
+        "infix to postfix conversion",
+        "parenthesis matching"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "STACK-018",
+      "subject": "Stacks",
+      "category": "Applications",
+      "subcategory": "Parenthesis Matching",
+      "difficulty": "Hard",
+      "question": "What are the common issues with expression evaluation in Stacks and how do you debug them?",
+      "ideal_answer": "Common issues with expression evaluation in Stacks include: prefix evaluation variant. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "expression evaluation",
+        "troubleshooting",
+        "Stacks"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to expression evaluation?",
+        "What tools can assist in detecting problems with expression evaluation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "infix to postfix conversion",
+        "parenthesis matching"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "STACK-019",
+      "subject": "Stacks",
+      "category": "Implementation",
+      "subcategory": "Array-based",
+      "difficulty": "Hard",
+      "question": "What is array-based stack in Stacks and how does it work?",
+      "ideal_answer": "array-based stack in Stacks refers to contiguous memory implementation. It works by top pointer management. Key characteristics include O(1) push/pop, O(n) dynamic resize. Example: int[] stack = new int[capacity]; int top = -1;. Common pitfalls include stack overflow, underflow.",
+      "keywords": [
+        "array-based stack",
+        "Stacks programming",
+        "implementation"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of array-based stack in a production environment?",
+        "What are the common pitfalls or issues associated with array-based stack?"
+      ],
+      "related_concepts": [
+        "two stacks in array"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "STACK-020",
+      "subject": "Stacks",
+      "category": "Implementation",
+      "subcategory": "Linked List-based",
+      "difficulty": "Hard",
+      "question": "What are the common issues with two stacks in array in Stacks and how do you debug them?",
+      "ideal_answer": "Common issues with two stacks in array in Stacks include: overflow when top1 + 1 == top2. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "two stacks in array",
+        "troubleshooting",
+        "Stacks"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to two stacks in array?",
+        "What tools can assist in detecting problems with two stacks in array at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "array-based stack"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "STACK-021",
+      "subject": "Stacks",
+      "category": "Problems",
+      "subcategory": "Min Stack",
+      "difficulty": "Hard",
+      "question": "What are the common issues with min stack in Stacks and how do you debug them?",
+      "ideal_answer": "Common issues with min stack in Stacks include: space optimization with pair encoding. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "min stack",
+        "troubleshooting",
+        "Stacks"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to min stack?",
+        "What tools can assist in detecting problems with min stack at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "min stack"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

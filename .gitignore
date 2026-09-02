@@ -63,3 +63,11 @@ logs/
 *.bin
 *.safetensors
 models/
+
+# ── Scratch & Test Artifacts ──────────────────────────────────────────────
+backend/scratch/
+frontend/scratch_test/
+frontend/.npm-cache/
+phase*.png
+runtime_test_resume.pdf
+

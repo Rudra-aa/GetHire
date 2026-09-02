@@ -1,0 +1,1264 @@
+{
+  "metadata": {
+    "subject": "Next.js",
+    "domain": "Web Development",
+    "total_questions": 47,
+    "difficulty_distribution": {
+      "Easy": 14,
+      "Medium": 23,
+      "Hard": 10
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:47Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "NEXT-001",
+      "subject": "Next.js",
+      "category": "App Router",
+      "subcategory": "Server Actions",
+      "difficulty": "Easy",
+      "question": "What are the common issues with Server Actions in Next.js and how do you debug them?",
+      "ideal_answer": "Common issues with Server Actions in Next.js include: progressive enhancement. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Server Actions",
+        "troubleshooting",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Server Actions?",
+        "What tools can assist in detecting problems with Server Actions at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "loading.tsx",
+        "error.tsx",
+        "parallel routes"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NEXT-002",
+      "subject": "Next.js",
+      "category": "Rendering",
+      "subcategory": "Server Components",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Server Components and Streaming in Next.js.",
+      "ideal_answer": "Server Components and Streaming differ in several ways: Server Components is React server-side rendering (works by zero client JS for components) whereas Streaming is progressive HTML delivery (works by improving perceived performance). Server Components is typically used for direct data access, reduced bundle size, while Streaming is used for React Suspense on server. Example demonstrating Server Components: async function ServerComponent() { const data = await fetchData(); return <div>{data}</div> }. Example demonstrating Streaming: <Suspense fallback={<Skeleton />}><SlowComponent /></Suspense>.",
+      "keywords": [
+        "Server Components",
+        "Streaming",
+        "comparison",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Server Components over Streaming?",
+        "What is the performance or memory difference between Server Components and Streaming?"
+      ],
+      "related_concepts": [
+        "Server Components",
+        "Streaming",
+        "Client Components",
+        "Edge Runtime"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NEXT-003",
+      "subject": "Next.js",
+      "category": "Rendering",
+      "subcategory": "Server Components",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Server Components and Edge Runtime in Next.js.",
+      "ideal_answer": "Server Components and Edge Runtime differ in several ways: Server Components is React server-side rendering (works by zero client JS for components) whereas Edge Runtime is lightweight execution environment (works by globally distributed compute). Server Components is typically used for direct data access, reduced bundle size, while Edge Runtime is used for V8 isolates, reduced Node.js APIs. Example demonstrating Server Components: async function ServerComponent() { const data = await fetchData(); return <div>{data}</div> }. Example demonstrating Edge Runtime: export const runtime = 'edge';.",
+      "keywords": [
+        "Server Components",
+        "Edge Runtime",
+        "comparison",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Server Components over Edge Runtime?",
+        "What is the performance or memory difference between Server Components and Edge Runtime?"
+      ],
+      "related_concepts": [
+        "Server Components",
+        "Edge Runtime",
+        "Client Components",
+        "Streaming"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NEXT-004",
+      "subject": "Next.js",
+      "category": "Core Concepts",
+      "subcategory": "Pages vs App Router",
+      "difficulty": "Easy",
+      "question": "Explain the difference between SSR vs SSG vs ISR and API routes in Next.js.",
+      "ideal_answer": "SSR vs SSG vs ISR and API routes differ in several ways: SSR vs SSG vs ISR is rendering strategies (works by different data freshness approaches) whereas API routes is backend endpoints in Next.js (works by serverless functions). SSR vs SSG vs ISR is typically used for SSR: request-time render; SSG: build-time render; ISR: revalidate stale content, while API routes is used for pages/api/hello.ts -> /api/hello. Example demonstrating SSR vs SSG vs ISR: export const getStaticProps = async () => { ... }. Example demonstrating API routes: export default function handler(req, res) { res.json({ name: 'John' }) }.",
+      "keywords": [
+        "SSR vs SSG vs ISR",
+        "API routes",
+        "comparison",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose SSR vs SSG vs ISR over API routes?",
+        "What is the performance or memory difference between SSR vs SSG vs ISR and API routes?"
+      ],
+      "related_concepts": [
+        "SSR vs SSG vs ISR",
+        "API routes",
+        "file-based routing",
+        "Image component"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NEXT-005",
+      "subject": "Next.js",
+      "category": "Rendering",
+      "subcategory": "Edge Runtime",
+      "difficulty": "Easy",
+      "question": "What are the common issues with Edge Runtime in Next.js and how do you debug them?",
+      "ideal_answer": "Common issues with Edge Runtime in Next.js include: cold start advantages. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Edge Runtime",
+        "troubleshooting",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Edge Runtime?",
+        "What tools can assist in detecting problems with Edge Runtime at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Server Components",
+        "Client Components",
+        "Streaming"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NEXT-006",
+      "subject": "Next.js",
+      "category": "Core Concepts",
+      "subcategory": "Pages vs App Router",
+      "difficulty": "Easy",
+      "question": "Explain the difference between SSR vs SSG vs ISR and Image component in Next.js.",
+      "ideal_answer": "SSR vs SSG vs ISR and Image component differ in several ways: SSR vs SSG vs ISR is rendering strategies (works by different data freshness approaches) whereas Image component is automatic image optimization (works by responsive images with performance). SSR vs SSG vs ISR is typically used for SSR: request-time render; SSG: build-time render; ISR: revalidate stale content, while Image component is used for lazy loading, placeholder blur, srcset generation. Example demonstrating SSR vs SSG vs ISR: export const getStaticProps = async () => { ... }. Example demonstrating Image component: <Image src=\"/photo.jpg\" width={800} height={600} alt=\"...\" />.",
+      "keywords": [
+        "SSR vs SSG vs ISR",
+        "Image component",
+        "comparison",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose SSR vs SSG vs ISR over Image component?",
+        "What is the performance or memory difference between SSR vs SSG vs ISR and Image component?"
+      ],
+      "related_concepts": [
+        "SSR vs SSG vs ISR",
+        "Image component",
+        "file-based routing",
+        "API routes"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NEXT-007",
+      "subject": "Next.js",
+      "category": "App Router",
+      "subcategory": "Loading UI",
+      "difficulty": "Easy",
+      "question": "What is loading.tsx in Next.js and how does it work?",
+      "ideal_answer": "loading.tsx in Next.js refers to suspense boundaries. It works by automatic loading states. Key characteristics include colocated with page, shows during data fetch. Example: export default function Loading() { return <Skeleton />; }. Common pitfalls include nested loading states.",
+      "keywords": [
+        "loading.tsx",
+        "Next.js programming",
+        "app router"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of loading.tsx in a production environment?",
+        "What are the common pitfalls or issues associated with loading.tsx?"
+      ],
+      "related_concepts": [
+        "Server Actions",
+        "error.tsx",
+        "parallel routes"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NEXT-008",
+      "subject": "Next.js",
+      "category": "App Router",
+      "subcategory": "Server Actions",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Server Actions and parallel routes in Next.js.",
+      "ideal_answer": "Server Actions and parallel routes differ in several ways: Server Actions is server-side mutations (works by form submissions without API routes) whereas parallel routes is simultaneous page rendering (works by split view layouts). Server Actions is typically used for async functions running on server, while parallel routes is used for @folder convention. Example demonstrating Server Actions: async function createTodo(formData: FormData) { 'use server'; ... }. Example demonstrating parallel routes: layout with @team and @analytics slots.",
+      "keywords": [
+        "Server Actions",
+        "parallel routes",
+        "comparison",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Server Actions over parallel routes?",
+        "What is the performance or memory difference between Server Actions and parallel routes?"
+      ],
+      "related_concepts": [
+        "Server Actions",
+        "parallel routes",
+        "loading.tsx",
+        "error.tsx"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NEXT-009",
+      "subject": "Next.js",
+      "category": "Core Concepts",
+      "subcategory": "File-based Routing",
+      "difficulty": "Easy",
+      "question": "Explain the difference between file-based routing and API routes in Next.js.",
+      "ideal_answer": "file-based routing and API routes differ in several ways: file-based routing is automatic route generation (works by filesystem as router) whereas API routes is backend endpoints in Next.js (works by serverless functions). file-based routing is typically used for pages/index.tsx -> /, pages/blog/[slug].tsx -> /blog/:slug, while API routes is used for pages/api/hello.ts -> /api/hello. Example demonstrating file-based routing: pages directory structure. Example demonstrating API routes: export default function handler(req, res) { res.json({ name: 'John' }) }.",
+      "keywords": [
+        "file-based routing",
+        "API routes",
+        "comparison",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose file-based routing over API routes?",
+        "What is the performance or memory difference between file-based routing and API routes?"
+      ],
+      "related_concepts": [
+        "file-based routing",
+        "API routes",
+        "SSR vs SSG vs ISR",
+        "Image component"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NEXT-010",
+      "subject": "Next.js",
+      "category": "Core Concepts",
+      "subcategory": "File-based Routing",
+      "difficulty": "Easy",
+      "question": "What are the common issues with file-based routing in Next.js and how do you debug them?",
+      "ideal_answer": "Common issues with file-based routing in Next.js include: App Router vs Pages Router. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "file-based routing",
+        "troubleshooting",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to file-based routing?",
+        "What tools can assist in detecting problems with file-based routing at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "SSR vs SSG vs ISR",
+        "Image component",
+        "API routes"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NEXT-011",
+      "subject": "Next.js",
+      "category": "App Router",
+      "subcategory": "Route Groups",
+      "difficulty": "Easy",
+      "question": "What are the common issues with parallel routes in Next.js and how do you debug them?",
+      "ideal_answer": "Common issues with parallel routes in Next.js include: independent loading and error states. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "parallel routes",
+        "troubleshooting",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to parallel routes?",
+        "What tools can assist in detecting problems with parallel routes at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Server Actions",
+        "loading.tsx",
+        "error.tsx"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NEXT-012",
+      "subject": "Next.js",
+      "category": "Core Concepts",
+      "subcategory": "SSR vs SSG vs ISR",
+      "difficulty": "Easy",
+      "question": "What is Image component in Next.js and how does it work?",
+      "ideal_answer": "Image component in Next.js refers to automatic image optimization. It works by responsive images with performance. Key characteristics include lazy loading, placeholder blur, srcset generation. Example: <Image src=\"/photo.jpg\" width={800} height={600} alt=\"...\" />. Common pitfalls include remote image domain configuration.",
+      "keywords": [
+        "Image component",
+        "Next.js programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Image component in a production environment?",
+        "What are the common pitfalls or issues associated with Image component?"
+      ],
+      "related_concepts": [
+        "SSR vs SSG vs ISR",
+        "file-based routing",
+        "API routes"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NEXT-013",
+      "subject": "Next.js",
+      "category": "Optimization",
+      "subcategory": "Image Component",
+      "difficulty": "Easy",
+      "question": "What is font optimization in Next.js and how does it work?",
+      "ideal_answer": "font optimization in Next.js refers to automatic web font handling. It works by zero layout shift fonts. Key characteristics include next/font, CSS variable injection. Example: import { Inter } from 'next/font/google'; const inter = Inter({ subsets: ['latin'] });. Common pitfalls include self-hosting vs Google Fonts.",
+      "keywords": [
+        "font optimization",
+        "Next.js programming",
+        "optimization"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of font optimization in a production environment?",
+        "What are the common pitfalls or issues associated with font optimization?"
+      ],
+      "related_concepts": [
+        "middleware"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NEXT-014",
+      "subject": "Next.js",
+      "category": "Rendering",
+      "subcategory": "Client Components",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Client Components and Edge Runtime in Next.js.",
+      "ideal_answer": "Client Components and Edge Runtime differ in several ways: Client Components is interactive browser components (works by useState, useEffect, event handlers) whereas Edge Runtime is lightweight execution environment (works by globally distributed compute). Client Components is typically used for 'use client' directive, while Edge Runtime is used for V8 isolates, reduced Node.js APIs. Example demonstrating Client Components: 'use client'\nimport { useState } from 'react'. Example demonstrating Edge Runtime: export const runtime = 'edge';.",
+      "keywords": [
+        "Client Components",
+        "Edge Runtime",
+        "comparison",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Client Components over Edge Runtime?",
+        "What is the performance or memory difference between Client Components and Edge Runtime?"
+      ],
+      "related_concepts": [
+        "Client Components",
+        "Edge Runtime",
+        "Server Components",
+        "Streaming"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "NEXT-015",
+      "subject": "Next.js",
+      "category": "Core Concepts",
+      "subcategory": "File-based Routing",
+      "difficulty": "Medium",
+      "question": "Explain the difference between file-based routing and Image component in Next.js.",
+      "ideal_answer": "file-based routing and Image component differ in several ways: file-based routing is automatic route generation (works by filesystem as router) whereas Image component is automatic image optimization (works by responsive images with performance). file-based routing is typically used for pages/index.tsx -> /, pages/blog/[slug].tsx -> /blog/:slug, while Image component is used for lazy loading, placeholder blur, srcset generation. Example demonstrating file-based routing: pages directory structure. Example demonstrating Image component: <Image src=\"/photo.jpg\" width={800} height={600} alt=\"...\" />.",
+      "keywords": [
+        "file-based routing",
+        "Image component",
+        "comparison",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose file-based routing over Image component?",
+        "What is the performance or memory difference between file-based routing and Image component?"
+      ],
+      "related_concepts": [
+        "file-based routing",
+        "Image component",
+        "SSR vs SSG vs ISR",
+        "API routes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-016",
+      "subject": "Next.js",
+      "category": "App Router",
+      "subcategory": "Error Handling",
+      "difficulty": "Medium",
+      "question": "What are the common issues with error.tsx in Next.js and how do you debug them?",
+      "ideal_answer": "Common issues with error.tsx in Next.js include: error bubbling. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "error.tsx",
+        "troubleshooting",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to error.tsx?",
+        "What tools can assist in detecting problems with error.tsx at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Server Actions",
+        "loading.tsx",
+        "parallel routes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-017",
+      "subject": "Next.js",
+      "category": "App Router",
+      "subcategory": "Server Actions",
+      "difficulty": "Medium",
+      "question": "What is Server Actions in Next.js and how does it work?",
+      "ideal_answer": "Server Actions in Next.js refers to server-side mutations. It works by form submissions without API routes. Key characteristics include async functions running on server. Example: async function createTodo(formData: FormData) { 'use server'; ... }. Common pitfalls include progressive enhancement.",
+      "keywords": [
+        "Server Actions",
+        "Next.js programming",
+        "app router"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Server Actions in a production environment?",
+        "What are the common pitfalls or issues associated with Server Actions?"
+      ],
+      "related_concepts": [
+        "loading.tsx",
+        "error.tsx",
+        "parallel routes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-018",
+      "subject": "Next.js",
+      "category": "Optimization",
+      "subcategory": "Image Component",
+      "difficulty": "Medium",
+      "question": "Explain the difference between font optimization and middleware in Next.js.",
+      "ideal_answer": "font optimization and middleware differ in several ways: font optimization is automatic web font handling (works by zero layout shift fonts) whereas middleware is request interception (works by authentication, redirects, rewrites). font optimization is typically used for next/font, CSS variable injection, while middleware is used for Edge Runtime, matcher config. Example demonstrating font optimization: import { Inter } from 'next/font/google'; const inter = Inter({ subsets: ['latin'] });. Example demonstrating middleware: export function middleware(request: NextRequest) { if (!auth) return NextResponse.redirect('/login'); }.",
+      "keywords": [
+        "font optimization",
+        "middleware",
+        "comparison",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose font optimization over middleware?",
+        "What is the performance or memory difference between font optimization and middleware?"
+      ],
+      "related_concepts": [
+        "font optimization",
+        "middleware"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-019",
+      "subject": "Next.js",
+      "category": "Rendering",
+      "subcategory": "Streaming",
+      "difficulty": "Medium",
+      "question": "What is Streaming in Next.js and how does it work?",
+      "ideal_answer": "Streaming in Next.js refers to progressive HTML delivery. It works by improving perceived performance. Key characteristics include React Suspense on server. Example: <Suspense fallback={<Skeleton />}><SlowComponent /></Suspense>. Common pitfalls include selective hydration.",
+      "keywords": [
+        "Streaming",
+        "Next.js programming",
+        "rendering"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Streaming in a production environment?",
+        "What are the common pitfalls or issues associated with Streaming?"
+      ],
+      "related_concepts": [
+        "Server Components",
+        "Client Components",
+        "Edge Runtime"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-020",
+      "subject": "Next.js",
+      "category": "App Router",
+      "subcategory": "Loading UI",
+      "difficulty": "Medium",
+      "question": "What are the common issues with loading.tsx in Next.js and how do you debug them?",
+      "ideal_answer": "Common issues with loading.tsx in Next.js include: nested loading states. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "loading.tsx",
+        "troubleshooting",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to loading.tsx?",
+        "What tools can assist in detecting problems with loading.tsx at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Server Actions",
+        "error.tsx",
+        "parallel routes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-021",
+      "subject": "Next.js",
+      "category": "Optimization",
+      "subcategory": "Font Optimization",
+      "difficulty": "Medium",
+      "question": "What are the common issues with middleware in Next.js and how do you debug them?",
+      "ideal_answer": "Common issues with middleware in Next.js include: middleware chaining. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "middleware",
+        "troubleshooting",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to middleware?",
+        "What tools can assist in detecting problems with middleware at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "font optimization"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-022",
+      "subject": "Next.js",
+      "category": "App Router",
+      "subcategory": "Error Handling",
+      "difficulty": "Medium",
+      "question": "What is error.tsx in Next.js and how does it work?",
+      "ideal_answer": "error.tsx in Next.js refers to error boundary components. It works by graceful error handling. Key characteristics include colocated error UI, resets on navigation. Example: 'use client'\nexport default function Error({ error, reset }) { ... }. Common pitfalls include error bubbling.",
+      "keywords": [
+        "error.tsx",
+        "Next.js programming",
+        "app router"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of error.tsx in a production environment?",
+        "What are the common pitfalls or issues associated with error.tsx?"
+      ],
+      "related_concepts": [
+        "Server Actions",
+        "loading.tsx",
+        "parallel routes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-023",
+      "subject": "Next.js",
+      "category": "App Router",
+      "subcategory": "Server Actions",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Server Actions and loading.tsx in Next.js.",
+      "ideal_answer": "Server Actions and loading.tsx differ in several ways: Server Actions is server-side mutations (works by form submissions without API routes) whereas loading.tsx is suspense boundaries (works by automatic loading states). Server Actions is typically used for async functions running on server, while loading.tsx is used for colocated with page, shows during data fetch. Example demonstrating Server Actions: async function createTodo(formData: FormData) { 'use server'; ... }. Example demonstrating loading.tsx: export default function Loading() { return <Skeleton />; }.",
+      "keywords": [
+        "Server Actions",
+        "loading.tsx",
+        "comparison",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Server Actions over loading.tsx?",
+        "What is the performance or memory difference between Server Actions and loading.tsx?"
+      ],
+      "related_concepts": [
+        "Server Actions",
+        "loading.tsx",
+        "error.tsx",
+        "parallel routes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-024",
+      "subject": "Next.js",
+      "category": "Rendering",
+      "subcategory": "Client Components",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Client Components and Streaming in Next.js.",
+      "ideal_answer": "Client Components and Streaming differ in several ways: Client Components is interactive browser components (works by useState, useEffect, event handlers) whereas Streaming is progressive HTML delivery (works by improving perceived performance). Client Components is typically used for 'use client' directive, while Streaming is used for React Suspense on server. Example demonstrating Client Components: 'use client'\nimport { useState } from 'react'. Example demonstrating Streaming: <Suspense fallback={<Skeleton />}><SlowComponent /></Suspense>.",
+      "keywords": [
+        "Client Components",
+        "Streaming",
+        "comparison",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Client Components over Streaming?",
+        "What is the performance or memory difference between Client Components and Streaming?"
+      ],
+      "related_concepts": [
+        "Client Components",
+        "Streaming",
+        "Server Components",
+        "Edge Runtime"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-025",
+      "subject": "Next.js",
+      "category": "Rendering",
+      "subcategory": "Edge Runtime",
+      "difficulty": "Medium",
+      "question": "What is Edge Runtime in Next.js and how does it work?",
+      "ideal_answer": "Edge Runtime in Next.js refers to lightweight execution environment. It works by globally distributed compute. Key characteristics include V8 isolates, reduced Node.js APIs. Example: export const runtime = 'edge';. Common pitfalls include cold start advantages.",
+      "keywords": [
+        "Edge Runtime",
+        "Next.js programming",
+        "rendering"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Edge Runtime in a production environment?",
+        "What are the common pitfalls or issues associated with Edge Runtime?"
+      ],
+      "related_concepts": [
+        "Server Components",
+        "Client Components",
+        "Streaming"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-026",
+      "subject": "Next.js",
+      "category": "Rendering",
+      "subcategory": "Server Components",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Server Components and Client Components in Next.js.",
+      "ideal_answer": "Server Components and Client Components differ in several ways: Server Components is React server-side rendering (works by zero client JS for components) whereas Client Components is interactive browser components (works by useState, useEffect, event handlers). Server Components is typically used for direct data access, reduced bundle size, while Client Components is used for 'use client' directive. Example demonstrating Server Components: async function ServerComponent() { const data = await fetchData(); return <div>{data}</div> }. Example demonstrating Client Components: 'use client'\nimport { useState } from 'react'.",
+      "keywords": [
+        "Server Components",
+        "Client Components",
+        "comparison",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Server Components over Client Components?",
+        "What is the performance or memory difference between Server Components and Client Components?"
+      ],
+      "related_concepts": [
+        "Server Components",
+        "Client Components",
+        "Streaming",
+        "Edge Runtime"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-027",
+      "subject": "Next.js",
+      "category": "App Router",
+      "subcategory": "Loading UI",
+      "difficulty": "Medium",
+      "question": "Explain the difference between loading.tsx and error.tsx in Next.js.",
+      "ideal_answer": "loading.tsx and error.tsx differ in several ways: loading.tsx is suspense boundaries (works by automatic loading states) whereas error.tsx is error boundary components (works by graceful error handling). loading.tsx is typically used for colocated with page, shows during data fetch, while error.tsx is used for colocated error UI, resets on navigation. Example demonstrating loading.tsx: export default function Loading() { return <Skeleton />; }. Example demonstrating error.tsx: 'use client'\nexport default function Error({ error, reset }) { ... }.",
+      "keywords": [
+        "loading.tsx",
+        "error.tsx",
+        "comparison",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose loading.tsx over error.tsx?",
+        "What is the performance or memory difference between loading.tsx and error.tsx?"
+      ],
+      "related_concepts": [
+        "loading.tsx",
+        "error.tsx",
+        "Server Actions",
+        "parallel routes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-028",
+      "subject": "Next.js",
+      "category": "Optimization",
+      "subcategory": "Image Component",
+      "difficulty": "Medium",
+      "question": "What are the common issues with font optimization in Next.js and how do you debug them?",
+      "ideal_answer": "Common issues with font optimization in Next.js include: self-hosting vs Google Fonts. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "font optimization",
+        "troubleshooting",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to font optimization?",
+        "What tools can assist in detecting problems with font optimization at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "middleware"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-029",
+      "subject": "Next.js",
+      "category": "Core Concepts",
+      "subcategory": "Pages vs App Router",
+      "difficulty": "Medium",
+      "question": "What is SSR vs SSG vs ISR in Next.js and how does it work?",
+      "ideal_answer": "SSR vs SSG vs ISR in Next.js refers to rendering strategies. It works by different data freshness approaches. Key characteristics include SSR: request-time render; SSG: build-time render; ISR: revalidate stale content. Example: export const getStaticProps = async () => { ... }. Common pitfalls include choosing strategy per page.",
+      "keywords": [
+        "SSR vs SSG vs ISR",
+        "Next.js programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of SSR vs SSG vs ISR in a production environment?",
+        "What are the common pitfalls or issues associated with SSR vs SSG vs ISR?"
+      ],
+      "related_concepts": [
+        "file-based routing",
+        "Image component",
+        "API routes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-030",
+      "subject": "Next.js",
+      "category": "Rendering",
+      "subcategory": "Streaming",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Streaming in Next.js and how do you debug them?",
+      "ideal_answer": "Common issues with Streaming in Next.js include: selective hydration. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Streaming",
+        "troubleshooting",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Streaming?",
+        "What tools can assist in detecting problems with Streaming at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Server Components",
+        "Client Components",
+        "Edge Runtime"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-031",
+      "subject": "Next.js",
+      "category": "Rendering",
+      "subcategory": "Client Components",
+      "difficulty": "Medium",
+      "question": "What is Client Components in Next.js and how does it work?",
+      "ideal_answer": "Client Components in Next.js refers to interactive browser components. It works by useState, useEffect, event handlers. Key characteristics include 'use client' directive. Example: 'use client'\nimport { useState } from 'react'. Common pitfalls include server vs client boundary.",
+      "keywords": [
+        "Client Components",
+        "Next.js programming",
+        "rendering"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Client Components in a production environment?",
+        "What are the common pitfalls or issues associated with Client Components?"
+      ],
+      "related_concepts": [
+        "Server Components",
+        "Streaming",
+        "Edge Runtime"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-032",
+      "subject": "Next.js",
+      "category": "App Router",
+      "subcategory": "Error Handling",
+      "difficulty": "Medium",
+      "question": "Explain the difference between error.tsx and parallel routes in Next.js.",
+      "ideal_answer": "error.tsx and parallel routes differ in several ways: error.tsx is error boundary components (works by graceful error handling) whereas parallel routes is simultaneous page rendering (works by split view layouts). error.tsx is typically used for colocated error UI, resets on navigation, while parallel routes is used for @folder convention. Example demonstrating error.tsx: 'use client'\nexport default function Error({ error, reset }) { ... }. Example demonstrating parallel routes: layout with @team and @analytics slots.",
+      "keywords": [
+        "error.tsx",
+        "parallel routes",
+        "comparison",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose error.tsx over parallel routes?",
+        "What is the performance or memory difference between error.tsx and parallel routes?"
+      ],
+      "related_concepts": [
+        "error.tsx",
+        "parallel routes",
+        "Server Actions",
+        "loading.tsx"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-033",
+      "subject": "Next.js",
+      "category": "Core Concepts",
+      "subcategory": "SSR vs SSG vs ISR",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Image component and API routes in Next.js.",
+      "ideal_answer": "Image component and API routes differ in several ways: Image component is automatic image optimization (works by responsive images with performance) whereas API routes is backend endpoints in Next.js (works by serverless functions). Image component is typically used for lazy loading, placeholder blur, srcset generation, while API routes is used for pages/api/hello.ts -> /api/hello. Example demonstrating Image component: <Image src=\"/photo.jpg\" width={800} height={600} alt=\"...\" />. Example demonstrating API routes: export default function handler(req, res) { res.json({ name: 'John' }) }.",
+      "keywords": [
+        "Image component",
+        "API routes",
+        "comparison",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Image component over API routes?",
+        "What is the performance or memory difference between Image component and API routes?"
+      ],
+      "related_concepts": [
+        "Image component",
+        "API routes",
+        "SSR vs SSG vs ISR",
+        "file-based routing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-034",
+      "subject": "Next.js",
+      "category": "App Router",
+      "subcategory": "Server Actions",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Server Actions and error.tsx in Next.js.",
+      "ideal_answer": "Server Actions and error.tsx differ in several ways: Server Actions is server-side mutations (works by form submissions without API routes) whereas error.tsx is error boundary components (works by graceful error handling). Server Actions is typically used for async functions running on server, while error.tsx is used for colocated error UI, resets on navigation. Example demonstrating Server Actions: async function createTodo(formData: FormData) { 'use server'; ... }. Example demonstrating error.tsx: 'use client'\nexport default function Error({ error, reset }) { ... }.",
+      "keywords": [
+        "Server Actions",
+        "error.tsx",
+        "comparison",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Server Actions over error.tsx?",
+        "What is the performance or memory difference between Server Actions and error.tsx?"
+      ],
+      "related_concepts": [
+        "Server Actions",
+        "error.tsx",
+        "loading.tsx",
+        "parallel routes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-035",
+      "subject": "Next.js",
+      "category": "Optimization",
+      "subcategory": "Font Optimization",
+      "difficulty": "Medium",
+      "question": "What is middleware in Next.js and how does it work?",
+      "ideal_answer": "middleware in Next.js refers to request interception. It works by authentication, redirects, rewrites. Key characteristics include Edge Runtime, matcher config. Example: export function middleware(request: NextRequest) { if (!auth) return NextResponse.redirect('/login'); }. Common pitfalls include middleware chaining.",
+      "keywords": [
+        "middleware",
+        "Next.js programming",
+        "optimization"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of middleware in a production environment?",
+        "What are the common pitfalls or issues associated with middleware?"
+      ],
+      "related_concepts": [
+        "font optimization"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-036",
+      "subject": "Next.js",
+      "category": "Core Concepts",
+      "subcategory": "File-based Routing",
+      "difficulty": "Medium",
+      "question": "What is file-based routing in Next.js and how does it work?",
+      "ideal_answer": "file-based routing in Next.js refers to automatic route generation. It works by filesystem as router. Key characteristics include pages/index.tsx -> /, pages/blog/[slug].tsx -> /blog/:slug. Example: pages directory structure. Common pitfalls include App Router vs Pages Router.",
+      "keywords": [
+        "file-based routing",
+        "Next.js programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of file-based routing in a production environment?",
+        "What are the common pitfalls or issues associated with file-based routing?"
+      ],
+      "related_concepts": [
+        "SSR vs SSG vs ISR",
+        "Image component",
+        "API routes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-037",
+      "subject": "Next.js",
+      "category": "Rendering",
+      "subcategory": "Streaming",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Streaming and Edge Runtime in Next.js.",
+      "ideal_answer": "Streaming and Edge Runtime differ in several ways: Streaming is progressive HTML delivery (works by improving perceived performance) whereas Edge Runtime is lightweight execution environment (works by globally distributed compute). Streaming is typically used for React Suspense on server, while Edge Runtime is used for V8 isolates, reduced Node.js APIs. Example demonstrating Streaming: <Suspense fallback={<Skeleton />}><SlowComponent /></Suspense>. Example demonstrating Edge Runtime: export const runtime = 'edge';.",
+      "keywords": [
+        "Streaming",
+        "Edge Runtime",
+        "comparison",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Streaming over Edge Runtime?",
+        "What is the performance or memory difference between Streaming and Edge Runtime?"
+      ],
+      "related_concepts": [
+        "Streaming",
+        "Edge Runtime",
+        "Server Components",
+        "Client Components"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "NEXT-038",
+      "subject": "Next.js",
+      "category": "Core Concepts",
+      "subcategory": "SSR vs SSG vs ISR",
+      "difficulty": "Hard",
+      "question": "What are the common issues with Image component in Next.js and how do you debug them?",
+      "ideal_answer": "Common issues with Image component in Next.js include: remote image domain configuration. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Image component",
+        "troubleshooting",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Image component?",
+        "What tools can assist in detecting problems with Image component at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "SSR vs SSG vs ISR",
+        "file-based routing",
+        "API routes"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NEXT-039",
+      "subject": "Next.js",
+      "category": "App Router",
+      "subcategory": "Route Groups",
+      "difficulty": "Hard",
+      "question": "What is parallel routes in Next.js and how does it work?",
+      "ideal_answer": "parallel routes in Next.js refers to simultaneous page rendering. It works by split view layouts. Key characteristics include @folder convention. Example: layout with @team and @analytics slots. Common pitfalls include independent loading and error states.",
+      "keywords": [
+        "parallel routes",
+        "Next.js programming",
+        "app router"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of parallel routes in a production environment?",
+        "What are the common pitfalls or issues associated with parallel routes?"
+      ],
+      "related_concepts": [
+        "Server Actions",
+        "loading.tsx",
+        "error.tsx"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NEXT-040",
+      "subject": "Next.js",
+      "category": "Core Concepts",
+      "subcategory": "Image Optimization",
+      "difficulty": "Hard",
+      "question": "What is API routes in Next.js and how does it work?",
+      "ideal_answer": "API routes in Next.js refers to backend endpoints in Next.js. It works by serverless functions. Key characteristics include pages/api/hello.ts -> /api/hello. Example: export default function handler(req, res) { res.json({ name: 'John' }) }. Common pitfalls include App Router Route Handlers.",
+      "keywords": [
+        "API routes",
+        "Next.js programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of API routes in a production environment?",
+        "What are the common pitfalls or issues associated with API routes?"
+      ],
+      "related_concepts": [
+        "SSR vs SSG vs ISR",
+        "file-based routing",
+        "Image component"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NEXT-041",
+      "subject": "Next.js",
+      "category": "Core Concepts",
+      "subcategory": "Pages vs App Router",
+      "difficulty": "Hard",
+      "question": "Explain the difference between SSR vs SSG vs ISR and file-based routing in Next.js.",
+      "ideal_answer": "SSR vs SSG vs ISR and file-based routing differ in several ways: SSR vs SSG vs ISR is rendering strategies (works by different data freshness approaches) whereas file-based routing is automatic route generation (works by filesystem as router). SSR vs SSG vs ISR is typically used for SSR: request-time render; SSG: build-time render; ISR: revalidate stale content, while file-based routing is used for pages/index.tsx -> /, pages/blog/[slug].tsx -> /blog/:slug. Example demonstrating SSR vs SSG vs ISR: export const getStaticProps = async () => { ... }. Example demonstrating file-based routing: pages directory structure.",
+      "keywords": [
+        "SSR vs SSG vs ISR",
+        "file-based routing",
+        "comparison",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose SSR vs SSG vs ISR over file-based routing?",
+        "What is the performance or memory difference between SSR vs SSG vs ISR and file-based routing?"
+      ],
+      "related_concepts": [
+        "SSR vs SSG vs ISR",
+        "file-based routing",
+        "Image component",
+        "API routes"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NEXT-042",
+      "subject": "Next.js",
+      "category": "Rendering",
+      "subcategory": "Server Components",
+      "difficulty": "Hard",
+      "question": "What is Server Components in Next.js and how does it work?",
+      "ideal_answer": "Server Components in Next.js refers to React server-side rendering. It works by zero client JS for components. Key characteristics include direct data access, reduced bundle size. Example: async function ServerComponent() { const data = await fetchData(); return <div>{data}</div> }. Common pitfalls include client component interleaving.",
+      "keywords": [
+        "Server Components",
+        "Next.js programming",
+        "rendering"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Server Components in a production environment?",
+        "What are the common pitfalls or issues associated with Server Components?"
+      ],
+      "related_concepts": [
+        "Client Components",
+        "Streaming",
+        "Edge Runtime"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NEXT-043",
+      "subject": "Next.js",
+      "category": "Rendering",
+      "subcategory": "Server Components",
+      "difficulty": "Hard",
+      "question": "What are the common issues with Server Components in Next.js and how do you debug them?",
+      "ideal_answer": "Common issues with Server Components in Next.js include: client component interleaving. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Server Components",
+        "troubleshooting",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Server Components?",
+        "What tools can assist in detecting problems with Server Components at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Client Components",
+        "Streaming",
+        "Edge Runtime"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NEXT-044",
+      "subject": "Next.js",
+      "category": "Rendering",
+      "subcategory": "Client Components",
+      "difficulty": "Hard",
+      "question": "What are the common issues with Client Components in Next.js and how do you debug them?",
+      "ideal_answer": "Common issues with Client Components in Next.js include: server vs client boundary. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Client Components",
+        "troubleshooting",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Client Components?",
+        "What tools can assist in detecting problems with Client Components at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Server Components",
+        "Streaming",
+        "Edge Runtime"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NEXT-045",
+      "subject": "Next.js",
+      "category": "Core Concepts",
+      "subcategory": "Pages vs App Router",
+      "difficulty": "Hard",
+      "question": "What are the common issues with SSR vs SSG vs ISR in Next.js and how do you debug them?",
+      "ideal_answer": "Common issues with SSR vs SSG vs ISR in Next.js include: choosing strategy per page. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "SSR vs SSG vs ISR",
+        "troubleshooting",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to SSR vs SSG vs ISR?",
+        "What tools can assist in detecting problems with SSR vs SSG vs ISR at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "file-based routing",
+        "Image component",
+        "API routes"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NEXT-046",
+      "subject": "Next.js",
+      "category": "Core Concepts",
+      "subcategory": "Image Optimization",
+      "difficulty": "Hard",
+      "question": "What are the common issues with API routes in Next.js and how do you debug them?",
+      "ideal_answer": "Common issues with API routes in Next.js include: App Router Route Handlers. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "API routes",
+        "troubleshooting",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to API routes?",
+        "What tools can assist in detecting problems with API routes at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "SSR vs SSG vs ISR",
+        "file-based routing",
+        "Image component"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "NEXT-047",
+      "subject": "Next.js",
+      "category": "App Router",
+      "subcategory": "Loading UI",
+      "difficulty": "Hard",
+      "question": "Explain the difference between loading.tsx and parallel routes in Next.js.",
+      "ideal_answer": "loading.tsx and parallel routes differ in several ways: loading.tsx is suspense boundaries (works by automatic loading states) whereas parallel routes is simultaneous page rendering (works by split view layouts). loading.tsx is typically used for colocated with page, shows during data fetch, while parallel routes is used for @folder convention. Example demonstrating loading.tsx: export default function Loading() { return <Skeleton />; }. Example demonstrating parallel routes: layout with @team and @analytics slots.",
+      "keywords": [
+        "loading.tsx",
+        "parallel routes",
+        "comparison",
+        "Next.js"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose loading.tsx over parallel routes?",
+        "What is the performance or memory difference between loading.tsx and parallel routes?"
+      ],
+      "related_concepts": [
+        "loading.tsx",
+        "parallel routes",
+        "Server Actions",
+        "error.tsx"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

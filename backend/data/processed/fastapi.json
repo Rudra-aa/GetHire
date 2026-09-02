@@ -1,0 +1,901 @@
+{
+  "metadata": {
+    "subject": "FastAPI",
+    "domain": "Web Development",
+    "total_questions": 35,
+    "difficulty_distribution": {
+      "Easy": 10,
+      "Medium": 18,
+      "Hard": 7
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "FASTAPI-001",
+      "subject": "FastAPI",
+      "category": "Routing",
+      "subcategory": "Path Parameters",
+      "difficulty": "Easy",
+      "question": "What is path parameters in FastAPI and how does it work?",
+      "ideal_answer": "path parameters in FastAPI refers to URL variable binding. It works by automatic type conversion. Key characteristics include {param}, type hints. Example: @app.get('/items/{item_id}')\ndef read_item(item_id: int): .... Common pitfalls include path parameter validation.",
+      "keywords": [
+        "path parameters",
+        "FastAPI programming",
+        "routing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of path parameters in a production environment?",
+        "What are the common pitfalls or issues associated with path parameters?"
+      ],
+      "related_concepts": [
+        "query parameters",
+        "request body"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FASTAPI-002",
+      "subject": "FastAPI",
+      "category": "Routing",
+      "subcategory": "Query Parameters",
+      "difficulty": "Easy",
+      "question": "What are the common issues with query parameters in FastAPI and how do you debug them?",
+      "ideal_answer": "Common issues with query parameters in FastAPI include: required vs optional queries. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "query parameters",
+        "troubleshooting",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to query parameters?",
+        "What tools can assist in detecting problems with query parameters at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "path parameters",
+        "request body"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FASTAPI-003",
+      "subject": "FastAPI",
+      "category": "Core",
+      "subcategory": "Request/Response",
+      "difficulty": "Easy",
+      "question": "What are the common issues with automatic API documentation in FastAPI and how do you debug them?",
+      "ideal_answer": "Common issues with automatic API documentation in FastAPI include: customizing OpenAPI schema. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "automatic API documentation",
+        "troubleshooting",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to automatic API documentation?",
+        "What tools can assist in detecting problems with automatic API documentation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ASGI framework",
+        "path operation decorators"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FASTAPI-004",
+      "subject": "FastAPI",
+      "category": "Dependency Injection",
+      "subcategory": "Sub-dependencies",
+      "difficulty": "Easy",
+      "question": "What is sub-dependencies in FastAPI and how does it work?",
+      "ideal_answer": "sub-dependencies in FastAPI refers to nested dependency chains. It works by dependency composition. Key characteristics include Depends within Depends. Example: def get_query(q: str = None): ...\ndef get_subquery(query: str = Depends(get_query)): .... Common pitfalls include caching behavior.",
+      "keywords": [
+        "sub-dependencies",
+        "FastAPI programming",
+        "dependency injection"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of sub-dependencies in a production environment?",
+        "What are the common pitfalls or issues associated with sub-dependencies?"
+      ],
+      "related_concepts": [
+        "Depends"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FASTAPI-005",
+      "subject": "FastAPI",
+      "category": "Async",
+      "subcategory": "Background Tasks",
+      "difficulty": "Easy",
+      "question": "What are the common issues with background tasks in FastAPI and how do you debug them?",
+      "ideal_answer": "Common issues with background tasks in FastAPI include: task reliability vs Celery. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "background tasks",
+        "troubleshooting",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to background tasks?",
+        "What tools can assist in detecting problems with background tasks at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "async endpoints"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FASTAPI-006",
+      "subject": "FastAPI",
+      "category": "Dependency Injection",
+      "subcategory": "Depends",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Depends and sub-dependencies in FastAPI.",
+      "ideal_answer": "Depends and sub-dependencies differ in several ways: Depends is dependency injection system (works by reusable dependencies) whereas sub-dependencies is nested dependency chains (works by dependency composition). Depends is typically used for caching, sub-dependencies, while sub-dependencies is used for Depends within Depends. Example demonstrating Depends: async def get_db(): ...\n@app.get('/items/')\ndef read_items(db: Session = Depends(get_db)): .... Example demonstrating sub-dependencies: def get_query(q: str = None): ...\ndef get_subquery(query: str = Depends(get_query)): ....",
+      "keywords": [
+        "Depends",
+        "sub-dependencies",
+        "comparison",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Depends over sub-dependencies?",
+        "What is the performance or memory difference between Depends and sub-dependencies?"
+      ],
+      "related_concepts": [
+        "Depends",
+        "sub-dependencies"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FASTAPI-007",
+      "subject": "FastAPI",
+      "category": "Async",
+      "subcategory": "Async Endpoints",
+      "difficulty": "Easy",
+      "question": "What are the common issues with async endpoints in FastAPI and how do you debug them?",
+      "ideal_answer": "Common issues with async endpoints in FastAPI include: sync in async thread pool. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "async endpoints",
+        "troubleshooting",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to async endpoints?",
+        "What tools can assist in detecting problems with async endpoints at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "background tasks"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FASTAPI-008",
+      "subject": "FastAPI",
+      "category": "Routing",
+      "subcategory": "Path Parameters",
+      "difficulty": "Easy",
+      "question": "Explain the difference between path parameters and request body in FastAPI.",
+      "ideal_answer": "path parameters and request body differ in several ways: path parameters is URL variable binding (works by automatic type conversion) whereas request body is JSON payload handling (works by Pydantic model binding). path parameters is typically used for {param}, type hints, while request body is used for BaseModel subclass as parameter. Example demonstrating path parameters: @app.get('/items/{item_id}')\ndef read_item(item_id: int): .... Example demonstrating request body: class Item(BaseModel): name: str; price: float\n@app.post('/items/')\ndef create_item(item: Item): ....",
+      "keywords": [
+        "path parameters",
+        "request body",
+        "comparison",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose path parameters over request body?",
+        "What is the performance or memory difference between path parameters and request body?"
+      ],
+      "related_concepts": [
+        "path parameters",
+        "request body",
+        "query parameters"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FASTAPI-009",
+      "subject": "FastAPI",
+      "category": "Data Validation",
+      "subcategory": "Field Validation",
+      "difficulty": "Easy",
+      "question": "What are the common issues with Field validators in FastAPI and how do you debug them?",
+      "ideal_answer": "Common issues with Field validators in FastAPI include: root_validator for cross-field. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Field validators",
+        "troubleshooting",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Field validators?",
+        "What tools can assist in detecting problems with Field validators at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Pydantic models"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FASTAPI-010",
+      "subject": "FastAPI",
+      "category": "Data Validation",
+      "subcategory": "Pydantic Models",
+      "difficulty": "Easy",
+      "question": "What are the common issues with Pydantic models in FastAPI and how do you debug them?",
+      "ideal_answer": "Common issues with Pydantic models in FastAPI include: v1 vs v2 migration. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Pydantic models",
+        "troubleshooting",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Pydantic models?",
+        "What tools can assist in detecting problems with Pydantic models at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Field validators"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "FASTAPI-011",
+      "subject": "FastAPI",
+      "category": "Routing",
+      "subcategory": "Request Body",
+      "difficulty": "Medium",
+      "question": "What are the common issues with request body in FastAPI and how do you debug them?",
+      "ideal_answer": "Common issues with request body in FastAPI include: multiple body params, Body(). To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "request body",
+        "troubleshooting",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to request body?",
+        "What tools can assist in detecting problems with request body at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "path parameters",
+        "query parameters"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FASTAPI-012",
+      "subject": "FastAPI",
+      "category": "Routing",
+      "subcategory": "Path Parameters",
+      "difficulty": "Medium",
+      "question": "What are the common issues with path parameters in FastAPI and how do you debug them?",
+      "ideal_answer": "Common issues with path parameters in FastAPI include: path parameter validation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "path parameters",
+        "troubleshooting",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to path parameters?",
+        "What tools can assist in detecting problems with path parameters at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "query parameters",
+        "request body"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FASTAPI-013",
+      "subject": "FastAPI",
+      "category": "Routing",
+      "subcategory": "Query Parameters",
+      "difficulty": "Medium",
+      "question": "What is query parameters in FastAPI and how does it work?",
+      "ideal_answer": "query parameters in FastAPI refers to URL query string binding. It works by optional parameter handling. Key characteristics include function arguments not in path. Example: @app.get('/items/')\ndef read_items(skip: int = 0, limit: int = 10): .... Common pitfalls include required vs optional queries.",
+      "keywords": [
+        "query parameters",
+        "FastAPI programming",
+        "routing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of query parameters in a production environment?",
+        "What are the common pitfalls or issues associated with query parameters?"
+      ],
+      "related_concepts": [
+        "path parameters",
+        "request body"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FASTAPI-014",
+      "subject": "FastAPI",
+      "category": "Data Validation",
+      "subcategory": "Pydantic Models",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Pydantic models and Field validators in FastAPI.",
+      "ideal_answer": "Pydantic models and Field validators differ in several ways: Pydantic models is data validation and serialization (works by type-annotated data classes) whereas Field validators is custom validation logic (works by field-level constraints). Pydantic models is typically used for automatic validation, JSON Schema, while Field validators is used for @validator decorator. Example demonstrating Pydantic models: class User(BaseModel): name: str = Field(..., min_length=3); age: int = Field(..., gt=0). Example demonstrating Field validators: @validator('password')\ndef validate_password(cls, v): ....",
+      "keywords": [
+        "Pydantic models",
+        "Field validators",
+        "comparison",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Pydantic models over Field validators?",
+        "What is the performance or memory difference between Pydantic models and Field validators?"
+      ],
+      "related_concepts": [
+        "Pydantic models",
+        "Field validators"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FASTAPI-015",
+      "subject": "FastAPI",
+      "category": "Core",
+      "subcategory": "Path Operations",
+      "difficulty": "Medium",
+      "question": "Explain the difference between path operation decorators and automatic API documentation in FastAPI.",
+      "ideal_answer": "path operation decorators and automatic API documentation differ in several ways: path operation decorators is route definition (works by HTTP method binding) whereas automatic API documentation is OpenAPI/Swagger generation (works by interactive docs). path operation decorators is typically used for @app.get, @app.post, @app.put, @app.delete, while automatic API documentation is used for /docs (Swagger UI), /redoc (ReDoc). Example demonstrating path operation decorators: @app.get('/items/{item_id}')\nasync def read_item(item_id: int): .... Example demonstrating automatic API documentation: @app.get('/items', response_model=List[Item]).",
+      "keywords": [
+        "path operation decorators",
+        "automatic API documentation",
+        "comparison",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose path operation decorators over automatic API documentation?",
+        "What is the performance or memory difference between path operation decorators and automatic API documentation?"
+      ],
+      "related_concepts": [
+        "path operation decorators",
+        "automatic API documentation",
+        "ASGI framework"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FASTAPI-016",
+      "subject": "FastAPI",
+      "category": "Dependency Injection",
+      "subcategory": "Depends",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Depends in FastAPI and how do you debug them?",
+      "ideal_answer": "Common issues with Depends in FastAPI include: dependency overrides for testing. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Depends",
+        "troubleshooting",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Depends?",
+        "What tools can assist in detecting problems with Depends at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "sub-dependencies"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FASTAPI-017",
+      "subject": "FastAPI",
+      "category": "Async",
+      "subcategory": "Background Tasks",
+      "difficulty": "Medium",
+      "question": "What is background tasks in FastAPI and how does it work?",
+      "ideal_answer": "background tasks in FastAPI refers to deferred execution. It works by returning response before task completion. Key characteristics include BackgroundTasks dependency. Example: def send_email(email: str, background_tasks: BackgroundTasks): background_tasks.add_task(send_email_task, email). Common pitfalls include task reliability vs Celery.",
+      "keywords": [
+        "background tasks",
+        "FastAPI programming",
+        "async"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of background tasks in a production environment?",
+        "What are the common pitfalls or issues associated with background tasks?"
+      ],
+      "related_concepts": [
+        "async endpoints"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FASTAPI-018",
+      "subject": "FastAPI",
+      "category": "Core",
+      "subcategory": "App Creation",
+      "difficulty": "Medium",
+      "question": "Explain the difference between ASGI framework and path operation decorators in FastAPI.",
+      "ideal_answer": "ASGI framework and path operation decorators differ in several ways: ASGI framework is async server gateway interface (works by async Python web framework) whereas path operation decorators is route definition (works by HTTP method binding). ASGI framework is typically used for Starlette base, async/await native, while path operation decorators is used for @app.get, @app.post, @app.put, @app.delete. Example demonstrating ASGI framework: from fastapi import FastAPI; app = FastAPI(). Example demonstrating path operation decorators: @app.get('/items/{item_id}')\nasync def read_item(item_id: int): ....",
+      "keywords": [
+        "ASGI framework",
+        "path operation decorators",
+        "comparison",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ASGI framework over path operation decorators?",
+        "What is the performance or memory difference between ASGI framework and path operation decorators?"
+      ],
+      "related_concepts": [
+        "ASGI framework",
+        "path operation decorators",
+        "automatic API documentation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FASTAPI-019",
+      "subject": "FastAPI",
+      "category": "Data Validation",
+      "subcategory": "Field Validation",
+      "difficulty": "Medium",
+      "question": "What is Field validators in FastAPI and how does it work?",
+      "ideal_answer": "Field validators in FastAPI refers to custom validation logic. It works by field-level constraints. Key characteristics include @validator decorator. Example: @validator('password')\ndef validate_password(cls, v): .... Common pitfalls include root_validator for cross-field.",
+      "keywords": [
+        "Field validators",
+        "FastAPI programming",
+        "data validation"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Field validators in a production environment?",
+        "What are the common pitfalls or issues associated with Field validators?"
+      ],
+      "related_concepts": [
+        "Pydantic models"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FASTAPI-020",
+      "subject": "FastAPI",
+      "category": "Core",
+      "subcategory": "App Creation",
+      "difficulty": "Medium",
+      "question": "What is ASGI framework in FastAPI and how does it work?",
+      "ideal_answer": "ASGI framework in FastAPI refers to async server gateway interface. It works by async Python web framework. Key characteristics include Starlette base, async/await native. Example: from fastapi import FastAPI; app = FastAPI(). Common pitfalls include WSGI vs ASGI.",
+      "keywords": [
+        "ASGI framework",
+        "FastAPI programming",
+        "core"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of ASGI framework in a production environment?",
+        "What are the common pitfalls or issues associated with ASGI framework?"
+      ],
+      "related_concepts": [
+        "path operation decorators",
+        "automatic API documentation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FASTAPI-021",
+      "subject": "FastAPI",
+      "category": "Authentication",
+      "subcategory": "OAuth2",
+      "difficulty": "Medium",
+      "question": "What is OAuth2 with Password in FastAPI and how does it work?",
+      "ideal_answer": "OAuth2 with Password in FastAPI refers to built-in OAuth2 flow. It works by token-based authentication. Key characteristics include OAuth2PasswordBearer, OAuth2PasswordRequestForm. Example: oauth2_scheme = OAuth2PasswordBearer(tokenUrl='token'). Common pitfalls include JWT token creation.",
+      "keywords": [
+        "OAuth2 with Password",
+        "FastAPI programming",
+        "authentication"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of OAuth2 with Password in a production environment?",
+        "What are the common pitfalls or issues associated with OAuth2 with Password?"
+      ],
+      "related_concepts": [
+        "OAuth2 with Password"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FASTAPI-022",
+      "subject": "FastAPI",
+      "category": "Routing",
+      "subcategory": "Request Body",
+      "difficulty": "Medium",
+      "question": "What is request body in FastAPI and how does it work?",
+      "ideal_answer": "request body in FastAPI refers to JSON payload handling. It works by Pydantic model binding. Key characteristics include BaseModel subclass as parameter. Example: class Item(BaseModel): name: str; price: float\n@app.post('/items/')\ndef create_item(item: Item): .... Common pitfalls include multiple body params, Body().",
+      "keywords": [
+        "request body",
+        "FastAPI programming",
+        "routing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of request body in a production environment?",
+        "What are the common pitfalls or issues associated with request body?"
+      ],
+      "related_concepts": [
+        "path parameters",
+        "query parameters"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FASTAPI-023",
+      "subject": "FastAPI",
+      "category": "Dependency Injection",
+      "subcategory": "Depends",
+      "difficulty": "Medium",
+      "question": "What is Depends in FastAPI and how does it work?",
+      "ideal_answer": "Depends in FastAPI refers to dependency injection system. It works by reusable dependencies. Key characteristics include caching, sub-dependencies. Example: async def get_db(): ...\n@app.get('/items/')\ndef read_items(db: Session = Depends(get_db)): .... Common pitfalls include dependency overrides for testing.",
+      "keywords": [
+        "Depends",
+        "FastAPI programming",
+        "dependency injection"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Depends in a production environment?",
+        "What are the common pitfalls or issues associated with Depends?"
+      ],
+      "related_concepts": [
+        "sub-dependencies"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FASTAPI-024",
+      "subject": "FastAPI",
+      "category": "Core",
+      "subcategory": "Path Operations",
+      "difficulty": "Medium",
+      "question": "What is path operation decorators in FastAPI and how does it work?",
+      "ideal_answer": "path operation decorators in FastAPI refers to route definition. It works by HTTP method binding. Key characteristics include @app.get, @app.post, @app.put, @app.delete. Example: @app.get('/items/{item_id}')\nasync def read_item(item_id: int): .... Common pitfalls include automatic OpenAPI generation.",
+      "keywords": [
+        "path operation decorators",
+        "FastAPI programming",
+        "core"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of path operation decorators in a production environment?",
+        "What are the common pitfalls or issues associated with path operation decorators?"
+      ],
+      "related_concepts": [
+        "ASGI framework",
+        "automatic API documentation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FASTAPI-025",
+      "subject": "FastAPI",
+      "category": "Async",
+      "subcategory": "Async Endpoints",
+      "difficulty": "Medium",
+      "question": "Explain the difference between async endpoints and background tasks in FastAPI.",
+      "ideal_answer": "async endpoints and background tasks differ in several ways: async endpoints is non-blocking route handlers (works by async/await syntax) whereas background tasks is deferred execution (works by returning response before task completion). async endpoints is typically used for database, HTTP client async operations, while background tasks is used for BackgroundTasks dependency. Example demonstrating async endpoints: @app.get('/items/')\nasync def read_items(): .... Example demonstrating background tasks: def send_email(email: str, background_tasks: BackgroundTasks): background_tasks.add_task(send_email_task, email).",
+      "keywords": [
+        "async endpoints",
+        "background tasks",
+        "comparison",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose async endpoints over background tasks?",
+        "What is the performance or memory difference between async endpoints and background tasks?"
+      ],
+      "related_concepts": [
+        "async endpoints",
+        "background tasks"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FASTAPI-026",
+      "subject": "FastAPI",
+      "category": "Async",
+      "subcategory": "Async Endpoints",
+      "difficulty": "Medium",
+      "question": "What is async endpoints in FastAPI and how does it work?",
+      "ideal_answer": "async endpoints in FastAPI refers to non-blocking route handlers. It works by async/await syntax. Key characteristics include database, HTTP client async operations. Example: @app.get('/items/')\nasync def read_items(): .... Common pitfalls include sync in async thread pool.",
+      "keywords": [
+        "async endpoints",
+        "FastAPI programming",
+        "async"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of async endpoints in a production environment?",
+        "What are the common pitfalls or issues associated with async endpoints?"
+      ],
+      "related_concepts": [
+        "background tasks"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FASTAPI-027",
+      "subject": "FastAPI",
+      "category": "Dependency Injection",
+      "subcategory": "Sub-dependencies",
+      "difficulty": "Medium",
+      "question": "What are the common issues with sub-dependencies in FastAPI and how do you debug them?",
+      "ideal_answer": "Common issues with sub-dependencies in FastAPI include: caching behavior. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "sub-dependencies",
+        "troubleshooting",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to sub-dependencies?",
+        "What tools can assist in detecting problems with sub-dependencies at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Depends"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FASTAPI-028",
+      "subject": "FastAPI",
+      "category": "Core",
+      "subcategory": "Path Operations",
+      "difficulty": "Medium",
+      "question": "What are the common issues with path operation decorators in FastAPI and how do you debug them?",
+      "ideal_answer": "Common issues with path operation decorators in FastAPI include: automatic OpenAPI generation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "path operation decorators",
+        "troubleshooting",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to path operation decorators?",
+        "What tools can assist in detecting problems with path operation decorators at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ASGI framework",
+        "automatic API documentation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "FASTAPI-029",
+      "subject": "FastAPI",
+      "category": "Data Validation",
+      "subcategory": "Pydantic Models",
+      "difficulty": "Hard",
+      "question": "What is Pydantic models in FastAPI and how does it work?",
+      "ideal_answer": "Pydantic models in FastAPI refers to data validation and serialization. It works by type-annotated data classes. Key characteristics include automatic validation, JSON Schema. Example: class User(BaseModel): name: str = Field(..., min_length=3); age: int = Field(..., gt=0). Common pitfalls include v1 vs v2 migration.",
+      "keywords": [
+        "Pydantic models",
+        "FastAPI programming",
+        "data validation"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Pydantic models in a production environment?",
+        "What are the common pitfalls or issues associated with Pydantic models?"
+      ],
+      "related_concepts": [
+        "Field validators"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "FASTAPI-030",
+      "subject": "FastAPI",
+      "category": "Core",
+      "subcategory": "Request/Response",
+      "difficulty": "Hard",
+      "question": "What is automatic API documentation in FastAPI and how does it work?",
+      "ideal_answer": "automatic API documentation in FastAPI refers to OpenAPI/Swagger generation. It works by interactive docs. Key characteristics include /docs (Swagger UI), /redoc (ReDoc). Example: @app.get('/items', response_model=List[Item]). Common pitfalls include customizing OpenAPI schema.",
+      "keywords": [
+        "automatic API documentation",
+        "FastAPI programming",
+        "core"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of automatic API documentation in a production environment?",
+        "What are the common pitfalls or issues associated with automatic API documentation?"
+      ],
+      "related_concepts": [
+        "ASGI framework",
+        "path operation decorators"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "FASTAPI-031",
+      "subject": "FastAPI",
+      "category": "Authentication",
+      "subcategory": "OAuth2",
+      "difficulty": "Hard",
+      "question": "What are the common issues with OAuth2 with Password in FastAPI and how do you debug them?",
+      "ideal_answer": "Common issues with OAuth2 with Password in FastAPI include: JWT token creation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "OAuth2 with Password",
+        "troubleshooting",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to OAuth2 with Password?",
+        "What tools can assist in detecting problems with OAuth2 with Password at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "OAuth2 with Password"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "FASTAPI-032",
+      "subject": "FastAPI",
+      "category": "Routing",
+      "subcategory": "Path Parameters",
+      "difficulty": "Hard",
+      "question": "Explain the difference between path parameters and query parameters in FastAPI.",
+      "ideal_answer": "path parameters and query parameters differ in several ways: path parameters is URL variable binding (works by automatic type conversion) whereas query parameters is URL query string binding (works by optional parameter handling). path parameters is typically used for {param}, type hints, while query parameters is used for function arguments not in path. Example demonstrating path parameters: @app.get('/items/{item_id}')\ndef read_item(item_id: int): .... Example demonstrating query parameters: @app.get('/items/')\ndef read_items(skip: int = 0, limit: int = 10): ....",
+      "keywords": [
+        "path parameters",
+        "query parameters",
+        "comparison",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose path parameters over query parameters?",
+        "What is the performance or memory difference between path parameters and query parameters?"
+      ],
+      "related_concepts": [
+        "path parameters",
+        "query parameters",
+        "request body"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "FASTAPI-033",
+      "subject": "FastAPI",
+      "category": "Routing",
+      "subcategory": "Query Parameters",
+      "difficulty": "Hard",
+      "question": "Explain the difference between query parameters and request body in FastAPI.",
+      "ideal_answer": "query parameters and request body differ in several ways: query parameters is URL query string binding (works by optional parameter handling) whereas request body is JSON payload handling (works by Pydantic model binding). query parameters is typically used for function arguments not in path, while request body is used for BaseModel subclass as parameter. Example demonstrating query parameters: @app.get('/items/')\ndef read_items(skip: int = 0, limit: int = 10): .... Example demonstrating request body: class Item(BaseModel): name: str; price: float\n@app.post('/items/')\ndef create_item(item: Item): ....",
+      "keywords": [
+        "query parameters",
+        "request body",
+        "comparison",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose query parameters over request body?",
+        "What is the performance or memory difference between query parameters and request body?"
+      ],
+      "related_concepts": [
+        "query parameters",
+        "request body",
+        "path parameters"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "FASTAPI-034",
+      "subject": "FastAPI",
+      "category": "Core",
+      "subcategory": "App Creation",
+      "difficulty": "Hard",
+      "question": "What are the common issues with ASGI framework in FastAPI and how do you debug them?",
+      "ideal_answer": "Common issues with ASGI framework in FastAPI include: WSGI vs ASGI. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "ASGI framework",
+        "troubleshooting",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to ASGI framework?",
+        "What tools can assist in detecting problems with ASGI framework at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "path operation decorators",
+        "automatic API documentation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "FASTAPI-035",
+      "subject": "FastAPI",
+      "category": "Core",
+      "subcategory": "App Creation",
+      "difficulty": "Hard",
+      "question": "Explain the difference between ASGI framework and automatic API documentation in FastAPI.",
+      "ideal_answer": "ASGI framework and automatic API documentation differ in several ways: ASGI framework is async server gateway interface (works by async Python web framework) whereas automatic API documentation is OpenAPI/Swagger generation (works by interactive docs). ASGI framework is typically used for Starlette base, async/await native, while automatic API documentation is used for /docs (Swagger UI), /redoc (ReDoc). Example demonstrating ASGI framework: from fastapi import FastAPI; app = FastAPI(). Example demonstrating automatic API documentation: @app.get('/items', response_model=List[Item]).",
+      "keywords": [
+        "ASGI framework",
+        "automatic API documentation",
+        "comparison",
+        "FastAPI"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ASGI framework over automatic API documentation?",
+        "What is the performance or memory difference between ASGI framework and automatic API documentation?"
+      ],
+      "related_concepts": [
+        "ASGI framework",
+        "automatic API documentation",
+        "path operation decorators"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

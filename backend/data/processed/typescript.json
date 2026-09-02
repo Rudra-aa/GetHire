@@ -1,0 +1,2206 @@
+{
+  "metadata": {
+    "subject": "TypeScript",
+    "domain": "Software Engineering",
+    "total_questions": 83,
+    "difficulty_distribution": {
+      "Easy": 24,
+      "Medium": 42,
+      "Hard": 17
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:47Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "TS-001",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Mapped Types",
+      "difficulty": "Easy",
+      "question": "Explain the difference between type guards and utility types in TypeScript.",
+      "ideal_answer": "type guards and utility types differ in several ways: type guards is runtime type checking (works by narrowing types in blocks) whereas utility types is built-in type helpers (works by common type transformations). type guards is typically used for typeof, instanceof, in, custom predicates, while utility types is used for Partial, Required, Pick, Omit, Record, ReturnType. Example demonstrating type guards: function isString(val: unknown): val is string { return typeof val === 'string'; }. Example demonstrating utility types: type UserPreview = Pick<User, 'id' | 'name'>;.",
+      "keywords": [
+        "type guards",
+        "utility types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose type guards over utility types?",
+        "What is the performance or memory difference between type guards and utility types?"
+      ],
+      "related_concepts": [
+        "type guards",
+        "utility types",
+        "union types",
+        "intersection types"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-002",
+      "subject": "TypeScript",
+      "category": "OOP",
+      "subcategory": "Abstract Classes",
+      "difficulty": "Easy",
+      "question": "What are the common issues with structural typing in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with structural typing in TypeScript include: excess property checks. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "structural typing",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to structural typing?",
+        "What tools can assist in detecting problems with structural typing at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "interface vs type alias",
+        "access modifiers",
+        "abstract classes"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-003",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Type Guards",
+      "difficulty": "Easy",
+      "question": "What are the common issues with template literal types in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with template literal types in TypeScript include: recursive template literals. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "template literal types",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to template literal types?",
+        "What tools can assist in detecting problems with template literal types at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "union types",
+        "intersection types",
+        "type guards"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-004",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Mapped Types",
+      "difficulty": "Easy",
+      "question": "Explain the difference between type guards and conditional types in TypeScript.",
+      "ideal_answer": "type guards and conditional types differ in several ways: type guards is runtime type checking (works by narrowing types in blocks) whereas conditional types is type-level ternary (works by types based on conditions). type guards is typically used for typeof, instanceof, in, custom predicates, while conditional types is used for T extends U ? X : Y. Example demonstrating type guards: function isString(val: unknown): val is string { return typeof val === 'string'; }. Example demonstrating conditional types: type NonNullable<T> = T extends null | undefined ? never : T;.",
+      "keywords": [
+        "type guards",
+        "conditional types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose type guards over conditional types?",
+        "What is the performance or memory difference between type guards and conditional types?"
+      ],
+      "related_concepts": [
+        "type guards",
+        "conditional types",
+        "union types",
+        "intersection types"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-005",
+      "subject": "TypeScript",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Easy",
+      "question": "What are the common issues with interface vs type alias in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with interface vs type alias in TypeScript include: consistency in codebase. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "interface vs type alias",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to interface vs type alias?",
+        "What tools can assist in detecting problems with interface vs type alias at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "access modifiers",
+        "abstract classes",
+        "structural typing"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-006",
+      "subject": "TypeScript",
+      "category": "Core Types",
+      "subcategory": "Arrays",
+      "difficulty": "Easy",
+      "question": "Explain the difference between unknown vs any and enum vs const enum in TypeScript.",
+      "ideal_answer": "unknown vs any and enum vs const enum differ in several ways: unknown vs any is top type comparison (works by type-safe alternatives) whereas enum vs const enum is enumerated types (works by named constant collections). unknown vs any is typically used for unknown: requires type checking; any: disables type checking, while enum vs const enum is used for enum: object at runtime; const enum: inline values. Example demonstrating unknown vs any: function process(val: unknown) { if (typeof val === 'string') { ... } }. Example demonstrating enum vs const enum: const enum Direction { Up, Down }.",
+      "keywords": [
+        "unknown vs any",
+        "enum vs const enum",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose unknown vs any over enum vs const enum?",
+        "What is the performance or memory difference between unknown vs any and enum vs const enum?"
+      ],
+      "related_concepts": [
+        "unknown vs any",
+        "enum vs const enum",
+        "type inference",
+        "never type"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-007",
+      "subject": "TypeScript",
+      "category": "Core Types",
+      "subcategory": "Any/Unknown/Never",
+      "difficulty": "Easy",
+      "question": "What is tuple types in TypeScript and how does it work?",
+      "ideal_answer": "tuple types in TypeScript refers to fixed-length arrays. It works by heterogeneous element types. Key characteristics include optional elements, rest elements. Example: type Point = [number, number, number?];. Common pitfalls include tuple vs array, labeled tuples.",
+      "keywords": [
+        "tuple types",
+        "TypeScript programming",
+        "core types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of tuple types in a production environment?",
+        "What are the common pitfalls or issues associated with tuple types?"
+      ],
+      "related_concepts": [
+        "type inference",
+        "unknown vs any",
+        "never type"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-008",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Union/Intersection",
+      "difficulty": "Easy",
+      "question": "Explain the difference between union types and template literal types in TypeScript.",
+      "ideal_answer": "union types and template literal types differ in several ways: union types is OR type composition (works by allowing multiple types) whereas template literal types is string type manipulation (works by type-safe string patterns). union types is typically used for narrowing with type guards, while template literal types is used for concatenation, inference. Example demonstrating union types: type Status = 'loading' | 'success' | 'error';. Example demonstrating template literal types: type EventName<T extends string> = `on${Capitalize<T>}`;.",
+      "keywords": [
+        "union types",
+        "template literal types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose union types over template literal types?",
+        "What is the performance or memory difference between union types and template literal types?"
+      ],
+      "related_concepts": [
+        "union types",
+        "template literal types",
+        "intersection types",
+        "type guards"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-009",
+      "subject": "TypeScript",
+      "category": "OOP",
+      "subcategory": "Abstract Classes",
+      "difficulty": "Easy",
+      "question": "What is structural typing in TypeScript and how does it work?",
+      "ideal_answer": "structural typing in TypeScript refers to duck typing system. It works by compatibility based on shape. Key characteristics include nominal vs structural. Example: interface Named { name: string; } // compatible with any object having name. Common pitfalls include excess property checks.",
+      "keywords": [
+        "structural typing",
+        "TypeScript programming",
+        "oop"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of structural typing in a production environment?",
+        "What are the common pitfalls or issues associated with structural typing?"
+      ],
+      "related_concepts": [
+        "interface vs type alias",
+        "access modifiers",
+        "abstract classes"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-010",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Union/Intersection",
+      "difficulty": "Easy",
+      "question": "What is utility types in TypeScript and how does it work?",
+      "ideal_answer": "utility types in TypeScript refers to built-in type helpers. It works by common type transformations. Key characteristics include Partial, Required, Pick, Omit, Record, ReturnType. Example: type UserPreview = Pick<User, 'id' | 'name'>;. Common pitfalls include deep partial implementation.",
+      "keywords": [
+        "utility types",
+        "TypeScript programming",
+        "advanced types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of utility types in a production environment?",
+        "What are the common pitfalls or issues associated with utility types?"
+      ],
+      "related_concepts": [
+        "union types",
+        "intersection types",
+        "type guards"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-011",
+      "subject": "TypeScript",
+      "category": "OOP",
+      "subcategory": "Interfaces",
+      "difficulty": "Easy",
+      "question": "Explain the difference between access modifiers and abstract classes in TypeScript.",
+      "ideal_answer": "access modifiers and abstract classes differ in several ways: access modifiers is visibility control (works by encapsulation in classes) whereas abstract classes is partial implementation classes (works by defining base contracts). access modifiers is typically used for public, private, protected, readonly, while abstract classes is used for cannot instantiate, may have implementation. Example demonstrating access modifiers: private constructor() {}. Example demonstrating abstract classes: abstract class Animal { abstract makeSound(): void; }.",
+      "keywords": [
+        "access modifiers",
+        "abstract classes",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose access modifiers over abstract classes?",
+        "What is the performance or memory difference between access modifiers and abstract classes?"
+      ],
+      "related_concepts": [
+        "access modifiers",
+        "abstract classes",
+        "interface vs type alias",
+        "structural typing"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-012",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Type Guards",
+      "difficulty": "Easy",
+      "question": "What is template literal types in TypeScript and how does it work?",
+      "ideal_answer": "template literal types in TypeScript refers to string type manipulation. It works by type-safe string patterns. Key characteristics include concatenation, inference. Example: type EventName<T extends string> = `on${Capitalize<T>}`;. Common pitfalls include recursive template literals.",
+      "keywords": [
+        "template literal types",
+        "TypeScript programming",
+        "advanced types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of template literal types in a production environment?",
+        "What are the common pitfalls or issues associated with template literal types?"
+      ],
+      "related_concepts": [
+        "union types",
+        "intersection types",
+        "type guards"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-013",
+      "subject": "TypeScript",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Easy",
+      "question": "Explain the difference between interface vs type alias and access modifiers in TypeScript.",
+      "ideal_answer": "interface vs type alias and access modifiers differ in several ways: interface vs type alias is structural type definitions (works by different use cases) whereas access modifiers is visibility control (works by encapsulation in classes). interface vs type alias is typically used for interface: declaration merging, extends; type: unions, intersections, primitives, while access modifiers is used for public, private, protected, readonly. Example demonstrating interface vs type alias: interface Point { x: number; y: number; }. Example demonstrating access modifiers: private constructor() {}.",
+      "keywords": [
+        "interface vs type alias",
+        "access modifiers",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose interface vs type alias over access modifiers?",
+        "What is the performance or memory difference between interface vs type alias and access modifiers?"
+      ],
+      "related_concepts": [
+        "interface vs type alias",
+        "access modifiers",
+        "abstract classes",
+        "structural typing"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-014",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Conditional Types",
+      "difficulty": "Easy",
+      "question": "Explain the difference between mapped types and conditional types in TypeScript.",
+      "ideal_answer": "mapped types and conditional types differ in several ways: mapped types is type transformation (works by creating types from existing types) whereas conditional types is type-level ternary (works by types based on conditions). mapped types is typically used for iterating over keys with in, while conditional types is used for T extends U ? X : Y. Example demonstrating mapped types: type Readonly<T> = { readonly [K in keyof T]: T[K] };. Example demonstrating conditional types: type NonNullable<T> = T extends null | undefined ? never : T;.",
+      "keywords": [
+        "mapped types",
+        "conditional types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose mapped types over conditional types?",
+        "What is the performance or memory difference between mapped types and conditional types?"
+      ],
+      "related_concepts": [
+        "mapped types",
+        "conditional types",
+        "union types",
+        "intersection types"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-015",
+      "subject": "TypeScript",
+      "category": "Generics",
+      "subcategory": "Generic Classes",
+      "difficulty": "Easy",
+      "question": "What is generic defaults in TypeScript and how does it work?",
+      "ideal_answer": "generic defaults in TypeScript refers to default type parameters. It works by optional generic arguments. Key characteristics include sensible defaults. Example: interface Container<T = string> { value: T; }. Common pitfalls include default ordering rules.",
+      "keywords": [
+        "generic defaults",
+        "TypeScript programming",
+        "generics"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of generic defaults in a production environment?",
+        "What are the common pitfalls or issues associated with generic defaults?"
+      ],
+      "related_concepts": [
+        "generic constraints",
+        "variance"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-016",
+      "subject": "TypeScript",
+      "category": "Core Types",
+      "subcategory": "Primitives",
+      "difficulty": "Easy",
+      "question": "Explain the difference between type inference and enum vs const enum in TypeScript.",
+      "ideal_answer": "type inference and enum vs const enum differ in several ways: type inference is automatic type deduction (works by reducing explicit annotations) whereas enum vs const enum is enumerated types (works by named constant collections). type inference is typically used for contextual typing, best common type, while enum vs const enum is used for enum: object at runtime; const enum: inline values. Example demonstrating type inference: let x = 10; // inferred as number. Example demonstrating enum vs const enum: const enum Direction { Up, Down }.",
+      "keywords": [
+        "type inference",
+        "enum vs const enum",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose type inference over enum vs const enum?",
+        "What is the performance or memory difference between type inference and enum vs const enum?"
+      ],
+      "related_concepts": [
+        "type inference",
+        "enum vs const enum",
+        "unknown vs any",
+        "never type"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-017",
+      "subject": "TypeScript",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Easy",
+      "question": "Explain the difference between interface vs type alias and structural typing in TypeScript.",
+      "ideal_answer": "interface vs type alias and structural typing differ in several ways: interface vs type alias is structural type definitions (works by different use cases) whereas structural typing is duck typing system (works by compatibility based on shape). interface vs type alias is typically used for interface: declaration merging, extends; type: unions, intersections, primitives, while structural typing is used for nominal vs structural. Example demonstrating interface vs type alias: interface Point { x: number; y: number; }. Example demonstrating structural typing: interface Named { name: string; } // compatible with any object having name.",
+      "keywords": [
+        "interface vs type alias",
+        "structural typing",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose interface vs type alias over structural typing?",
+        "What is the performance or memory difference between interface vs type alias and structural typing?"
+      ],
+      "related_concepts": [
+        "interface vs type alias",
+        "structural typing",
+        "access modifiers",
+        "abstract classes"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-018",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Union/Intersection",
+      "difficulty": "Easy",
+      "question": "Explain the difference between union types and mapped types in TypeScript.",
+      "ideal_answer": "union types and mapped types differ in several ways: union types is OR type composition (works by allowing multiple types) whereas mapped types is type transformation (works by creating types from existing types). union types is typically used for narrowing with type guards, while mapped types is used for iterating over keys with in. Example demonstrating union types: type Status = 'loading' | 'success' | 'error';. Example demonstrating mapped types: type Readonly<T> = { readonly [K in keyof T]: T[K] };.",
+      "keywords": [
+        "union types",
+        "mapped types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose union types over mapped types?",
+        "What is the performance or memory difference between union types and mapped types?"
+      ],
+      "related_concepts": [
+        "union types",
+        "mapped types",
+        "intersection types",
+        "type guards"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-019",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Type Guards",
+      "difficulty": "Easy",
+      "question": "What are the common issues with intersection types in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with intersection types in TypeScript include: conflicting property types. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "intersection types",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to intersection types?",
+        "What tools can assist in detecting problems with intersection types at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "union types",
+        "type guards",
+        "mapped types"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-020",
+      "subject": "TypeScript",
+      "category": "OOP",
+      "subcategory": "Interfaces",
+      "difficulty": "Easy",
+      "question": "What is access modifiers in TypeScript and how does it work?",
+      "ideal_answer": "access modifiers in TypeScript refers to visibility control. It works by encapsulation in classes. Key characteristics include public, private, protected, readonly. Example: private constructor() {}. Common pitfalls include #private vs private keyword.",
+      "keywords": [
+        "access modifiers",
+        "TypeScript programming",
+        "oop"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of access modifiers in a production environment?",
+        "What are the common pitfalls or issues associated with access modifiers?"
+      ],
+      "related_concepts": [
+        "interface vs type alias",
+        "abstract classes",
+        "structural typing"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-021",
+      "subject": "TypeScript",
+      "category": "Configuration",
+      "subcategory": "tsconfig",
+      "difficulty": "Easy",
+      "question": "What are the common issues with strict mode in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with strict mode in TypeScript include: migration challenges. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "strict mode",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to strict mode?",
+        "What tools can assist in detecting problems with strict mode at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "declaration files"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-022",
+      "subject": "TypeScript",
+      "category": "Core Types",
+      "subcategory": "Primitives",
+      "difficulty": "Easy",
+      "question": "What are the common issues with type inference in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with type inference in TypeScript include: any propagation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "type inference",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to type inference?",
+        "What tools can assist in detecting problems with type inference at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "unknown vs any",
+        "never type",
+        "enum vs const enum"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-023",
+      "subject": "TypeScript",
+      "category": "OOP",
+      "subcategory": "Access Modifiers",
+      "difficulty": "Easy",
+      "question": "What are the common issues with abstract classes in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with abstract classes in TypeScript include: abstract vs interface choice. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "abstract classes",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to abstract classes?",
+        "What tools can assist in detecting problems with abstract classes at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "interface vs type alias",
+        "access modifiers",
+        "structural typing"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-024",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Type Guards",
+      "difficulty": "Easy",
+      "question": "Explain the difference between intersection types and type guards in TypeScript.",
+      "ideal_answer": "intersection types and type guards differ in several ways: intersection types is AND type composition (works by combining multiple types) whereas type guards is runtime type checking (works by narrowing types in blocks). intersection types is typically used for all properties from all types, while type guards is used for typeof, instanceof, in, custom predicates. Example demonstrating intersection types: type Employee = Person & HasId;. Example demonstrating type guards: function isString(val: unknown): val is string { return typeof val === 'string'; }.",
+      "keywords": [
+        "intersection types",
+        "type guards",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose intersection types over type guards?",
+        "What is the performance or memory difference between intersection types and type guards?"
+      ],
+      "related_concepts": [
+        "intersection types",
+        "type guards",
+        "union types",
+        "mapped types"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "TS-025",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Type Guards",
+      "difficulty": "Medium",
+      "question": "Explain the difference between intersection types and conditional types in TypeScript.",
+      "ideal_answer": "intersection types and conditional types differ in several ways: intersection types is AND type composition (works by combining multiple types) whereas conditional types is type-level ternary (works by types based on conditions). intersection types is typically used for all properties from all types, while conditional types is used for T extends U ? X : Y. Example demonstrating intersection types: type Employee = Person & HasId;. Example demonstrating conditional types: type NonNullable<T> = T extends null | undefined ? never : T;.",
+      "keywords": [
+        "intersection types",
+        "conditional types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose intersection types over conditional types?",
+        "What is the performance or memory difference between intersection types and conditional types?"
+      ],
+      "related_concepts": [
+        "intersection types",
+        "conditional types",
+        "union types",
+        "type guards"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-026",
+      "subject": "TypeScript",
+      "category": "Configuration",
+      "subcategory": "tsconfig",
+      "difficulty": "Medium",
+      "question": "What is strict mode in TypeScript and how does it work?",
+      "ideal_answer": "strict mode in TypeScript refers to compiler strictness options. It works by maximizing type safety. Key characteristics include strictNullChecks, noImplicitAny, strictPropertyInitialization. Example: \"strict\": true in tsconfig. Common pitfalls include migration challenges.",
+      "keywords": [
+        "strict mode",
+        "TypeScript programming",
+        "configuration"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of strict mode in a production environment?",
+        "What are the common pitfalls or issues associated with strict mode?"
+      ],
+      "related_concepts": [
+        "declaration files"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-027",
+      "subject": "TypeScript",
+      "category": "Generics",
+      "subcategory": "Generic Constraints",
+      "difficulty": "Medium",
+      "question": "What are the common issues with variance in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with variance in TypeScript include: strictFunctionTypes impact. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "variance",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to variance?",
+        "What tools can assist in detecting problems with variance at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "generic constraints",
+        "generic defaults"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-028",
+      "subject": "TypeScript",
+      "category": "Generics",
+      "subcategory": "Generic Classes",
+      "difficulty": "Medium",
+      "question": "What are the common issues with generic defaults in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with generic defaults in TypeScript include: default ordering rules. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "generic defaults",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to generic defaults?",
+        "What tools can assist in detecting problems with generic defaults at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "generic constraints",
+        "variance"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-029",
+      "subject": "TypeScript",
+      "category": "Core Types",
+      "subcategory": "Enums",
+      "difficulty": "Medium",
+      "question": "Explain the difference between enum vs const enum and tuple types in TypeScript.",
+      "ideal_answer": "enum vs const enum and tuple types differ in several ways: enum vs const enum is enumerated types (works by named constant collections) whereas tuple types is fixed-length arrays (works by heterogeneous element types). enum vs const enum is typically used for enum: object at runtime; const enum: inline values, while tuple types is used for optional elements, rest elements. Example demonstrating enum vs const enum: const enum Direction { Up, Down }. Example demonstrating tuple types: type Point = [number, number, number?];.",
+      "keywords": [
+        "enum vs const enum",
+        "tuple types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose enum vs const enum over tuple types?",
+        "What is the performance or memory difference between enum vs const enum and tuple types?"
+      ],
+      "related_concepts": [
+        "enum vs const enum",
+        "tuple types",
+        "type inference",
+        "unknown vs any"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-030",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Union/Intersection",
+      "difficulty": "Medium",
+      "question": "What is union types in TypeScript and how does it work?",
+      "ideal_answer": "union types in TypeScript refers to OR type composition. It works by allowing multiple types. Key characteristics include narrowing with type guards. Example: type Status = 'loading' | 'success' | 'error';. Common pitfalls include discriminated unions.",
+      "keywords": [
+        "union types",
+        "TypeScript programming",
+        "advanced types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of union types in a production environment?",
+        "What are the common pitfalls or issues associated with union types?"
+      ],
+      "related_concepts": [
+        "intersection types",
+        "type guards",
+        "mapped types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-031",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Conditional Types",
+      "difficulty": "Medium",
+      "question": "What is mapped types in TypeScript and how does it work?",
+      "ideal_answer": "mapped types in TypeScript refers to type transformation. It works by creating types from existing types. Key characteristics include iterating over keys with in. Example: type Readonly<T> = { readonly [K in keyof T]: T[K] };. Common pitfalls include key remapping, as clauses.",
+      "keywords": [
+        "mapped types",
+        "TypeScript programming",
+        "advanced types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of mapped types in a production environment?",
+        "What are the common pitfalls or issues associated with mapped types?"
+      ],
+      "related_concepts": [
+        "union types",
+        "intersection types",
+        "type guards"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-032",
+      "subject": "TypeScript",
+      "category": "Core Types",
+      "subcategory": "Tuples",
+      "difficulty": "Medium",
+      "question": "Explain the difference between never type and tuple types in TypeScript.",
+      "ideal_answer": "never type and tuple types differ in several ways: never type is bottom type (works by representing unreachable code) whereas tuple types is fixed-length arrays (works by heterogeneous element types). never type is typically used for functions that throw, exhaustive type checks, while tuple types is used for optional elements, rest elements. Example demonstrating never type: function fail(): never { throw new Error(); }. Example demonstrating tuple types: type Point = [number, number, number?];.",
+      "keywords": [
+        "never type",
+        "tuple types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose never type over tuple types?",
+        "What is the performance or memory difference between never type and tuple types?"
+      ],
+      "related_concepts": [
+        "never type",
+        "tuple types",
+        "type inference",
+        "unknown vs any"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-033",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Utility Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between conditional types and utility types in TypeScript.",
+      "ideal_answer": "conditional types and utility types differ in several ways: conditional types is type-level ternary (works by types based on conditions) whereas utility types is built-in type helpers (works by common type transformations). conditional types is typically used for T extends U ? X : Y, while utility types is used for Partial, Required, Pick, Omit, Record, ReturnType. Example demonstrating conditional types: type NonNullable<T> = T extends null | undefined ? never : T;. Example demonstrating utility types: type UserPreview = Pick<User, 'id' | 'name'>;.",
+      "keywords": [
+        "conditional types",
+        "utility types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose conditional types over utility types?",
+        "What is the performance or memory difference between conditional types and utility types?"
+      ],
+      "related_concepts": [
+        "conditional types",
+        "utility types",
+        "union types",
+        "intersection types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-034",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Type Guards",
+      "difficulty": "Medium",
+      "question": "Explain the difference between intersection types and utility types in TypeScript.",
+      "ideal_answer": "intersection types and utility types differ in several ways: intersection types is AND type composition (works by combining multiple types) whereas utility types is built-in type helpers (works by common type transformations). intersection types is typically used for all properties from all types, while utility types is used for Partial, Required, Pick, Omit, Record, ReturnType. Example demonstrating intersection types: type Employee = Person & HasId;. Example demonstrating utility types: type UserPreview = Pick<User, 'id' | 'name'>;.",
+      "keywords": [
+        "intersection types",
+        "utility types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose intersection types over utility types?",
+        "What is the performance or memory difference between intersection types and utility types?"
+      ],
+      "related_concepts": [
+        "intersection types",
+        "utility types",
+        "union types",
+        "type guards"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-035",
+      "subject": "TypeScript",
+      "category": "Core Types",
+      "subcategory": "Enums",
+      "difficulty": "Medium",
+      "question": "What are the common issues with enum vs const enum in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with enum vs const enum in TypeScript include: tree-shaking issues with enums. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "enum vs const enum",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to enum vs const enum?",
+        "What tools can assist in detecting problems with enum vs const enum at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "type inference",
+        "unknown vs any",
+        "never type"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-036",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Union/Intersection",
+      "difficulty": "Medium",
+      "question": "Explain the difference between union types and intersection types in TypeScript.",
+      "ideal_answer": "union types and intersection types differ in several ways: union types is OR type composition (works by allowing multiple types) whereas intersection types is AND type composition (works by combining multiple types). union types is typically used for narrowing with type guards, while intersection types is used for all properties from all types. Example demonstrating union types: type Status = 'loading' | 'success' | 'error';. Example demonstrating intersection types: type Employee = Person & HasId;.",
+      "keywords": [
+        "union types",
+        "intersection types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose union types over intersection types?",
+        "What is the performance or memory difference between union types and intersection types?"
+      ],
+      "related_concepts": [
+        "union types",
+        "intersection types",
+        "type guards",
+        "mapped types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-037",
+      "subject": "TypeScript",
+      "category": "OOP",
+      "subcategory": "Interfaces",
+      "difficulty": "Medium",
+      "question": "Explain the difference between access modifiers and structural typing in TypeScript.",
+      "ideal_answer": "access modifiers and structural typing differ in several ways: access modifiers is visibility control (works by encapsulation in classes) whereas structural typing is duck typing system (works by compatibility based on shape). access modifiers is typically used for public, private, protected, readonly, while structural typing is used for nominal vs structural. Example demonstrating access modifiers: private constructor() {}. Example demonstrating structural typing: interface Named { name: string; } // compatible with any object having name.",
+      "keywords": [
+        "access modifiers",
+        "structural typing",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose access modifiers over structural typing?",
+        "What is the performance or memory difference between access modifiers and structural typing?"
+      ],
+      "related_concepts": [
+        "access modifiers",
+        "structural typing",
+        "interface vs type alias",
+        "abstract classes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-038",
+      "subject": "TypeScript",
+      "category": "Core Types",
+      "subcategory": "Arrays",
+      "difficulty": "Medium",
+      "question": "What is unknown vs any in TypeScript and how does it work?",
+      "ideal_answer": "unknown vs any in TypeScript refers to top type comparison. It works by type-safe alternatives. Key characteristics include unknown: requires type checking; any: disables type checking. Example: function process(val: unknown) { if (typeof val === 'string') { ... } }. Common pitfalls include prefer unknown over any.",
+      "keywords": [
+        "unknown vs any",
+        "TypeScript programming",
+        "core types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of unknown vs any in a production environment?",
+        "What are the common pitfalls or issues associated with unknown vs any?"
+      ],
+      "related_concepts": [
+        "type inference",
+        "never type",
+        "enum vs const enum"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-039",
+      "subject": "TypeScript",
+      "category": "Core Types",
+      "subcategory": "Arrays",
+      "difficulty": "Medium",
+      "question": "Explain the difference between unknown vs any and tuple types in TypeScript.",
+      "ideal_answer": "unknown vs any and tuple types differ in several ways: unknown vs any is top type comparison (works by type-safe alternatives) whereas tuple types is fixed-length arrays (works by heterogeneous element types). unknown vs any is typically used for unknown: requires type checking; any: disables type checking, while tuple types is used for optional elements, rest elements. Example demonstrating unknown vs any: function process(val: unknown) { if (typeof val === 'string') { ... } }. Example demonstrating tuple types: type Point = [number, number, number?];.",
+      "keywords": [
+        "unknown vs any",
+        "tuple types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose unknown vs any over tuple types?",
+        "What is the performance or memory difference between unknown vs any and tuple types?"
+      ],
+      "related_concepts": [
+        "unknown vs any",
+        "tuple types",
+        "type inference",
+        "never type"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-040",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Union/Intersection",
+      "difficulty": "Medium",
+      "question": "Explain the difference between union types and utility types in TypeScript.",
+      "ideal_answer": "union types and utility types differ in several ways: union types is OR type composition (works by allowing multiple types) whereas utility types is built-in type helpers (works by common type transformations). union types is typically used for narrowing with type guards, while utility types is used for Partial, Required, Pick, Omit, Record, ReturnType. Example demonstrating union types: type Status = 'loading' | 'success' | 'error';. Example demonstrating utility types: type UserPreview = Pick<User, 'id' | 'name'>;.",
+      "keywords": [
+        "union types",
+        "utility types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose union types over utility types?",
+        "What is the performance or memory difference between union types and utility types?"
+      ],
+      "related_concepts": [
+        "union types",
+        "utility types",
+        "intersection types",
+        "type guards"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-041",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Type Guards",
+      "difficulty": "Medium",
+      "question": "Explain the difference between intersection types and mapped types in TypeScript.",
+      "ideal_answer": "intersection types and mapped types differ in several ways: intersection types is AND type composition (works by combining multiple types) whereas mapped types is type transformation (works by creating types from existing types). intersection types is typically used for all properties from all types, while mapped types is used for iterating over keys with in. Example demonstrating intersection types: type Employee = Person & HasId;. Example demonstrating mapped types: type Readonly<T> = { readonly [K in keyof T]: T[K] };.",
+      "keywords": [
+        "intersection types",
+        "mapped types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose intersection types over mapped types?",
+        "What is the performance or memory difference between intersection types and mapped types?"
+      ],
+      "related_concepts": [
+        "intersection types",
+        "mapped types",
+        "union types",
+        "type guards"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-042",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Type Guards",
+      "difficulty": "Medium",
+      "question": "What is intersection types in TypeScript and how does it work?",
+      "ideal_answer": "intersection types in TypeScript refers to AND type composition. It works by combining multiple types. Key characteristics include all properties from all types. Example: type Employee = Person & HasId;. Common pitfalls include conflicting property types.",
+      "keywords": [
+        "intersection types",
+        "TypeScript programming",
+        "advanced types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of intersection types in a production environment?",
+        "What are the common pitfalls or issues associated with intersection types?"
+      ],
+      "related_concepts": [
+        "union types",
+        "type guards",
+        "mapped types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-043",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Mapped Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between type guards and mapped types in TypeScript.",
+      "ideal_answer": "type guards and mapped types differ in several ways: type guards is runtime type checking (works by narrowing types in blocks) whereas mapped types is type transformation (works by creating types from existing types). type guards is typically used for typeof, instanceof, in, custom predicates, while mapped types is used for iterating over keys with in. Example demonstrating type guards: function isString(val: unknown): val is string { return typeof val === 'string'; }. Example demonstrating mapped types: type Readonly<T> = { readonly [K in keyof T]: T[K] };.",
+      "keywords": [
+        "type guards",
+        "mapped types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose type guards over mapped types?",
+        "What is the performance or memory difference between type guards and mapped types?"
+      ],
+      "related_concepts": [
+        "type guards",
+        "mapped types",
+        "union types",
+        "intersection types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-044",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Mapped Types",
+      "difficulty": "Medium",
+      "question": "What is type guards in TypeScript and how does it work?",
+      "ideal_answer": "type guards in TypeScript refers to runtime type checking. It works by narrowing types in blocks. Key characteristics include typeof, instanceof, in, custom predicates. Example: function isString(val: unknown): val is string { return typeof val === 'string'; }. Common pitfalls include type guard performance.",
+      "keywords": [
+        "type guards",
+        "TypeScript programming",
+        "advanced types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of type guards in a production environment?",
+        "What are the common pitfalls or issues associated with type guards?"
+      ],
+      "related_concepts": [
+        "union types",
+        "intersection types",
+        "mapped types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-045",
+      "subject": "TypeScript",
+      "category": "Core Types",
+      "subcategory": "Tuples",
+      "difficulty": "Medium",
+      "question": "What are the common issues with never type in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with never type in TypeScript include: distributive conditional types. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "never type",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to never type?",
+        "What tools can assist in detecting problems with never type at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "type inference",
+        "unknown vs any",
+        "enum vs const enum"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-046",
+      "subject": "TypeScript",
+      "category": "Core Types",
+      "subcategory": "Enums",
+      "difficulty": "Medium",
+      "question": "What is enum vs const enum in TypeScript and how does it work?",
+      "ideal_answer": "enum vs const enum in TypeScript refers to enumerated types. It works by named constant collections. Key characteristics include enum: object at runtime; const enum: inline values. Example: const enum Direction { Up, Down }. Common pitfalls include tree-shaking issues with enums.",
+      "keywords": [
+        "enum vs const enum",
+        "TypeScript programming",
+        "core types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of enum vs const enum in a production environment?",
+        "What are the common pitfalls or issues associated with enum vs const enum?"
+      ],
+      "related_concepts": [
+        "type inference",
+        "unknown vs any",
+        "never type"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-047",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Conditional Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between mapped types and utility types in TypeScript.",
+      "ideal_answer": "mapped types and utility types differ in several ways: mapped types is type transformation (works by creating types from existing types) whereas utility types is built-in type helpers (works by common type transformations). mapped types is typically used for iterating over keys with in, while utility types is used for Partial, Required, Pick, Omit, Record, ReturnType. Example demonstrating mapped types: type Readonly<T> = { readonly [K in keyof T]: T[K] };. Example demonstrating utility types: type UserPreview = Pick<User, 'id' | 'name'>;.",
+      "keywords": [
+        "mapped types",
+        "utility types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose mapped types over utility types?",
+        "What is the performance or memory difference between mapped types and utility types?"
+      ],
+      "related_concepts": [
+        "mapped types",
+        "utility types",
+        "union types",
+        "intersection types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-048",
+      "subject": "TypeScript",
+      "category": "Generics",
+      "subcategory": "Generic Functions",
+      "difficulty": "Medium",
+      "question": "Explain the difference between generic constraints and generic defaults in TypeScript.",
+      "ideal_answer": "generic constraints and generic defaults differ in several ways: generic constraints is bounding type parameters (works by limiting generic types) whereas generic defaults is default type parameters (works by optional generic arguments). generic constraints is typically used for extends clause, while generic defaults is used for sensible defaults. Example demonstrating generic constraints: function log<T extends { toString(): string }>(obj: T) {}. Example demonstrating generic defaults: interface Container<T = string> { value: T; }.",
+      "keywords": [
+        "generic constraints",
+        "generic defaults",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose generic constraints over generic defaults?",
+        "What is the performance or memory difference between generic constraints and generic defaults?"
+      ],
+      "related_concepts": [
+        "generic constraints",
+        "generic defaults",
+        "variance"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-049",
+      "subject": "TypeScript",
+      "category": "Core Types",
+      "subcategory": "Any/Unknown/Never",
+      "difficulty": "Medium",
+      "question": "What are the common issues with tuple types in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with tuple types in TypeScript include: tuple vs array, labeled tuples. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "tuple types",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to tuple types?",
+        "What tools can assist in detecting problems with tuple types at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "type inference",
+        "unknown vs any",
+        "never type"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-050",
+      "subject": "TypeScript",
+      "category": "OOP",
+      "subcategory": "Access Modifiers",
+      "difficulty": "Medium",
+      "question": "What is abstract classes in TypeScript and how does it work?",
+      "ideal_answer": "abstract classes in TypeScript refers to partial implementation classes. It works by defining base contracts. Key characteristics include cannot instantiate, may have implementation. Example: abstract class Animal { abstract makeSound(): void; }. Common pitfalls include abstract vs interface choice.",
+      "keywords": [
+        "abstract classes",
+        "TypeScript programming",
+        "oop"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of abstract classes in a production environment?",
+        "What are the common pitfalls or issues associated with abstract classes?"
+      ],
+      "related_concepts": [
+        "interface vs type alias",
+        "access modifiers",
+        "structural typing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-051",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Union/Intersection",
+      "difficulty": "Medium",
+      "question": "What are the common issues with union types in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with union types in TypeScript include: discriminated unions. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "union types",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to union types?",
+        "What tools can assist in detecting problems with union types at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "intersection types",
+        "type guards",
+        "mapped types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-052",
+      "subject": "TypeScript",
+      "category": "OOP",
+      "subcategory": "Access Modifiers",
+      "difficulty": "Medium",
+      "question": "Explain the difference between abstract classes and structural typing in TypeScript.",
+      "ideal_answer": "abstract classes and structural typing differ in several ways: abstract classes is partial implementation classes (works by defining base contracts) whereas structural typing is duck typing system (works by compatibility based on shape). abstract classes is typically used for cannot instantiate, may have implementation, while structural typing is used for nominal vs structural. Example demonstrating abstract classes: abstract class Animal { abstract makeSound(): void; }. Example demonstrating structural typing: interface Named { name: string; } // compatible with any object having name.",
+      "keywords": [
+        "abstract classes",
+        "structural typing",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose abstract classes over structural typing?",
+        "What is the performance or memory difference between abstract classes and structural typing?"
+      ],
+      "related_concepts": [
+        "abstract classes",
+        "structural typing",
+        "interface vs type alias",
+        "access modifiers"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-053",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Type Guards",
+      "difficulty": "Medium",
+      "question": "Explain the difference between intersection types and template literal types in TypeScript.",
+      "ideal_answer": "intersection types and template literal types differ in several ways: intersection types is AND type composition (works by combining multiple types) whereas template literal types is string type manipulation (works by type-safe string patterns). intersection types is typically used for all properties from all types, while template literal types is used for concatenation, inference. Example demonstrating intersection types: type Employee = Person & HasId;. Example demonstrating template literal types: type EventName<T extends string> = `on${Capitalize<T>}`;.",
+      "keywords": [
+        "intersection types",
+        "template literal types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose intersection types over template literal types?",
+        "What is the performance or memory difference between intersection types and template literal types?"
+      ],
+      "related_concepts": [
+        "intersection types",
+        "template literal types",
+        "union types",
+        "type guards"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-054",
+      "subject": "TypeScript",
+      "category": "Core Types",
+      "subcategory": "Primitives",
+      "difficulty": "Medium",
+      "question": "Explain the difference between type inference and unknown vs any in TypeScript.",
+      "ideal_answer": "type inference and unknown vs any differ in several ways: type inference is automatic type deduction (works by reducing explicit annotations) whereas unknown vs any is top type comparison (works by type-safe alternatives). type inference is typically used for contextual typing, best common type, while unknown vs any is used for unknown: requires type checking; any: disables type checking. Example demonstrating type inference: let x = 10; // inferred as number. Example demonstrating unknown vs any: function process(val: unknown) { if (typeof val === 'string') { ... } }.",
+      "keywords": [
+        "type inference",
+        "unknown vs any",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose type inference over unknown vs any?",
+        "What is the performance or memory difference between type inference and unknown vs any?"
+      ],
+      "related_concepts": [
+        "type inference",
+        "unknown vs any",
+        "never type",
+        "enum vs const enum"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-055",
+      "subject": "TypeScript",
+      "category": "OOP",
+      "subcategory": "Interfaces",
+      "difficulty": "Medium",
+      "question": "What are the common issues with access modifiers in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with access modifiers in TypeScript include: #private vs private keyword. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "access modifiers",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to access modifiers?",
+        "What tools can assist in detecting problems with access modifiers at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "interface vs type alias",
+        "abstract classes",
+        "structural typing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-056",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Mapped Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between type guards and template literal types in TypeScript.",
+      "ideal_answer": "type guards and template literal types differ in several ways: type guards is runtime type checking (works by narrowing types in blocks) whereas template literal types is string type manipulation (works by type-safe string patterns). type guards is typically used for typeof, instanceof, in, custom predicates, while template literal types is used for concatenation, inference. Example demonstrating type guards: function isString(val: unknown): val is string { return typeof val === 'string'; }. Example demonstrating template literal types: type EventName<T extends string> = `on${Capitalize<T>}`;.",
+      "keywords": [
+        "type guards",
+        "template literal types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose type guards over template literal types?",
+        "What is the performance or memory difference between type guards and template literal types?"
+      ],
+      "related_concepts": [
+        "type guards",
+        "template literal types",
+        "union types",
+        "intersection types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-057",
+      "subject": "TypeScript",
+      "category": "Core Types",
+      "subcategory": "Primitives",
+      "difficulty": "Medium",
+      "question": "What is type inference in TypeScript and how does it work?",
+      "ideal_answer": "type inference in TypeScript refers to automatic type deduction. It works by reducing explicit annotations. Key characteristics include contextual typing, best common type. Example: let x = 10; // inferred as number. Common pitfalls include any propagation.",
+      "keywords": [
+        "type inference",
+        "TypeScript programming",
+        "core types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of type inference in a production environment?",
+        "What are the common pitfalls or issues associated with type inference?"
+      ],
+      "related_concepts": [
+        "unknown vs any",
+        "never type",
+        "enum vs const enum"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-058",
+      "subject": "TypeScript",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Medium",
+      "question": "What is interface vs type alias in TypeScript and how does it work?",
+      "ideal_answer": "interface vs type alias in TypeScript refers to structural type definitions. It works by different use cases. Key characteristics include interface: declaration merging, extends; type: unions, intersections, primitives. Example: interface Point { x: number; y: number; }. Common pitfalls include consistency in codebase.",
+      "keywords": [
+        "interface vs type alias",
+        "TypeScript programming",
+        "oop"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of interface vs type alias in a production environment?",
+        "What are the common pitfalls or issues associated with interface vs type alias?"
+      ],
+      "related_concepts": [
+        "access modifiers",
+        "abstract classes",
+        "structural typing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-059",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Conditional Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between mapped types and template literal types in TypeScript.",
+      "ideal_answer": "mapped types and template literal types differ in several ways: mapped types is type transformation (works by creating types from existing types) whereas template literal types is string type manipulation (works by type-safe string patterns). mapped types is typically used for iterating over keys with in, while template literal types is used for concatenation, inference. Example demonstrating mapped types: type Readonly<T> = { readonly [K in keyof T]: T[K] };. Example demonstrating template literal types: type EventName<T extends string> = `on${Capitalize<T>}`;.",
+      "keywords": [
+        "mapped types",
+        "template literal types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose mapped types over template literal types?",
+        "What is the performance or memory difference between mapped types and template literal types?"
+      ],
+      "related_concepts": [
+        "mapped types",
+        "template literal types",
+        "union types",
+        "intersection types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-060",
+      "subject": "TypeScript",
+      "category": "Generics",
+      "subcategory": "Generic Functions",
+      "difficulty": "Medium",
+      "question": "Explain the difference between generic constraints and variance in TypeScript.",
+      "ideal_answer": "generic constraints and variance differ in several ways: generic constraints is bounding type parameters (works by limiting generic types) whereas variance is generic type relationships (works by co/contra/in-variance). generic constraints is typically used for extends clause, while variance is used for readonly makes covariant. Example demonstrating generic constraints: function log<T extends { toString(): string }>(obj: T) {}. Example demonstrating variance: interface Producer<out T> { produce(): T; }.",
+      "keywords": [
+        "generic constraints",
+        "variance",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose generic constraints over variance?",
+        "What is the performance or memory difference between generic constraints and variance?"
+      ],
+      "related_concepts": [
+        "generic constraints",
+        "variance",
+        "generic defaults"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-061",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Union/Intersection",
+      "difficulty": "Medium",
+      "question": "Explain the difference between union types and conditional types in TypeScript.",
+      "ideal_answer": "union types and conditional types differ in several ways: union types is OR type composition (works by allowing multiple types) whereas conditional types is type-level ternary (works by types based on conditions). union types is typically used for narrowing with type guards, while conditional types is used for T extends U ? X : Y. Example demonstrating union types: type Status = 'loading' | 'success' | 'error';. Example demonstrating conditional types: type NonNullable<T> = T extends null | undefined ? never : T;.",
+      "keywords": [
+        "union types",
+        "conditional types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose union types over conditional types?",
+        "What is the performance or memory difference between union types and conditional types?"
+      ],
+      "related_concepts": [
+        "union types",
+        "conditional types",
+        "intersection types",
+        "type guards"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-062",
+      "subject": "TypeScript",
+      "category": "Generics",
+      "subcategory": "Generic Classes",
+      "difficulty": "Medium",
+      "question": "Explain the difference between generic defaults and variance in TypeScript.",
+      "ideal_answer": "generic defaults and variance differ in several ways: generic defaults is default type parameters (works by optional generic arguments) whereas variance is generic type relationships (works by co/contra/in-variance). generic defaults is typically used for sensible defaults, while variance is used for readonly makes covariant. Example demonstrating generic defaults: interface Container<T = string> { value: T; }. Example demonstrating variance: interface Producer<out T> { produce(): T; }.",
+      "keywords": [
+        "generic defaults",
+        "variance",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose generic defaults over variance?",
+        "What is the performance or memory difference between generic defaults and variance?"
+      ],
+      "related_concepts": [
+        "generic defaults",
+        "variance",
+        "generic constraints"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-063",
+      "subject": "TypeScript",
+      "category": "Configuration",
+      "subcategory": "tsconfig",
+      "difficulty": "Medium",
+      "question": "Explain the difference between strict mode and declaration files in TypeScript.",
+      "ideal_answer": "strict mode and declaration files differ in several ways: strict mode is compiler strictness options (works by maximizing type safety) whereas declaration files is type definition files (works by describing JavaScript APIs). strict mode is typically used for strictNullChecks, noImplicitAny, strictPropertyInitialization, while declaration files is used for .d.ts files, ambient declarations. Example demonstrating strict mode: \"strict\": true in tsconfig. Example demonstrating declaration files: declare module 'library' { export function foo(): void; }.",
+      "keywords": [
+        "strict mode",
+        "declaration files",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose strict mode over declaration files?",
+        "What is the performance or memory difference between strict mode and declaration files?"
+      ],
+      "related_concepts": [
+        "strict mode",
+        "declaration files"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-064",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Utility Types",
+      "difficulty": "Medium",
+      "question": "Explain the difference between conditional types and template literal types in TypeScript.",
+      "ideal_answer": "conditional types and template literal types differ in several ways: conditional types is type-level ternary (works by types based on conditions) whereas template literal types is string type manipulation (works by type-safe string patterns). conditional types is typically used for T extends U ? X : Y, while template literal types is used for concatenation, inference. Example demonstrating conditional types: type NonNullable<T> = T extends null | undefined ? never : T;. Example demonstrating template literal types: type EventName<T extends string> = `on${Capitalize<T>}`;.",
+      "keywords": [
+        "conditional types",
+        "template literal types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose conditional types over template literal types?",
+        "What is the performance or memory difference between conditional types and template literal types?"
+      ],
+      "related_concepts": [
+        "conditional types",
+        "template literal types",
+        "union types",
+        "intersection types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-065",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Mapped Types",
+      "difficulty": "Medium",
+      "question": "What are the common issues with type guards in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with type guards in TypeScript include: type guard performance. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "type guards",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to type guards?",
+        "What tools can assist in detecting problems with type guards at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "union types",
+        "intersection types",
+        "mapped types"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-066",
+      "subject": "TypeScript",
+      "category": "Generics",
+      "subcategory": "Generic Functions",
+      "difficulty": "Medium",
+      "question": "What are the common issues with generic constraints in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with generic constraints in TypeScript include: multiple constraints. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "generic constraints",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to generic constraints?",
+        "What tools can assist in detecting problems with generic constraints at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "generic defaults",
+        "variance"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "TS-067",
+      "subject": "TypeScript",
+      "category": "OOP",
+      "subcategory": "Classes",
+      "difficulty": "Hard",
+      "question": "Explain the difference between interface vs type alias and abstract classes in TypeScript.",
+      "ideal_answer": "interface vs type alias and abstract classes differ in several ways: interface vs type alias is structural type definitions (works by different use cases) whereas abstract classes is partial implementation classes (works by defining base contracts). interface vs type alias is typically used for interface: declaration merging, extends; type: unions, intersections, primitives, while abstract classes is used for cannot instantiate, may have implementation. Example demonstrating interface vs type alias: interface Point { x: number; y: number; }. Example demonstrating abstract classes: abstract class Animal { abstract makeSound(): void; }.",
+      "keywords": [
+        "interface vs type alias",
+        "abstract classes",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose interface vs type alias over abstract classes?",
+        "What is the performance or memory difference between interface vs type alias and abstract classes?"
+      ],
+      "related_concepts": [
+        "interface vs type alias",
+        "abstract classes",
+        "access modifiers",
+        "structural typing"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TS-068",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Utility Types",
+      "difficulty": "Hard",
+      "question": "What are the common issues with conditional types in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with conditional types in TypeScript include: infer keyword, distributive behavior. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "conditional types",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to conditional types?",
+        "What tools can assist in detecting problems with conditional types at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "union types",
+        "intersection types",
+        "type guards"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TS-069",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Conditional Types",
+      "difficulty": "Hard",
+      "question": "What are the common issues with mapped types in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with mapped types in TypeScript include: key remapping, as clauses. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "mapped types",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to mapped types?",
+        "What tools can assist in detecting problems with mapped types at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "union types",
+        "intersection types",
+        "type guards"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TS-070",
+      "subject": "TypeScript",
+      "category": "Generics",
+      "subcategory": "Generic Constraints",
+      "difficulty": "Hard",
+      "question": "What is variance in TypeScript and how does it work?",
+      "ideal_answer": "variance in TypeScript refers to generic type relationships. It works by co/contra/in-variance. Key characteristics include readonly makes covariant. Example: interface Producer<out T> { produce(): T; }. Common pitfalls include strictFunctionTypes impact.",
+      "keywords": [
+        "variance",
+        "TypeScript programming",
+        "generics"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of variance in a production environment?",
+        "What are the common pitfalls or issues associated with variance?"
+      ],
+      "related_concepts": [
+        "generic constraints",
+        "generic defaults"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TS-071",
+      "subject": "TypeScript",
+      "category": "Configuration",
+      "subcategory": "Compiler Options",
+      "difficulty": "Hard",
+      "question": "What is declaration files in TypeScript and how does it work?",
+      "ideal_answer": "declaration files in TypeScript refers to type definition files. It works by describing JavaScript APIs. Key characteristics include .d.ts files, ambient declarations. Example: declare module 'library' { export function foo(): void; }. Common pitfalls include @types packages, DefinitelyTyped.",
+      "keywords": [
+        "declaration files",
+        "TypeScript programming",
+        "configuration"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of declaration files in a production environment?",
+        "What are the common pitfalls or issues associated with declaration files?"
+      ],
+      "related_concepts": [
+        "strict mode"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TS-072",
+      "subject": "TypeScript",
+      "category": "Core Types",
+      "subcategory": "Tuples",
+      "difficulty": "Hard",
+      "question": "What is never type in TypeScript and how does it work?",
+      "ideal_answer": "never type in TypeScript refers to bottom type. It works by representing unreachable code. Key characteristics include functions that throw, exhaustive type checks. Example: function fail(): never { throw new Error(); }. Common pitfalls include distributive conditional types.",
+      "keywords": [
+        "never type",
+        "TypeScript programming",
+        "core types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of never type in a production environment?",
+        "What are the common pitfalls or issues associated with never type?"
+      ],
+      "related_concepts": [
+        "type inference",
+        "unknown vs any",
+        "enum vs const enum"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TS-073",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Union/Intersection",
+      "difficulty": "Hard",
+      "question": "Explain the difference between utility types and template literal types in TypeScript.",
+      "ideal_answer": "utility types and template literal types differ in several ways: utility types is built-in type helpers (works by common type transformations) whereas template literal types is string type manipulation (works by type-safe string patterns). utility types is typically used for Partial, Required, Pick, Omit, Record, ReturnType, while template literal types is used for concatenation, inference. Example demonstrating utility types: type UserPreview = Pick<User, 'id' | 'name'>;. Example demonstrating template literal types: type EventName<T extends string> = `on${Capitalize<T>}`;.",
+      "keywords": [
+        "utility types",
+        "template literal types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose utility types over template literal types?",
+        "What is the performance or memory difference between utility types and template literal types?"
+      ],
+      "related_concepts": [
+        "utility types",
+        "template literal types",
+        "union types",
+        "intersection types"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TS-074",
+      "subject": "TypeScript",
+      "category": "Core Types",
+      "subcategory": "Primitives",
+      "difficulty": "Hard",
+      "question": "Explain the difference between type inference and never type in TypeScript.",
+      "ideal_answer": "type inference and never type differ in several ways: type inference is automatic type deduction (works by reducing explicit annotations) whereas never type is bottom type (works by representing unreachable code). type inference is typically used for contextual typing, best common type, while never type is used for functions that throw, exhaustive type checks. Example demonstrating type inference: let x = 10; // inferred as number. Example demonstrating never type: function fail(): never { throw new Error(); }.",
+      "keywords": [
+        "type inference",
+        "never type",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose type inference over never type?",
+        "What is the performance or memory difference between type inference and never type?"
+      ],
+      "related_concepts": [
+        "type inference",
+        "never type",
+        "unknown vs any",
+        "enum vs const enum"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TS-075",
+      "subject": "TypeScript",
+      "category": "Generics",
+      "subcategory": "Generic Functions",
+      "difficulty": "Hard",
+      "question": "What is generic constraints in TypeScript and how does it work?",
+      "ideal_answer": "generic constraints in TypeScript refers to bounding type parameters. It works by limiting generic types. Key characteristics include extends clause. Example: function log<T extends { toString(): string }>(obj: T) {}. Common pitfalls include multiple constraints.",
+      "keywords": [
+        "generic constraints",
+        "TypeScript programming",
+        "generics"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of generic constraints in a production environment?",
+        "What are the common pitfalls or issues associated with generic constraints?"
+      ],
+      "related_concepts": [
+        "generic defaults",
+        "variance"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TS-076",
+      "subject": "TypeScript",
+      "category": "Core Types",
+      "subcategory": "Primitives",
+      "difficulty": "Hard",
+      "question": "Explain the difference between type inference and tuple types in TypeScript.",
+      "ideal_answer": "type inference and tuple types differ in several ways: type inference is automatic type deduction (works by reducing explicit annotations) whereas tuple types is fixed-length arrays (works by heterogeneous element types). type inference is typically used for contextual typing, best common type, while tuple types is used for optional elements, rest elements. Example demonstrating type inference: let x = 10; // inferred as number. Example demonstrating tuple types: type Point = [number, number, number?];.",
+      "keywords": [
+        "type inference",
+        "tuple types",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose type inference over tuple types?",
+        "What is the performance or memory difference between type inference and tuple types?"
+      ],
+      "related_concepts": [
+        "type inference",
+        "tuple types",
+        "unknown vs any",
+        "never type"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TS-077",
+      "subject": "TypeScript",
+      "category": "Core Types",
+      "subcategory": "Tuples",
+      "difficulty": "Hard",
+      "question": "Explain the difference between never type and enum vs const enum in TypeScript.",
+      "ideal_answer": "never type and enum vs const enum differ in several ways: never type is bottom type (works by representing unreachable code) whereas enum vs const enum is enumerated types (works by named constant collections). never type is typically used for functions that throw, exhaustive type checks, while enum vs const enum is used for enum: object at runtime; const enum: inline values. Example demonstrating never type: function fail(): never { throw new Error(); }. Example demonstrating enum vs const enum: const enum Direction { Up, Down }.",
+      "keywords": [
+        "never type",
+        "enum vs const enum",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose never type over enum vs const enum?",
+        "What is the performance or memory difference between never type and enum vs const enum?"
+      ],
+      "related_concepts": [
+        "never type",
+        "enum vs const enum",
+        "type inference",
+        "unknown vs any"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TS-078",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Utility Types",
+      "difficulty": "Hard",
+      "question": "What is conditional types in TypeScript and how does it work?",
+      "ideal_answer": "conditional types in TypeScript refers to type-level ternary. It works by types based on conditions. Key characteristics include T extends U ? X : Y. Example: type NonNullable<T> = T extends null | undefined ? never : T;. Common pitfalls include infer keyword, distributive behavior.",
+      "keywords": [
+        "conditional types",
+        "TypeScript programming",
+        "advanced types"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of conditional types in a production environment?",
+        "What are the common pitfalls or issues associated with conditional types?"
+      ],
+      "related_concepts": [
+        "union types",
+        "intersection types",
+        "type guards"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TS-079",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Union/Intersection",
+      "difficulty": "Hard",
+      "question": "What are the common issues with utility types in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with utility types in TypeScript include: deep partial implementation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "utility types",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to utility types?",
+        "What tools can assist in detecting problems with utility types at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "union types",
+        "intersection types",
+        "type guards"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TS-080",
+      "subject": "TypeScript",
+      "category": "Advanced Types",
+      "subcategory": "Union/Intersection",
+      "difficulty": "Hard",
+      "question": "Explain the difference between union types and type guards in TypeScript.",
+      "ideal_answer": "union types and type guards differ in several ways: union types is OR type composition (works by allowing multiple types) whereas type guards is runtime type checking (works by narrowing types in blocks). union types is typically used for narrowing with type guards, while type guards is used for typeof, instanceof, in, custom predicates. Example demonstrating union types: type Status = 'loading' | 'success' | 'error';. Example demonstrating type guards: function isString(val: unknown): val is string { return typeof val === 'string'; }.",
+      "keywords": [
+        "union types",
+        "type guards",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose union types over type guards?",
+        "What is the performance or memory difference between union types and type guards?"
+      ],
+      "related_concepts": [
+        "union types",
+        "type guards",
+        "intersection types",
+        "mapped types"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TS-081",
+      "subject": "TypeScript",
+      "category": "Core Types",
+      "subcategory": "Arrays",
+      "difficulty": "Hard",
+      "question": "What are the common issues with unknown vs any in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with unknown vs any in TypeScript include: prefer unknown over any. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "unknown vs any",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to unknown vs any?",
+        "What tools can assist in detecting problems with unknown vs any at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "type inference",
+        "never type",
+        "enum vs const enum"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TS-082",
+      "subject": "TypeScript",
+      "category": "Core Types",
+      "subcategory": "Arrays",
+      "difficulty": "Hard",
+      "question": "Explain the difference between unknown vs any and never type in TypeScript.",
+      "ideal_answer": "unknown vs any and never type differ in several ways: unknown vs any is top type comparison (works by type-safe alternatives) whereas never type is bottom type (works by representing unreachable code). unknown vs any is typically used for unknown: requires type checking; any: disables type checking, while never type is used for functions that throw, exhaustive type checks. Example demonstrating unknown vs any: function process(val: unknown) { if (typeof val === 'string') { ... } }. Example demonstrating never type: function fail(): never { throw new Error(); }.",
+      "keywords": [
+        "unknown vs any",
+        "never type",
+        "comparison",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose unknown vs any over never type?",
+        "What is the performance or memory difference between unknown vs any and never type?"
+      ],
+      "related_concepts": [
+        "unknown vs any",
+        "never type",
+        "type inference",
+        "enum vs const enum"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "TS-083",
+      "subject": "TypeScript",
+      "category": "Configuration",
+      "subcategory": "Compiler Options",
+      "difficulty": "Hard",
+      "question": "What are the common issues with declaration files in TypeScript and how do you debug them?",
+      "ideal_answer": "Common issues with declaration files in TypeScript include: @types packages, DefinitelyTyped. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "declaration files",
+        "troubleshooting",
+        "TypeScript"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to declaration files?",
+        "What tools can assist in detecting problems with declaration files at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "strict mode"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

@@ -1,0 +1,523 @@
+{
+  "metadata": {
+    "subject": "Strings",
+    "domain": "Data Structures & Algorithms",
+    "total_questions": 20,
+    "difficulty_distribution": {
+      "Easy": 6,
+      "Medium": 10,
+      "Hard": 4
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "STR-001",
+      "subject": "Strings",
+      "category": "Manipulation",
+      "subcategory": "Reversal",
+      "difficulty": "Easy",
+      "question": "Explain the difference between anagram detection and string tokenization in Strings.",
+      "ideal_answer": "anagram detection and string tokenization differ in several ways: anagram detection is permutation equivalence checking (works by character frequency comparison) whereas string tokenization is splitting into components (works by parsing and lexical analysis). anagram detection is typically used for sorting O(n log n), hash map O(n), while string tokenization is used for split, StringTokenizer, regex. Example demonstrating anagram detection: int[] count = new int[26]; for (char c : s.toCharArray()) count[c-'a']++;. Example demonstrating string tokenization: String[] parts = s.split(\"\\s+\");.",
+      "keywords": [
+        "anagram detection",
+        "string tokenization",
+        "comparison",
+        "Strings"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose anagram detection over string tokenization?",
+        "What is the performance or memory difference between anagram detection and string tokenization?"
+      ],
+      "related_concepts": [
+        "anagram detection",
+        "string tokenization"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "STR-002",
+      "subject": "Strings",
+      "category": "Pattern Matching",
+      "subcategory": "KMP",
+      "difficulty": "Easy",
+      "question": "What is KMP algorithm in Strings and how does it work?",
+      "ideal_answer": "KMP algorithm in Strings refers to Knuth-Morris-Pratt. It works by O(m+n) pattern matching. Key characteristics include LPS (longest prefix suffix) array construction. Example: lps[i] = length of longest proper prefix which is also suffix. Common pitfalls include pattern preprocessing, no backtracking in text.",
+      "keywords": [
+        "KMP algorithm",
+        "Strings programming",
+        "pattern matching"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of KMP algorithm in a production environment?",
+        "What are the common pitfalls or issues associated with KMP algorithm?"
+      ],
+      "related_concepts": [
+        "Rabin-Karp"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "STR-003",
+      "subject": "Strings",
+      "category": "Dynamic Programming",
+      "subcategory": "Longest Common Subsequence",
+      "difficulty": "Easy",
+      "question": "Explain the difference between edit distance and longest palindromic substring in Strings.",
+      "ideal_answer": "edit distance and longest palindromic substring differ in several ways: edit distance is Levenshtein distance (works by minimum operations to transform strings) whereas longest palindromic substring is maximal palindrome finding (works by expand around center or DP). edit distance is typically used for insert, delete, replace operations, while longest palindromic substring is used for center expansion: O(n^2) time, O(1) space. Example demonstrating edit distance: dp[i][j] = min(dp[i-1][j]+1, dp[i][j-1]+1, dp[i-1][j-1]+cost). Example demonstrating longest palindromic substring: for (int i = 0; i < n; i++) { expand(s, i, i); expand(s, i, i+1); }.",
+      "keywords": [
+        "edit distance",
+        "longest palindromic substring",
+        "comparison",
+        "Strings"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose edit distance over longest palindromic substring?",
+        "What is the performance or memory difference between edit distance and longest palindromic substring?"
+      ],
+      "related_concepts": [
+        "edit distance",
+        "longest palindromic substring"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "STR-004",
+      "subject": "Strings",
+      "category": "Fundamentals",
+      "subcategory": "Immutable vs Mutable",
+      "difficulty": "Easy",
+      "question": "Explain the difference between string immutability and Unicode and UTF-8 in Strings.",
+      "ideal_answer": "string immutability and Unicode and UTF-8 differ in several ways: string immutability is unchangeable string property (works by security, caching, thread-safety) whereas Unicode and UTF-8 is character encoding standards (works by multilingual text representation). string immutability is typically used for new object on modification, string pool/interning, while Unicode and UTF-8 is used for UTF-8: variable 1-4 bytes, backward compatible with ASCII. Example demonstrating string immutability: String s = \"hello\"; s = s + \" world\"; // new object. Example demonstrating Unicode and UTF-8: U+0041 = 'A' = 0x41 in UTF-8.",
+      "keywords": [
+        "string immutability",
+        "Unicode and UTF-8",
+        "comparison",
+        "Strings"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose string immutability over Unicode and UTF-8?",
+        "What is the performance or memory difference between string immutability and Unicode and UTF-8?"
+      ],
+      "related_concepts": [
+        "string immutability",
+        "Unicode and UTF-8"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "STR-005",
+      "subject": "Strings",
+      "category": "Pattern Matching",
+      "subcategory": "KMP",
+      "difficulty": "Easy",
+      "question": "Explain the difference between KMP algorithm and Rabin-Karp in Strings.",
+      "ideal_answer": "KMP algorithm and Rabin-Karp differ in several ways: KMP algorithm is Knuth-Morris-Pratt (works by O(m+n) pattern matching) whereas Rabin-Karp is rolling hash pattern matching (works by average O(m+n), worst O(mn)). KMP algorithm is typically used for LPS (longest prefix suffix) array construction, while Rabin-Karp is used for hash computation, collision handling. Example demonstrating KMP algorithm: lps[i] = length of longest proper prefix which is also suffix. Example demonstrating Rabin-Karp: hash = (hash - text[i]*pow + text[i+m]) % prime.",
+      "keywords": [
+        "KMP algorithm",
+        "Rabin-Karp",
+        "comparison",
+        "Strings"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose KMP algorithm over Rabin-Karp?",
+        "What is the performance or memory difference between KMP algorithm and Rabin-Karp?"
+      ],
+      "related_concepts": [
+        "KMP algorithm",
+        "Rabin-Karp"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "STR-006",
+      "subject": "Strings",
+      "category": "Dynamic Programming",
+      "subcategory": "Edit Distance",
+      "difficulty": "Easy",
+      "question": "What are the common issues with longest palindromic substring in Strings and how do you debug them?",
+      "ideal_answer": "Common issues with longest palindromic substring in Strings include: Manacher's algorithm O(n). To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "longest palindromic substring",
+        "troubleshooting",
+        "Strings"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to longest palindromic substring?",
+        "What tools can assist in detecting problems with longest palindromic substring at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "edit distance"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "STR-007",
+      "subject": "Strings",
+      "category": "Manipulation",
+      "subcategory": "Reversal",
+      "difficulty": "Medium",
+      "question": "What is anagram detection in Strings and how does it work?",
+      "ideal_answer": "anagram detection in Strings refers to permutation equivalence checking. It works by character frequency comparison. Key characteristics include sorting O(n log n), hash map O(n). Example: int[] count = new int[26]; for (char c : s.toCharArray()) count[c-'a']++;. Common pitfalls include Unicode anagram handling.",
+      "keywords": [
+        "anagram detection",
+        "Strings programming",
+        "manipulation"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of anagram detection in a production environment?",
+        "What are the common pitfalls or issues associated with anagram detection?"
+      ],
+      "related_concepts": [
+        "string tokenization"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "STR-008",
+      "subject": "Strings",
+      "category": "Manipulation",
+      "subcategory": "Palindrome",
+      "difficulty": "Medium",
+      "question": "What are the common issues with string tokenization in Strings and how do you debug them?",
+      "ideal_answer": "Common issues with string tokenization in Strings include: delimiter edge cases, empty tokens. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "string tokenization",
+        "troubleshooting",
+        "Strings"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to string tokenization?",
+        "What tools can assist in detecting problems with string tokenization at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "anagram detection"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "STR-009",
+      "subject": "Strings",
+      "category": "Pattern Matching",
+      "subcategory": "KMP",
+      "difficulty": "Medium",
+      "question": "What are the common issues with KMP algorithm in Strings and how do you debug them?",
+      "ideal_answer": "Common issues with KMP algorithm in Strings include: pattern preprocessing, no backtracking in text. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "KMP algorithm",
+        "troubleshooting",
+        "Strings"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to KMP algorithm?",
+        "What tools can assist in detecting problems with KMP algorithm at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Rabin-Karp"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "STR-010",
+      "subject": "Strings",
+      "category": "Dynamic Programming",
+      "subcategory": "Edit Distance",
+      "difficulty": "Medium",
+      "question": "What is longest palindromic substring in Strings and how does it work?",
+      "ideal_answer": "longest palindromic substring in Strings refers to maximal palindrome finding. It works by expand around center or DP. Key characteristics include center expansion: O(n^2) time, O(1) space. Example: for (int i = 0; i < n; i++) { expand(s, i, i); expand(s, i, i+1); }. Common pitfalls include Manacher's algorithm O(n).",
+      "keywords": [
+        "longest palindromic substring",
+        "Strings programming",
+        "dynamic programming"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of longest palindromic substring in a production environment?",
+        "What are the common pitfalls or issues associated with longest palindromic substring?"
+      ],
+      "related_concepts": [
+        "edit distance"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "STR-011",
+      "subject": "Strings",
+      "category": "Manipulation",
+      "subcategory": "Palindrome",
+      "difficulty": "Medium",
+      "question": "What is string tokenization in Strings and how does it work?",
+      "ideal_answer": "string tokenization in Strings refers to splitting into components. It works by parsing and lexical analysis. Key characteristics include split, StringTokenizer, regex. Example: String[] parts = s.split(\"\\s+\");. Common pitfalls include delimiter edge cases, empty tokens.",
+      "keywords": [
+        "string tokenization",
+        "Strings programming",
+        "manipulation"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of string tokenization in a production environment?",
+        "What are the common pitfalls or issues associated with string tokenization?"
+      ],
+      "related_concepts": [
+        "anagram detection"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "STR-012",
+      "subject": "Strings",
+      "category": "Dynamic Programming",
+      "subcategory": "Longest Common Subsequence",
+      "difficulty": "Medium",
+      "question": "What is edit distance in Strings and how does it work?",
+      "ideal_answer": "edit distance in Strings refers to Levenshtein distance. It works by minimum operations to transform strings. Key characteristics include insert, delete, replace operations. Example: dp[i][j] = min(dp[i-1][j]+1, dp[i][j-1]+1, dp[i-1][j-1]+cost). Common pitfalls include space optimization to O(min(m,n)).",
+      "keywords": [
+        "edit distance",
+        "Strings programming",
+        "dynamic programming"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of edit distance in a production environment?",
+        "What are the common pitfalls or issues associated with edit distance?"
+      ],
+      "related_concepts": [
+        "longest palindromic substring"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "STR-013",
+      "subject": "Strings",
+      "category": "Fundamentals",
+      "subcategory": "Immutable vs Mutable",
+      "difficulty": "Medium",
+      "question": "What are the common issues with string immutability in Strings and how do you debug them?",
+      "ideal_answer": "Common issues with string immutability in Strings include: StringBuilder for concatenation. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "string immutability",
+        "troubleshooting",
+        "Strings"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to string immutability?",
+        "What tools can assist in detecting problems with string immutability at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Unicode and UTF-8"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "STR-014",
+      "subject": "Strings",
+      "category": "Dynamic Programming",
+      "subcategory": "Longest Common Subsequence",
+      "difficulty": "Medium",
+      "question": "What are the common issues with edit distance in Strings and how do you debug them?",
+      "ideal_answer": "Common issues with edit distance in Strings include: space optimization to O(min(m,n)). To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "edit distance",
+        "troubleshooting",
+        "Strings"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to edit distance?",
+        "What tools can assist in detecting problems with edit distance at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "longest palindromic substring"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "STR-015",
+      "subject": "Strings",
+      "category": "Fundamentals",
+      "subcategory": "String Pool",
+      "difficulty": "Medium",
+      "question": "What is Unicode and UTF-8 in Strings and how does it work?",
+      "ideal_answer": "Unicode and UTF-8 in Strings refers to character encoding standards. It works by multilingual text representation. Key characteristics include UTF-8: variable 1-4 bytes, backward compatible with ASCII. Example: U+0041 = 'A' = 0x41 in UTF-8. Common pitfalls include surrogate pairs, combining characters.",
+      "keywords": [
+        "Unicode and UTF-8",
+        "Strings programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Unicode and UTF-8 in a production environment?",
+        "What are the common pitfalls or issues associated with Unicode and UTF-8?"
+      ],
+      "related_concepts": [
+        "string immutability"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "STR-016",
+      "subject": "Strings",
+      "category": "Manipulation",
+      "subcategory": "Reversal",
+      "difficulty": "Medium",
+      "question": "What are the common issues with anagram detection in Strings and how do you debug them?",
+      "ideal_answer": "Common issues with anagram detection in Strings include: Unicode anagram handling. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "anagram detection",
+        "troubleshooting",
+        "Strings"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to anagram detection?",
+        "What tools can assist in detecting problems with anagram detection at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "string tokenization"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "STR-017",
+      "subject": "Strings",
+      "category": "Pattern Matching",
+      "subcategory": "Rabin-Karp",
+      "difficulty": "Hard",
+      "question": "What is Rabin-Karp in Strings and how does it work?",
+      "ideal_answer": "Rabin-Karp in Strings refers to rolling hash pattern matching. It works by average O(m+n), worst O(mn). Key characteristics include hash computation, collision handling. Example: hash = (hash - text[i]*pow + text[i+m]) % prime. Common pitfalls include spurious hits, multiple hash functions.",
+      "keywords": [
+        "Rabin-Karp",
+        "Strings programming",
+        "pattern matching"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Rabin-Karp in a production environment?",
+        "What are the common pitfalls or issues associated with Rabin-Karp?"
+      ],
+      "related_concepts": [
+        "KMP algorithm"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "STR-018",
+      "subject": "Strings",
+      "category": "Pattern Matching",
+      "subcategory": "Rabin-Karp",
+      "difficulty": "Hard",
+      "question": "What are the common issues with Rabin-Karp in Strings and how do you debug them?",
+      "ideal_answer": "Common issues with Rabin-Karp in Strings include: spurious hits, multiple hash functions. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Rabin-Karp",
+        "troubleshooting",
+        "Strings"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Rabin-Karp?",
+        "What tools can assist in detecting problems with Rabin-Karp at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "KMP algorithm"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "STR-019",
+      "subject": "Strings",
+      "category": "Fundamentals",
+      "subcategory": "Immutable vs Mutable",
+      "difficulty": "Hard",
+      "question": "What is string immutability in Strings and how does it work?",
+      "ideal_answer": "string immutability in Strings refers to unchangeable string property. It works by security, caching, thread-safety. Key characteristics include new object on modification, string pool/interning. Example: String s = \"hello\"; s = s + \" world\"; // new object. Common pitfalls include StringBuilder for concatenation.",
+      "keywords": [
+        "string immutability",
+        "Strings programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of string immutability in a production environment?",
+        "What are the common pitfalls or issues associated with string immutability?"
+      ],
+      "related_concepts": [
+        "Unicode and UTF-8"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "STR-020",
+      "subject": "Strings",
+      "category": "Fundamentals",
+      "subcategory": "String Pool",
+      "difficulty": "Hard",
+      "question": "What are the common issues with Unicode and UTF-8 in Strings and how do you debug them?",
+      "ideal_answer": "Common issues with Unicode and UTF-8 in Strings include: surrogate pairs, combining characters. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Unicode and UTF-8",
+        "troubleshooting",
+        "Strings"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Unicode and UTF-8?",
+        "What tools can assist in detecting problems with Unicode and UTF-8 at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "string immutability"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

@@ -1,0 +1,1326 @@
+{
+  "metadata": {
+    "subject": "MongoDB",
+    "domain": "Databases",
+    "total_questions": 51,
+    "difficulty_distribution": {
+      "Easy": 15,
+      "Medium": 25,
+      "Hard": 11
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "MONGO-001",
+      "subject": "MongoDB",
+      "category": "Indexing",
+      "subcategory": "Text",
+      "difficulty": "Easy",
+      "question": "What are the common issues with TTL index in MongoDB and how do you debug them?",
+      "ideal_answer": "Common issues with TTL index in MongoDB include: background cleanup, not precise. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "TTL index",
+        "troubleshooting",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to TTL index?",
+        "What tools can assist in detecting problems with TTL index at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "compound index",
+        "multikey index",
+        "text index"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MONGO-002",
+      "subject": "MongoDB",
+      "category": "Indexing",
+      "subcategory": "Multikey",
+      "difficulty": "Easy",
+      "question": "What are the common issues with text index in MongoDB and how do you debug them?",
+      "ideal_answer": "Common issues with text index in MongoDB include: text search score. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "text index",
+        "troubleshooting",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to text index?",
+        "What tools can assist in detecting problems with text index at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "compound index",
+        "multikey index",
+        "TTL index"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MONGO-003",
+      "subject": "MongoDB",
+      "category": "Indexing",
+      "subcategory": "Single Field",
+      "difficulty": "Easy",
+      "question": "What are the common issues with compound index in MongoDB and how do you debug them?",
+      "ideal_answer": "Common issues with compound index in MongoDB include: index intersection vs compound index. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "compound index",
+        "troubleshooting",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to compound index?",
+        "What tools can assist in detecting problems with compound index at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "multikey index",
+        "text index",
+        "TTL index"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MONGO-004",
+      "subject": "MongoDB",
+      "category": "CRUD Operations",
+      "subcategory": "Find",
+      "difficulty": "Easy",
+      "question": "What is update operators in MongoDB and how does it work?",
+      "ideal_answer": "update operators in MongoDB refers to document modification. It works by atomic field updates. Key characteristics include $set, $unset, $inc, $push, $pull, $addToSet, $pop. Example: db.users.updateOne({ _id: 1 }, { $inc: { views: 1 }, $push: { tags: 'new' } }). Common pitfalls include upsert behavior.",
+      "keywords": [
+        "update operators",
+        "MongoDB programming",
+        "crud operations"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of update operators in a production environment?",
+        "What are the common pitfalls or issues associated with update operators?"
+      ],
+      "related_concepts": [
+        "find with operators",
+        "projection"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MONGO-005",
+      "subject": "MongoDB",
+      "category": "Core Concepts",
+      "subcategory": "BSON",
+      "difficulty": "Easy",
+      "question": "What is schema validation in MongoDB and how does it work?",
+      "ideal_answer": "schema validation in MongoDB refers to document structure enforcement. It works by optional schema constraints. Key characteristics include $jsonSchema, validationLevel, validationAction. Example: db.createCollection('users', { validator: { $jsonSchema: { required: ['email'] } } }). Common pitfalls include flexibility vs strictness tradeoff.",
+      "keywords": [
+        "schema validation",
+        "MongoDB programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of schema validation in a production environment?",
+        "What are the common pitfalls or issues associated with schema validation?"
+      ],
+      "related_concepts": [
+        "document model",
+        "ObjectId"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MONGO-006",
+      "subject": "MongoDB",
+      "category": "Schema Design",
+      "subcategory": "Embedding",
+      "difficulty": "Easy",
+      "question": "Explain the difference between embedding vs referencing and bucket pattern in MongoDB.",
+      "ideal_answer": "embedding vs referencing and bucket pattern differ in several ways: embedding vs referencing is data relationship modeling (works by denormalization decision) whereas bucket pattern is time-series data modeling (works by reducing document count). embedding vs referencing is typically used for embedding: single document read, atomic updates; referencing: avoid duplication, flexible, while bucket pattern is used for grouping events into time buckets. Example demonstrating embedding vs referencing: embedded: { author: { name: '...', email: '...' } } vs referenced: { author_id: ObjectId('...') }. Example demonstrating bucket pattern: { sensor_id: '...', date: '2023-01-01', measurements: [{ time: '00:00', value: 20 }, ...] }.",
+      "keywords": [
+        "embedding vs referencing",
+        "bucket pattern",
+        "comparison",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose embedding vs referencing over bucket pattern?",
+        "What is the performance or memory difference between embedding vs referencing and bucket pattern?"
+      ],
+      "related_concepts": [
+        "embedding vs referencing",
+        "bucket pattern"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MONGO-007",
+      "subject": "MongoDB",
+      "category": "Indexing",
+      "subcategory": "Single Field",
+      "difficulty": "Easy",
+      "question": "Explain the difference between compound index and multikey index in MongoDB.",
+      "ideal_answer": "compound index and multikey index differ in several ways: compound index is multi-field index (works by supporting multi-predicate queries) whereas multikey index is array field indexing (works by indexing array elements). compound index is typically used for field order matters (ESR rule), while multikey index is used for one index entry per array element. Example demonstrating compound index: db.users.createIndex({ status: 1, created_at: -1 }). Example demonstrating multikey index: db.products.createIndex({ tags: 1 }).",
+      "keywords": [
+        "compound index",
+        "multikey index",
+        "comparison",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose compound index over multikey index?",
+        "What is the performance or memory difference between compound index and multikey index?"
+      ],
+      "related_concepts": [
+        "compound index",
+        "multikey index",
+        "text index",
+        "TTL index"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MONGO-008",
+      "subject": "MongoDB",
+      "category": "CRUD Operations",
+      "subcategory": "Insert",
+      "difficulty": "Easy",
+      "question": "What is find with operators in MongoDB and how does it work?",
+      "ideal_answer": "find with operators in MongoDB refers to query operator usage. It works by flexible document querying. Key characteristics include $eq, $ne, $gt, $lt, $in, $nin, $regex, $exists, $type. Example: db.users.find({ age: { $gte: 18, $lte: 65 }, status: { $in: ['active', 'premium'] } }). Common pitfalls include index usage with operators.",
+      "keywords": [
+        "find with operators",
+        "MongoDB programming",
+        "crud operations"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of find with operators in a production environment?",
+        "What are the common pitfalls or issues associated with find with operators?"
+      ],
+      "related_concepts": [
+        "update operators",
+        "projection"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MONGO-009",
+      "subject": "MongoDB",
+      "category": "Indexing",
+      "subcategory": "Compound",
+      "difficulty": "Easy",
+      "question": "Explain the difference between multikey index and text index in MongoDB.",
+      "ideal_answer": "multikey index and text index differ in several ways: multikey index is array field indexing (works by indexing array elements) whereas text index is full-text search index (works by text search on string content). multikey index is typically used for one index entry per array element, while text index is used for stemming, stop words, weights. Example demonstrating multikey index: db.products.createIndex({ tags: 1 }). Example demonstrating text index: db.articles.createIndex({ title: 'text', content: 'text' }, { weights: { title: 10, content: 5 } }).",
+      "keywords": [
+        "multikey index",
+        "text index",
+        "comparison",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose multikey index over text index?",
+        "What is the performance or memory difference between multikey index and text index?"
+      ],
+      "related_concepts": [
+        "multikey index",
+        "text index",
+        "compound index",
+        "TTL index"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MONGO-010",
+      "subject": "MongoDB",
+      "category": "CRUD Operations",
+      "subcategory": "Insert",
+      "difficulty": "Easy",
+      "question": "Explain the difference between find with operators and projection in MongoDB.",
+      "ideal_answer": "find with operators and projection differ in several ways: find with operators is query operator usage (works by flexible document querying) whereas projection is field selection (works by limiting returned data). find with operators is typically used for $eq, $ne, $gt, $lt, $in, $nin, $regex, $exists, $type, while projection is used for inclusion (1), exclusion (0), _id always included unless excluded. Example demonstrating find with operators: db.users.find({ age: { $gte: 18, $lte: 65 }, status: { $in: ['active', 'premium'] } }). Example demonstrating projection: db.users.find({}, { name: 1, email: 1, _id: 0 }).",
+      "keywords": [
+        "find with operators",
+        "projection",
+        "comparison",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose find with operators over projection?",
+        "What is the performance or memory difference between find with operators and projection?"
+      ],
+      "related_concepts": [
+        "find with operators",
+        "projection",
+        "update operators"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MONGO-011",
+      "subject": "MongoDB",
+      "category": "Indexing",
+      "subcategory": "Multikey",
+      "difficulty": "Easy",
+      "question": "Explain the difference between text index and TTL index in MongoDB.",
+      "ideal_answer": "text index and TTL index differ in several ways: text index is full-text search index (works by text search on string content) whereas TTL index is time-to-live index (works by automatic document expiration). text index is typically used for stemming, stop words, weights, while TTL index is used for single field date index with expireAfterSeconds. Example demonstrating text index: db.articles.createIndex({ title: 'text', content: 'text' }, { weights: { title: 10, content: 5 } }). Example demonstrating TTL index: db.sessions.createIndex({ created_at: 1 }, { expireAfterSeconds: 3600 }).",
+      "keywords": [
+        "text index",
+        "TTL index",
+        "comparison",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose text index over TTL index?",
+        "What is the performance or memory difference between text index and TTL index?"
+      ],
+      "related_concepts": [
+        "text index",
+        "TTL index",
+        "compound index",
+        "multikey index"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MONGO-012",
+      "subject": "MongoDB",
+      "category": "Indexing",
+      "subcategory": "Compound",
+      "difficulty": "Easy",
+      "question": "What are the common issues with multikey index in MongoDB and how do you debug them?",
+      "ideal_answer": "Common issues with multikey index in MongoDB include: compound multikey index limitations. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "multikey index",
+        "troubleshooting",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to multikey index?",
+        "What tools can assist in detecting problems with multikey index at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "compound index",
+        "text index",
+        "TTL index"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MONGO-013",
+      "subject": "MongoDB",
+      "category": "CRUD Operations",
+      "subcategory": "Find",
+      "difficulty": "Easy",
+      "question": "What are the common issues with update operators in MongoDB and how do you debug them?",
+      "ideal_answer": "Common issues with update operators in MongoDB include: upsert behavior. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "update operators",
+        "troubleshooting",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to update operators?",
+        "What tools can assist in detecting problems with update operators at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "find with operators",
+        "projection"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MONGO-014",
+      "subject": "MongoDB",
+      "category": "Core Concepts",
+      "subcategory": "Collections",
+      "difficulty": "Easy",
+      "question": "What are the common issues with ObjectId in MongoDB and how do you debug them?",
+      "ideal_answer": "Common issues with ObjectId in MongoDB include: sorting by creation time. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "ObjectId",
+        "troubleshooting",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to ObjectId?",
+        "What tools can assist in detecting problems with ObjectId at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "document model",
+        "schema validation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MONGO-015",
+      "subject": "MongoDB",
+      "category": "Aggregation",
+      "subcategory": "Pipeline",
+      "difficulty": "Easy",
+      "question": "Explain the difference between aggregation pipeline and $facet in MongoDB.",
+      "ideal_answer": "aggregation pipeline and $facet differ in several ways: aggregation pipeline is data processing framework (works by stage-based transformation) whereas $facet is multi-stage parallel processing (works by single input multiple aggregations). aggregation pipeline is typically used for $match, $group, $sort, $project, $lookup, $unwind, while $facet is used for sub-pipelines in one stage. Example demonstrating aggregation pipeline: db.orders.aggregate([{ $match: { status: 'shipped' } }, { $group: { _id: '$customer_id', total: { $sum: '$amount' } } }]). Example demonstrating $facet: db.products.aggregate([{ $facet: { byCategory: [{ $group: { _id: '$category', count: { $sum: 1 } } }], avgPrice: [{ $group: { _id: null, avg: { $avg: '$price' } } }] } }]).",
+      "keywords": [
+        "aggregation pipeline",
+        "$facet",
+        "comparison",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose aggregation pipeline over $facet?",
+        "What is the performance or memory difference between aggregation pipeline and $facet?"
+      ],
+      "related_concepts": [
+        "aggregation pipeline",
+        "$facet",
+        "$lookup"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "MONGO-016",
+      "subject": "MongoDB",
+      "category": "Aggregation",
+      "subcategory": "Pipeline",
+      "difficulty": "Medium",
+      "question": "Explain the difference between aggregation pipeline and $lookup in MongoDB.",
+      "ideal_answer": "aggregation pipeline and $lookup differ in several ways: aggregation pipeline is data processing framework (works by stage-based transformation) whereas $lookup is left outer join equivalent (works by combining documents from other collections). aggregation pipeline is typically used for $match, $group, $sort, $project, $lookup, $unwind, while $lookup is used for from, localField, foreignField, as. Example demonstrating aggregation pipeline: db.orders.aggregate([{ $match: { status: 'shipped' } }, { $group: { _id: '$customer_id', total: { $sum: '$amount' } } }]). Example demonstrating $lookup: db.orders.aggregate([{ $lookup: { from: 'customers', localField: 'customer_id', foreignField: '_id', as: 'customer' } }]).",
+      "keywords": [
+        "aggregation pipeline",
+        "$lookup",
+        "comparison",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose aggregation pipeline over $lookup?",
+        "What is the performance or memory difference between aggregation pipeline and $lookup?"
+      ],
+      "related_concepts": [
+        "aggregation pipeline",
+        "$lookup",
+        "$facet"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-017",
+      "subject": "MongoDB",
+      "category": "CRUD Operations",
+      "subcategory": "Insert",
+      "difficulty": "Medium",
+      "question": "What are the common issues with find with operators in MongoDB and how do you debug them?",
+      "ideal_answer": "Common issues with find with operators in MongoDB include: index usage with operators. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "find with operators",
+        "troubleshooting",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to find with operators?",
+        "What tools can assist in detecting problems with find with operators at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "update operators",
+        "projection"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-018",
+      "subject": "MongoDB",
+      "category": "Indexing",
+      "subcategory": "Text",
+      "difficulty": "Medium",
+      "question": "What is TTL index in MongoDB and how does it work?",
+      "ideal_answer": "TTL index in MongoDB refers to time-to-live index. It works by automatic document expiration. Key characteristics include single field date index with expireAfterSeconds. Example: db.sessions.createIndex({ created_at: 1 }, { expireAfterSeconds: 3600 }). Common pitfalls include background cleanup, not precise.",
+      "keywords": [
+        "TTL index",
+        "MongoDB programming",
+        "indexing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of TTL index in a production environment?",
+        "What are the common pitfalls or issues associated with TTL index?"
+      ],
+      "related_concepts": [
+        "compound index",
+        "multikey index",
+        "text index"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-019",
+      "subject": "MongoDB",
+      "category": "Aggregation",
+      "subcategory": "Stages",
+      "difficulty": "Medium",
+      "question": "What are the common issues with $lookup in MongoDB and how do you debug them?",
+      "ideal_answer": "Common issues with $lookup in MongoDB include: unwinding lookup results. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "$lookup",
+        "troubleshooting",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to $lookup?",
+        "What tools can assist in detecting problems with $lookup at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "aggregation pipeline",
+        "$facet"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-020",
+      "subject": "MongoDB",
+      "category": "Core Concepts",
+      "subcategory": "Documents",
+      "difficulty": "Medium",
+      "question": "What is document model in MongoDB and how does it work?",
+      "ideal_answer": "document model in MongoDB refers to BSON document storage. It works by flexible schema design. Key characteristics include JSON-like documents with rich types. Example: { _id: ObjectId('...'), name: 'John', tags: ['a', 'b'], metadata: { created: ISODate() } }. Common pitfalls include 16MB document limit.",
+      "keywords": [
+        "document model",
+        "MongoDB programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of document model in a production environment?",
+        "What are the common pitfalls or issues associated with document model?"
+      ],
+      "related_concepts": [
+        "ObjectId",
+        "schema validation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-021",
+      "subject": "MongoDB",
+      "category": "Schema Design",
+      "subcategory": "Referencing",
+      "difficulty": "Medium",
+      "question": "What is bucket pattern in MongoDB and how does it work?",
+      "ideal_answer": "bucket pattern in MongoDB refers to time-series data modeling. It works by reducing document count. Key characteristics include grouping events into time buckets. Example: { sensor_id: '...', date: '2023-01-01', measurements: [{ time: '00:00', value: 20 }, ...] }. Common pitfalls include pre-aggregation in buckets.",
+      "keywords": [
+        "bucket pattern",
+        "MongoDB programming",
+        "schema design"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of bucket pattern in a production environment?",
+        "What are the common pitfalls or issues associated with bucket pattern?"
+      ],
+      "related_concepts": [
+        "embedding vs referencing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-022",
+      "subject": "MongoDB",
+      "category": "Indexing",
+      "subcategory": "Single Field",
+      "difficulty": "Medium",
+      "question": "What is compound index in MongoDB and how does it work?",
+      "ideal_answer": "compound index in MongoDB refers to multi-field index. It works by supporting multi-predicate queries. Key characteristics include field order matters (ESR rule). Example: db.users.createIndex({ status: 1, created_at: -1 }). Common pitfalls include index intersection vs compound index.",
+      "keywords": [
+        "compound index",
+        "MongoDB programming",
+        "indexing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of compound index in a production environment?",
+        "What are the common pitfalls or issues associated with compound index?"
+      ],
+      "related_concepts": [
+        "multikey index",
+        "text index",
+        "TTL index"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-023",
+      "subject": "MongoDB",
+      "category": "Aggregation",
+      "subcategory": "Pipeline",
+      "difficulty": "Medium",
+      "question": "What are the common issues with aggregation pipeline in MongoDB and how do you debug them?",
+      "ideal_answer": "Common issues with aggregation pipeline in MongoDB include: pipeline optimization, index usage. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "aggregation pipeline",
+        "troubleshooting",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to aggregation pipeline?",
+        "What tools can assist in detecting problems with aggregation pipeline at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "$lookup",
+        "$facet"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-024",
+      "subject": "MongoDB",
+      "category": "Replication & Sharding",
+      "subcategory": "General",
+      "difficulty": "Medium",
+      "question": "What are the common issues with shard key in MongoDB and how do you debug them?",
+      "ideal_answer": "Common issues with shard key in MongoDB include: jumbo chunks, hot shard. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "shard key",
+        "troubleshooting",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to shard key?",
+        "What tools can assist in detecting problems with shard key at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "replica set"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-025",
+      "subject": "MongoDB",
+      "category": "Schema Design",
+      "subcategory": "Embedding",
+      "difficulty": "Medium",
+      "question": "What is embedding vs referencing in MongoDB and how does it work?",
+      "ideal_answer": "embedding vs referencing in MongoDB refers to data relationship modeling. It works by denormalization decision. Key characteristics include embedding: single document read, atomic updates; referencing: avoid duplication, flexible. Example: embedded: { author: { name: '...', email: '...' } } vs referenced: { author_id: ObjectId('...') }. Common pitfalls include array growth, working set size.",
+      "keywords": [
+        "embedding vs referencing",
+        "MongoDB programming",
+        "schema design"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of embedding vs referencing in a production environment?",
+        "What are the common pitfalls or issues associated with embedding vs referencing?"
+      ],
+      "related_concepts": [
+        "bucket pattern"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-026",
+      "subject": "MongoDB",
+      "category": "Indexing",
+      "subcategory": "Compound",
+      "difficulty": "Medium",
+      "question": "Explain the difference between multikey index and TTL index in MongoDB.",
+      "ideal_answer": "multikey index and TTL index differ in several ways: multikey index is array field indexing (works by indexing array elements) whereas TTL index is time-to-live index (works by automatic document expiration). multikey index is typically used for one index entry per array element, while TTL index is used for single field date index with expireAfterSeconds. Example demonstrating multikey index: db.products.createIndex({ tags: 1 }). Example demonstrating TTL index: db.sessions.createIndex({ created_at: 1 }, { expireAfterSeconds: 3600 }).",
+      "keywords": [
+        "multikey index",
+        "TTL index",
+        "comparison",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose multikey index over TTL index?",
+        "What is the performance or memory difference between multikey index and TTL index?"
+      ],
+      "related_concepts": [
+        "multikey index",
+        "TTL index",
+        "compound index",
+        "text index"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-027",
+      "subject": "MongoDB",
+      "category": "Indexing",
+      "subcategory": "Single Field",
+      "difficulty": "Medium",
+      "question": "Explain the difference between compound index and TTL index in MongoDB.",
+      "ideal_answer": "compound index and TTL index differ in several ways: compound index is multi-field index (works by supporting multi-predicate queries) whereas TTL index is time-to-live index (works by automatic document expiration). compound index is typically used for field order matters (ESR rule), while TTL index is used for single field date index with expireAfterSeconds. Example demonstrating compound index: db.users.createIndex({ status: 1, created_at: -1 }). Example demonstrating TTL index: db.sessions.createIndex({ created_at: 1 }, { expireAfterSeconds: 3600 }).",
+      "keywords": [
+        "compound index",
+        "TTL index",
+        "comparison",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose compound index over TTL index?",
+        "What is the performance or memory difference between compound index and TTL index?"
+      ],
+      "related_concepts": [
+        "compound index",
+        "TTL index",
+        "multikey index",
+        "text index"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-028",
+      "subject": "MongoDB",
+      "category": "Indexing",
+      "subcategory": "Compound",
+      "difficulty": "Medium",
+      "question": "What is multikey index in MongoDB and how does it work?",
+      "ideal_answer": "multikey index in MongoDB refers to array field indexing. It works by indexing array elements. Key characteristics include one index entry per array element. Example: db.products.createIndex({ tags: 1 }). Common pitfalls include compound multikey index limitations.",
+      "keywords": [
+        "multikey index",
+        "MongoDB programming",
+        "indexing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of multikey index in a production environment?",
+        "What are the common pitfalls or issues associated with multikey index?"
+      ],
+      "related_concepts": [
+        "compound index",
+        "text index",
+        "TTL index"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-029",
+      "subject": "MongoDB",
+      "category": "Indexing",
+      "subcategory": "Multikey",
+      "difficulty": "Medium",
+      "question": "What is text index in MongoDB and how does it work?",
+      "ideal_answer": "text index in MongoDB refers to full-text search index. It works by text search on string content. Key characteristics include stemming, stop words, weights. Example: db.articles.createIndex({ title: 'text', content: 'text' }, { weights: { title: 10, content: 5 } }). Common pitfalls include text search score.",
+      "keywords": [
+        "text index",
+        "MongoDB programming",
+        "indexing"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of text index in a production environment?",
+        "What are the common pitfalls or issues associated with text index?"
+      ],
+      "related_concepts": [
+        "compound index",
+        "multikey index",
+        "TTL index"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-030",
+      "subject": "MongoDB",
+      "category": "Schema Design",
+      "subcategory": "Embedding",
+      "difficulty": "Medium",
+      "question": "What are the common issues with embedding vs referencing in MongoDB and how do you debug them?",
+      "ideal_answer": "Common issues with embedding vs referencing in MongoDB include: array growth, working set size. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "embedding vs referencing",
+        "troubleshooting",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to embedding vs referencing?",
+        "What tools can assist in detecting problems with embedding vs referencing at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "bucket pattern"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-031",
+      "subject": "MongoDB",
+      "category": "Replication & Sharding",
+      "subcategory": "General",
+      "difficulty": "Medium",
+      "question": "What is replica set in MongoDB and how does it work?",
+      "ideal_answer": "replica set in MongoDB refers to high availability cluster. It works by automatic failover. Key characteristics include primary, secondaries, arbiter, oplog. Example: rs.initiate(), rs.add(), rs.status(). Common pitfalls include write concern, read preference.",
+      "keywords": [
+        "replica set",
+        "MongoDB programming",
+        "replication & sharding"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of replica set in a production environment?",
+        "What are the common pitfalls or issues associated with replica set?"
+      ],
+      "related_concepts": [
+        "shard key"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-032",
+      "subject": "MongoDB",
+      "category": "Aggregation",
+      "subcategory": "Operators",
+      "difficulty": "Medium",
+      "question": "What is $facet in MongoDB and how does it work?",
+      "ideal_answer": "$facet in MongoDB refers to multi-stage parallel processing. It works by single input multiple aggregations. Key characteristics include sub-pipelines in one stage. Example: db.products.aggregate([{ $facet: { byCategory: [{ $group: { _id: '$category', count: { $sum: 1 } } }], avgPrice: [{ $group: { _id: null, avg: { $avg: '$price' } } }] } }]). Common pitfalls include facet memory limit.",
+      "keywords": [
+        "$facet",
+        "MongoDB programming",
+        "aggregation"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of $facet in a production environment?",
+        "What are the common pitfalls or issues associated with $facet?"
+      ],
+      "related_concepts": [
+        "aggregation pipeline",
+        "$lookup"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-033",
+      "subject": "MongoDB",
+      "category": "Aggregation",
+      "subcategory": "Pipeline",
+      "difficulty": "Medium",
+      "question": "What is aggregation pipeline in MongoDB and how does it work?",
+      "ideal_answer": "aggregation pipeline in MongoDB refers to data processing framework. It works by stage-based transformation. Key characteristics include $match, $group, $sort, $project, $lookup, $unwind. Example: db.orders.aggregate([{ $match: { status: 'shipped' } }, { $group: { _id: '$customer_id', total: { $sum: '$amount' } } }]). Common pitfalls include pipeline optimization, index usage.",
+      "keywords": [
+        "aggregation pipeline",
+        "MongoDB programming",
+        "aggregation"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of aggregation pipeline in a production environment?",
+        "What are the common pitfalls or issues associated with aggregation pipeline?"
+      ],
+      "related_concepts": [
+        "$lookup",
+        "$facet"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-034",
+      "subject": "MongoDB",
+      "category": "Schema Design",
+      "subcategory": "Referencing",
+      "difficulty": "Medium",
+      "question": "What are the common issues with bucket pattern in MongoDB and how do you debug them?",
+      "ideal_answer": "Common issues with bucket pattern in MongoDB include: pre-aggregation in buckets. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "bucket pattern",
+        "troubleshooting",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to bucket pattern?",
+        "What tools can assist in detecting problems with bucket pattern at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "embedding vs referencing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-035",
+      "subject": "MongoDB",
+      "category": "CRUD Operations",
+      "subcategory": "Update",
+      "difficulty": "Medium",
+      "question": "What is projection in MongoDB and how does it work?",
+      "ideal_answer": "projection in MongoDB refers to field selection. It works by limiting returned data. Key characteristics include inclusion (1), exclusion (0), _id always included unless excluded. Example: db.users.find({}, { name: 1, email: 1, _id: 0 }). Common pitfalls include cannot mix inclusion and exclusion except _id.",
+      "keywords": [
+        "projection",
+        "MongoDB programming",
+        "crud operations"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of projection in a production environment?",
+        "What are the common pitfalls or issues associated with projection?"
+      ],
+      "related_concepts": [
+        "find with operators",
+        "update operators"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-036",
+      "subject": "MongoDB",
+      "category": "Replication & Sharding",
+      "subcategory": "General",
+      "difficulty": "Medium",
+      "question": "Explain the difference between replica set and shard key in MongoDB.",
+      "ideal_answer": "replica set and shard key differ in several ways: replica set is high availability cluster (works by automatic failover) whereas shard key is distribution field (works by horizontal partitioning basis). replica set is typically used for primary, secondaries, arbiter, oplog, while shard key is used for cardinality, frequency, monotonicity considerations. Example demonstrating replica set: rs.initiate(), rs.add(), rs.status(). Example demonstrating shard key: sh.shardCollection('db.collection', { user_id: 'hashed' }).",
+      "keywords": [
+        "replica set",
+        "shard key",
+        "comparison",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose replica set over shard key?",
+        "What is the performance or memory difference between replica set and shard key?"
+      ],
+      "related_concepts": [
+        "replica set",
+        "shard key"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-037",
+      "subject": "MongoDB",
+      "category": "Replication & Sharding",
+      "subcategory": "General",
+      "difficulty": "Medium",
+      "question": "What is shard key in MongoDB and how does it work?",
+      "ideal_answer": "shard key in MongoDB refers to distribution field. It works by horizontal partitioning basis. Key characteristics include cardinality, frequency, monotonicity considerations. Example: sh.shardCollection('db.collection', { user_id: 'hashed' }). Common pitfalls include jumbo chunks, hot shard.",
+      "keywords": [
+        "shard key",
+        "MongoDB programming",
+        "replication & sharding"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of shard key in a production environment?",
+        "What are the common pitfalls or issues associated with shard key?"
+      ],
+      "related_concepts": [
+        "replica set"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-038",
+      "subject": "MongoDB",
+      "category": "Core Concepts",
+      "subcategory": "Collections",
+      "difficulty": "Medium",
+      "question": "What is ObjectId in MongoDB and how does it work?",
+      "ideal_answer": "ObjectId in MongoDB refers to 12-byte identifier. It works by auto-generated primary key. Key characteristics include timestamp + machine + pid + counter. Example: ObjectId('507f1f77bcf86cd799439011'). Common pitfalls include sorting by creation time.",
+      "keywords": [
+        "ObjectId",
+        "MongoDB programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of ObjectId in a production environment?",
+        "What are the common pitfalls or issues associated with ObjectId?"
+      ],
+      "related_concepts": [
+        "document model",
+        "schema validation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-039",
+      "subject": "MongoDB",
+      "category": "Indexing",
+      "subcategory": "Single Field",
+      "difficulty": "Medium",
+      "question": "Explain the difference between compound index and text index in MongoDB.",
+      "ideal_answer": "compound index and text index differ in several ways: compound index is multi-field index (works by supporting multi-predicate queries) whereas text index is full-text search index (works by text search on string content). compound index is typically used for field order matters (ESR rule), while text index is used for stemming, stop words, weights. Example demonstrating compound index: db.users.createIndex({ status: 1, created_at: -1 }). Example demonstrating text index: db.articles.createIndex({ title: 'text', content: 'text' }, { weights: { title: 10, content: 5 } }).",
+      "keywords": [
+        "compound index",
+        "text index",
+        "comparison",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose compound index over text index?",
+        "What is the performance or memory difference between compound index and text index?"
+      ],
+      "related_concepts": [
+        "compound index",
+        "text index",
+        "multikey index",
+        "TTL index"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-040",
+      "subject": "MongoDB",
+      "category": "Aggregation",
+      "subcategory": "Operators",
+      "difficulty": "Medium",
+      "question": "What are the common issues with $facet in MongoDB and how do you debug them?",
+      "ideal_answer": "Common issues with $facet in MongoDB include: facet memory limit. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "$facet",
+        "troubleshooting",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to $facet?",
+        "What tools can assist in detecting problems with $facet at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "aggregation pipeline",
+        "$lookup"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "MONGO-041",
+      "subject": "MongoDB",
+      "category": "Core Concepts",
+      "subcategory": "BSON",
+      "difficulty": "Hard",
+      "question": "What are the common issues with schema validation in MongoDB and how do you debug them?",
+      "ideal_answer": "Common issues with schema validation in MongoDB include: flexibility vs strictness tradeoff. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "schema validation",
+        "troubleshooting",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to schema validation?",
+        "What tools can assist in detecting problems with schema validation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "document model",
+        "ObjectId"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "MONGO-042",
+      "subject": "MongoDB",
+      "category": "Aggregation",
+      "subcategory": "Stages",
+      "difficulty": "Hard",
+      "question": "What is $lookup in MongoDB and how does it work?",
+      "ideal_answer": "$lookup in MongoDB refers to left outer join equivalent. It works by combining documents from other collections. Key characteristics include from, localField, foreignField, as. Example: db.orders.aggregate([{ $lookup: { from: 'customers', localField: 'customer_id', foreignField: '_id', as: 'customer' } }]). Common pitfalls include unwinding lookup results.",
+      "keywords": [
+        "$lookup",
+        "MongoDB programming",
+        "aggregation"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of $lookup in a production environment?",
+        "What are the common pitfalls or issues associated with $lookup?"
+      ],
+      "related_concepts": [
+        "aggregation pipeline",
+        "$facet"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "MONGO-043",
+      "subject": "MongoDB",
+      "category": "Core Concepts",
+      "subcategory": "Documents",
+      "difficulty": "Hard",
+      "question": "Explain the difference between document model and ObjectId in MongoDB.",
+      "ideal_answer": "document model and ObjectId differ in several ways: document model is BSON document storage (works by flexible schema design) whereas ObjectId is 12-byte identifier (works by auto-generated primary key). document model is typically used for JSON-like documents with rich types, while ObjectId is used for timestamp + machine + pid + counter. Example demonstrating document model: { _id: ObjectId('...'), name: 'John', tags: ['a', 'b'], metadata: { created: ISODate() } }. Example demonstrating ObjectId: ObjectId('507f1f77bcf86cd799439011').",
+      "keywords": [
+        "document model",
+        "ObjectId",
+        "comparison",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose document model over ObjectId?",
+        "What is the performance or memory difference between document model and ObjectId?"
+      ],
+      "related_concepts": [
+        "document model",
+        "ObjectId",
+        "schema validation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "MONGO-044",
+      "subject": "MongoDB",
+      "category": "Core Concepts",
+      "subcategory": "Collections",
+      "difficulty": "Hard",
+      "question": "Explain the difference between ObjectId and schema validation in MongoDB.",
+      "ideal_answer": "ObjectId and schema validation differ in several ways: ObjectId is 12-byte identifier (works by auto-generated primary key) whereas schema validation is document structure enforcement (works by optional schema constraints). ObjectId is typically used for timestamp + machine + pid + counter, while schema validation is used for $jsonSchema, validationLevel, validationAction. Example demonstrating ObjectId: ObjectId('507f1f77bcf86cd799439011'). Example demonstrating schema validation: db.createCollection('users', { validator: { $jsonSchema: { required: ['email'] } } }).",
+      "keywords": [
+        "ObjectId",
+        "schema validation",
+        "comparison",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ObjectId over schema validation?",
+        "What is the performance or memory difference between ObjectId and schema validation?"
+      ],
+      "related_concepts": [
+        "ObjectId",
+        "schema validation",
+        "document model"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "MONGO-045",
+      "subject": "MongoDB",
+      "category": "CRUD Operations",
+      "subcategory": "Update",
+      "difficulty": "Hard",
+      "question": "What are the common issues with projection in MongoDB and how do you debug them?",
+      "ideal_answer": "Common issues with projection in MongoDB include: cannot mix inclusion and exclusion except _id. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "projection",
+        "troubleshooting",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to projection?",
+        "What tools can assist in detecting problems with projection at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "find with operators",
+        "update operators"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "MONGO-046",
+      "subject": "MongoDB",
+      "category": "CRUD Operations",
+      "subcategory": "Insert",
+      "difficulty": "Hard",
+      "question": "Explain the difference between find with operators and update operators in MongoDB.",
+      "ideal_answer": "find with operators and update operators differ in several ways: find with operators is query operator usage (works by flexible document querying) whereas update operators is document modification (works by atomic field updates). find with operators is typically used for $eq, $ne, $gt, $lt, $in, $nin, $regex, $exists, $type, while update operators is used for $set, $unset, $inc, $push, $pull, $addToSet, $pop. Example demonstrating find with operators: db.users.find({ age: { $gte: 18, $lte: 65 }, status: { $in: ['active', 'premium'] } }). Example demonstrating update operators: db.users.updateOne({ _id: 1 }, { $inc: { views: 1 }, $push: { tags: 'new' } }).",
+      "keywords": [
+        "find with operators",
+        "update operators",
+        "comparison",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose find with operators over update operators?",
+        "What is the performance or memory difference between find with operators and update operators?"
+      ],
+      "related_concepts": [
+        "find with operators",
+        "update operators",
+        "projection"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "MONGO-047",
+      "subject": "MongoDB",
+      "category": "CRUD Operations",
+      "subcategory": "Find",
+      "difficulty": "Hard",
+      "question": "Explain the difference between update operators and projection in MongoDB.",
+      "ideal_answer": "update operators and projection differ in several ways: update operators is document modification (works by atomic field updates) whereas projection is field selection (works by limiting returned data). update operators is typically used for $set, $unset, $inc, $push, $pull, $addToSet, $pop, while projection is used for inclusion (1), exclusion (0), _id always included unless excluded. Example demonstrating update operators: db.users.updateOne({ _id: 1 }, { $inc: { views: 1 }, $push: { tags: 'new' } }). Example demonstrating projection: db.users.find({}, { name: 1, email: 1, _id: 0 }).",
+      "keywords": [
+        "update operators",
+        "projection",
+        "comparison",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose update operators over projection?",
+        "What is the performance or memory difference between update operators and projection?"
+      ],
+      "related_concepts": [
+        "update operators",
+        "projection",
+        "find with operators"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "MONGO-048",
+      "subject": "MongoDB",
+      "category": "Replication & Sharding",
+      "subcategory": "General",
+      "difficulty": "Hard",
+      "question": "What are the common issues with replica set in MongoDB and how do you debug them?",
+      "ideal_answer": "Common issues with replica set in MongoDB include: write concern, read preference. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "replica set",
+        "troubleshooting",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to replica set?",
+        "What tools can assist in detecting problems with replica set at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "shard key"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "MONGO-049",
+      "subject": "MongoDB",
+      "category": "Core Concepts",
+      "subcategory": "Documents",
+      "difficulty": "Hard",
+      "question": "What are the common issues with document model in MongoDB and how do you debug them?",
+      "ideal_answer": "Common issues with document model in MongoDB include: 16MB document limit. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "document model",
+        "troubleshooting",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to document model?",
+        "What tools can assist in detecting problems with document model at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ObjectId",
+        "schema validation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "MONGO-050",
+      "subject": "MongoDB",
+      "category": "Core Concepts",
+      "subcategory": "Documents",
+      "difficulty": "Hard",
+      "question": "Explain the difference between document model and schema validation in MongoDB.",
+      "ideal_answer": "document model and schema validation differ in several ways: document model is BSON document storage (works by flexible schema design) whereas schema validation is document structure enforcement (works by optional schema constraints). document model is typically used for JSON-like documents with rich types, while schema validation is used for $jsonSchema, validationLevel, validationAction. Example demonstrating document model: { _id: ObjectId('...'), name: 'John', tags: ['a', 'b'], metadata: { created: ISODate() } }. Example demonstrating schema validation: db.createCollection('users', { validator: { $jsonSchema: { required: ['email'] } } }).",
+      "keywords": [
+        "document model",
+        "schema validation",
+        "comparison",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose document model over schema validation?",
+        "What is the performance or memory difference between document model and schema validation?"
+      ],
+      "related_concepts": [
+        "document model",
+        "schema validation",
+        "ObjectId"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "MONGO-051",
+      "subject": "MongoDB",
+      "category": "Aggregation",
+      "subcategory": "Stages",
+      "difficulty": "Hard",
+      "question": "Explain the difference between $lookup and $facet in MongoDB.",
+      "ideal_answer": "$lookup and $facet differ in several ways: $lookup is left outer join equivalent (works by combining documents from other collections) whereas $facet is multi-stage parallel processing (works by single input multiple aggregations). $lookup is typically used for from, localField, foreignField, as, while $facet is used for sub-pipelines in one stage. Example demonstrating $lookup: db.orders.aggregate([{ $lookup: { from: 'customers', localField: 'customer_id', foreignField: '_id', as: 'customer' } }]). Example demonstrating $facet: db.products.aggregate([{ $facet: { byCategory: [{ $group: { _id: '$category', count: { $sum: 1 } } }], avgPrice: [{ $group: { _id: null, avg: { $avg: '$price' } } }] } }]).",
+      "keywords": [
+        "$lookup",
+        "$facet",
+        "comparison",
+        "MongoDB"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose $lookup over $facet?",
+        "What is the performance or memory difference between $lookup and $facet?"
+      ],
+      "related_concepts": [
+        "$lookup",
+        "$facet",
+        "aggregation pipeline"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

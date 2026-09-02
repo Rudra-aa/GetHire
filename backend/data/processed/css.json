@@ -1,0 +1,1958 @@
+{
+  "metadata": {
+    "subject": "CSS",
+    "domain": "Web Development",
+    "total_questions": 74,
+    "difficulty_distribution": {
+      "Easy": 22,
+      "Medium": 37,
+      "Hard": 15
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:47Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "CSS-001",
+      "subject": "CSS",
+      "category": "Best Practices",
+      "subcategory": "BEM",
+      "difficulty": "Easy",
+      "question": "What is BEM methodology in CSS and how does it work?",
+      "ideal_answer": "BEM methodology in CSS refers to Block Element Modifier naming. It works by component-based CSS organization. Key characteristics include .block__element--modifier. Example: .card__title--highlighted. Common pitfalls include verbose class names.",
+      "keywords": [
+        "BEM methodology",
+        "CSS programming",
+        "best practices"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of BEM methodology in a production environment?",
+        "What are the common pitfalls or issues associated with BEM methodology?"
+      ],
+      "related_concepts": [
+        "CSS-in-JS",
+        "critical CSS"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-002",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Specificity",
+      "difficulty": "Easy",
+      "question": "Explain the difference between box-sizing and z-index stacking in CSS.",
+      "ideal_answer": "box-sizing and z-index stacking differ in several ways: box-sizing is width/height calculation mode (works by controlling element dimensions) whereas z-index stacking is layer ordering control (works by third dimension positioning). box-sizing is typically used for content-box: width = content; border-box: width = content + padding + border, while z-index stacking is used for only applies to positioned elements, creates stacking context. Example demonstrating box-sizing: * { box-sizing: border-box; }. Example demonstrating z-index stacking: position: relative; z-index: 10;.",
+      "keywords": [
+        "box-sizing",
+        "z-index stacking",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose box-sizing over z-index stacking?",
+        "What is the performance or memory difference between box-sizing and z-index stacking?"
+      ],
+      "related_concepts": [
+        "box-sizing",
+        "z-index stacking",
+        "specificity",
+        "CSS variables"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-003",
+      "subject": "CSS",
+      "category": "Layout",
+      "subcategory": "Multi-column",
+      "difficulty": "Easy",
+      "question": "What are the common issues with containment in CSS and how do you debug them?",
+      "ideal_answer": "Common issues with containment in CSS include: use cases for contain. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "containment",
+        "troubleshooting",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to containment?",
+        "What tools can assist in detecting problems with containment at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Flexbox",
+        "CSS Grid",
+        "position property"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-004",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Variables",
+      "difficulty": "Easy",
+      "question": "What is pseudo-elements in CSS and how does it work?",
+      "ideal_answer": "pseudo-elements in CSS refers to virtual element creation. It works by styling non-existent markup. Key characteristics include ::before, ::after, ::first-line, ::selection. Example: .clearfix::after { content: \"\"; display: table; clear: both; }. Common pitfalls include single vs double colon syntax.",
+      "keywords": [
+        "pseudo-elements",
+        "CSS programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of pseudo-elements in a production environment?",
+        "What are the common pitfalls or issues associated with pseudo-elements?"
+      ],
+      "related_concepts": [
+        "specificity",
+        "box-sizing",
+        "CSS variables"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-005",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Cascade",
+      "difficulty": "Easy",
+      "question": "What are the common issues with z-index stacking in CSS and how do you debug them?",
+      "ideal_answer": "Common issues with z-index stacking in CSS include: stacking context creation triggers. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "z-index stacking",
+        "troubleshooting",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to z-index stacking?",
+        "What tools can assist in detecting problems with z-index stacking at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "specificity",
+        "box-sizing",
+        "CSS variables"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-006",
+      "subject": "CSS",
+      "category": "Animations",
+      "subcategory": "Keyframes",
+      "difficulty": "Easy",
+      "question": "What is CSS keyframes in CSS and how does it work?",
+      "ideal_answer": "CSS keyframes in CSS refers to complex animation definition. It works by multi-step animations. Key characteristics include @keyframes, animation-name, duration, iteration. Example: @keyframes slide { from { transform: translateX(-100%); } to { transform: translateX(0); } }. Common pitfalls include will-change optimization.",
+      "keywords": [
+        "CSS keyframes",
+        "CSS programming",
+        "animations"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of CSS keyframes in a production environment?",
+        "What are the common pitfalls or issues associated with CSS keyframes?"
+      ],
+      "related_concepts": [
+        "CSS transitions",
+        "transform property"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-007",
+      "subject": "CSS",
+      "category": "Best Practices",
+      "subcategory": "Utility Classes",
+      "difficulty": "Easy",
+      "question": "What are the common issues with critical CSS in CSS and how do you debug them?",
+      "ideal_answer": "Common issues with critical CSS in CSS include: automated extraction tools. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "critical CSS",
+        "troubleshooting",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to critical CSS?",
+        "What tools can assist in detecting problems with critical CSS at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "BEM methodology",
+        "CSS-in-JS"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-008",
+      "subject": "CSS",
+      "category": "Animations",
+      "subcategory": "Keyframes",
+      "difficulty": "Easy",
+      "question": "What are the common issues with CSS keyframes in CSS and how do you debug them?",
+      "ideal_answer": "Common issues with CSS keyframes in CSS include: will-change optimization. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "CSS keyframes",
+        "troubleshooting",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to CSS keyframes?",
+        "What tools can assist in detecting problems with CSS keyframes at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "CSS transitions",
+        "transform property"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-009",
+      "subject": "CSS",
+      "category": "Layout",
+      "subcategory": "Grid",
+      "difficulty": "Easy",
+      "question": "Explain the difference between CSS Grid and containment in CSS.",
+      "ideal_answer": "CSS Grid and containment differ in several ways: CSS Grid is two-dimensional layout system (works by row and column control) whereas containment is performance isolation (works by limiting layout/paint/style scope). CSS Grid is typically used for grid-template-columns, grid-area, minmax, auto-fit, while containment is used for layout, paint, size, style, strict. Example demonstrating CSS Grid: grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));. Example demonstrating containment: contain: layout paint;.",
+      "keywords": [
+        "CSS Grid",
+        "containment",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CSS Grid over containment?",
+        "What is the performance or memory difference between CSS Grid and containment?"
+      ],
+      "related_concepts": [
+        "CSS Grid",
+        "containment",
+        "Flexbox",
+        "position property"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-010",
+      "subject": "CSS",
+      "category": "Layout",
+      "subcategory": "Flexbox",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Flexbox and BFC in CSS.",
+      "ideal_answer": "Flexbox and BFC differ in several ways: Flexbox is one-dimensional layout system (works by flexible item arrangement) whereas BFC is Block Formatting Context (works by independent rendering region). Flexbox is typically used for main axis, cross axis, justify-content, align-items, while BFC is used for contains floats, prevents margin collapse. Example demonstrating Flexbox: display: flex; justify-content: space-between;. Example demonstrating BFC: overflow: hidden; display: flow-root;.",
+      "keywords": [
+        "Flexbox",
+        "BFC",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Flexbox over BFC?",
+        "What is the performance or memory difference between Flexbox and BFC?"
+      ],
+      "related_concepts": [
+        "Flexbox",
+        "BFC",
+        "CSS Grid",
+        "position property"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-011",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Selectors",
+      "difficulty": "Easy",
+      "question": "Explain the difference between specificity and pseudo-elements in CSS.",
+      "ideal_answer": "specificity and pseudo-elements differ in several ways: specificity is selector priority system (works by conflict resolution) whereas pseudo-elements is virtual element creation (works by styling non-existent markup). specificity is typically used for inline > id > class/attribute > element, while pseudo-elements is used for ::before, ::after, ::first-line, ::selection. Example demonstrating specificity: #nav .menu li > a. Example demonstrating pseudo-elements: .clearfix::after { content: \"\"; display: table; clear: both; }.",
+      "keywords": [
+        "specificity",
+        "pseudo-elements",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose specificity over pseudo-elements?",
+        "What is the performance or memory difference between specificity and pseudo-elements?"
+      ],
+      "related_concepts": [
+        "specificity",
+        "pseudo-elements",
+        "box-sizing",
+        "CSS variables"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-012",
+      "subject": "CSS",
+      "category": "Animations",
+      "subcategory": "Keyframes",
+      "difficulty": "Easy",
+      "question": "Explain the difference between CSS keyframes and transform property in CSS.",
+      "ideal_answer": "CSS keyframes and transform property differ in several ways: CSS keyframes is complex animation definition (works by multi-step animations) whereas transform property is visual transformation (works by GPU-accelerated changes). CSS keyframes is typically used for @keyframes, animation-name, duration, iteration, while transform property is used for translate, scale, rotate, skew. Example demonstrating CSS keyframes: @keyframes slide { from { transform: translateX(-100%); } to { transform: translateX(0); } }. Example demonstrating transform property: transform: translate3d(0, 0, 0);.",
+      "keywords": [
+        "CSS keyframes",
+        "transform property",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CSS keyframes over transform property?",
+        "What is the performance or memory difference between CSS keyframes and transform property?"
+      ],
+      "related_concepts": [
+        "CSS keyframes",
+        "transform property",
+        "CSS transitions"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-013",
+      "subject": "CSS",
+      "category": "Animations",
+      "subcategory": "Transitions",
+      "difficulty": "Easy",
+      "question": "What is CSS transitions in CSS and how does it work?",
+      "ideal_answer": "CSS transitions in CSS refers to property change animation. It works by simple state animations. Key characteristics include transition-property, duration, timing-function, delay. Example: transition: all 0.3s ease-in-out;. Common pitfalls include transitioning display property.",
+      "keywords": [
+        "CSS transitions",
+        "CSS programming",
+        "animations"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of CSS transitions in a production environment?",
+        "What are the common pitfalls or issues associated with CSS transitions?"
+      ],
+      "related_concepts": [
+        "CSS keyframes",
+        "transform property"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-014",
+      "subject": "CSS",
+      "category": "Layout",
+      "subcategory": "Grid",
+      "difficulty": "Easy",
+      "question": "What are the common issues with CSS Grid in CSS and how do you debug them?",
+      "ideal_answer": "Common issues with CSS Grid in CSS include: subgrid, masonry layout. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "CSS Grid",
+        "troubleshooting",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to CSS Grid?",
+        "What tools can assist in detecting problems with CSS Grid at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Flexbox",
+        "position property",
+        "BFC"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-015",
+      "subject": "CSS",
+      "category": "Responsive Design",
+      "subcategory": "Mobile First",
+      "difficulty": "Easy",
+      "question": "What are the common issues with clamp function in CSS and how do you debug them?",
+      "ideal_answer": "Common issues with clamp function in CSS include: calc with clamp. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "clamp function",
+        "troubleshooting",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to clamp function?",
+        "What tools can assist in detecting problems with clamp function at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "media queries",
+        "container queries"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-016",
+      "subject": "CSS",
+      "category": "Layout",
+      "subcategory": "Grid",
+      "difficulty": "Easy",
+      "question": "What is CSS Grid in CSS and how does it work?",
+      "ideal_answer": "CSS Grid in CSS refers to two-dimensional layout system. It works by row and column control. Key characteristics include grid-template-columns, grid-area, minmax, auto-fit. Example: grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));. Common pitfalls include subgrid, masonry layout.",
+      "keywords": [
+        "CSS Grid",
+        "CSS programming",
+        "layout"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of CSS Grid in a production environment?",
+        "What are the common pitfalls or issues associated with CSS Grid?"
+      ],
+      "related_concepts": [
+        "Flexbox",
+        "position property",
+        "BFC"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-017",
+      "subject": "CSS",
+      "category": "Responsive Design",
+      "subcategory": "Media Queries",
+      "difficulty": "Easy",
+      "question": "What are the common issues with media queries in CSS and how do you debug them?",
+      "ideal_answer": "Common issues with media queries in CSS include: mobile-first vs desktop-first. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "media queries",
+        "troubleshooting",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to media queries?",
+        "What tools can assist in detecting problems with media queries at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "container queries",
+        "clamp function"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-018",
+      "subject": "CSS",
+      "category": "Responsive Design",
+      "subcategory": "Mobile First",
+      "difficulty": "Easy",
+      "question": "What is clamp function in CSS and how does it work?",
+      "ideal_answer": "clamp function in CSS refers to responsive value scaling. It works by fluid typography/spacing. Key characteristics include min, preferred, max values. Example: font-size: clamp(1rem, 2.5vw, 2rem);. Common pitfalls include calc with clamp.",
+      "keywords": [
+        "clamp function",
+        "CSS programming",
+        "responsive design"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of clamp function in a production environment?",
+        "What are the common pitfalls or issues associated with clamp function?"
+      ],
+      "related_concepts": [
+        "media queries",
+        "container queries"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-019",
+      "subject": "CSS",
+      "category": "Best Practices",
+      "subcategory": "BEM",
+      "difficulty": "Easy",
+      "question": "What are the common issues with BEM methodology in CSS and how do you debug them?",
+      "ideal_answer": "Common issues with BEM methodology in CSS include: verbose class names. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "BEM methodology",
+        "troubleshooting",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to BEM methodology?",
+        "What tools can assist in detecting problems with BEM methodology at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "CSS-in-JS",
+        "critical CSS"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-020",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Specificity",
+      "difficulty": "Easy",
+      "question": "Explain the difference between box-sizing and pseudo-elements in CSS.",
+      "ideal_answer": "box-sizing and pseudo-elements differ in several ways: box-sizing is width/height calculation mode (works by controlling element dimensions) whereas pseudo-elements is virtual element creation (works by styling non-existent markup). box-sizing is typically used for content-box: width = content; border-box: width = content + padding + border, while pseudo-elements is used for ::before, ::after, ::first-line, ::selection. Example demonstrating box-sizing: * { box-sizing: border-box; }. Example demonstrating pseudo-elements: .clearfix::after { content: \"\"; display: table; clear: both; }.",
+      "keywords": [
+        "box-sizing",
+        "pseudo-elements",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose box-sizing over pseudo-elements?",
+        "What is the performance or memory difference between box-sizing and pseudo-elements?"
+      ],
+      "related_concepts": [
+        "box-sizing",
+        "pseudo-elements",
+        "specificity",
+        "CSS variables"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-021",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Specificity",
+      "difficulty": "Easy",
+      "question": "Explain the difference between box-sizing and pseudo-classes in CSS.",
+      "ideal_answer": "box-sizing and pseudo-classes differ in several ways: box-sizing is width/height calculation mode (works by controlling element dimensions) whereas pseudo-classes is element state selectors (works by styling based on state). box-sizing is typically used for content-box: width = content; border-box: width = content + padding + border, while pseudo-classes is used for :hover, :focus, :nth-child, :not, :is. Example demonstrating box-sizing: * { box-sizing: border-box; }. Example demonstrating pseudo-classes: li:not(:first-child) { border-top: 1px solid; }.",
+      "keywords": [
+        "box-sizing",
+        "pseudo-classes",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose box-sizing over pseudo-classes?",
+        "What is the performance or memory difference between box-sizing and pseudo-classes?"
+      ],
+      "related_concepts": [
+        "box-sizing",
+        "pseudo-classes",
+        "specificity",
+        "CSS variables"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-022",
+      "subject": "CSS",
+      "category": "Layout",
+      "subcategory": "Flexbox",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Flexbox and containment in CSS.",
+      "ideal_answer": "Flexbox and containment differ in several ways: Flexbox is one-dimensional layout system (works by flexible item arrangement) whereas containment is performance isolation (works by limiting layout/paint/style scope). Flexbox is typically used for main axis, cross axis, justify-content, align-items, while containment is used for layout, paint, size, style, strict. Example demonstrating Flexbox: display: flex; justify-content: space-between;. Example demonstrating containment: contain: layout paint;.",
+      "keywords": [
+        "Flexbox",
+        "containment",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Flexbox over containment?",
+        "What is the performance or memory difference between Flexbox and containment?"
+      ],
+      "related_concepts": [
+        "Flexbox",
+        "containment",
+        "CSS Grid",
+        "position property"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "CSS-023",
+      "subject": "CSS",
+      "category": "Responsive Design",
+      "subcategory": "Container Queries",
+      "difficulty": "Medium",
+      "question": "What are the common issues with container queries in CSS and how do you debug them?",
+      "ideal_answer": "Common issues with container queries in CSS include: browser support, polyfills. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "container queries",
+        "troubleshooting",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to container queries?",
+        "What tools can assist in detecting problems with container queries at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "media queries",
+        "clamp function"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-024",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Specificity",
+      "difficulty": "Medium",
+      "question": "What is box-sizing in CSS and how does it work?",
+      "ideal_answer": "box-sizing in CSS refers to width/height calculation mode. It works by controlling element dimensions. Key characteristics include content-box: width = content; border-box: width = content + padding + border. Example: * { box-sizing: border-box; }. Common pitfalls include default content-box behavior.",
+      "keywords": [
+        "box-sizing",
+        "CSS programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of box-sizing in a production environment?",
+        "What are the common pitfalls or issues associated with box-sizing?"
+      ],
+      "related_concepts": [
+        "specificity",
+        "CSS variables",
+        "z-index stacking"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-025",
+      "subject": "CSS",
+      "category": "Responsive Design",
+      "subcategory": "Container Queries",
+      "difficulty": "Medium",
+      "question": "Explain the difference between container queries and clamp function in CSS.",
+      "ideal_answer": "container queries and clamp function differ in several ways: container queries is component-based responsiveness (works by querying container size not viewport) whereas clamp function is responsive value scaling (works by fluid typography/spacing). container queries is typically used for @container (min-width: 400px) { ... }, while clamp function is used for min, preferred, max values. Example demonstrating container queries: @container syntax, container-type property. Example demonstrating clamp function: font-size: clamp(1rem, 2.5vw, 2rem);.",
+      "keywords": [
+        "container queries",
+        "clamp function",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose container queries over clamp function?",
+        "What is the performance or memory difference between container queries and clamp function?"
+      ],
+      "related_concepts": [
+        "container queries",
+        "clamp function",
+        "media queries"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-026",
+      "subject": "CSS",
+      "category": "Animations",
+      "subcategory": "Transitions",
+      "difficulty": "Medium",
+      "question": "Explain the difference between CSS transitions and transform property in CSS.",
+      "ideal_answer": "CSS transitions and transform property differ in several ways: CSS transitions is property change animation (works by simple state animations) whereas transform property is visual transformation (works by GPU-accelerated changes). CSS transitions is typically used for transition-property, duration, timing-function, delay, while transform property is used for translate, scale, rotate, skew. Example demonstrating CSS transitions: transition: all 0.3s ease-in-out;. Example demonstrating transform property: transform: translate3d(0, 0, 0);.",
+      "keywords": [
+        "CSS transitions",
+        "transform property",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CSS transitions over transform property?",
+        "What is the performance or memory difference between CSS transitions and transform property?"
+      ],
+      "related_concepts": [
+        "CSS transitions",
+        "transform property",
+        "CSS keyframes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-027",
+      "subject": "CSS",
+      "category": "Responsive Design",
+      "subcategory": "Media Queries",
+      "difficulty": "Medium",
+      "question": "Explain the difference between media queries and container queries in CSS.",
+      "ideal_answer": "media queries and container queries differ in several ways: media queries is conditional styling (works by responsive breakpoint logic) whereas container queries is component-based responsiveness (works by querying container size not viewport). media queries is typically used for min-width, max-width, orientation, prefers-color-scheme, while container queries is used for @container (min-width: 400px) { ... }. Example demonstrating media queries: @media (min-width: 768px) { ... }. Example demonstrating container queries: @container syntax, container-type property.",
+      "keywords": [
+        "media queries",
+        "container queries",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose media queries over container queries?",
+        "What is the performance or memory difference between media queries and container queries?"
+      ],
+      "related_concepts": [
+        "media queries",
+        "container queries",
+        "clamp function"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-028",
+      "subject": "CSS",
+      "category": "Responsive Design",
+      "subcategory": "Container Queries",
+      "difficulty": "Medium",
+      "question": "What is container queries in CSS and how does it work?",
+      "ideal_answer": "container queries in CSS refers to component-based responsiveness. It works by querying container size not viewport. Key characteristics include @container (min-width: 400px) { ... }. Example: @container syntax, container-type property. Common pitfalls include browser support, polyfills.",
+      "keywords": [
+        "container queries",
+        "CSS programming",
+        "responsive design"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of container queries in a production environment?",
+        "What are the common pitfalls or issues associated with container queries?"
+      ],
+      "related_concepts": [
+        "media queries",
+        "clamp function"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-029",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Inheritance",
+      "difficulty": "Medium",
+      "question": "Explain the difference between CSS variables and pseudo-classes in CSS.",
+      "ideal_answer": "CSS variables and pseudo-classes differ in several ways: CSS variables is custom properties (works by reusable values) whereas pseudo-classes is element state selectors (works by styling based on state). CSS variables is typically used for --prefix, var() function, cascade inheritance, while pseudo-classes is used for :hover, :focus, :nth-child, :not, :is. Example demonstrating CSS variables: :root { --primary: #007bff; } .btn { color: var(--primary); }. Example demonstrating pseudo-classes: li:not(:first-child) { border-top: 1px solid; }.",
+      "keywords": [
+        "CSS variables",
+        "pseudo-classes",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CSS variables over pseudo-classes?",
+        "What is the performance or memory difference between CSS variables and pseudo-classes?"
+      ],
+      "related_concepts": [
+        "CSS variables",
+        "pseudo-classes",
+        "specificity",
+        "box-sizing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-030",
+      "subject": "CSS",
+      "category": "Animations",
+      "subcategory": "Transitions",
+      "difficulty": "Medium",
+      "question": "What are the common issues with CSS transitions in CSS and how do you debug them?",
+      "ideal_answer": "Common issues with CSS transitions in CSS include: transitioning display property. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "CSS transitions",
+        "troubleshooting",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to CSS transitions?",
+        "What tools can assist in detecting problems with CSS transitions at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "CSS keyframes",
+        "transform property"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-031",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Cascade",
+      "difficulty": "Medium",
+      "question": "Explain the difference between z-index stacking and pseudo-classes in CSS.",
+      "ideal_answer": "z-index stacking and pseudo-classes differ in several ways: z-index stacking is layer ordering control (works by third dimension positioning) whereas pseudo-classes is element state selectors (works by styling based on state). z-index stacking is typically used for only applies to positioned elements, creates stacking context, while pseudo-classes is used for :hover, :focus, :nth-child, :not, :is. Example demonstrating z-index stacking: position: relative; z-index: 10;. Example demonstrating pseudo-classes: li:not(:first-child) { border-top: 1px solid; }.",
+      "keywords": [
+        "z-index stacking",
+        "pseudo-classes",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose z-index stacking over pseudo-classes?",
+        "What is the performance or memory difference between z-index stacking and pseudo-classes?"
+      ],
+      "related_concepts": [
+        "z-index stacking",
+        "pseudo-classes",
+        "specificity",
+        "box-sizing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-032",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Selectors",
+      "difficulty": "Medium",
+      "question": "Explain the difference between specificity and pseudo-classes in CSS.",
+      "ideal_answer": "specificity and pseudo-classes differ in several ways: specificity is selector priority system (works by conflict resolution) whereas pseudo-classes is element state selectors (works by styling based on state). specificity is typically used for inline > id > class/attribute > element, while pseudo-classes is used for :hover, :focus, :nth-child, :not, :is. Example demonstrating specificity: #nav .menu li > a. Example demonstrating pseudo-classes: li:not(:first-child) { border-top: 1px solid; }.",
+      "keywords": [
+        "specificity",
+        "pseudo-classes",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose specificity over pseudo-classes?",
+        "What is the performance or memory difference between specificity and pseudo-classes?"
+      ],
+      "related_concepts": [
+        "specificity",
+        "pseudo-classes",
+        "box-sizing",
+        "CSS variables"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-033",
+      "subject": "CSS",
+      "category": "Layout",
+      "subcategory": "Floats",
+      "difficulty": "Medium",
+      "question": "What is BFC in CSS and how does it work?",
+      "ideal_answer": "BFC in CSS refers to Block Formatting Context. It works by independent rendering region. Key characteristics include contains floats, prevents margin collapse. Example: overflow: hidden; display: flow-root;. Common pitfalls include creating BFC without side effects.",
+      "keywords": [
+        "BFC",
+        "CSS programming",
+        "layout"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of BFC in a production environment?",
+        "What are the common pitfalls or issues associated with BFC?"
+      ],
+      "related_concepts": [
+        "Flexbox",
+        "CSS Grid",
+        "position property"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-034",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Inheritance",
+      "difficulty": "Medium",
+      "question": "Explain the difference between CSS variables and pseudo-elements in CSS.",
+      "ideal_answer": "CSS variables and pseudo-elements differ in several ways: CSS variables is custom properties (works by reusable values) whereas pseudo-elements is virtual element creation (works by styling non-existent markup). CSS variables is typically used for --prefix, var() function, cascade inheritance, while pseudo-elements is used for ::before, ::after, ::first-line, ::selection. Example demonstrating CSS variables: :root { --primary: #007bff; } .btn { color: var(--primary); }. Example demonstrating pseudo-elements: .clearfix::after { content: \"\"; display: table; clear: both; }.",
+      "keywords": [
+        "CSS variables",
+        "pseudo-elements",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CSS variables over pseudo-elements?",
+        "What is the performance or memory difference between CSS variables and pseudo-elements?"
+      ],
+      "related_concepts": [
+        "CSS variables",
+        "pseudo-elements",
+        "specificity",
+        "box-sizing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-035",
+      "subject": "CSS",
+      "category": "Responsive Design",
+      "subcategory": "Media Queries",
+      "difficulty": "Medium",
+      "question": "What is media queries in CSS and how does it work?",
+      "ideal_answer": "media queries in CSS refers to conditional styling. It works by responsive breakpoint logic. Key characteristics include min-width, max-width, orientation, prefers-color-scheme. Example: @media (min-width: 768px) { ... }. Common pitfalls include mobile-first vs desktop-first.",
+      "keywords": [
+        "media queries",
+        "CSS programming",
+        "responsive design"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of media queries in a production environment?",
+        "What are the common pitfalls or issues associated with media queries?"
+      ],
+      "related_concepts": [
+        "container queries",
+        "clamp function"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-036",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Cascade",
+      "difficulty": "Medium",
+      "question": "Explain the difference between z-index stacking and pseudo-elements in CSS.",
+      "ideal_answer": "z-index stacking and pseudo-elements differ in several ways: z-index stacking is layer ordering control (works by third dimension positioning) whereas pseudo-elements is virtual element creation (works by styling non-existent markup). z-index stacking is typically used for only applies to positioned elements, creates stacking context, while pseudo-elements is used for ::before, ::after, ::first-line, ::selection. Example demonstrating z-index stacking: position: relative; z-index: 10;. Example demonstrating pseudo-elements: .clearfix::after { content: \"\"; display: table; clear: both; }.",
+      "keywords": [
+        "z-index stacking",
+        "pseudo-elements",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose z-index stacking over pseudo-elements?",
+        "What is the performance or memory difference between z-index stacking and pseudo-elements?"
+      ],
+      "related_concepts": [
+        "z-index stacking",
+        "pseudo-elements",
+        "specificity",
+        "box-sizing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-037",
+      "subject": "CSS",
+      "category": "Animations",
+      "subcategory": "Transitions",
+      "difficulty": "Medium",
+      "question": "Explain the difference between CSS transitions and CSS keyframes in CSS.",
+      "ideal_answer": "CSS transitions and CSS keyframes differ in several ways: CSS transitions is property change animation (works by simple state animations) whereas CSS keyframes is complex animation definition (works by multi-step animations). CSS transitions is typically used for transition-property, duration, timing-function, delay, while CSS keyframes is used for @keyframes, animation-name, duration, iteration. Example demonstrating CSS transitions: transition: all 0.3s ease-in-out;. Example demonstrating CSS keyframes: @keyframes slide { from { transform: translateX(-100%); } to { transform: translateX(0); } }.",
+      "keywords": [
+        "CSS transitions",
+        "CSS keyframes",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CSS transitions over CSS keyframes?",
+        "What is the performance or memory difference between CSS transitions and CSS keyframes?"
+      ],
+      "related_concepts": [
+        "CSS transitions",
+        "CSS keyframes",
+        "transform property"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-038",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Cascade",
+      "difficulty": "Medium",
+      "question": "What is z-index stacking in CSS and how does it work?",
+      "ideal_answer": "z-index stacking in CSS refers to layer ordering control. It works by third dimension positioning. Key characteristics include only applies to positioned elements, creates stacking context. Example: position: relative; z-index: 10;. Common pitfalls include stacking context creation triggers.",
+      "keywords": [
+        "z-index stacking",
+        "CSS programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of z-index stacking in a production environment?",
+        "What are the common pitfalls or issues associated with z-index stacking?"
+      ],
+      "related_concepts": [
+        "specificity",
+        "box-sizing",
+        "CSS variables"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-039",
+      "subject": "CSS",
+      "category": "Layout",
+      "subcategory": "Grid",
+      "difficulty": "Medium",
+      "question": "Explain the difference between CSS Grid and BFC in CSS.",
+      "ideal_answer": "CSS Grid and BFC differ in several ways: CSS Grid is two-dimensional layout system (works by row and column control) whereas BFC is Block Formatting Context (works by independent rendering region). CSS Grid is typically used for grid-template-columns, grid-area, minmax, auto-fit, while BFC is used for contains floats, prevents margin collapse. Example demonstrating CSS Grid: grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));. Example demonstrating BFC: overflow: hidden; display: flow-root;.",
+      "keywords": [
+        "CSS Grid",
+        "BFC",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CSS Grid over BFC?",
+        "What is the performance or memory difference between CSS Grid and BFC?"
+      ],
+      "related_concepts": [
+        "CSS Grid",
+        "BFC",
+        "Flexbox",
+        "position property"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-040",
+      "subject": "CSS",
+      "category": "Animations",
+      "subcategory": "Transforms",
+      "difficulty": "Medium",
+      "question": "What are the common issues with transform property in CSS and how do you debug them?",
+      "ideal_answer": "Common issues with transform property in CSS include: translateZ for layer promotion. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "transform property",
+        "troubleshooting",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to transform property?",
+        "What tools can assist in detecting problems with transform property at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "CSS transitions",
+        "CSS keyframes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-041",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Variables",
+      "difficulty": "Medium",
+      "question": "What are the common issues with pseudo-elements in CSS and how do you debug them?",
+      "ideal_answer": "Common issues with pseudo-elements in CSS include: single vs double colon syntax. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "pseudo-elements",
+        "troubleshooting",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to pseudo-elements?",
+        "What tools can assist in detecting problems with pseudo-elements at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "specificity",
+        "box-sizing",
+        "CSS variables"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-042",
+      "subject": "CSS",
+      "category": "Layout",
+      "subcategory": "Floats",
+      "difficulty": "Medium",
+      "question": "Explain the difference between BFC and containment in CSS.",
+      "ideal_answer": "BFC and containment differ in several ways: BFC is Block Formatting Context (works by independent rendering region) whereas containment is performance isolation (works by limiting layout/paint/style scope). BFC is typically used for contains floats, prevents margin collapse, while containment is used for layout, paint, size, style, strict. Example demonstrating BFC: overflow: hidden; display: flow-root;. Example demonstrating containment: contain: layout paint;.",
+      "keywords": [
+        "BFC",
+        "containment",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose BFC over containment?",
+        "What is the performance or memory difference between BFC and containment?"
+      ],
+      "related_concepts": [
+        "BFC",
+        "containment",
+        "Flexbox",
+        "CSS Grid"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-043",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Inheritance",
+      "difficulty": "Medium",
+      "question": "Explain the difference between CSS variables and z-index stacking in CSS.",
+      "ideal_answer": "CSS variables and z-index stacking differ in several ways: CSS variables is custom properties (works by reusable values) whereas z-index stacking is layer ordering control (works by third dimension positioning). CSS variables is typically used for --prefix, var() function, cascade inheritance, while z-index stacking is used for only applies to positioned elements, creates stacking context. Example demonstrating CSS variables: :root { --primary: #007bff; } .btn { color: var(--primary); }. Example demonstrating z-index stacking: position: relative; z-index: 10;.",
+      "keywords": [
+        "CSS variables",
+        "z-index stacking",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CSS variables over z-index stacking?",
+        "What is the performance or memory difference between CSS variables and z-index stacking?"
+      ],
+      "related_concepts": [
+        "CSS variables",
+        "z-index stacking",
+        "specificity",
+        "box-sizing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-044",
+      "subject": "CSS",
+      "category": "Layout",
+      "subcategory": "Flexbox",
+      "difficulty": "Medium",
+      "question": "What is Flexbox in CSS and how does it work?",
+      "ideal_answer": "Flexbox in CSS refers to one-dimensional layout system. It works by flexible item arrangement. Key characteristics include main axis, cross axis, justify-content, align-items. Example: display: flex; justify-content: space-between;. Common pitfalls include flex-basis vs width, gap property.",
+      "keywords": [
+        "Flexbox",
+        "CSS programming",
+        "layout"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Flexbox in a production environment?",
+        "What are the common pitfalls or issues associated with Flexbox?"
+      ],
+      "related_concepts": [
+        "CSS Grid",
+        "position property",
+        "BFC"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-045",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Selectors",
+      "difficulty": "Medium",
+      "question": "What is pseudo-classes in CSS and how does it work?",
+      "ideal_answer": "pseudo-classes in CSS refers to element state selectors. It works by styling based on state. Key characteristics include :hover, :focus, :nth-child, :not, :is. Example: li:not(:first-child) { border-top: 1px solid; }. Common pitfalls include specificity of :where vs :is.",
+      "keywords": [
+        "pseudo-classes",
+        "CSS programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of pseudo-classes in a production environment?",
+        "What are the common pitfalls or issues associated with pseudo-classes?"
+      ],
+      "related_concepts": [
+        "specificity",
+        "box-sizing",
+        "CSS variables"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-046",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Selectors",
+      "difficulty": "Medium",
+      "question": "What is specificity in CSS and how does it work?",
+      "ideal_answer": "specificity in CSS refers to selector priority system. It works by conflict resolution. Key characteristics include inline > id > class/attribute > element. Example: #nav .menu li > a. Common pitfalls include !important override.",
+      "keywords": [
+        "specificity",
+        "CSS programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of specificity in a production environment?",
+        "What are the common pitfalls or issues associated with specificity?"
+      ],
+      "related_concepts": [
+        "box-sizing",
+        "CSS variables",
+        "z-index stacking"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-047",
+      "subject": "CSS",
+      "category": "Best Practices",
+      "subcategory": "CSS-in-JS",
+      "difficulty": "Medium",
+      "question": "What are the common issues with CSS-in-JS in CSS and how do you debug them?",
+      "ideal_answer": "Common issues with CSS-in-JS in CSS include: runtime overhead, SSR challenges. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "CSS-in-JS",
+        "troubleshooting",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to CSS-in-JS?",
+        "What tools can assist in detecting problems with CSS-in-JS at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "BEM methodology",
+        "critical CSS"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-048",
+      "subject": "CSS",
+      "category": "Layout",
+      "subcategory": "Flexbox",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Flexbox and CSS Grid in CSS.",
+      "ideal_answer": "Flexbox and CSS Grid differ in several ways: Flexbox is one-dimensional layout system (works by flexible item arrangement) whereas CSS Grid is two-dimensional layout system (works by row and column control). Flexbox is typically used for main axis, cross axis, justify-content, align-items, while CSS Grid is used for grid-template-columns, grid-area, minmax, auto-fit. Example demonstrating Flexbox: display: flex; justify-content: space-between;. Example demonstrating CSS Grid: grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));.",
+      "keywords": [
+        "Flexbox",
+        "CSS Grid",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Flexbox over CSS Grid?",
+        "What is the performance or memory difference between Flexbox and CSS Grid?"
+      ],
+      "related_concepts": [
+        "Flexbox",
+        "CSS Grid",
+        "position property",
+        "BFC"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-049",
+      "subject": "CSS",
+      "category": "Best Practices",
+      "subcategory": "Utility Classes",
+      "difficulty": "Medium",
+      "question": "What is critical CSS in CSS and how does it work?",
+      "ideal_answer": "critical CSS in CSS refers to above-the-fold styling. It works by render-blocking optimization. Key characteristics include inline essential styles, defer rest. Example: <style>/* critical styles */</style><link rel=\"preload\" href=\"rest.css\">. Common pitfalls include automated extraction tools.",
+      "keywords": [
+        "critical CSS",
+        "CSS programming",
+        "best practices"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of critical CSS in a production environment?",
+        "What are the common pitfalls or issues associated with critical CSS?"
+      ],
+      "related_concepts": [
+        "BEM methodology",
+        "CSS-in-JS"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-050",
+      "subject": "CSS",
+      "category": "Animations",
+      "subcategory": "Transforms",
+      "difficulty": "Medium",
+      "question": "What is transform property in CSS and how does it work?",
+      "ideal_answer": "transform property in CSS refers to visual transformation. It works by GPU-accelerated changes. Key characteristics include translate, scale, rotate, skew. Example: transform: translate3d(0, 0, 0);. Common pitfalls include translateZ for layer promotion.",
+      "keywords": [
+        "transform property",
+        "CSS programming",
+        "animations"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of transform property in a production environment?",
+        "What are the common pitfalls or issues associated with transform property?"
+      ],
+      "related_concepts": [
+        "CSS transitions",
+        "CSS keyframes"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-051",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Variables",
+      "difficulty": "Medium",
+      "question": "Explain the difference between pseudo-elements and pseudo-classes in CSS.",
+      "ideal_answer": "pseudo-elements and pseudo-classes differ in several ways: pseudo-elements is virtual element creation (works by styling non-existent markup) whereas pseudo-classes is element state selectors (works by styling based on state). pseudo-elements is typically used for ::before, ::after, ::first-line, ::selection, while pseudo-classes is used for :hover, :focus, :nth-child, :not, :is. Example demonstrating pseudo-elements: .clearfix::after { content: \"\"; display: table; clear: both; }. Example demonstrating pseudo-classes: li:not(:first-child) { border-top: 1px solid; }.",
+      "keywords": [
+        "pseudo-elements",
+        "pseudo-classes",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose pseudo-elements over pseudo-classes?",
+        "What is the performance or memory difference between pseudo-elements and pseudo-classes?"
+      ],
+      "related_concepts": [
+        "pseudo-elements",
+        "pseudo-classes",
+        "specificity",
+        "box-sizing"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-052",
+      "subject": "CSS",
+      "category": "Layout",
+      "subcategory": "Floats",
+      "difficulty": "Medium",
+      "question": "What are the common issues with BFC in CSS and how do you debug them?",
+      "ideal_answer": "Common issues with BFC in CSS include: creating BFC without side effects. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "BFC",
+        "troubleshooting",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to BFC?",
+        "What tools can assist in detecting problems with BFC at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Flexbox",
+        "CSS Grid",
+        "position property"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-053",
+      "subject": "CSS",
+      "category": "Layout",
+      "subcategory": "Positioning",
+      "difficulty": "Medium",
+      "question": "Explain the difference between position property and BFC in CSS.",
+      "ideal_answer": "position property and BFC differ in several ways: position property is element positioning scheme (works by removing from normal flow) whereas BFC is Block Formatting Context (works by independent rendering region). position property is typically used for static, relative, absolute, fixed, sticky, while BFC is used for contains floats, prevents margin collapse. Example demonstrating position property: position: sticky; top: 0;. Example demonstrating BFC: overflow: hidden; display: flow-root;.",
+      "keywords": [
+        "position property",
+        "BFC",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose position property over BFC?",
+        "What is the performance or memory difference between position property and BFC?"
+      ],
+      "related_concepts": [
+        "position property",
+        "BFC",
+        "Flexbox",
+        "CSS Grid"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-054",
+      "subject": "CSS",
+      "category": "Layout",
+      "subcategory": "Grid",
+      "difficulty": "Medium",
+      "question": "Explain the difference between CSS Grid and position property in CSS.",
+      "ideal_answer": "CSS Grid and position property differ in several ways: CSS Grid is two-dimensional layout system (works by row and column control) whereas position property is element positioning scheme (works by removing from normal flow). CSS Grid is typically used for grid-template-columns, grid-area, minmax, auto-fit, while position property is used for static, relative, absolute, fixed, sticky. Example demonstrating CSS Grid: grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));. Example demonstrating position property: position: sticky; top: 0;.",
+      "keywords": [
+        "CSS Grid",
+        "position property",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CSS Grid over position property?",
+        "What is the performance or memory difference between CSS Grid and position property?"
+      ],
+      "related_concepts": [
+        "CSS Grid",
+        "position property",
+        "Flexbox",
+        "BFC"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-055",
+      "subject": "CSS",
+      "category": "Layout",
+      "subcategory": "Positioning",
+      "difficulty": "Medium",
+      "question": "Explain the difference between position property and containment in CSS.",
+      "ideal_answer": "position property and containment differ in several ways: position property is element positioning scheme (works by removing from normal flow) whereas containment is performance isolation (works by limiting layout/paint/style scope). position property is typically used for static, relative, absolute, fixed, sticky, while containment is used for layout, paint, size, style, strict. Example demonstrating position property: position: sticky; top: 0;. Example demonstrating containment: contain: layout paint;.",
+      "keywords": [
+        "position property",
+        "containment",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose position property over containment?",
+        "What is the performance or memory difference between position property and containment?"
+      ],
+      "related_concepts": [
+        "position property",
+        "containment",
+        "Flexbox",
+        "CSS Grid"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-056",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Selectors",
+      "difficulty": "Medium",
+      "question": "Explain the difference between specificity and box-sizing in CSS.",
+      "ideal_answer": "specificity and box-sizing differ in several ways: specificity is selector priority system (works by conflict resolution) whereas box-sizing is width/height calculation mode (works by controlling element dimensions). specificity is typically used for inline > id > class/attribute > element, while box-sizing is used for content-box: width = content; border-box: width = content + padding + border. Example demonstrating specificity: #nav .menu li > a. Example demonstrating box-sizing: * { box-sizing: border-box; }.",
+      "keywords": [
+        "specificity",
+        "box-sizing",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose specificity over box-sizing?",
+        "What is the performance or memory difference between specificity and box-sizing?"
+      ],
+      "related_concepts": [
+        "specificity",
+        "box-sizing",
+        "CSS variables",
+        "z-index stacking"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-057",
+      "subject": "CSS",
+      "category": "Best Practices",
+      "subcategory": "BEM",
+      "difficulty": "Medium",
+      "question": "Explain the difference between BEM methodology and CSS-in-JS in CSS.",
+      "ideal_answer": "BEM methodology and CSS-in-JS differ in several ways: BEM methodology is Block Element Modifier naming (works by component-based CSS organization) whereas CSS-in-JS is co-located component styles (works by JavaScript-generated CSS). BEM methodology is typically used for .block__element--modifier, while CSS-in-JS is used for styled-components, emotion, CSS modules. Example demonstrating BEM methodology: .card__title--highlighted. Example demonstrating CSS-in-JS: const Button = styled.button`color: red;`;.",
+      "keywords": [
+        "BEM methodology",
+        "CSS-in-JS",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose BEM methodology over CSS-in-JS?",
+        "What is the performance or memory difference between BEM methodology and CSS-in-JS?"
+      ],
+      "related_concepts": [
+        "BEM methodology",
+        "CSS-in-JS",
+        "critical CSS"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-058",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Selectors",
+      "difficulty": "Medium",
+      "question": "What are the common issues with specificity in CSS and how do you debug them?",
+      "ideal_answer": "Common issues with specificity in CSS include: !important override. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "specificity",
+        "troubleshooting",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to specificity?",
+        "What tools can assist in detecting problems with specificity at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "box-sizing",
+        "CSS variables",
+        "z-index stacking"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-059",
+      "subject": "CSS",
+      "category": "Layout",
+      "subcategory": "Flexbox",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Flexbox and position property in CSS.",
+      "ideal_answer": "Flexbox and position property differ in several ways: Flexbox is one-dimensional layout system (works by flexible item arrangement) whereas position property is element positioning scheme (works by removing from normal flow). Flexbox is typically used for main axis, cross axis, justify-content, align-items, while position property is used for static, relative, absolute, fixed, sticky. Example demonstrating Flexbox: display: flex; justify-content: space-between;. Example demonstrating position property: position: sticky; top: 0;.",
+      "keywords": [
+        "Flexbox",
+        "position property",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Flexbox over position property?",
+        "What is the performance or memory difference between Flexbox and position property?"
+      ],
+      "related_concepts": [
+        "Flexbox",
+        "position property",
+        "CSS Grid",
+        "BFC"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "CSS-060",
+      "subject": "CSS",
+      "category": "Layout",
+      "subcategory": "Positioning",
+      "difficulty": "Hard",
+      "question": "What are the common issues with position property in CSS and how do you debug them?",
+      "ideal_answer": "Common issues with position property in CSS include: containing block for absolute positioning. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "position property",
+        "troubleshooting",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to position property?",
+        "What tools can assist in detecting problems with position property at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Flexbox",
+        "CSS Grid",
+        "BFC"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CSS-061",
+      "subject": "CSS",
+      "category": "Best Practices",
+      "subcategory": "CSS-in-JS",
+      "difficulty": "Hard",
+      "question": "Explain the difference between CSS-in-JS and critical CSS in CSS.",
+      "ideal_answer": "CSS-in-JS and critical CSS differ in several ways: CSS-in-JS is co-located component styles (works by JavaScript-generated CSS) whereas critical CSS is above-the-fold styling (works by render-blocking optimization). CSS-in-JS is typically used for styled-components, emotion, CSS modules, while critical CSS is used for inline essential styles, defer rest. Example demonstrating CSS-in-JS: const Button = styled.button`color: red;`;. Example demonstrating critical CSS: <style>/* critical styles */</style><link rel=\"preload\" href=\"rest.css\">.",
+      "keywords": [
+        "CSS-in-JS",
+        "critical CSS",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose CSS-in-JS over critical CSS?",
+        "What is the performance or memory difference between CSS-in-JS and critical CSS?"
+      ],
+      "related_concepts": [
+        "CSS-in-JS",
+        "critical CSS",
+        "BEM methodology"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CSS-062",
+      "subject": "CSS",
+      "category": "Best Practices",
+      "subcategory": "CSS-in-JS",
+      "difficulty": "Hard",
+      "question": "What is CSS-in-JS in CSS and how does it work?",
+      "ideal_answer": "CSS-in-JS in CSS refers to co-located component styles. It works by JavaScript-generated CSS. Key characteristics include styled-components, emotion, CSS modules. Example: const Button = styled.button`color: red;`;. Common pitfalls include runtime overhead, SSR challenges.",
+      "keywords": [
+        "CSS-in-JS",
+        "CSS programming",
+        "best practices"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of CSS-in-JS in a production environment?",
+        "What are the common pitfalls or issues associated with CSS-in-JS?"
+      ],
+      "related_concepts": [
+        "BEM methodology",
+        "critical CSS"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CSS-063",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Inheritance",
+      "difficulty": "Hard",
+      "question": "What are the common issues with CSS variables in CSS and how do you debug them?",
+      "ideal_answer": "Common issues with CSS variables in CSS include: runtime modification with JS. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "CSS variables",
+        "troubleshooting",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to CSS variables?",
+        "What tools can assist in detecting problems with CSS variables at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "specificity",
+        "box-sizing",
+        "z-index stacking"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CSS-064",
+      "subject": "CSS",
+      "category": "Best Practices",
+      "subcategory": "BEM",
+      "difficulty": "Hard",
+      "question": "Explain the difference between BEM methodology and critical CSS in CSS.",
+      "ideal_answer": "BEM methodology and critical CSS differ in several ways: BEM methodology is Block Element Modifier naming (works by component-based CSS organization) whereas critical CSS is above-the-fold styling (works by render-blocking optimization). BEM methodology is typically used for .block__element--modifier, while critical CSS is used for inline essential styles, defer rest. Example demonstrating BEM methodology: .card__title--highlighted. Example demonstrating critical CSS: <style>/* critical styles */</style><link rel=\"preload\" href=\"rest.css\">.",
+      "keywords": [
+        "BEM methodology",
+        "critical CSS",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose BEM methodology over critical CSS?",
+        "What is the performance or memory difference between BEM methodology and critical CSS?"
+      ],
+      "related_concepts": [
+        "BEM methodology",
+        "critical CSS",
+        "CSS-in-JS"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CSS-065",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Inheritance",
+      "difficulty": "Hard",
+      "question": "What is CSS variables in CSS and how does it work?",
+      "ideal_answer": "CSS variables in CSS refers to custom properties. It works by reusable values. Key characteristics include --prefix, var() function, cascade inheritance. Example: :root { --primary: #007bff; } .btn { color: var(--primary); }. Common pitfalls include runtime modification with JS.",
+      "keywords": [
+        "CSS variables",
+        "CSS programming",
+        "core concepts"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of CSS variables in a production environment?",
+        "What are the common pitfalls or issues associated with CSS variables?"
+      ],
+      "related_concepts": [
+        "specificity",
+        "box-sizing",
+        "z-index stacking"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CSS-066",
+      "subject": "CSS",
+      "category": "Responsive Design",
+      "subcategory": "Media Queries",
+      "difficulty": "Hard",
+      "question": "Explain the difference between media queries and clamp function in CSS.",
+      "ideal_answer": "media queries and clamp function differ in several ways: media queries is conditional styling (works by responsive breakpoint logic) whereas clamp function is responsive value scaling (works by fluid typography/spacing). media queries is typically used for min-width, max-width, orientation, prefers-color-scheme, while clamp function is used for min, preferred, max values. Example demonstrating media queries: @media (min-width: 768px) { ... }. Example demonstrating clamp function: font-size: clamp(1rem, 2.5vw, 2rem);.",
+      "keywords": [
+        "media queries",
+        "clamp function",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose media queries over clamp function?",
+        "What is the performance or memory difference between media queries and clamp function?"
+      ],
+      "related_concepts": [
+        "media queries",
+        "clamp function",
+        "container queries"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CSS-067",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Selectors",
+      "difficulty": "Hard",
+      "question": "What are the common issues with pseudo-classes in CSS and how do you debug them?",
+      "ideal_answer": "Common issues with pseudo-classes in CSS include: specificity of :where vs :is. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "pseudo-classes",
+        "troubleshooting",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to pseudo-classes?",
+        "What tools can assist in detecting problems with pseudo-classes at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "specificity",
+        "box-sizing",
+        "CSS variables"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CSS-068",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Selectors",
+      "difficulty": "Hard",
+      "question": "Explain the difference between specificity and CSS variables in CSS.",
+      "ideal_answer": "specificity and CSS variables differ in several ways: specificity is selector priority system (works by conflict resolution) whereas CSS variables is custom properties (works by reusable values). specificity is typically used for inline > id > class/attribute > element, while CSS variables is used for --prefix, var() function, cascade inheritance. Example demonstrating specificity: #nav .menu li > a. Example demonstrating CSS variables: :root { --primary: #007bff; } .btn { color: var(--primary); }.",
+      "keywords": [
+        "specificity",
+        "CSS variables",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose specificity over CSS variables?",
+        "What is the performance or memory difference between specificity and CSS variables?"
+      ],
+      "related_concepts": [
+        "specificity",
+        "CSS variables",
+        "box-sizing",
+        "z-index stacking"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CSS-069",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Specificity",
+      "difficulty": "Hard",
+      "question": "Explain the difference between box-sizing and CSS variables in CSS.",
+      "ideal_answer": "box-sizing and CSS variables differ in several ways: box-sizing is width/height calculation mode (works by controlling element dimensions) whereas CSS variables is custom properties (works by reusable values). box-sizing is typically used for content-box: width = content; border-box: width = content + padding + border, while CSS variables is used for --prefix, var() function, cascade inheritance. Example demonstrating box-sizing: * { box-sizing: border-box; }. Example demonstrating CSS variables: :root { --primary: #007bff; } .btn { color: var(--primary); }.",
+      "keywords": [
+        "box-sizing",
+        "CSS variables",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose box-sizing over CSS variables?",
+        "What is the performance or memory difference between box-sizing and CSS variables?"
+      ],
+      "related_concepts": [
+        "box-sizing",
+        "CSS variables",
+        "specificity",
+        "z-index stacking"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CSS-070",
+      "subject": "CSS",
+      "category": "Layout",
+      "subcategory": "Flexbox",
+      "difficulty": "Hard",
+      "question": "What are the common issues with Flexbox in CSS and how do you debug them?",
+      "ideal_answer": "Common issues with Flexbox in CSS include: flex-basis vs width, gap property. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Flexbox",
+        "troubleshooting",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Flexbox?",
+        "What tools can assist in detecting problems with Flexbox at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "CSS Grid",
+        "position property",
+        "BFC"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CSS-071",
+      "subject": "CSS",
+      "category": "Layout",
+      "subcategory": "Positioning",
+      "difficulty": "Hard",
+      "question": "What is position property in CSS and how does it work?",
+      "ideal_answer": "position property in CSS refers to element positioning scheme. It works by removing from normal flow. Key characteristics include static, relative, absolute, fixed, sticky. Example: position: sticky; top: 0;. Common pitfalls include containing block for absolute positioning.",
+      "keywords": [
+        "position property",
+        "CSS programming",
+        "layout"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of position property in a production environment?",
+        "What are the common pitfalls or issues associated with position property?"
+      ],
+      "related_concepts": [
+        "Flexbox",
+        "CSS Grid",
+        "BFC"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CSS-072",
+      "subject": "CSS",
+      "category": "Layout",
+      "subcategory": "Multi-column",
+      "difficulty": "Hard",
+      "question": "What is containment in CSS and how does it work?",
+      "ideal_answer": "containment in CSS refers to performance isolation. It works by limiting layout/paint/style scope. Key characteristics include layout, paint, size, style, strict. Example: contain: layout paint;. Common pitfalls include use cases for contain.",
+      "keywords": [
+        "containment",
+        "CSS programming",
+        "layout"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of containment in a production environment?",
+        "What are the common pitfalls or issues associated with containment?"
+      ],
+      "related_concepts": [
+        "Flexbox",
+        "CSS Grid",
+        "position property"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CSS-073",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Specificity",
+      "difficulty": "Hard",
+      "question": "What are the common issues with box-sizing in CSS and how do you debug them?",
+      "ideal_answer": "Common issues with box-sizing in CSS include: default content-box behavior. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "box-sizing",
+        "troubleshooting",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to box-sizing?",
+        "What tools can assist in detecting problems with box-sizing at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "specificity",
+        "CSS variables",
+        "z-index stacking"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "CSS-074",
+      "subject": "CSS",
+      "category": "Core Concepts",
+      "subcategory": "Selectors",
+      "difficulty": "Hard",
+      "question": "Explain the difference between specificity and z-index stacking in CSS.",
+      "ideal_answer": "specificity and z-index stacking differ in several ways: specificity is selector priority system (works by conflict resolution) whereas z-index stacking is layer ordering control (works by third dimension positioning). specificity is typically used for inline > id > class/attribute > element, while z-index stacking is used for only applies to positioned elements, creates stacking context. Example demonstrating specificity: #nav .menu li > a. Example demonstrating z-index stacking: position: relative; z-index: 10;.",
+      "keywords": [
+        "specificity",
+        "z-index stacking",
+        "comparison",
+        "CSS"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose specificity over z-index stacking?",
+        "What is the performance or memory difference between specificity and z-index stacking?"
+      ],
+      "related_concepts": [
+        "specificity",
+        "z-index stacking",
+        "box-sizing",
+        "CSS variables"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

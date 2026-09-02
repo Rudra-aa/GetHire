@@ -1,0 +1,629 @@
+{
+  "metadata": {
+    "subject": "Arrays",
+    "domain": "Data Structures & Algorithms",
+    "total_questions": 24,
+    "difficulty_distribution": {
+      "Easy": 7,
+      "Medium": 12,
+      "Hard": 5
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "ARRAY-001",
+      "subject": "Arrays",
+      "category": "Searching",
+      "subcategory": "Linear Search",
+      "difficulty": "Easy",
+      "question": "What are the common issues with binary search in Arrays and how do you debug them?",
+      "ideal_answer": "Common issues with binary search in Arrays include: integer overflow in mid, lower/upper bound variants. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "binary search",
+        "troubleshooting",
+        "Arrays"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to binary search?",
+        "What tools can assist in detecting problems with binary search at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "search in rotated sorted array"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "ARRAY-002",
+      "subject": "Arrays",
+      "category": "Fundamentals",
+      "subcategory": "Time Complexity",
+      "difficulty": "Easy",
+      "question": "What are the common issues with time complexity tradeoffs in Arrays and how do you debug them?",
+      "ideal_answer": "Common issues with time complexity tradeoffs in Arrays include: sorted array binary search: O(log n). To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "time complexity tradeoffs",
+        "troubleshooting",
+        "Arrays"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to time complexity tradeoffs?",
+        "What tools can assist in detecting problems with time complexity tradeoffs at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "contiguous memory allocation",
+        "dynamic arrays"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "ARRAY-003",
+      "subject": "Arrays",
+      "category": "Searching",
+      "subcategory": "Linear Search",
+      "difficulty": "Easy",
+      "question": "Explain the difference between binary search and search in rotated sorted array in Arrays.",
+      "ideal_answer": "binary search and search in rotated sorted array differ in several ways: binary search is divide and conquer search (works by O(log n) sorted array search) whereas search in rotated sorted array is modified binary search (works by finding pivot and searching). binary search is typically used for mid calculation, boundary adjustment, while search in rotated sorted array is used for identifying sorted half, pivot detection. Example demonstrating binary search: while (low <= high) { mid = low + (high - low) / 2; if (arr[mid] == target) return mid; }. Example demonstrating search in rotated sorted array: if (arr[low] <= arr[mid]) // left half sorted.",
+      "keywords": [
+        "binary search",
+        "search in rotated sorted array",
+        "comparison",
+        "Arrays"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose binary search over search in rotated sorted array?",
+        "What is the performance or memory difference between binary search and search in rotated sorted array?"
+      ],
+      "related_concepts": [
+        "binary search",
+        "search in rotated sorted array"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "ARRAY-004",
+      "subject": "Arrays",
+      "category": "Matrix",
+      "subcategory": "Spiral Order",
+      "difficulty": "Easy",
+      "question": "Explain the difference between matrix traversal patterns and search in 2D sorted matrix in Arrays.",
+      "ideal_answer": "matrix traversal patterns and search in 2D sorted matrix differ in several ways: matrix traversal patterns is 2D array access strategies (works by row-major, column-major, diagonal, spiral) whereas search in 2D sorted matrix is efficient 2D search (works by O(m+n) staircase search). matrix traversal patterns is typically used for spiral: top->right->bottom->left with boundary shrink, while search in 2D sorted matrix is used for start from top-right or bottom-left. Example demonstrating matrix traversal patterns: for (int i = left; i <= right; i++) result.add(matrix[top][i]);. Example demonstrating search in 2D sorted matrix: if (matrix[row][col] > target) col--; else row++;.",
+      "keywords": [
+        "matrix traversal patterns",
+        "search in 2D sorted matrix",
+        "comparison",
+        "Arrays"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose matrix traversal patterns over search in 2D sorted matrix?",
+        "What is the performance or memory difference between matrix traversal patterns and search in 2D sorted matrix?"
+      ],
+      "related_concepts": [
+        "matrix traversal patterns",
+        "search in 2D sorted matrix"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "ARRAY-005",
+      "subject": "Arrays",
+      "category": "Two Pointers",
+      "subcategory": "Pair Sum",
+      "difficulty": "Easy",
+      "question": "Explain the difference between two pointer technique and sliding window in Arrays.",
+      "ideal_answer": "two pointer technique and sliding window differ in several ways: two pointer technique is pairwise iteration strategy (works by reducing nested loops to linear) whereas sliding window is subarray/substring processing (works by efficient contiguous sequence analysis). two pointer technique is typically used for sorted array pair sum, 3Sum, Dutch national flag, while sliding window is used for fixed/variable size window, expand/shrink. Example demonstrating two pointer technique: while (left < right) { if (arr[left] + arr[right] == target) found; }. Example demonstrating sliding window: max_sum = max(max_sum, window_sum); window_sum += arr[i] - arr[i-k];.",
+      "keywords": [
+        "two pointer technique",
+        "sliding window",
+        "comparison",
+        "Arrays"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose two pointer technique over sliding window?",
+        "What is the performance or memory difference between two pointer technique and sliding window?"
+      ],
+      "related_concepts": [
+        "two pointer technique",
+        "sliding window"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "ARRAY-006",
+      "subject": "Arrays",
+      "category": "Two Pointers",
+      "subcategory": "Pair Sum",
+      "difficulty": "Easy",
+      "question": "What are the common issues with two pointer technique in Arrays and how do you debug them?",
+      "ideal_answer": "Common issues with two pointer technique in Arrays include: pointer movement conditions. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "two pointer technique",
+        "troubleshooting",
+        "Arrays"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to two pointer technique?",
+        "What tools can assist in detecting problems with two pointer technique at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "sliding window"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "ARRAY-007",
+      "subject": "Arrays",
+      "category": "Searching",
+      "subcategory": "Binary Search",
+      "difficulty": "Easy",
+      "question": "What are the common issues with search in rotated sorted array in Arrays and how do you debug them?",
+      "ideal_answer": "Common issues with search in rotated sorted array in Arrays include: duplicates handling. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "search in rotated sorted array",
+        "troubleshooting",
+        "Arrays"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to search in rotated sorted array?",
+        "What tools can assist in detecting problems with search in rotated sorted array at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "binary search"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "ARRAY-008",
+      "subject": "Arrays",
+      "category": "Two Pointers",
+      "subcategory": "3Sum",
+      "difficulty": "Medium",
+      "question": "What is sliding window in Arrays and how does it work?",
+      "ideal_answer": "sliding window in Arrays refers to subarray/substring processing. It works by efficient contiguous sequence analysis. Key characteristics include fixed/variable size window, expand/shrink. Example: max_sum = max(max_sum, window_sum); window_sum += arr[i] - arr[i-k];. Common pitfalls include window state maintenance.",
+      "keywords": [
+        "sliding window",
+        "Arrays programming",
+        "two pointers"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of sliding window in a production environment?",
+        "What are the common pitfalls or issues associated with sliding window?"
+      ],
+      "related_concepts": [
+        "two pointer technique"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ARRAY-009",
+      "subject": "Arrays",
+      "category": "Searching",
+      "subcategory": "Linear Search",
+      "difficulty": "Medium",
+      "question": "What is binary search in Arrays and how does it work?",
+      "ideal_answer": "binary search in Arrays refers to divide and conquer search. It works by O(log n) sorted array search. Key characteristics include mid calculation, boundary adjustment. Example: while (low <= high) { mid = low + (high - low) / 2; if (arr[mid] == target) return mid; }. Common pitfalls include integer overflow in mid, lower/upper bound variants.",
+      "keywords": [
+        "binary search",
+        "Arrays programming",
+        "searching"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of binary search in a production environment?",
+        "What are the common pitfalls or issues associated with binary search?"
+      ],
+      "related_concepts": [
+        "search in rotated sorted array"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ARRAY-010",
+      "subject": "Arrays",
+      "category": "Searching",
+      "subcategory": "Binary Search",
+      "difficulty": "Medium",
+      "question": "What is search in rotated sorted array in Arrays and how does it work?",
+      "ideal_answer": "search in rotated sorted array in Arrays refers to modified binary search. It works by finding pivot and searching. Key characteristics include identifying sorted half, pivot detection. Example: if (arr[low] <= arr[mid]) // left half sorted. Common pitfalls include duplicates handling.",
+      "keywords": [
+        "search in rotated sorted array",
+        "Arrays programming",
+        "searching"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of search in rotated sorted array in a production environment?",
+        "What are the common pitfalls or issues associated with search in rotated sorted array?"
+      ],
+      "related_concepts": [
+        "binary search"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ARRAY-011",
+      "subject": "Arrays",
+      "category": "Fundamentals",
+      "subcategory": "Declaration",
+      "difficulty": "Medium",
+      "question": "What are the common issues with contiguous memory allocation in Arrays and how do you debug them?",
+      "ideal_answer": "Common issues with contiguous memory allocation in Arrays include: cache locality advantage. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "contiguous memory allocation",
+        "troubleshooting",
+        "Arrays"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to contiguous memory allocation?",
+        "What tools can assist in detecting problems with contiguous memory allocation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "dynamic arrays",
+        "time complexity tradeoffs"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ARRAY-012",
+      "subject": "Arrays",
+      "category": "Two Pointers",
+      "subcategory": "3Sum",
+      "difficulty": "Medium",
+      "question": "What are the common issues with sliding window in Arrays and how do you debug them?",
+      "ideal_answer": "Common issues with sliding window in Arrays include: window state maintenance. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "sliding window",
+        "troubleshooting",
+        "Arrays"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to sliding window?",
+        "What tools can assist in detecting problems with sliding window at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "two pointer technique"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ARRAY-013",
+      "subject": "Arrays",
+      "category": "Matrix",
+      "subcategory": "Rotate Matrix",
+      "difficulty": "Medium",
+      "question": "What is search in 2D sorted matrix in Arrays and how does it work?",
+      "ideal_answer": "search in 2D sorted matrix in Arrays refers to efficient 2D search. It works by O(m+n) staircase search. Key characteristics include start from top-right or bottom-left. Example: if (matrix[row][col] > target) col--; else row++;. Common pitfalls include binary search on rows approach.",
+      "keywords": [
+        "search in 2D sorted matrix",
+        "Arrays programming",
+        "matrix"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of search in 2D sorted matrix in a production environment?",
+        "What are the common pitfalls or issues associated with search in 2D sorted matrix?"
+      ],
+      "related_concepts": [
+        "matrix traversal patterns"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ARRAY-014",
+      "subject": "Arrays",
+      "category": "Fundamentals",
+      "subcategory": "Declaration",
+      "difficulty": "Medium",
+      "question": "Explain the difference between contiguous memory allocation and dynamic arrays in Arrays.",
+      "ideal_answer": "contiguous memory allocation and dynamic arrays differ in several ways: contiguous memory allocation is array storage characteristic (works by sequential memory blocks) whereas dynamic arrays is resizable array implementation (works by amortized O(1) append). contiguous memory allocation is typically used for O(1) access via index calculation: base_address + index * element_size, while dynamic arrays is used for vector, ArrayList, Python list: double capacity on full. Example demonstrating contiguous memory allocation: int arr[10]; // 40 contiguous bytes. Example demonstrating dynamic arrays: ArrayList<Integer> list = new ArrayList<>(); list.add(5);.",
+      "keywords": [
+        "contiguous memory allocation",
+        "dynamic arrays",
+        "comparison",
+        "Arrays"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose contiguous memory allocation over dynamic arrays?",
+        "What is the performance or memory difference between contiguous memory allocation and dynamic arrays?"
+      ],
+      "related_concepts": [
+        "contiguous memory allocation",
+        "dynamic arrays",
+        "time complexity tradeoffs"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ARRAY-015",
+      "subject": "Arrays",
+      "category": "Two Pointers",
+      "subcategory": "Pair Sum",
+      "difficulty": "Medium",
+      "question": "What is two pointer technique in Arrays and how does it work?",
+      "ideal_answer": "two pointer technique in Arrays refers to pairwise iteration strategy. It works by reducing nested loops to linear. Key characteristics include sorted array pair sum, 3Sum, Dutch national flag. Example: while (left < right) { if (arr[left] + arr[right] == target) found; }. Common pitfalls include pointer movement conditions.",
+      "keywords": [
+        "two pointer technique",
+        "Arrays programming",
+        "two pointers"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of two pointer technique in a production environment?",
+        "What are the common pitfalls or issues associated with two pointer technique?"
+      ],
+      "related_concepts": [
+        "sliding window"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ARRAY-016",
+      "subject": "Arrays",
+      "category": "Fundamentals",
+      "subcategory": "Memory Layout",
+      "difficulty": "Medium",
+      "question": "What is dynamic arrays in Arrays and how does it work?",
+      "ideal_answer": "dynamic arrays in Arrays refers to resizable array implementation. It works by amortized O(1) append. Key characteristics include vector, ArrayList, Python list: double capacity on full. Example: ArrayList<Integer> list = new ArrayList<>(); list.add(5);. Common pitfalls include resizing cost analysis.",
+      "keywords": [
+        "dynamic arrays",
+        "Arrays programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of dynamic arrays in a production environment?",
+        "What are the common pitfalls or issues associated with dynamic arrays?"
+      ],
+      "related_concepts": [
+        "contiguous memory allocation",
+        "time complexity tradeoffs"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ARRAY-017",
+      "subject": "Arrays",
+      "category": "Matrix",
+      "subcategory": "Rotate Matrix",
+      "difficulty": "Medium",
+      "question": "What are the common issues with search in 2D sorted matrix in Arrays and how do you debug them?",
+      "ideal_answer": "Common issues with search in 2D sorted matrix in Arrays include: binary search on rows approach. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "search in 2D sorted matrix",
+        "troubleshooting",
+        "Arrays"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to search in 2D sorted matrix?",
+        "What tools can assist in detecting problems with search in 2D sorted matrix at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "matrix traversal patterns"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ARRAY-018",
+      "subject": "Arrays",
+      "category": "Fundamentals",
+      "subcategory": "Time Complexity",
+      "difficulty": "Medium",
+      "question": "What is time complexity tradeoffs in Arrays and how does it work?",
+      "ideal_answer": "time complexity tradeoffs in Arrays refers to array operation costs. It works by access vs insertion vs deletion. Key characteristics include access: O(1), search: O(n), insert/delete: O(n). Example: arr[5] = 10; // O(1). Common pitfalls include sorted array binary search: O(log n).",
+      "keywords": [
+        "time complexity tradeoffs",
+        "Arrays programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of time complexity tradeoffs in a production environment?",
+        "What are the common pitfalls or issues associated with time complexity tradeoffs?"
+      ],
+      "related_concepts": [
+        "contiguous memory allocation",
+        "dynamic arrays"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ARRAY-019",
+      "subject": "Arrays",
+      "category": "Matrix",
+      "subcategory": "Spiral Order",
+      "difficulty": "Medium",
+      "question": "What is matrix traversal patterns in Arrays and how does it work?",
+      "ideal_answer": "matrix traversal patterns in Arrays refers to 2D array access strategies. It works by row-major, column-major, diagonal, spiral. Key characteristics include spiral: top->right->bottom->left with boundary shrink. Example: for (int i = left; i <= right; i++) result.add(matrix[top][i]);. Common pitfalls include in-place rotation transposition.",
+      "keywords": [
+        "matrix traversal patterns",
+        "Arrays programming",
+        "matrix"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of matrix traversal patterns in a production environment?",
+        "What are the common pitfalls or issues associated with matrix traversal patterns?"
+      ],
+      "related_concepts": [
+        "search in 2D sorted matrix"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ARRAY-020",
+      "subject": "Arrays",
+      "category": "Fundamentals",
+      "subcategory": "Declaration",
+      "difficulty": "Hard",
+      "question": "Explain the difference between contiguous memory allocation and time complexity tradeoffs in Arrays.",
+      "ideal_answer": "contiguous memory allocation and time complexity tradeoffs differ in several ways: contiguous memory allocation is array storage characteristic (works by sequential memory blocks) whereas time complexity tradeoffs is array operation costs (works by access vs insertion vs deletion). contiguous memory allocation is typically used for O(1) access via index calculation: base_address + index * element_size, while time complexity tradeoffs is used for access: O(1), search: O(n), insert/delete: O(n). Example demonstrating contiguous memory allocation: int arr[10]; // 40 contiguous bytes. Example demonstrating time complexity tradeoffs: arr[5] = 10; // O(1).",
+      "keywords": [
+        "contiguous memory allocation",
+        "time complexity tradeoffs",
+        "comparison",
+        "Arrays"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose contiguous memory allocation over time complexity tradeoffs?",
+        "What is the performance or memory difference between contiguous memory allocation and time complexity tradeoffs?"
+      ],
+      "related_concepts": [
+        "contiguous memory allocation",
+        "time complexity tradeoffs",
+        "dynamic arrays"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "ARRAY-021",
+      "subject": "Arrays",
+      "category": "Fundamentals",
+      "subcategory": "Memory Layout",
+      "difficulty": "Hard",
+      "question": "Explain the difference between dynamic arrays and time complexity tradeoffs in Arrays.",
+      "ideal_answer": "dynamic arrays and time complexity tradeoffs differ in several ways: dynamic arrays is resizable array implementation (works by amortized O(1) append) whereas time complexity tradeoffs is array operation costs (works by access vs insertion vs deletion). dynamic arrays is typically used for vector, ArrayList, Python list: double capacity on full, while time complexity tradeoffs is used for access: O(1), search: O(n), insert/delete: O(n). Example demonstrating dynamic arrays: ArrayList<Integer> list = new ArrayList<>(); list.add(5);. Example demonstrating time complexity tradeoffs: arr[5] = 10; // O(1).",
+      "keywords": [
+        "dynamic arrays",
+        "time complexity tradeoffs",
+        "comparison",
+        "Arrays"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose dynamic arrays over time complexity tradeoffs?",
+        "What is the performance or memory difference between dynamic arrays and time complexity tradeoffs?"
+      ],
+      "related_concepts": [
+        "dynamic arrays",
+        "time complexity tradeoffs",
+        "contiguous memory allocation"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "ARRAY-022",
+      "subject": "Arrays",
+      "category": "Fundamentals",
+      "subcategory": "Declaration",
+      "difficulty": "Hard",
+      "question": "What is contiguous memory allocation in Arrays and how does it work?",
+      "ideal_answer": "contiguous memory allocation in Arrays refers to array storage characteristic. It works by sequential memory blocks. Key characteristics include O(1) access via index calculation: base_address + index * element_size. Example: int arr[10]; // 40 contiguous bytes. Common pitfalls include cache locality advantage.",
+      "keywords": [
+        "contiguous memory allocation",
+        "Arrays programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of contiguous memory allocation in a production environment?",
+        "What are the common pitfalls or issues associated with contiguous memory allocation?"
+      ],
+      "related_concepts": [
+        "dynamic arrays",
+        "time complexity tradeoffs"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "ARRAY-023",
+      "subject": "Arrays",
+      "category": "Fundamentals",
+      "subcategory": "Memory Layout",
+      "difficulty": "Hard",
+      "question": "What are the common issues with dynamic arrays in Arrays and how do you debug them?",
+      "ideal_answer": "Common issues with dynamic arrays in Arrays include: resizing cost analysis. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "dynamic arrays",
+        "troubleshooting",
+        "Arrays"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to dynamic arrays?",
+        "What tools can assist in detecting problems with dynamic arrays at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "contiguous memory allocation",
+        "time complexity tradeoffs"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "ARRAY-024",
+      "subject": "Arrays",
+      "category": "Matrix",
+      "subcategory": "Spiral Order",
+      "difficulty": "Hard",
+      "question": "What are the common issues with matrix traversal patterns in Arrays and how do you debug them?",
+      "ideal_answer": "Common issues with matrix traversal patterns in Arrays include: in-place rotation transposition. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "matrix traversal patterns",
+        "troubleshooting",
+        "Arrays"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to matrix traversal patterns?",
+        "What tools can assist in detecting problems with matrix traversal patterns at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "search in 2D sorted matrix"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

@@ -318,9 +318,9 @@ cd backend && celery -A app.workers.celery_app worker --loglevel=info
 ## Development Roadmap
 
 ### Phase 1 — Foundation (Weeks 1–3)
-- [ ] Project scaffold (frontend + backend)
-- [ ] Authentication system (JWT + refresh tokens)
-- [ ] User profile management
+- [x] Project scaffold (frontend + backend)
+- [x] Authentication system (JWT + refresh tokens)
+- [x] User profile management
 - [ ] Resume upload and parsing pipeline
 
 ### Phase 2 — Interview Core (Weeks 4–6)

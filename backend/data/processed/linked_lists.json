@@ -1,0 +1,616 @@
+{
+  "metadata": {
+    "subject": "Linked Lists",
+    "domain": "Data Structures & Algorithms",
+    "total_questions": 23,
+    "difficulty_distribution": {
+      "Easy": 6,
+      "Medium": 12,
+      "Hard": 5
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "LL-001",
+      "subject": "Linked Lists",
+      "category": "Operations",
+      "subcategory": "Sort",
+      "difficulty": "Easy",
+      "question": "What is find middle element in Linked Lists and how does it work?",
+      "ideal_answer": "find middle element in Linked Lists refers to two-pointer technique. It works by fast reaches end when slow is middle. Key characteristics include fast = 2x speed, slow = 1x speed. Example: Node slow = head, fast = head; while (fast != null && fast.next != null) { slow = slow.next; fast = fast.next.next; }. Common pitfalls include even length: two middle choices.",
+      "keywords": [
+        "find middle element",
+        "Linked Lists programming",
+        "operations"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of find middle element in a production environment?",
+        "What are the common pitfalls or issues associated with find middle element?"
+      ],
+      "related_concepts": [
+        "merge two sorted lists",
+        "remove Nth from end"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "LL-002",
+      "subject": "Linked Lists",
+      "category": "Operations",
+      "subcategory": "Merge",
+      "difficulty": "Easy",
+      "question": "What are the common issues with merge two sorted lists in Linked Lists and how do you debug them?",
+      "ideal_answer": "Common issues with merge two sorted lists in Linked Lists include: recursive merge alternative. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "merge two sorted lists",
+        "troubleshooting",
+        "Linked Lists"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to merge two sorted lists?",
+        "What tools can assist in detecting problems with merge two sorted lists at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "find middle element",
+        "remove Nth from end"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "LL-003",
+      "subject": "Linked Lists",
+      "category": "Singly Linked List",
+      "subcategory": "Traversal",
+      "difficulty": "Easy",
+      "question": "What is reversal in Linked Lists and how does it work?",
+      "ideal_answer": "reversal in Linked Lists refers to in-place list reversal. It works by iterative and recursive approaches. Key characteristics include three pointers: prev, current, next. Example: while (curr != null) { next = curr.next; curr.next = prev; prev = curr; curr = next; }. Common pitfalls include recursive stack O(n) space.",
+      "keywords": [
+        "reversal",
+        "Linked Lists programming",
+        "singly linked list"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of reversal in a production environment?",
+        "What are the common pitfalls or issues associated with reversal?"
+      ],
+      "related_concepts": [
+        "node structure",
+        "cycle detection"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "LL-004",
+      "subject": "Linked Lists",
+      "category": "Operations",
+      "subcategory": "Merge",
+      "difficulty": "Easy",
+      "question": "What is merge two sorted lists in Linked Lists and how does it work?",
+      "ideal_answer": "merge two sorted lists in Linked Lists refers to combined sorted list creation. It works by iterative pointer advancement. Key characteristics include dummy node for simplified head handling. Example: ListNode dummy = new ListNode(0); ListNode tail = dummy;. Common pitfalls include recursive merge alternative.",
+      "keywords": [
+        "merge two sorted lists",
+        "Linked Lists programming",
+        "operations"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of merge two sorted lists in a production environment?",
+        "What are the common pitfalls or issues associated with merge two sorted lists?"
+      ],
+      "related_concepts": [
+        "find middle element",
+        "remove Nth from end"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "LL-005",
+      "subject": "Linked Lists",
+      "category": "Singly Linked List",
+      "subcategory": "Insertion",
+      "difficulty": "Easy",
+      "question": "What are the common issues with cycle detection in Linked Lists and how do you debug them?",
+      "ideal_answer": "Common issues with cycle detection in Linked Lists include: cycle length and start point detection. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "cycle detection",
+        "troubleshooting",
+        "Linked Lists"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to cycle detection?",
+        "What tools can assist in detecting problems with cycle detection at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "node structure",
+        "reversal"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "LL-006",
+      "subject": "Linked Lists",
+      "category": "Doubly Linked List",
+      "subcategory": "Structure",
+      "difficulty": "Easy",
+      "question": "Explain the difference between bidirectional traversal and LRU cache implementation in Linked Lists.",
+      "ideal_answer": "bidirectional traversal and LRU cache implementation differ in several ways: bidirectional traversal is prev and next pointers (works by O(1) backward access) whereas LRU cache implementation is least recently used eviction (works by hash map + doubly linked list). bidirectional traversal is typically used for Node { int data; Node prev; Node next; }, while LRU cache implementation is used for O(1) get and put operations. Example demonstrating bidirectional traversal: head.prev = null; tail.next = null;. Example demonstrating LRU cache implementation: HashMap<Integer, Node> map; // Node in DLL ordered by recency.",
+      "keywords": [
+        "bidirectional traversal",
+        "LRU cache implementation",
+        "comparison",
+        "Linked Lists"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose bidirectional traversal over LRU cache implementation?",
+        "What is the performance or memory difference between bidirectional traversal and LRU cache implementation?"
+      ],
+      "related_concepts": [
+        "bidirectional traversal",
+        "LRU cache implementation"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "LL-007",
+      "subject": "Linked Lists",
+      "category": "Operations",
+      "subcategory": "Sort",
+      "difficulty": "Medium",
+      "question": "What are the common issues with find middle element in Linked Lists and how do you debug them?",
+      "ideal_answer": "Common issues with find middle element in Linked Lists include: even length: two middle choices. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "find middle element",
+        "troubleshooting",
+        "Linked Lists"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to find middle element?",
+        "What tools can assist in detecting problems with find middle element at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "merge two sorted lists",
+        "remove Nth from end"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LL-008",
+      "subject": "Linked Lists",
+      "category": "Doubly Linked List",
+      "subcategory": "Insertion",
+      "difficulty": "Medium",
+      "question": "What are the common issues with LRU cache implementation in Linked Lists and how do you debug them?",
+      "ideal_answer": "Common issues with LRU cache implementation in Linked Lists include: LinkedHashMap Java built-in. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "LRU cache implementation",
+        "troubleshooting",
+        "Linked Lists"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to LRU cache implementation?",
+        "What tools can assist in detecting problems with LRU cache implementation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "bidirectional traversal"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LL-009",
+      "subject": "Linked Lists",
+      "category": "Operations",
+      "subcategory": "Sort",
+      "difficulty": "Medium",
+      "question": "Explain the difference between find middle element and remove Nth from end in Linked Lists.",
+      "ideal_answer": "find middle element and remove Nth from end differ in several ways: find middle element is two-pointer technique (works by fast reaches end when slow is middle) whereas remove Nth from end is single pass deletion (works by fast pointer N ahead). find middle element is typically used for fast = 2x speed, slow = 1x speed, while remove Nth from end is used for fast advances N, then both advance until fast at end. Example demonstrating find middle element: Node slow = head, fast = head; while (fast != null && fast.next != null) { slow = slow.next; fast = fast.next.next; }. Example demonstrating remove Nth from end: Node fast = head; for (int i = 0; i < n; i++) fast = fast.next;.",
+      "keywords": [
+        "find middle element",
+        "remove Nth from end",
+        "comparison",
+        "Linked Lists"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose find middle element over remove Nth from end?",
+        "What is the performance or memory difference between find middle element and remove Nth from end?"
+      ],
+      "related_concepts": [
+        "find middle element",
+        "remove Nth from end",
+        "merge two sorted lists"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LL-010",
+      "subject": "Linked Lists",
+      "category": "Singly Linked List",
+      "subcategory": "Structure",
+      "difficulty": "Medium",
+      "question": "Explain the difference between node structure and reversal in Linked Lists.",
+      "ideal_answer": "node structure and reversal differ in several ways: node structure is linked list element (works by data + next pointer) whereas reversal is in-place list reversal (works by iterative and recursive approaches). node structure is typically used for self-referential structure, while reversal is used for three pointers: prev, current, next. Example demonstrating node structure: class Node { int data; Node next; Node(int d) { data = d; } }. Example demonstrating reversal: while (curr != null) { next = curr.next; curr.next = prev; prev = curr; curr = next; }.",
+      "keywords": [
+        "node structure",
+        "reversal",
+        "comparison",
+        "Linked Lists"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose node structure over reversal?",
+        "What is the performance or memory difference between node structure and reversal?"
+      ],
+      "related_concepts": [
+        "node structure",
+        "reversal",
+        "cycle detection"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LL-011",
+      "subject": "Linked Lists",
+      "category": "Doubly Linked List",
+      "subcategory": "Structure",
+      "difficulty": "Medium",
+      "question": "What is bidirectional traversal in Linked Lists and how does it work?",
+      "ideal_answer": "bidirectional traversal in Linked Lists refers to prev and next pointers. It works by O(1) backward access. Key characteristics include Node { int data; Node prev; Node next; }. Example: head.prev = null; tail.next = null;. Common pitfalls include memory overhead (2 pointers per node).",
+      "keywords": [
+        "bidirectional traversal",
+        "Linked Lists programming",
+        "doubly linked list"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of bidirectional traversal in a production environment?",
+        "What are the common pitfalls or issues associated with bidirectional traversal?"
+      ],
+      "related_concepts": [
+        "LRU cache implementation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LL-012",
+      "subject": "Linked Lists",
+      "category": "Singly Linked List",
+      "subcategory": "Structure",
+      "difficulty": "Medium",
+      "question": "What are the common issues with node structure in Linked Lists and how do you debug them?",
+      "ideal_answer": "Common issues with node structure in Linked Lists include: memory overhead vs arrays. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "node structure",
+        "troubleshooting",
+        "Linked Lists"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to node structure?",
+        "What tools can assist in detecting problems with node structure at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "reversal",
+        "cycle detection"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LL-013",
+      "subject": "Linked Lists",
+      "category": "Operations",
+      "subcategory": "Detect Cycle",
+      "difficulty": "Medium",
+      "question": "What are the common issues with remove Nth from end in Linked Lists and how do you debug them?",
+      "ideal_answer": "Common issues with remove Nth from end in Linked Lists include: dummy node for head removal. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "remove Nth from end",
+        "troubleshooting",
+        "Linked Lists"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to remove Nth from end?",
+        "What tools can assist in detecting problems with remove Nth from end at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "merge two sorted lists",
+        "find middle element"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LL-014",
+      "subject": "Linked Lists",
+      "category": "Doubly Linked List",
+      "subcategory": "Insertion",
+      "difficulty": "Medium",
+      "question": "What is LRU cache implementation in Linked Lists and how does it work?",
+      "ideal_answer": "LRU cache implementation in Linked Lists refers to least recently used eviction. It works by hash map + doubly linked list. Key characteristics include O(1) get and put operations. Example: HashMap<Integer, Node> map; // Node in DLL ordered by recency. Common pitfalls include LinkedHashMap Java built-in.",
+      "keywords": [
+        "LRU cache implementation",
+        "Linked Lists programming",
+        "doubly linked list"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of LRU cache implementation in a production environment?",
+        "What are the common pitfalls or issues associated with LRU cache implementation?"
+      ],
+      "related_concepts": [
+        "bidirectional traversal"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LL-015",
+      "subject": "Linked Lists",
+      "category": "Doubly Linked List",
+      "subcategory": "Structure",
+      "difficulty": "Medium",
+      "question": "What are the common issues with bidirectional traversal in Linked Lists and how do you debug them?",
+      "ideal_answer": "Common issues with bidirectional traversal in Linked Lists include: memory overhead (2 pointers per node). To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "bidirectional traversal",
+        "troubleshooting",
+        "Linked Lists"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to bidirectional traversal?",
+        "What tools can assist in detecting problems with bidirectional traversal at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "LRU cache implementation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LL-016",
+      "subject": "Linked Lists",
+      "category": "Operations",
+      "subcategory": "Merge",
+      "difficulty": "Medium",
+      "question": "Explain the difference between merge two sorted lists and remove Nth from end in Linked Lists.",
+      "ideal_answer": "merge two sorted lists and remove Nth from end differ in several ways: merge two sorted lists is combined sorted list creation (works by iterative pointer advancement) whereas remove Nth from end is single pass deletion (works by fast pointer N ahead). merge two sorted lists is typically used for dummy node for simplified head handling, while remove Nth from end is used for fast advances N, then both advance until fast at end. Example demonstrating merge two sorted lists: ListNode dummy = new ListNode(0); ListNode tail = dummy;. Example demonstrating remove Nth from end: Node fast = head; for (int i = 0; i < n; i++) fast = fast.next;.",
+      "keywords": [
+        "merge two sorted lists",
+        "remove Nth from end",
+        "comparison",
+        "Linked Lists"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose merge two sorted lists over remove Nth from end?",
+        "What is the performance or memory difference between merge two sorted lists and remove Nth from end?"
+      ],
+      "related_concepts": [
+        "merge two sorted lists",
+        "remove Nth from end",
+        "find middle element"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LL-017",
+      "subject": "Linked Lists",
+      "category": "Singly Linked List",
+      "subcategory": "Insertion",
+      "difficulty": "Medium",
+      "question": "What is cycle detection in Linked Lists and how does it work?",
+      "ideal_answer": "cycle detection in Linked Lists refers to Floyd's algorithm. It works by tortoise and hare technique. Key characteristics include slow (1x) and fast (2x) pointers meet if cycle. Example: Node slow = head, fast = head; while (fast != null && fast.next != null) { slow = slow.next; fast = fast.next.next; if (slow == fast) return true; }. Common pitfalls include cycle length and start point detection.",
+      "keywords": [
+        "cycle detection",
+        "Linked Lists programming",
+        "singly linked list"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of cycle detection in a production environment?",
+        "What are the common pitfalls or issues associated with cycle detection?"
+      ],
+      "related_concepts": [
+        "node structure",
+        "reversal"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LL-018",
+      "subject": "Linked Lists",
+      "category": "Operations",
+      "subcategory": "Detect Cycle",
+      "difficulty": "Medium",
+      "question": "What is remove Nth from end in Linked Lists and how does it work?",
+      "ideal_answer": "remove Nth from end in Linked Lists refers to single pass deletion. It works by fast pointer N ahead. Key characteristics include fast advances N, then both advance until fast at end. Example: Node fast = head; for (int i = 0; i < n; i++) fast = fast.next;. Common pitfalls include dummy node for head removal.",
+      "keywords": [
+        "remove Nth from end",
+        "Linked Lists programming",
+        "operations"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of remove Nth from end in a production environment?",
+        "What are the common pitfalls or issues associated with remove Nth from end?"
+      ],
+      "related_concepts": [
+        "merge two sorted lists",
+        "find middle element"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "LL-019",
+      "subject": "Linked Lists",
+      "category": "Singly Linked List",
+      "subcategory": "Structure",
+      "difficulty": "Hard",
+      "question": "Explain the difference between node structure and cycle detection in Linked Lists.",
+      "ideal_answer": "node structure and cycle detection differ in several ways: node structure is linked list element (works by data + next pointer) whereas cycle detection is Floyd's algorithm (works by tortoise and hare technique). node structure is typically used for self-referential structure, while cycle detection is used for slow (1x) and fast (2x) pointers meet if cycle. Example demonstrating node structure: class Node { int data; Node next; Node(int d) { data = d; } }. Example demonstrating cycle detection: Node slow = head, fast = head; while (fast != null && fast.next != null) { slow = slow.next; fast = fast.next.next; if (slow == fast) return true; }.",
+      "keywords": [
+        "node structure",
+        "cycle detection",
+        "comparison",
+        "Linked Lists"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose node structure over cycle detection?",
+        "What is the performance or memory difference between node structure and cycle detection?"
+      ],
+      "related_concepts": [
+        "node structure",
+        "cycle detection",
+        "reversal"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "LL-020",
+      "subject": "Linked Lists",
+      "category": "Singly Linked List",
+      "subcategory": "Traversal",
+      "difficulty": "Hard",
+      "question": "Explain the difference between reversal and cycle detection in Linked Lists.",
+      "ideal_answer": "reversal and cycle detection differ in several ways: reversal is in-place list reversal (works by iterative and recursive approaches) whereas cycle detection is Floyd's algorithm (works by tortoise and hare technique). reversal is typically used for three pointers: prev, current, next, while cycle detection is used for slow (1x) and fast (2x) pointers meet if cycle. Example demonstrating reversal: while (curr != null) { next = curr.next; curr.next = prev; prev = curr; curr = next; }. Example demonstrating cycle detection: Node slow = head, fast = head; while (fast != null && fast.next != null) { slow = slow.next; fast = fast.next.next; if (slow == fast) return true; }.",
+      "keywords": [
+        "reversal",
+        "cycle detection",
+        "comparison",
+        "Linked Lists"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose reversal over cycle detection?",
+        "What is the performance or memory difference between reversal and cycle detection?"
+      ],
+      "related_concepts": [
+        "reversal",
+        "cycle detection",
+        "node structure"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "LL-021",
+      "subject": "Linked Lists",
+      "category": "Singly Linked List",
+      "subcategory": "Structure",
+      "difficulty": "Hard",
+      "question": "What is node structure in Linked Lists and how does it work?",
+      "ideal_answer": "node structure in Linked Lists refers to linked list element. It works by data + next pointer. Key characteristics include self-referential structure. Example: class Node { int data; Node next; Node(int d) { data = d; } }. Common pitfalls include memory overhead vs arrays.",
+      "keywords": [
+        "node structure",
+        "Linked Lists programming",
+        "singly linked list"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of node structure in a production environment?",
+        "What are the common pitfalls or issues associated with node structure?"
+      ],
+      "related_concepts": [
+        "reversal",
+        "cycle detection"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "LL-022",
+      "subject": "Linked Lists",
+      "category": "Singly Linked List",
+      "subcategory": "Traversal",
+      "difficulty": "Hard",
+      "question": "What are the common issues with reversal in Linked Lists and how do you debug them?",
+      "ideal_answer": "Common issues with reversal in Linked Lists include: recursive stack O(n) space. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "reversal",
+        "troubleshooting",
+        "Linked Lists"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to reversal?",
+        "What tools can assist in detecting problems with reversal at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "node structure",
+        "cycle detection"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "LL-023",
+      "subject": "Linked Lists",
+      "category": "Operations",
+      "subcategory": "Merge",
+      "difficulty": "Hard",
+      "question": "Explain the difference between merge two sorted lists and find middle element in Linked Lists.",
+      "ideal_answer": "merge two sorted lists and find middle element differ in several ways: merge two sorted lists is combined sorted list creation (works by iterative pointer advancement) whereas find middle element is two-pointer technique (works by fast reaches end when slow is middle). merge two sorted lists is typically used for dummy node for simplified head handling, while find middle element is used for fast = 2x speed, slow = 1x speed. Example demonstrating merge two sorted lists: ListNode dummy = new ListNode(0); ListNode tail = dummy;. Example demonstrating find middle element: Node slow = head, fast = head; while (fast != null && fast.next != null) { slow = slow.next; fast = fast.next.next; }.",
+      "keywords": [
+        "merge two sorted lists",
+        "find middle element",
+        "comparison",
+        "Linked Lists"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose merge two sorted lists over find middle element?",
+        "What is the performance or memory difference between merge two sorted lists and find middle element?"
+      ],
+      "related_concepts": [
+        "merge two sorted lists",
+        "find middle element",
+        "remove Nth from end"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

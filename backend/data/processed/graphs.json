@@ -1,0 +1,1114 @@
+{
+  "metadata": {
+    "subject": "Graphs",
+    "domain": "Data Structures & Algorithms",
+    "total_questions": 43,
+    "difficulty_distribution": {
+      "Easy": 12,
+      "Medium": 22,
+      "Hard": 9
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "GRAPH-001",
+      "subject": "Graphs",
+      "category": "Traversal",
+      "subcategory": "Iterative DFS",
+      "difficulty": "Easy",
+      "question": "What is connected components in Graphs and how does it work?",
+      "ideal_answer": "connected components in Graphs refers to disconnected subgraphs. It works by DFS/BFS from unvisited nodes. Key characteristics include count of traversals from unvisited starts. Example: int components = 0; for (int i = 0; i < V; i++) if (!visited[i]) { dfs(i); components++; }. Common pitfalls include undirected vs directed (SCC).",
+      "keywords": [
+        "connected components",
+        "Graphs programming",
+        "traversal"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of connected components in a production environment?",
+        "What are the common pitfalls or issues associated with connected components?"
+      ],
+      "related_concepts": [
+        "DFS",
+        "BFS"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GRAPH-002",
+      "subject": "Graphs",
+      "category": "Representation",
+      "subcategory": "Adjacency List",
+      "difficulty": "Easy",
+      "question": "What are the common issues with adjacency matrix in Graphs and how do you debug them?",
+      "ideal_answer": "Common issues with adjacency matrix in Graphs include: space inefficiency for sparse graphs. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "adjacency matrix",
+        "troubleshooting",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to adjacency matrix?",
+        "What tools can assist in detecting problems with adjacency matrix at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "adjacency list"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GRAPH-003",
+      "subject": "Graphs",
+      "category": "Traversal",
+      "subcategory": "Iterative DFS",
+      "difficulty": "Easy",
+      "question": "What are the common issues with connected components in Graphs and how do you debug them?",
+      "ideal_answer": "Common issues with connected components in Graphs include: undirected vs directed (SCC). To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "connected components",
+        "troubleshooting",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to connected components?",
+        "What tools can assist in detecting problems with connected components at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "DFS",
+        "BFS"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GRAPH-004",
+      "subject": "Graphs",
+      "category": "Shortest Path",
+      "subcategory": "Bellman-Ford",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Bellman-Ford algorithm and A* algorithm in Graphs.",
+      "ideal_answer": "Bellman-Ford algorithm and A* algorithm differ in several ways: Bellman-Ford algorithm is general shortest path (works by handles negative edges, detects negative cycles) whereas A* algorithm is heuristic shortest path (works by informed search for goal-directed path). Bellman-Ford algorithm is typically used for V-1 relaxations of all edges, while A* algorithm is used for f(n) = g(n) + h(n). Example demonstrating Bellman-Ford algorithm: for (int i = 0; i < V-1; i++) for (Edge e : edges) if (dist[e.u] + e.w < dist[e.v]) dist[e.v] = dist[e.u] + e.w;. Example demonstrating A* algorithm: PriorityQueue ordered by f(n);.",
+      "keywords": [
+        "Bellman-Ford algorithm",
+        "A* algorithm",
+        "comparison",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Bellman-Ford algorithm over A* algorithm?",
+        "What is the performance or memory difference between Bellman-Ford algorithm and A* algorithm?"
+      ],
+      "related_concepts": [
+        "Bellman-Ford algorithm",
+        "A* algorithm",
+        "Dijkstra's algorithm",
+        "Floyd-Warshall"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GRAPH-005",
+      "subject": "Graphs",
+      "category": "Strongly Connected",
+      "subcategory": "Kosaraju",
+      "difficulty": "Easy",
+      "question": "What is Kosaraju's algorithm in Graphs and how does it work?",
+      "ideal_answer": "Kosaraju's algorithm in Graphs refers to SCC finding. It works by two-pass DFS on original and transposed graph. Key characteristics include first pass: order by finish time; second pass: DFS on transpose in reverse order. Example: Stack finishOrder; dfs1(v); // transpose graph; while (!finishOrder.isEmpty()) { v = finishOrder.pop(); if (!visited2[v]) { dfs2(v); sccCount++; } }. Common pitfalls include O(V+E) time.",
+      "keywords": [
+        "Kosaraju's algorithm",
+        "Graphs programming",
+        "strongly connected"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Kosaraju's algorithm in a production environment?",
+        "What are the common pitfalls or issues associated with Kosaraju's algorithm?"
+      ],
+      "related_concepts": [
+        "Tarjan's algorithm"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GRAPH-006",
+      "subject": "Graphs",
+      "category": "Shortest Path",
+      "subcategory": "Floyd-Warshall",
+      "difficulty": "Easy",
+      "question": "What is Floyd-Warshall in Graphs and how does it work?",
+      "ideal_answer": "Floyd-Warshall in Graphs refers to all-pairs shortest path. It works by dynamic programming approach. Key characteristics include intermediate node relaxation. Example: for (int k = 0; k < V; k++) for (int i = 0; i < V; i++) for (int j = 0; j < V; j++) dist[i][j] = Math.min(dist[i][j], dist[i][k] + dist[k][j]);. Common pitfalls include O(V^3), negative cycle detection.",
+      "keywords": [
+        "Floyd-Warshall",
+        "Graphs programming",
+        "shortest path"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Floyd-Warshall in a production environment?",
+        "What are the common pitfalls or issues associated with Floyd-Warshall?"
+      ],
+      "related_concepts": [
+        "Dijkstra's algorithm",
+        "Bellman-Ford algorithm",
+        "A* algorithm"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GRAPH-007",
+      "subject": "Graphs",
+      "category": "Strongly Connected",
+      "subcategory": "Kosaraju",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Kosaraju's algorithm and Tarjan's algorithm in Graphs.",
+      "ideal_answer": "Kosaraju's algorithm and Tarjan's algorithm differ in several ways: Kosaraju's algorithm is SCC finding (works by two-pass DFS on original and transposed graph) whereas Tarjan's algorithm is single-pass SCC (works by low-link values and discovery times). Kosaraju's algorithm is typically used for first pass: order by finish time; second pass: DFS on transpose in reverse order, while Tarjan's algorithm is used for stack for current SCC, strongly connected when low[v] == disc[v]. Example demonstrating Kosaraju's algorithm: Stack finishOrder; dfs1(v); // transpose graph; while (!finishOrder.isEmpty()) { v = finishOrder.pop(); if (!visited2[v]) { dfs2(v); sccCount++; } }. Example demonstrating Tarjan's algorithm: void tarjan(int u) { disc[u] = low[u] = time++; stack.push(u); for (int v : adj[u]) { if (disc[v] == -1) { tarjan(v); low[u] = Math.min(low[u], low[v]); } else if (inStack[v]) low[u] = Math.min(low[u], disc[v]); } if (low[u] == disc[u]) { while (stack.peek() != u) inStack[stack.pop()] = false; stack.pop(); sccCount++; } }.",
+      "keywords": [
+        "Kosaraju's algorithm",
+        "Tarjan's algorithm",
+        "comparison",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Kosaraju's algorithm over Tarjan's algorithm?",
+        "What is the performance or memory difference between Kosaraju's algorithm and Tarjan's algorithm?"
+      ],
+      "related_concepts": [
+        "Kosaraju's algorithm",
+        "Tarjan's algorithm"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GRAPH-008",
+      "subject": "Graphs",
+      "category": "Shortest Path",
+      "subcategory": "Bellman-Ford",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Bellman-Ford algorithm and Floyd-Warshall in Graphs.",
+      "ideal_answer": "Bellman-Ford algorithm and Floyd-Warshall differ in several ways: Bellman-Ford algorithm is general shortest path (works by handles negative edges, detects negative cycles) whereas Floyd-Warshall is all-pairs shortest path (works by dynamic programming approach). Bellman-Ford algorithm is typically used for V-1 relaxations of all edges, while Floyd-Warshall is used for intermediate node relaxation. Example demonstrating Bellman-Ford algorithm: for (int i = 0; i < V-1; i++) for (Edge e : edges) if (dist[e.u] + e.w < dist[e.v]) dist[e.v] = dist[e.u] + e.w;. Example demonstrating Floyd-Warshall: for (int k = 0; k < V; k++) for (int i = 0; i < V; i++) for (int j = 0; j < V; j++) dist[i][j] = Math.min(dist[i][j], dist[i][k] + dist[k][j]);.",
+      "keywords": [
+        "Bellman-Ford algorithm",
+        "Floyd-Warshall",
+        "comparison",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Bellman-Ford algorithm over Floyd-Warshall?",
+        "What is the performance or memory difference between Bellman-Ford algorithm and Floyd-Warshall?"
+      ],
+      "related_concepts": [
+        "Bellman-Ford algorithm",
+        "Floyd-Warshall",
+        "Dijkstra's algorithm",
+        "A* algorithm"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GRAPH-009",
+      "subject": "Graphs",
+      "category": "Representation",
+      "subcategory": "Adjacency Matrix",
+      "difficulty": "Easy",
+      "question": "Explain the difference between adjacency list and adjacency matrix in Graphs.",
+      "ideal_answer": "adjacency list and adjacency matrix differ in several ways: adjacency list is space-efficient graph storage (works by O(V+E) space, O(degree) edge access) whereas adjacency matrix is dense graph representation (works by O(V^2) space, O(1) edge lookup). adjacency list is typically used for list/array of neighbors per vertex, while adjacency matrix is used for 2D boolean/weight array. Example demonstrating adjacency list: List<Integer>[] graph = new ArrayList[V];. Example demonstrating adjacency matrix: int[][] adj = new int[V][V];.",
+      "keywords": [
+        "adjacency list",
+        "adjacency matrix",
+        "comparison",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose adjacency list over adjacency matrix?",
+        "What is the performance or memory difference between adjacency list and adjacency matrix?"
+      ],
+      "related_concepts": [
+        "adjacency list",
+        "adjacency matrix"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GRAPH-010",
+      "subject": "Graphs",
+      "category": "Topological Sort",
+      "subcategory": "Kahn's Algorithm",
+      "difficulty": "Easy",
+      "question": "What is Kahn's algorithm in Graphs and how does it work?",
+      "ideal_answer": "Kahn's algorithm in Graphs refers to BFS-based topological sort. It works by in-degree elimination. Key characteristics include queue nodes with 0 in-degree. Example: Queue<Integer> q = new LinkedList<>(); for (int i = 0; i < V; i++) if (indegree[i] == 0) q.offer(i); while (!q.isEmpty()) { int v = q.poll(); result.add(v); for (int u : adj[v]) if (--indegree[u] == 0) q.offer(u); }. Common pitfalls include cycle detection: result size < V.",
+      "keywords": [
+        "Kahn's algorithm",
+        "Graphs programming",
+        "topological sort"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Kahn's algorithm in a production environment?",
+        "What are the common pitfalls or issues associated with Kahn's algorithm?"
+      ],
+      "related_concepts": [
+        "DFS-based topological sort"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GRAPH-011",
+      "subject": "Graphs",
+      "category": "Shortest Path",
+      "subcategory": "Dijkstra",
+      "difficulty": "Easy",
+      "question": "Explain the difference between Dijkstra's algorithm and Bellman-Ford algorithm in Graphs.",
+      "ideal_answer": "Dijkstra's algorithm and Bellman-Ford algorithm differ in several ways: Dijkstra's algorithm is non-negative edge shortest path (works by greedy relaxation from source) whereas Bellman-Ford algorithm is general shortest path (works by handles negative edges, detects negative cycles). Dijkstra's algorithm is typically used for priority queue, distance array, while Bellman-Ford algorithm is used for V-1 relaxations of all edges. Example demonstrating Dijkstra's algorithm: PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparingInt(n -> n.dist));. Example demonstrating Bellman-Ford algorithm: for (int i = 0; i < V-1; i++) for (Edge e : edges) if (dist[e.u] + e.w < dist[e.v]) dist[e.v] = dist[e.u] + e.w;.",
+      "keywords": [
+        "Dijkstra's algorithm",
+        "Bellman-Ford algorithm",
+        "comparison",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Dijkstra's algorithm over Bellman-Ford algorithm?",
+        "What is the performance or memory difference between Dijkstra's algorithm and Bellman-Ford algorithm?"
+      ],
+      "related_concepts": [
+        "Dijkstra's algorithm",
+        "Bellman-Ford algorithm",
+        "Floyd-Warshall",
+        "A* algorithm"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GRAPH-012",
+      "subject": "Graphs",
+      "category": "Traversal",
+      "subcategory": "DFS",
+      "difficulty": "Easy",
+      "question": "Explain the difference between DFS and BFS in Graphs.",
+      "ideal_answer": "DFS and BFS differ in several ways: DFS is depth-first search (works by stack-based or recursive exploration) whereas BFS is breadth-first search (works by queue-based level exploration). DFS is typically used for O(V+E) time, O(V) space, while BFS is used for O(V+E) time, O(V) space. Example demonstrating DFS: void dfs(int v) { visited[v] = true; for (int u : adj[v]) if (!visited[u]) dfs(u); }. Example demonstrating BFS: queue.offer(start); while (!queue.isEmpty()) { int v = queue.poll(); for (int u : adj[v]) if (!visited[u]) { visited[u] = true; queue.offer(u); } }.",
+      "keywords": [
+        "DFS",
+        "BFS",
+        "comparison",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose DFS over BFS?",
+        "What is the performance or memory difference between DFS and BFS?"
+      ],
+      "related_concepts": [
+        "DFS",
+        "BFS",
+        "connected components"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "GRAPH-013",
+      "subject": "Graphs",
+      "category": "Minimum Spanning Tree",
+      "subcategory": "Kruskal",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Kruskal's algorithm in Graphs and how do you debug them?",
+      "ideal_answer": "Common issues with Kruskal's algorithm in Graphs include: path compression, union by rank. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Kruskal's algorithm",
+        "troubleshooting",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Kruskal's algorithm?",
+        "What tools can assist in detecting problems with Kruskal's algorithm at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Prim's algorithm"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-014",
+      "subject": "Graphs",
+      "category": "Shortest Path",
+      "subcategory": "A*",
+      "difficulty": "Medium",
+      "question": "What are the common issues with A* algorithm in Graphs and how do you debug them?",
+      "ideal_answer": "Common issues with A* algorithm in Graphs include: admissible and consistent heuristics. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "A* algorithm",
+        "troubleshooting",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to A* algorithm?",
+        "What tools can assist in detecting problems with A* algorithm at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Dijkstra's algorithm",
+        "Bellman-Ford algorithm",
+        "Floyd-Warshall"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-015",
+      "subject": "Graphs",
+      "category": "Traversal",
+      "subcategory": "DFS",
+      "difficulty": "Medium",
+      "question": "Explain the difference between DFS and connected components in Graphs.",
+      "ideal_answer": "DFS and connected components differ in several ways: DFS is depth-first search (works by stack-based or recursive exploration) whereas connected components is disconnected subgraphs (works by DFS/BFS from unvisited nodes). DFS is typically used for O(V+E) time, O(V) space, while connected components is used for count of traversals from unvisited starts. Example demonstrating DFS: void dfs(int v) { visited[v] = true; for (int u : adj[v]) if (!visited[u]) dfs(u); }. Example demonstrating connected components: int components = 0; for (int i = 0; i < V; i++) if (!visited[i]) { dfs(i); components++; }.",
+      "keywords": [
+        "DFS",
+        "connected components",
+        "comparison",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose DFS over connected components?",
+        "What is the performance or memory difference between DFS and connected components?"
+      ],
+      "related_concepts": [
+        "DFS",
+        "connected components",
+        "BFS"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-016",
+      "subject": "Graphs",
+      "category": "Shortest Path",
+      "subcategory": "Dijkstra",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Dijkstra's algorithm and A* algorithm in Graphs.",
+      "ideal_answer": "Dijkstra's algorithm and A* algorithm differ in several ways: Dijkstra's algorithm is non-negative edge shortest path (works by greedy relaxation from source) whereas A* algorithm is heuristic shortest path (works by informed search for goal-directed path). Dijkstra's algorithm is typically used for priority queue, distance array, while A* algorithm is used for f(n) = g(n) + h(n). Example demonstrating Dijkstra's algorithm: PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparingInt(n -> n.dist));. Example demonstrating A* algorithm: PriorityQueue ordered by f(n);.",
+      "keywords": [
+        "Dijkstra's algorithm",
+        "A* algorithm",
+        "comparison",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Dijkstra's algorithm over A* algorithm?",
+        "What is the performance or memory difference between Dijkstra's algorithm and A* algorithm?"
+      ],
+      "related_concepts": [
+        "Dijkstra's algorithm",
+        "A* algorithm",
+        "Bellman-Ford algorithm",
+        "Floyd-Warshall"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-017",
+      "subject": "Graphs",
+      "category": "Topological Sort",
+      "subcategory": "DFS-based",
+      "difficulty": "Medium",
+      "question": "What are the common issues with DFS-based topological sort in Graphs and how do you debug them?",
+      "ideal_answer": "Common issues with DFS-based topological sort in Graphs include: cycle detection with recursion stack. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "DFS-based topological sort",
+        "troubleshooting",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to DFS-based topological sort?",
+        "What tools can assist in detecting problems with DFS-based topological sort at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Kahn's algorithm"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-018",
+      "subject": "Graphs",
+      "category": "Topological Sort",
+      "subcategory": "Kahn's Algorithm",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Kahn's algorithm and DFS-based topological sort in Graphs.",
+      "ideal_answer": "Kahn's algorithm and DFS-based topological sort differ in several ways: Kahn's algorithm is BFS-based topological sort (works by in-degree elimination) whereas DFS-based topological sort is postorder stack (works by reverse finishing order). Kahn's algorithm is typically used for queue nodes with 0 in-degree, while DFS-based topological sort is used for push to stack after DFS of all neighbors. Example demonstrating Kahn's algorithm: Queue<Integer> q = new LinkedList<>(); for (int i = 0; i < V; i++) if (indegree[i] == 0) q.offer(i); while (!q.isEmpty()) { int v = q.poll(); result.add(v); for (int u : adj[v]) if (--indegree[u] == 0) q.offer(u); }. Example demonstrating DFS-based topological sort: void dfs(int v) { visited[v] = true; for (int u : adj[v]) if (!visited[u]) dfs(u); stack.push(v); }.",
+      "keywords": [
+        "Kahn's algorithm",
+        "DFS-based topological sort",
+        "comparison",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Kahn's algorithm over DFS-based topological sort?",
+        "What is the performance or memory difference between Kahn's algorithm and DFS-based topological sort?"
+      ],
+      "related_concepts": [
+        "Kahn's algorithm",
+        "DFS-based topological sort"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-019",
+      "subject": "Graphs",
+      "category": "Minimum Spanning Tree",
+      "subcategory": "Kruskal",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Kruskal's algorithm and Prim's algorithm in Graphs.",
+      "ideal_answer": "Kruskal's algorithm and Prim's algorithm differ in several ways: Kruskal's algorithm is edge-greedy MST (works by sort edges, union-find for cycles) whereas Prim's algorithm is vertex-greedy MST (works by grow tree from arbitrary start). Kruskal's algorithm is typically used for O(E log E) sorting dominant, while Prim's algorithm is used for priority queue for minimum crossing edge. Example demonstrating Kruskal's algorithm: Arrays.sort(edges); for (Edge e : edges) if (find(e.u) != find(e.v)) { union(e.u, e.v); mst.add(e); }. Example demonstrating Prim's algorithm: PriorityQueue<Edge> pq; pq.offer(new Edge(start, 0)); while (!pq.isEmpty()) { Edge e = pq.poll(); if (visited[e.to]) continue; visited[e.to] = true; for (Edge ne : adj[e.to]) if (!visited[ne.to]) pq.offer(ne); }.",
+      "keywords": [
+        "Kruskal's algorithm",
+        "Prim's algorithm",
+        "comparison",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Kruskal's algorithm over Prim's algorithm?",
+        "What is the performance or memory difference between Kruskal's algorithm and Prim's algorithm?"
+      ],
+      "related_concepts": [
+        "Kruskal's algorithm",
+        "Prim's algorithm"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-020",
+      "subject": "Graphs",
+      "category": "Traversal",
+      "subcategory": "BFS",
+      "difficulty": "Medium",
+      "question": "Explain the difference between BFS and connected components in Graphs.",
+      "ideal_answer": "BFS and connected components differ in several ways: BFS is breadth-first search (works by queue-based level exploration) whereas connected components is disconnected subgraphs (works by DFS/BFS from unvisited nodes). BFS is typically used for O(V+E) time, O(V) space, while connected components is used for count of traversals from unvisited starts. Example demonstrating BFS: queue.offer(start); while (!queue.isEmpty()) { int v = queue.poll(); for (int u : adj[v]) if (!visited[u]) { visited[u] = true; queue.offer(u); } }. Example demonstrating connected components: int components = 0; for (int i = 0; i < V; i++) if (!visited[i]) { dfs(i); components++; }.",
+      "keywords": [
+        "BFS",
+        "connected components",
+        "comparison",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose BFS over connected components?",
+        "What is the performance or memory difference between BFS and connected components?"
+      ],
+      "related_concepts": [
+        "BFS",
+        "connected components",
+        "DFS"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-021",
+      "subject": "Graphs",
+      "category": "Shortest Path",
+      "subcategory": "Dijkstra",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Dijkstra's algorithm and Floyd-Warshall in Graphs.",
+      "ideal_answer": "Dijkstra's algorithm and Floyd-Warshall differ in several ways: Dijkstra's algorithm is non-negative edge shortest path (works by greedy relaxation from source) whereas Floyd-Warshall is all-pairs shortest path (works by dynamic programming approach). Dijkstra's algorithm is typically used for priority queue, distance array, while Floyd-Warshall is used for intermediate node relaxation. Example demonstrating Dijkstra's algorithm: PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparingInt(n -> n.dist));. Example demonstrating Floyd-Warshall: for (int k = 0; k < V; k++) for (int i = 0; i < V; i++) for (int j = 0; j < V; j++) dist[i][j] = Math.min(dist[i][j], dist[i][k] + dist[k][j]);.",
+      "keywords": [
+        "Dijkstra's algorithm",
+        "Floyd-Warshall",
+        "comparison",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Dijkstra's algorithm over Floyd-Warshall?",
+        "What is the performance or memory difference between Dijkstra's algorithm and Floyd-Warshall?"
+      ],
+      "related_concepts": [
+        "Dijkstra's algorithm",
+        "Floyd-Warshall",
+        "Bellman-Ford algorithm",
+        "A* algorithm"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-022",
+      "subject": "Graphs",
+      "category": "Shortest Path",
+      "subcategory": "A*",
+      "difficulty": "Medium",
+      "question": "What is A* algorithm in Graphs and how does it work?",
+      "ideal_answer": "A* algorithm in Graphs refers to heuristic shortest path. It works by informed search for goal-directed path. Key characteristics include f(n) = g(n) + h(n). Example: PriorityQueue ordered by f(n);. Common pitfalls include admissible and consistent heuristics.",
+      "keywords": [
+        "A* algorithm",
+        "Graphs programming",
+        "shortest path"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of A* algorithm in a production environment?",
+        "What are the common pitfalls or issues associated with A* algorithm?"
+      ],
+      "related_concepts": [
+        "Dijkstra's algorithm",
+        "Bellman-Ford algorithm",
+        "Floyd-Warshall"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-023",
+      "subject": "Graphs",
+      "category": "Minimum Spanning Tree",
+      "subcategory": "Kruskal",
+      "difficulty": "Medium",
+      "question": "What is Kruskal's algorithm in Graphs and how does it work?",
+      "ideal_answer": "Kruskal's algorithm in Graphs refers to edge-greedy MST. It works by sort edges, union-find for cycles. Key characteristics include O(E log E) sorting dominant. Example: Arrays.sort(edges); for (Edge e : edges) if (find(e.u) != find(e.v)) { union(e.u, e.v); mst.add(e); }. Common pitfalls include path compression, union by rank.",
+      "keywords": [
+        "Kruskal's algorithm",
+        "Graphs programming",
+        "minimum spanning tree"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Kruskal's algorithm in a production environment?",
+        "What are the common pitfalls or issues associated with Kruskal's algorithm?"
+      ],
+      "related_concepts": [
+        "Prim's algorithm"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-024",
+      "subject": "Graphs",
+      "category": "Strongly Connected",
+      "subcategory": "Kosaraju",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Kosaraju's algorithm in Graphs and how do you debug them?",
+      "ideal_answer": "Common issues with Kosaraju's algorithm in Graphs include: O(V+E) time. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Kosaraju's algorithm",
+        "troubleshooting",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Kosaraju's algorithm?",
+        "What tools can assist in detecting problems with Kosaraju's algorithm at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Tarjan's algorithm"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-025",
+      "subject": "Graphs",
+      "category": "Minimum Spanning Tree",
+      "subcategory": "Prim",
+      "difficulty": "Medium",
+      "question": "What is Prim's algorithm in Graphs and how does it work?",
+      "ideal_answer": "Prim's algorithm in Graphs refers to vertex-greedy MST. It works by grow tree from arbitrary start. Key characteristics include priority queue for minimum crossing edge. Example: PriorityQueue<Edge> pq; pq.offer(new Edge(start, 0)); while (!pq.isEmpty()) { Edge e = pq.poll(); if (visited[e.to]) continue; visited[e.to] = true; for (Edge ne : adj[e.to]) if (!visited[ne.to]) pq.offer(ne); }. Common pitfalls include O(E log V) with binary heap.",
+      "keywords": [
+        "Prim's algorithm",
+        "Graphs programming",
+        "minimum spanning tree"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Prim's algorithm in a production environment?",
+        "What are the common pitfalls or issues associated with Prim's algorithm?"
+      ],
+      "related_concepts": [
+        "Kruskal's algorithm"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-026",
+      "subject": "Graphs",
+      "category": "Shortest Path",
+      "subcategory": "Floyd-Warshall",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Floyd-Warshall in Graphs and how do you debug them?",
+      "ideal_answer": "Common issues with Floyd-Warshall in Graphs include: O(V^3), negative cycle detection. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Floyd-Warshall",
+        "troubleshooting",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Floyd-Warshall?",
+        "What tools can assist in detecting problems with Floyd-Warshall at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Dijkstra's algorithm",
+        "Bellman-Ford algorithm",
+        "A* algorithm"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-027",
+      "subject": "Graphs",
+      "category": "Shortest Path",
+      "subcategory": "Bellman-Ford",
+      "difficulty": "Medium",
+      "question": "What is Bellman-Ford algorithm in Graphs and how does it work?",
+      "ideal_answer": "Bellman-Ford algorithm in Graphs refers to general shortest path. It works by handles negative edges, detects negative cycles. Key characteristics include V-1 relaxations of all edges. Example: for (int i = 0; i < V-1; i++) for (Edge e : edges) if (dist[e.u] + e.w < dist[e.v]) dist[e.v] = dist[e.u] + e.w;. Common pitfalls include O(VE) time.",
+      "keywords": [
+        "Bellman-Ford algorithm",
+        "Graphs programming",
+        "shortest path"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Bellman-Ford algorithm in a production environment?",
+        "What are the common pitfalls or issues associated with Bellman-Ford algorithm?"
+      ],
+      "related_concepts": [
+        "Dijkstra's algorithm",
+        "Floyd-Warshall",
+        "A* algorithm"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-028",
+      "subject": "Graphs",
+      "category": "Strongly Connected",
+      "subcategory": "Tarjan",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Tarjan's algorithm in Graphs and how do you debug them?",
+      "ideal_answer": "Common issues with Tarjan's algorithm in Graphs include: articulation points and bridges variant. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Tarjan's algorithm",
+        "troubleshooting",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Tarjan's algorithm?",
+        "What tools can assist in detecting problems with Tarjan's algorithm at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Kosaraju's algorithm"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-029",
+      "subject": "Graphs",
+      "category": "Topological Sort",
+      "subcategory": "DFS-based",
+      "difficulty": "Medium",
+      "question": "What is DFS-based topological sort in Graphs and how does it work?",
+      "ideal_answer": "DFS-based topological sort in Graphs refers to postorder stack. It works by reverse finishing order. Key characteristics include push to stack after DFS of all neighbors. Example: void dfs(int v) { visited[v] = true; for (int u : adj[v]) if (!visited[u]) dfs(u); stack.push(v); }. Common pitfalls include cycle detection with recursion stack.",
+      "keywords": [
+        "DFS-based topological sort",
+        "Graphs programming",
+        "topological sort"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of DFS-based topological sort in a production environment?",
+        "What are the common pitfalls or issues associated with DFS-based topological sort?"
+      ],
+      "related_concepts": [
+        "Kahn's algorithm"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-030",
+      "subject": "Graphs",
+      "category": "Minimum Spanning Tree",
+      "subcategory": "Prim",
+      "difficulty": "Medium",
+      "question": "What are the common issues with Prim's algorithm in Graphs and how do you debug them?",
+      "ideal_answer": "Common issues with Prim's algorithm in Graphs include: O(E log V) with binary heap. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Prim's algorithm",
+        "troubleshooting",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Prim's algorithm?",
+        "What tools can assist in detecting problems with Prim's algorithm at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Kruskal's algorithm"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-031",
+      "subject": "Graphs",
+      "category": "Representation",
+      "subcategory": "Adjacency Matrix",
+      "difficulty": "Medium",
+      "question": "What is adjacency list in Graphs and how does it work?",
+      "ideal_answer": "adjacency list in Graphs refers to space-efficient graph storage. It works by O(V+E) space, O(degree) edge access. Key characteristics include list/array of neighbors per vertex. Example: List<Integer>[] graph = new ArrayList[V];. Common pitfalls include weighted variant with edge objects.",
+      "keywords": [
+        "adjacency list",
+        "Graphs programming",
+        "representation"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of adjacency list in a production environment?",
+        "What are the common pitfalls or issues associated with adjacency list?"
+      ],
+      "related_concepts": [
+        "adjacency matrix"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-032",
+      "subject": "Graphs",
+      "category": "Representation",
+      "subcategory": "Adjacency List",
+      "difficulty": "Medium",
+      "question": "What is adjacency matrix in Graphs and how does it work?",
+      "ideal_answer": "adjacency matrix in Graphs refers to dense graph representation. It works by O(V^2) space, O(1) edge lookup. Key characteristics include 2D boolean/weight array. Example: int[][] adj = new int[V][V];. Common pitfalls include space inefficiency for sparse graphs.",
+      "keywords": [
+        "adjacency matrix",
+        "Graphs programming",
+        "representation"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of adjacency matrix in a production environment?",
+        "What are the common pitfalls or issues associated with adjacency matrix?"
+      ],
+      "related_concepts": [
+        "adjacency list"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-033",
+      "subject": "Graphs",
+      "category": "Shortest Path",
+      "subcategory": "Floyd-Warshall",
+      "difficulty": "Medium",
+      "question": "Explain the difference between Floyd-Warshall and A* algorithm in Graphs.",
+      "ideal_answer": "Floyd-Warshall and A* algorithm differ in several ways: Floyd-Warshall is all-pairs shortest path (works by dynamic programming approach) whereas A* algorithm is heuristic shortest path (works by informed search for goal-directed path). Floyd-Warshall is typically used for intermediate node relaxation, while A* algorithm is used for f(n) = g(n) + h(n). Example demonstrating Floyd-Warshall: for (int k = 0; k < V; k++) for (int i = 0; i < V; i++) for (int j = 0; j < V; j++) dist[i][j] = Math.min(dist[i][j], dist[i][k] + dist[k][j]);. Example demonstrating A* algorithm: PriorityQueue ordered by f(n);.",
+      "keywords": [
+        "Floyd-Warshall",
+        "A* algorithm",
+        "comparison",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose Floyd-Warshall over A* algorithm?",
+        "What is the performance or memory difference between Floyd-Warshall and A* algorithm?"
+      ],
+      "related_concepts": [
+        "Floyd-Warshall",
+        "A* algorithm",
+        "Dijkstra's algorithm",
+        "Bellman-Ford algorithm"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-034",
+      "subject": "Graphs",
+      "category": "Traversal",
+      "subcategory": "DFS",
+      "difficulty": "Medium",
+      "question": "What is DFS in Graphs and how does it work?",
+      "ideal_answer": "DFS in Graphs refers to depth-first search. It works by stack-based or recursive exploration. Key characteristics include O(V+E) time, O(V) space. Example: void dfs(int v) { visited[v] = true; for (int u : adj[v]) if (!visited[u]) dfs(u); }. Common pitfalls include preorder, postorder, edge classification.",
+      "keywords": [
+        "DFS",
+        "Graphs programming",
+        "traversal"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of DFS in a production environment?",
+        "What are the common pitfalls or issues associated with DFS?"
+      ],
+      "related_concepts": [
+        "BFS",
+        "connected components"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "GRAPH-035",
+      "subject": "Graphs",
+      "category": "Topological Sort",
+      "subcategory": "Kahn's Algorithm",
+      "difficulty": "Hard",
+      "question": "What are the common issues with Kahn's algorithm in Graphs and how do you debug them?",
+      "ideal_answer": "Common issues with Kahn's algorithm in Graphs include: cycle detection: result size < V. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Kahn's algorithm",
+        "troubleshooting",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Kahn's algorithm?",
+        "What tools can assist in detecting problems with Kahn's algorithm at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "DFS-based topological sort"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GRAPH-036",
+      "subject": "Graphs",
+      "category": "Traversal",
+      "subcategory": "DFS",
+      "difficulty": "Hard",
+      "question": "What are the common issues with DFS in Graphs and how do you debug them?",
+      "ideal_answer": "Common issues with DFS in Graphs include: preorder, postorder, edge classification. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "DFS",
+        "troubleshooting",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to DFS?",
+        "What tools can assist in detecting problems with DFS at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "BFS",
+        "connected components"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GRAPH-037",
+      "subject": "Graphs",
+      "category": "Traversal",
+      "subcategory": "BFS",
+      "difficulty": "Hard",
+      "question": "What are the common issues with BFS in Graphs and how do you debug them?",
+      "ideal_answer": "Common issues with BFS in Graphs include: shortest path in unweighted graphs. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "BFS",
+        "troubleshooting",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to BFS?",
+        "What tools can assist in detecting problems with BFS at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "DFS",
+        "connected components"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GRAPH-038",
+      "subject": "Graphs",
+      "category": "Shortest Path",
+      "subcategory": "Dijkstra",
+      "difficulty": "Hard",
+      "question": "What is Dijkstra's algorithm in Graphs and how does it work?",
+      "ideal_answer": "Dijkstra's algorithm in Graphs refers to non-negative edge shortest path. It works by greedy relaxation from source. Key characteristics include priority queue, distance array. Example: PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparingInt(n -> n.dist));. Common pitfalls include negative edge failure, O(E log V) with binary heap.",
+      "keywords": [
+        "Dijkstra's algorithm",
+        "Graphs programming",
+        "shortest path"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Dijkstra's algorithm in a production environment?",
+        "What are the common pitfalls or issues associated with Dijkstra's algorithm?"
+      ],
+      "related_concepts": [
+        "Bellman-Ford algorithm",
+        "Floyd-Warshall",
+        "A* algorithm"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GRAPH-039",
+      "subject": "Graphs",
+      "category": "Shortest Path",
+      "subcategory": "Dijkstra",
+      "difficulty": "Hard",
+      "question": "What are the common issues with Dijkstra's algorithm in Graphs and how do you debug them?",
+      "ideal_answer": "Common issues with Dijkstra's algorithm in Graphs include: negative edge failure, O(E log V) with binary heap. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Dijkstra's algorithm",
+        "troubleshooting",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Dijkstra's algorithm?",
+        "What tools can assist in detecting problems with Dijkstra's algorithm at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Bellman-Ford algorithm",
+        "Floyd-Warshall",
+        "A* algorithm"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GRAPH-040",
+      "subject": "Graphs",
+      "category": "Shortest Path",
+      "subcategory": "Bellman-Ford",
+      "difficulty": "Hard",
+      "question": "What are the common issues with Bellman-Ford algorithm in Graphs and how do you debug them?",
+      "ideal_answer": "Common issues with Bellman-Ford algorithm in Graphs include: O(VE) time. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "Bellman-Ford algorithm",
+        "troubleshooting",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to Bellman-Ford algorithm?",
+        "What tools can assist in detecting problems with Bellman-Ford algorithm at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "Dijkstra's algorithm",
+        "Floyd-Warshall",
+        "A* algorithm"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GRAPH-041",
+      "subject": "Graphs",
+      "category": "Representation",
+      "subcategory": "Adjacency Matrix",
+      "difficulty": "Hard",
+      "question": "What are the common issues with adjacency list in Graphs and how do you debug them?",
+      "ideal_answer": "Common issues with adjacency list in Graphs include: weighted variant with edge objects. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "adjacency list",
+        "troubleshooting",
+        "Graphs"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to adjacency list?",
+        "What tools can assist in detecting problems with adjacency list at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "adjacency matrix"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GRAPH-042",
+      "subject": "Graphs",
+      "category": "Traversal",
+      "subcategory": "BFS",
+      "difficulty": "Hard",
+      "question": "What is BFS in Graphs and how does it work?",
+      "ideal_answer": "BFS in Graphs refers to breadth-first search. It works by queue-based level exploration. Key characteristics include O(V+E) time, O(V) space. Example: queue.offer(start); while (!queue.isEmpty()) { int v = queue.poll(); for (int u : adj[v]) if (!visited[u]) { visited[u] = true; queue.offer(u); } }. Common pitfalls include shortest path in unweighted graphs.",
+      "keywords": [
+        "BFS",
+        "Graphs programming",
+        "traversal"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of BFS in a production environment?",
+        "What are the common pitfalls or issues associated with BFS?"
+      ],
+      "related_concepts": [
+        "DFS",
+        "connected components"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "GRAPH-043",
+      "subject": "Graphs",
+      "category": "Strongly Connected",
+      "subcategory": "Tarjan",
+      "difficulty": "Hard",
+      "question": "What is Tarjan's algorithm in Graphs and how does it work?",
+      "ideal_answer": "Tarjan's algorithm in Graphs refers to single-pass SCC. It works by low-link values and discovery times. Key characteristics include stack for current SCC, strongly connected when low[v] == disc[v]. Example: void tarjan(int u) { disc[u] = low[u] = time++; stack.push(u); for (int v : adj[u]) { if (disc[v] == -1) { tarjan(v); low[u] = Math.min(low[u], low[v]); } else if (inStack[v]) low[u] = Math.min(low[u], disc[v]); } if (low[u] == disc[u]) { while (stack.peek() != u) inStack[stack.pop()] = false; stack.pop(); sccCount++; } }. Common pitfalls include articulation points and bridges variant.",
+      "keywords": [
+        "Tarjan's algorithm",
+        "Graphs programming",
+        "strongly connected"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of Tarjan's algorithm in a production environment?",
+        "What are the common pitfalls or issues associated with Tarjan's algorithm?"
+      ],
+      "related_concepts": [
+        "Kosaraju's algorithm"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

@@ -1,0 +1,722 @@
+{
+  "metadata": {
+    "subject": "Machine Learning",
+    "domain": "Artificial Intelligence",
+    "total_questions": 27,
+    "difficulty_distribution": {
+      "Easy": 8,
+      "Medium": 13,
+      "Hard": 6
+    },
+    "version": "2.0",
+    "last_updated": "2026-08-09T15:29:48Z",
+    "schema_version": "1.0",
+    "validation_rules": {
+      "required_fields": [
+        "question_id",
+        "subject",
+        "category",
+        "subcategory",
+        "difficulty",
+        "question",
+        "ideal_answer",
+        "keywords",
+        "follow_up_questions",
+        "related_concepts",
+        "estimated_answer_time_minutes",
+        "score_weight"
+      ],
+      "difficulty_levels": [
+        "Easy",
+        "Medium",
+        "Hard"
+      ],
+      "id_format": "{PREFIX}-{SEQUENCE}",
+      "score_weight_range": {
+        "min": 1,
+        "max": 10
+      },
+      "time_range_minutes": {
+        "min": 1,
+        "max": 15
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "ML-001",
+      "subject": "Machine Learning",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Easy",
+      "question": "Explain the difference between cross-validation and feature engineering in Machine Learning.",
+      "ideal_answer": "cross-validation and feature engineering differ in several ways: cross-validation is model evaluation technique (works by robust performance estimation) whereas feature engineering is input variable creation (works by transforming raw data to features). cross-validation is typically used for k-fold, stratified, leave-one-out, while feature engineering is used for scaling, encoding, binning, interaction terms. Example demonstrating cross-validation: 5-fold cross-validation. Example demonstrating feature engineering: one-hot encoding, TF-IDF, polynomial features.",
+      "keywords": [
+        "cross-validation",
+        "feature engineering",
+        "comparison",
+        "Machine Learning"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose cross-validation over feature engineering?",
+        "What is the performance or memory difference between cross-validation and feature engineering?"
+      ],
+      "related_concepts": [
+        "cross-validation",
+        "feature engineering",
+        "gradient descent"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "ML-002",
+      "subject": "Machine Learning",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Easy",
+      "question": "What are the common issues with gradient descent in Machine Learning and how do you debug them?",
+      "ideal_answer": "Common issues with gradient descent in Machine Learning include: local minima, saddle points. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "gradient descent",
+        "troubleshooting",
+        "Machine Learning"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to gradient descent?",
+        "What tools can assist in detecting problems with gradient descent at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "cross-validation",
+        "feature engineering"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "ML-003",
+      "subject": "Machine Learning",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Easy",
+      "question": "What is cross-validation in Machine Learning and how does it work?",
+      "ideal_answer": "cross-validation in Machine Learning refers to model evaluation technique. It works by robust performance estimation. Key characteristics include k-fold, stratified, leave-one-out. Example: 5-fold cross-validation. Common pitfalls include data leakage prevention.",
+      "keywords": [
+        "cross-validation",
+        "Machine Learning programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of cross-validation in a production environment?",
+        "What are the common pitfalls or issues associated with cross-validation?"
+      ],
+      "related_concepts": [
+        "gradient descent",
+        "feature engineering"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "ML-004",
+      "subject": "Machine Learning",
+      "category": "Applications",
+      "subcategory": "Industry Examples",
+      "difficulty": "Easy",
+      "question": "Explain the difference between model evaluation metrics and regularization in Machine Learning.",
+      "ideal_answer": "model evaluation metrics and regularization differ in several ways: model evaluation metrics is performance measurement (works by classification and regression metrics) whereas regularization is complexity penalty (works by preventing overfitting). model evaluation metrics is typically used for accuracy, precision, recall, F1, AUC-ROC, MAE, RMSE, while regularization is used for L1 (Lasso), L2 (Ridge), Elastic Net, Dropout. Example demonstrating model evaluation metrics: confusion matrix, ROC curve. Example demonstrating regularization: loss + lambda * ||w||^2.",
+      "keywords": [
+        "model evaluation metrics",
+        "regularization",
+        "comparison",
+        "Machine Learning"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose model evaluation metrics over regularization?",
+        "What is the performance or memory difference between model evaluation metrics and regularization?"
+      ],
+      "related_concepts": [
+        "model evaluation metrics",
+        "regularization",
+        "ensemble methods"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "ML-005",
+      "subject": "Machine Learning",
+      "category": "Applications",
+      "subcategory": "Use Cases",
+      "difficulty": "Easy",
+      "question": "What are the common issues with ensemble methods in Machine Learning and how do you debug them?",
+      "ideal_answer": "Common issues with ensemble methods in Machine Learning include: diversity vs accuracy tradeoff. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "ensemble methods",
+        "troubleshooting",
+        "Machine Learning"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to ensemble methods?",
+        "What tools can assist in detecting problems with ensemble methods at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "model evaluation metrics",
+        "regularization"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "ML-006",
+      "subject": "Machine Learning",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Easy",
+      "question": "Explain the difference between supervised learning and unsupervised learning in Machine Learning.",
+      "ideal_answer": "supervised learning and unsupervised learning differ in several ways: supervised learning is labeled data training (works by input-output mapping) whereas unsupervised learning is pattern discovery without labels (works by clustering, dimensionality reduction, density estimation). supervised learning is typically used for regression, classification, while unsupervised learning is used for k-means, hierarchical clustering, PCA, t-SNE. Example demonstrating supervised learning: linear regression, logistic regression, SVM, decision trees. Example demonstrating unsupervised learning: elbow method, silhouette score.",
+      "keywords": [
+        "supervised learning",
+        "unsupervised learning",
+        "comparison",
+        "Machine Learning"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose supervised learning over unsupervised learning?",
+        "What is the performance or memory difference between supervised learning and unsupervised learning?"
+      ],
+      "related_concepts": [
+        "supervised learning",
+        "unsupervised learning",
+        "bias-variance tradeoff"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "ML-007",
+      "subject": "Machine Learning",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Easy",
+      "question": "What are the common issues with bias-variance tradeoff in Machine Learning and how do you debug them?",
+      "ideal_answer": "Common issues with bias-variance tradeoff in Machine Learning include: regularization techniques. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "bias-variance tradeoff",
+        "troubleshooting",
+        "Machine Learning"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to bias-variance tradeoff?",
+        "What tools can assist in detecting problems with bias-variance tradeoff at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "supervised learning",
+        "unsupervised learning"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "ML-008",
+      "subject": "Machine Learning",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Easy",
+      "question": "What are the common issues with cross-validation in Machine Learning and how do you debug them?",
+      "ideal_answer": "Common issues with cross-validation in Machine Learning include: data leakage prevention. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "cross-validation",
+        "troubleshooting",
+        "Machine Learning"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to cross-validation?",
+        "What tools can assist in detecting problems with cross-validation at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "gradient descent",
+        "feature engineering"
+      ],
+      "estimated_answer_time_minutes": 3,
+      "score_weight": 3
+    },
+    {
+      "question_id": "ML-009",
+      "subject": "Machine Learning",
+      "category": "Architecture",
+      "subcategory": "Components",
+      "difficulty": "Medium",
+      "question": "Explain the difference between cross-validation and gradient descent in Machine Learning.",
+      "ideal_answer": "cross-validation and gradient descent differ in several ways: cross-validation is model evaluation technique (works by robust performance estimation) whereas gradient descent is optimization algorithm (works by iterative parameter update). cross-validation is typically used for k-fold, stratified, leave-one-out, while gradient descent is used for batch, stochastic, mini-batch; learning rate, momentum, adaptive. Example demonstrating cross-validation: 5-fold cross-validation. Example demonstrating gradient descent: w = w - alpha * grad(loss).",
+      "keywords": [
+        "cross-validation",
+        "gradient descent",
+        "comparison",
+        "Machine Learning"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose cross-validation over gradient descent?",
+        "What is the performance or memory difference between cross-validation and gradient descent?"
+      ],
+      "related_concepts": [
+        "cross-validation",
+        "gradient descent",
+        "feature engineering"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ML-010",
+      "subject": "Machine Learning",
+      "category": "Applications",
+      "subcategory": "Tools",
+      "difficulty": "Medium",
+      "question": "What is regularization in Machine Learning and how does it work?",
+      "ideal_answer": "regularization in Machine Learning refers to complexity penalty. It works by preventing overfitting. Key characteristics include L1 (Lasso), L2 (Ridge), Elastic Net, Dropout. Example: loss + lambda * ||w||^2. Common pitfalls include feature selection via L1.",
+      "keywords": [
+        "regularization",
+        "Machine Learning programming",
+        "applications"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of regularization in a production environment?",
+        "What are the common pitfalls or issues associated with regularization?"
+      ],
+      "related_concepts": [
+        "ensemble methods",
+        "model evaluation metrics"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ML-011",
+      "subject": "Machine Learning",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Medium",
+      "question": "What is gradient descent in Machine Learning and how does it work?",
+      "ideal_answer": "gradient descent in Machine Learning refers to optimization algorithm. It works by iterative parameter update. Key characteristics include batch, stochastic, mini-batch; learning rate, momentum, adaptive. Example: w = w - alpha * grad(loss). Common pitfalls include local minima, saddle points.",
+      "keywords": [
+        "gradient descent",
+        "Machine Learning programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of gradient descent in a production environment?",
+        "What are the common pitfalls or issues associated with gradient descent?"
+      ],
+      "related_concepts": [
+        "cross-validation",
+        "feature engineering"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ML-012",
+      "subject": "Machine Learning",
+      "category": "Applications",
+      "subcategory": "Use Cases",
+      "difficulty": "Medium",
+      "question": "What is ensemble methods in Machine Learning and how does it work?",
+      "ideal_answer": "ensemble methods in Machine Learning refers to multiple model combination. It works by improving performance and robustness. Key characteristics include bagging, boosting, stacking, voting. Example: Random Forest, XGBoost, AdaBoost. Common pitfalls include diversity vs accuracy tradeoff.",
+      "keywords": [
+        "ensemble methods",
+        "Machine Learning programming",
+        "applications"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of ensemble methods in a production environment?",
+        "What are the common pitfalls or issues associated with ensemble methods?"
+      ],
+      "related_concepts": [
+        "model evaluation metrics",
+        "regularization"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ML-013",
+      "subject": "Machine Learning",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Medium",
+      "question": "What are the common issues with supervised learning in Machine Learning and how do you debug them?",
+      "ideal_answer": "Common issues with supervised learning in Machine Learning include: overfitting, underfitting. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "supervised learning",
+        "troubleshooting",
+        "Machine Learning"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to supervised learning?",
+        "What tools can assist in detecting problems with supervised learning at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "unsupervised learning",
+        "bias-variance tradeoff"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ML-014",
+      "subject": "Machine Learning",
+      "category": "Architecture",
+      "subcategory": "Implementation",
+      "difficulty": "Medium",
+      "question": "What are the common issues with feature engineering in Machine Learning and how do you debug them?",
+      "ideal_answer": "Common issues with feature engineering in Machine Learning include: automated feature engineering. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "feature engineering",
+        "troubleshooting",
+        "Machine Learning"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to feature engineering?",
+        "What tools can assist in detecting problems with feature engineering at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "cross-validation",
+        "gradient descent"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ML-015",
+      "subject": "Machine Learning",
+      "category": "Applications",
+      "subcategory": "Use Cases",
+      "difficulty": "Medium",
+      "question": "Explain the difference between ensemble methods and model evaluation metrics in Machine Learning.",
+      "ideal_answer": "ensemble methods and model evaluation metrics differ in several ways: ensemble methods is multiple model combination (works by improving performance and robustness) whereas model evaluation metrics is performance measurement (works by classification and regression metrics). ensemble methods is typically used for bagging, boosting, stacking, voting, while model evaluation metrics is used for accuracy, precision, recall, F1, AUC-ROC, MAE, RMSE. Example demonstrating ensemble methods: Random Forest, XGBoost, AdaBoost. Example demonstrating model evaluation metrics: confusion matrix, ROC curve.",
+      "keywords": [
+        "ensemble methods",
+        "model evaluation metrics",
+        "comparison",
+        "Machine Learning"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ensemble methods over model evaluation metrics?",
+        "What is the performance or memory difference between ensemble methods and model evaluation metrics?"
+      ],
+      "related_concepts": [
+        "ensemble methods",
+        "model evaluation metrics",
+        "regularization"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ML-016",
+      "subject": "Machine Learning",
+      "category": "Architecture",
+      "subcategory": "Implementation",
+      "difficulty": "Medium",
+      "question": "What is feature engineering in Machine Learning and how does it work?",
+      "ideal_answer": "feature engineering in Machine Learning refers to input variable creation. It works by transforming raw data to features. Key characteristics include scaling, encoding, binning, interaction terms. Example: one-hot encoding, TF-IDF, polynomial features. Common pitfalls include automated feature engineering.",
+      "keywords": [
+        "feature engineering",
+        "Machine Learning programming",
+        "architecture"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of feature engineering in a production environment?",
+        "What are the common pitfalls or issues associated with feature engineering?"
+      ],
+      "related_concepts": [
+        "cross-validation",
+        "gradient descent"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ML-017",
+      "subject": "Machine Learning",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Medium",
+      "question": "What is unsupervised learning in Machine Learning and how does it work?",
+      "ideal_answer": "unsupervised learning in Machine Learning refers to pattern discovery without labels. It works by clustering, dimensionality reduction, density estimation. Key characteristics include k-means, hierarchical clustering, PCA, t-SNE. Example: elbow method, silhouette score. Common pitfalls include evaluation challenges.",
+      "keywords": [
+        "unsupervised learning",
+        "Machine Learning programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of unsupervised learning in a production environment?",
+        "What are the common pitfalls or issues associated with unsupervised learning?"
+      ],
+      "related_concepts": [
+        "supervised learning",
+        "bias-variance tradeoff"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ML-018",
+      "subject": "Machine Learning",
+      "category": "Architecture",
+      "subcategory": "Design Patterns",
+      "difficulty": "Medium",
+      "question": "Explain the difference between gradient descent and feature engineering in Machine Learning.",
+      "ideal_answer": "gradient descent and feature engineering differ in several ways: gradient descent is optimization algorithm (works by iterative parameter update) whereas feature engineering is input variable creation (works by transforming raw data to features). gradient descent is typically used for batch, stochastic, mini-batch; learning rate, momentum, adaptive, while feature engineering is used for scaling, encoding, binning, interaction terms. Example demonstrating gradient descent: w = w - alpha * grad(loss). Example demonstrating feature engineering: one-hot encoding, TF-IDF, polynomial features.",
+      "keywords": [
+        "gradient descent",
+        "feature engineering",
+        "comparison",
+        "Machine Learning"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose gradient descent over feature engineering?",
+        "What is the performance or memory difference between gradient descent and feature engineering?"
+      ],
+      "related_concepts": [
+        "gradient descent",
+        "feature engineering",
+        "cross-validation"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ML-019",
+      "subject": "Machine Learning",
+      "category": "Applications",
+      "subcategory": "Use Cases",
+      "difficulty": "Medium",
+      "question": "Explain the difference between ensemble methods and regularization in Machine Learning.",
+      "ideal_answer": "ensemble methods and regularization differ in several ways: ensemble methods is multiple model combination (works by improving performance and robustness) whereas regularization is complexity penalty (works by preventing overfitting). ensemble methods is typically used for bagging, boosting, stacking, voting, while regularization is used for L1 (Lasso), L2 (Ridge), Elastic Net, Dropout. Example demonstrating ensemble methods: Random Forest, XGBoost, AdaBoost. Example demonstrating regularization: loss + lambda * ||w||^2.",
+      "keywords": [
+        "ensemble methods",
+        "regularization",
+        "comparison",
+        "Machine Learning"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose ensemble methods over regularization?",
+        "What is the performance or memory difference between ensemble methods and regularization?"
+      ],
+      "related_concepts": [
+        "ensemble methods",
+        "regularization",
+        "model evaluation metrics"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ML-020",
+      "subject": "Machine Learning",
+      "category": "Fundamentals",
+      "subcategory": "Key Concepts",
+      "difficulty": "Medium",
+      "question": "What is bias-variance tradeoff in Machine Learning and how does it work?",
+      "ideal_answer": "bias-variance tradeoff in Machine Learning refers to model complexity balance. It works by generalization error decomposition. Key characteristics include high bias: underfitting; high variance: overfitting. Example: learning curves analysis. Common pitfalls include regularization techniques.",
+      "keywords": [
+        "bias-variance tradeoff",
+        "Machine Learning programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of bias-variance tradeoff in a production environment?",
+        "What are the common pitfalls or issues associated with bias-variance tradeoff?"
+      ],
+      "related_concepts": [
+        "supervised learning",
+        "unsupervised learning"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ML-021",
+      "subject": "Machine Learning",
+      "category": "Applications",
+      "subcategory": "Industry Examples",
+      "difficulty": "Medium",
+      "question": "What are the common issues with model evaluation metrics in Machine Learning and how do you debug them?",
+      "ideal_answer": "Common issues with model evaluation metrics in Machine Learning include: class imbalance handling. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "model evaluation metrics",
+        "troubleshooting",
+        "Machine Learning"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to model evaluation metrics?",
+        "What tools can assist in detecting problems with model evaluation metrics at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ensemble methods",
+        "regularization"
+      ],
+      "estimated_answer_time_minutes": 5,
+      "score_weight": 6
+    },
+    {
+      "question_id": "ML-022",
+      "subject": "Machine Learning",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "Explain the difference between supervised learning and bias-variance tradeoff in Machine Learning.",
+      "ideal_answer": "supervised learning and bias-variance tradeoff differ in several ways: supervised learning is labeled data training (works by input-output mapping) whereas bias-variance tradeoff is model complexity balance (works by generalization error decomposition). supervised learning is typically used for regression, classification, while bias-variance tradeoff is used for high bias: underfitting; high variance: overfitting. Example demonstrating supervised learning: linear regression, logistic regression, SVM, decision trees. Example demonstrating bias-variance tradeoff: learning curves analysis.",
+      "keywords": [
+        "supervised learning",
+        "bias-variance tradeoff",
+        "comparison",
+        "Machine Learning"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose supervised learning over bias-variance tradeoff?",
+        "What is the performance or memory difference between supervised learning and bias-variance tradeoff?"
+      ],
+      "related_concepts": [
+        "supervised learning",
+        "bias-variance tradeoff",
+        "unsupervised learning"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "ML-023",
+      "subject": "Machine Learning",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Hard",
+      "question": "Explain the difference between unsupervised learning and bias-variance tradeoff in Machine Learning.",
+      "ideal_answer": "unsupervised learning and bias-variance tradeoff differ in several ways: unsupervised learning is pattern discovery without labels (works by clustering, dimensionality reduction, density estimation) whereas bias-variance tradeoff is model complexity balance (works by generalization error decomposition). unsupervised learning is typically used for k-means, hierarchical clustering, PCA, t-SNE, while bias-variance tradeoff is used for high bias: underfitting; high variance: overfitting. Example demonstrating unsupervised learning: elbow method, silhouette score. Example demonstrating bias-variance tradeoff: learning curves analysis.",
+      "keywords": [
+        "unsupervised learning",
+        "bias-variance tradeoff",
+        "comparison",
+        "Machine Learning"
+      ],
+      "follow_up_questions": [
+        "Under what specific circumstances would you choose unsupervised learning over bias-variance tradeoff?",
+        "What is the performance or memory difference between unsupervised learning and bias-variance tradeoff?"
+      ],
+      "related_concepts": [
+        "unsupervised learning",
+        "bias-variance tradeoff",
+        "supervised learning"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "ML-024",
+      "subject": "Machine Learning",
+      "category": "Applications",
+      "subcategory": "Tools",
+      "difficulty": "Hard",
+      "question": "What are the common issues with regularization in Machine Learning and how do you debug them?",
+      "ideal_answer": "Common issues with regularization in Machine Learning include: feature selection via L1. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "regularization",
+        "troubleshooting",
+        "Machine Learning"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to regularization?",
+        "What tools can assist in detecting problems with regularization at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "ensemble methods",
+        "model evaluation metrics"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "ML-025",
+      "subject": "Machine Learning",
+      "category": "Fundamentals",
+      "subcategory": "Definition",
+      "difficulty": "Hard",
+      "question": "What is supervised learning in Machine Learning and how does it work?",
+      "ideal_answer": "supervised learning in Machine Learning refers to labeled data training. It works by input-output mapping. Key characteristics include regression, classification. Example: linear regression, logistic regression, SVM, decision trees. Common pitfalls include overfitting, underfitting.",
+      "keywords": [
+        "supervised learning",
+        "Machine Learning programming",
+        "fundamentals"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of supervised learning in a production environment?",
+        "What are the common pitfalls or issues associated with supervised learning?"
+      ],
+      "related_concepts": [
+        "unsupervised learning",
+        "bias-variance tradeoff"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "ML-026",
+      "subject": "Machine Learning",
+      "category": "Fundamentals",
+      "subcategory": "History",
+      "difficulty": "Hard",
+      "question": "What are the common issues with unsupervised learning in Machine Learning and how do you debug them?",
+      "ideal_answer": "Common issues with unsupervised learning in Machine Learning include: evaluation challenges. To debug: trace allocations, check variable bindings in gdb, or inspect assembly logic. Prevention strategies: enforce strict cleanups and static analyzer checks.",
+      "keywords": [
+        "debugging",
+        "unsupervised learning",
+        "troubleshooting",
+        "Machine Learning"
+      ],
+      "follow_up_questions": [
+        "How can you programmatically prevent or mitigate issues related to unsupervised learning?",
+        "What tools can assist in detecting problems with unsupervised learning at compile-time or run-time?"
+      ],
+      "related_concepts": [
+        "supervised learning",
+        "bias-variance tradeoff"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    },
+    {
+      "question_id": "ML-027",
+      "subject": "Machine Learning",
+      "category": "Applications",
+      "subcategory": "Industry Examples",
+      "difficulty": "Hard",
+      "question": "What is model evaluation metrics in Machine Learning and how does it work?",
+      "ideal_answer": "model evaluation metrics in Machine Learning refers to performance measurement. It works by classification and regression metrics. Key characteristics include accuracy, precision, recall, F1, AUC-ROC, MAE, RMSE. Example: confusion matrix, ROC curve. Common pitfalls include class imbalance handling.",
+      "keywords": [
+        "model evaluation metrics",
+        "Machine Learning programming",
+        "applications"
+      ],
+      "follow_up_questions": [
+        "What are the typical use cases of model evaluation metrics in a production environment?",
+        "What are the common pitfalls or issues associated with model evaluation metrics?"
+      ],
+      "related_concepts": [
+        "ensemble methods",
+        "regularization"
+      ],
+      "estimated_answer_time_minutes": 8,
+      "score_weight": 9
+    }
+  ]
+}

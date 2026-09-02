@@ -13,6 +13,7 @@
  */
 
 import axios, { type AxiosError, type AxiosResponse } from "axios";
+import { useAuthStore } from "@/store/authStore";
 
 // ── Base URL ──────────────────────────────────────────────────────────────
 //
@@ -21,13 +22,14 @@ import axios, { type AxiosError, type AxiosResponse } from "axios";
 // to the same origin, and the Vite proxy handles the forwarding.
 //
 // In production (Vercel), VITE_API_BASE_URL should point to the Render backend.
-const API_BASE_URL = import.meta.env["VITE_API_BASE_URL"] ?? "";
+const rawApiUrl = (import.meta as any).env["VITE_API_BASE_URL"] ?? "";
+const API_BASE_URL = typeof rawApiUrl === "string" ? rawApiUrl.trim().replace(/\/+$/, "") : "";
 
 // ── Axios Instance ────────────────────────────────────────────────────────
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 15_000, // 15 seconds — generous enough for LLM-backed endpoints
+  timeout: 45_000, // 45 seconds — robust for multi-signal LLM turn processing and evaluations
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
@@ -36,28 +38,72 @@ const apiClient = axios.create({
 });
 
 // ── Request Interceptor ───────────────────────────────────────────────────
-//
-// Placeholder for adding Authorization header once auth is implemented.
-// In Sprint 2, this will attach the JWT access token from the Zustand store.
 
 apiClient.interceptors.request.use(
   (config) => {
-    // TODO Sprint 2 — Auth: attach access token
-    // const { accessToken } = useAuthStore.getState();
-    // if (accessToken) config.headers.Authorization = `Bearer ${accessToken}`;
+    const { accessToken } = useAuthStore.getState();
+    if (accessToken && config.headers) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
+    }
     return config;
   },
-  (error: AxiosError) => Promise.reject(error)
+  (error) => Promise.reject(error)
 );
 
 // ── Response Interceptor ──────────────────────────────────────────────────
-//
-// Placeholder for handling 401 responses (token refresh) once auth is added.
+
+interface CustomAxiosRequestConfig {
+  _retry?: boolean;
+}
 
 apiClient.interceptors.response.use(
   (response: AxiosResponse) => response,
   async (error: AxiosError) => {
-    // TODO Sprint 2 — Auth: handle 401 → refresh token → retry
+    const originalRequest = error.config as CustomAxiosRequestConfig & typeof error.config;
+    const requestUrl = originalRequest?.url || "";
+
+    const isAuthEndpoint =
+      requestUrl.includes("/auth/refresh") ||
+      requestUrl.includes("/auth/login") ||
+      requestUrl.includes("/auth/logout");
+
+    // Check if error is 401 (Unauthorized), not retried yet, and not an auth endpoint
+    if (error.response?.status === 401 && originalRequest && !originalRequest._retry && !isAuthEndpoint) {
+      originalRequest._retry = true;
+
+      try {
+        // Trigger refresh token rotation (cookie sent automatically)
+        const refreshResponse = await axios.post(
+          `${API_BASE_URL}/api/v1/auth/refresh`,
+          {},
+          { withCredentials: true }
+        );
+
+        const { access_token } = refreshResponse.data.data;
+
+        // Update store state with new token
+        useAuthStore.setState({ accessToken: access_token });
+
+        // Retry the original request with the new access token
+        if (originalRequest.headers) {
+          originalRequest.headers.Authorization = `Bearer ${access_token}`;
+        }
+
+        return apiClient(originalRequest);
+      } catch (refreshErr) {
+        // Refresh token failed (e.g. expired or revoked)
+        useAuthStore.setState({
+          accessToken: null,
+          user: null,
+          loading: false,
+          isInitializing: false,
+          error: "Your session has expired. Please log in again.",
+        });
+
+        return Promise.reject(refreshErr);
+      }
+    }
+
     return Promise.reject(error);
   }
 );

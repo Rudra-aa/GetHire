@@ -140,21 +140,21 @@ GetHire uses a **dual-token authentication system**:
    → Client discards access_token from memory
 ```
 
-### 2.4 Token Validation Middleware
+### 2.4 Token Validation Dependencies
 
-Every protected endpoint runs this validation sequence:
+Authentication is executed selectively on protected endpoints using FastAPI native dependency injection (`Depends()`), ensuring no global JWT parsing or user lookups occur in middleware. The sequence works as follows:
 
 ```
-1. Extract Bearer token from Authorization header
-2. If missing → 401 Unauthorized (MISSING_TOKEN)
-3. Decode JWT (verify signature + algorithm)
-4. If signature invalid → 401 Unauthorized (INVALID_TOKEN)
-5. Check exp claim → if expired → 401 Unauthorized (TOKEN_EXPIRED)
-6. Extract user_id, load user from DB (or Redis cache)
-7. If user not found or is_deleted → 401 Unauthorized (USER_NOT_FOUND)
-8. If user account locked → 403 Forbidden (ACCOUNT_LOCKED)
-9. Attach user object to request state
-10. Proceed to RBAC check
+1. Route decorator defines Depends(get_current_active_user)
+2. HTTPBearer security scheme extracts token from Authorization header
+3. If header missing or format invalid → 401 Unauthorized (MISSING_TOKEN)
+4. Decode JWT access token (verify signature, algorithm, and expiry)
+5. If signature invalid → 401 Unauthorized (INVALID_TOKEN)
+6. Check exp claim → if expired → 401 Unauthorized (TOKEN_EXPIRED)
+7. Extract user_id, load user from `users` collection
+8. If user not found or is_deleted → 401 Unauthorized (USER_NOT_FOUND)
+9. If status is suspended/inactive → 403 Forbidden (ACCOUNT_SUSPENDED)
+10. Return user object to endpoint handler
 ```
 
 ### 2.5 Brute Force Protection
