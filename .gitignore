@@ -62,7 +62,11 @@ logs/
 *.gguf
 *.bin
 *.safetensors
-models/
+*.keras
+/models/
+backend/app/services/facesense/models/*.keras
+!backend/app/models/
+!backend/models/
 
 # ── Scratch & Test Artifacts ──────────────────────────────────────────────
 backend/scratch/
