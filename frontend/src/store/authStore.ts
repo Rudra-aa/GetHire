@@ -54,7 +54,11 @@ export const useAuthStore = create<AuthState>((set) => ({
     set({ error: null });
     try {
       const response = await apiClient.post("/api/v1/auth/login", { email, password });
-      const { access_token, user } = response.data.data;
+      const { access_token, user, refresh_token } = response.data.data;
+
+      if (refresh_token && typeof window !== "undefined") {
+        localStorage.setItem("gethire_refresh_token", refresh_token);
+      }
 
       // Ensure convenience aliases
       const normalizedUser: UserSummary = {
@@ -98,10 +102,18 @@ export const useAuthStore = create<AuthState>((set) => ({
 
   logout: async () => {
     try {
-      await apiClient.post("/api/v1/auth/logout");
+      const storedRefreshToken = typeof window !== "undefined" ? localStorage.getItem("gethire_refresh_token") : null;
+      await apiClient.post(
+        "/api/v1/auth/logout",
+        storedRefreshToken ? { refresh_token: storedRefreshToken } : {},
+        storedRefreshToken ? { headers: { "x-refresh-token": storedRefreshToken } } : {}
+      );
     } catch {
       // Ignore network errors during logout
     } finally {
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("gethire_refresh_token");
+      }
       set({
         accessToken: null,
         user: null,
@@ -115,9 +127,23 @@ export const useAuthStore = create<AuthState>((set) => ({
   checkSession: async () => {
     set({ isInitializing: true, loading: true });
     try {
-      // 1. Refresh token first using HttpOnly cookie to get fresh access token
-      const refreshRes = await apiClient.post("/api/v1/auth/refresh");
-      const { access_token } = refreshRes.data.data;
+      // 1. Refresh token first using HttpOnly cookie (or localStorage fallback header/body)
+      const storedRefreshToken = typeof window !== "undefined" ? localStorage.getItem("gethire_refresh_token") : null;
+      const headers: Record<string, string> = {};
+      if (storedRefreshToken) {
+        headers["x-refresh-token"] = storedRefreshToken;
+      }
+
+      const refreshRes = await apiClient.post(
+        "/api/v1/auth/refresh",
+        storedRefreshToken ? { refresh_token: storedRefreshToken } : {},
+        { headers }
+      );
+      const { access_token, refresh_token: newRefreshToken } = refreshRes.data.data;
+
+      if (newRefreshToken && typeof window !== "undefined") {
+        localStorage.setItem("gethire_refresh_token", newRefreshToken);
+      }
 
       if (access_token) {
         set({ accessToken: access_token });
@@ -142,8 +168,14 @@ export const useAuthStore = create<AuthState>((set) => ({
           return;
         }
       }
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("gethire_refresh_token");
+      }
       set({ user: null, accessToken: null, loading: false, isInitializing: false });
     } catch {
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("gethire_refresh_token");
+      }
       set({ user: null, accessToken: null, loading: false, isInitializing: false });
     }
   },

@@ -72,14 +72,23 @@ apiClient.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        // Trigger refresh token rotation (cookie sent automatically)
+        // Trigger refresh token rotation (cookie sent automatically + header/body fallback)
+        const storedRefreshToken = typeof window !== "undefined" ? localStorage.getItem("gethire_refresh_token") : null;
+        const headers: Record<string, string> = {};
+        if (storedRefreshToken) {
+          headers["x-refresh-token"] = storedRefreshToken;
+        }
+
         const refreshResponse = await axios.post(
           `${API_BASE_URL}/api/v1/auth/refresh`,
-          {},
-          { withCredentials: true }
+          storedRefreshToken ? { refresh_token: storedRefreshToken } : {},
+          { withCredentials: true, headers }
         );
 
-        const { access_token } = refreshResponse.data.data;
+        const { access_token, refresh_token: newRefreshToken } = refreshResponse.data.data;
+        if (newRefreshToken && typeof window !== "undefined") {
+          localStorage.setItem("gethire_refresh_token", newRefreshToken);
+        }
 
         // Update store state with new token
         useAuthStore.setState({ accessToken: access_token });
@@ -91,6 +100,9 @@ apiClient.interceptors.response.use(
 
         return apiClient(originalRequest);
       } catch (refreshErr) {
+        if (typeof window !== "undefined") {
+          localStorage.removeItem("gethire_refresh_token");
+        }
         // Refresh token failed (e.g. expired or revoked)
         useAuthStore.setState({
           accessToken: null,

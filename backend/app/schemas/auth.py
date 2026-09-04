@@ -74,12 +74,14 @@ class LoginRequest(BaseModel):
 
 class RegisterResponseData(BaseModel):
     user: UserSummary
+    refresh_token: Optional[str] = None
 
 
 class LoginResponseData(BaseModel):
     access_token: str
     token_type: str = "bearer"
     user: UserSummary
+    refresh_token: Optional[str] = None
 
 
 class SessionResponseData(BaseModel):
@@ -90,3 +92,4 @@ class SessionResponseData(BaseModel):
 class TokenRefreshResponseData(BaseModel):
     access_token: str
     token_type: str = "bearer"
+    refresh_token: Optional[str] = None

@@ -45,13 +45,14 @@ auth_router = APIRouter()
 # ── Cookie Configuration Helper ─────────────────────────────────────────────
 
 def _set_refresh_cookie(response: Response, refresh_token: str) -> None:
-    """Set secure HttpOnly cookie for refresh token."""
+    """Set secure HttpOnly cookie for refresh token, supporting cross-domain requests."""
+    is_prod = settings.ENVIRONMENT == "production" or not settings.DEBUG
     response.set_cookie(
         key="refresh_token",
         value=refresh_token,
         httponly=True,
-        secure=not settings.DEBUG,  # True in production HTTPS
-        samesite="lax",
+        secure=is_prod,  # True in production HTTPS
+        samesite="none" if is_prod else "lax",
         max_age=7 * 24 * 3600,
         path="/api/v1/auth",
     )
@@ -96,7 +97,11 @@ async def login(
     return APIResponse(
         success=True,
         message="Login successful.",
-        data=LoginResponseData(access_token=access_token, user=user_summary).model_dump(),
+        data=LoginResponseData(
+            access_token=access_token,
+            user=user_summary,
+            refresh_token=refresh_token,
+        ).model_dump(),
     )
 
 
@@ -108,11 +113,19 @@ async def login(
     summary="Rotate refresh token and issue a new access token",
 )
 async def refresh(request: Request, response: Response) -> APIResponse:
-    refresh_token = request.cookies.get("refresh_token")
+    refresh_token = request.cookies.get("refresh_token") or request.headers.get("x-refresh-token")
+    if not refresh_token and request.headers.get("content-type", "").startswith("application/json"):
+        try:
+            body = await request.json()
+            if isinstance(body, dict):
+                refresh_token = body.get("refresh_token")
+        except Exception:
+            pass
+
     if not refresh_token:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail={"success": False, "message": "Refresh token missing from cookies.", "errors": [{"code": "MISSING_COOKIE"}]},
+            detail={"success": False, "message": "Refresh token missing from cookies or request.", "errors": [{"code": "MISSING_COOKIE"}]},
         )
     db = mongo_manager.get_database()
     new_access, new_refresh, _ = await rotate_refresh_token(db, refresh_token)
@@ -120,7 +133,10 @@ async def refresh(request: Request, response: Response) -> APIResponse:
     return APIResponse(
         success=True,
         message="Token refreshed successfully.",
-        data=TokenRefreshResponseData(access_token=new_access).model_dump(),
+        data=TokenRefreshResponseData(
+            access_token=new_access,
+            refresh_token=new_refresh,
+        ).model_dump(),
     )
 
 
@@ -132,10 +148,26 @@ async def refresh(request: Request, response: Response) -> APIResponse:
     summary="Revoke active refresh token and terminate session",
 )
 async def logout(request: Request, response: Response) -> APIResponse:
-    refresh_token = request.cookies.get("refresh_token")
-    db = mongo_manager.get_database()
-    await logout_user(db, refresh_token)
-    response.delete_cookie("refresh_token", path="/api/v1/auth")
+    refresh_token = request.cookies.get("refresh_token") or request.headers.get("x-refresh-token")
+    if not refresh_token and request.headers.get("content-type", "").startswith("application/json"):
+        try:
+            body = await request.json()
+            if isinstance(body, dict):
+                refresh_token = body.get("refresh_token")
+        except Exception:
+            pass
+
+    if refresh_token:
+        db = mongo_manager.get_database()
+        await logout_user(db, refresh_token)
+
+    is_prod = settings.ENVIRONMENT == "production" or not settings.DEBUG
+    response.delete_cookie(
+        "refresh_token",
+        path="/api/v1/auth",
+        secure=is_prod,
+        samesite="none" if is_prod else "lax",
+    )
     return APIResponse(
         success=True,
         message="Logged out successfully.",
@@ -172,8 +204,8 @@ async def get_session(
         except Exception:
             pass
 
-    # 2. Fallback: Check Refresh Token Cookie
-    refresh_token = request.cookies.get("refresh_token")
+    # 2. Fallback: Check Refresh Token Cookie or Request Header
+    refresh_token = request.cookies.get("refresh_token") or request.headers.get("x-refresh-token")
     if refresh_token:
         try:
             payload = decode_token(refresh_token)
