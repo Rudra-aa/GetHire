@@ -28,6 +28,7 @@ from app.models.token import AuditLogModel
 from app.services.pdf_service import PDFExtractionError, PDFService
 from app.services.resume_parser import parse_resume_text
 from app.services.resume_scorer import calculate_resume_quality_score
+from app.services.resume_validator import INVALID_RESUME_MESSAGE, validate_resume_document
 
 logger = get_logger(__name__)
 
@@ -109,10 +110,35 @@ async def process_and_store_resume(
             detail={"success": False, "message": str(exc), "errors": [{"code": "PDF_EXTRACTION_ERROR"}]},
         )
 
-    # 4. Parse structured entities
+    # 4. Validate resume authenticity before parsing or scoring
+    validation_result = validate_resume_document(raw_text, page_count=page_count)
+    if not validation_result.is_valid:
+        destination.unlink(missing_ok=True)
+        logger.warning(
+            "Resume validation rejected document",
+            user_id=user_id,
+            filename=file.filename,
+            reason=validation_result.reason,
+            confidence=validation_result.confidence_score,
+        )
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail={
+                "success": False,
+                "message": INVALID_RESUME_MESSAGE,
+                "errors": [
+                    {
+                        "code": "INVALID_RESUME_DOCUMENT",
+                        "message": INVALID_RESUME_MESSAGE,
+                    }
+                ],
+            },
+        )
+
+    # 5. Parse structured entities
     parsed_data: ParsedResumeData = parse_resume_text(raw_text)
 
-    # 5. Compute Quality Score
+    # 6. Compute Quality Score
     quality_score: QualityScoreBreakdown = calculate_resume_quality_score(
         raw_text,
         parsed_data,

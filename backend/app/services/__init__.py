@@ -18,6 +18,11 @@ from app.services.resume_service import (
     get_resume_by_id,
     process_and_store_resume,
 )
+from app.services.resume_validator import (
+    INVALID_RESUME_MESSAGE,
+    ResumeValidationResult,
+    validate_resume_document,
+)
 from app.services.interview_planner import create_interview_plan
 from app.services.question_generator import generate_questions_from_plan
 from app.services.interview_session_service import (
@@ -63,6 +68,9 @@ __all__ = [
     "get_user_by_id",
     "update_user_profile",
     "process_and_store_resume",
+    "validate_resume_document",
+    "ResumeValidationResult",
+    "INVALID_RESUME_MESSAGE",
     "get_latest_resume_for_user",
     "get_resume_by_id",
     "delete_resume",

@@ -59,11 +59,12 @@ export const ResumeUploader: React.FC<ResumeUploaderProps> = ({
       setProgress(0);
       const data = err.response?.data;
       const msg =
-        data?.errors?.[0]?.message ||
-        data?.detail ||
         data?.message ||
+        data?.detail?.message ||
+        data?.errors?.[0]?.message ||
+        (typeof data?.detail === "string" ? data.detail : null) ||
         err.message ||
-        "Upload failed. Please check the PDF format.";
+        "This document does not appear to be a resume/CV. Please upload a valid resume.";
       setError(msg);
     }
   };

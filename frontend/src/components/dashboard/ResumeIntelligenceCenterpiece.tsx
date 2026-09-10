@@ -73,7 +73,15 @@ export const ResumeIntelligenceCenterpiece = memo(function ResumeIntelligenceCen
       clearInterval(interval);
       setUploading(false);
       setUploadProgress(0);
-      setErrorMessage(err.response?.data?.detail || "Failed to parse resume. Please try again.");
+      const data = err.response?.data;
+      const msg =
+        data?.message ||
+        data?.detail?.message ||
+        data?.errors?.[0]?.message ||
+        (typeof data?.detail === "string" ? data.detail : null) ||
+        err.message ||
+        "This document does not appear to be a resume/CV. Please upload a valid resume.";
+      setErrorMessage(msg);
     }
   };
 
@@ -83,7 +91,15 @@ export const ResumeIntelligenceCenterpiece = memo(function ResumeIntelligenceCen
       await resumeApi.deleteResume(resume.id);
       onDeleteSuccess();
     } catch (err: any) {
-      setErrorMessage(err.response?.data?.detail || "Failed to delete resume.");
+      const data = err.response?.data;
+      const msg =
+        data?.message ||
+        data?.detail?.message ||
+        data?.errors?.[0]?.message ||
+        (typeof data?.detail === "string" ? data.detail : null) ||
+        err.message ||
+        "Failed to delete resume.";
+      setErrorMessage(msg);
     }
   };
 
