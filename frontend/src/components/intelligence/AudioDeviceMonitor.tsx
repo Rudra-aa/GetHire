@@ -40,7 +40,7 @@ export const AudioDeviceMonitor: React.FC<AudioDeviceMonitorProps> = ({
         analyser.fftSize = 256;
         source.connect(analyser);
         analyserRef.current = analyser;
-      } catch (err) {
+      } catch (_err) {
         setMicConnected(false);
       }
     };

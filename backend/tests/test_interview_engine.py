@@ -303,15 +303,37 @@ class TestInterviewEngine(unittest.IsolatedAsyncioTestCase):
             "created_at": datetime.now(timezone.utc),
             "updated_at": datetime.now(timezone.utc),
         }
+        current_doc = dict(session_doc)
 
-        completed_doc = dict(session_doc)
-        completed_doc["status"] = "completed"
-        completed_doc["overall_progress"] = 100.0
-        completed_doc["completed_at"] = datetime.now(timezone.utc)
+        async def mock_find_one(query, *args, **kwargs):
+            return dict(current_doc)
+
+        async def mock_update_one(filter_dict, update_dict, *args, **kwargs):
+            if "$set" in update_dict:
+                current_doc.update(update_dict["$set"])
+
+        int_col = MagicMock()
+        int_col.find_one = AsyncMock(side_effect=mock_find_one)
+        int_col.update_one = AsyncMock(side_effect=mock_update_one)
+
+        graph_col = MagicMock()
+        graph_col.find_one = AsyncMock(return_value=None)
+        graph_col.update_one = AsyncMock()
+        graph_col.insert_one = AsyncMock()
+
+        def mock_getitem(name):
+            if name == "interview_sessions":
+                return int_col
+            if name == "candidate_graphs":
+                return graph_col
+            mock_c = MagicMock()
+            mock_c.find_one = AsyncMock(return_value=None)
+            mock_c.update_one = AsyncMock()
+            mock_c.insert_one = AsyncMock()
+            return mock_c
 
         mock_db = MagicMock()
-        mock_db.__getitem__.return_value.find_one = AsyncMock(side_effect=[session_doc, completed_doc])
-        mock_db.__getitem__.return_value.update_one = AsyncMock()
+        mock_db.__getitem__.side_effect = mock_getitem
 
         finished = await complete_interview_session(mock_db, session_id, user_id)
         self.assertEqual(finished.status, "completed")

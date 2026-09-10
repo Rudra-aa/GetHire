@@ -41,8 +41,12 @@ class CandidateGraphService:
             }
             await db["candidate_intelligence_graphs"].insert_one(graph_doc)
 
-        graph_doc["id"] = str(graph_doc["_id"])
-        graph_doc.pop("_id", None)
+        if "_id" in graph_doc:
+            graph_doc["id"] = str(graph_doc["_id"])
+            graph_doc.pop("_id", None)
+        elif "id" not in graph_doc:
+            from bson import ObjectId
+            graph_doc["id"] = str(ObjectId())
         return graph_doc
 
     async def update_graph_nodes(

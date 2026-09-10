@@ -4,7 +4,7 @@
  * Client API for Phase 2 Resume Intelligence endpoints.
  */
 
-import apiClient from "@/services/api";
+import apiClient, { API_BASE_URL } from "@/services/api";
 
 export interface PersonalInfo {
   name?: string;
@@ -118,6 +118,6 @@ export const resumeApi = {
   },
 
   getPreviewUrl(id: string): string {
-    return `/api/v1/resume/${id}/preview`;
+    return `${API_BASE_URL}/api/v1/resume/${id}/preview`;
   },
 };

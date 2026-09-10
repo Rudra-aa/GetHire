@@ -44,8 +44,11 @@ async def add_security_headers(request: Request, call_next: RequestResponseEndpo
     # Prevent MIME type sniffing (e.g., an uploaded file being executed as JS)
     response.headers["X-Content-Type-Options"] = "nosniff"
 
-    # Prevent clickjacking by disallowing the page from being embedded in a frame
-    response.headers["X-Frame-Options"] = "DENY"
+    # Prevent clickjacking while allowing in-app preview iframes for documents
+    if "/preview" in request.url.path:
+        response.headers["X-Frame-Options"] = "SAMEORIGIN"
+    else:
+        response.headers["X-Frame-Options"] = "DENY"
 
     # Recommend browsers use strict referrer policy
     response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
@@ -53,10 +56,8 @@ async def add_security_headers(request: Request, call_next: RequestResponseEndpo
     # Disable legacy XSS filter (modern browsers use CSP instead)
     response.headers["X-XSS-Protection"] = "0"
 
-    # Permissions Policy — restrict access to sensitive browser APIs
-    response.headers["Permissions-Policy"] = (
-        "camera=(), microphone=(), geolocation=(), payment=()"
-    )
+    # Permissions Policy — restrict unused browser APIs while allowing camera & mic for interview features
+    response.headers["Permissions-Policy"] = "geolocation=(), payment=()"
 
     # HSTS — only set in production (would break HTTP-only dev environments)
     # Uncomment when deploying to HTTPS:

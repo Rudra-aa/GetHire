@@ -151,6 +151,24 @@ def create_application() -> FastAPI:
     # ── Routers ───────────────────────────────────────────────────────────────
     application.include_router(api_router, prefix="/api/v1")
 
+    # ── Root and Healthz endpoints (for platform health checks and redirects) ──
+    @application.get("/", include_in_schema=False)
+    async def root(request: Request) -> JSONResponse:
+        """Redirect clients to the API documentation."""
+        return JSONResponse(
+            content={
+                "service": settings.APP_NAME,
+                "version": settings.APP_VERSION,
+                "docs": "/docs",
+                "health": "/api/v1/health",
+            }
+        )
+
+    @application.get("/healthz", include_in_schema=False)
+    async def healthz() -> dict:
+        """Instant health probe for Render and cloud load balancers."""
+        return {"status": "ok", "service": settings.APP_NAME}
+
     return application
 
 
@@ -159,26 +177,3 @@ def create_application() -> FastAPI:
 # ---------------------------------------------------------------------------
 
 app = create_application()
-
-
-# ---------------------------------------------------------------------------
-# Root and Healthz endpoints (for platform health checks and redirects)
-# ---------------------------------------------------------------------------
-
-@app.get("/", include_in_schema=False)
-async def root(request: Request) -> JSONResponse:
-    """Redirect clients to the API documentation."""
-    return JSONResponse(
-        content={
-            "service": settings.APP_NAME,
-            "version": settings.APP_VERSION,
-            "docs": "/docs",
-            "health": "/api/v1/health",
-        }
-    )
-
-
-@app.get("/healthz", include_in_schema=False)
-async def healthz() -> dict:
-    """Instant health probe for Render and cloud load balancers."""
-    return {"status": "ok", "service": settings.APP_NAME}

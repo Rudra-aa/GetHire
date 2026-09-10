@@ -109,7 +109,7 @@ class TestHireScoreEngine(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(components.problem_solving, 85)     # (90+80)/2
         self.assertEqual(components.communication, 85)       # (84+86)/2
         self.assertEqual(components.concept_coverage, 78)    # (82+74)/2
-        self.assertEqual(components.star_structure, 77)      # (80+75)/2
+        self.assertEqual(components.star_structure, 78)      # (80+75)/2 = 77.5 -> 78
 
     def test_02_composite_hirescore_weighting(self):
         evals = _build_mock_evaluations()
@@ -277,7 +277,10 @@ class TestHireScoreEngine(unittest.IsolatedAsyncioTestCase):
                 return eval_col
             if name == "interview_sessions":
                 return sessions_col
-            return MagicMock()
+            fallback_col = MagicMock()
+            fallback_col.find_one = AsyncMock(return_value=None)
+            fallback_col.count_documents = AsyncMock(return_value=0)
+            return fallback_col
 
         db_mock.__getitem__.side_effect = mock_db_getitem
 

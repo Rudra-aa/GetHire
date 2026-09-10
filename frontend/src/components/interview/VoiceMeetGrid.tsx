@@ -86,7 +86,7 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
           numFaces: 1,
         });
         if (active) landmarkerRef.current = fl;
-      } catch (err) {
+      } catch (_err) {
         try {
           const filesetResolver = await FilesetResolver.forVisionTasks(
             "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.17/wasm"

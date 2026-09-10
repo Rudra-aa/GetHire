@@ -3,7 +3,10 @@ import argparse
 import sys
 from pathlib import Path
 from pydantic import ValidationError
-from backend.services.dataset_loader import DatasetQuestion
+try:
+    from services.dataset_loader import DatasetQuestion
+except ImportError:
+    from backend.services.dataset_loader import DatasetQuestion
 
 def validate_file(filepath: Path) -> tuple[bool, list[str], list[dict]]:
     errors = []

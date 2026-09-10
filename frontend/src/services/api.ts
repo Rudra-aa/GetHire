@@ -21,9 +21,8 @@ import { useAuthStore } from "@/store/authStore";
 // use a relative base URL. This is set to an empty string so that requests go
 // to the same origin, and the Vite proxy handles the forwarding.
 //
-// In production (Vercel), VITE_API_BASE_URL should point to the Render backend.
-const rawApiUrl = (import.meta as any).env["VITE_API_BASE_URL"] ?? "";
-const API_BASE_URL = typeof rawApiUrl === "string" ? rawApiUrl.trim().replace(/\/+$/, "") : "";
+const rawApiUrl = (import.meta as any).env?.["VITE_API_BASE_URL"] ?? "";
+export const API_BASE_URL = typeof rawApiUrl === "string" ? rawApiUrl.trim().replace(/\/+$/, "") : "";
 
 // ── Axios Instance ────────────────────────────────────────────────────────
 

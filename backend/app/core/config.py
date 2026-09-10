@@ -15,7 +15,7 @@ Usage:
 from __future__ import annotations
 
 from functools import lru_cache
-from typing import Any, List
+from typing import Any, List, Union
 
 from pydantic import AnyHttpUrl, Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -53,13 +53,13 @@ class Settings(BaseSettings):
         default="change-me-in-production-minimum-32-chars-random",
         description="JWT signing secret — must be random and ≥32 chars in production",
     )
-    ALLOWED_HOSTS: List[str] = Field(
+    ALLOWED_HOSTS: Union[List[str], str] = Field(
         default=["*", "localhost", "127.0.0.1", "*.onrender.com", "*.render.com"],
         description="Trusted host allowlist (used by TrustedHostMiddleware in production)",
     )
 
     # ── CORS ───────────────────────────────────────────────────────────────
-    CORS_ORIGINS: List[str] = Field(
+    CORS_ORIGINS: Union[List[str], str] = Field(
         default=["http://localhost:5173", "http://localhost:3000", "https://*.vercel.app"],
         description="Allowed CORS origins for the frontend",
     )
@@ -145,19 +145,23 @@ class Settings(BaseSettings):
             raise ValueError(f"LOG_LEVEL must be one of: {', '.join(allowed)}")
         return v_upper
 
-    @field_validator("ALLOWED_HOSTS", "CORS_ORIGINS", mode="before")
+    @field_validator("ALLOWED_HOSTS", "CORS_ORIGINS", mode="after")
     @classmethod
-    def parse_list_fields(cls, v: Any) -> Any:
+    def parse_list_fields(cls, v: Any) -> List[str]:
         if isinstance(v, str):
             v = v.strip()
             if v.startswith("[") and v.endswith("]"):
                 import json
                 try:
-                    return json.loads(v)
+                    parsed = json.loads(v)
+                    if isinstance(parsed, list):
+                        return [str(item).strip() for item in parsed if str(item).strip()]
                 except Exception:
                     pass
             return [item.strip() for item in v.split(",") if item.strip()]
-        return v
+        elif isinstance(v, list):
+            return [str(item).strip() for item in v if str(item).strip()]
+        return [str(v)]
 
     # ── Computed properties ────────────────────────────────────────────────
 

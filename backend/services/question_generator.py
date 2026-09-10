@@ -10,7 +10,10 @@ import random
 from dataclasses import dataclass, field
 from typing import Optional
 
-from backend.services.dataset_loader import get_loader, DatasetQuestion
+try:
+    from services.dataset_loader import get_loader, DatasetQuestion
+except ImportError:
+    from backend.services.dataset_loader import get_loader, DatasetQuestion
 
 
 # ---------------------------------------------------------------------------
