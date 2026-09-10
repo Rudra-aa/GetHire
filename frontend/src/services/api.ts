@@ -17,12 +17,22 @@ import { useAuthStore } from "@/store/authStore";
 
 // ── Base URL ──────────────────────────────────────────────────────────────
 //
-// In Docker Compose, the Vite dev server proxies /api/* to the backend, so we
-// use a relative base URL. This is set to an empty string so that requests go
-// to the same origin, and the Vite proxy handles the forwarding.
-//
-const rawApiUrl = (import.meta as any).env?.["VITE_API_BASE_URL"] ?? "";
-export const API_BASE_URL = typeof rawApiUrl === "string" ? rawApiUrl.trim().replace(/\/+$/, "") : "";
+// In Docker Compose / local dev with Vite proxy, VITE_API_BASE_URL is empty so
+// requests route to the same origin.
+// In production (Vercel), VITE_API_BASE_URL points to the Render backend service.
+const getApiBaseUrl = (): string => {
+  const envUrl = import.meta.env.VITE_API_BASE_URL;
+  if (typeof envUrl === "string" && envUrl.trim().length > 0) {
+    let clean = envUrl.trim().replace(/\/+$/, "");
+    if (clean.endsWith("/api/v1")) {
+      clean = clean.substring(0, clean.length - "/api/v1".length);
+    }
+    return clean.replace(/\/+$/, "");
+  }
+  return "";
+};
+
+export const API_BASE_URL = getApiBaseUrl();
 
 // ── Axios Instance ────────────────────────────────────────────────────────
 
