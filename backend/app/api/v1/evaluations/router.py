@@ -172,6 +172,76 @@ async def get_session_evaluations_endpoint(
     )
 
 
+# ── GET /api/v1/evaluations/latest ──────────────────────────────────────────
+
+@evaluations_router.get(
+    "/latest",
+    response_model=APIResponse,
+    summary="Retrieve candidate's latest session evaluation summary",
+)
+async def get_latest_evaluation_endpoint(
+    current_user: UserModel = Depends(get_current_active_user),
+) -> APIResponse:
+    db = mongo_manager.get_database()
+    user_id = str(current_user.id)
+    user_filter = {"$in": [user_id, ObjectId(user_id)]} if ObjectId.is_valid(user_id) else user_id
+
+    # 1. Find user's latest completed interview session
+    latest_sess = await db["interview_sessions"].find_one(
+        {"user_id": user_filter, "status": "completed"},
+        sort=[("completed_at", -1), ("updated_at", -1), ("_id", -1)],
+    )
+    if not latest_sess:
+        # Check if there is any active session
+        latest_sess = await db["interview_sessions"].find_one(
+            {"user_id": user_filter},
+            sort=[("started_at", -1), ("_id", -1)],
+        )
+
+    if not latest_sess:
+        return APIResponse(
+            success=True,
+            message="No interview sessions found for candidate.",
+            data=None,
+        )
+
+    session_id = str(latest_sess.get("_id") or latest_sess.get("id") or latest_sess.get("session_id"))
+
+    # 2. Get existing evaluations
+    evals = await get_session_evaluations(db, session_id, user_id)
+    if not evals:
+        # Run batch evaluate
+        try:
+            evals, _, _ = await evaluate_session_all_answers(db, session_id, user_id)
+        except Exception as eval_err:
+            logger.warning("Auto evaluate in latest endpoint notice", session_id=session_id, error=str(eval_err))
+            evals = []
+
+    formatted_evals = [_format_evaluation_out(e) for e in evals]
+    avg_overall = int(round(sum(e.overall_score for e in evals) / len(evals))) if evals else 0
+    avg_dims = {
+        "technical_accuracy": int(round(sum(e.scores.technical_accuracy.score for e in evals) / len(evals))) if evals else 0,
+        "concept_coverage": int(round(sum(e.scores.concept_coverage.score for e in evals) / len(evals))) if evals else 0,
+        "problem_solving": int(round(sum(e.scores.problem_solving.score for e in evals) / len(evals))) if evals else 0,
+        "communication": int(round(sum(e.scores.communication.score for e in evals) / len(evals))) if evals else 0,
+        "completeness": int(round(sum(e.scores.completeness.score for e in evals) / len(evals))) if evals else 0,
+    }
+
+    data = BatchEvaluationResponseData(
+        session_id=session_id,
+        overall_interview_score=avg_overall,
+        total_evaluated=len(formatted_evals),
+        average_dimensions=avg_dims,
+        evaluations=formatted_evals,
+    )
+
+    return APIResponse(
+        success=True,
+        message="Latest session evaluation retrieved.",
+        data=data.model_dump(),
+    )
+
+
 # ── GET /api/v1/evaluations/{id} ────────────────────────────────────────────
 
 @evaluations_router.get(

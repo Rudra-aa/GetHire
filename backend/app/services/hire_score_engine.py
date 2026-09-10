@@ -42,15 +42,21 @@ def calculate_hirescore_components(
     resume: Optional[ResumeModel] = None,
     previous_scores: Optional[List[int]] = None,
     facesense_doc: Optional[Dict[str, Any]] = None,
+    assessment_doc: Optional[Dict[str, Any]] = None,
 ) -> HireScoreComponents:
     """
     Computes normalized 0-100 scores across all primary HireScore dimensions
-    based strictly on actual evidence.
+    based strictly on actual evidence from assessments, interviews, and resume.
     """
     # 1. Resume Quality Component
     resume_score = 70  # default baseline if no resume uploaded
     if resume and resume.quality_score:
         resume_score = resume.quality_score.overall_score
+
+    # Extract assessment score if present
+    assessment_score: Optional[int] = None
+    if assessment_doc and isinstance(assessment_doc.get("score"), (int, float)):
+        assessment_score = int(round(assessment_doc["score"]))
 
     # 2. Evaluation Dimensions Averages
     if evaluations:
@@ -65,6 +71,18 @@ def calculate_hirescore_components(
         avg_concept = int(round(sum(concept_scores) / len(concept_scores)))
         avg_comm = int(round(sum(comm_scores) / len(comm_scores)))
         avg_star = int(round(sum(star_scores) / len(star_scores)))
+
+        # Blend technical assessment score into technical accuracy and concept coverage
+        if assessment_score is not None:
+            avg_tech = int(round(avg_tech * 0.6 + assessment_score * 0.4))
+            avg_concept = max(avg_concept, int(round(avg_concept * 0.7 + assessment_score * 0.3)))
+    elif assessment_score is not None:
+        # Technical assessment is completed, baseline others proportionally
+        avg_tech = assessment_score
+        avg_prob = int(round(assessment_score * 0.9))
+        avg_concept = int(round(assessment_score * 0.95))
+        avg_comm = 75
+        avg_star = 70
     else:
         avg_tech = int(round(resume_score * 0.9))
         avg_prob = int(round(resume_score * 0.85))
@@ -161,13 +179,26 @@ async def get_or_compute_user_hirescore(
 ) -> HireScoreModel:
     """
     Fetches the latest cached HireScore or recomputes end-to-end intelligence from real evidence.
+    Automatically invalidates stale cache if new assessments or interviews completed.
     """
     hirescore_col = db["hirescores"]
+    user_filter = {"$in": [str(user_id), ObjectId(user_id)]} if ObjectId.is_valid(user_id) else str(user_id)
 
     if not force_recompute and not session_id:
-        cached = await hirescore_col.find_one({"user_id": user_id}, sort=[("created_at", -1)])
+        cached = await hirescore_col.find_one({"user_id": user_filter}, sort=[("created_at", -1)])
         if cached:
-            return HireScoreModel(**cached)
+            cached_time = cached.get("created_at")
+            has_newer_assessment = False
+            has_newer_interview = False
+            if cached_time:
+                has_newer_assessment = await db["assessment_sessions"].find_one(
+                    {"user_id": user_filter, "status": "completed", "completed_at": {"$gt": cached_time}}
+                ) is not None
+                has_newer_interview = await db["interview_sessions"].find_one(
+                    {"user_id": user_filter, "status": "completed", "completed_at": {"$gt": cached_time}}
+                ) is not None
+            if not has_newer_assessment and not has_newer_interview:
+                return HireScoreModel(**cached)
 
     # 1. Fetch User Metadata
     user_doc = None
@@ -179,12 +210,23 @@ async def get_or_compute_user_hirescore(
     experience_level = user_doc.get("experience_level") if user_doc else "Senior"
 
     # 2. Fetch Latest Resume
-    resume_doc = await db["resumes"].find_one({"user_id": user_id}, sort=[("created_at", -1)])
+    resume_doc = await db["resumes"].find_one({"user_id": user_filter}, sort=[("created_at", -1)])
     resume = ResumeModel(**resume_doc) if resume_doc else None
     resume_id = str(resume_doc["_id"]) if resume_doc and "_id" in resume_doc else None
 
+    # 2b. Fetch Latest Completed Assessment
+    assessment_doc = await db["assessment_sessions"].find_one(
+        {"user_id": user_filter, "status": "completed"},
+        sort=[("completed_at", -1), ("updated_at", -1), ("_id", -1)]
+    )
+    if not assessment_doc:
+        assessment_doc = await db["assessment_sessions"].find_one(
+            {"user_id": user_filter, "score": {"$exists": True, "$gt": 0}},
+            sort=[("completed_at", -1), ("updated_at", -1), ("_id", -1)]
+        )
+
     # 3. Fetch Evaluations (for specific session or all user sessions)
-    query: Dict[str, Any] = {"user_id": user_id}
+    query: Dict[str, Any] = {"user_id": user_filter}
     if session_id:
         query["session_id"] = session_id
 
@@ -192,28 +234,44 @@ async def get_or_compute_user_hirescore(
     eval_docs = await cursor.to_list(length=50)
     evaluations = [EvaluationModel(**doc) for doc in eval_docs]
 
-    # If no evaluations found in evaluations collection, check if session has turn_evaluations
-    if not evaluations and session_id:
+    # If no evaluations found in evaluations collection, check for completed interview sessions and auto-evaluate
+    if not evaluations:
         from app.services.evaluation_service import evaluate_session_all_answers
-        try:
-            eval_list, _, _ = await evaluate_session_all_answers(db, session_id, user_id)
-            evaluations = eval_list
-        except Exception as e:
-            logger.warning("Auto session evaluation during HireScore compute notice", error=str(e))
+        target_sids = []
+        if session_id:
+            target_sids = [session_id]
+        else:
+            completed_sessions_list = await db["interview_sessions"].find(
+                {"user_id": user_filter, "status": "completed"}
+            ).sort("completed_at", -1).to_list(5)
+            target_sids = [str(s.get("_id") or s.get("id") or s.get("session_id")) for s in completed_sessions_list if s]
+
+        for sid in target_sids:
+            try:
+                eval_list, _, _ = await evaluate_session_all_answers(db, sid, str(user_id))
+                if eval_list:
+                    evaluations.extend(eval_list)
+            except Exception as e:
+                logger.warning("Auto session evaluation during HireScore compute notice", session_id=sid, error=str(e))
 
     # 4. Fetch Completed Interview Count
     completed_sessions = await db["interview_sessions"].count_documents(
-        {"user_id": user_id, "status": "completed"}
+        {"user_id": user_filter, "status": "completed"}
     )
 
     # 4b. Fetch FaceSense Session Intelligence
-    fs_query: Dict[str, Any] = {"user_id": user_id}
+    fs_query: Dict[str, Any] = {"user_id": user_filter}
     if session_id:
         fs_query["session_id"] = session_id
     facesense_doc = await db["facesense_sessions"].find_one(fs_query, sort=[("updated_at", -1)])
 
     # 5. Core Pipeline Computations
-    components = calculate_hirescore_components(evaluations, resume, facesense_doc=facesense_doc)
+    components = calculate_hirescore_components(
+        evaluations,
+        resume,
+        facesense_doc=facesense_doc,
+        assessment_doc=assessment_doc,
+    )
     overall_score = compute_composite_hirescore(components)
     readiness = evaluate_candidate_readiness(overall_score, components, evaluations)
     benchmark = calculate_industry_benchmark(overall_score, target_role, experience_level)
@@ -225,7 +283,7 @@ async def get_or_compute_user_hirescore(
 
     # 6. Build and Persist Model
     hirescore_obj = HireScoreModel(
-        user_id=user_id,
+        user_id=str(user_id),
         session_id=session_id,
         resume_id=resume_id,
         overall_score=overall_score,

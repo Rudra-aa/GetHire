@@ -203,6 +203,19 @@ async def complete_interview_session(
         ],
     )
 
+    # 3. Auto-evaluate conversational turns and recompute candidate HireScore
+    try:
+        from app.services.evaluation_service import evaluate_session_all_answers
+        await evaluate_session_all_answers(db, session_id, user_id)
+    except Exception as eval_err:
+        logger.warning("Auto evaluation on interview completion notice", session_id=session_id, error=str(eval_err))
+
+    try:
+        from app.services.hire_score_engine import get_or_compute_user_hirescore
+        await get_or_compute_user_hirescore(db, user_id=user_id, session_id=session_id, force_recompute=True)
+    except Exception as hs_err:
+        logger.warning("Auto HireScore recompute on interview completion notice", session_id=session_id, error=str(hs_err))
+
     updated_doc = await db["interview_sessions"].find_one({"_id": ObjectId(session_id)})
     logger.info("Completed interview session & updated Candidate Graph", session_id=session_id, user_id=user_id)
     return InterviewSessionModel(**updated_doc)  # type: ignore[arg-type]

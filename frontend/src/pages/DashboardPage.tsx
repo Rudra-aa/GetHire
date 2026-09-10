@@ -47,6 +47,7 @@ export default function DashboardPage() {
   const [weakConcepts, setWeakConcepts] = useState<string[]>([]);
   const [interviewCompletedCount, setInterviewCompletedCount] = useState<number>(0);
   const [activeSessionId, setActiveSessionId] = useState<string | undefined>(undefined);
+  const [latestCompletedSessionId, setLatestCompletedSessionId] = useState<string | undefined>(undefined);
   const [hireScore, setHireScore] = useState<number | undefined>(undefined);
 
   const fetchExecutiveData = async () => {
@@ -56,16 +57,21 @@ export default function DashboardPage() {
       if (latestResume) updateUserState({ resume_uploaded: true });
 
       const latestAssessment = await assessmentApi.getLatestAssessment().catch(() => null);
-      if (latestAssessment) {
+      if (latestAssessment && typeof latestAssessment.score === "number") {
         setAssessmentScore(latestAssessment.score);
         setStrongConcepts(latestAssessment.strong_concepts || []);
         setWeakConcepts(latestAssessment.weak_concepts || []);
+      } else {
+        setAssessmentScore(undefined);
       }
 
       const history = await interviewApi.getHistory(10, 0).catch(() => null);
       if (history?.sessions?.length) {
-        const completed = history.sessions.filter((s) => s.status === "completed").length;
-        setInterviewCompletedCount(completed);
+        const completed = history.sessions.filter((s) => s.status === "completed");
+        setInterviewCompletedCount(completed.length);
+        if (completed.length > 0 && completed[0]) {
+          setLatestCompletedSessionId(completed[0].id);
+        }
         const running = history.sessions.find((s) => s.status === "running" || s.status === "paused");
         if (running) setActiveSessionId(running.id);
       }
@@ -130,7 +136,7 @@ export default function DashboardPage() {
         hireScore={hireScore}
         activeSessionId={activeSessionId}
         onContinueSession={(sid) => navigate(`/interview/${sid}`)}
-        onOpenEvaluation={() => navigate("/interview/sess-ai-demo/evaluation")}
+        onOpenEvaluation={() => navigate(latestCompletedSessionId ? `/interview/${latestCompletedSessionId}/evaluation` : "/evaluation")}
       />
 
       {/* Career Roadmap Timeline */}

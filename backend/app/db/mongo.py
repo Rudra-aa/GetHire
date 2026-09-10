@@ -60,8 +60,11 @@ class MongoManager:
                 "serverSelectionTimeoutMS": 5000,
             }
             if "mongodb+srv://" in settings.MONGODB_URI:
-                kwargs["tls"] = True
-                kwargs["tlsInsecure"] = True
+                try:
+                    import certifi
+                    kwargs["tlsCAFile"] = certifi.where()
+                except ImportError:
+                    kwargs["tls"] = True
 
             self._client = AsyncIOMotorClient(settings.MONGODB_URI, **kwargs)
             # Verify connection is actually alive

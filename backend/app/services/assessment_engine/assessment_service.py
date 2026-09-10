@@ -22,6 +22,9 @@ from app.services.assessment_engine.knowledge_graph import knowledge_graph_build
 logger = get_logger(__name__)
 
 
+from bson import ObjectId
+
+
 class AssessmentService:
     """Manages technical assessment test sessions and score persistence."""
 
@@ -31,7 +34,7 @@ class AssessmentService:
         """Creates a new assessment session with generated MCQs."""
         questions = mcq_engine.generate_assessment_quiz(target_role, experience_level)
         session_doc = {
-            "user_id": user_id,
+            "user_id": str(user_id),
             "target_role": target_role,
             "experience_level": experience_level,
             "status": "active",
@@ -56,9 +59,12 @@ class AssessmentService:
             eval_res["strong_concepts"], eval_res["weak_concepts"], eval_res["score"]
         )
 
+        now = datetime.now(timezone.utc)
         result_doc = {
+            "user_id": str(user_id),
             "status": "completed",
-            "completed_at": datetime.now(timezone.utc),
+            "completed_at": now,
+            "updated_at": now,
             "score": eval_res["score"],
             "correct_count": eval_res["correct_count"],
             "total_questions": eval_res["total_questions"],
@@ -67,25 +73,69 @@ class AssessmentService:
             "knowledge_graph": kg_res,
         }
 
-        try:
-            from bson import ObjectId
-            await db["assessment_sessions"].update_one(
-                {"_id": ObjectId(assessment_id)}, {"$set": result_doc}
-            )
-        except Exception:
-            await db["assessment_sessions"].update_one(
-                {"id": assessment_id}, {"$set": result_doc}
-            )
+        user_filter = {"$in": [str(user_id), ObjectId(user_id)]} if ObjectId.is_valid(user_id) else str(user_id)
+        matched = False
 
-        result_doc["id"] = assessment_id
-        logger.info("Assessment submitted and scored", assessment_id=assessment_id, score=eval_res["score"])
+        if assessment_id and assessment_id != "sess-demo":
+            filter_candidates = []
+            if ObjectId.is_valid(assessment_id):
+                filter_candidates.append({"_id": ObjectId(assessment_id)})
+            filter_candidates.append({"id": assessment_id})
+            filter_candidates.append({"_id": assessment_id})
+
+            for fc in filter_candidates:
+                update_res = await db["assessment_sessions"].update_one(fc, {"$set": result_doc})
+                if update_res.matched_count > 0:
+                    matched = True
+                    break
+
+        if not matched:
+            # Try to update the user's most recent active assessment session
+            update_res = await db["assessment_sessions"].update_one(
+                {"user_id": user_filter, "status": "active"},
+                {"$set": result_doc},
+                sort=[("started_at", -1)],
+            )
+            if update_res.matched_count > 0:
+                matched = True
+
+        if not matched:
+            # Upsert / insert a completed assessment session
+            insert_doc = {
+                "target_role": "Software Engineer",
+                "experience_level": "Mid Level",
+                "started_at": now,
+                "questions": [],
+                **result_doc,
+            }
+            ins_res = await db["assessment_sessions"].insert_one(insert_doc)
+            result_doc["id"] = str(ins_res.inserted_id)
+        else:
+            result_doc["id"] = str(assessment_id)
+
+        # Trigger automatic HireScore recomputation so dashboard is immediately up to date
+        try:
+            from app.services.hire_score_engine import get_or_compute_user_hirescore
+            await get_or_compute_user_hirescore(db, user_id=str(user_id), force_recompute=True)
+        except Exception as hs_err:
+            logger.warning("HireScore auto-recompute after assessment notice", error=str(hs_err))
+
+        logger.info("Assessment submitted and scored", assessment_id=result_doc["id"], score=eval_res["score"])
         return result_doc
 
     async def get_latest_assessment(self, db: AsyncIOMotorDatabase, user_id: str) -> Optional[Dict[str, Any]]:
         """Retrieves user's latest completed assessment session."""
+        user_filter = {"$in": [str(user_id), ObjectId(user_id)]} if ObjectId.is_valid(user_id) else str(user_id)
         doc = await db["assessment_sessions"].find_one(
-            {"user_id": user_id, "status": "completed"}, sort=[("completed_at", -1)]
+            {"user_id": user_filter, "status": "completed"},
+            sort=[("completed_at", -1), ("updated_at", -1), ("_id", -1)],
         )
+        if not doc:
+            # Fallback to any assessment session for this user with a valid score
+            doc = await db["assessment_sessions"].find_one(
+                {"user_id": user_filter, "score": {"$exists": True, "$gt": 0}},
+                sort=[("completed_at", -1), ("updated_at", -1), ("_id", -1)],
+            )
         if not doc:
             return None
         doc["id"] = str(doc["_id"])

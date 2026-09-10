@@ -308,10 +308,10 @@ async def evaluate_session_all_answers(
             continue
 
         # Determine prompt asked prior to this candidate turn
-        ai_prompt = "Technical architectural discussion."
-        if i > 0 and isinstance(transcripts[i - 1], dict):
+        ai_prompt = t_item.get("ai_response") or "Technical architectural discussion."
+        if not t_item.get("ai_response") and i > 0 and isinstance(transcripts[i - 1], dict):
             ai_prompt = transcripts[i - 1].get("ai_response", ai_prompt)
-        elif raw_sess.get("questions") and len(raw_sess["questions"]) > 0:
+        elif not t_item.get("ai_response") and raw_sess.get("questions") and len(raw_sess["questions"]) > 0:
             ai_prompt = raw_sess["questions"][0].get("question_text", ai_prompt)
 
         # Expected concepts tailored to the specific question context

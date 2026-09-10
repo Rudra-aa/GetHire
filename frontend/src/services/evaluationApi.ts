@@ -87,4 +87,9 @@ export const evaluationApi = {
     const response = await apiClient.get(`/api/v1/evaluations/session/${sessionId}`);
     return response.data.data;
   },
+
+  async getLatestEvaluation(): Promise<BatchEvaluationResponse | null> {
+    const response = await apiClient.get("/api/v1/evaluations/latest");
+    return response.data.data ?? null;
+  },
 };

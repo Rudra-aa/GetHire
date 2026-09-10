@@ -30,7 +30,7 @@ export const assessmentApi = {
       `${API_BASE_URL}/start`,
       { target_role: targetRole, experience_level: experienceLevel }
     );
-    return res.data;
+    return res.data?.data || res.data;
   },
 
   submitAssessment: async (assessmentId: string, answers: Array<{ question_id: string; selected_option: number }>): Promise<any> => {
@@ -38,13 +38,13 @@ export const assessmentApi = {
       `${API_BASE_URL}/submit`,
       { assessment_id: assessmentId, answers }
     );
-    return res.data;
+    return res.data?.data || res.data;
   },
 
   getLatestAssessment: async (): Promise<AssessmentSession> => {
     const res = await apiClient.get(
       `${API_BASE_URL}/latest`
     );
-    return res.data;
+    return res.data?.data || res.data;
   },
 };

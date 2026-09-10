@@ -144,7 +144,7 @@ export const WorkspaceModules: React.FC<WorkspaceModulesProps> = ({
           <div className="flex flex-col gap-2 pt-4 border-t border-white/10">
             {isEvaluationUnlocked ? (
               <button
-                onClick={() => navigate("/interview/sess-ai-demo/evaluation")}
+                onClick={() => navigate("/evaluation")}
                 className="w-full py-2.5 rounded-xl bg-emerald-400 text-black font-extrabold text-xs font-display hover:bg-emerald-300 transition-all flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-500/20"
               >
                 <span>Open Evaluation Report</span>

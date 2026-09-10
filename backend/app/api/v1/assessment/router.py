@@ -7,7 +7,7 @@ Endpoints for starting adaptive technical quizzes, submitting answers, and fetch
 
 from __future__ import annotations
 
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 from fastapi import APIRouter, Depends, HTTPException, status
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
@@ -29,11 +29,12 @@ def _extract_user_id(user: Any) -> str:
 
 @assessment_router.post("/start", status_code=status.HTTP_201_CREATED)
 async def start_assessment(
-    payload: Dict[str, Any],
+    payload: Optional[Dict[str, Any]] = None,
     db: AsyncIOMotorDatabase = Depends(get_database),
     current_user: UserModel = Depends(get_current_user),
 ) -> Dict[str, Any]:
     """Initializes a new technical assessment test session."""
+    payload = payload or {}
     user_id = _extract_user_id(current_user)
     target_role = payload.get("target_role", getattr(current_user, "target_role", "Software Engineer"))
     exp_level = payload.get("experience_level", getattr(current_user, "experience_level", "Mid Level"))

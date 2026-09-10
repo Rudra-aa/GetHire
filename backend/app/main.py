@@ -119,7 +119,7 @@ def create_application() -> FastAPI:
         ],
     )
 
-    # ── Middleware (order matters — outer middleware runs first) ──────────────
+    # ── Middleware (order matters — in Starlette, last added runs outermost) ──
 
     # Trusted hosts — only accept requests from configured hosts in production
     if settings.ENVIRONMENT == "production":
@@ -128,7 +128,13 @@ def create_application() -> FastAPI:
             allowed_hosts=settings.ALLOWED_HOSTS,
         )
 
-    # CORS — must be registered before any route handlers
+    # Security headers middleware (custom)
+    application.middleware("http")(add_security_headers)
+
+    # Rate limiting middleware (custom)
+    application.add_middleware(RateLimitMiddleware)
+
+    # CORS — registered last so it executes as the outermost wrapper for preflights and error responses
     application.add_middleware(
         CORSMiddleware,
         allow_origins=settings.CORS_ORIGINS,
@@ -138,12 +144,6 @@ def create_application() -> FastAPI:
         allow_headers=["*"],
         max_age=600,  # pre-flight cache: 10 minutes
     )
-
-    # Security headers middleware (custom)
-    application.middleware("http")(add_security_headers)
-
-    # Rate limiting middleware (custom)
-    application.add_middleware(RateLimitMiddleware)
 
     # ── Exception handlers ────────────────────────────────────────────────────
     register_exception_handlers(application)
