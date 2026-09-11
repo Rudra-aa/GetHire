@@ -20,6 +20,8 @@ import { useAuthStore } from "@/store/authStore";
 // In Docker Compose / local dev with Vite proxy, VITE_API_BASE_URL is empty so
 // requests route to the same origin.
 // In production (Vercel), VITE_API_BASE_URL points to the Render backend service.
+export const PRODUCTION_RENDER_API_URL = "https://gethire-api.onrender.com";
+
 const getApiBaseUrl = (): string => {
   const envUrl = import.meta.env.VITE_API_BASE_URL;
   if (typeof envUrl === "string" && envUrl.trim().length > 0) {
@@ -29,6 +31,18 @@ const getApiBaseUrl = (): string => {
     }
     return clean.replace(/\/+$/, "");
   }
+
+  // Robust Production Fallback:
+  // Prevent any production build from silently falling back to the Vercel domain.
+  if (
+    import.meta.env.PROD ||
+    (typeof window !== "undefined" &&
+      !window.location.hostname.includes("localhost") &&
+      !window.location.hostname.includes("127.0.0.1"))
+  ) {
+    return PRODUCTION_RENDER_API_URL;
+  }
+
   return "";
 };
 
