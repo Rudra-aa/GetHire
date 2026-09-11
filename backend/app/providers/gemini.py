@@ -21,12 +21,15 @@ from app.core.config import settings
 
 logger = get_logger(__name__)
 
-# Valid, currently active models — tried in priority order (fastest first)
+# Valid, currently active models — tried in priority order (fastest first).
+# gemini-3.6-flash is the API-recommended current model per Google's own 404 redirect message.
+# Fallbacks cover different account/region tiers.
 _MODELS_TO_TRY = [
-    "gemini-1.5-flash-8b",
-    "gemini-1.5-flash",
-    "gemini-1.5-pro",
-    "gemini-2.0-flash",
+    "gemini-3.6-flash",
+    "gemini-3.5-flash-lite",
+    "gemini-3.5-flash",
+    "gemini-3.1-flash-lite",
+    "gemini-flash-latest",
 ]
 
 
@@ -38,17 +41,34 @@ class GeminiAIProvider(BaseAIProvider):
         self.api_key = raw_key.strip() if raw_key else ""
 
     def _get_client(self, api_key: str):
-        """Returns a configured google.genai client using REST (HTTP/1.1) transport.
+        """Returns a configured google.genai Client using REST (HTTP/1.1) transport.
 
-        REST transport avoids gRPC DNS resolution failures in containerised
-        environments such as Render and Docker where gRPC cannot resolve
+        REST transport avoids gRPC DNS resolution failures inside containerised
+        environments such as Render and Docker where gRPC cannot reliably resolve
         external hostnames at startup.
         """
         from google import genai
-        from google.genai import types as genai_types  # noqa: F401 – ensure types are importable
-
         client = genai.Client(api_key=api_key, http_options={"api_version": "v1beta"})
         return client
+
+    @staticmethod
+    def _extract_text(response) -> str:
+        """Safely extract text from a google.genai GenerateContentResponse."""
+        if not response:
+            return ""
+        # New SDK: response.text shortcut
+        if hasattr(response, "text") and isinstance(response.text, str):
+            return response.text.strip()
+        # Fallback: walk candidates → content → parts
+        if hasattr(response, "candidates") and response.candidates:
+            for candidate in response.candidates:
+                if candidate.content and candidate.content.parts:
+                    return "".join(
+                        part.text
+                        for part in candidate.content.parts
+                        if hasattr(part, "text") and part.text
+                    ).strip()
+        return ""
 
     async def generate(
         self,
@@ -58,7 +78,7 @@ class GeminiAIProvider(BaseAIProvider):
         max_tokens: int = 2048,
         response_format: str = "json",
     ) -> Dict[str, Any]:
-        """Executes a Gemini generation call, trying models in priority order."""
+        """Executes a Gemini generation call, trying models in priority order until one succeeds."""
         active_key = (self.api_key or settings.GEMINI_API_KEY or "").strip()
 
         logger.info(
@@ -78,6 +98,7 @@ class GeminiAIProvider(BaseAIProvider):
         )
 
         last_error: Exception | None = None
+        loop = asyncio.get_running_loop()
 
         for model_name in _MODELS_TO_TRY:
             try:
@@ -92,10 +113,9 @@ class GeminiAIProvider(BaseAIProvider):
                     transport="rest",
                 )
 
-                t_start = asyncio.get_event_loop().time()
+                t_start = loop.time()
 
-                # Run blocking generate in executor to avoid blocking the event loop
-                loop = asyncio.get_running_loop()
+                # Run blocking generate in thread executor to avoid blocking the event loop
                 response = await loop.run_in_executor(
                     None,
                     lambda m=model_name: client.models.generate_content(
@@ -108,21 +128,14 @@ class GeminiAIProvider(BaseAIProvider):
                     ),
                 )
 
-                t_elapsed = round((asyncio.get_event_loop().time() - t_start) * 1000, 2)
+                t_elapsed = round((loop.time() - t_start) * 1000, 2)
                 logger.info(
                     "[INTERVIEW_RUNTIME] provider_returned",
                     model=model_name,
                     elapsed_ms=t_elapsed,
                 )
 
-                response_text = ""
-                if response and response.candidates:
-                    for candidate in response.candidates:
-                        if candidate.content and candidate.content.parts:
-                            response_text = "".join(
-                                part.text for part in candidate.content.parts if hasattr(part, "text")
-                            ).strip()
-                            break
+                response_text = self._extract_text(response)
 
                 if response_format == "json":
                     try:
@@ -142,7 +155,7 @@ class GeminiAIProvider(BaseAIProvider):
             except Exception as err:
                 last_error = err
                 logger.warning(
-                    f"Gemini generation with {model_name} failed: {err!r}, trying next model..."
+                    f"[GEMINI] model={model_name} failed: {type(err).__name__}: {err!r} — trying next model"
                 )
                 continue
 

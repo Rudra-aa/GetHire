@@ -103,7 +103,7 @@ class GeminiLiveProvider(BaseInterviewProvider):
             prompt=prompt,
             system_instruction=system_instruction,
             temperature=0.7,
-            max_tokens=256,
+            max_tokens=1024,
             response_format="text",
         )
 
