@@ -15,8 +15,8 @@ pydantic==2.7.4
 pydantic-settings==2.3.4
 
 # ── Database — MongoDB ─────────────────────────────────────────────────────
-motor==3.4.0                   # async MongoDB driver (wraps PyMongo)
-pymongo==4.8.0                 # sync driver (used by Motor internally)
+motor[srv]==3.4.0              # async MongoDB driver (wraps PyMongo), with SRV support
+pymongo[srv]==4.8.0            # sync driver (used by Motor internally), with SRV support
 
 # ── Cache — Redis ──────────────────────────────────────────────────────────
 redis==5.0.7                   # includes async support (redis.asyncio)

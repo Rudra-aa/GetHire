@@ -92,10 +92,12 @@ class MongoManager:
                     logger.error("Local MongoDB fallback also failed", error=str(fallback_err))
 
             if settings.is_production:
-                logger.warning(
-                    "MongoDB connection could not be established at startup. Service is running in degraded mode.",
+                logger.error(
+                    "CRITICAL: MongoDB connection could not be established at startup. "
+                    "In production, a database connection is strictly required.",
                     error=str(exc),
                 )
+                raise ConnectionFailure("Production database connection failed.") from exc
 
     async def disconnect(self) -> None:
         """Close the connection pool gracefully."""
