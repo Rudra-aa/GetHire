@@ -28,10 +28,6 @@ const getApiBaseUrl = (): string => {
     }
     return clean.replace(/\/+$/, "");
   }
-
-    return PRODUCTION_RENDER_API_URL;
-  }
-
   return "";
 };
 
