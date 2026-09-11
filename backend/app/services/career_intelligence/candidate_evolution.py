@@ -24,24 +24,23 @@ class CandidateEvolutionService:
         """
         Retrieves historical monthly snapshots of candidate HireScore, Technical Score, and Integrity.
         """
-        cursor = db["hirescores"].find({"user_id": user_id}).sort("created_at", 1)
+        cursor = db["evaluation_reports"].find({"candidate_id": user_id}).sort("evaluation_number", 1)
         scores_docs = await cursor.to_list(length=100)
 
         # Only construct timeline if at least 2 real snapshots exist
         if not scores_docs or len(scores_docs) < 2:
-            single_score = scores_docs[0].get("overall_score", 0) if scores_docs else 0
+            single_score = scores_docs[0].get("hirescore", 0) if scores_docs else 0
             single_points = []
             if scores_docs:
                 created = scores_docs[0].get("created_at") or datetime.now(timezone.utc)
-                month_str = created.strftime("%b %d") if isinstance(created, datetime) else "Session 1"
-                comp = scores_docs[0].get("components", {})
+                month_str = created.strftime("%b %d") if isinstance(created, datetime) else "Report 1"
                 single_points.append({
-                    "month": month_str,
-                    "hirescore": scores_docs[0].get("overall_score", 0),
-                    "technical": comp.get("technical_accuracy", 0),
-                    "integrity": comp.get("facesense_score", 0),
+                    "month": f"Report #{scores_docs[0].get('evaluation_number', 1)}",
+                    "hirescore": scores_docs[0].get("hirescore", 0),
+                    "technical": scores_docs[0].get("technical_accuracy", 0),
+                    "integrity": scores_docs[0].get("facesense_score", 0),
                     "readiness_pct": scores_docs[0].get("readiness", {}).get("readiness_percentage", 0),
-                    "session_id": scores_docs[0].get("session_id"),
+                    "session_id": scores_docs[0].get("interview_session_id"),
                 })
             return {
                 "user_id": user_id,
@@ -50,22 +49,20 @@ class CandidateEvolutionService:
                 "current_score": single_score,
                 "total_growth_points": 0,
                 "growth_trajectory": "Calibration Phase",
-                "message": "Complete at least two interview sessions to unlock Candidate Evolution.",
+                "message": "Complete at least two full Evaluation Cycles to unlock Candidate Evolution.",
                 "evolution_points": single_points,
             }
 
         monthly_points = []
         for doc in scores_docs:
             created = doc.get("created_at") or datetime.now(timezone.utc)
-            month_str = created.strftime("%b %d") if isinstance(created, datetime) else "Session"
-            comp = doc.get("components", {})
             monthly_points.append({
-                "month": month_str,
-                "hirescore": doc.get("overall_score", 0),
-                "technical": comp.get("technical_accuracy", 0),
-                "integrity": comp.get("facesense_score", 0),
+                "month": f"Report #{doc.get('evaluation_number', 1)}",
+                "hirescore": doc.get("hirescore", 0),
+                "technical": doc.get("technical_accuracy", 0),
+                "integrity": doc.get("facesense_score", 0),
                 "readiness_pct": doc.get("readiness", {}).get("readiness_percentage", 0),
-                "session_id": doc.get("session_id"),
+                "session_id": doc.get("interview_session_id"),
             })
 
         first_score = monthly_points[0]["hirescore"]

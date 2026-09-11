@@ -41,9 +41,22 @@ export const InterviewControlBar: React.FC<InterviewControlBarProps> = ({
   micVolume = 0,
   onInterrupt,
 }) => {
-  const isCandidateTurn = state === "LISTENING";
-  const isThinking = state === "THINKING" || state === "TRANSCRIBING" || state === "FOLLOW_UP_DECISION";
-  const isAiSpeaking = state === "INTRODUCTION" || state === "QUESTION" || state === "FOLLOW_UP";
+  const isCandidateTurn =
+    state === "LISTENING" ||
+    state === "USER_SPEAKING" ||
+    state === "SILENCE_DETECTED" ||
+    state === "WAITING_FOR_MIC";
+  const isThinking =
+    state === "THINKING" ||
+    state === "TRANSCRIBING" ||
+    state === "FOLLOW_UP_DECISION" ||
+    state === "AUTO_SUBMITTING" ||
+    state === "AI_THINKING";
+  const isAiSpeaking =
+    state === "INTRODUCTION" ||
+    state === "QUESTION" ||
+    state === "FOLLOW_UP" ||
+    state === "AI_SPEAKING";
 
   const [showConfirmEnd, setShowConfirmEnd] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);

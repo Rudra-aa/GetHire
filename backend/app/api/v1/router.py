@@ -23,6 +23,7 @@ from app.api.v1.facesense.router import facesense_router
 from app.api.v1.integrity.router import integrity_router
 from app.api.v1.assessment.router import assessment_router
 from app.api.v1.career.router import career_router
+from app.api.v1.evaluation_reports.router import evaluation_reports_router
 from app.domains.candidate_graph.router import graph_router
 
 # ---------------------------------------------------------------------------
@@ -41,6 +42,7 @@ api_router.include_router(resume_router, prefix="/resume", tags=["Resume Intelli
 api_router.include_router(assessment_router, prefix="/assessment", tags=["Assessment Engine"])
 api_router.include_router(interview_router, prefix="/interview", tags=["AI Interview Engine"])
 api_router.include_router(evaluations_router, prefix="/evaluations", tags=["Evaluation Engine"])
+api_router.include_router(evaluation_reports_router, prefix="/evaluation-reports", tags=["Evaluation History Reports"])
 api_router.include_router(hirescore_router, prefix="/hirescore", tags=["HireScore Engine"])
 api_router.include_router(facesense_router, prefix="/facesense", tags=["FaceSense Intelligence Engine"])
 api_router.include_router(integrity_router, prefix="/integrity", tags=["Interview Intelligence Engine"])

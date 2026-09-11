@@ -186,7 +186,7 @@ export const InterviewPage: React.FC = () => {
             <InterviewControlBar
               state={state}
               isMicMuted={isMicMuted}
-              onToggleMic={() => setIsMicMuted(!isMicMuted)}
+              onToggleMic={setIsMicMuted}
               onFinishAnswer={handleFinishAnswer}
               onRetryTurn={retryTurn}
               onRepeatQuestion={repeatQuestion}

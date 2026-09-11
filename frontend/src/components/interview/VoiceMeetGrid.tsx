@@ -209,9 +209,17 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
   }, [processFaceSenseFrame]);
 
   const isAiSpeaking =
-    isSpeakingAi || state === "INTRODUCTION" || state === "QUESTION" || state === "FOLLOW_UP";
+    isSpeakingAi ||
+    state === "INTRODUCTION" ||
+    state === "QUESTION" ||
+    state === "FOLLOW_UP" ||
+    state === "AI_SPEAKING";
   const isAiThinking =
-    state === "THINKING" || state === "TRANSCRIBING" || state === "FOLLOW_UP_DECISION";
+    state === "THINKING" ||
+    state === "TRANSCRIBING" ||
+    state === "FOLLOW_UP_DECISION" ||
+    state === "AUTO_SUBMITTING" ||
+    state === "AI_THINKING";
 
   return (
     <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">

@@ -4,7 +4,7 @@ import { useAuthStore } from "@/store/authStore";
 import { resumeApi, type ResumeDetail } from "@/services/resumeApi";
 import { assessmentApi } from "@/services/assessmentApi";
 import { interviewApi } from "@/services/interviewApi";
-import { hireScoreApi } from "@/services/hireScoreApi";
+import { evaluationReportApi } from "@/services/evaluationReportApi";
 import { ExecutiveHeader } from "@/components/dashboard/ExecutiveHeader";
 import { ExecutiveSummaries } from "@/components/dashboard/ExecutiveSummaries";
 import { ExecutiveIntelligenceDeck } from "@/components/dashboard/ExecutiveIntelligenceDeck";
@@ -47,8 +47,8 @@ export default function DashboardPage() {
   const [weakConcepts, setWeakConcepts] = useState<string[]>([]);
   const [interviewCompletedCount, setInterviewCompletedCount] = useState<number>(0);
   const [activeSessionId, setActiveSessionId] = useState<string | undefined>(undefined);
-  const [latestCompletedSessionId, setLatestCompletedSessionId] = useState<string | undefined>(undefined);
   const [hireScore, setHireScore] = useState<number | undefined>(undefined);
+  const [latestReportId, setLatestReportId] = useState<string | undefined>(undefined);
 
   const fetchExecutiveData = async () => {
     try {
@@ -69,17 +69,15 @@ export default function DashboardPage() {
       if (history?.sessions?.length) {
         const completed = history.sessions.filter((s) => s.status === "completed");
         setInterviewCompletedCount(completed.length);
-        if (completed.length > 0 && completed[0]) {
-          setLatestCompletedSessionId(completed[0].id);
-        }
         const running = history.sessions.find((s) => s.status === "running" || s.status === "paused");
         if (running) setActiveSessionId(running.id);
       }
 
-      // Fetch real computed HireScore from backend
-      const latestHs = await hireScoreApi.getLatestHireScore().catch(() => null);
-      if (latestHs?.overall_score !== undefined && latestHs.overall_score > 0) {
-        setHireScore(latestHs.overall_score);
+      // Fetch real computed HireScore from Immutable Evaluation Reports history
+      const reportHistory = await evaluationReportApi.getHistory().catch(() => []);
+      if (reportHistory && reportHistory.length > 0 && reportHistory[0]) {
+        setHireScore(reportHistory[0].hirescore);
+        setLatestReportId(reportHistory[0].id);
       }
     } catch {
       // Graceful error handling
@@ -136,7 +134,7 @@ export default function DashboardPage() {
         hireScore={hireScore}
         activeSessionId={activeSessionId}
         onContinueSession={(sid) => navigate(`/interview/${sid}`)}
-        onOpenEvaluation={() => navigate(latestCompletedSessionId ? `/interview/${latestCompletedSessionId}/evaluation` : "/evaluation")}
+        onOpenEvaluation={() => navigate(latestReportId ? `/evaluation/${latestReportId}` : "/evaluation")}
       />
 
       {/* Career Roadmap Timeline */}

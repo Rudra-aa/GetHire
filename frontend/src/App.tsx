@@ -58,11 +58,8 @@ export default function App() {
             <Route path="/assessment/:sessionId" element={<AssessmentPage />} />
             <Route path="/interview" element={<InterviewPage />} />
             <Route path="/interview/:sessionId" element={<InterviewPage />} />
-            <Route path="/interview/:sessionId/evaluation" element={<EvaluationPage />} />
             <Route path="/evaluation" element={<EvaluationPage />} />
-            <Route path="/evaluation/:sessionId" element={<EvaluationPage />} />
-            <Route path="/evaluations" element={<EvaluationPage />} />
-            <Route path="/evaluations/:sessionId" element={<EvaluationPage />} />
+            <Route path="/evaluation/:reportId" element={<EvaluationPage />} />
           </Route>
         </Route>
 

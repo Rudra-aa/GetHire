@@ -1,186 +1,216 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Lock, Loader2, AlertCircle, Sparkles, ArrowRight } from "lucide-react";
+import { Loader2, AlertCircle, FileText, ArrowRight, ShieldCheck } from "lucide-react";
 import { useAuthStore } from "@/store/authStore";
-import { evaluationApi, type BatchEvaluationResponse } from "@/services/evaluationApi";
-import { assessmentApi } from "@/services/assessmentApi";
-import { interviewApi } from "@/services/interviewApi";
+import { evaluationReportApi, type EvaluationReportDetail } from "@/services/evaluationReportApi";
+
 import { HeroSummaryCard } from "@/components/evaluation/HeroSummaryCard";
 import { PerformanceBreakdown } from "@/components/evaluation/PerformanceBreakdown";
 import { HiringVerdictCard } from "@/components/evaluation/HiringVerdictCard";
-import FaceSenseReportSection from "@/components/facesense/FaceSenseReportSection";
-import IntelligenceReportSection from "@/components/intelligence/IntelligenceReportSection";
 
 export const EvaluationPage: React.FC = () => {
-  const { sessionId } = useParams<{ sessionId: string }>();
+  const { reportId } = useParams<{ reportId: string }>();
   const navigate = useNavigate();
   const { user } = useAuthStore();
 
-  const [batchData, setBatchData] = useState<BatchEvaluationResponse | null>(null);
+  const [report, setReport] = useState<EvaluationReportDetail | null>(null);
+  const [history, setHistory] = useState<EvaluationReportDetail[]>([]);
   const [loading, setLoading] = useState(true);
-  const [isLocked, setIsLocked] = useState(false);
-  const [lockMessage, setLockMessage] = useState<string>("");
-  const [activeSessionId, setActiveSessionId] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
-  const fetchOrGenerate = useCallback(async () => {
+  const fetchData = useCallback(async () => {
     setLoading(true);
-    setIsLocked(false);
-    setLockMessage("");
-
+    setError("");
     try {
-      // 1. Resolve effective session ID
-      let effectiveSessionId = sessionId;
-      let hasCompletedInterview = false;
-
-      const history = await interviewApi.getHistory(10, 0).catch(() => null);
-      const completedSessions = history?.sessions?.filter((s) => s.status === "completed") || [];
-      hasCompletedInterview = completedSessions.length > 0;
-
-      if (!effectiveSessionId || effectiveSessionId === "latest" || effectiveSessionId === "sess-ai-demo") {
-        if (completedSessions.length > 0 && completedSessions[0]) {
-          effectiveSessionId = completedSessions[0].id;
-        } else if (history?.sessions?.length && history.sessions[0]) {
-          effectiveSessionId = history.sessions[0].id;
-        } else {
-          effectiveSessionId = "";
-        }
-      }
-
-      setActiveSessionId(effectiveSessionId || "");
-
-      // 2. Check dual completion requirement
-      const latestAssessment = await assessmentApi.getLatestAssessment().catch(() => null);
-      const isAssessmentDone = !!(latestAssessment && typeof latestAssessment.score === "number");
-      const isInterviewDone = hasCompletedInterview || (!!effectiveSessionId && effectiveSessionId !== "sess-ai-demo");
-
-      if (!isAssessmentDone || !isInterviewDone) {
-        setIsLocked(true);
-        if (!isAssessmentDone && !isInterviewDone) {
-          setLockMessage("Complete both Technical Assessment and AI Interview to unlock your unified Evaluation Report.");
-        } else if (!isAssessmentDone) {
-          setLockMessage("Complete your Technical Assessment to unlock your unified Evaluation Report.");
-        } else {
-          setLockMessage("Complete at least one AI Mock Interview to unlock your unified Evaluation Report.");
-        }
-        setLoading(false);
-        return;
-      }
-
-      // 3. Fetch or compute evaluation data for the resolved session
-      if (effectiveSessionId && effectiveSessionId !== "sess-ai-demo") {
-        let existing = await evaluationApi.getSessionEvaluations(effectiveSessionId).catch(() => null);
-        if (existing && existing.evaluations && existing.evaluations.length > 0) {
-          setBatchData(existing);
-        } else {
-          const generated = await evaluationApi.evaluateSessionAll(effectiveSessionId).catch(() => null);
-          if (generated && generated.evaluations && generated.evaluations.length > 0) {
-            setBatchData(generated);
-          } else {
-            // Fallback to latest endpoint
-            const latestEval = await evaluationApi.getLatestEvaluation().catch(() => null);
-            setBatchData(latestEval);
-          }
-        }
+      if (reportId) {
+        // Load specific report
+        const data = await evaluationReportApi.getReportById(reportId);
+        setReport(data);
       } else {
-        const latestEval = await evaluationApi.getLatestEvaluation().catch(() => null);
-        setBatchData(latestEval);
+        // Load history list
+        const historyData = await evaluationReportApi.getHistory();
+        setHistory(historyData);
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error("Evaluation load error:", err);
-      setBatchData(null);
+      setError(err?.response?.data?.message || "Evaluation report not found.");
+      setReport(null);
     } finally {
       setLoading(false);
     }
-  }, [sessionId]);
+  }, [reportId]);
 
   useEffect(() => {
-    void fetchOrGenerate();
-  }, [fetchOrGenerate]);
+    void fetchData();
+  }, [fetchData]);
 
   const candidateName = user?.full_name?.split(" ")[0] || "Candidate";
   const targetRole = user?.target_role || "Full Stack Developer";
 
-  return (
-    <div className="max-w-[1600px] mx-auto flex flex-col gap-6">
-      <div className="flex items-center justify-between border-b border-white/10 pb-4">
-        <div>
-          <h1 className="text-xl font-bold font-display text-[#39FF88]">Unified Evaluation Report</h1>
-          <p className="text-xs text-neutral-400">Synthesized evidence from Technical Assessment & AI Interview Studio.</p>
-        </div>
-        <button onClick={() => navigate("/dashboard")} className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-neutral-300 hover:bg-white/10 transition-all">
-          Return to Workspace
-        </button>
+  if (loading) {
+    return (
+      <div className="py-32 flex flex-col items-center justify-center gap-4 text-neutral-400 font-mono text-xs">
+        <Loader2 className="h-8 w-8 text-[#39FF88] animate-spin" />
+        <span>Loading Evaluation Data...</span>
       </div>
+    );
+  }
 
-      {loading && (
-        <div className="py-32 flex flex-col items-center justify-center gap-4 text-neutral-400 font-mono text-xs">
-          <Loader2 className="h-8 w-8 text-[#39FF88] animate-spin" />
-          <span>Synthesizing Evaluation Telemetry...</span>
-        </div>
-      )}
-
-      {!loading && isLocked && (
-        <div className="py-24 max-w-lg mx-auto flex flex-col items-center text-center gap-5">
+  // === RENDER SPECIFIC REPORT ===
+  if (reportId) {
+    if (!report) {
+      return (
+        <div className="py-24 max-w-lg mx-auto flex flex-col items-center text-center gap-5 p-8 rounded-3xl bg-white/[0.02] border border-white/10">
           <div className="p-4 rounded-3xl bg-rose-500/10 border border-rose-500/30 text-rose-400">
-            <Lock className="h-10 w-10" />
+            <AlertCircle className="h-10 w-10" />
           </div>
-          <h2 className="text-xl font-bold text-white font-display">Evaluation Center Locked</h2>
+          <h2 className="text-xl font-bold text-white font-display">Evaluation Report Not Found</h2>
           <p className="text-sm text-neutral-300 font-sans leading-relaxed">
-            {lockMessage || "Complete both Technical Assessment and AI Interview to unlock Evaluation."}
+            {error || "The requested evaluation report does not exist."}
           </p>
           <div className="flex gap-3 pt-2">
-            <button onClick={() => navigate("/assessment")} className="px-5 py-2.5 rounded-xl bg-cyan-400 text-black font-bold text-xs font-display hover:bg-cyan-300 transition-all flex items-center gap-1.5">
-              <span>Launch Assessment</span>
-              <ArrowRight className="h-3.5 w-3.5" />
-            </button>
-            <button onClick={() => navigate("/interview")} className="px-5 py-2.5 rounded-xl bg-gold-400 text-black font-bold text-xs font-display hover:bg-gold-300 transition-all flex items-center gap-1.5">
-              <span>Launch Interview</span>
-              <ArrowRight className="h-3.5 w-3.5" />
+            <button onClick={() => navigate("/evaluation")} className="px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-neutral-300 font-bold text-xs hover:bg-white/10 transition-all">
+              View Evaluation History
             </button>
           </div>
         </div>
-      )}
+      );
+    }
 
-      {!loading && !isLocked && batchData && batchData.evaluations && batchData.evaluations.length > 0 && (
+    const mockDimensions = {
+      technical_accuracy: report.technical_accuracy,
+      concept_coverage: report.concept_coverage,
+      problem_solving: report.problem_solving,
+      communication: report.communication,
+      completeness: report.completeness,
+    };
+
+    return (
+      <div className="max-w-[1600px] mx-auto flex flex-col gap-6">
+        <div className="flex items-center justify-between border-b border-white/10 pb-4">
+          <div>
+            <h1 className="text-xl font-bold font-display text-[#39FF88]">Immutable Evaluation Report #{report.evaluation_number}</h1>
+            <p className="text-xs text-neutral-400">Snapshot created on {new Date(report.created_at).toLocaleString()}</p>
+          </div>
+          <button onClick={() => navigate("/evaluation")} className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-neutral-300 hover:bg-white/10 transition-all">
+            ← Back to History
+          </button>
+        </div>
+
         <div className="flex flex-col gap-6">
           <HeroSummaryCard
-            overallScore={batchData.overall_interview_score}
-            totalEvaluated={batchData.total_evaluated}
-            sessionId={batchData.session_id || activeSessionId}
+            overallScore={report.hirescore}
+            totalEvaluated={0}
+            sessionId={report.interview_session_id}
             candidateName={candidateName}
             targetRole={targetRole}
           />
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             <div className="lg:col-span-8">
-              <PerformanceBreakdown dimensions={batchData.average_dimensions} />
+              <PerformanceBreakdown dimensions={mockDimensions} />
             </div>
             <div className="lg:col-span-4">
-              <HiringVerdictCard overallScore={batchData.overall_interview_score} />
+              <HiringVerdictCard overallScore={report.hirescore} />
             </div>
           </div>
-          <FaceSenseReportSection sessionId={activeSessionId || batchData.session_id} />
-          <IntelligenceReportSection sessionId={activeSessionId || batchData.session_id} />
+          
+          {/* Qualitative Insights Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-6 rounded-3xl bg-black/20 border border-white/5 flex flex-col gap-4">
+              <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                <ShieldCheck className="h-4 w-4 text-[#39FF88]" /> Strengths
+              </h3>
+              <ul className="flex flex-col gap-3">
+                {report.strengths.map((s, i) => (
+                  <li key={i} className="text-xs text-neutral-300 bg-white/5 p-3 rounded-xl border border-white/10">
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="p-6 rounded-3xl bg-black/20 border border-white/5 flex flex-col gap-4">
+              <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                <AlertCircle className="h-4 w-4 text-rose-400" /> Areas for Growth
+              </h3>
+              <ul className="flex flex-col gap-3">
+                {report.weaknesses.map((w, i) => (
+                  <li key={i} className="text-xs text-neutral-300 bg-white/5 p-3 rounded-xl border border-white/10">
+                    {w}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
-      )}
+      </div>
+    );
+  }
 
-      {!loading && !isLocked && (!batchData || !batchData.evaluations || batchData.evaluations.length === 0) && (
+  // === RENDER HISTORY CENTER ===
+  return (
+    <div className="max-w-[1200px] mx-auto flex flex-col gap-6">
+      <div className="flex items-center justify-between border-b border-white/10 pb-4">
+        <div>
+          <h1 className="text-xl font-bold font-display text-white">Evaluation Center</h1>
+          <p className="text-xs text-neutral-400">Complete historical record of all your evaluation cycles.</p>
+        </div>
+        <button onClick={() => navigate("/dashboard")} className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-neutral-300 hover:bg-white/10 transition-all">
+          Return to Dashboard
+        </button>
+      </div>
+
+      {history.length === 0 ? (
         <div className="py-24 max-w-lg mx-auto flex flex-col items-center text-center gap-5 p-8 rounded-3xl bg-white/[0.02] border border-white/10">
           <div className="p-4 rounded-3xl bg-amber-500/10 border border-amber-500/30 text-amber-400">
-            <AlertCircle className="h-10 w-10" />
+            <FileText className="h-10 w-10" />
           </div>
-          <h2 className="text-xl font-bold text-white font-display">No Conversational Evaluation Turns Found</h2>
+          <h2 className="text-xl font-bold text-white font-display">No Evaluations Yet</h2>
           <p className="text-sm text-neutral-300 font-sans leading-relaxed">
-            The selected interview session does not contain recorded candidate answers to evaluate yet. Complete an interview round to generate your diagnostic breakdown.
+            You haven't completed a full evaluation cycle yet. To generate your first Immutable Evaluation Report, complete both a Technical Assessment and an AI Mock Interview.
           </p>
           <div className="flex gap-3 pt-2">
-            <button onClick={() => navigate("/interview")} className="px-5 py-2.5 rounded-xl bg-[#39FF88] text-black font-extrabold text-xs font-display hover:bg-[#32e078] transition-all flex items-center gap-1.5">
-              <Sparkles className="h-3.5 w-3.5" />
-              <span>Start AI Mock Interview</span>
-            </button>
-            <button onClick={() => navigate("/dashboard")} className="px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-neutral-300 font-bold text-xs font-display hover:bg-white/10 transition-all">
-              Return to Dashboard
-            </button>
+             <button onClick={() => navigate("/assessment")} className="px-5 py-2.5 rounded-xl bg-cyan-400 text-black font-bold text-xs hover:bg-cyan-300 transition-all flex items-center gap-1.5">
+               Start Assessment
+             </button>
+             <button onClick={() => navigate("/interview")} className="px-5 py-2.5 rounded-xl bg-gold-400 text-black font-bold text-xs hover:bg-gold-300 transition-all flex items-center gap-1.5">
+               Start Interview
+             </button>
           </div>
+        </div>
+      ) : (
+        <div className="flex flex-col gap-4">
+          {history.map((h, i) => (
+            <div key={h.id} className="p-6 rounded-3xl bg-white/[0.02] border border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-white/[0.04] hover:border-white/20 transition-all">
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-3">
+                  <h3 className="text-lg font-bold text-white">Report #{h.evaluation_number}</h3>
+                  {i === 0 && <span className="px-2 py-0.5 rounded-md bg-[#39FF88]/20 text-[#39FF88] border border-[#39FF88]/30 text-[10px] font-bold uppercase tracking-wider">Latest</span>}
+                </div>
+                <p className="text-xs text-neutral-400">Date: {new Date(h.created_at).toLocaleDateString()} at {new Date(h.created_at).toLocaleTimeString()}</p>
+              </div>
+              
+              <div className="flex items-center gap-8">
+                <div className="flex flex-col gap-1 items-center">
+                  <span className="text-[10px] text-neutral-500 font-bold uppercase">HireScore</span>
+                  <span className="text-xl font-bold text-white font-mono">{h.hirescore}</span>
+                </div>
+                <div className="flex flex-col gap-1 items-center">
+                  <span className="text-[10px] text-neutral-500 font-bold uppercase">Assessment</span>
+                  <span className="text-xl font-bold text-white font-mono">{h.assessment_score}</span>
+                </div>
+                <div className="flex flex-col gap-1 items-center">
+                  <span className="text-[10px] text-neutral-500 font-bold uppercase">Interview</span>
+                  <span className="text-xl font-bold text-white font-mono">{h.interview_score}</span>
+                </div>
+                <button 
+                  onClick={() => navigate(`/evaluation/${h.id}`)}
+                  className="px-5 py-2 rounded-xl bg-[#39FF88] text-black font-bold text-xs flex items-center gap-1.5 hover:bg-[#32e078] transition-all ml-4"
+                >
+                  View Report <ArrowRight className="h-3.5 w-3.5" />
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       )}
     </div>
