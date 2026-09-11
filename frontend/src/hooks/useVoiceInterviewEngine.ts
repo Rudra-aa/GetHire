@@ -543,7 +543,12 @@ export function useVoiceInterviewEngine(initialSessionId?: string) {
       setLiveCandidateText("");
 
       setState("THINKING");
-      const sessId = actualSessionId || "sess-ai-demo";
+      const sessId = actualSessionId;
+      if (!sessId) {
+        setState("ERROR");
+        setTurnWarning("Interview session not initialised. Please restart the interview.");
+        return;
+      }
 
       try {
         const res = await interviewApi.processTurn(sessId, textToSubmit);
@@ -650,7 +655,12 @@ export function useVoiceInterviewEngine(initialSessionId?: string) {
     }
 
     setState("THINKING");
-    const sessId = actualSessionId || "sess-ai-demo";
+    const sessId = actualSessionId;
+    if (!sessId) {
+      setState("ERROR");
+      setTurnWarning("No active session. Click 'Retry Connection' to restart.");
+      return;
+    }
 
     try {
       const res = await interviewApi.processTurn(sessId, lastText);
@@ -741,7 +751,12 @@ export function useVoiceInterviewEngine(initialSessionId?: string) {
   const requestClarification = useCallback(async () => {
     stopMicrophone();
     setState("THINKING");
-    const sessId = actualSessionId || "sess-ai-demo";
+    const sessId = actualSessionId;
+    if (!sessId) {
+      setState("LISTENING");
+      startMicrophone();
+      return;
+    }
     try {
       const res = await interviewApi.processTurn(
         sessId,
@@ -776,9 +791,11 @@ export function useVoiceInterviewEngine(initialSessionId?: string) {
     }
     setState("AI_PROCESSING");
     playAudioCue("end");
-    const sessId = actualSessionId || initialSessionId || "sess-ai-demo";
+    const sessId = actualSessionId || initialSessionId;
     try {
-      await interviewApi.completeSession(sessId);
+      if (sessId) {
+        await interviewApi.completeSession(sessId);
+      }
     } catch (err) {
       console.warn("[RUNTIME] End interview notice:", err);
     }

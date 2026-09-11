@@ -26,7 +26,8 @@ class GeminiLiveProvider(BaseInterviewProvider):
     """Google Gemini Live Provider implementation for voice & conversational AI."""
 
     def __init__(self, api_key: Optional[str] = None) -> None:
-        raw_key = api_key or os.getenv("GEMINI_API_KEY", "")
+        from app.core.config import settings as _settings
+        raw_key = api_key or _settings.GEMINI_API_KEY
         self.api_key = raw_key.strip() if raw_key else ""
 
     async def initialize_session(

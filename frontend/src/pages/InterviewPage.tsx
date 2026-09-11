@@ -57,10 +57,12 @@ export const InterviewPage: React.FC = () => {
   }, [sessionId, hasUserStarted, state, startInterview]);
 
   if ((state as string) === "INTERVIEW_COMPLETE" || (state as string) === "AI_PROCESSING") {
+    const evalSessionId = actualSessionId || sessionId || "";
     return (
       <ProcessingReportView
-        onComplete={() =>
-          navigate(`/interview/${actualSessionId || sessionId || "sess-ai-demo"}/evaluation`)
+        sessionId={evalSessionId}
+        onComplete={(sid) =>
+          navigate(sid ? `/evaluation/${sid}` : "/evaluation")
         }
       />
     );

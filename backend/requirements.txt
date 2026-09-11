@@ -34,7 +34,7 @@ aiofiles==23.2.1               # async file I/O
 PyMuPDF>=1.24.0                # PDF text extraction and report generation
 
 # ── AI, Signal Processing & Environment ────────────────────────────────────
-google-generativeai>=0.8.0     # Gemini AI provider for interview and turn evaluation
+google-genai>=1.0.0             # Google Gemini SDK (new, replaces deprecated google-generativeai)
 email-validator>=2.0.0         # Pydantic EmailStr validation
 python-dotenv>=1.0.0          # Environment variable loading
 numpy>=1.24.0,<2.0.0          # Numerical computation for FaceSense & Integrity engines (Python 3.11 compatible)
