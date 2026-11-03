@@ -14,15 +14,14 @@ from __future__ import annotations
 from typing import Dict, Any, List, Optional
 from datetime import datetime, timezone
 from motor.motor_asyncio import AsyncIOMotorDatabase
+from bson import ObjectId
+from fastapi import HTTPException, status
 
 from app.core.logging import get_logger
 from app.services.assessment_engine.mcq_engine import mcq_engine
 from app.services.assessment_engine.knowledge_graph import knowledge_graph_builder
 
 logger = get_logger(__name__)
-
-
-from bson import ObjectId
 
 
 class AssessmentService:
@@ -77,11 +76,26 @@ class AssessmentService:
         matched = False
 
         if assessment_id and assessment_id != "sess-demo":
+            check_candidates = []
+            if ObjectId.is_valid(assessment_id):
+                check_candidates.append({"_id": ObjectId(assessment_id)})
+            check_candidates.append({"id": assessment_id})
+            check_candidates.append({"_id": assessment_id})
+
+            existing_sess = await db["assessment_sessions"].find_one({"$or": check_candidates})
+            if existing_sess:
+                sess_uid = str(existing_sess.get("user_id"))
+                if sess_uid not in (str(user_id), ObjectId(user_id) if ObjectId.is_valid(user_id) else None):
+                    raise HTTPException(
+                        status_code=status.HTTP_404_NOT_FOUND,
+                        detail={"success": False, "message": "Assessment session not found.", "errors": [{"code": "NOT_FOUND"}]},
+                    )
+
             filter_candidates = []
             if ObjectId.is_valid(assessment_id):
-                filter_candidates.append({"_id": ObjectId(assessment_id)})
-            filter_candidates.append({"id": assessment_id})
-            filter_candidates.append({"_id": assessment_id})
+                filter_candidates.append({"_id": ObjectId(assessment_id), "user_id": user_filter})
+            filter_candidates.append({"id": assessment_id, "user_id": user_filter})
+            filter_candidates.append({"_id": assessment_id, "user_id": user_filter})
 
             for fc in filter_candidates:
                 update_res = await db["assessment_sessions"].update_one(fc, {"$set": result_doc})
@@ -120,6 +134,12 @@ class AssessmentService:
         except Exception as hs_err:
             logger.warning("HireScore auto-recompute after assessment notice", error=str(hs_err))
 
+        try:
+            from app.services.evaluation_report_service import generate_evaluation_report
+            await generate_evaluation_report(db, user_id=str(user_id))
+        except Exception as rep_err:
+            logger.warning("Auto evaluation report generation after assessment notice", error=str(rep_err))
+
         logger.info("Assessment submitted and scored", assessment_id=result_doc["id"], score=eval_res["score"])
         return result_doc
 
@@ -130,12 +150,6 @@ class AssessmentService:
             {"user_id": user_filter, "status": "completed"},
             sort=[("completed_at", -1), ("updated_at", -1), ("_id", -1)],
         )
-        if not doc:
-            # Fallback to any assessment session for this user with a valid score
-            doc = await db["assessment_sessions"].find_one(
-                {"user_id": user_filter, "score": {"$exists": True, "$gt": 0}},
-                sort=[("completed_at", -1), ("updated_at", -1), ("_id", -1)],
-            )
         if not doc:
             return None
         doc["id"] = str(doc["_id"])

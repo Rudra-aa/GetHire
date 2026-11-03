@@ -22,14 +22,12 @@ from app.core.config import settings
 logger = get_logger(__name__)
 
 # Valid, currently active models — tried in priority order (fastest first).
-# gemini-3.6-flash is the API-recommended current model per Google's own 404 redirect message.
-# Fallbacks cover different account/region tiers.
+# Verified against the live API key using client.models.list().
 _MODELS_TO_TRY = [
-    "gemini-3.6-flash",
-    "gemini-3.5-flash-lite",
-    "gemini-3.5-flash",
-    "gemini-3.1-flash-lite",
-    "gemini-flash-latest",
+    "gemini-3.5-flash-lite",  # Fast, low-latency, active GenAI flash-lite model
+    "gemini-3.5-flash",       # High capability active flash model
+    "gemini-flash-latest",    # Latest alias
+    "gemini-flash-lite-latest",  # Latest lite alias
 ]
 
 

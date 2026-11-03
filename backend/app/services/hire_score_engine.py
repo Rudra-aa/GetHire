@@ -16,7 +16,7 @@ from motor.motor_asyncio import AsyncIOMotorDatabase
 
 from app.core.logging import get_logger
 from app.models.evaluation import EvaluationModel
-from app.models.hirescore import HireScoreComponents, HireScoreModel
+from app.models.hirescore import HireScoreComponents, HireScoreModel, ReadinessDetails
 from app.models.resume import ResumeModel
 from app.services.benchmark_engine import calculate_industry_benchmark
 from app.services.career_roadmap import generate_career_roadmap
@@ -81,17 +81,18 @@ def calculate_hirescore_components(
         avg_tech = assessment_score
         avg_prob = int(round(assessment_score * 0.9))
         avg_concept = int(round(assessment_score * 0.95))
-        avg_comm = 75
-        avg_star = 70
+        avg_comm = int(round(assessment_score * 0.85))
+        avg_star = int(round(assessment_score * 0.80))
     else:
-        avg_tech = int(round(resume_score * 0.9))
-        avg_prob = int(round(resume_score * 0.85))
-        avg_concept = int(round(resume_score * 0.88))
-        avg_comm = 75
-        avg_star = 70
+        # Neither assessment nor interview completed - strictly 0!
+        avg_tech = 0
+        avg_prob = 0
+        avg_concept = 0
+        avg_comm = 0
+        avg_star = 0
 
     # 3. Interview Consistency Metric
-    consistency_score = 80
+    consistency_score = 0
     if previous_scores and len(previous_scores) > 1:
         mean = sum(previous_scores) / len(previous_scores)
         variance = sum((s - mean) ** 2 for s in previous_scores) / len(previous_scores)
@@ -104,6 +105,8 @@ def calculate_hirescore_components(
             variance = sum((s - mean) ** 2 for s in eval_overalls) / len(eval_overalls)
             std_dev = variance ** 0.5
             consistency_score = max(50, min(100, int(round(100 - (std_dev * 1.5)))))
+        else:
+            consistency_score = 80
 
     # 4. FaceSense Behavioral Intelligence integration
     fs_score: Optional[int] = None
@@ -147,7 +150,17 @@ def compute_composite_hirescore(
 ) -> int:
     """
     Computes unified 0-100 overall HireScore applying weight mappings dynamically.
+    Returns 0 if no interview evaluations or assessments exist.
     """
+    if (
+        components.technical_accuracy == 0
+        and components.communication == 0
+        and components.problem_solving == 0
+        and components.concept_coverage == 0
+        and components.star_structure == 0
+    ):
+        return 0
+
     if components.facesense_score is not None:
         composite = (
             components.technical_accuracy * 0.30
@@ -197,7 +210,15 @@ async def get_or_compute_user_hirescore(
                 has_newer_interview = await db["interview_sessions"].find_one(
                     {"user_id": user_filter, "status": "completed", "completed_at": {"$gt": cached_time}}
                 ) is not None
-            if not has_newer_assessment and not has_newer_interview:
+
+            has_active_assessment = await db["assessment_sessions"].find_one(
+                {"user_id": user_filter, "status": "completed"}
+            ) is not None
+            has_active_interview = await db["interview_sessions"].find_one(
+                {"user_id": user_filter, "status": "completed"}
+            ) is not None
+
+            if (has_active_assessment or has_active_interview) and not has_newer_assessment and not has_newer_interview:
                 return HireScoreModel(**cached)
 
     # 1. Fetch User Metadata
@@ -219,11 +240,6 @@ async def get_or_compute_user_hirescore(
         {"user_id": user_filter, "status": "completed"},
         sort=[("completed_at", -1), ("updated_at", -1), ("_id", -1)]
     )
-    if not assessment_doc:
-        assessment_doc = await db["assessment_sessions"].find_one(
-            {"user_id": user_filter, "score": {"$exists": True, "$gt": 0}},
-            sort=[("completed_at", -1), ("updated_at", -1), ("_id", -1)]
-        )
 
     # 3. Fetch Evaluations (for specific session or all user sessions)
     query: Dict[str, Any] = {"user_id": user_filter}
@@ -274,6 +290,13 @@ async def get_or_compute_user_hirescore(
     )
     overall_score = compute_composite_hirescore(components)
     readiness = evaluate_candidate_readiness(overall_score, components, evaluations)
+    if overall_score == 0:
+        readiness = ReadinessDetails(
+            readiness_percentage=0,
+            verdict="Not Evaluated",
+            confidence_level="Low",
+            summary="Complete technical assessment and mock interview to generate your verified HireScore.",
+        )
     benchmark = calculate_industry_benchmark(overall_score, target_role, experience_level)
     gaps = analyze_skill_gaps(evaluations, resume)
     recommendations = generate_recommendations(gaps, evaluations, resume)

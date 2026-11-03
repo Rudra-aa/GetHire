@@ -126,9 +126,11 @@ export const interviewApi = {
   },
 
   async processTurn(sessionId: string, candidateTranscript: string): Promise<any> {
-    const response = await apiClient.post(`/api/v1/interview/sessions/${sessionId}/turn`, null, {
-      params: { candidate_transcript: candidateTranscript }
-    });
+    // Send transcript as JSON body (TurnRequest schema) — more reliable than query param
+    const response = await apiClient.post(
+      `/api/v1/interview/sessions/${sessionId}/turn`,
+      { candidate_transcript: candidateTranscript }
+    );
     return response.data.data;
   },
 };

@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from typing import List, Optional
 
-from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi import APIRouter, Depends, HTTPException, Path, Query, status
 
 from app.db.mongo import mongo_manager
 from app.dependencies.auth import get_current_active_user
@@ -22,6 +22,7 @@ from app.schemas.interview import (
     InterviewSessionResponseData,
     StartInterviewSessionRequest,
     SubmitAnswerRequest,
+    TurnRequest,
     UpdateSessionStateRequest,
 )
 from app.services.interview_answer_service import (
@@ -72,6 +73,7 @@ def _format_session_response(
         elapsed_seconds=session.elapsed_seconds,
         questions=session.questions,
         answers=[_format_answer_out(a) for a in answers],
+        transcripts=getattr(session, "transcripts", []),
         started_at=session.started_at.isoformat(),
         paused_at=session.paused_at.isoformat() if session.paused_at else None,
         completed_at=session.completed_at.isoformat() if session.completed_at else None,
@@ -158,20 +160,21 @@ async def list_history(
     summary="Retrieve interview session state and answers",
 )
 async def get_session(
-    session_id: str,
+    session_id: str = Path(..., min_length=1, max_length=100, pattern=r"^[0-9a-zA-Z_\-]+$", description="Interview session ID"),
     current_user: UserModel = Depends(get_current_active_user),
 ) -> APIResponse:
     db = mongo_manager.get_database()
     user_id = str(current_user.id)
+    is_admin = current_user.role == "admin"
 
-    session = await get_interview_session(db, session_id, user_id)
+    session = await get_interview_session(db, session_id, user_id, is_admin=is_admin)
     if not session:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail={"success": False, "message": "Interview session not found.", "errors": [{"code": "NOT_FOUND"}]},
         )
 
-    answers = await get_answers_for_session(db, session_id, user_id)
+    answers = await get_answers_for_session(db, session_id, user_id, is_admin=is_admin)
     data = _format_session_response(session, answers)
 
     return APIResponse(
@@ -189,15 +192,16 @@ async def get_session(
     summary="Update session state, question index, or elapsed timer",
 )
 async def patch_session(
-    session_id: str,
-    payload: UpdateSessionStateRequest,
+    session_id: str = Path(..., min_length=1, max_length=100, pattern=r"^[0-9a-zA-Z_\-]+$", description="Interview session ID"),
+    payload: UpdateSessionStateRequest = ...,
     current_user: UserModel = Depends(get_current_active_user),
 ) -> APIResponse:
     db = mongo_manager.get_database()
     user_id = str(current_user.id)
+    is_admin = current_user.role == "admin"
 
-    session = await update_session_state(db, session_id, user_id, payload)
-    answers = await get_answers_for_session(db, session_id, user_id)
+    session = await update_session_state(db, session_id, user_id, payload, is_admin=is_admin)
+    answers = await get_answers_for_session(db, session_id, user_id, is_admin=is_admin)
     data = _format_session_response(session, answers)
 
     return APIResponse(
@@ -215,14 +219,15 @@ async def patch_session(
     summary="Autosave draft or submit finalized answer",
 )
 async def submit_answer(
-    session_id: str,
-    payload: SubmitAnswerRequest,
+    session_id: str = Path(..., min_length=1, max_length=100, pattern=r"^[0-9a-zA-Z_\-]+$", description="Interview session ID"),
+    payload: SubmitAnswerRequest = ...,
     current_user: UserModel = Depends(get_current_active_user),
 ) -> APIResponse:
     db = mongo_manager.get_database()
     user_id = str(current_user.id)
+    is_admin = current_user.role == "admin"
 
-    answer = await save_interview_answer(db, session_id, user_id, payload)
+    answer = await save_interview_answer(db, session_id, user_id, payload, is_admin=is_admin)
     return APIResponse(
         success=True,
         message="Answer saved successfully." if not payload.is_draft else "Draft autosaved.",
@@ -238,13 +243,14 @@ async def submit_answer(
     summary="Get all answers and drafts for a session",
 )
 async def list_answers(
-    session_id: str,
+    session_id: str = Path(..., min_length=1, max_length=100, pattern=r"^[0-9a-zA-Z_\-]+$", description="Interview session ID"),
     current_user: UserModel = Depends(get_current_active_user),
 ) -> APIResponse:
     db = mongo_manager.get_database()
     user_id = str(current_user.id)
+    is_admin = current_user.role == "admin"
 
-    answers = await get_answers_for_session(db, session_id, user_id)
+    answers = await get_answers_for_session(db, session_id, user_id, is_admin=is_admin)
     return APIResponse(
         success=True,
         message="Answers retrieved.",
@@ -260,14 +266,15 @@ async def list_answers(
     summary="Finalize and complete interview session",
 )
 async def finish_session(
-    session_id: str,
+    session_id: str = Path(..., min_length=1, max_length=100, pattern=r"^[0-9a-zA-Z_\-]+$", description="Interview session ID"),
     current_user: UserModel = Depends(get_current_active_user),
 ) -> APIResponse:
     db = mongo_manager.get_database()
     user_id = str(current_user.id)
+    is_admin = current_user.role == "admin"
 
-    session = await complete_interview_session(db, session_id, user_id)
-    answers = await get_answers_for_session(db, session_id, user_id)
+    session = await complete_interview_session(db, session_id, user_id, is_admin=is_admin)
+    answers = await get_answers_for_session(db, session_id, user_id, is_admin=is_admin)
     data = _format_session_response(session, answers)
 
     return APIResponse(
@@ -285,15 +292,35 @@ async def finish_session(
     summary="Process candidate turn response through Interview Orchestrator",
 )
 async def process_session_turn(
-    session_id: str,
-    candidate_transcript: str = Query(..., description="Candidate speech or text turn transcript"),
+    session_id: str = Path(..., min_length=1, max_length=100, pattern=r"^[0-9a-zA-Z_\-]+$", description="Interview session ID"),
+    candidate_transcript: Optional[str] = Query(None, min_length=1, max_length=10000, description="Candidate speech or text turn transcript"),
+    payload: Optional[TurnRequest] = None,
     current_user: UserModel = Depends(get_current_active_user),
 ) -> APIResponse:
     from app.services.interview_orchestrator import interview_orchestrator
+    transcript = (payload.candidate_transcript if payload else None) or candidate_transcript
+    if not transcript or not transcript.strip():
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail={
+                "success": False,
+                "message": "Candidate transcript cannot be empty.",
+                "errors": [{"code": "VALIDATION_ERROR", "field": "candidate_transcript", "message": "Transcript is required."}],
+            },
+        )
+
     db = mongo_manager.get_database()
     user_id = str(current_user.id)
+    is_admin = current_user.role == "admin"
 
-    res = await interview_orchestrator.process_turn(db, session_id, user_id, candidate_transcript)
+    session = await get_interview_session(db, session_id, user_id, is_admin=is_admin)
+    if not session:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail={"success": False, "message": "Interview session not found.", "errors": [{"code": "NOT_FOUND"}]},
+        )
+
+    res = await interview_orchestrator.process_turn(db, session_id, user_id, transcript)
     return APIResponse(
         success=True,
         message="Turn processed successfully.",
@@ -309,14 +336,21 @@ async def process_session_turn(
     summary="Recover active interview session state upon browser refresh",
 )
 async def recover_session_state(
-    session_id: str,
+    session_id: str = Path(..., min_length=1, max_length=100, pattern=r"^[0-9a-zA-Z_\-]+$", description="Interview session ID"),
     current_user: UserModel = Depends(get_current_active_user),
 ) -> APIResponse:
     db = mongo_manager.get_database()
     user_id = str(current_user.id)
+    is_admin = current_user.role == "admin"
 
-    session = await get_interview_session(db, session_id, user_id)
-    answers = await get_answers_for_session(db, session_id, user_id)
+    session = await get_interview_session(db, session_id, user_id, is_admin=is_admin)
+    if not session:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail={"success": False, "message": "Interview session not found.", "errors": [{"code": "NOT_FOUND"}]},
+        )
+
+    answers = await get_answers_for_session(db, session_id, user_id, is_admin=is_admin)
     data = _format_session_response(session, answers)
 
     return APIResponse(

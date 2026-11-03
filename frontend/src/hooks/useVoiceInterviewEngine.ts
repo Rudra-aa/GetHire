@@ -19,15 +19,14 @@ export { DEFAULT_PERSONA };
 
 export function useVoiceInterviewEngine(initialSessionId?: string) {
   const engineRef = useRef<VoiceInterviewEngine | null>(null);
+  const cleanupTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Reactive State mapped from VoiceEngine FSM & EventBus
   const [state, setState] = useState<InterviewState>("WAITING");
   const [persona] = useState<RecruiterPersona>(DEFAULT_PERSONA);
   const [questions, setQuestions] = useState<InterviewQuestion[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [activeQuestionPrompt, setActiveQuestionPrompt] = useState<string>(
-    "Welcome to GetHire AI Interview Studio. Initializing session..."
-  );
+  const [activeQuestionPrompt, setActiveQuestionPrompt] = useState("");
   const [transcripts, setTranscripts] = useState<TranscriptEntry[]>([]);
   const [liveCandidateText, setLiveCandidateText] = useState("");
   const [isMicMuted, setIsMicMuted] = useState(false);
@@ -66,17 +65,27 @@ export function useVoiceInterviewEngine(initialSessionId?: string) {
           setIsSpeakingAi(true);
           setIsStarting(false);
           setState("QUESTION");
+        } else if (to === "INITIALIZING") {
+          setIsStarting(true);
+          setIsSpeakingAi(false);
+          setState("INITIALIZING");
+        } else if (to === "GENERATING_FIRST_QUESTION") {
+          setIsStarting(true);
+          setIsSpeakingAi(false);
+          setState("GENERATING_FIRST_QUESTION");
+        } else if (to === "READY") {
+          setIsStarting(false);
+          setState("READY");
         } else if (to === "AI_THINKING" || to === "AUTO_SUBMITTING") {
           setIsSpeakingAi(false);
           setState("THINKING");
         } else if (to === "LISTENING" || to === "USER_SPEAKING" || to === "SILENCE_DETECTED") {
           setIsSpeakingAi(false);
+          setIsStarting(false);
           setState("LISTENING");
-        } else if (to === "INITIALIZING") {
-          setIsStarting(true);
-          setState("WAITING");
         } else if (to === "INTERVIEW_COMPLETE") {
           setIsSpeakingAi(false);
+          setIsStarting(false);
           setState("INTERVIEW_COMPLETE");
         } else if (to === "ERROR") {
           setIsSpeakingAi(false);
@@ -92,6 +101,17 @@ export function useVoiceInterviewEngine(initialSessionId?: string) {
         setCurrentQuestionIndex(engine.currentQuestionIndex);
         setActiveQuestionPrompt(engine.activeQuestionPrompt);
         setActualSessionId(engine.sessionId || undefined);
+        if (engine.isTextFallbackMode) {
+          setIsTextFallbackMode(true);
+        }
+      })
+    );
+
+    unsubs.push(
+      engine.eventBus.on("MIC_STATUS_CHANGED", ({ textFallback }) => {
+        if (textFallback) {
+          setIsTextFallbackMode(true);
+        }
       })
     );
 
@@ -146,23 +166,47 @@ export function useVoiceInterviewEngine(initialSessionId?: string) {
     };
   }, []);
 
-  // Cleanup on component unmount
+  // React 18 StrictMode mounts, cleans up, and immediately re-mounts effects in
+  // development. Defer disposal one task so that rehearsal cleanup cannot
+  // destroy the live engine before the user presses Start.
   useEffect(() => {
+    if (cleanupTimerRef.current) {
+      clearTimeout(cleanupTimerRef.current);
+      cleanupTimerRef.current = null;
+    }
+
     return () => {
-      if (engineRef.current) {
-        engineRef.current.destroy();
+      cleanupTimerRef.current = setTimeout(() => {
+        engineRef.current?.destroy();
         engineRef.current = null;
-      }
+        cleanupTimerRef.current = null;
+      }, 0);
     };
   }, []);
+
+  const [initErrorMessage, setInitErrorMessage] = useState<string | null>(null);
 
   // Action methods
   const startInterview = useCallback(async (targetRole?: string) => {
     if (!engineRef.current) return;
-    setIsStarting(true);
-    await engineRef.current.startInterview(targetRole);
-    setIsStarting(false);
+    try {
+      setIsStarting(true);
+      setInitErrorMessage(null);
+      await engineRef.current.startInterview(targetRole);
+    } catch (err: any) {
+      const msg = err?.response?.data?.message || err?.message || "Failed to initialize interview.";
+      setInitErrorMessage(msg);
+    } finally {
+      setIsStarting(false);
+    }
   }, []);
+
+  const retryInitialization = useCallback(async (targetRole?: string) => {
+    if (!engineRef.current) return;
+    setInitErrorMessage(null);
+    setState("INITIALIZING");
+    await startInterview(targetRole);
+  }, [startInterview]);
 
   const finishCandidateAnswer = useCallback(async (customText?: string) => {
     if (!engineRef.current) return;
@@ -235,6 +279,8 @@ export function useVoiceInterviewEngine(initialSessionId?: string) {
     interruptAi,
     silenceRemainingMs,
     analytics,
+    initErrorMessage,
+    retryInitialization,
     engine: engineRef.current,
   };
 }

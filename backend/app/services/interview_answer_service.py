@@ -27,11 +27,12 @@ async def save_interview_answer(
     session_id: str,
     user_id: str,
     payload: SubmitAnswerRequest,
+    is_admin: bool = False,
 ) -> InterviewAnswerModel:
     """
     Upsert candidate response as a background draft or finalized answer.
     """
-    session = await get_interview_session(db, session_id, user_id)
+    session = await get_interview_session(db, session_id, user_id, is_admin=is_admin)
     if not session:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -52,12 +53,13 @@ async def save_interview_answer(
     filter_query = {
         "session_id": session_id,
         "question_id": payload.question_id,
+        "user_id": session.user_id,
     }
 
     update_doc = {
         "$set": {
             "session_id": session_id,
-            "user_id": user_id,
+            "user_id": session.user_id,
             "question_id": payload.question_id,
             "answer_text": payload.answer_text,
             "is_draft": payload.is_draft,
@@ -87,8 +89,11 @@ async def save_interview_answer(
         if answered_idx == curr_idx and curr_idx + 1 < session.total_questions:
             next_idx = curr_idx + 1
             progress = round(((next_idx) / session.total_questions) * 100.0, 1)
+            sess_filter = {"_id": ObjectId(session_id)} if ObjectId.is_valid(session_id) else {"session_id": session_id}
+            if not is_admin:
+                sess_filter["user_id"] = session.user_id
             await db["interview_sessions"].update_one(
-                {"_id": ObjectId(session_id)},
+                sess_filter,
                 {"$set": {"current_question_index": next_idx, "overall_progress": progress, "updated_at": now}},
             )
 
@@ -100,15 +105,16 @@ async def get_answers_for_session(
     db: AsyncIOMotorDatabase,
     session_id: str,
     user_id: str,
+    is_admin: bool = False,
 ) -> List[InterviewAnswerModel]:
     """Retrieve all answers (and drafts) for an interview session."""
-    session = await get_interview_session(db, session_id, user_id)
+    session = await get_interview_session(db, session_id, user_id, is_admin=is_admin)
     if not session:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail={"success": False, "message": "Interview session not found.", "errors": [{"code": "NOT_FOUND"}]},
         )
 
-    cursor = db["interview_answers"].find({"session_id": session_id}).sort("created_at", 1)
+    cursor = db["interview_answers"].find({"session_id": session_id, "user_id": session.user_id}).sort("created_at", 1)
     docs = await cursor.to_list(length=100)
     return [InterviewAnswerModel(**doc) for doc in docs]

@@ -17,6 +17,7 @@ Usage:
 
 from __future__ import annotations
 
+import re
 from typing import Optional
 
 import redis.asyncio as aioredis
@@ -27,6 +28,13 @@ from app.core.config import settings
 from app.core.logging import get_logger
 
 logger = get_logger(__name__)
+
+
+def _redact_redis_url(url: str) -> str:
+    """Return a URL with credentials stripped for safe logging."""
+    if not url:
+        return "(none)"
+    return re.sub(r"://([^:]*):([^@]+)@", r"://\1:***@", url)
 
 
 class RedisManager:
@@ -47,13 +55,20 @@ class RedisManager:
         """
         Create the async Redis client and verify connectivity.
 
-        Does not raise in development if Redis is unavailable — the app will
+        Does not raise if Redis is unavailable — the app will
         start in a degraded state and the health endpoint will reflect this.
         """
-        logger.info("Connecting to Redis", url=self._redacted_url())
+        url = (settings.REDIS_URL or "").strip()
+        if not url:
+            logger.info("Redis is not configured. Service is running in degraded mode without Redis cache.")
+            self._client = None
+            return
+
+        redacted_url = self._redacted_url()
+        logger.info("Connecting to Redis", url=redacted_url)
         try:
             self._client = aioredis.from_url(
-                settings.REDIS_URL,
+                url,
                 max_connections=settings.REDIS_MAX_CONNECTIONS,
                 decode_responses=True,
                 socket_connect_timeout=5,
@@ -66,33 +81,26 @@ class RedisManager:
                 max_connections=settings.REDIS_MAX_CONNECTIONS,
             )
         except (RedisConnectionError, Exception) as exc:
-            logger.error("Primary Redis connection failed", error=str(exc))
-            if not settings.is_production:
+            if self._client is not None:
                 try:
-                    logger.info("Attempting local Redis fallback at redis://localhost:6379/0")
-                    self._client = aioredis.from_url(
-                        "redis://localhost:6379/0",
-                        max_connections=settings.REDIS_MAX_CONNECTIONS,
-                        decode_responses=True,
-                        socket_connect_timeout=2,
-                        socket_timeout=2,
-                    )
-                    await self._client.ping()
-                    logger.info("Redis connected successfully via local fallback")
-                    return
-                except Exception as fallback_err:
-                    logger.error("Local Redis fallback also failed", error=str(fallback_err))
-                    self._client = None
-            if settings.is_production:
-                logger.warning(
-                    "Redis connection could not be established at startup. Service is running in degraded mode without Redis cache.",
-                    error=str(exc),
-                )
+                    await self._client.aclose()
+                except Exception:
+                    pass
+                self._client = None
+
+            logger.warning(
+                "Redis connection could not be established. Service is running in degraded mode without Redis cache.",
+                error=str(exc),
+                url=redacted_url,
+            )
 
     async def disconnect(self) -> None:
         """Close the connection pool gracefully."""
         if self._client is not None:
-            await self._client.aclose()
+            try:
+                await self._client.aclose()
+            except Exception:
+                pass
             self._client = None
             logger.info("Redis disconnected")
 
@@ -101,12 +109,12 @@ class RedisManager:
         Return the active Redis client.
 
         Raises:
-            RuntimeError: If called before connect().
+            RuntimeError: If called when Redis is not connected.
         """
         if self._client is None:
             raise RuntimeError(
-                "Redis is not connected. "
-                "Ensure connect() is called during application startup."
+                "Redis is not connected or configured. "
+                "Service is running in degraded mode without Redis cache."
             )
         return self._client
 
@@ -129,12 +137,7 @@ class RedisManager:
 
     def _redacted_url(self) -> str:
         """Return the URL with credentials stripped for safe logging."""
-        url = settings.REDIS_URL
-        if "@" in url:
-            scheme_end = url.index("//") + 2
-            at_pos = url.rindex("@")
-            return url[:scheme_end] + "***" + url[at_pos:]
-        return url
+        return _redact_redis_url(settings.REDIS_URL)
 
 
 # ---------------------------------------------------------------------------

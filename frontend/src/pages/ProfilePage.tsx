@@ -9,7 +9,9 @@ import apiClient from "@/services/api";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { SessionSidebar } from "@/components/common/SessionSidebar";
-import { Save, User, ArrowLeft } from "lucide-react";
+import { ThemeToggle } from "@/components/common/ThemeToggle";
+import { ResetProgressModal } from "@/components/dashboard/ResetProgressModal";
+import { Save, User, ArrowLeft, RotateCcw } from "lucide-react";
 
 const profileSchema = z.object({
   fullName: z
@@ -29,6 +31,7 @@ export default function ProfilePage() {
   const { user, updateUserState } = useAuthStore();
   const [apiError, setApiError] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
+  const [showResetModal, setShowResetModal] = useState(false);
 
   const {
     register,
@@ -188,9 +191,64 @@ export default function ProfilePage() {
               Save Changes
             </Button>
           </form>
+
+          {/* Display & Theme Preferences */}
+          <div className="pt-6 border-t border-white/10 flex flex-col gap-3">
+            <div>
+              <h2 className="text-sm font-bold text-white font-display">
+                Display & Theme
+              </h2>
+              <p className="text-xs text-neutral-400 mt-0.5">
+                Switch between high-contrast dark mode and premium SaaS light mode.
+              </p>
+            </div>
+            <div className="flex items-center justify-between p-4 rounded-2xl bg-white/[0.03] border border-white/10">
+              <div className="flex flex-col">
+                <span className="text-xs font-bold text-white">Interface Theme</span>
+                <span className="text-[11px] text-neutral-400">Settings persist across your entire workspace</span>
+              </div>
+              <ThemeToggle />
+            </div>
+          </div>
+
+          {/* Reset Progress Section */}
+          <div className="pt-6 border-t border-white/10 flex flex-col gap-3">
+            <div>
+              <h2 className="text-sm font-bold text-amber-400 font-display">
+                Start from Beginning
+              </h2>
+              <p className="text-xs text-neutral-400 mt-0.5">
+                Reset in-progress sessions to practice from Step 1. Completed historical reports and profile data are safely preserved.
+              </p>
+            </div>
+            <div className="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex flex-col">
+                <span className="text-xs font-bold text-white">Reset Active Progression</span>
+                <span className="text-[11px] text-neutral-400 max-w-md">
+                  Clears active assessments and uncompleted mock interviews so you can start a fresh session.
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowResetModal(true)}
+                className="px-4 py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-300 hover:text-amber-200 text-xs font-mono font-bold transition-all shrink-0 cursor-pointer flex items-center gap-1.5 shadow-sm"
+              >
+                <RotateCcw className="h-3.5 w-3.5" />
+                <span>Reset Progress</span>
+              </button>
+            </div>
+          </div>
           </div>
         </motion.div>
       </div>
+
+      <ResetProgressModal
+        isOpen={showResetModal}
+        onClose={() => setShowResetModal(false)}
+        onResetSuccess={() => {
+          setSuccessMsg("Active progress has been safely reset. You can now start fresh from Step 1.");
+        }}
+      />
     </div>
   );
 }

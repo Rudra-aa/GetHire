@@ -21,6 +21,7 @@ export class BrowserSpeechRecognitionProvider implements ISpeechRecognitionProvi
   // Transcript state buffers
   private finalTranscriptBuffer = "";
   private interimTranscriptBuffer = "";
+  private accumulatedFinalText = "";
 
   // Callbacks
   private resultCallback: ((result: SpeechRecognitionResultPayload) => void) | null = null;
@@ -59,7 +60,12 @@ export class BrowserSpeechRecognitionProvider implements ISpeechRecognitionProvi
         let interim = "";
         let final = "";
 
-        for (let i = 0; i < event.results.length; ++i) {
+        // IMPORTANT: Start from event.resultIndex, not 0.
+        // In continuous mode after a restart, Chrome re-delivers all prior
+        // results from index 0. Reading only from resultIndex ensures we
+        // only process NEW results, preventing silent transcript duplication.
+        const startIdx = event.resultIndex ?? 0;
+        for (let i = startIdx; i < event.results.length; ++i) {
           const res = event.results[i];
           if (res && res[0]) {
             if (res.isFinal) {
@@ -70,13 +76,21 @@ export class BrowserSpeechRecognitionProvider implements ISpeechRecognitionProvi
           }
         }
 
-        this.finalTranscriptBuffer = final.trim();
-        this.interimTranscriptBuffer = interim.trim();
+        // Only update buffers if we actually got new content
+        if (final) this.finalTranscriptBuffer = final.trim();
+        if (interim !== undefined) this.interimTranscriptBuffer = interim.trim();
 
-        const combined = (final + interim).trim();
+        const fullFinal = (
+          (this.accumulatedFinalText ? this.accumulatedFinalText + " " : "") +
+          (this.finalTranscriptBuffer ? this.finalTranscriptBuffer + " " : "")
+        ).trim();
+        const combined = (
+          (fullFinal ? fullFinal + " " : "") + this.interimTranscriptBuffer
+        ).trim();
+
         const payload: SpeechRecognitionResultPayload = {
           interimTranscript: this.interimTranscriptBuffer,
-          finalTranscript: this.finalTranscriptBuffer,
+          finalTranscript: fullFinal,
           combinedTranscript: combined,
           isFinal: event.results[event.results.length - 1]?.isFinal || false,
           confidence: event.results[0]?.[0]?.confidence || 0.9,
@@ -108,6 +122,14 @@ export class BrowserSpeechRecognitionProvider implements ISpeechRecognitionProvi
 
       this.recognition.onend = () => {
         this.isListeningActive = false;
+
+        // Commit current session's final transcript into accumulated buffer across restarts
+        if (this.finalTranscriptBuffer) {
+          this.accumulatedFinalText = (
+            (this.accumulatedFinalText ? this.accumulatedFinalText + " " : "") + this.finalTranscriptBuffer
+          ).trim();
+          this.finalTranscriptBuffer = "";
+        }
 
         if (this.endCallback) {
           this.endCallback();
@@ -160,6 +182,8 @@ export class BrowserSpeechRecognitionProvider implements ISpeechRecognitionProvi
       }
     }
     this.isListeningActive = false;
+    // Do NOT clear buffers here — the engine may read liveCandidateText
+    // after calling stop(), and clearing would lose the transcript.
   }
 
   public abort(): void {
@@ -173,6 +197,7 @@ export class BrowserSpeechRecognitionProvider implements ISpeechRecognitionProvi
       }
     }
     this.isListeningActive = false;
+    // Do NOT clear buffers automatically — use resetForNewTurn() explicitly.
   }
 
   public isListening(): boolean {
@@ -195,9 +220,14 @@ export class BrowserSpeechRecognitionProvider implements ISpeechRecognitionProvi
     this.startCallback = callback;
   }
 
+  /**
+   * Clear all transcript buffers. Call this explicitly when starting a new
+   * listening turn (not on stop/abort, to avoid losing mid-speech transcripts).
+   */
   public clearBuffers(): void {
     this.finalTranscriptBuffer = "";
     this.interimTranscriptBuffer = "";
+    this.accumulatedFinalText = "";
   }
 
   public destroy(): void {

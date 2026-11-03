@@ -10,7 +10,7 @@ from __future__ import annotations
 from typing import List
 
 from bson import ObjectId
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Path, status
 
 from app.db.mongo import mongo_manager
 from app.dependencies.auth import get_current_active_user
@@ -31,6 +31,7 @@ from app.services.evaluation_service import (
     evaluate_session_all_answers,
     get_session_evaluations,
 )
+from app.services.interview_session_service import get_interview_session
 
 evaluations_router = APIRouter()
 
@@ -78,6 +79,7 @@ async def evaluate_answer(
 ) -> APIResponse:
     db = mongo_manager.get_database()
     user_id = str(current_user.id)
+    is_admin = current_user.role == "admin"
 
     eval_result = await evaluate_and_store_answer(
         db=db,
@@ -85,6 +87,7 @@ async def evaluate_answer(
         question_id=payload.question_id,
         user_id=user_id,
         answer_text_override=payload.answer_text,
+        is_admin=is_admin,
     )
 
     data = _format_evaluation_out(eval_result)
@@ -103,16 +106,18 @@ async def evaluate_answer(
     summary="Batch evaluate all answers in an interview session",
 )
 async def evaluate_session_all(
-    session_id: str,
+    session_id: str = Path(..., min_length=1, max_length=100, pattern=r"^[0-9a-zA-Z_\-]+$", description="Interview session ID"),
     current_user: UserModel = Depends(get_current_active_user),
 ) -> APIResponse:
     db = mongo_manager.get_database()
     user_id = str(current_user.id)
+    is_admin = current_user.role == "admin"
 
     evals, avg_overall, avg_dims = await evaluate_session_all_answers(
         db=db,
         session_id=session_id,
         user_id=user_id,
+        is_admin=is_admin,
     )
 
     formatted_evals = [_format_evaluation_out(e) for e in evals]
@@ -139,13 +144,21 @@ async def evaluate_session_all(
     summary="Retrieve all evaluations for an interview session",
 )
 async def get_session_evaluations_endpoint(
-    session_id: str,
+    session_id: str = Path(..., min_length=1, max_length=100, pattern=r"^[0-9a-zA-Z_\-]+$", description="Interview session ID"),
     current_user: UserModel = Depends(get_current_active_user),
 ) -> APIResponse:
     db = mongo_manager.get_database()
     user_id = str(current_user.id)
+    is_admin = current_user.role == "admin"
 
-    evals = await get_session_evaluations(db, session_id, user_id)
+    session = await get_interview_session(db, session_id, user_id, is_admin=is_admin)
+    if not session:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail={"success": False, "message": "Interview session not found.", "errors": [{"code": "NOT_FOUND"}]},
+        )
+
+    evals = await get_session_evaluations(db, session_id, user_id, is_admin=is_admin)
     formatted_evals = [_format_evaluation_out(e) for e in evals]
 
     avg_overall = int(round(sum(e.overall_score for e in evals) / len(evals))) if evals else 0
@@ -250,19 +263,18 @@ async def get_latest_evaluation_endpoint(
     summary="Retrieve an evaluation by ID",
 )
 async def get_evaluation_by_id(
-    evaluation_id: str,
+    evaluation_id: str = Path(..., pattern=r"^[0-9a-fA-F]{24}$", description="Evaluation 24-hex ObjectId"),
     current_user: UserModel = Depends(get_current_active_user),
 ) -> APIResponse:
-    if not ObjectId.is_valid(evaluation_id):
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail={"success": False, "message": "Invalid evaluation ID format.", "errors": [{"code": "INVALID_ID"}]},
-        )
-
     db = mongo_manager.get_database()
     user_id = str(current_user.id)
+    is_admin = current_user.role == "admin"
 
-    doc = await db["evaluations"].find_one({"_id": ObjectId(evaluation_id), "user_id": user_id})
+    query = {"_id": ObjectId(evaluation_id)}
+    if not is_admin:
+        query["user_id"] = user_id
+
+    doc = await db["evaluations"].find_one(query)
     if not doc:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,

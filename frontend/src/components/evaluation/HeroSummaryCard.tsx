@@ -57,8 +57,8 @@ export const HeroSummaryCard: React.FC<HeroSummaryCardProps> = ({
   overallScore,
   totalEvaluated,
   sessionId,
-  candidateName = "Rudra",
-  targetRole = "Full Stack Developer",
+  candidateName = "Candidate",
+  targetRole = "Senior Full-Stack Engineer",
 }) => {
   const verdict = getVerdictInfo(overallScore);
   const formattedDate = new Date().toLocaleDateString("en-US", {

@@ -14,14 +14,14 @@ from pydantic import BaseModel, Field
 
 class EvaluateAnswerRequest(BaseModel):
     """Payload to trigger evaluation for a specific session question."""
-    session_id: str = Field(description="Interview Session ID")
-    question_id: str = Field(description="Target Question ID")
-    answer_text: Optional[str] = Field(default=None, description="Optional raw text override; pulls from DB if omitted")
+    session_id: str = Field(..., min_length=1, max_length=100, pattern=r"^[0-9a-zA-Z_\-]+$", description="Interview Session ID")
+    question_id: str = Field(..., min_length=1, max_length=100, description="Target Question ID")
+    answer_text: Optional[str] = Field(default=None, max_length=50000, description="Optional raw text override; pulls from DB if omitted")
 
 
 class BatchEvaluateSessionRequest(BaseModel):
     """Payload to evaluate all answers in an interview session."""
-    session_id: str = Field(description="Interview Session ID")
+    session_id: str = Field(..., min_length=1, max_length=100, pattern=r"^[0-9a-zA-Z_\-]+$", description="Interview Session ID")
 
 
 # ── Response Data Schemas ───────────────────────────────────────────────────

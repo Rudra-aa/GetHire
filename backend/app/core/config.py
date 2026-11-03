@@ -15,7 +15,8 @@ Usage:
 from __future__ import annotations
 
 from functools import lru_cache
-from typing import Any, List, Union
+from pathlib import Path
+from typing import Any, List, Optional, Union
 
 from pydantic import AnyHttpUrl, Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -58,10 +59,14 @@ class Settings(BaseSettings):
         description="Trusted host allowlist (used by TrustedHostMiddleware in production)",
     )
 
-    # ── CORS ───────────────────────────────────────────────────────────────
+    # ── CORS & Public Endpoints ───────────────────────────────────────────
     CORS_ORIGINS: Union[List[str], str] = Field(
         default=["http://localhost:5173", "http://localhost:3000", "https://*.vercel.app"],
         description="Allowed CORS origins for the frontend",
+    )
+    PUBLIC_APP_URL: Optional[str] = Field(
+        default=None,
+        description="Canonical production frontend URL for public recruiter links (e.g. https://gethire.app). If None or localhost, public sharing is marked as not configured.",
     )
 
     # ── MongoDB ────────────────────────────────────────────────────────────
@@ -114,12 +119,114 @@ class Settings(BaseSettings):
 
     # ── File Upload ────────────────────────────────────────────────────────
     UPLOAD_DIR: str = Field(
-        default="/tmp/gethire/uploads",
+        default=str(Path(__file__).resolve().parents[2] / "uploads"),
         description="Directory where uploaded files are stored",
     )
     MAX_UPLOAD_SIZE_MB: int = Field(
-        default=5,
+        default=10,
         description="Maximum file upload size in megabytes",
+    )
+    ALLOWED_UPLOAD_EXTENSIONS: list[str] = Field(
+        default=[".pdf"],
+        description="Allowed file extensions for upload",
+    )
+    ALLOWED_UPLOAD_MIME_TYPES: list[str] = Field(
+        default=["application/pdf", "application/x-pdf"],
+        description="Allowed MIME types for upload",
+    )
+
+    # ── Rate Limiting ──────────────────────────────────────────────────────
+    RATE_LIMIT_ENABLED: bool = Field(
+        default=True,
+        description="Master switch to enable or disable API rate limiting",
+    )
+    RATE_LIMIT_LOGIN_LIMIT: int = Field(
+        default=10,
+        description="Max login requests per window",
+    )
+    RATE_LIMIT_LOGIN_WINDOW: int = Field(
+        default=60,
+        description="Login rate limit window in seconds",
+    )
+    RATE_LIMIT_REGISTER_LIMIT: int = Field(
+        default=5,
+        description="Max registration requests per window",
+    )
+    RATE_LIMIT_REGISTER_WINDOW: int = Field(
+        default=3600,
+        description="Registration rate limit window in seconds",
+    )
+    RATE_LIMIT_PASSWORD_RESET_LIMIT: int = Field(
+        default=5,
+        description="Max password reset requests per window",
+    )
+    RATE_LIMIT_PASSWORD_RESET_WINDOW: int = Field(
+        default=3600,
+        description="Password reset rate limit window in seconds",
+    )
+    RATE_LIMIT_VERIFICATION_LIMIT: int = Field(
+        default=10,
+        description="Max OTP/email verification requests per window",
+    )
+    RATE_LIMIT_VERIFICATION_WINDOW: int = Field(
+        default=3600,
+        description="Verification rate limit window in seconds",
+    )
+    RATE_LIMIT_UPLOAD_LIMIT: int = Field(
+        default=15,
+        description="Max file upload requests per window",
+    )
+    RATE_LIMIT_UPLOAD_WINDOW: int = Field(
+        default=3600,
+        description="File upload rate limit window in seconds",
+    )
+    RATE_LIMIT_AI_PROCESSING_LIMIT: int = Field(
+        default=30,
+        description="Max AI/ML processing requests per window",
+    )
+    RATE_LIMIT_AI_PROCESSING_WINDOW: int = Field(
+        default=60,
+        description="AI/ML processing rate limit window in seconds",
+    )
+    RATE_LIMIT_TELEMETRY_LIMIT: int = Field(
+        default=180,
+        description="Max client telemetry requests per window",
+    )
+    RATE_LIMIT_TELEMETRY_WINDOW: int = Field(
+        default=60,
+        description="Client telemetry rate limit window in seconds",
+    )
+    RATE_LIMIT_SEARCH_LIMIT: int = Field(
+        default=60,
+        description="Max search requests per window",
+    )
+    RATE_LIMIT_SEARCH_WINDOW: int = Field(
+        default=60,
+        description="Search rate limit window in seconds",
+    )
+    RATE_LIMIT_PAYMENTS_LIMIT: int = Field(
+        default=10,
+        description="Max payment/checkout requests per window",
+    )
+    RATE_LIMIT_PAYMENTS_WINDOW: int = Field(
+        default=3600,
+        description="Payment rate limit window in seconds",
+    )
+    RATE_LIMIT_PUBLIC_LIMIT: int = Field(
+        default=120,
+        description="Max public API requests per window",
+    )
+    RATE_LIMIT_PUBLIC_WINDOW: int = Field(
+        default=60,
+        description="Public API rate limit window in seconds",
+    )
+    RATE_LIMIT_DEFAULT_LIMIT: int = Field(
+        default=200,
+        description="Default API rate limit per window",
+    )
+    RATE_LIMIT_DEFAULT_WINDOW: int = Field(
+        default=60,
+        description="Default API rate limit window in seconds",
     )
 
     # ── Feature Flags ──────────────────────────────────────────────────────
@@ -163,6 +270,33 @@ class Settings(BaseSettings):
             return [str(item).strip() for item in v if str(item).strip()]
         return [str(v)]
 
+    @field_validator("MONGODB_URI", mode="before")
+    @classmethod
+    def sanitize_mongodb_uri(cls, v: Any) -> str:
+        if isinstance(v, str):
+            v = v.strip().strip("'\"")
+        return v or "mongodb://localhost:27017"
+
+    @field_validator("REDIS_URL", mode="before")
+    @classmethod
+    def sanitize_redis_url(cls, v: Any) -> str:
+        if not v:
+            return ""
+        if isinstance(v, str):
+            v = v.strip().strip("'\"")
+            if not v:
+                return ""
+            # If the user pasted a redis-cli command (e.g. 'redis-cli --tls -u rediss://...')
+            if "redis-cli" in v:
+                import re
+                match = re.search(r"(rediss?://\S+)", v)
+                if match:
+                    v = match.group(1).strip("'\"")
+            # Upstash requires rediss:// (TLS)
+            if "upstash.io" in v.lower() and v.lower().startswith("redis://"):
+                v = "rediss://" + v[len("redis://"):]
+        return v
+
     # ── Computed properties ────────────────────────────────────────────────
 
     @property
@@ -171,11 +305,22 @@ class Settings(BaseSettings):
 
     @property
     def is_production(self) -> bool:
-        return self.ENVIRONMENT == "production"
+        import os
+        return self.ENVIRONMENT == "production" or os.environ.get("RENDER", "").lower() in ("true", "1")
 
     @property
     def max_upload_size_bytes(self) -> int:
         return self.MAX_UPLOAD_SIZE_MB * 1024 * 1024
+
+    @property
+    def is_public_sharing_configured(self) -> bool:
+        """Determines if a valid, non-localhost public canonical URL is configured."""
+        if not self.PUBLIC_APP_URL:
+            return False
+        url = self.PUBLIC_APP_URL.lower().strip()
+        if not (url.startswith("http://") or url.startswith("https://")):
+            return False
+        return not any(h in url for h in ("localhost", "127.0.0.1", "0.0.0.0"))
 
 
 @lru_cache(maxsize=1)

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { Loader2, CheckCircle2, Brain, AlertCircle, RefreshCw } from "lucide-react";
 import { evaluationApi } from "@/services/evaluationApi";
+import { evaluationReportApi } from "@/services/evaluationReportApi";
 
 interface ProcessingReportViewProps {
   sessionId: string;
@@ -72,7 +73,18 @@ export const ProcessingReportView: React.FC<ProcessingReportViewProps> = ({
         ]);
       }
 
-      onComplete(sessionId);
+      // Generate immutable evaluation report snapshot
+      let finalReportId = sessionId;
+      try {
+        const report = await evaluationReportApi.generateReport();
+        if (report?.id) {
+          finalReportId = report.id;
+        }
+      } catch (repErr) {
+        console.warn("[ProcessingReportView] generateReport notice:", repErr);
+      }
+
+      onComplete(finalReportId);
     } catch (err: any) {
       const message =
         err?.response?.data?.message ||
@@ -97,7 +109,7 @@ export const ProcessingReportView: React.FC<ProcessingReportViewProps> = ({
   // Trigger real evaluation once on mount
   useEffect(() => {
     void runEvaluation();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
   if (error) {
     return (

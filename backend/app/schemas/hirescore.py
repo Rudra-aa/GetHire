@@ -95,4 +95,4 @@ class HireScoreHistoryItemOut(BaseModel):
 
 
 class RecomputeHireScoreRequest(BaseModel):
-    session_id: Optional[str] = Field(default=None, description="Optional interview session ID to anchor calculation")
+    session_id: Optional[str] = Field(default=None, min_length=1, max_length=100, pattern=r"^[0-9a-zA-Z_\-]+$", description="Optional interview session ID to anchor calculation")

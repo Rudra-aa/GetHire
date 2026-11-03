@@ -35,6 +35,9 @@ export class AudioEnergyMeter {
     try {
       let stream = existingStream;
       if (!stream) {
+        if (typeof navigator === "undefined" || !navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          throw new Error("getUserMedia is not supported or restricted in this browser context.");
+        }
         stream = await navigator.mediaDevices.getUserMedia({
           audio: {
             echoCancellation: true,

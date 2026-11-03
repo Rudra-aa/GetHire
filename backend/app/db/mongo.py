@@ -18,8 +18,10 @@ Usage:
 
 from __future__ import annotations
 
+import re
 from typing import Optional
 
+import certifi
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase
 from pymongo.errors import ConnectionFailure, ServerSelectionTimeoutError
 
@@ -28,6 +30,14 @@ from app.core.exceptions import ServiceUnavailableError
 from app.core.logging import get_logger
 
 logger = get_logger(__name__)
+
+
+def _redact_mongo_uri(uri: str) -> str:
+    """Return a URI with user credentials safely stripped for logging."""
+    if not uri:
+        return "(empty)"
+    # Redact user:password@host
+    return re.sub(r"://([^:]+):([^@]+)@", r"://\1:***@", uri)
 
 
 class MongoManager:
@@ -50,21 +60,25 @@ class MongoManager:
         Create the Motor client and verify connectivity.
 
         Raises:
-            ConnectionFailure: If MongoDB is unreachable at startup.
+            ConnectionFailure: If MongoDB is unreachable at startup in production.
         """
-        logger.info("Connecting to MongoDB", uri_host=self._redacted_uri())
+        redacted_uri = self._redacted_uri()
+        logger.info("Connecting to MongoDB", uri_host=redacted_uri)
         try:
             kwargs: dict = {
                 "maxPoolSize": settings.MONGODB_MAX_POOL_SIZE,
                 "minPoolSize": settings.MONGODB_MIN_POOL_SIZE,
                 "serverSelectionTimeoutMS": 5000,
+                "connectTimeoutMS": 5000,
+                "socketTimeoutMS": 10000,
             }
-            if "mongodb+srv://" in settings.MONGODB_URI:
-                try:
-                    import certifi
-                    kwargs["tlsCAFile"] = certifi.where()
-                except ImportError:
-                    kwargs["tls"] = True
+            # Enable TLS verification with certifi CA bundle for Atlas SRV or explicit TLS/SSL URIs
+            uri_lower = settings.MONGODB_URI.lower()
+            is_srv = uri_lower.startswith("mongodb+srv://")
+            is_tls = is_srv or "tls=true" in uri_lower or "ssl=true" in uri_lower
+            if is_tls:
+                kwargs["tls"] = True
+                kwargs["tlsCAFile"] = certifi.where()
 
             self._client = AsyncIOMotorClient(settings.MONGODB_URI, **kwargs)
             # Verify connection is actually alive
@@ -77,27 +91,30 @@ class MongoManager:
                 max_pool=settings.MONGODB_MAX_POOL_SIZE,
             )
         except (ConnectionFailure, ServerSelectionTimeoutError, Exception) as exc:
-            logger.error("Primary MongoDB connection failed", error=str(exc))
-            # Try fallback to local MongoDB in development mode
-            if not settings.is_production:
-                try:
-                    logger.info("Attempting local MongoDB fallback at mongodb://localhost:27017")
-                    self._client = AsyncIOMotorClient("mongodb://localhost:27017", serverSelectionTimeoutMS=2000)
-                    await self._client.admin.command("ping")
-                    db_name = settings.MONGODB_DB_NAME.lower()
-                    self._db = self._client[db_name]
-                    logger.info("MongoDB connected successfully via local fallback", database=db_name)
-                    return
-                except Exception as fallback_err:
-                    logger.error("Local MongoDB fallback also failed", error=str(fallback_err))
+            # Clean up client reference so state accurately reflects failure
+            if self._client is not None:
+                self._client.close()
+                self._client = None
+            self._db = None
+
+            err_msg = str(exc)
+            hint = ""
+            if "TLSV1_ALERT_INTERNAL_ERROR" in err_msg or "SSL handshake failed" in err_msg:
+                hint = (
+                    " [DIAGNOSTIC HINT: MongoDB Atlas rejected the TLS handshake (TLSV1_ALERT_INTERNAL_ERROR). "
+                    "This error occurs when the client's outbound IP address is not whitelisted in MongoDB Atlas Network Access. "
+                    "In MongoDB Atlas: go to Security -> Network Access -> Add IP Address -> select 'Allow Access From Anywhere' (0.0.0.0/0).]"
+                )
+
+            logger.error("MongoDB connection failed", error=err_msg + hint, uri_host=redacted_uri)
 
             if settings.is_production:
                 logger.error(
                     "CRITICAL: MongoDB connection could not be established at startup. "
                     "In production, a database connection is strictly required.",
-                    error=str(exc),
+                    error=err_msg,
                 )
-                raise ConnectionFailure("Production database connection failed.") from exc
+                raise ConnectionFailure(f"Production database connection failed: {err_msg}{hint}") from exc
 
     async def disconnect(self) -> None:
         """Close the connection pool gracefully."""
@@ -140,13 +157,7 @@ class MongoManager:
 
     def _redacted_uri(self) -> str:
         """Return a URI with credentials stripped for safe logging."""
-        uri = settings.MONGODB_URI
-        if "@" in uri:
-            # mongodb+srv://user:pass@host → mongodb+srv://***@host
-            scheme_end = uri.index("//") + 2
-            at_pos = uri.rindex("@")
-            return uri[:scheme_end] + "***" + uri[at_pos:]
-        return uri
+        return _redact_mongo_uri(settings.MONGODB_URI)
 
 
 # ---------------------------------------------------------------------------

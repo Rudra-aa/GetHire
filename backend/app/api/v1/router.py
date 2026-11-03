@@ -25,6 +25,8 @@ from app.api.v1.assessment.router import assessment_router
 from app.api.v1.career.router import career_router
 from app.api.v1.evaluation_reports.router import evaluation_reports_router
 from app.domains.candidate_graph.router import graph_router
+from app.api.v1.admin.router import admin_router
+from app.api.v1.payments.router import payments_router
 
 # ---------------------------------------------------------------------------
 # Root v1 router
@@ -37,6 +39,7 @@ api_router = APIRouter()
 
 api_router.include_router(health_router, prefix="/health", tags=["System"])
 api_router.include_router(auth_router, prefix="/auth", tags=["Authentication"])
+api_router.include_router(admin_router, prefix="/admin", tags=["Administration"])
 api_router.include_router(users_router, prefix="/users", tags=["Users"])
 api_router.include_router(resume_router, prefix="/resume", tags=["Resume Intelligence"])
 api_router.include_router(assessment_router, prefix="/assessment", tags=["Assessment Engine"])
@@ -48,6 +51,7 @@ api_router.include_router(facesense_router, prefix="/facesense", tags=["FaceSens
 api_router.include_router(integrity_router, prefix="/integrity", tags=["Interview Intelligence Engine"])
 api_router.include_router(career_router, prefix="/career", tags=["Career Intelligence & Growth Loop"])
 api_router.include_router(graph_router, prefix="/graph", tags=["Candidate Intelligence Graph Core"])
+api_router.include_router(payments_router, prefix="/payments", tags=["Payments & Billing"])
 
 
 

@@ -18,12 +18,14 @@ export class AdaptiveSilenceDetector {
   private currentTranscript = "";
   private speechStartTime = 0;
 
+  private lastTranscriptTime = 0;
+
   // Adaptive threshold bounds (ms)
-  private readonly SHORT_ANSWER_SILENCE_MS = 1200; // < 8 words
-  private readonly MEDIUM_ANSWER_SILENCE_MS = 1800; // 8 - 25 words
-  private readonly LONG_ANSWER_SILENCE_MS = 2500; // > 25 words
+  private readonly SHORT_ANSWER_SILENCE_MS = 1500; // < 8 words
+  private readonly MEDIUM_ANSWER_SILENCE_MS = 2000; // 8 - 25 words
+  private readonly LONG_ANSWER_SILENCE_MS = 2600; // > 25 words
   private readonly MIN_WORDS_FOR_SUBMIT = 2;
-  private readonly MIN_CHARS_FOR_SUBMIT = 6;
+  private readonly MIN_CHARS_FOR_SUBMIT = 5;
 
   constructor(eventBus: InterviewEventBus) {
     this.eventBus = eventBus;
@@ -35,8 +37,9 @@ export class AdaptiveSilenceDetector {
       this.onTranscriptActivity(payload);
     });
 
-    this.eventBus.on("AUDIO_ENERGY_UPDATED", ({ isVoice }) => {
-      if (isVoice && this.isEnabled) {
+    this.eventBus.on("AUDIO_ENERGY_UPDATED", ({ isVoice, volume }) => {
+      // Only consider as potential vocal activity if volume is substantially above ambient noise
+      if (isVoice && volume > 25 && this.isEnabled) {
         this.onVoiceActivity();
       }
     });
@@ -46,6 +49,7 @@ export class AdaptiveSilenceDetector {
         this.clearTimers();
         this.isSpeaking = false;
         this.currentTranscript = "";
+        this.lastTranscriptTime = 0;
       }
     });
   }
@@ -75,6 +79,7 @@ export class AdaptiveSilenceDetector {
     if (!text) return;
 
     this.currentTranscript = text;
+    this.lastTranscriptTime = Date.now();
 
     if (!this.isSpeaking) {
       this.isSpeaking = true;
@@ -87,9 +92,12 @@ export class AdaptiveSilenceDetector {
   }
 
   private onVoiceActivity() {
-    if (!this.isEnabled) return;
-    // Delay silence countdown if candidate voice is detected by mic analyser
-    if (this.isSpeaking) {
+    if (!this.isEnabled || !this.isSpeaking) return;
+    // Ambient noise or mic hiss should NOT block auto-submission indefinitely.
+    // If no actual speech recognition transcript token has arrived in the last 1500ms,
+    // do NOT reset the silence countdown — allow the silence timer to complete and submit.
+    const now = Date.now();
+    if (this.lastTranscriptTime && now - this.lastTranscriptTime < 1500) {
       this.resetSilenceCountdown();
     }
   }

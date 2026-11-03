@@ -8,6 +8,9 @@ database persistence, and retrieval.
 from __future__ import annotations
 
 import os
+import re
+import tempfile
+import urllib.parse
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
@@ -32,14 +35,124 @@ from app.services.resume_validator import INVALID_RESUME_MESSAGE, validate_resum
 
 logger = get_logger(__name__)
 
-MAX_FILE_SIZE_BYTES: int = 10 * 1024 * 1024  # 10 MB
-UPLOADS_DIR: Path = Path(__file__).resolve().parents[2] / "uploads" / "resumes"
+ALLOWED_EXTENSIONS: set[str] = {".pdf"}
+ALLOWED_MIME_TYPES: set[str] = {
+    "application/pdf",
+    "application/x-pdf",
+}
+MAX_FILE_SIZE_BYTES: int = getattr(settings, "max_upload_size_bytes", 10 * 1024 * 1024)  # 10 MB
+UPLOADS_DIR: Path = (Path(__file__).resolve().parents[2] / "uploads" / "resumes").resolve()
 _pdf_service = PDFService()
 
 
+def sanitize_filename(filename: Optional[str]) -> str:
+    """
+    Sanitize an uploaded filename and prevent directory traversal or malicious characters.
+
+    Enforces:
+      - Non-empty filename string.
+      - Rejection of null bytes and ASCII control characters.
+      - Rejection of directory traversal components ('..', '/', '\\').
+      - Allowed extension strictly in ALLOWED_EXTENSIONS (.pdf).
+      - Rejection of empty stems (e.g. '.pdf', '...pdf').
+      - Sanitization of stem to alphanumeric characters, dashes, underscores, and periods.
+      - Truncation of stem to a safe maximum length of 64 characters.
+    """
+    if not filename or not isinstance(filename, str) or not filename.strip():
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail={
+                "success": False,
+                "message": "Filename cannot be empty.",
+                "errors": [{"code": "INVALID_FILENAME"}],
+            },
+        )
+
+    # Check for null bytes, %00, or ASCII control characters
+    unquoted = urllib.parse.unquote(filename)
+    if (
+        "%00" in filename.lower()
+        or "\x00" in filename
+        or "\x00" in unquoted
+        or any(ord(c) < 32 or ord(c) == 127 for c in filename)
+        or any(ord(c) < 32 or ord(c) == 127 for c in unquoted)
+    ):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail={
+                "success": False,
+                "message": "Filename contains invalid control characters or null bytes.",
+                "errors": [{"code": "INVALID_FILENAME"}],
+            },
+        )
+
+    # Detect directory traversal or path separators explicitly (raw and unquoted)
+    normalized = unquoted.replace("\\", "/")
+    if ".." in normalized or "/" in normalized or ".." in filename.replace("\\", "/") or "/" in filename.replace("\\", "/"):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail={
+                "success": False,
+                "message": "Filename cannot contain directory path components or traversal sequences.",
+                "errors": [{"code": "INVALID_FILENAME"}],
+            },
+        )
+
+    base = normalized.strip()
+    if base.startswith("."):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail={
+                "success": False,
+                "message": "Filename does not contain a valid stem name.",
+                "errors": [{"code": "INVALID_FILENAME"}],
+            },
+        )
+
+    p = Path(base)
+    suffix = p.suffix.lower()
+
+    if suffix not in ALLOWED_EXTENSIONS:
+        raise HTTPException(
+            status_code=status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
+            detail={
+                "success": False,
+                "message": f"Only PDF documents (.pdf) are supported. Received extension: '{suffix}'.",
+                "errors": [{"code": "INVALID_FILE_TYPE"}],
+            },
+        )
+
+    stem = p.stem.strip()
+    safe_stem = re.sub(r"[^a-zA-Z0-9_\-\.]", "_", stem).strip(" ._-")
+    if not safe_stem:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail={
+                "success": False,
+                "message": "Filename does not contain a valid stem name.",
+                "errors": [{"code": "INVALID_FILENAME"}],
+            },
+        )
+
+    safe_stem = safe_stem[:64]
+    return f"{safe_stem}{suffix}"
+
+
 def _ensure_upload_dir(user_id: str) -> Path:
-    """Ensure user-specific uploads directory exists."""
-    user_dir = UPLOADS_DIR / user_id
+    """Ensure user-specific uploads directory exists strictly inside UPLOADS_DIR."""
+    safe_user_id = re.sub(r"[^a-zA-Z0-9_\-]", "", str(user_id))
+    if not safe_user_id:
+        safe_user_id = "default"
+    user_dir = (UPLOADS_DIR / safe_user_id).resolve()
+    if not user_dir.is_relative_to(UPLOADS_DIR):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail={
+                "success": False,
+                "message": "Invalid user storage path.",
+                "errors": [{"code": "PATH_TRAVERSAL_DETECTED"}],
+            },
+        )
     user_dir.mkdir(parents=True, exist_ok=True)
     return user_dir
 
@@ -51,41 +164,106 @@ async def process_and_store_resume(
 ) -> ResumeModel:
     """
     Validate, stream to disk, extract text, parse sections, calculate quality score,
-    and persist in MongoDB.
+    and persist in MongoDB with strict file and path validations.
     """
-    # 1. Validation
-    if not file.filename:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail={"success": False, "message": "No file attached.", "errors": [{"code": "EMPTY_FILENAME"}]},
-        )
+    # 1. Filename validation and sanitization
+    safe_filename = sanitize_filename(file.filename)
 
-    suffix = Path(file.filename).suffix.lower()
-    if suffix != ".pdf":
+    # 2. MIME type validation
+    content_type = getattr(file, "content_type", None)
+    if content_type is None:
         raise HTTPException(
             status_code=status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
-            detail={"success": False, "message": "Only PDF documents (.pdf) are supported.", "errors": [{"code": "INVALID_FILE_TYPE"}]},
+            detail={
+                "success": False,
+                "message": "Missing file MIME type. Only PDF documents ('application/pdf') are permitted.",
+                "errors": [{"code": "INVALID_MIME_TYPE"}],
+            },
+        )
+    elif isinstance(content_type, str):
+        clean_mime = content_type.split(";")[0].strip().lower()
+        if clean_mime not in ALLOWED_MIME_TYPES:
+            raise HTTPException(
+                status_code=status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
+                detail={
+                    "success": False,
+                    "message": f"Unsupported MIME type '{content_type}'. Only PDF documents are allowed.",
+                    "errors": [{"code": "INVALID_MIME_TYPE"}],
+                },
+            )
+
+    # 3. Check early declared file size if provided
+    declared_size = getattr(file, "size", None)
+    if declared_size is not None and isinstance(declared_size, int):
+        if declared_size > MAX_FILE_SIZE_BYTES:
+            raise HTTPException(
+                status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
+                detail={
+                    "success": False,
+                    "message": f"File exceeds the maximum upload limit of {MAX_FILE_SIZE_BYTES // (1024 * 1024)}MB.",
+                    "errors": [{"code": "FILE_TOO_LARGE"}],
+                },
+            )
+        if declared_size == 0:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail={
+                    "success": False,
+                    "message": "Uploaded file is empty.",
+                    "errors": [{"code": "EMPTY_FILE"}],
+                },
+            )
+
+    # 4. Prepare safe storage location
+    user_dir = _ensure_upload_dir(user_id)
+    stored_filename = f"{uuid.uuid4().hex}_{safe_filename}"
+    destination = (user_dir / stored_filename).resolve()
+
+    # Path containment validation
+    if not destination.is_relative_to(UPLOADS_DIR):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail={
+                "success": False,
+                "message": "Storage path traversal detected.",
+                "errors": [{"code": "PATH_TRAVERSAL_DETECTED"}],
+            },
         )
 
-    user_dir = _ensure_upload_dir(user_id)
-    safe_filename = f"{uuid.uuid4().hex[:12]}_{Path(file.filename).name}"
-    destination = user_dir / safe_filename
-
-    # 2. Stream to disk enforcing 10MB limit
+    # 5. Stream to disk enforcing MAX_FILE_SIZE_BYTES, empty file check, and PDF magic bytes
     total_bytes = 0
+    first_chunk = True
     try:
         with destination.open("wb") as out_file:
             while True:
                 chunk = file.file.read(64 * 1024)
                 if not chunk:
                     break
+                if first_chunk:
+                    first_chunk = False
+                    # Verify PDF magic signature (%PDF)
+                    if not chunk.startswith(b"%PDF"):
+                        out_file.close()
+                        destination.unlink(missing_ok=True)
+                        raise HTTPException(
+                            status_code=status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
+                            detail={
+                                "success": False,
+                                "message": "File content does not match a valid PDF header signature.",
+                                "errors": [{"code": "INVALID_MIME_TYPE"}],
+                            },
+                        )
                 total_bytes += len(chunk)
                 if total_bytes > MAX_FILE_SIZE_BYTES:
                     out_file.close()
                     destination.unlink(missing_ok=True)
                     raise HTTPException(
                         status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
-                        detail={"success": False, "message": "File exceeds the 10MB limit.", "errors": [{"code": "FILE_TOO_LARGE"}]},
+                        detail={
+                            "success": False,
+                            "message": f"File exceeds the maximum upload limit of {MAX_FILE_SIZE_BYTES // (1024 * 1024)}MB.",
+                            "errors": [{"code": "FILE_TOO_LARGE"}],
+                        },
                     )
                 out_file.write(chunk)
     except HTTPException:
@@ -95,10 +273,26 @@ async def process_and_store_resume(
         logger.error("Failed writing uploaded resume file", error=str(exc))
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail={"success": False, "message": "Failed to save file to disk.", "errors": [{"code": "DISK_WRITE_ERROR"}]},
+            detail={
+                "success": False,
+                "message": "Failed to save file to disk.",
+                "errors": [{"code": "DISK_WRITE_ERROR"}],
+            },
         )
 
-    # 3. Extract text via PDFService
+    # 6. Reject empty files (0 bytes)
+    if total_bytes == 0:
+        destination.unlink(missing_ok=True)
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail={
+                "success": False,
+                "message": "Uploaded file is empty.",
+                "errors": [{"code": "EMPTY_FILE"}],
+            },
+        )
+
+    # 7. Extract text via PDFService with corrupted file handling
     try:
         extraction_result = _pdf_service.extract_text(destination)
         raw_text = extraction_result.text
@@ -107,17 +301,21 @@ async def process_and_store_resume(
         destination.unlink(missing_ok=True)
         raise HTTPException(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
-            detail={"success": False, "message": str(exc), "errors": [{"code": "PDF_EXTRACTION_ERROR"}]},
+            detail={
+                "success": False,
+                "message": f"Corrupted or unreadable PDF document: {str(exc)}",
+                "errors": [{"code": "CORRUPTED_PDF", "detail": str(exc)}],
+            },
         )
 
-    # 4. Validate resume authenticity before parsing or scoring
+    # 8. Validate resume authenticity before parsing or scoring
     validation_result = validate_resume_document(raw_text, page_count=page_count)
     if not validation_result.is_valid:
         destination.unlink(missing_ok=True)
         logger.warning(
             "Resume validation rejected document",
             user_id=user_id,
-            filename=file.filename,
+            filename=safe_filename,
             reason=validation_result.reason,
             confidence=validation_result.confidence_score,
         )
@@ -135,17 +333,17 @@ async def process_and_store_resume(
             },
         )
 
-    # 5. Parse structured entities
+    # 9. Parse structured entities
     parsed_data: ParsedResumeData = parse_resume_text(raw_text)
 
-    # 6. Compute Quality Score
+    # 10. Compute Quality Score
     quality_score: QualityScoreBreakdown = calculate_resume_quality_score(
         raw_text,
         parsed_data,
         page_count=page_count,
     )
 
-    # 6. Calculate version number
+    # 11. Calculate version number
     count = await db["resumes"].count_documents({"user_id": user_id})
     version = count + 1
 
@@ -153,7 +351,7 @@ async def process_and_store_resume(
     resume = ResumeModel(
         user_id=user_id,
         version=version,
-        filename=file.filename,
+        filename=safe_filename,
         file_path=str(destination),
         file_size_bytes=total_bytes,
         page_count=page_count,
@@ -165,23 +363,23 @@ async def process_and_store_resume(
         updated_at=now,
     )
 
-    # 7. Insert into MongoDB
+    # 12. Insert into MongoDB
     res = await db["resumes"].insert_one(resume.model_dump(by_alias=True, exclude_none=True))
     resume.id = str(res.inserted_id)
 
-    # 8. Update UserModel.resume_uploaded = True
+    # 13. Update UserModel.resume_uploaded = True
     await db["users"].update_one(
         {"_id": ObjectId(user_id)},
         {"$set": {"resume_uploaded": True, "updated_at": now}},
     )
 
-    # 9. Audit Log
+    # 14. Audit Log
     try:
         audit = AuditLogModel(
             event="RESUME_UPLOADED",
             module="resume",
             user_id=user_id,
-            metadata={"resume_id": resume.id, "filename": file.filename, "score": quality_score.overall_score},
+            metadata={"resume_id": resume.id, "filename": safe_filename, "score": quality_score.overall_score},
         )
         await db["audit_logs"].insert_one(audit.model_dump(by_alias=True, exclude_none=True))
     except Exception as exc:
@@ -206,11 +404,15 @@ async def get_resume_by_id(
     db: AsyncIOMotorDatabase,
     resume_id: str,
     user_id: str,
+    is_admin: bool = False,
 ) -> Optional[ResumeModel]:
-    """Retrieve a specific resume ensuring user ownership."""
+    """Retrieve a specific resume ensuring user ownership or administrator access."""
     if not ObjectId.is_valid(resume_id):
         return None
-    doc = await db["resumes"].find_one({"_id": ObjectId(resume_id), "user_id": user_id})
+    query = {"_id": ObjectId(resume_id)}
+    if not is_admin:
+        query["user_id"] = user_id
+    doc = await db["resumes"].find_one(query)
     return ResumeModel(**doc) if doc else None
 
 
@@ -218,31 +420,40 @@ async def delete_resume(
     db: AsyncIOMotorDatabase,
     resume_id: str,
     user_id: str,
+    is_admin: bool = False,
 ) -> bool:
-    """Delete a resume document and its disk file."""
+    """Delete a resume document and its disk file ensuring user ownership or administrator access."""
     if not ObjectId.is_valid(resume_id):
         return False
 
-    doc = await db["resumes"].find_one({"_id": ObjectId(resume_id), "user_id": user_id})
+    query = {"_id": ObjectId(resume_id)}
+    if not is_admin:
+        query["user_id"] = user_id
+
+    doc = await db["resumes"].find_one(query)
     if not doc:
         return False
 
-    # Remove file from disk
-    file_path = doc.get("file_path")
-    if file_path and os.path.exists(file_path):
+    # Remove file from disk with safe containment check
+    file_path_str = doc.get("file_path")
+    if file_path_str:
         try:
-            os.remove(file_path)
+            file_path = Path(file_path_str).resolve()
+            temp_dir = Path(tempfile.gettempdir()).resolve()
+            if file_path.exists() and file_path.is_file() and (file_path.is_relative_to(UPLOADS_DIR) or file_path.is_relative_to(temp_dir)):
+                file_path.unlink(missing_ok=True)
         except OSError:
             pass
 
-    # Delete record
-    await db["resumes"].delete_one({"_id": ObjectId(resume_id)})
+    # Delete record using exact query
+    await db["resumes"].delete_one(query)
 
     # If user has no more resumes, update flag
-    remaining = await db["resumes"].count_documents({"user_id": user_id})
-    if remaining == 0:
+    owner_id = str(doc.get("user_id"))
+    remaining = await db["resumes"].count_documents({"user_id": owner_id})
+    if remaining == 0 and ObjectId.is_valid(owner_id):
         await db["users"].update_one(
-            {"_id": ObjectId(user_id)},
+            {"_id": ObjectId(owner_id)},
             {"$set": {"resume_uploaded": False, "updated_at": datetime.now(timezone.utc)}},
         )
 

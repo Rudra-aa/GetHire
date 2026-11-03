@@ -7,7 +7,7 @@ Pydantic v2 validation and transfer schemas for Interview Engine REST endpoints.
 from __future__ import annotations
 
 from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 from app.models.interview import InterviewQuestion
 
@@ -16,26 +16,41 @@ from app.models.interview import InterviewQuestion
 
 class StartInterviewSessionRequest(BaseModel):
     """Payload to initialize a new personalized interview session."""
-    resume_id: Optional[str] = Field(default=None, description="Optional resume ID; uses latest if omitted")
-    target_role: Optional[str] = Field(default=None, description="Target role (e.g. Frontend Developer)")
-    experience_level: Optional[str] = Field(default=None, description="entry | mid | senior")
-    interview_type: str = Field(default="mixed", description="technical | behavioral | mixed")
+    resume_id: Optional[str] = Field(default=None, max_length=50, description="Optional resume ID; uses latest if omitted")
+    target_role: Optional[str] = Field(default=None, min_length=2, max_length=100, description="Target role (e.g. Frontend Developer)")
+    experience_level: Optional[str] = Field(default=None, max_length=50, description="entry | mid | senior")
+    interview_type: str = Field(default="mixed", pattern=r"^(technical|behavioral|mixed)$", description="technical | behavioral | mixed")
     total_questions: int = Field(default=10, ge=5, le=20, description="Total question count (5-20)")
+
+    @field_validator("experience_level")
+    @classmethod
+    def validate_experience_level(cls, v: Optional[str]) -> Optional[str]:
+        if v is None:
+            return None
+        allowed = {"entry", "mid", "senior"}
+        if v.lower() not in allowed:
+            raise ValueError("Experience level must be one of: entry, mid, senior")
+        return v.lower()
 
 
 class UpdateSessionStateRequest(BaseModel):
     """Payload to update session progression, elapsed time, or state."""
-    status: Optional[str] = Field(default=None, description="running | paused | completed | cancelled")
-    current_question_index: Optional[int] = Field(default=None, ge=0)
-    elapsed_seconds: Optional[int] = Field(default=None, ge=0)
+    status: Optional[str] = Field(default=None, pattern=r"^(running|paused|completed|cancelled)$", description="running | paused | completed | cancelled")
+    current_question_index: Optional[int] = Field(default=None, ge=0, le=100)
+    elapsed_seconds: Optional[int] = Field(default=None, ge=0, le=86400)
 
 
 class SubmitAnswerRequest(BaseModel):
     """Payload to autosave draft or submit finalized answer."""
-    question_id: str = Field(description="Target question identifier")
-    answer_text: str = Field(description="Transcript or text answer")
-    time_taken_seconds: int = Field(default=0, ge=0)
+    question_id: str = Field(..., min_length=1, max_length=100, description="Target question identifier")
+    answer_text: str = Field(..., min_length=1, max_length=50000, description="Transcript or text answer")
+    time_taken_seconds: int = Field(default=0, ge=0, le=86400)
     is_draft: bool = Field(default=False, description="True for debounced autosave draft")
+
+
+class TurnRequest(BaseModel):
+    """Payload for conversational turn transcript processing."""
+    candidate_transcript: str = Field(..., min_length=1, max_length=10000, description="Candidate speech or text turn transcript")
 
 
 # ── Response Data Schemas ───────────────────────────────────────────────────
@@ -67,6 +82,7 @@ class InterviewSessionResponseData(BaseModel):
     elapsed_seconds: int
     questions: List[InterviewQuestion]
     answers: List[InterviewAnswerOut] = Field(default_factory=list)
+    transcripts: List[Dict[str, Any]] = Field(default_factory=list)
     started_at: str
     paused_at: Optional[str] = None
     completed_at: Optional[str] = None

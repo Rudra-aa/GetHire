@@ -39,6 +39,10 @@ async def update_user_profile(
         )
 
     update_fields = payload.model_dump(exclude_unset=True, exclude_none=True)
+    # Strip any protected account fields to prevent unauthorized modification
+    for protected in ("role", "permissions", "isAdmin", "is_admin"):
+        update_fields.pop(protected, None)
+
     if not update_fields:
         user = await get_user_by_id(db, user_id)
         if not user:

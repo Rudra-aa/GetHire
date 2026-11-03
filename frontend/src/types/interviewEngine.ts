@@ -7,6 +7,8 @@
 export type InterviewState =
   | "WAITING"
   | "INITIALIZING"
+  | "GENERATING_FIRST_QUESTION"
+  | "READY"
   | "INTRODUCTION"
   | "QUESTION"
   | "AI_SPEAKING"

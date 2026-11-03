@@ -14,6 +14,8 @@ from __future__ import annotations
 from typing import Dict, Any, List, Optional
 from datetime import datetime, timezone
 from motor.motor_asyncio import AsyncIOMotorDatabase
+from bson import ObjectId
+from fastapi import HTTPException, status
 
 from app.core.logging import get_logger
 from app.services.interview_intelligence.face_pipeline import face_pipeline
@@ -32,6 +34,21 @@ class InterviewIntelligenceService:
 
     async def start_session(self, db: AsyncIOMotorDatabase, user_id: str, session_id: str) -> Dict[str, Any]:
         """Initializes a new Interview Intelligence session."""
+        # 1. If this corresponds to an interview session, verify ownership
+        int_sess = None
+        if ObjectId.is_valid(session_id):
+            int_sess = await db["interview_sessions"].find_one({"_id": ObjectId(session_id)})
+        if not int_sess:
+            int_sess = await db["interview_sessions"].find_one({"session_id": session_id})
+
+        if int_sess and str(int_sess.get("user_id")) != user_id:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Interview Intelligence session not found")
+
+        # 2. If intelligence session already exists, verify ownership
+        existing = await db["interview_intelligence_sessions"].find_one({"session_id": session_id})
+        if existing and str(existing.get("user_id")) != user_id:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Interview Intelligence session not found")
+
         session_doc = {
             "session_id": session_id,
             "user_id": user_id,
@@ -44,7 +61,7 @@ class InterviewIntelligenceService:
         }
 
         await db["interview_intelligence_sessions"].update_one(
-            {"session_id": session_id}, {"$set": session_doc}, upsert=True
+            {"session_id": session_id, "user_id": user_id}, {"$set": session_doc}, upsert=True
         )
         logger.info("Interview Intelligence session started", session_id=session_id, user_id=user_id)
         return session_doc
@@ -54,6 +71,10 @@ class InterviewIntelligenceService:
         session_id = payload.get("session_id", "default")
         question_id = payload.get("question_id")
         timestamp_sec = float(payload.get("timestamp_sec", 0.0))
+
+        sess = await db["interview_intelligence_sessions"].find_one({"session_id": session_id})
+        if sess and str(sess.get("user_id")) != user_id:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Interview Intelligence session not found")
 
         processed = browser_integrity_pipeline.evaluate_browser_event(payload)
         event_record = intelligence_timeline_engine.format_event_log(
@@ -72,12 +93,12 @@ class InterviewIntelligenceService:
         await db["interview_intelligence_events"].insert_one(event_record)
 
         # Recalculate session integrity score
-        cursor = db["interview_intelligence_events"].find({"session_id": session_id})
+        cursor = db["interview_intelligence_events"].find({"session_id": session_id, "user_id": user_id})
         all_events = await cursor.to_list(length=500)
         score_res = integrity_score_engine.compute_integrity_score(all_events)
 
         await db["interview_intelligence_sessions"].update_one(
-            {"session_id": session_id},
+            {"session_id": session_id, "user_id": user_id},
             {
                 "$set": {
                     "updated_at": datetime.now(timezone.utc),
@@ -96,13 +117,16 @@ class InterviewIntelligenceService:
         """Processes 1-second live telemetry batch from active webcam/mic/browser monitors."""
         session_id = payload.get("session_id", "default")
 
+        sess = await db["interview_intelligence_sessions"].find_one({"session_id": session_id})
+        if sess and str(sess.get("user_id")) != user_id:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Interview Intelligence session not found")
+
         face_res = face_pipeline.process_face_telemetry(payload)
         cam_res = camera_monitor.evaluate_camera_telemetry(payload)
         mic_res = microphone_monitor.evaluate_audio_telemetry(payload)
         health_res = session_health_engine.evaluate_session_health(payload)
 
         # Fetch integrity score
-        sess = await db["interview_intelligence_sessions"].find_one({"session_id": session_id})
         integrity_val = sess.get("integrity_score", 100) if sess else 100
 
         telemetry = {
@@ -116,7 +140,7 @@ class InterviewIntelligenceService:
         }
 
         await db["interview_intelligence_sessions"].update_one(
-            {"session_id": session_id},
+            {"session_id": session_id, "user_id": user_id},
             {
                 "$inc": {"telemetry_samples_count": 1},
                 "$set": {
@@ -128,9 +152,25 @@ class InterviewIntelligenceService:
         )
         return telemetry
 
-    async def finish_session(self, db: AsyncIOMotorDatabase, session_id: str) -> Dict[str, Any]:
+    async def finish_session(
+        self,
+        db: AsyncIOMotorDatabase,
+        session_id: str,
+        user_id: Optional[str] = None,
+        is_admin: bool = False,
+    ) -> Dict[str, Any]:
         """Finalizes Interview Intelligence session report."""
-        cursor = db["interview_intelligence_events"].find({"session_id": session_id}).sort("timestamp_sec", 1)
+        sess = await db["interview_intelligence_sessions"].find_one({"session_id": session_id})
+        if not sess:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Interview Intelligence session not found")
+        if not is_admin and user_id and str(sess.get("user_id")) != user_id:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Interview Intelligence session not found")
+
+        ev_filter = {"session_id": session_id}
+        if not is_admin and user_id:
+            ev_filter["user_id"] = user_id
+
+        cursor = db["interview_intelligence_events"].find(ev_filter).sort("timestamp_sec", 1)
         events = await cursor.to_list(length=500)
         for ev in events:
             ev["id"] = str(ev["_id"])
@@ -149,8 +189,12 @@ class InterviewIntelligenceService:
             "event_counts": score_res["event_counts"],
         }
 
+        sess_filter = {"session_id": session_id}
+        if not is_admin and user_id:
+            sess_filter["user_id"] = user_id
+
         await db["interview_intelligence_sessions"].update_one(
-            {"session_id": session_id}, {"$set": report}
+            sess_filter, {"$set": report}
         )
 
         logger.info("Interview Intelligence session finished", session_id=session_id)

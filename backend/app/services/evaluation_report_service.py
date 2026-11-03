@@ -26,10 +26,12 @@ logger = get_logger(__name__)
 async def generate_evaluation_report(
     db: AsyncIOMotorDatabase,
     user_id: str,
+    interview_session_id: Optional[str] = None,
 ) -> Optional[EvaluationReportModel]:
     """
-    Finds the latest completed Assessment and latest completed Interview.
-    If both exist, generates an immutable EvaluationReport (or returns existing one for idempotency).
+    Generates an immutable EvaluationReport for the specified or latest completed interview session.
+    A combined report requires BOTH a completed Technical Assessment and a completed Interview Session.
+    If interview_session_id is provided without an assessment, generates an explicitly labeled interview-only report.
     """
     user_filter = {"$in": [str(user_id), ObjectId(user_id)]} if ObjectId.is_valid(user_id) else str(user_id)
 
@@ -38,43 +40,61 @@ async def generate_evaluation_report(
         {"user_id": user_filter, "status": "completed"},
         sort=[("completed_at", -1), ("_id", -1)]
     )
-    if not assessment:
-        assessment = await db["assessment_sessions"].find_one(
-            {"user_id": user_filter, "score": {"$exists": True, "$gt": 0}},
-            sort=[("completed_at", -1), ("_id", -1)]
+
+    # 2. Fetch target or latest completed Interview
+    interview = None
+    if interview_session_id:
+        queries = []
+        if ObjectId.is_valid(interview_session_id):
+            queries.append({"_id": ObjectId(interview_session_id)})
+        queries.append({"session_id": interview_session_id})
+        queries.append({"id": interview_session_id})
+        interview = await db["interview_sessions"].find_one({
+            "user_id": user_filter,
+            "status": "completed",
+            "$or": queries
+        })
+    else:
+        interview = await db["interview_sessions"].find_one(
+            {"user_id": user_filter, "status": "completed"},
+            sort=[("completed_at", -1), ("updated_at", -1), ("_id", -1)]
         )
-    
-    # 2. Fetch latest completed Interview
-    interview = await db["interview_sessions"].find_one(
-        {"user_id": user_filter, "status": "completed"},
-        sort=[("completed_at", -1), ("_id", -1)]
-    )
 
-    if not assessment or not interview:
-        return None  # Both components are required to form a full report
+    if not interview:
+        return None  # An interview session must be completed
 
-    assessment_session_id = str(assessment["_id"])
+    is_interview_only = assessment is None
+    if not interview_session_id and is_interview_only:
+        # A combined report generation requires BOTH completed components
+        return None
+
+    assessment_session_id = str(assessment["_id"]) if assessment else "none"
     interview_session_id = str(interview["_id"]) if "_id" in interview else interview.get("session_id", "")
 
     # 3. Idempotency Check
     existing_report_doc = await db["evaluation_reports"].find_one({
         "candidate_id": str(user_id),
         "assessment_session_id": assessment_session_id,
-        "interview_session_id": interview_session_id
+        "interview_session_id": interview_session_id,
     })
     
     if existing_report_doc:
         return EvaluationReportModel(**existing_report_doc)
 
     # 4. Generate New Report - Calculate aggregated snapshot scores
-    
-    # Fetch interview evaluations to aggregate dimensions
     evaluations = await get_session_evaluations(db, interview_session_id, str(user_id))
     
-    # Check if we have evaluations, otherwise we cannot build the report correctly
+    # Auto-evaluate session if not evaluated yet
     if not evaluations:
-        logger.warning(f"No answer-level evaluations found for interview {interview_session_id}. Please ensure interview is evaluated first.")
-        # Attempt auto-evaluate here could be done, but keeping it decoupled for safety
+        try:
+            from app.services.evaluation_service import evaluate_session_all_answers
+            evals, _, _ = await evaluate_session_all_answers(db, interview_session_id, str(user_id))
+            evaluations = evals
+        except Exception as e:
+            logger.warning("Auto evaluation failed in generate_evaluation_report", error=str(e))
+
+    if not evaluations:
+        logger.warning(f"No answer-level evaluations could be found or generated for interview {interview_session_id}.")
         return None
 
     # Fetch resume for hirescore pipeline
@@ -85,11 +105,19 @@ async def generate_evaluation_report(
     components = calculate_hirescore_components(
         evaluations=evaluations,
         resume=resume,
-        facesense_doc=None, # Optionally attach if needed
+        facesense_doc=None,
         assessment_doc=assessment
     )
-    overall_hirescore = compute_composite_hirescore(components)
-    readiness = evaluate_candidate_readiness(overall_hirescore, components, evaluations)
+
+    avg_interview = int(round(sum(e.overall_score for e in evaluations) / len(evaluations))) if evaluations else 0
+    assessment_score = int(round(assessment.get("score", 0))) if assessment else 0
+
+    if is_interview_only:
+        overall_hirescore = avg_interview
+        readiness = evaluate_candidate_readiness(overall_hirescore, components, evaluations)
+    else:
+        overall_hirescore = compute_composite_hirescore(components)
+        readiness = evaluate_candidate_readiness(overall_hirescore, components, evaluations)
 
     # Gather Strengths & Weaknesses up to a limit
     strengths_set = set()
@@ -101,10 +129,6 @@ async def generate_evaluation_report(
     # Determine evaluation_number
     history_count = await db["evaluation_reports"].count_documents({"candidate_id": str(user_id)})
     evaluation_number = history_count + 1
-
-    # Extract single snapshot metrics
-    avg_interview = int(round(sum(e.overall_score for e in evaluations) / len(evaluations))) if evaluations else 0
-    assessment_score = int(round(assessment.get("score", 0)))
 
     report_obj = EvaluationReportModel(
         candidate_id=str(user_id),
@@ -122,15 +146,14 @@ async def generate_evaluation_report(
         readiness=readiness,
         strengths=list(strengths_set)[:5],
         weaknesses=list(weaknesses_set)[:5],
-        recommendations=[], # Can be populated from gap analyzer if needed
+        recommendations=[],
     )
 
     doc_to_insert = report_obj.model_dump(by_alias=True, exclude={"id"})
     result = await db["evaluation_reports"].insert_one(doc_to_insert)
     report_obj.id = result.inserted_id
 
-    logger.info(f"[EVALUATION_REPORT_GENERATED] Candidate {user_id} - Report #{evaluation_number}")
-    
+    logger.info(f"[EVALUATION_REPORT_GENERATED] Candidate {user_id} - Report #{evaluation_number} (InterviewOnly={is_interview_only})")
     return report_obj
 
 async def get_evaluation_history(
@@ -146,8 +169,50 @@ async def get_evaluation_history(
 async def get_evaluation_report(
     db: AsyncIOMotorDatabase,
     user_id: str,
-    report_id: str
+    report_id: str,
+    is_admin: bool = False,
 ) -> Optional[EvaluationReportModel]:
-    """Retrieve exact immutable evaluation snapshot."""
-    doc = await db["evaluation_reports"].find_one({"_id": ObjectId(report_id), "candidate_id": str(user_id)})
-    return EvaluationReportModel(**doc) if doc else None
+    """Retrieve exact immutable evaluation snapshot ensuring candidate ownership or admin access."""
+    user_filter = {"$in": [str(user_id), ObjectId(user_id)]} if ObjectId.is_valid(user_id) else str(user_id)
+
+    queries = []
+    if ObjectId.is_valid(report_id):
+        queries.append({"_id": ObjectId(report_id)})
+    queries.append({"interview_session_id": report_id})
+    queries.append({"id": report_id})
+
+    query: Dict[str, Any] = {"$or": queries}
+    if not is_admin:
+        query["candidate_id"] = str(user_id)
+
+    doc = await db["evaluation_reports"].find_one(query)
+    if doc:
+        return EvaluationReportModel(**doc)
+
+    # If not found directly, check if report_id matches a completed interview session for this user
+    sess_queries = []
+    if ObjectId.is_valid(report_id):
+        sess_queries.append({"_id": ObjectId(report_id)})
+    sess_queries.append({"session_id": report_id})
+    sess_queries.append({"id": report_id})
+
+    sess_query: Dict[str, Any] = {
+        "status": "completed",
+        "$or": sess_queries
+    }
+    if not is_admin:
+        sess_query["user_id"] = user_filter
+
+    sess_doc = await db["interview_sessions"].find_one(sess_query)
+    if not sess_doc:
+        # Not a valid completed interview session for this user -> Return None (404)
+        return None
+
+    # Target session belongs to user and is completed -> attempt to generate evaluation report
+    target_sid = str(sess_doc.get("_id") or sess_doc.get("session_id") or report_id)
+    report = await generate_evaluation_report(db, str(sess_doc["user_id"]), interview_session_id=target_sid)
+    if report:
+        alt_ids = {report_id, target_sid, str(sess_doc.get("_id")), sess_doc.get("session_id")}
+        if str(report.id) in alt_ids or report.interview_session_id in alt_ids:
+            return report
+    return None

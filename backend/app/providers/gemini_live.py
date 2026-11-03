@@ -92,12 +92,26 @@ class GeminiLiveProvider(BaseInterviewProvider):
             history_formatted.append(f"Candidate: {turn.get('candidate_transcript', '')}")
             history_formatted.append(f"Interviewer (You): {turn.get('ai_response', '')}")
 
-        prompt = (
-            f"Current Interview Question: {current_prompt}\n"
-            f"Recent Conversation History:\n" + "\n".join(history_formatted) + "\n\n"
-            f"Candidate Latest Answer: \"{candidate_transcript}\"\n\n"
-            "Generate your natural recruiter response and follow-up question."
+        is_opening = (
+            candidate_transcript.strip().startswith("[Candidate has joined")
+            or candidate_transcript.strip().startswith("[Start")
         )
+
+        if is_opening:
+            prompt = (
+                f"The candidate has just joined the interview room for the position of {target_role}.\n"
+                f"Candidate Skills: {', '.join(skills)}\n"
+                f"Planned Opening Topic / Question: {current_prompt}\n\n"
+                "As the lead interviewer Alex from GetHire, warmly greet the candidate, briefly introduce yourself, "
+                "and ask the opening technical question to start the interview. Ask only ONE natural, direct question."
+            )
+        else:
+            prompt = (
+                f"Current Interview Question: {current_prompt}\n"
+                f"Recent Conversation History:\n" + "\n".join(history_formatted) + "\n\n"
+                f"Candidate Latest Answer: \"{candidate_transcript}\"\n\n"
+                "Generate your natural recruiter response and follow-up question."
+            )
 
         response = await gemini_provider.generate(
             prompt=prompt,

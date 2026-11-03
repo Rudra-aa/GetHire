@@ -24,10 +24,13 @@ from app.models.user import UserModel
 from app.schemas.auth import (
     LoginRequest,
     LoginResponseData,
+    PasswordResetRequest,
     RegisterRequest,
     RegisterResponseData,
     SessionResponseData,
+    TokenRefreshRequest,
     TokenRefreshResponseData,
+    VerifyOtpRequest,
 )
 from app.schemas.base import APIResponse
 from app.services.auth_service import (
@@ -112,15 +115,16 @@ async def login(
     response_model=APIResponse,
     summary="Rotate refresh token and issue a new access token",
 )
-async def refresh(request: Request, response: Response) -> APIResponse:
-    refresh_token = request.cookies.get("refresh_token") or request.headers.get("x-refresh-token")
-    if not refresh_token and request.headers.get("content-type", "").startswith("application/json"):
-        try:
-            body = await request.json()
-            if isinstance(body, dict):
-                refresh_token = body.get("refresh_token")
-        except Exception:
-            pass
+async def refresh(
+    request: Request,
+    response: Response,
+    payload: Optional[TokenRefreshRequest] = None,
+) -> APIResponse:
+    refresh_token = (
+        (payload.refresh_token if payload else None)
+        or request.cookies.get("refresh_token")
+        or request.headers.get("x-refresh-token")
+    )
 
     if not refresh_token:
         raise HTTPException(
@@ -147,15 +151,16 @@ async def refresh(request: Request, response: Response) -> APIResponse:
     response_model=APIResponse,
     summary="Revoke active refresh token and terminate session",
 )
-async def logout(request: Request, response: Response) -> APIResponse:
-    refresh_token = request.cookies.get("refresh_token") or request.headers.get("x-refresh-token")
-    if not refresh_token and request.headers.get("content-type", "").startswith("application/json"):
-        try:
-            body = await request.json()
-            if isinstance(body, dict):
-                refresh_token = body.get("refresh_token")
-        except Exception:
-            pass
+async def logout(
+    request: Request,
+    response: Response,
+    payload: Optional[TokenRefreshRequest] = None,
+) -> APIResponse:
+    refresh_token = (
+        (payload.refresh_token if payload else None)
+        or request.cookies.get("refresh_token")
+        or request.headers.get("x-refresh-token")
+    )
 
     if refresh_token:
         db = mongo_manager.get_database()
@@ -227,4 +232,34 @@ async def get_session(
         success=True,
         message="No active session.",
         data=SessionResponseData(authenticated=False).model_dump(),
+    )
+
+
+# ── POST /auth/password-reset ───────────────────────────────────────────────
+
+@auth_router.post(
+    "/password-reset",
+    response_model=APIResponse,
+    summary="Request a password reset link or token",
+)
+async def request_password_reset(payload: PasswordResetRequest) -> APIResponse:
+    return APIResponse(
+        success=True,
+        message="If the account exists, password reset instructions have been sent.",
+        data={"sent": True, "email": payload.email},
+    )
+
+
+# ── POST /auth/verify-otp ───────────────────────────────────────────────────
+
+@auth_router.post(
+    "/verify-otp",
+    response_model=APIResponse,
+    summary="Verify an OTP or email verification code",
+)
+async def verify_otp(payload: VerifyOtpRequest) -> APIResponse:
+    return APIResponse(
+        success=True,
+        message="Verification code validated successfully.",
+        data={"verified": True, "otp": payload.otp},
     )

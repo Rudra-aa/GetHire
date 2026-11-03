@@ -5,12 +5,13 @@ REST API endpoints for Immutable Evaluation History.
 """
 
 from typing import List
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Path, Query, status
 from app.db.mongo import mongo_manager
 from app.dependencies.auth import get_current_active_user
 from app.models.user import UserModel
 from app.schemas.base import APIResponse
 from app.schemas.evaluation_report import EvaluationReportOut
+from app.schemas.hirescore import ReadinessDetailsOut
 from app.services.evaluation_report_service import (
     generate_evaluation_report,
     get_evaluation_history,
@@ -20,6 +21,7 @@ from app.services.evaluation_report_service import (
 evaluation_reports_router = APIRouter()
 
 def _format_out(m) -> EvaluationReportOut:
+    readiness_data = m.readiness.model_dump() if hasattr(m.readiness, "model_dump") else m.readiness
     return EvaluationReportOut(
         id=str(m.id),
         candidate_id=m.candidate_id,
@@ -36,7 +38,7 @@ def _format_out(m) -> EvaluationReportOut:
         facesense_score=m.facesense_score,
         voicesense_score=m.voicesense_score,
         hirescore=m.hirescore,
-        readiness=m.readiness,
+        readiness=ReadinessDetailsOut(**readiness_data),
         strengths=m.strengths,
         weaknesses=m.weaknesses,
         recommendations=m.recommendations,
@@ -60,19 +62,42 @@ async def generate_report(current_user: UserModel = Depends(get_current_active_u
     )
 
 @evaluation_reports_router.get("/history", response_model=APIResponse, summary="Get Evaluation History")
-async def get_history(current_user: UserModel = Depends(get_current_active_user)):
+async def get_history(
+    limit: int = Query(default=50, ge=1, le=100, description="Max history items"),
+    current_user: UserModel = Depends(get_current_active_user),
+):
     db = mongo_manager.get_database()
-    history = await get_evaluation_history(db, str(current_user.id))
+    history = await get_evaluation_history(db, str(current_user.id), limit=limit)
     return APIResponse(
         success=True,
         message="Evaluation history retrieved successfully.",
         data=[_format_out(h).model_dump() for h in history]
     )
 
-@evaluation_reports_router.get("/{report_id}", response_model=APIResponse, summary="Get exact Evaluation Report")
-async def get_report_by_id(report_id: str, current_user: UserModel = Depends(get_current_active_user)):
+@evaluation_reports_router.get("/session/{session_id}", response_model=APIResponse, summary="Get Evaluation Report by Interview Session ID")
+async def get_report_by_session_id(
+    session_id: str = Path(..., min_length=1, max_length=100, pattern=r"^[0-9a-zA-Z_\-]+$", description="Interview Session ID"),
+    current_user: UserModel = Depends(get_current_active_user),
+):
     db = mongo_manager.get_database()
-    report = await get_evaluation_report(db, str(current_user.id), report_id)
+    is_admin = current_user.role == "admin"
+    report = await get_evaluation_report(db, str(current_user.id), session_id, is_admin=is_admin)
+    if not report:
+        raise HTTPException(status_code=404, detail={"success": False, "message": "Evaluation Report not found for session."})
+    return APIResponse(
+        success=True,
+        message="Report retrieved successfully.",
+        data=_format_out(report).model_dump()
+    )
+
+@evaluation_reports_router.get("/{report_id}", response_model=APIResponse, summary="Get exact Evaluation Report")
+async def get_report_by_id(
+    report_id: str = Path(..., pattern=r"^[0-9a-fA-F]{24}$", description="Evaluation Report 24-hex ObjectId"),
+    current_user: UserModel = Depends(get_current_active_user),
+):
+    db = mongo_manager.get_database()
+    is_admin = current_user.role == "admin"
+    report = await get_evaluation_report(db, str(current_user.id), report_id, is_admin=is_admin)
     if not report:
         raise HTTPException(status_code=404, detail={"success": False, "message": "Evaluation Report not found."})
     return APIResponse(

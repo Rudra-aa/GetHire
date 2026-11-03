@@ -92,11 +92,30 @@ async def get_interview_session(
     db: AsyncIOMotorDatabase,
     session_id: str,
     user_id: str,
+    is_admin: bool = False,
 ) -> Optional[InterviewSessionModel]:
-    """Retrieve an interview session ensuring user ownership."""
+    """Retrieve an interview session ensuring user ownership or administrator access."""
     if not ObjectId.is_valid(session_id):
-        return None
-    doc = await db["interview_sessions"].find_one({"_id": ObjectId(session_id), "user_id": user_id})
+        query = {"session_id": session_id}
+        if not is_admin:
+            query["user_id"] = user_id
+        doc = await db["interview_sessions"].find_one(query)
+        if not doc:
+            query = {"id": session_id}
+            if not is_admin:
+                query["user_id"] = user_id
+            doc = await db["interview_sessions"].find_one(query)
+        return InterviewSessionModel(**doc) if doc else None
+
+    query = {"_id": ObjectId(session_id)}
+    if not is_admin:
+        query["user_id"] = user_id
+    doc = await db["interview_sessions"].find_one(query)
+    if not doc:
+        alt_query = {"$or": [{"session_id": session_id}, {"id": session_id}]}
+        if not is_admin:
+            alt_query["user_id"] = user_id
+        doc = await db["interview_sessions"].find_one(alt_query)
     return InterviewSessionModel(**doc) if doc else None
 
 
@@ -105,11 +124,12 @@ async def update_session_state(
     session_id: str,
     user_id: str,
     payload: UpdateSessionStateRequest,
+    is_admin: bool = False,
 ) -> InterviewSessionModel:
     """
     Update session progression, active question index, timer, and state.
     """
-    session = await get_interview_session(db, session_id, user_id)
+    session = await get_interview_session(db, session_id, user_id, is_admin=is_admin)
     if not session:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -139,12 +159,16 @@ async def update_session_state(
     if payload.elapsed_seconds is not None:
         updates["elapsed_seconds"] = payload.elapsed_seconds
 
+    filter_query = {"_id": ObjectId(session_id)} if ObjectId.is_valid(session_id) else {"session_id": session_id}
+    if not is_admin:
+        filter_query["user_id"] = user_id
+
     await db["interview_sessions"].update_one(
-        {"_id": ObjectId(session_id)},
+        filter_query,
         {"$set": updates},
     )
 
-    updated_doc = await db["interview_sessions"].find_one({"_id": ObjectId(session_id)})
+    updated_doc = await db["interview_sessions"].find_one(filter_query)
     return InterviewSessionModel(**updated_doc)  # type: ignore[arg-type]
 
 
@@ -152,11 +176,12 @@ async def complete_interview_session(
     db: AsyncIOMotorDatabase,
     session_id: str,
     user_id: str,
+    is_admin: bool = False,
 ) -> InterviewSessionModel:
     """
     Finalize an interview session and mark as completed.
     """
-    session = await get_interview_session(db, session_id, user_id)
+    session = await get_interview_session(db, session_id, user_id, is_admin=is_admin)
     if not session:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -171,20 +196,24 @@ async def complete_interview_session(
         "updated_at": now,
     }
 
+    filter_query = {"_id": ObjectId(session_id)} if ObjectId.is_valid(session_id) else {"session_id": session_id}
+    if not is_admin:
+        filter_query["user_id"] = user_id
+
     await db["interview_sessions"].update_one(
-        {"_id": ObjectId(session_id)},
+        filter_query,
         {"$set": updates},
     )
 
     # 1. Publish Event to Event Bus
     from app.core.event_bus import event_bus
     from app.domains.candidate_graph.graph_service import candidate_graph_service
-    await event_bus.publish("InterviewCompleted", {"session_id": session_id, "user_id": user_id})
+    await event_bus.publish("InterviewCompleted", {"session_id": session_id, "user_id": session.user_id})
 
     # 2. Append node to Candidate Intelligence Graph
     await candidate_graph_service.update_graph_nodes(
         db=db,
-        user_id=user_id,
+        user_id=session.user_id,
         new_nodes=[
             {
                 "id": f"int_{session_id}",
@@ -195,7 +224,7 @@ async def complete_interview_session(
         ],
         new_edges=[
             {
-                "source_id": f"u_{user_id}",
+                "source_id": f"u_{session.user_id}",
                 "target_id": f"int_{session_id}",
                 "relation": "completed_interview",
                 "weight": 1.0,
@@ -206,18 +235,18 @@ async def complete_interview_session(
     # 3. Auto-evaluate conversational turns and recompute candidate HireScore
     try:
         from app.services.evaluation_service import evaluate_session_all_answers
-        await evaluate_session_all_answers(db, session_id, user_id)
+        await evaluate_session_all_answers(db, session_id, session.user_id, is_admin=is_admin)
     except Exception as eval_err:
         logger.warning("Auto evaluation on interview completion notice", session_id=session_id, error=str(eval_err))
 
     try:
         from app.services.hire_score_engine import get_or_compute_user_hirescore
-        await get_or_compute_user_hirescore(db, user_id=user_id, session_id=session_id, force_recompute=True)
+        await get_or_compute_user_hirescore(db, user_id=session.user_id, session_id=session_id, force_recompute=True)
     except Exception as hs_err:
         logger.warning("Auto HireScore recompute on interview completion notice", session_id=session_id, error=str(hs_err))
 
-    updated_doc = await db["interview_sessions"].find_one({"_id": ObjectId(session_id)})
-    logger.info("Completed interview session & updated Candidate Graph", session_id=session_id, user_id=user_id)
+    updated_doc = await db["interview_sessions"].find_one(filter_query)
+    logger.info("Completed interview session & updated Candidate Graph", session_id=session_id, user_id=session.user_id)
     return InterviewSessionModel(**updated_doc)  # type: ignore[arg-type]
 
 

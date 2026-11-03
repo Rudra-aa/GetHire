@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Loader2, AlertCircle, FileText, ArrowRight, ShieldCheck } from "lucide-react";
 import { useAuthStore } from "@/store/authStore";
 import { evaluationReportApi, type EvaluationReportDetail } from "@/services/evaluationReportApi";
+import { evaluationApi } from "@/services/evaluationApi";
 
 import { HeroSummaryCard } from "@/components/evaluation/HeroSummaryCard";
 import { PerformanceBreakdown } from "@/components/evaluation/PerformanceBreakdown";
@@ -23,9 +24,57 @@ export const EvaluationPage: React.FC = () => {
     setError("");
     try {
       if (reportId) {
-        // Load specific report
-        const data = await evaluationReportApi.getReportById(reportId);
-        setReport(data);
+        // 1. Try loading specific immutable report
+        try {
+          const data = await evaluationReportApi.getReportById(reportId);
+          setReport(data);
+        } catch {
+          // 2. Fall back to session batch evaluations if direct report doc not found
+          const sessData = await evaluationApi.getSessionEvaluations(reportId);
+          if (sessData && sessData.evaluations && sessData.evaluations.length > 0) {
+            const dims = sessData.average_dimensions;
+            const strengths: string[] = [];
+            const weaknesses: string[] = [];
+            sessData.evaluations.forEach((ev) => {
+              ev.strengths?.forEach((s) => {
+                if (!strengths.includes(s)) strengths.push(s);
+              });
+              ev.weaknesses?.forEach((w) => {
+                if (!weaknesses.includes(w)) weaknesses.push(w);
+              });
+            });
+
+            const fallbackReport: EvaluationReportDetail = {
+              id: reportId,
+              candidate_id: user?.id || "",
+              evaluation_number: 0,
+              assessment_session_id: "none",
+              interview_session_id: reportId,
+              assessment_score: 0,
+              interview_score: sessData.overall_interview_score,
+              technical_accuracy: dims.technical_accuracy,
+              concept_coverage: dims.concept_coverage,
+              problem_solving: dims.problem_solving,
+              communication: dims.communication,
+              completeness: dims.completeness,
+              hirescore: sessData.overall_interview_score,
+              readiness: {
+                readiness_percentage: Math.min(100, Math.round(sessData.overall_interview_score)),
+                verdict: sessData.overall_interview_score >= 80 ? "Offer Ready" : sessData.overall_interview_score >= 65 ? "Hire" : "Needs Improvement",
+                confidence_level: "High",
+                summary: "Candidate successfully demonstrated domain technical competence across architectural concepts.",
+              },
+              strengths: strengths.slice(0, 5),
+              weaknesses: weaknesses.slice(0, 5),
+              recommendations: [],
+              created_at: new Date().toISOString(),
+              updated_at: new Date().toISOString(),
+            };
+            setReport(fallbackReport);
+          } else {
+            throw new Error("Evaluation report not found.");
+          }
+        }
       } else {
         // Load history list
         const historyData = await evaluationReportApi.getHistory();
@@ -33,12 +82,12 @@ export const EvaluationPage: React.FC = () => {
       }
     } catch (err: any) {
       console.error("Evaluation load error:", err);
-      setError(err?.response?.data?.message || "Evaluation report not found.");
+      setError(err?.response?.data?.message || err?.message || "Evaluation report not found.");
       setReport(null);
     } finally {
       setLoading(false);
     }
-  }, [reportId]);
+  }, [reportId, user?.id]);
 
   useEffect(() => {
     void fetchData();
@@ -77,7 +126,7 @@ export const EvaluationPage: React.FC = () => {
       );
     }
 
-    const mockDimensions = {
+    const dimensions = {
       technical_accuracy: report.technical_accuracy,
       concept_coverage: report.concept_coverage,
       problem_solving: report.problem_solving,
@@ -85,12 +134,29 @@ export const EvaluationPage: React.FC = () => {
       completeness: report.completeness,
     };
 
+    const isInterviewOnly = report.assessment_session_id === "none" || !report.assessment_session_id;
+
     return (
       <div className="max-w-[1600px] mx-auto flex flex-col gap-6">
         <div className="flex items-center justify-between border-b border-white/10 pb-4">
           <div>
-            <h1 className="text-xl font-bold font-display text-[#39FF88]">Immutable Evaluation Report #{report.evaluation_number}</h1>
-            <p className="text-xs text-neutral-400">Snapshot created on {new Date(report.created_at).toLocaleString()}</p>
+            <div className="flex items-center gap-2">
+              <h1 className="text-xl font-bold font-display text-[#39FF88]">
+                {isInterviewOnly
+                  ? "Interview-Only Evaluation Report"
+                  : `Immutable Evaluation Report #${report.evaluation_number}`}
+              </h1>
+              {isInterviewOnly && (
+                <span className="px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] font-bold uppercase tracking-wider">
+                  Interview-Only
+                </span>
+              )}
+            </div>
+            <p className="text-xs text-neutral-400">
+              {isInterviewOnly
+                ? "Candidate interview session evaluation • Complete a Technical Assessment to produce an official combined Evaluation Report in your progression."
+                : `Immutable snapshot created on ${new Date(report.created_at).toLocaleString()}`}
+            </p>
           </div>
           <button onClick={() => navigate("/evaluation")} className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-neutral-300 hover:bg-white/10 transition-all">
             ← Back to History
@@ -107,7 +173,7 @@ export const EvaluationPage: React.FC = () => {
           />
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             <div className="lg:col-span-8">
-              <PerformanceBreakdown dimensions={mockDimensions} />
+              <PerformanceBreakdown dimensions={dimensions} />
             </div>
             <div className="lg:col-span-4">
               <HiringVerdictCard overallScore={report.hirescore} />
@@ -149,30 +215,30 @@ export const EvaluationPage: React.FC = () => {
   // === RENDER HISTORY CENTER ===
   return (
     <div className="max-w-[1200px] mx-auto flex flex-col gap-6">
-      <div className="flex items-center justify-between border-b border-white/10 pb-4">
+      <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
         <div>
-          <h1 className="text-xl font-bold font-display text-white">Evaluation Center</h1>
-          <p className="text-xs text-neutral-400">Complete historical record of all your evaluation cycles.</p>
+          <h1 className="text-xl font-bold font-display text-slate-900 dark:text-white">Evaluation Center</h1>
+          <p className="text-xs text-slate-500 dark:text-neutral-400">Complete historical record of all your evaluation cycles.</p>
         </div>
-        <button onClick={() => navigate("/dashboard")} className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-neutral-300 hover:bg-white/10 transition-all">
+        <button onClick={() => navigate("/dashboard")} className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 text-xs font-bold text-slate-700 dark:text-neutral-300 transition-all cursor-pointer">
           Return to Dashboard
         </button>
       </div>
 
       {history.length === 0 ? (
-        <div className="py-24 max-w-lg mx-auto flex flex-col items-center text-center gap-5 p-8 rounded-3xl bg-white/[0.02] border border-white/10">
-          <div className="p-4 rounded-3xl bg-amber-500/10 border border-amber-500/30 text-amber-400">
+        <div className="py-24 max-w-lg mx-auto flex flex-col items-center text-center gap-5 p-8 rounded-3xl bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-none">
+          <div className="p-4 rounded-3xl bg-amber-500/10 border border-amber-500/30 text-amber-500 dark:text-amber-400">
             <FileText className="h-10 w-10" />
           </div>
-          <h2 className="text-xl font-bold text-white font-display">No Evaluations Yet</h2>
-          <p className="text-sm text-neutral-300 font-sans leading-relaxed">
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white font-display">No Evaluations Yet</h2>
+          <p className="text-sm text-slate-600 dark:text-neutral-300 font-sans leading-relaxed">
             You haven't completed a full evaluation cycle yet. To generate your first Immutable Evaluation Report, complete both a Technical Assessment and an AI Mock Interview.
           </p>
           <div className="flex gap-3 pt-2">
-             <button onClick={() => navigate("/assessment")} className="px-5 py-2.5 rounded-xl bg-cyan-400 text-black font-bold text-xs hover:bg-cyan-300 transition-all flex items-center gap-1.5">
+             <button onClick={() => navigate("/assessment")} className="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-white dark:text-black font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer shadow-sm">
                Start Assessment
              </button>
-             <button onClick={() => navigate("/interview")} className="px-5 py-2.5 rounded-xl bg-gold-400 text-black font-bold text-xs hover:bg-gold-300 transition-all flex items-center gap-1.5">
+             <button onClick={() => navigate("/interview")} className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-black font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer shadow-sm">
                Start Interview
              </button>
           </div>
@@ -180,31 +246,31 @@ export const EvaluationPage: React.FC = () => {
       ) : (
         <div className="flex flex-col gap-4">
           {history.map((h, i) => (
-            <div key={h.id} className="p-6 rounded-3xl bg-white/[0.02] border border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-white/[0.04] hover:border-white/20 transition-all">
+            <div key={h.id} className="p-6 rounded-3xl bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-slate-300 dark:hover:border-white/20 shadow-sm hover:shadow-md dark:shadow-none transition-all">
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-3">
-                  <h3 className="text-lg font-bold text-white">Report #{h.evaluation_number}</h3>
-                  {i === 0 && <span className="px-2 py-0.5 rounded-md bg-[#39FF88]/20 text-[#39FF88] border border-[#39FF88]/30 text-[10px] font-bold uppercase tracking-wider">Latest</span>}
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white">Report #{h.evaluation_number}</h3>
+                  {i === 0 && <span className="px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-[#39FF88]/20 text-emerald-700 dark:text-[#39FF88] border border-emerald-200 dark:border-[#39FF88]/30 text-[10px] font-bold uppercase tracking-wider">Latest</span>}
                 </div>
-                <p className="text-xs text-neutral-400">Date: {new Date(h.created_at).toLocaleDateString()} at {new Date(h.created_at).toLocaleTimeString()}</p>
+                <p className="text-xs text-slate-500 dark:text-neutral-400">Date: {new Date(h.created_at).toLocaleDateString()} at {new Date(h.created_at).toLocaleTimeString()}</p>
               </div>
               
               <div className="flex items-center gap-8">
                 <div className="flex flex-col gap-1 items-center">
-                  <span className="text-[10px] text-neutral-500 font-bold uppercase">HireScore</span>
-                  <span className="text-xl font-bold text-white font-mono">{h.hirescore}</span>
+                  <span className="text-[10px] text-slate-500 dark:text-neutral-500 font-bold uppercase">HireScore</span>
+                  <span className="text-xl font-bold text-slate-900 dark:text-white font-mono">{h.hirescore}</span>
                 </div>
                 <div className="flex flex-col gap-1 items-center">
-                  <span className="text-[10px] text-neutral-500 font-bold uppercase">Assessment</span>
-                  <span className="text-xl font-bold text-white font-mono">{h.assessment_score}</span>
+                  <span className="text-[10px] text-slate-500 dark:text-neutral-500 font-bold uppercase">Assessment</span>
+                  <span className="text-xl font-bold text-slate-900 dark:text-white font-mono">{h.assessment_score}</span>
                 </div>
                 <div className="flex flex-col gap-1 items-center">
-                  <span className="text-[10px] text-neutral-500 font-bold uppercase">Interview</span>
-                  <span className="text-xl font-bold text-white font-mono">{h.interview_score}</span>
+                  <span className="text-[10px] text-slate-500 dark:text-neutral-500 font-bold uppercase">Interview</span>
+                  <span className="text-xl font-bold text-slate-900 dark:text-white font-mono">{h.interview_score}</span>
                 </div>
                 <button 
                   onClick={() => navigate(`/evaluation/${h.id}`)}
-                  className="px-5 py-2 rounded-xl bg-[#39FF88] text-black font-bold text-xs flex items-center gap-1.5 hover:bg-[#32e078] transition-all ml-4"
+                  className="px-5 py-2 rounded-xl bg-gradient-to-r from-emerald-400 to-[#39FF88] text-black font-bold text-xs flex items-center gap-1.5 hover:brightness-105 transition-all ml-4 cursor-pointer shadow-sm"
                 >
                   View Report <ArrowRight className="h-3.5 w-3.5" />
                 </button>

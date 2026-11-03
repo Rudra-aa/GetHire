@@ -6,10 +6,22 @@ Pydantic schemas for Authentication endpoints (register, login, refresh, session
 
 from __future__ import annotations
 
+import re
 from typing import Optional
 from pydantic import BaseModel, EmailStr, Field, field_validator
 
 from app.schemas.user import UserSummary
+
+
+_URL_REGEX = re.compile(
+    r"^https?:\/\/"
+    r"(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+[A-Z]{2,63}\.?|"
+    r"localhost|"
+    r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})"
+    r"(?::\d+)?"
+    r"(?:/?|[/?]\S+)$",
+    re.IGNORECASE,
+)
 
 
 # ── Request Payloads ────────────────────────────────────────────────────────
@@ -18,12 +30,22 @@ class RegisterRequest(BaseModel):
     """
     User registration payload with strict password complexity rules.
     """
-    email: EmailStr = Field(description="User email address")
+    email: EmailStr = Field(max_length=255, description="User email address")
     password: str = Field(min_length=8, max_length=72, description="Plaintext password")
     full_name: str = Field(min_length=2, max_length=100, description="Full name")
-    target_role: Optional[str] = Field(default="Frontend Developer", description="Target job role")
-    experience_level: Optional[str] = Field(default="entry", description="Experience level: entry | mid | senior")
-    linkedin_url: Optional[str] = Field(default=None, description="LinkedIn profile URL")
+    target_role: Optional[str] = Field(default="Frontend Developer", max_length=100, description="Target job role")
+    experience_level: Optional[str] = Field(default="entry", max_length=20, description="Experience level: entry | mid | senior")
+    linkedin_url: Optional[str] = Field(default=None, max_length=500, description="LinkedIn profile URL")
+
+    @field_validator("linkedin_url")
+    @classmethod
+    def validate_linkedin_url(cls, v: Optional[str]) -> Optional[str]:
+        if v is not None and v.strip() != "":
+            val = v.strip()
+            if not _URL_REGEX.match(val) or any(val.lower().startswith(b) for b in ("javascript:", "data:", "vbscript:")):
+                raise ValueError("Invalid URL format. LinkedIn URL must start with http:// or https://")
+            return val
+        return None
 
     @field_validator("password")
     @classmethod
@@ -66,8 +88,30 @@ class LoginRequest(BaseModel):
     """
     Login credentials payload.
     """
-    email: EmailStr = Field(description="Account email address")
-    password: str = Field(min_length=1, description="Account password")
+    email: EmailStr = Field(max_length=255, description="Account email address")
+    password: str = Field(min_length=1, max_length=256, description="Account password")
+
+
+class PasswordResetRequest(BaseModel):
+    """
+    Password reset request payload.
+    """
+    email: EmailStr = Field(max_length=255, description="Account email address")
+
+
+class VerifyOtpRequest(BaseModel):
+    """
+    OTP / email verification payload.
+    """
+    email: Optional[EmailStr] = Field(default=None, max_length=255, description="Account email address")
+    otp: str = Field(min_length=4, max_length=10, pattern=r"^[0-9A-Za-z]+$", description="OTP verification code")
+
+
+class TokenRefreshRequest(BaseModel):
+    """
+    Token refresh request payload when passed via JSON body.
+    """
+    refresh_token: Optional[str] = Field(default=None, min_length=10, max_length=1024, description="Refresh token")
 
 
 # ── Response Data Payloads ──────────────────────────────────────────────────

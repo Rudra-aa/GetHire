@@ -26,6 +26,7 @@ class InterviewIntelligenceEngine:
         total_questions: int,
         turn_evaluation: Dict[str, Any],
         rubric: Dict[str, Any],
+        question_turn_count: int = 0,
     ) -> Dict[str, Any]:
         """Determines next interview turn decision based on evaluation verdict and rubric."""
         verdict = turn_evaluation.get("verdict", "Average")
@@ -37,20 +38,45 @@ class InterviewIntelligenceEngine:
             current_index=current_question_index,
             verdict=verdict,
             score=score,
+            question_turn_count=question_turn_count,
         )
 
-        if is_last_question and score >= 70:
+        # If on the last question, complete after first answer if excellent or after 1 follow-up
+        if is_last_question and (score >= 85 or question_turn_count >= 1):
             return {
                 "action": "complete_interview",
-                "reason": "All blueprint questions completed successfully.",
+                "reason": "All blueprint questions completed.",
                 "follow_up_prompt": None,
             }
 
-        # Decision Tree Logic
-        if score >= 85:
+        # If we have already asked a follow-up on this question, advance to next topic
+        if question_turn_count >= 1:
+            next_idx = current_question_index + 1
+            if next_idx >= total_questions:
+                return {
+                    "action": "complete_interview",
+                    "reason": "All blueprint questions completed.",
+                    "follow_up_prompt": None,
+                }
             return {
                 "action": "advance_question",
-                "next_question_index": current_question_index + 1,
+                "next_question_index": next_idx,
+                "reason": "Follow-up completed. Advancing to next topic.",
+                "follow_up_prompt": None,
+            }
+
+        # Decision Tree for First Answer on this Question
+        if score >= 85:
+            next_idx = current_question_index + 1
+            if next_idx >= total_questions:
+                return {
+                    "action": "complete_interview",
+                    "reason": "All blueprint questions completed.",
+                    "follow_up_prompt": None,
+                }
+            return {
+                "action": "advance_question",
+                "next_question_index": next_idx,
                 "reason": "Excellent answer. Advancing to next topic.",
                 "follow_up_prompt": None,
             }

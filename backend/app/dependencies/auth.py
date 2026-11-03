@@ -99,13 +99,19 @@ async def get_current_active_user(
 def require_roles(*allowed_roles: str) -> Callable[[UserModel], UserModel]:
     """RBAC dependency checking required roles."""
     def dependency(current_user: UserModel = Depends(get_current_active_user)) -> UserModel:
-        if current_user.role not in allowed_roles:
+        user_role = getattr(current_user, "role", "candidate")
+        is_admin_flag = getattr(current_user, "is_admin", False) or getattr(current_user, "isAdmin", False)
+        is_allowed = (user_role in allowed_roles) or ("admin" in allowed_roles and is_admin_flag)
+        if not is_allowed:
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail={"success": False, "message": "Insufficient permissions.", "errors": [{"code": "FORBIDDEN"}]},
             )
         return current_user
     return dependency
+
+
+require_admin = require_roles("admin")
 
 
 # ── Dependency: Get Session Information ────────────────────────────────────
@@ -143,3 +149,25 @@ def get_current_session_info(request: Request) -> dict:
         "country": country,
         "user_agent": user_agent,
     }
+
+
+async def get_optional_current_user(
+    credentials: Optional[HTTPAuthorizationCredentials] = Depends(oauth2_scheme),
+) -> Optional[UserModel]:
+    """
+    Extract user from Bearer access token if present, otherwise returns None without error.
+    Used for public endpoints that have personalized or audit-aware behaviors.
+    """
+    if not credentials:
+        return None
+    try:
+        payload = decode_token(credentials.credentials)
+        user_id = payload.get("sub")
+        if not user_id or payload.get("type") != "access":
+            return None
+        db = mongo_manager.get_database()
+        user_filter = {"_id": ObjectId(user_id)} if ObjectId.is_valid(user_id) else {"_id": user_id}
+        doc = await db["users"].find_one(user_filter)
+        return UserModel(**doc) if doc else None
+    except Exception:
+        return None

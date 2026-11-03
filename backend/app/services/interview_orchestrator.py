@@ -58,6 +58,7 @@ class InterviewOrchestrator:
                     "id": "q1",
                     "position": 1,
                     "category": "System Architecture",
+                    "difficulty": "medium",
                     "question_text": f"Welcome! Let's discuss your experience as a {target_role}. What problem were you solving in your recent project, and what was your architecture role?",
                     "expected_concepts": ["FastAPI", "System Architecture", "Microservices"],
                 },
@@ -65,6 +66,7 @@ class InterviewOrchestrator:
                     "id": "q2",
                     "position": 2,
                     "category": "Database & Caching",
+                    "difficulty": "medium",
                     "question_text": "How do you handle cache stampedes and database node failovers under high concurrency?",
                     "expected_concepts": ["Redis Sentinel", "XFetch", "Read Replicas"],
                 },
@@ -102,6 +104,20 @@ class InterviewOrchestrator:
             if not session:
                 session = await db["interview_sessions"].find_one({"id": session_id})
 
+        if session:
+            sess_owner = str(session.get("user_id", ""))
+            if sess_owner and sess_owner != user_id:
+                # Verify if caller is administrator
+                user_doc = None
+                if ObjectId.is_valid(user_id):
+                    user_doc = await db["users"].find_one({"_id": ObjectId(user_id)})
+                if not (user_doc and user_doc.get("role") == "admin"):
+                    from fastapi import HTTPException, status
+                    raise HTTPException(
+                        status_code=status.HTTP_404_NOT_FOUND,
+                        detail={"success": False, "message": "Interview session not found.", "errors": [{"code": "NOT_FOUND"}]},
+                    )
+
         if not session:
             # Generate Gemini response even if session is unpersisted demo session
             ai_turn = await gemini_live_provider.generate_turn_response(
@@ -127,7 +143,65 @@ class InterviewOrchestrator:
         questions = session.get("questions", [])
         curr_q = questions[curr_idx] if curr_idx < len(questions) else (questions[0] if questions else {})
 
-        # 1. Immediate Turn Evaluation
+        # Fetch candidate skills from latest resume for deep context
+        resume_doc = await db["resumes"].find_one({"user_id": user_id}, sort=[("created_at", -1)])
+        resume_skills = resume_doc.get("parsed_data", {}).get("skills", []) if resume_doc else []
+
+        # Check if this is the initial greeting / interview opening turn
+        is_opening_turn = (
+            candidate_transcript.strip().startswith("[Candidate has joined") or
+            candidate_transcript.strip().startswith("[Start")
+        )
+
+        if is_opening_turn:
+            logger.info("[INTERVIEW_RUNTIME] opening_turn_initializing", session_id=session_id)
+            ai_turn = await gemini_live_provider.generate_turn_response(
+                session_id=session_id,
+                current_prompt=curr_q.get("question_text", "Could you introduce yourself and walk us through your technical background?"),
+                candidate_transcript=candidate_transcript,
+                conversation_history=[],
+                context_payload={
+                    "persona": session.get("persona", {}),
+                    "target_role": session.get("target_role", "Senior Full-Stack Engineer"),
+                    "skills": resume_skills if resume_skills else ["FastAPI", "React", "MongoDB", "Redis"],
+                },
+            )
+
+            if ai_turn.get("status") == "error":
+                from fastapi import HTTPException
+                raise HTTPException(status_code=503, detail=ai_turn.get("error", "AI Provider unavailable"))
+
+            opening_text = (ai_turn.get("ai_text") or "").strip()
+            if not opening_text:
+                from fastapi import HTTPException
+                raise HTTPException(
+                    status_code=503,
+                    detail="AI provider returned an empty opening question.",
+                )
+
+            await db["interview_sessions"].update_one(
+                {"_id": session.get("_id")},
+                {
+                    "$set": {"updated_at": datetime.now(timezone.utc)},
+                    "$push": {
+                        "transcripts": {
+                            "turn": 0,
+                            "type": "opening",
+                            "ai_response": opening_text,
+                            "timestamp": datetime.now(timezone.utc).isoformat(),
+                        }
+                    },
+                },
+            )
+
+            return {
+                "session_id": session_id,
+                "ai_response": opening_text,
+                "decision": {"action": "ask_opening_question", "next_question_index": 0},
+                "status": "success",
+            }
+
+        # 1. Immediate Turn Evaluation for real candidate answer
         logger.info("[INTERVIEW_RUNTIME] context_loaded", session_id=session_id, user_id=user_id)
         eval_result = await turn_evaluator.evaluate_turn(
             db=db,
@@ -140,17 +214,23 @@ class InterviewOrchestrator:
         )
 
         # 2. Intelligence Engine Decision
-        logger.info("[INTERVIEW_RUNTIME] blueprint_loaded", curr_idx=curr_idx)
+        qid = curr_q.get("id", f"q_{curr_idx}")
+        question_turns = sum(
+            1 for t in session.get("transcripts", [])
+            if isinstance(t, dict) and t.get("question_id") == qid and not (
+                t.get("candidate_transcript", "").strip().startswith("[Candidate has joined") or
+                t.get("candidate_transcript", "").strip().startswith("[Start")
+            )
+        )
+
+        logger.info("[INTERVIEW_RUNTIME] blueprint_loaded", curr_idx=curr_idx, question_turns=question_turns)
         decision = interview_intelligence_engine.decide_next_action(
             current_question_index=curr_idx,
             total_questions=len(questions) if questions else 4,
             turn_evaluation=eval_result,
             rubric={},
+            question_turn_count=question_turns,
         )
-
-        # Fetch candidate skills from latest resume for deep context
-        resume_doc = await db["resumes"].find_one({"user_id": user_id}, sort=[("created_at", -1)])
-        resume_skills = resume_doc.get("parsed_data", {}).get("skills", []) if resume_doc else []
 
         # 3. Generate AI Turn Speech/Text via Gemini Provider
         logger.info("[INTERVIEW_RUNTIME] provider_called", provider="gemini_live")

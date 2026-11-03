@@ -98,11 +98,18 @@ export class BrowserSpeechSynthesisProvider implements ISpeechSynthesisProvider 
         return;
       }
 
+      // Fire start callback immediately — Chrome's utterance.onstart is unreliable
+      // NOTE: only fire if not already speaking to avoid duplicate state transitions
+      if (this.startCallback) this.startCallback(text);
+
       this.queue = [...chunks];
-      this.processQueue(() => {
-        if (onEnded) onEnded();
-        resolve();
-      });
+      this.processQueue(
+        () => {
+          if (onEnded) onEnded();
+          resolve();
+        },
+        resolve // resolveSpeak: called on interrupted/canceled so the await doesn't hang
+      );
     });
   }
 
@@ -119,7 +126,7 @@ export class BrowserSpeechSynthesisProvider implements ISpeechSynthesisProvider 
     }
   }
 
-  private processQueue(onCompleteAll?: () => void) {
+  private processQueue(onCompleteAll?: () => void, resolveSpeak?: () => void) {
     if (!this.isSupported() || this.queue.length === 0) {
       this.isProcessingQueue = false;
       (window as any).__activeUtterance = null;
@@ -146,8 +153,8 @@ export class BrowserSpeechSynthesisProvider implements ISpeechSynthesisProvider 
         if (!hasEnded) {
           hasEnded = true;
           this.clearWatchdogs();
-          // Process next chunk in queue
-          this.processQueue(onCompleteAll);
+          // Process next chunk in queue, forwarding both callbacks.
+          this.processQueue(onCompleteAll, resolveSpeak);
         }
       };
 
@@ -156,8 +163,26 @@ export class BrowserSpeechSynthesisProvider implements ISpeechSynthesisProvider 
       };
 
       utterance.onend = finishChunk;
-      utterance.onerror = (e) => {
-        console.warn("[BrowserSpeechSynthesis] Chunk error:", e);
+      utterance.onerror = (e: SpeechSynthesisErrorEvent) => {
+        const errorCode = (e as any).error || "unknown";
+        // 'interrupted' means cancel() was called while this utterance was playing —
+        // stop processing the queue immediately instead of advancing to the next chunk.
+        if (errorCode === "interrupted" || errorCode === "canceled") {
+          console.log(`[BrowserSpeechSynthesis] Utterance ${errorCode} — queue cleared.`);
+          if (!hasEnded) {
+            hasEnded = true;
+            this.clearWatchdogs();
+            this.isProcessingQueue = false;
+            (window as any).__activeUtterance = null;
+            // Resolve the speak() promise so any await speak() doesn't hang.
+            if (resolveSpeak) resolveSpeak();
+            // Do NOT fire endCallback here — the caller (interrupt() / submitAnswer guard)
+            // already manages the state transition to LISTENING explicitly.
+            // Firing endCallback would cause onAiSpeechFinished to double-transition.
+          }
+          return;
+        }
+        console.warn(`[BrowserSpeechSynthesis] Chunk error: ${errorCode}`, e);
         if (this.errorCallback) this.errorCallback(e);
         finishChunk();
       };
@@ -185,13 +210,20 @@ export class BrowserSpeechSynthesisProvider implements ISpeechSynthesisProvider 
       // Word count based timeout boundary (~2.5 words/sec + 2s buffer)
       const wordCount = currentChunk.split(/\s+/).length;
       const estimatedSec = Math.max(2.5, wordCount / 2.5 + 2);
-      const maxMs = Math.min(14000, estimatedSec * 1000);
-
+      const maxMs = estimatedSec * 1000;
       this.watchdogTimeout = setTimeout(() => {
         if (!hasEnded) {
           finishChunk();
         }
       }, maxMs);
+
+      if (window.speechSynthesis.paused) {
+        try {
+          window.speechSynthesis.resume();
+        } catch {
+          // Ignore
+        }
+      }
 
       window.speechSynthesis.speak(utterance);
     } catch (err) {

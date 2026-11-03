@@ -17,10 +17,13 @@ import {
   PanelLeftOpen,
   User,
   CheckSquare,
-  Share2
+  Share2,
+  RotateCcw
 } from "lucide-react";
 import { useAuthStore } from "@/store/authStore";
 import { GetHireLogo } from "@/components/common/GetHireLogo";
+import { ThemeToggle } from "@/components/common/ThemeToggle";
+import { ResetProgressModal } from "@/components/dashboard/ResetProgressModal";
 
 interface SidebarProps {
   collapsed: boolean;
@@ -50,6 +53,7 @@ export const DashboardSidebar = memo(function DashboardSidebar({
   const navigate = useNavigate();
   const { user, logout } = useAuthStore();
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [showResetModal, setShowResetModal] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   const initials = user?.full_name
@@ -97,13 +101,16 @@ export const DashboardSidebar = memo(function DashboardSidebar({
         <div className="flex items-center justify-between px-2 pt-2">
           <GetHireLogo to="/dashboard" size="md" showText={!collapsed} />
 
-          <button
-            onClick={onToggle}
-            className="p-1.5 rounded-lg text-neutral-400 hover:text-white hover:bg-white/[0.06] transition-colors"
-            title={collapsed ? "Expand Sidebar" : "Collapse Sidebar"}
-          >
-            {collapsed ? <PanelLeftOpen className="h-4 w-4 text-[#39FF88]" /> : <PanelLeftClose className="h-4 w-4" />}
-          </button>
+          <div className="flex items-center gap-1">
+            <ThemeToggle compact={true} />
+            <button
+              onClick={onToggle}
+              className="p-1.5 rounded-lg text-neutral-400 hover:text-white hover:bg-white/[0.06] transition-colors"
+              title={collapsed ? "Expand Sidebar" : "Collapse Sidebar"}
+            >
+              {collapsed ? <PanelLeftOpen className="h-4 w-4 text-[#39FF88]" /> : <PanelLeftClose className="h-4 w-4" />}
+            </button>
+          </div>
         </div>
 
         <nav className="flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-250px)] scrollbar-none">
@@ -119,13 +126,13 @@ export const DashboardSidebar = memo(function DashboardSidebar({
                 to={item.path}
                 className={`relative flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all group ${
                   isActive
-                    ? "bg-emerald-500/10 text-[#39FF88] border border-emerald-500/20 shadow-[0_0_15px_rgba(57,255,136,0.1)]"
-                    : "text-neutral-400 hover:text-white hover:bg-white/[0.04]"
+                    ? "bg-emerald-500/10 text-emerald-700 dark:text-[#39FF88] border border-emerald-500/30 dark:border-emerald-500/20 shadow-sm dark:shadow-[0_0_15px_rgba(57,255,136,0.1)]"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-white/[0.04]"
                 }`}
                 title={collapsed ? item.label : undefined}
               >
                 <div className="flex items-center gap-3">
-                  <Icon className={`h-4 w-4 shrink-0 ${isActive ? "text-[#39FF88]" : "text-neutral-400 group-hover:text-white"}`} />
+                  <Icon className={`h-4 w-4 shrink-0 ${isActive ? "text-emerald-600 dark:text-[#39FF88]" : "text-slate-400 dark:text-neutral-400 group-hover:text-slate-900 dark:group-hover:text-white"}`} />
 
                   {!collapsed && (
                     <span className="truncate">
@@ -135,7 +142,7 @@ export const DashboardSidebar = memo(function DashboardSidebar({
                 </div>
 
                 {isActive && !collapsed && (
-                  <ArrowRight className="h-3.5 w-3.5 text-[#39FF88]" />
+                  <ArrowRight className="h-3.5 w-3.5 text-emerald-600 dark:text-[#39FF88]" />
                 )}
               </Link>
             );
@@ -143,14 +150,14 @@ export const DashboardSidebar = memo(function DashboardSidebar({
         </nav>
       </div>
 
-      <div className="flex flex-col gap-3 pt-3 border-t border-white/[0.08]">
+      <div className="flex flex-col gap-3 pt-3 border-t border-slate-200 dark:border-white/[0.08]">
         <div ref={menuRef} className="relative">
           <button
             onClick={() => setUserMenuOpen((prev) => !prev)}
-            className="w-full flex items-center justify-between p-2 rounded-xl hover:bg-white/[0.06] transition-all text-left group"
+            className="w-full flex items-center justify-between p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-all text-left group"
           >
             <div className="flex items-center gap-2.5 min-w-0">
-              <div className="relative h-8 w-8 rounded-full bg-neutral-800 border border-white/10 flex items-center justify-center text-xs font-bold text-white shrink-0">
+              <div className="relative h-8 w-8 rounded-full bg-neutral-800 border border-slate-200 dark:border-white/10 flex items-center justify-center text-xs font-bold text-white shrink-0">
                 {user?.profile_photo || user?.avatar_url ? (
                   <img
                     src={user.profile_photo || user.avatar_url || undefined}
@@ -165,10 +172,10 @@ export const DashboardSidebar = memo(function DashboardSidebar({
 
               {!collapsed && (
                 <div className="flex flex-col min-w-0">
-                  <span className="text-xs font-bold text-white truncate">
+                  <span className="text-xs font-bold text-slate-900 dark:text-white truncate">
                     {user?.full_name?.split(" ")[0] || "Rudra"}
                   </span>
-                  <span className="text-[10px] text-neutral-400 truncate">
+                  <span className="text-[10px] text-slate-500 dark:text-neutral-400 truncate">
                     {user?.target_role || "Frontend Developer"}
                   </span>
                 </div>
@@ -176,7 +183,7 @@ export const DashboardSidebar = memo(function DashboardSidebar({
             </div>
 
             {!collapsed && (
-              <ChevronDown className="h-3.5 w-3.5 text-neutral-400" />
+              <ChevronDown className="h-3.5 w-3.5 text-slate-400 dark:text-neutral-400" />
             )}
           </button>
 
@@ -187,19 +194,29 @@ export const DashboardSidebar = memo(function DashboardSidebar({
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 8, scale: 0.96 }}
                 transition={{ duration: 0.16 }}
-                className="absolute bottom-12 left-0 right-0 min-w-[190px] p-2 rounded-2xl bg-[#111217] border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-50 flex flex-col gap-1"
+                className="absolute bottom-12 left-0 right-0 min-w-[190px] p-2 rounded-2xl bg-white dark:bg-[#111217] border border-slate-200 dark:border-white/15 shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-50 flex flex-col gap-1"
               >
                 <Link
                   to="/profile"
                   onClick={() => setUserMenuOpen(false)}
-                  className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs text-neutral-300 hover:text-white hover:bg-white/[0.08]"
+                  className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs text-slate-700 hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-white/[0.08]"
                 >
-                  <User className="h-3.5 w-3.5 text-[#39FF88]" />
+                  <User className="h-3.5 w-3.5 text-emerald-600 dark:text-[#39FF88]" />
                   <span>Profile Settings</span>
                 </Link>
                 <button
+                  onClick={() => {
+                    setUserMenuOpen(false);
+                    setShowResetModal(true);
+                  }}
+                  className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 hover:bg-amber-500/10 w-full text-left font-medium cursor-pointer"
+                >
+                  <RotateCcw className="h-3.5 w-3.5 text-amber-500 dark:text-amber-400" />
+                  <span>Reset Progress</span>
+                </button>
+                <button
                   onClick={handleSignOut}
-                  className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-rose-400 hover:bg-rose-500/10 w-full text-left"
+                  className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-rose-500 dark:text-rose-400 hover:bg-rose-500/10 w-full text-left cursor-pointer"
                 >
                   <LogOut className="h-3.5 w-3.5" />
                   <span>Sign Out</span>
@@ -209,14 +226,23 @@ export const DashboardSidebar = memo(function DashboardSidebar({
           </AnimatePresence>
         </div>
 
+        <ResetProgressModal
+          isOpen={showResetModal}
+          onClose={() => setShowResetModal(false)}
+          onResetSuccess={() => {
+            navigate("/dashboard");
+            window.location.reload();
+          }}
+        />
+
         {!collapsed && (
-          <div className="flex items-center gap-2 px-2 py-1.5 text-xs text-neutral-400">
-            <Headphones className="h-4 w-4 text-neutral-400 shrink-0" />
+          <div className="flex items-center gap-2 px-2 py-1.5 text-xs text-slate-500 dark:text-neutral-400">
+            <Headphones className="h-4 w-4 text-slate-400 dark:text-neutral-400 shrink-0" />
             <div className="flex flex-col text-[11px]">
               <span>Need Help?</span>
               <a
                 href="mailto:support@gethire.ai"
-                className="text-[#39FF88] hover:underline font-medium"
+                className="text-emerald-600 dark:text-[#39FF88] hover:underline font-medium"
               >
                 Contact Support
               </a>

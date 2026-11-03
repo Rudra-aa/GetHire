@@ -16,6 +16,8 @@ interface VoiceMeetGridProps {
   isSpeakingAi?: boolean;
   onRepeatAudio?: () => void;
   onInterrupt?: () => void;
+  onRetry?: (() => void) | undefined;
+  errorMessage?: string | undefined;
 }
 
 export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
@@ -30,6 +32,8 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
   isSpeakingAi = false,
   onRepeatAudio,
   onInterrupt,
+  onRetry,
+  errorMessage,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [streamActive, setStreamActive] = useState(false);
@@ -220,6 +224,8 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
     state === "FOLLOW_UP_DECISION" ||
     state === "AUTO_SUBMITTING" ||
     state === "AI_THINKING";
+  const isPreparingFirstQuestion =
+    state === "INITIALIZING" || state === "GENERATING_FIRST_QUESTION";
 
   return (
     <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
@@ -244,14 +250,26 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
             )}
             <span
               className={`px-3.5 py-1 rounded-full font-mono text-[10px] font-bold uppercase border transition-all ${
-                isAiSpeaking
+                state === "INITIALIZING"
+                  ? "bg-blue-500/20 text-blue-300 border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.3)] animate-pulse"
+                  : state === "GENERATING_FIRST_QUESTION"
+                  ? "bg-purple-500/20 text-purple-300 border-purple-500/50 shadow-[0_0_15px_rgba(168,85,247,0.3)] animate-pulse"
+                  : isAiSpeaking
                   ? "bg-gold-400/20 text-gold-300 border-gold-400/50 shadow-[0_0_15px_rgba(234,179,8,0.3)] animate-pulse"
                   : isAiThinking
                   ? "bg-purple-500/20 text-purple-300 border-purple-500/50 shadow-[0_0_15px_rgba(168,85,247,0.3)]"
                   : "bg-emerald-500/15 text-[#39FF88] border-emerald-500/40"
               }`}
             >
-              {isAiSpeaking ? "Alex Speaking" : isAiThinking ? "Alex Thinking" : "Alex Listening"}
+              {state === "INITIALIZING"
+                ? "Alex Initializing"
+                : state === "GENERATING_FIRST_QUESTION"
+                ? "Alex Generating Question"
+                : isAiSpeaking
+                ? "Alex Speaking"
+                : isAiThinking
+                ? "Alex Thinking"
+                : "Alex Listening"}
             </span>
           </div>
         </div>
@@ -295,7 +313,7 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
         <div className="p-4 rounded-2xl bg-black/80 border border-white/15 backdrop-blur-md flex flex-col gap-1.5 z-10 shadow-lg">
           <div className="flex items-center justify-between">
             <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider font-bold">
-              Active Question from Alex
+              {isPreparingFirstQuestion ? "Preparing first question" : "Active Question from Alex"}
             </span>
             <div className="flex items-center gap-2">
               {isAiSpeaking && onInterrupt && (
@@ -307,7 +325,7 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
                   <span>✋ Answer Now</span>
                 </button>
               )}
-              {onRepeatAudio && (
+              {currentQuestionText && onRepeatAudio && (
                 <button
                   onClick={onRepeatAudio}
                   className="px-2 py-0.5 rounded-lg bg-gold-400/10 hover:bg-gold-400/20 border border-gold-400/30 text-gold-300 text-[10px] font-mono flex items-center gap-1 transition-all cursor-pointer"
@@ -319,9 +337,15 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
               )}
             </div>
           </div>
-          <p className="text-xs sm:text-[13px] text-neutral-100 font-sans leading-relaxed font-medium">
-            "{currentQuestionText}"
-          </p>
+          {currentQuestionText ? (
+            <p className="text-xs sm:text-[13px] text-neutral-100 font-sans leading-relaxed font-medium">
+              "{currentQuestionText}"
+            </p>
+          ) : (
+            <p className="text-xs sm:text-[13px] text-neutral-400 font-sans leading-relaxed font-medium">
+              Alex is preparing your first question.
+            </p>
+          )}
         </div>
 
         {/* ERROR Overlay */}
@@ -330,10 +354,18 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
             <div className="h-12 w-12 rounded-full bg-rose-500/20 flex items-center justify-center mb-3">
               <span className="text-rose-400 text-xl font-bold">!</span>
             </div>
-            <h3 className="text-white font-bold text-base">Recruiter AI Connection Paused</h3>
+            <h3 className="text-white font-bold text-base">Recruiter AI Connection Interrupted</h3>
             <p className="text-rose-300/80 text-xs mt-1 max-w-xs">
-              Click 'Retry Turn' below to re-establish the connection.
+              {errorMessage || "Connection error occurred. Please click below to re-establish the connection."}
             </p>
+            {onRetry && (
+              <button
+                onClick={onRetry}
+                className="mt-4 px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-400 to-[#39FF88] text-black font-extrabold text-xs hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-lg"
+              >
+                Retry Connection
+              </button>
+            )}
           </div>
         )}
       </div>

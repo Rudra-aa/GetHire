@@ -120,4 +120,8 @@ export const resumeApi = {
   getPreviewUrl(id: string): string {
     return `${API_BASE_URL}/api/v1/resume/${id}/preview`;
   },
+
+  getDownloadUrl(id: string): string {
+    return `${API_BASE_URL}/api/v1/resume/${id}/download`;
+  },
 };

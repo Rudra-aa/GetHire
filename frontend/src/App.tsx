@@ -13,6 +13,7 @@ const DashboardPage = lazy(() => import("@/pages/DashboardPage"));
 const InterviewPage = lazy(() => import("@/pages/InterviewPage").then((m) => ({ default: m.InterviewPage })));
 const EvaluationPage = lazy(() => import("@/pages/EvaluationPage").then((m) => ({ default: m.EvaluationPage })));
 const AssessmentPage = lazy(() => import("@/pages/AssessmentPage").then((m) => ({ default: m.AssessmentPage })));
+const PublicPortfolioPage = lazy(() => import("@/pages/PublicPortfolioPage"));
 
 function PageLoader() {
   return (
@@ -47,6 +48,8 @@ export default function App() {
           <Route index element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/portfolio/:token" element={<PublicPortfolioPage />} />
+          <Route path="/share/:token" element={<PublicPortfolioPage />} />
         </Route>
 
         {/* Protected OS App Shell (AppShell owns sidebar layout reservation) */}

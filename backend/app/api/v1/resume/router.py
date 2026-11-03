@@ -13,10 +13,12 @@ REST API endpoints for Resume Intelligence:
 from __future__ import annotations
 
 import os
+import re
+import tempfile
 from pathlib import Path
-from typing import Annotated
+from typing import Annotated, Optional
 
-from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, status
+from fastapi import APIRouter, Depends, File, HTTPException, Path as FastApiPath, UploadFile, status
 from fastapi.responses import FileResponse
 
 from app.db.mongo import mongo_manager
@@ -31,6 +33,7 @@ from app.schemas.resume import (
     ResumeUploadResponseData,
 )
 from app.services.resume_service import (
+    UPLOADS_DIR,
     delete_resume,
     get_latest_resume_for_user,
     get_resume_by_id,
@@ -38,6 +41,52 @@ from app.services.resume_service import (
 )
 
 resume_router = APIRouter()
+
+
+def sanitize_download_filename(filename: Optional[str]) -> str:
+    """Sanitize filename to prevent HTTP header injection in Content-Disposition."""
+    if not filename:
+        return "resume.pdf"
+    clean = re.sub(r'[\r\n"\\;]', "_", filename).strip()
+    if not clean:
+        return "resume.pdf"
+    if not clean.lower().endswith(".pdf"):
+        clean = f"{clean}.pdf"
+    return clean
+
+
+def _validate_safe_file_path(file_path_str: Optional[str]) -> Path:
+    """
+    Validate that the file exists, is a regular file, and resides strictly
+    within the application's intended uploads storage directory.
+    """
+    if not file_path_str:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail={"success": False, "message": "Resume file not found.", "errors": [{"code": "FILE_NOT_FOUND"}]},
+        )
+
+    resolved_path = Path(file_path_str).resolve()
+    if not resolved_path.exists() or not resolved_path.is_file():
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail={"success": False, "message": "Resume file not found.", "errors": [{"code": "FILE_NOT_FOUND"}]},
+        )
+
+    uploads_dir = UPLOADS_DIR.resolve()
+    temp_dir = Path(tempfile.gettempdir()).resolve()
+
+    if not (resolved_path.is_relative_to(uploads_dir) or resolved_path.is_relative_to(temp_dir)):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail={
+                "success": False,
+                "message": "Access to file outside authorized storage directory is denied.",
+                "errors": [{"code": "PATH_TRAVERSAL_DETECTED"}],
+            },
+        )
+
+    return resolved_path
 
 
 def _format_resume_detail(resume: ResumeModel) -> ResumeDetailResponseData:
@@ -127,13 +176,14 @@ async def get_latest_resume(
     summary="Retrieve specific parsed resume by ID",
 )
 async def get_resume(
-    resume_id: str,
+    resume_id: str = FastApiPath(..., pattern=r"^[0-9a-fA-F]{24}$", description="Resume 24-hex ObjectId"),
     current_user: UserModel = Depends(get_current_active_user),
 ) -> APIResponse:
     db = mongo_manager.get_database()
     user_id = str(current_user.id)
+    is_admin = current_user.role == "admin"
 
-    resume = await get_resume_by_id(db, resume_id, user_id)
+    resume = await get_resume_by_id(db, resume_id, user_id, is_admin=is_admin)
     if not resume:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -155,13 +205,14 @@ async def get_resume(
     summary="Poll parsing status and quality score for a resume",
 )
 async def get_resume_status(
-    resume_id: str,
+    resume_id: str = FastApiPath(..., pattern=r"^[0-9a-fA-F]{24}$", description="Resume 24-hex ObjectId"),
     current_user: UserModel = Depends(get_current_active_user),
 ) -> APIResponse:
     db = mongo_manager.get_database()
     user_id = str(current_user.id)
+    is_admin = current_user.role == "admin"
 
-    resume = await get_resume_by_id(db, resume_id, user_id)
+    resume = await get_resume_by_id(db, resume_id, user_id, is_admin=is_admin)
     if not resume:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -188,24 +239,60 @@ async def get_resume_status(
     summary="Stream raw PDF for inline browser preview",
 )
 async def preview_resume(
-    resume_id: str,
+    resume_id: str = FastApiPath(..., pattern=r"^[0-9a-fA-F]{24}$", description="Resume 24-hex ObjectId"),
     current_user: UserModel = Depends(get_current_active_user),
 ) -> FileResponse:
     db = mongo_manager.get_database()
     user_id = str(current_user.id)
+    is_admin = current_user.role == "admin"
 
-    resume = await get_resume_by_id(db, resume_id, user_id)
-    if not resume or not os.path.exists(resume.file_path):
+    resume = await get_resume_by_id(db, resume_id, user_id, is_admin=is_admin)
+    if not resume:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail={"success": False, "message": "Resume PDF file not found.", "errors": [{"code": "FILE_NOT_FOUND"}]},
         )
 
+    file_path = _validate_safe_file_path(resume.file_path)
+    preview_filename = sanitize_download_filename(resume.filename)
+
     return FileResponse(
-        path=resume.file_path,
+        path=str(file_path),
         media_type="application/pdf",
-        filename=resume.filename,
-        headers={"Content-Disposition": f'inline; filename="{resume.filename}"'},
+        filename=preview_filename,
+        headers={"Content-Disposition": f'inline; filename="{preview_filename}"'},
+    )
+
+
+# ── GET /resume/{id}/download ───────────────────────────────────────────────
+
+@resume_router.get(
+    "/{resume_id}/download",
+    summary="Download resume PDF file",
+)
+async def download_resume(
+    resume_id: str = FastApiPath(..., pattern=r"^[0-9a-fA-F]{24}$", description="Resume 24-hex ObjectId"),
+    current_user: UserModel = Depends(get_current_active_user),
+) -> FileResponse:
+    db = mongo_manager.get_database()
+    user_id = str(current_user.id)
+    is_admin = current_user.role == "admin"
+
+    resume = await get_resume_by_id(db, resume_id, user_id, is_admin=is_admin)
+    if not resume:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail={"success": False, "message": "Resume not found.", "errors": [{"code": "NOT_FOUND"}]},
+        )
+
+    file_path = _validate_safe_file_path(resume.file_path)
+    download_filename = sanitize_download_filename(resume.filename)
+
+    return FileResponse(
+        path=str(file_path),
+        media_type="application/pdf",
+        filename=download_filename,
+        headers={"Content-Disposition": f'attachment; filename="{download_filename}"'},
     )
 
 
@@ -217,13 +304,14 @@ async def preview_resume(
     summary="Delete a resume record and its PDF storage",
 )
 async def remove_resume(
-    resume_id: str,
+    resume_id: str = FastApiPath(..., pattern=r"^[0-9a-fA-F]{24}$", description="Resume 24-hex ObjectId"),
     current_user: UserModel = Depends(get_current_active_user),
 ) -> APIResponse:
     db = mongo_manager.get_database()
     user_id = str(current_user.id)
+    is_admin = current_user.role == "admin"
 
-    deleted = await delete_resume(db, resume_id, user_id)
+    deleted = await delete_resume(db, resume_id, user_id, is_admin=is_admin)
     if not deleted:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,

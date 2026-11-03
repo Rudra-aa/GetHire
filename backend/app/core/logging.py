@@ -3,8 +3,9 @@ app/core/logging.py
 -------------------
 Structured logging configuration for GetHire.
 
-Provides a consistent, machine-readable JSON log format in production and
-a developer-friendly coloured format in development.
+Provides consistent, machine-readable structured logging with automatic
+redaction of sensitive fields (passwords, tokens, API keys, authorization headers, payment data)
+while preserving useful server-side diagnostic logs.
 
 Usage:
     from app.core.logging import get_logger
@@ -16,21 +17,93 @@ Usage:
 from __future__ import annotations
 
 import logging
+import re
 import sys
-from typing import Any
+from typing import Any, Dict
+
+
+# ── Sensitive Key and Pattern Sanitization ───────────────────────────────────
+
+SENSITIVE_KEY_SUBSTRINGS = (
+    "password",
+    "passwd",
+    "pwd",
+    "token",
+    "jwt",
+    "secret",
+    "api_key",
+    "apikey",
+    "authorization",
+    "auth_header",
+    "cookie",
+    "credit_card",
+    "card_number",
+    "cvv",
+    "cvc",
+    "pin",
+    "payment",
+)
+
+BEARER_TOKEN_PATTERN = re.compile(r"(Bearer\s+)[A-Za-z0-9\-._~+/]+=*", re.IGNORECASE)
+JWT_PATTERN = re.compile(r"eyJ[A-Za-z0-9-_]{10,}\.[A-Za-z0-9-_]{10,}\.[A-Za-z0-9-_]{10,}")
+AUTH_HEADER_PATTERN = re.compile(
+    r"((?:authorization|token|password|secret|api[-_]?key)\s*[:=]\s*['\"]?)([^'\";,\s]+)(['\"]?)",
+    re.IGNORECASE,
+)
+
+
+def _is_sensitive_key(key: str) -> bool:
+    """Check if keyword argument key indicates sensitive credential or token data."""
+    k_lower = key.lower().replace("-", "_")
+    return any(sub in k_lower for sub in SENSITIVE_KEY_SUBSTRINGS)
+
+
+def _sanitize_log_value(val: Any) -> Any:
+    """Recursively mask sensitive values in strings, dicts, and lists."""
+    if isinstance(val, str):
+        masked = BEARER_TOKEN_PATTERN.sub(r"\1[REDACTED]", val)
+        masked = JWT_PATTERN.sub("[REDACTED_JWT]", masked)
+        masked = AUTH_HEADER_PATTERN.sub(r"\1[REDACTED]\3", masked)
+        return masked
+    elif isinstance(val, dict):
+        return {
+            k: ("[REDACTED]" if _is_sensitive_key(str(k)) else _sanitize_log_value(v))
+            for k, v in val.items()
+        }
+    elif isinstance(val, (list, tuple, set)):
+        return [_sanitize_log_value(item) for item in val]
+    return val
+
+
+def _sanitize_extras(kwargs: Dict[str, Any]) -> Dict[str, Any]:
+    """Sanitize extra keyword arguments passed to logger."""
+    cleaned = {}
+    for k, v in kwargs.items():
+        if _is_sensitive_key(str(k)):
+            cleaned[k] = "[REDACTED]"
+        else:
+            cleaned[k] = _sanitize_log_value(v)
+    return cleaned
+
+
+def _sanitize_message(msg: str) -> str:
+    """Scrub sensitive credentials/tokens embedded directly in log message text."""
+    if not isinstance(msg, str):
+        return str(msg)
+    masked = BEARER_TOKEN_PATTERN.sub(r"\1[REDACTED]", msg)
+    masked = JWT_PATTERN.sub("[REDACTED_JWT]", masked)
+    masked = AUTH_HEADER_PATTERN.sub(r"\1[REDACTED]\3", masked)
+    return masked
 
 
 # ---------------------------------------------------------------------------
-# Simple structured logger adapter
+# Simple structured logger adapter with redaction guard
 # ---------------------------------------------------------------------------
 
 class StructuredLogger:
     """
     Thin wrapper around stdlib logging that adds keyword-argument support,
-    producing key=value pairs appended to the log message.
-
-    This is intentionally lightweight (no structlog dependency for Sprint 0).
-    Replace with structlog in a later sprint if desired.
+    producing sanitized key=value pairs appended to the log message.
     """
 
     def __init__(self, name: str) -> None:
@@ -39,26 +112,27 @@ class StructuredLogger:
     def _format_extras(self, kwargs: dict[str, Any]) -> str:
         if not kwargs:
             return ""
-        parts = " ".join(f"{k}={v!r}" for k, v in kwargs.items())
+        sanitized = _sanitize_extras(kwargs)
+        parts = " ".join(f"{k}={v!r}" for k, v in sanitized.items())
         return f" | {parts}"
 
     def debug(self, msg: str, **kwargs: Any) -> None:
-        self._logger.debug(msg + self._format_extras(kwargs))
+        self._logger.debug(_sanitize_message(msg) + self._format_extras(kwargs))
 
     def info(self, msg: str, **kwargs: Any) -> None:
-        self._logger.info(msg + self._format_extras(kwargs))
+        self._logger.info(_sanitize_message(msg) + self._format_extras(kwargs))
 
     def warning(self, msg: str, **kwargs: Any) -> None:
-        self._logger.warning(msg + self._format_extras(kwargs))
+        self._logger.warning(_sanitize_message(msg) + self._format_extras(kwargs))
 
     def error(self, msg: str, **kwargs: Any) -> None:
-        self._logger.error(msg + self._format_extras(kwargs))
+        self._logger.error(_sanitize_message(msg) + self._format_extras(kwargs))
 
     def critical(self, msg: str, **kwargs: Any) -> None:
-        self._logger.critical(msg + self._format_extras(kwargs))
+        self._logger.critical(_sanitize_message(msg) + self._format_extras(kwargs))
 
     def exception(self, msg: str, **kwargs: Any) -> None:
-        self._logger.exception(msg + self._format_extras(kwargs))
+        self._logger.exception(_sanitize_message(msg) + self._format_extras(kwargs))
 
 
 # ---------------------------------------------------------------------------

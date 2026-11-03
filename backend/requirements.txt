@@ -17,6 +17,8 @@ pydantic-settings==2.3.4
 # ── Database — MongoDB ─────────────────────────────────────────────────────
 motor[srv]==3.4.0              # async MongoDB driver (wraps PyMongo), with SRV support
 pymongo[srv]==4.8.0            # sync driver (used by Motor internally), with SRV support
+certifi>=2024.2.2              # Mozilla's CA bundle for TLS verification with MongoDB Atlas
+dnspython>=2.6.1               # DNS resolution for MongoDB SRV records
 
 # ── Cache — Redis ──────────────────────────────────────────────────────────
 redis==5.0.7                   # includes async support (redis.asyncio)

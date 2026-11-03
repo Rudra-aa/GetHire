@@ -14,6 +14,7 @@ from motor.motor_asyncio import AsyncIOMotorDatabase
 from app.dependencies.auth import get_current_user
 from app.db.mongo import get_database
 from app.models.user import UserModel
+from app.schemas.assessment import StartAssessmentRequest, SubmitAssessmentRequest
 from app.services.assessment_engine.assessment_service import assessment_service
 
 assessment_router = APIRouter()
@@ -29,33 +30,26 @@ def _extract_user_id(user: Any) -> str:
 
 @assessment_router.post("/start", status_code=status.HTTP_201_CREATED)
 async def start_assessment(
-    payload: Optional[Dict[str, Any]] = None,
+    payload: Optional[StartAssessmentRequest] = None,
     db: AsyncIOMotorDatabase = Depends(get_database),
     current_user: UserModel = Depends(get_current_user),
 ) -> Dict[str, Any]:
     """Initializes a new technical assessment test session."""
-    payload = payload or {}
     user_id = _extract_user_id(current_user)
-    target_role = payload.get("target_role", getattr(current_user, "target_role", "Software Engineer"))
-    exp_level = payload.get("experience_level", getattr(current_user, "experience_level", "Mid Level"))
+    target_role = (payload.target_role if payload and payload.target_role else None) or getattr(current_user, "target_role", "Software Engineer") or "Software Engineer"
+    exp_level = (payload.experience_level if payload and payload.experience_level else None) or getattr(current_user, "experience_level", "Mid Level") or "Mid Level"
     return await assessment_service.create_assessment_session(db, user_id=user_id, target_role=target_role, experience_level=exp_level)
 
 
 @assessment_router.post("/submit")
 async def submit_assessment(
-    payload: Dict[str, Any],
+    payload: SubmitAssessmentRequest,
     db: AsyncIOMotorDatabase = Depends(get_database),
     current_user: UserModel = Depends(get_current_user),
 ) -> Dict[str, Any]:
     """Evaluates candidate assessment submission and returns Knowledge Graph."""
     user_id = _extract_user_id(current_user)
-    assessment_id = payload.get("assessment_id")
-    answers = payload.get("answers", [])
-
-    if not assessment_id:
-        raise HTTPException(status_code=400, detail="assessment_id is required")
-
-    return await assessment_service.submit_assessment(db, user_id=user_id, assessment_id=assessment_id, candidate_answers=answers)
+    return await assessment_service.submit_assessment(db, user_id=user_id, assessment_id=payload.assessment_id, candidate_answers=payload.answers)
 
 
 @assessment_router.get("/latest")

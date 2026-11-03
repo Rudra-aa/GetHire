@@ -34,6 +34,24 @@ export interface EngineConfig {
   totalQuestions?: number;
 }
 
+function withTimeout<T>(promise: Promise<T>, timeoutMs: number, operationName: string): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(() => {
+      reject(new Error(`Operation "${operationName}" timed out after ${timeoutMs / 1000}s.`));
+    }, timeoutMs);
+
+    promise
+      .then((val) => {
+        clearTimeout(timer);
+        resolve(val);
+      })
+      .catch((err) => {
+        clearTimeout(timer);
+        reject(err);
+      });
+  });
+}
+
 export class VoiceInterviewEngine {
   // Core Subsystems
   public eventBus: InterviewEventBus;
@@ -50,14 +68,17 @@ export class VoiceInterviewEngine {
   public persona: RecruiterPersona = DEFAULT_PERSONA;
   public questions: InterviewQuestion[] = [];
   public currentQuestionIndex = 0;
-  public activeQuestionPrompt = "Welcome to GetHire AI Interview Studio. Initializing session...";
+  public activeQuestionPrompt = "";
   public transcripts: TranscriptEntry[] = [];
   public liveCandidateText = "";
   public elapsedSeconds = 0;
   public isMicMuted = false;
+  public isTextFallbackMode = false;
+  public initError: { step: string; message: string } | null = null;
 
   // Concurrency & Guard Mutexes
   private isSubmitting = false;
+  private isInitializing = false;
   private submissionRequestId = 0;
   private timerInterval: any = null;
   private stabilizationTimer: any = null;
@@ -136,86 +157,162 @@ export class VoiceInterviewEngine {
   }
 
   /**
-   * Start or resume interview session
+   * Start or resume interview session with distinct phases:
+   * INITIALIZING -> GENERATING_FIRST_QUESTION -> READY
    */
   async startInterview(targetRole = "Senior Full-Stack Engineer"): Promise<void> {
-    this.stateMachine.transition("INITIALIZING", "starting session");
+    if (this.isInitializing) {
+      console.warn("[VoiceInterviewEngine] startInterview called while already initializing — ignored.");
+      return;
+    }
+    this.isInitializing = true;
+    this.initError = null;
+
+    // Phase 1: INITIALIZING (Session creation & non-blocking mic setup)
+    this.stateMachine.transition("INITIALIZING", "creating or loading interview session");
+    console.log("[VoiceInterviewEngine] State: INITIALIZING - setting up session and audio");
+
+    // Non-blocking microphone initialization with 3.5s timeout boundary
+    // Microphone denial or delay MUST NOT block Alex from generating and displaying the question
+    void (async () => {
+      try {
+        const stream = await withTimeout(this.audioMeter.start(), 3500, "Microphone Initialization");
+        if (!stream) {
+          console.warn("[VoiceInterviewEngine] Microphone stream null; activating text fallback mode.");
+          this.isTextFallbackMode = true;
+          this.eventBus.emit("MIC_STATUS_CHANGED", { available: false, textFallback: true });
+        }
+      } catch (micErr: any) {
+        console.warn("[VoiceInterviewEngine] Microphone initialization notice:", micErr?.message || micErr);
+        this.isTextFallbackMode = true;
+        this.eventBus.emit("MIC_STATUS_CHANGED", { available: false, textFallback: true });
+        this.eventBus.emit("ERROR_OCCURRED", {
+          category: "MICROPHONE_ERROR",
+          message: "Microphone access unavailable or timed out. Text-answer fallback mode is active.",
+          fatal: false,
+        });
+      }
+    })();
 
     try {
-      // 1. Initialize Audio Meter & Mic
-      await this.audioMeter.start();
-
-      // 2. Retrieve or Start Backend Session
+      // 1. Retrieve or Start Backend Session with explicit 10s timeout
       let session: InterviewSession;
-      if (this.sessionId && this.sessionId !== "sess-ai-demo") {
+      if (this.sessionId) {
         try {
-          session = await interviewApi.getSession(this.sessionId);
-        } catch {
-          session = await interviewApi.startSession({
+          session = await withTimeout(
+            interviewApi.getSession(this.sessionId),
+            10000,
+            "Retrieving existing session"
+          );
+        } catch (fetchErr: any) {
+          console.warn("[VoiceInterviewEngine] Failed to retrieve existing session, creating new:", fetchErr);
+          session = await withTimeout(
+            interviewApi.startSession({
+              target_role: targetRole,
+              interview_type: "technical",
+              total_questions: 5,
+            }),
+            10000,
+            "Creating new session"
+          );
+        }
+      } else {
+        session = await withTimeout(
+          interviewApi.startSession({
             target_role: targetRole,
             interview_type: "technical",
             total_questions: 5,
-          });
-        }
-      } else {
-        session = await interviewApi.startSession({
-          target_role: targetRole,
-          interview_type: "technical",
-          total_questions: 5,
-        });
+          }),
+          10000,
+          "Creating new session"
+        );
       }
 
       this.sessionId = session.id;
       this.questions = session.questions || [];
       this.currentQuestionIndex = session.current_question_index || 0;
+      console.log("[VoiceInterviewEngine] Session ready:", this.sessionId);
 
-      // 3. Request initial greeting/question from Gemini
-      this.stateMachine.transition("AI_THINKING", "generating initial turn");
-      const initRes = await interviewApi.processTurn(
-        this.sessionId,
-        "[Candidate has joined the interview. Please greet them and ask the first question.]"
+      // Phase 2: GENERATING_FIRST_QUESTION with explicit 15s timeout
+      this.stateMachine.transition("GENERATING_FIRST_QUESTION", "calling Gemini for opening question");
+      console.log("[VoiceInterviewEngine] State: GENERATING_FIRST_QUESTION - awaiting Gemini prompt");
+
+      const initRes = await withTimeout(
+        interviewApi.processTurn(
+          this.sessionId,
+          "[Candidate has joined the interview. Please greet them and ask the first question.]"
+        ),
+        15000,
+        "Gemini first-question generation"
       );
 
-      const aiGreeting =
-        initRes.ai_response ||
-        "Hello! I'm Alex, Lead Software Architect at GetHire. Let's begin your technical interview. Could you start by introducing yourself and sharing your core technical experience?";
+      const aiGreeting = initRes?.ai_response?.trim();
+      if (!aiGreeting) {
+        throw new Error("The interview service did not return an opening question. Please retry initialization.");
+      }
 
       this.activeQuestionPrompt = aiGreeting;
-      this.transcripts.push({
-        id: `t-ai-intro-${Date.now()}`,
-        speaker: "ai",
-        text: aiGreeting,
-        timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+      this.transcripts = [
+        {
+          id: `t-ai-intro-${Date.now()}`,
+          speaker: "ai",
+          text: aiGreeting,
+          timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+        },
+      ];
+
+      // Phase 3: READY (Question displayed immediately on screen)
+      this.stateMachine.transition("READY", "first question loaded and recruiter ready");
+      console.log("[VoiceInterviewEngine] State: READY - prompt presented to candidate");
+
+      // Trigger speech synthesis asynchronously without blocking startInterview completion
+      this.stateMachine.transition("AI_SPEAKING", "speaking initial question");
+      void this.speechSynthesis.speak(aiGreeting).catch((ttsErr) => {
+        console.warn("[VoiceInterviewEngine] Speech synthesis error (non-fatal):", ttsErr);
+        this.onAiSpeechFinished();
       });
 
-      // 4. Speak initial question
-      this.stateMachine.transition("AI_SPEAKING", "speaking initial question");
-      await this.speechSynthesis.speak(aiGreeting);
     } catch (err: any) {
-      console.error("[VoiceInterviewEngine] Failed to start:", err);
-      this.stateMachine.transition("ERROR", "session start failed");
+      const failingOp = this.stateMachine.getState();
+      console.error(`[VoiceInterviewEngine] Initialization failed during "${failingOp}":`, err);
+      this.initError = {
+        step: failingOp,
+        message: err?.response?.data?.message || err?.message || "Failed to initialize interview.",
+      };
+      this.stateMachine.transition("ERROR", `initialization failed at ${failingOp}`);
       this.eventBus.emit("ERROR_OCCURRED", {
-        category: "GEMINI_CONNECTION_ERROR",
-        message: "Failed to connect to AI Interview Orchestrator. Click 'Retry Connection' below.",
-        fatal: false,
+        category: "INITIALIZATION_ERROR",
+        message: `${this.initError.message} Please click 'Retry Initialization'.`,
+        fatal: true,
       });
+      throw err;
+    } finally {
+      this.isInitializing = false;
     }
   }
 
   /**
-   * Handle completion of AI voice playback
+   * Handle completion of AI voice playback.
+   * Only transitions if currently in AI_SPEAKING — prevents double-fire when
+   * both the onEnd callback and an awaited speak() promise complete.
    */
   private onAiSpeechFinished() {
     const currentState = this.stateMachine.getState();
-    if (currentState === "INTERVIEW_COMPLETE") return;
+    // Only proceed if we are still in AI_SPEAKING; any other state means
+    // the transition has already been handled (e.g., via interrupt or error).
+    if (currentState !== "AI_SPEAKING") return;
 
     this.stateMachine.transition("WAITING_FOR_MIC", "stabilizing audio buffer");
 
     // 350ms stabilization delay before activating candidate mic
     if (this.stabilizationTimer) clearTimeout(this.stabilizationTimer);
     this.stabilizationTimer = setTimeout(() => {
+      // Re-check state; another path may have changed it during the delay.
+      if (this.stateMachine.getState() !== "WAITING_FOR_MIC") return;
       this.stateMachine.transition("LISTENING", "mic activated");
       this.liveCandidateText = "";
+      // Clear recognition buffers so the new turn starts with a clean slate.
+      this.speechRecognition.clearBuffers();
       this.silenceDetector.reset();
       this.silenceDetector.setEnabled(true);
       if (!this.isMicMuted) {
@@ -232,6 +329,16 @@ export class VoiceInterviewEngine {
 
     if (!answer) {
       return;
+    }
+
+    // Guard: if Alex is still speaking, interrupt first, then submit.
+    // This prevents the invalid AI_SPEAKING -> AUTO_SUBMITTING transition.
+    const curState = this.stateMachine.getState();
+    if (curState === "AI_SPEAKING") {
+      console.log("[VoiceInterviewEngine] submitAnswer called during AI_SPEAKING — interrupting first.");
+      this.speechSynthesis.cancel();
+      // onAiSpeechFinished will NOT fire (state check guards it); manually go to LISTENING.
+      this.stateMachine.transition("LISTENING", "user submitted answer during AI speech");
     }
 
     // Guard against duplicate / overlapping submissions
@@ -291,10 +398,12 @@ export class VoiceInterviewEngine {
         latencyMs,
       });
 
-      const aiText =
-        res.ai_response || "Thank you for that response. Let's continue exploring your technical experience.";
+      const aiText = res.ai_response?.trim();
+      if (!aiText) {
+        throw new Error("The interview service did not return a follow-up question. Please retry the turn.");
+      }
       const decision = res.decision?.action;
-      const nextIdx = res.decision?.next_question_index ?? this.currentQuestionIndex;
+      const nextIdx = res.decision?.next_question_index ?? this.currentQuestionIndex + 1;
 
       this.activeQuestionPrompt = aiText;
 
@@ -310,9 +419,20 @@ export class VoiceInterviewEngine {
         .catch(() => null);
 
       // 3. Evaluate next step
+      // "complete_interview" from backend, or exhausted all questions
       const isComplete =
         decision === "complete_interview" ||
-        (nextIdx >= this.questions.length && this.questions.length > 0 && decision !== "follow_up");
+        (nextIdx >= this.questions.length && this.questions.length > 0 && decision !== "request_clarification" && decision !== "challenge_answer" && decision !== "probe_deeper");
+
+      // Follow-up/clarification: backend keeps same question index
+      // Covers: "request_clarification", "challenge_answer", "probe_deeper", "follow_up"
+      const isFollowUp =
+        !isComplete &&
+        (decision === "request_clarification" ||
+          decision === "challenge_answer" ||
+          decision === "probe_deeper" ||
+          decision === "follow_up" ||
+          nextIdx === this.currentQuestionIndex);
 
       if (isComplete) {
         this.transcripts.push({
@@ -323,31 +443,48 @@ export class VoiceInterviewEngine {
         });
         void interviewApi.completeSession(sessId).catch(() => null);
         this.stateMachine.transition("AI_SPEAKING", "final wrap-up statement");
-        await this.speechSynthesis.speak(aiText, () => {
-          this.stateMachine.transition("INTERVIEW_COMPLETE", "all turns finished");
-          this.eventBus.emit("SESSION_COMPLETED", { sessionId: sessId });
+        // Await final statement — after it completes, transition to INTERVIEW_COMPLETE.
+        // We do NOT rely on onAiSpeechFinished here (it guards for AI_SPEAKING only and
+        // INTERVIEW_COMPLETE is set immediately after, so the guard will skip it).
+        try {
+          await this.speechSynthesis.speak(aiText);
+        } catch {
+          // Ignore TTS error for closing statement
+        }
+        this.stateMachine.transition("INTERVIEW_COMPLETE", "all turns finished");
+        this.eventBus.emit("SESSION_COMPLETED", { sessionId: sessId });
+      } else if (isFollowUp) {
+        this.transcripts.push({
+          id: `t-ai-fu-${Date.now()}`,
+          speaker: "ai",
+          text: aiText,
+          isFollowUp: true,
+          timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+        });
+        // Fire-and-forget: onAiSpeechFinished (via onEnd callback) will handle
+        // AI_SPEAKING -> WAITING_FOR_MIC -> LISTENING when playback ends.
+        this.stateMachine.transition("AI_SPEAKING", "speaking follow-up/clarification");
+        void this.speechSynthesis.speak(aiText).catch((e) => {
+          console.warn("[VoiceInterviewEngine] TTS error on follow-up:", e);
+          this.onAiSpeechFinished();
         });
       } else {
-        if (decision === "follow_up" || nextIdx === this.currentQuestionIndex) {
-          this.transcripts.push({
-            id: `t-ai-fu-${Date.now()}`,
-            speaker: "ai",
-            text: aiText,
-            isFollowUp: true,
-            timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-          });
-        } else {
-          this.currentQuestionIndex = nextIdx;
-          this.transcripts.push({
-            id: `t-ai-q-${nextIdx}-${Date.now()}`,
-            speaker: "ai",
-            text: aiText,
-            timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-          });
-        }
+        // Advance to next question
+        this.currentQuestionIndex = nextIdx;
+        this.transcripts.push({
+          id: `t-ai-q-${nextIdx}-${Date.now()}`,
+          speaker: "ai",
+          text: aiText,
+          timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+        });
 
+        // Fire-and-forget: onAiSpeechFinished (via onEnd callback) will handle
+        // AI_SPEAKING -> WAITING_FOR_MIC -> LISTENING when playback ends.
         this.stateMachine.transition("AI_SPEAKING", "speaking next turn");
-        await this.speechSynthesis.speak(aiText);
+        void this.speechSynthesis.speak(aiText).catch((e) => {
+          console.warn("[VoiceInterviewEngine] TTS error on next question:", e);
+          this.onAiSpeechFinished();
+        });
       }
     } catch (err: any) {
       console.error("[VoiceInterviewEngine] Turn error:", err);
@@ -370,6 +507,8 @@ export class VoiceInterviewEngine {
     this.eventBus.emit("INTERRUPTION_TRIGGERED", { reason });
     this.stateMachine.transition("LISTENING", "user interrupted AI");
     this.liveCandidateText = "";
+    // Clear buffers so any residual transcript from before the interrupt doesn't bleed in.
+    this.speechRecognition.clearBuffers();
     this.silenceDetector.reset();
     this.silenceDetector.setEnabled(true);
     if (!this.isMicMuted) {
@@ -403,7 +542,10 @@ export class VoiceInterviewEngine {
         sessId,
         "[Candidate asks for clarification on the architectural requirements.]"
       );
-      const text = res.ai_response || "Certainly. Let me clarify the architectural scope.";
+      const text = res.ai_response?.trim();
+      if (!text) {
+        throw new Error("The interview service did not return a clarification. Please retry the turn.");
+      }
       this.activeQuestionPrompt = text;
       this.transcripts.push({
         id: `t-clarify-${Date.now()}`,
@@ -413,7 +555,10 @@ export class VoiceInterviewEngine {
         timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
       });
       this.stateMachine.transition("AI_SPEAKING", "speaking clarification");
-      await this.speechSynthesis.speak(text);
+      // Fire-and-forget: onAiSpeechFinished will handle WAITING_FOR_MIC -> LISTENING.
+      void this.speechSynthesis.speak(text).catch(() => {
+        this.onAiSpeechFinished();
+      });
     } catch {
       this.stateMachine.transition("LISTENING", "clarification failed");
     }

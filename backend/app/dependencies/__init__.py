@@ -9,6 +9,7 @@ from app.dependencies.auth import (
     get_current_session_info,
     get_current_user,
     oauth2_scheme,
+    require_admin,
     require_roles,
 )
 
@@ -16,6 +17,7 @@ __all__ = [
     "get_current_user",
     "get_current_active_user",
     "require_roles",
+    "require_admin",
     "get_current_session_info",
     "oauth2_scheme",
 ]

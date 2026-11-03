@@ -83,6 +83,7 @@ class InterviewSessionModel(BaseModel):
     elapsed_seconds: int = Field(default=0, description="Total active seconds spent in interview")
 
     questions: List[InterviewQuestion] = Field(default_factory=list)
+    transcripts: List[Dict[str, Any]] = Field(default_factory=list)
 
     started_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     paused_at: Optional[datetime] = None

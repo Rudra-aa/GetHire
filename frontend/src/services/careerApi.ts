@@ -21,18 +21,63 @@ export interface EvolutionTimelineResponse {
   evolution_points: EvolutionPoint[];
 }
 
+export interface ShareSettings {
+  configured: boolean;
+  public_base_url?: string | null;
+  share_token?: string | null;
+  share_url?: string | null;
+  is_public: boolean;
+  include_assessment: boolean;
+  include_interview: boolean;
+  recordings_available: boolean;
+  has_assessment: boolean;
+  access_count?: number | null;
+}
+
+export interface PublicPortfolioData {
+  candidate_name: string;
+  target_role: string;
+  experience_level: string;
+  overall_hirescore: number;
+  hiring_verdict: string;
+  skills: string[];
+  assessment_score?: number | null;
+  assessment_concepts?: {
+    strong_concepts?: string[];
+    weak_concepts?: string[];
+    category_breakdown?: Record<string, number>;
+  } | null;
+  components: Record<string, any>;
+  verified: boolean;
+}
+
 export const careerApi = {
   getEvolutionTimeline: async (): Promise<EvolutionTimelineResponse> => {
-    const res = await apiClient.get(
-      `${API_BASE_URL}/evolution`
-    );
+    const res = await apiClient.get(`${API_BASE_URL}/evolution`);
+    return res.data;
+  },
+
+  getShareSettings: async (): Promise<ShareSettings> => {
+    const res = await apiClient.get(`${API_BASE_URL}/share-settings`);
+    return res.data;
+  },
+
+  updateShareSettings: async (data: {
+    is_public?: boolean;
+    include_assessment?: boolean;
+    include_interview?: boolean;
+  }): Promise<ShareSettings> => {
+    const res = await apiClient.patch(`${API_BASE_URL}/share-settings`, data);
     return res.data;
   },
 
   createShareLink: async (): Promise<{ share_token: string; share_url: string }> => {
-    const res = await apiClient.post(
-      `${API_BASE_URL}/share-link`
-    );
+    const res = await apiClient.post(`${API_BASE_URL}/share-link`);
+    return res.data;
+  },
+
+  getPublicPortfolio: async (token: string): Promise<PublicPortfolioData> => {
+    const res = await apiClient.get(`${API_BASE_URL}/portfolio/${token}`);
     return res.data;
   },
 };

@@ -166,18 +166,12 @@ async def evaluate_and_store_answer(
     question_id: str,
     user_id: str,
     answer_text_override: Optional[str] = None,
+    is_admin: bool = False,
 ) -> Optional[EvaluationModel]:
     """
     Perform evaluation for a question in a session and persist result in MongoDB.
     """
-    session = await get_interview_session(db, session_id, user_id)
-    if not session:
-        doc = await db["interview_sessions"].find_one({"session_id": session_id})
-        if not doc and ObjectId.is_valid(session_id):
-            doc = await db["interview_sessions"].find_one({"_id": ObjectId(session_id)})
-        if doc:
-            session = InterviewSessionModel(**doc)
-
+    session = await get_interview_session(db, session_id, user_id, is_admin=is_admin)
     if not session:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -275,12 +269,23 @@ async def evaluate_session_all_answers(
     db: AsyncIOMotorDatabase,
     session_id: str,
     user_id: str,
+    is_admin: bool = False,
 ) -> Tuple[List[EvaluationModel], int, Dict[str, int]]:
     """
     Batch evaluate all answered conversational turns in a session.
     Extracts real candidate answers from turn transcripts, questions asked by AI, and turn evaluations.
     """
-    raw_sess = await db["interview_sessions"].find_one({"$or": [{"_id": ObjectId(session_id) if ObjectId.is_valid(session_id) else None}, {"session_id": session_id}]})
+    query_candidates = []
+    if ObjectId.is_valid(session_id):
+        query_candidates.append({"_id": ObjectId(session_id)})
+    query_candidates.append({"session_id": session_id})
+    query_candidates.append({"id": session_id})
+
+    sess_query: Dict[str, Any] = {"$or": query_candidates}
+    if not is_admin:
+        sess_query["user_id"] = user_id
+
+    raw_sess = await db["interview_sessions"].find_one(sess_query)
     if not raw_sess:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -471,8 +476,12 @@ async def get_session_evaluations(
     db: AsyncIOMotorDatabase,
     session_id: str,
     user_id: str,
+    is_admin: bool = False,
 ) -> List[EvaluationModel]:
     """Retrieve all evaluation records for a session."""
-    cursor = db["evaluations"].find({"session_id": session_id, "user_id": user_id}).sort("created_at", 1)
+    query = {"session_id": session_id}
+    if not is_admin:
+        query["user_id"] = user_id
+    cursor = db["evaluations"].find(query).sort("created_at", 1)
     docs = await cursor.to_list(length=100)
     return [EvaluationModel(**d) for d in docs]

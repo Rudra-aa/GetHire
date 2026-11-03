@@ -9,7 +9,7 @@ skill gap breakdowns, actionable recommendations, and adaptive career roadmaps.
 from __future__ import annotations
 
 from typing import List, Optional
-from fastapi import APIRouter, Depends, Query, status
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 
 from app.db.mongo import mongo_manager
 from app.dependencies.auth import get_current_active_user
@@ -31,6 +31,7 @@ from app.services.hire_score_engine import (
     get_or_compute_user_hirescore,
     get_user_hirescore_history,
 )
+from app.services.interview_session_service import get_interview_session
 
 hirescore_router = APIRouter()
 
@@ -61,10 +62,20 @@ def _format_hirescore_summary_out(m: HireScoreModel) -> HireScoreSummaryOut:
     summary="Get latest candidate HireScore summary",
 )
 async def get_latest_hirescore(
-    session_id: Optional[str] = Query(None, description="Optional session ID"),
+    session_id: Optional[str] = Query(None, min_length=1, max_length=100, pattern=r"^[0-9a-zA-Z_\-]+$", description="Optional session ID"),
     current_user: UserModel = Depends(get_current_active_user),
 ) -> APIResponse:
     db = mongo_manager.get_database()
+    is_admin = current_user.role == "admin"
+
+    if session_id:
+        sess = await get_interview_session(db, session_id, str(current_user.id), is_admin=is_admin)
+        if not sess:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail={"success": False, "message": "Interview session not found.", "errors": [{"code": "NOT_FOUND"}]},
+            )
+
     model = await get_or_compute_user_hirescore(
         db=db,
         user_id=str(current_user.id),
@@ -92,6 +103,16 @@ async def recompute_hirescore(
 ) -> APIResponse:
     db = mongo_manager.get_database()
     session_id = payload.session_id if payload else None
+    is_admin = current_user.role == "admin"
+
+    if session_id:
+        sess = await get_interview_session(db, session_id, str(current_user.id), is_admin=is_admin)
+        if not sess:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail={"success": False, "message": "Interview session not found.", "errors": [{"code": "NOT_FOUND"}]},
+            )
+
     model = await get_or_compute_user_hirescore(
         db=db,
         user_id=str(current_user.id),

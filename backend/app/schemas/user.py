@@ -6,7 +6,7 @@ Pydantic schemas for User entity summaries and profile operations.
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Any, Optional
 from pydantic import BaseModel, EmailStr, Field, field_validator
 
 
@@ -28,16 +28,57 @@ class UserSummary(BaseModel):
     linkedin_url: Optional[str] = None
 
 
+import re
+
+_URL_REGEX = re.compile(
+    r"^https?:\/\/"
+    r"(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+[A-Z]{2,63}\.?|"
+    r"localhost|"
+    r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})"
+    r"(?::\d+)?"
+    r"(?:/?|[/?]\S+)$",
+    re.IGNORECASE,
+)
+
+
 class UserProfileUpdateRequest(BaseModel):
     """
     Payload for updating user profile fields.
+    Protected fields (role, permissions, isAdmin, is_admin) are accepted by the schema
+    so that security middleware/handlers can detect privilege escalation attempts.
     """
     full_name: Optional[str] = Field(default=None, min_length=2, max_length=100)
-    profile_photo: Optional[str] = None
-    target_role: Optional[str] = None
-    experience_level: Optional[str] = None
-    linkedin_url: Optional[str] = None
+    profile_photo: Optional[str] = Field(default=None, max_length=2048)
+    target_role: Optional[str] = Field(default=None, max_length=100)
+    experience_level: Optional[str] = Field(default=None, max_length=20)
+    linkedin_url: Optional[str] = Field(default=None, max_length=500)
     onboarding_completed: Optional[bool] = None
+
+    # Protected account fields
+    role: Optional[str] = Field(default=None, max_length=50)
+    permissions: Optional[Any] = None
+    isAdmin: Optional[bool] = None
+    is_admin: Optional[bool] = None
+
+    @field_validator("linkedin_url")
+    @classmethod
+    def validate_linkedin_url(cls, v: Optional[str]) -> Optional[str]:
+        if v is not None and v.strip() != "":
+            val = v.strip()
+            if not _URL_REGEX.match(val) or any(val.lower().startswith(b) for b in ("javascript:", "data:", "vbscript:")):
+                raise ValueError("Invalid URL format. LinkedIn URL must start with http:// or https://")
+            return val
+        return None
+
+    @field_validator("profile_photo")
+    @classmethod
+    def validate_profile_photo(cls, v: Optional[str]) -> Optional[str]:
+        if v is not None and v.strip() != "":
+            val = v.strip()
+            if any(val.lower().startswith(b) for b in ("javascript:", "vbscript:")):
+                raise ValueError("Invalid photo URL scheme.")
+            return val
+        return None
 
     @field_validator("target_role")
     @classmethod

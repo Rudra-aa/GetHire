@@ -6,6 +6,8 @@
 
 export type InterviewFSMState =
   | "INITIALIZING"
+  | "GENERATING_FIRST_QUESTION"
+  | "READY"
   | "AI_SPEAKING"
   | "WAITING_FOR_MIC"
   | "LISTENING"
@@ -18,6 +20,7 @@ export type InterviewFSMState =
   | "PAUSED";
 
 export type InterviewErrorCategory =
+  | "INITIALIZATION_ERROR"
   | "MICROPHONE_ERROR"
   | "SPEECH_RECOGNITION_ERROR"
   | "GEMINI_CONNECTION_ERROR"
@@ -87,6 +90,7 @@ export interface InterviewEventMap {
   STATE_CHANGED: { from: InterviewFSMState; to: InterviewFSMState; reason?: string | undefined };
   MIC_READY: { stream: MediaStream };
   MIC_MUTED_CHANGED: { isMuted: boolean };
+  MIC_STATUS_CHANGED: { available: boolean; textFallback: boolean };
   AUDIO_ENERGY_UPDATED: { volume: number; rms: number; isVoice: boolean };
   USER_STARTED_SPEAKING: { timestamp: number };
   USER_STOPPED_SPEAKING: { timestamp: number; durationMs: number };
