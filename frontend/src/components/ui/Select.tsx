@@ -39,7 +39,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         {label && (
           <label
             htmlFor={selectId}
-            className="text-[11px] font-bold uppercase tracking-[0.1em] text-neutral-400"
+            className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#5A6E8C]"
           >
             {label}
           </label>
@@ -47,7 +47,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 
         <div className="relative group">
           {iconLeft && (
-            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400 group-focus-within:text-[#39FF88] transition-colors duration-200 z-10">
+            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#8FA3BC] group-focus-within:text-[#A8D8C3] transition-colors duration-200 z-10">
               {iconLeft}
             </span>
           )}
@@ -56,13 +56,13 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
             ref={ref}
             id={selectId}
             className={cn(
-              "w-full h-14 rounded-2xl bg-white/[0.03] border text-white text-sm",
-              "px-4 py-3 placeholder:text-neutral-500 appearance-none cursor-pointer",
+              "w-full h-14 rounded-xl bg-white border text-[#263D68] text-sm",
+              "px-4 py-3 placeholder:text-[#8FA3BC] appearance-none cursor-pointer",
               "transition-all duration-200",
-              "focus:outline-none focus:bg-white/[0.05] focus:border-[#39FF88] focus:ring-2 focus:ring-[#39FF88]/25",
+              "focus:outline-none focus:border-[#A8D8C3] focus:ring-2 focus:ring-[#A8D8C3]/30",
               error
-                ? "border-[#FF5C5C]/60 focus:border-[#FF5C5C] focus:ring-[#FF5C5C]/20"
-                : "border-white/[0.09] hover:border-white/[0.18]",
+                ? "border-[#E05C5C]/60 focus:border-[#E05C5C] focus:ring-[#E05C5C]/20"
+                : "border-[#D0DCE8] hover:border-[#B9D9EC]",
               iconLeft ? "pl-12" : "pl-4",
               "pr-10",
               className
@@ -73,25 +73,25 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
               <option
                 key={opt.value}
                 value={opt.value}
-                className="bg-[#111217] text-white py-2"
+                className="bg-white text-[#263D68] py-2"
               >
                 {opt.label}
               </option>
             ))}
           </select>
 
-          <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-neutral-400 group-focus-within:text-[#39FF88] transition-colors duration-200">
+          <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#8FA3BC] group-focus-within:text-[#263D68] transition-colors duration-200">
             <ChevronDown className="h-4 w-4" />
           </span>
         </div>
 
         {error && (
-          <span className="text-xs text-[#FF5C5C] flex items-center gap-1.5 font-medium" role="alert">
+          <span className="text-xs text-[#E05C5C] flex items-center gap-1.5 font-medium" role="alert">
             <span aria-hidden>⚠</span> {error}
           </span>
         )}
         {hint && !error && (
-          <span className="text-xs text-neutral-400">{hint}</span>
+          <span className="text-xs text-[#5A6E8C]">{hint}</span>
         )}
       </div>
     );

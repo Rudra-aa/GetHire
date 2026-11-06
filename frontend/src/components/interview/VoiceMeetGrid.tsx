@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState, useCallback } from "react";
-import { Bot, Sparkles, Mic, MicOff, Brain, CameraOff, Volume2 } from "lucide-react";
+import { Bot, Sparkles, Mic, MicOff, Brain, CameraOff, Volume2, Eye, EyeOff, SunMedium, Users } from "lucide-react";
 import { type InterviewState, type RecruiterPersona } from "@/types/interviewEngine";
 import { faceSenseApi } from "@/services/faceSenseApi";
 import { FaceLandmarker, FilesetResolver } from "@mediapipe/tasks-vision";
@@ -18,6 +18,7 @@ interface VoiceMeetGridProps {
   onInterrupt?: () => void;
   onRetry?: (() => void) | undefined;
   errorMessage?: string | undefined;
+  defaultVisualAnalysisEnabled?: boolean;
 }
 
 export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
@@ -34,14 +35,45 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
   onInterrupt,
   onRetry,
   errorMessage,
+  defaultVisualAnalysisEnabled = true,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const sampleCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const [streamActive, setStreamActive] = useState(false);
   const [cameraError, setCameraError] = useState<string | null>(null);
+  const [visualAnalysisEnabled, setVisualAnalysisEnabled] = useState(defaultVisualAnalysisEnabled);
+  const [lightingCondition, setLightingCondition] = useState<"adequate" | "low_light" | "overexposed">("adequate");
+  const [multipleFaces, setMultipleFaces] = useState(false);
+  const [isThinkingPause, setIsThinkingPause] = useState(false);
+  const thinkingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const landmarkerRef = useRef<FaceLandmarker | null>(null);
   const elapsedRef = useRef(0);
   const blinkCountRef = useRef(0);
   const wasBlinkingRef = useRef(false);
+  const sessionStartedRef = useRef(false);
+
+  // Initialize Session on Backend once sessionId is known
+  useEffect(() => {
+    if (sessionId && !sessionStartedRef.current) {
+      sessionStartedRef.current = true;
+      void faceSenseApi.startSession(sessionId, visualAnalysisEnabled).catch(() => {});
+    }
+  }, [sessionId, visualAnalysisEnabled]);
+
+  // Handle thinking-pause window when a new question arrives (4-second cognitive reflection leeway)
+  useEffect(() => {
+    if (currentQuestionId) {
+      setIsThinkingPause(true);
+      if (thinkingTimerRef.current) clearTimeout(thinkingTimerRef.current);
+      thinkingTimerRef.current = setTimeout(() => {
+        setIsThinkingPause(false);
+      }, 4000);
+    }
+    return () => {
+      if (thinkingTimerRef.current) clearTimeout(thinkingTimerRef.current);
+    };
+  }, [currentQuestionId]);
 
   // Initialize Camera Stream
   useEffect(() => {
@@ -87,7 +119,7 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
           outputFaceBlendshapes: true,
           outputFacialTransformationMatrixes: true,
           runningMode: "VIDEO",
-          numFaces: 1,
+          numFaces: 2,
         });
         if (active) landmarkerRef.current = fl;
       } catch (_err) {
@@ -105,7 +137,7 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
             outputFaceBlendshapes: true,
             outputFacialTransformationMatrixes: true,
             runningMode: "VIDEO",
-            numFaces: 1,
+            numFaces: 2,
           });
           if (active) landmarkerRef.current = fl;
         } catch (cpuErr) {
@@ -123,10 +155,27 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
     };
   }, []);
 
+  // Candidate Toggle for Visual Analysis
+  const handleToggleVisualAnalysis = async () => {
+    const nextVal = !visualAnalysisEnabled;
+    setVisualAnalysisEnabled(nextVal);
+    if (sessionId) {
+      try {
+        await faceSenseApi.toggleVisualAnalysis(sessionId, nextVal);
+      } catch (err) {
+        console.warn("Could not toggle visual analysis on backend:", err);
+      }
+    }
+  };
+
   // Real-time Silent FaceSense Telemetry Loop (every 1 second)
   const processFaceSenseFrame = useCallback(async () => {
-    if (!streamActive || document.hidden || !videoRef.current || !landmarkerRef.current) return;
+    if (!streamActive || document.hidden || !videoRef.current) return;
     if (state === "INTERVIEW_COMPLETE") return;
+
+    // If disabled by candidate, skip processing to respect privacy & save battery/CPU
+    if (!visualAnalysisEnabled) return;
+    if (!landmarkerRef.current) return;
 
     elapsedRef.current += 1;
     const timeSec = elapsedRef.current;
@@ -137,9 +186,44 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
       roll = 0;
     let smilePct = 0;
     let eyeContact = 90;
+    let currentLighting: "adequate" | "low_light" | "overexposed" = "adequate";
+    let hasMultipleFaces = false;
 
     try {
+      // 1. Lighting check using sample canvas
+      if (!sampleCanvasRef.current) {
+        sampleCanvasRef.current = document.createElement("canvas");
+        sampleCanvasRef.current.width = 16;
+        sampleCanvasRef.current.height = 16;
+      }
+      const ctx = sampleCanvasRef.current.getContext("2d", { willReadFrequently: true });
+      if (ctx && videoRef.current.videoWidth > 0) {
+        ctx.drawImage(videoRef.current, 0, 0, 16, 16);
+        const imgData = ctx.getImageData(0, 0, 16, 16);
+        let totalBrightness = 0;
+        const totalPixels = imgData.data.length / 4;
+        for (let i = 0; i < imgData.data.length; i += 4) {
+          const r = imgData.data[i] ?? 0;
+          const g = imgData.data[i + 1] ?? 0;
+          const b = imgData.data[i + 2] ?? 0;
+          totalBrightness += (r * 0.299 + g * 0.587 + b * 0.114);
+        }
+        const avgLuma = totalBrightness / Math.max(1, totalPixels);
+        if (avgLuma < 35) currentLighting = "low_light";
+        else if (avgLuma > 225) currentLighting = "overexposed";
+        else currentLighting = "adequate";
+        setLightingCondition(currentLighting);
+      }
+
+      // 2. MediaPipe Landmark inference
       const results = landmarkerRef.current.detectForVideo(videoRef.current, performance.now());
+
+      if (results.faceLandmarks && results.faceLandmarks.length > 1) {
+        hasMultipleFaces = true;
+        setMultipleFaces(true);
+      } else {
+        setMultipleFaces(false);
+      }
 
       if (results.faceBlendshapes && results.faceBlendshapes.length > 0) {
         const blendshapes = results.faceBlendshapes[0]?.categories || [];
@@ -198,12 +282,16 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
           confidence_score: 88,
           stress_score: 15,
           overall_facescore: faceVisible ? 90 : 20,
+          is_thinking_pause: isThinkingPause,
+          multiple_faces_detected: hasMultipleFaces,
+          lighting_condition: currentLighting,
+          visual_analysis_enabled: true,
         } as any);
       }
     } catch {
-      // Silent telemetry dispatch
+      // Non-blocking silent telemetry dispatch
     }
-  }, [sessionId, currentQuestionId, state, streamActive]);
+  }, [sessionId, currentQuestionId, state, streamActive, visualAnalysisEnabled, isThinkingPause]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -258,7 +346,7 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
                   ? "bg-gold-400/20 text-gold-300 border-gold-400/50 shadow-[0_0_15px_rgba(234,179,8,0.3)] animate-pulse"
                   : isAiThinking
                   ? "bg-purple-500/20 text-purple-300 border-purple-500/50 shadow-[0_0_15px_rgba(168,85,247,0.3)]"
-                  : "bg-emerald-500/15 text-[#39FF88] border-emerald-500/40"
+                  : "bg-emerald-500/15 text-[#72C9AD] border-emerald-500/40"
               }`}
             >
               {state === "INITIALIZING"
@@ -289,7 +377,7 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
                   ? "bg-gradient-to-tr from-gold-500/30 via-amber-500/20 to-purple-500/20 border-gold-400 shadow-[0_0_30px_rgba(234,179,8,0.35)] scale-105"
                   : isAiThinking
                   ? "bg-purple-500/20 border-purple-400 shadow-[0_0_25px_rgba(168,85,247,0.35)]"
-                  : "bg-white/5 border-white/20 hover:border-[#39FF88]/40"
+                  : "bg-white/5 border-white/20 hover:border-[#72C9AD]/40"
               }`}
             >
               {isAiThinking ? (
@@ -361,7 +449,7 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
             {onRetry && (
               <button
                 onClick={onRetry}
-                className="mt-4 px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-400 to-[#39FF88] text-black font-extrabold text-xs hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-lg"
+                className="mt-4 px-4 py-2 rounded-xl bg-[#A8D8C3] hover:bg-[#97ccb6] text-[#1E4D38] border border-[#72C9AD] font-extrabold text-xs transition-all cursor-pointer shadow-sm"
               >
                 Retry Connection
               </button>
@@ -393,15 +481,68 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
         )}
 
         {/* Top bar over video */}
-        <div className="relative z-10 flex items-center justify-between">
-          <div className="px-3 py-1 rounded-full bg-rose-500/20 border border-rose-500/40 text-rose-300 text-[10px] font-mono font-bold flex items-center gap-1.5 shadow-sm">
-            <span className="h-2 w-2 rounded-full bg-rose-500 animate-ping" />
-            <span>REC • 1080p HD</span>
+        <div className="relative z-10 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <div className="px-3 py-1 rounded-full bg-rose-500/20 border border-rose-500/40 text-rose-300 text-[10px] font-mono font-bold flex items-center gap-1.5 shadow-sm">
+              <span className="h-2 w-2 rounded-full bg-rose-500 animate-ping" />
+              <span>REC • 1080p HD</span>
+            </div>
+
+            {/* Optional Candidate Visual Analysis Toggle */}
+            <button
+              type="button"
+              onClick={handleToggleVisualAnalysis}
+              className={`px-2.5 py-1 rounded-full text-[10px] font-mono font-bold flex items-center gap-1.5 transition-all cursor-pointer backdrop-blur-md border ${
+                visualAnalysisEnabled
+                  ? "bg-emerald-500/20 border-emerald-400/40 text-emerald-300 hover:bg-emerald-500/30 shadow-[0_0_12px_rgba(16,185,129,0.25)]"
+                  : "bg-neutral-800/80 border-neutral-600/50 text-neutral-400 hover:bg-neutral-700/80"
+              }`}
+              title="Visual presentation analysis is optional and private. Click to toggle anytime."
+            >
+              {visualAnalysisEnabled ? (
+                <>
+                  <Eye className="h-3 w-3 text-emerald-400" />
+                  <span>Visual Analysis: ON</span>
+                </>
+              ) : (
+                <>
+                  <EyeOff className="h-3 w-3 text-neutral-400" />
+                  <span>Visual Analysis: OFF</span>
+                </>
+              )}
+            </button>
           </div>
-          <span className="text-xs font-mono text-neutral-200 bg-black/60 px-2.5 py-0.5 rounded-lg border border-white/15">
-            You (Candidate)
-          </span>
+
+          <div className="flex items-center gap-2">
+            {multipleFaces && visualAnalysisEnabled && (
+              <span className="text-[10px] font-mono text-amber-300 bg-amber-500/20 border border-amber-400/40 px-2 py-0.5 rounded-lg flex items-center gap-1">
+                <Users className="h-3 w-3" />
+                <span>Multi-Face</span>
+              </span>
+            )}
+            {lightingCondition === "low_light" && visualAnalysisEnabled && (
+              <span className="text-[10px] font-mono text-amber-300 bg-amber-500/20 border border-amber-400/40 px-2 py-0.5 rounded-lg flex items-center gap-1" title="Lighting is dim. Consider brightening your room.">
+                <SunMedium className="h-3 w-3" />
+                <span>Dim Light</span>
+              </span>
+            )}
+            <span className="text-xs font-mono text-neutral-200 bg-black/60 px-2.5 py-0.5 rounded-lg border border-white/15">
+              You (Candidate)
+            </span>
+          </div>
         </div>
+
+        {/* Center overlay banner when candidate disabled analysis */}
+        {!visualAnalysisEnabled && streamActive && (
+          <div className="relative z-10 my-auto mx-auto px-4 py-2 rounded-xl bg-black/70 border border-neutral-700 text-center backdrop-blur-md">
+            <p className="text-[11px] text-neutral-300 font-mono">
+              Visual Presentation Analysis Disabled by Candidate
+            </p>
+            <p className="text-[10px] text-neutral-500 font-sans">
+              Camera remains active for your view, but landmark telemetry is paused.
+            </p>
+          </div>
+        )}
 
         {/* Bottom mic volume meter over video */}
         <div className="relative z-10 flex items-center justify-between gap-3 p-3 rounded-2xl bg-black/75 border border-white/15 backdrop-blur-md shadow-lg">
@@ -409,7 +550,7 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
             {micMuted ? (
               <MicOff className="h-4 w-4 text-rose-400" />
             ) : (
-              <Mic className="h-4 w-4 text-[#39FF88] animate-pulse" />
+              <Mic className="h-4 w-4 text-[#72C9AD] animate-pulse" />
             )}
             <span className="font-semibold">
               {micMuted ? "Microphone Muted" : micVolume > 15 ? "Hearing Your Voice..." : "Microphone Active"}
@@ -420,11 +561,11 @@ export const VoiceMeetGrid: React.FC<VoiceMeetGridProps> = ({
             <div className="flex items-center gap-1.5">
               <div className="h-2.5 w-24 sm:w-32 bg-white/10 rounded-full overflow-hidden p-0.5">
                 <div
-                  className="h-full bg-gradient-to-r from-emerald-400 to-[#39FF88] rounded-full transition-all duration-100 shadow-[0_0_10px_rgba(57,255,136,0.5)]"
+                  className="h-full bg-gradient-to-r from-[#A8D8C3] to-[#72C9AD] rounded-full transition-all duration-100"
                   style={{ width: `${Math.min(100, Math.max(8, micVolume))}%` }}
                 />
               </div>
-              <span className="text-[10px] font-mono text-[#39FF88] font-bold w-6 text-right">
+              <span className="text-[10px] font-mono text-[#72C9AD] font-bold w-6 text-right">
                 {Math.round(micVolume)}%
               </span>
             </div>

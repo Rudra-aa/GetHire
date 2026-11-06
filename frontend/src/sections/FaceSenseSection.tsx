@@ -3,73 +3,64 @@ import { motion } from "framer-motion";
 import { Eye, Smile, Target, Sparkles } from "lucide-react";
 
 const emotionTimeline = [
-  { time: "0:00", emotion: "Neutral",   confidence: 62, color: "bg-graphite-400" },
-  { time: "0:45", emotion: "Focused",   confidence: 74, color: "bg-gold-400" },
-  { time: "1:30", emotion: "Confident", confidence: 83, color: "bg-emerald-400" },
-  { time: "2:15", emotion: "Stressed",  confidence: 55, color: "bg-warning" },
-  { time: "3:00", emotion: "Recovering",confidence: 70, color: "bg-gold-400" },
-  { time: "3:45", emotion: "Confident", confidence: 88, color: "bg-emerald-400" },
-  { time: "4:30", emotion: "Confident", confidence: 91, color: "bg-emerald-400" },
+  { time: "0:00", emotion: "Neutral",   confidence: 62, color: "bg-[#8FA3BC]" },
+  { time: "0:45", emotion: "Focused",   confidence: 74, color: "bg-[#2B7FAD]" },
+  { time: "1:30", emotion: "Confident", confidence: 83, color: "bg-[#1E8C5A]" },
+  { time: "2:15", emotion: "Stressed",  confidence: 55, color: "bg-[#D4921A]" },
+  { time: "3:00", emotion: "Recovering",confidence: 70, color: "bg-[#2B7FAD]" },
+  { time: "3:45", emotion: "Confident", confidence: 88, color: "bg-[#1E8C5A]" },
+  { time: "4:30", emotion: "Confident", confidence: 91, color: "bg-[#1E8C5A]" },
 ];
 
 const signals = [
   {
-    icon: <Eye className="h-5 w-5 text-emerald-400" />,
+    icon: <Eye className="h-5 w-5 text-[#1E8C5A]" />,
     label: "Eye Contact",
     value: "87%",
     desc: "Consistent gaze toward camera — strong interviewer engagement.",
     bar: 87,
   },
   {
-    icon: <Smile className="h-5 w-5 text-emerald-400" />,
+    icon: <Smile className="h-5 w-5 text-[#1E8C5A]" />,
     label: "Expression Baseline",
     value: "Calm",
     desc: "Neutral-to-confident baseline maintained across most of the session.",
     bar: 82,
   },
   {
-    icon: <Target className="h-5 w-5 text-emerald-400" />,
+    icon: <Target className="h-5 w-5 text-[#1E8C5A]" />,
     label: "Confidence Trend",
     value: "↑ Rising",
     desc: "Started at 62% confidence, recovered to 91% by session end.",
     bar: 88,
   },
   {
-    icon: <Sparkles className="h-5 w-5 text-emerald-400" />,
+    icon: <Sparkles className="h-5 w-5 text-[#1E8C5A]" />,
     label: "Stress Detection",
     value: "Low",
-    desc: "One stress spike at Q3 (microservices failure mode), self-corrected.",
+    desc: "One brief stress signal during failure mode probe, self-corrected.",
     bar: 30,
   },
 ];
 
 export const FaceSenseSection = memo(function FaceSenseSection() {
   return (
-    <section id="facesense" className="section-padding bg-bg-secondary relative overflow-hidden">
-      {/* Emerald ambient glow — FaceSense signature */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 50% at 60% 50%, rgba(52,211,153,0.04) 0%, transparent 65%)",
-        }}
-      />
-
+    <section id="facesense" className="py-8 bg-white relative overflow-hidden">
       <div className="section-container">
         {/* Header */}
-        <div className="max-w-[620px] mb-14">
-          <div className="eyebrow-pill-emerald mb-4">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_#34d399]" />
-            FaceSense — Facial Analysis
+        <div className="max-w-[620px] mb-10">
+          <div className="eyebrow-pill mb-3">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#1E8C5A]" />
+            FaceSense — Facial Composure Analysis
           </div>
-          <h2 className="text-display font-black tracking-tight text-ivory-100">
+          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#263D68]">
             Real-Time Expression <br />
-            <span style={{ background: "linear-gradient(135deg, #6EE7B7 0%, #34D399 50%, #10B981 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              and Confidence Tracking
+            <span className="gradient-text-luxury">
+              and Composure Tracking
             </span>
           </h2>
-          <p className="text-sm text-graphite-400 mt-4 leading-relaxed">
-            FaceSense uses your webcam and OpenCV + TensorFlow to detect facial expressions and track confidence trends throughout the interview. All processing is local — no video is stored or transmitted.
+          <p className="text-xs sm:text-sm text-[#5A6E8C] mt-3 leading-relaxed">
+            FaceSense uses your webcam to evaluate facial expressions and track composure trends throughout the interview. All processing runs locally — no video is stored or transmitted.
           </p>
         </div>
 
@@ -83,18 +74,17 @@ export const FaceSenseSection = memo(function FaceSenseSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.06, duration: 0.4 }}
-                className="glass-card-luxury p-5 rounded-2xl flex flex-col gap-3"
-                style={{ borderColor: "rgba(52,211,153,0.22)", borderTopColor: "rgba(52,211,153,0.40)" }}
+                className="p-5 rounded-2xl flex flex-col gap-3 bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 shadow-glass hover:bg-white/95 hover:border-[#A8D8C3] transition-all"
               >
                 <div className="flex items-center gap-2">
                   {sig.icon}
-                  <span className="text-xs font-bold text-ivory-200">{sig.label}</span>
-                  <span className="ml-auto font-mono text-sm font-bold text-emerald-400">{sig.value}</span>
+                  <span className="text-xs font-bold text-[#263D68]">{sig.label}</span>
+                  <span className="ml-auto font-mono text-sm font-bold text-[#1E8C5A]">{sig.value}</span>
                 </div>
-                <p className="text-[11px] text-graphite-400 leading-relaxed">{sig.desc}</p>
-                <div className="w-full h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
+                <p className="text-[11px] text-[#5A6E8C] leading-relaxed">{sig.desc}</p>
+                <div className="w-full h-1.5 bg-[#E4EDF5] rounded-full overflow-hidden">
                   <motion.div
-                    className="h-full bg-emerald-400 rounded-full shadow-[0_0_6px_#34d399]"
+                    className="h-full bg-[#A8D8C3] rounded-full"
                     initial={{ width: 0 }}
                     whileInView={{ width: `${sig.bar}%` }}
                     viewport={{ once: true }}
@@ -106,18 +96,18 @@ export const FaceSenseSection = memo(function FaceSenseSection() {
           </div>
 
           {/* Right: Emotion timeline */}
-          <div className="glass-card-luxury p-6 rounded-3xl flex flex-col gap-5">
+          <div className="p-6 rounded-3xl flex flex-col gap-5 bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 shadow-glass">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-bold text-ivory-200">Confidence Timeline</span>
-              <span className="font-mono text-graphite-500">Session: 4m 30s</span>
+              <span className="font-bold text-[#263D68]">Confidence Timeline</span>
+              <span className="font-mono text-[#5A6E8C]">Session: 4m 30s</span>
             </div>
 
             {/* Timeline bars */}
             <div className="flex flex-col gap-3">
               {emotionTimeline.map((point) => (
                 <div key={point.time} className="flex items-center gap-3 text-xs">
-                  <span className="font-mono text-[10px] text-graphite-500 w-8 flex-shrink-0">{point.time}</span>
-                  <div className="flex-1 h-5 bg-white/[0.04] rounded-md overflow-hidden relative">
+                  <span className="font-mono text-[10px] text-[#8FA3BC] w-8 flex-shrink-0">{point.time}</span>
+                  <div className="flex-1 h-5 bg-[#E4EDF5] rounded-md overflow-hidden relative">
                     <motion.div
                       className={`absolute inset-y-0 left-0 ${point.color} opacity-80 rounded-md`}
                       initial={{ width: 0 }}
@@ -128,14 +118,14 @@ export const FaceSenseSection = memo(function FaceSenseSection() {
                   </div>
                   <div className="flex items-center gap-1.5 w-28 flex-shrink-0">
                     <span className={`h-1.5 w-1.5 rounded-full ${point.color} flex-shrink-0`} />
-                    <span className="text-[10px] text-graphite-400">{point.emotion}</span>
-                    <span className="ml-auto font-mono text-[10px] text-graphite-500">{point.confidence}%</span>
+                    <span className="text-[10px] text-[#5A6E8C]">{point.emotion}</span>
+                    <span className="ml-auto font-mono text-[10px] text-[#8FA3BC]">{point.confidence}%</span>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="pt-3 border-t border-white/[0.06] text-[11px] text-graphite-500">
+            <div className="pt-3 border-t border-[#E4EDF5] text-[11px] text-[#5A6E8C]">
               Included in the final HireScore and downloadable report.
             </div>
           </div>

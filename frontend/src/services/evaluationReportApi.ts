@@ -6,6 +6,7 @@
 
 import apiClient from "@/services/api";
 import { ReadinessDetails } from "@/services/hireScoreApi";
+import type { FaceSenseSessionSummary } from "@/services/faceSenseApi";
 
 export interface EvaluationReportDetail {
   id: string;
@@ -25,6 +26,7 @@ export interface EvaluationReportDetail {
   
   facesense_score?: number;
   voicesense_score?: number;
+  visual_presentation?: FaceSenseSessionSummary;
   
   hirescore: number;
   readiness: ReadinessDetails;

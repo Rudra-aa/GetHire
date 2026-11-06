@@ -83,8 +83,8 @@ export const Navbar = memo(function Navbar() {
         aria-label="Main navigation"
         className={`pointer-events-auto flex items-center justify-between gap-3 sm:gap-6 px-4 sm:px-6 py-2.5 sm:py-3 w-full max-w-[1240px] transition-all duration-300 ${
           scrolled
-            ? "bg-[#09090B]/40 backdrop-blur-2xl border border-white/[0.08] shadow-[0_16px_40px_rgba(0,0,0,0.65)]"
-            : "bg-black/20 backdrop-blur-xl border border-white/[0.06]"
+            ? "bg-white/80 backdrop-blur-xl border border-white/85 shadow-glass-dropdown"
+            : "bg-white/70 backdrop-blur-md border border-white/75 shadow-glass"
         } rounded-full`}
       >
         {/* ── Brand with Isometric Green Layers Icon ─────────────────── */}
@@ -99,8 +99,8 @@ export const Navbar = memo(function Navbar() {
                   href={link.href}
                   className={`text-[13px] font-semibold transition-all duration-150 py-1 ${
                     idx === 0
-                      ? "text-[#39FF88] drop-shadow-[0_0_8px_rgba(57,255,136,0.6)]"
-                      : "text-neutral-300 hover:text-white"
+                      ? "text-[#1E8C5A]"
+                      : "text-[#5A6E8C] hover:text-[#263D68]"
                   }`}
                 >
                   {link.label}
@@ -112,10 +112,10 @@ export const Navbar = memo(function Navbar() {
             <li className="relative">
               <button
                 onClick={(e) => { e.stopPropagation(); setMoreOpen((o) => !o); }}
-                className="flex items-center gap-1 text-[13px] font-semibold text-neutral-300 hover:text-white transition-colors duration-150 py-1"
+                className="flex items-center gap-1 text-[13px] font-semibold text-[#5A6E8C] hover:text-[#263D68] transition-colors duration-150 py-1"
               >
                 <span>More</span>
-                <ChevronDown className={`h-3.5 w-3.5 transition-transform ${moreOpen ? "rotate-180 text-[#39FF88]" : ""}`} />
+                <ChevronDown className={`h-3.5 w-3.5 transition-transform ${moreOpen ? "rotate-180 text-[#1E8C5A]" : ""}`} />
               </button>
 
               <AnimatePresence>
@@ -125,17 +125,17 @@ export const Navbar = memo(function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -6, scale: 0.97 }}
                     transition={{ duration: 0.16 }}
-                    className="absolute top-9 left-1/2 -translate-x-1/2 w-48 rounded-2xl p-2 flex flex-col gap-1 bg-[#111217]/95 backdrop-blur-2xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-50"
+                    className="absolute top-9 left-1/2 -translate-x-1/2 w-48 rounded-2xl p-2 flex flex-col gap-1 bg-white/85 backdrop-blur-xl border border-white/85 shadow-glass-dropdown z-50"
                     onClick={(e) => e.stopPropagation()}
                   >
                     {panelLinks.map((item) => (
                       <button
                         key={item.label}
                         onClick={(e) => item.panel && handlePanelLink(e, item.panel)}
-                        className="w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-white/[0.08] transition-all flex items-center justify-between"
+                        className="w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-semibold text-[#5A6E8C] hover:text-[#263D68] hover:bg-[#F0F5F9] transition-all flex items-center justify-between"
                       >
                         <span>{item.label}</span>
-                        <span className="text-[10px] font-mono text-[#39FF88] bg-emerald-500/15 border border-emerald-500/30 rounded px-1.5 py-0.2">
+                        <span className="text-[10px] font-mono text-[#1E8C5A] bg-[#A8D8C3]/20 border border-[#A8D8C3]/40 rounded px-1.5 py-0.2">
                           View
                         </span>
                       </button>
@@ -147,25 +147,25 @@ export const Navbar = memo(function Navbar() {
           </ul>
         )}
 
-        {/* ── Desktop: Auth + CTA (Lime Green Radiant Pill) ─────────── */}
+        {/* ── Desktop: Auth + CTA (Emerald Pill) ─────────── */}
         <div className="hidden items-center gap-3 sm:flex shrink-0">
           {accessToken ? (
             <>
               <Link
                 to="/dashboard"
-                className="text-[13px] font-bold text-[#39FF88] hover:underline transition-colors px-2 py-1"
+                className="text-[13px] font-bold text-[#1E8C5A] hover:underline transition-colors px-2 py-1"
               >
                 Dashboard
               </Link>
               <Link
                 to="/profile"
-                className="text-[13px] font-semibold text-neutral-300 hover:text-white transition-colors px-2 py-1"
+                className="text-[13px] font-semibold text-[#5A6E8C] hover:text-[#263D68] transition-colors px-2 py-1"
               >
                 Profile
               </Link>
               <button
                 onClick={() => void logout()}
-                className="text-xs font-bold px-3.5 py-1.5 rounded-full border border-white/15 hover:border-rose-500/40 text-neutral-300 hover:text-rose-400 hover:bg-rose-500/10 transition-all"
+                className="text-xs font-bold px-3.5 py-1.5 rounded-full border border-[#D0DCE8] hover:border-rose-300 text-[#5A6E8C] hover:text-rose-500 hover:bg-rose-50 transition-all"
               >
                 Sign out
               </button>
@@ -174,13 +174,14 @@ export const Navbar = memo(function Navbar() {
             <>
               <Link
                 to="/login"
-                className="text-[13px] font-semibold text-neutral-200 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/[0.06] transition-colors"
+                className="text-[13px] font-semibold text-[#5A6E8C] hover:text-[#263D68] px-3 py-1.5 rounded-full hover:bg-[#F0F5F9] transition-colors"
               >
                 Sign in
               </Link>
               <Link
                 to="/register"
-                className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-[13px] font-black text-black bg-gradient-to-r from-[#86EFAC] via-[#39FF88] to-[#4ADE80] shadow-[0_0_20px_rgba(57,255,136,0.45)] hover:brightness-110 transition-all duration-200 hover:scale-[1.02]"
+                className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-[13px] font-black text-[#1A2D52] shadow-[0_4px_12px_rgba(38,61,104,0.08)] hover:brightness-105 transition-all duration-200 hover:scale-[1.02]"
+                style={{ background: "linear-gradient(135deg, #A8D8C3 0%, #77C4A2 100%)" }}
               >
                 <span>Get Started</span>
                 <ArrowRight className="h-3.5 w-3.5 stroke-[2.5]" />
@@ -195,7 +196,7 @@ export const Navbar = memo(function Navbar() {
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
           onClick={() => setMenuOpen((o) => !o)}
-          className="flex md:hidden items-center justify-center h-8 w-8 rounded-lg border border-white/[0.12] text-neutral-300 hover:text-white hover:bg-white/[0.06] transition-colors"
+          className="flex md:hidden items-center justify-center h-8 w-8 rounded-lg border border-[#D0DCE8] text-[#5A6E8C] hover:text-[#263D68] hover:bg-[#F0F5F9] transition-colors"
         >
           {menuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
         </button>
@@ -210,18 +211,18 @@ export const Navbar = memo(function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="pointer-events-auto absolute top-[62px] inset-x-4 sm:hidden flex flex-col shadow-2xl overflow-hidden bg-[#111217]/95 backdrop-blur-2xl border border-white/15 rounded-2xl"
+            className="pointer-events-auto absolute top-[62px] inset-x-4 sm:hidden flex flex-col shadow-glass-modal overflow-hidden bg-white/90 backdrop-blur-xl border border-white/85 rounded-2xl"
           >
             {/* On-page links */}
             {isLanding && (
               <div className="p-4 flex flex-col gap-1">
-                <p className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 px-2 mb-1">Navigate</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-[#8FA3BC] px-2 mb-1">Navigate</p>
                 {mainLinks.map((link) => (
                   <a
                     key={link.label}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="text-sm font-semibold text-neutral-300 hover:text-white px-3 py-2.5 rounded-xl hover:bg-white/[0.06] transition-all"
+                    className="text-sm font-semibold text-[#5A6E8C] hover:text-[#263D68] px-3 py-2.5 rounded-xl hover:bg-[#F0F5F9] transition-all"
                   >
                     {link.label}
                   </a>
@@ -231,35 +232,36 @@ export const Navbar = memo(function Navbar() {
 
             {/* Panel links */}
             {isLanding && (
-              <div className="p-4 flex flex-col gap-1 border-t border-white/[0.08]">
-                <p className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 px-2 mb-1">Interactive Panels</p>
+              <div className="p-4 flex flex-col gap-1 border-t border-[#D0DCE8]">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-[#8FA3BC] px-2 mb-1">Interactive Panels</p>
                 {panelLinks.map((item) => (
                   <button
                     key={item.label}
                     onClick={(e) => item.panel && handlePanelLink(e, item.panel)}
-                    className="w-full text-left text-sm font-semibold text-neutral-300 hover:text-white px-3 py-2.5 rounded-xl hover:bg-white/[0.06] transition-all flex items-center justify-between"
+                    className="w-full text-left text-sm font-semibold text-[#5A6E8C] hover:text-[#263D68] px-3 py-2.5 rounded-xl hover:bg-[#F0F5F9] transition-all flex items-center justify-between"
                   >
                     <span>{item.label}</span>
-                    <span className="text-[10px] font-mono text-[#39FF88] border border-emerald-500/30 rounded px-1.5 py-0.5">Open</span>
+                    <span className="text-[10px] font-mono text-[#1E8C5A] border border-[#A8D8C3]/40 rounded px-1.5 py-0.5">Open</span>
                   </button>
                 ))}
               </div>
             )}
 
             {/* Mobile Auth CTAs */}
-            <div className="p-4 border-t border-white/[0.08] flex flex-col gap-2">
+            <div className="p-4 border-t border-[#D0DCE8] flex flex-col gap-2">
               {accessToken ? (
                 <>
                   <Link
                     to="/dashboard"
                     onClick={() => setMenuOpen(false)}
-                    className="w-full text-center py-2.5 rounded-xl text-sm font-bold text-black bg-[#39FF88]"
+                    className="w-full text-center py-2.5 rounded-xl text-sm font-bold text-[#1A2D52]"
+                    style={{ background: "linear-gradient(135deg, #A8D8C3 0%, #77C4A2 100%)" }}
                   >
                     Dashboard
                   </Link>
                   <button
                     onClick={() => { void logout(); setMenuOpen(false); }}
-                    className="w-full text-center py-2 text-xs font-semibold text-rose-400"
+                    className="w-full text-center py-2 text-xs font-semibold text-rose-500"
                   >
                     Sign out
                   </button>
@@ -269,14 +271,15 @@ export const Navbar = memo(function Navbar() {
                   <Link
                     to="/register"
                     onClick={() => setMenuOpen(false)}
-                    className="w-full text-center py-3 rounded-full text-sm font-black text-black bg-gradient-to-r from-[#86EFAC] via-[#39FF88] to-[#4ADE80]"
+                    className="w-full text-center py-3 rounded-full text-sm font-black text-[#1A2D52]"
+                    style={{ background: "linear-gradient(135deg, #A8D8C3 0%, #77C4A2 100%)" }}
                   >
                     Get Started
                   </Link>
                   <Link
                     to="/login"
                     onClick={() => setMenuOpen(false)}
-                    className="w-full text-center py-2.5 rounded-xl text-xs font-bold text-neutral-300 hover:text-white"
+                    className="w-full text-center py-2.5 rounded-xl text-xs font-bold text-[#5A6E8C] hover:text-[#263D68]"
                   >
                     Sign in
                   </Link>

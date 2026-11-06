@@ -80,7 +80,7 @@ export const CommandPaletteModal = memo(function CommandPaletteModal({
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 px-4 bg-black/70 backdrop-blur-md">
+      <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 px-4 bg-slate-900/40 backdrop-blur-sm">
         <div className="absolute inset-0" onClick={onClose} />
 
         <motion.div
@@ -88,26 +88,26 @@ export const CommandPaletteModal = memo(function CommandPaletteModal({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: -10 }}
           transition={{ duration: 0.2 }}
-          className="relative w-full max-w-xl rounded-3xl bg-[#111217] border border-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col z-10"
+          className="relative w-full max-w-xl rounded-2xl bg-white/90 backdrop-blur-xl border border-[#D0DCE8]/80 shadow-[0_24px_48px_-12px_rgba(38,61,104,0.15),0_8px_20px_-4px_rgba(38,61,104,0.08)] overflow-hidden flex flex-col z-10"
         >
-          <div className="flex items-center gap-3 px-5 py-4 border-b border-white/[0.08]">
-            <Search className="h-5 w-5 text-[#39FF88]" />
+          <div className="flex items-center gap-3 px-5 py-4 border-b border-[#E4EDF5]">
+            <Search className="h-5 w-5 text-[#1E8C5A]" />
             <input
               ref={inputRef}
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Type a command, job search, skill or prompt..."
-              className="flex-1 bg-transparent text-sm text-white placeholder:text-neutral-500 focus:outline-none"
+              className="flex-1 bg-transparent text-sm text-[#263D68] placeholder:text-[#5A6E8C] focus:outline-none"
             />
-            <kbd className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-neutral-400">
+            <kbd className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#FAFBFC] border border-[#D0DCE8] text-[#5A6E8C]">
               ESC
             </kbd>
           </div>
 
           <div className="p-2 max-h-[340px] overflow-y-auto scrollbar-none flex flex-col gap-1">
             {filtered.length === 0 ? (
-              <div className="py-8 text-center text-xs text-neutral-500">
+              <div className="py-8 text-center text-xs text-[#5A6E8C]">
                 No matching commands found.
               </div>
             ) : (
@@ -117,30 +117,30 @@ export const CommandPaletteModal = memo(function CommandPaletteModal({
                   <button
                     key={item.id}
                     onClick={() => handleSelect(item)}
-                    className="flex items-center justify-between px-3.5 py-2.5 rounded-2xl hover:bg-emerald-500/10 hover:border-emerald-500/30 border border-transparent transition-all text-left group"
+                    className="flex items-center justify-between px-3.5 py-2.5 rounded-xl hover:bg-[#F0FAF5] hover:border-[#A8D8C3] border border-transparent transition-all text-left group"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="h-8 w-8 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-neutral-400 group-hover:text-[#39FF88] group-hover:border-emerald-500/30 transition-colors">
+                      <div className="h-8 w-8 rounded-xl bg-[#FAFBFC] border border-[#D0DCE8] flex items-center justify-center text-[#5A6E8C] group-hover:text-[#1E8C5A] group-hover:border-[#A8D8C3] transition-colors">
                         <Icon className="h-4 w-4" />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-xs font-bold text-white group-hover:text-[#39FF88] transition-colors">
+                        <span className="text-xs font-bold text-[#263D68] group-hover:text-[#1E8C5A] transition-colors">
                           {item.title}
                         </span>
-                        <span className="text-[10px] font-mono text-neutral-500">{item.category}</span>
+                        <span className="text-[10px] font-mono text-[#5A6E8C]">{item.category}</span>
                       </div>
                     </div>
 
-                    <ArrowRight className="h-3.5 w-3.5 text-neutral-500 group-hover:text-[#39FF88] group-hover:translate-x-0.5 transition-all" />
+                    <ArrowRight className="h-3.5 w-3.5 text-[#5A6E8C] group-hover:text-[#1E8C5A] group-hover:translate-x-0.5 transition-all" />
                   </button>
                 );
               })
             )}
           </div>
 
-          <div className="px-5 py-3 border-t border-white/[0.08] bg-black/40 flex items-center justify-between text-[11px] font-mono text-neutral-400">
+          <div className="px-5 py-3 border-t border-[#E4EDF5] bg-[#FAFBFC]/80 backdrop-blur-sm flex items-center justify-between text-[11px] font-mono text-[#5A6E8C]">
             <span className="flex items-center gap-1.5">
-              <Sparkles className="h-3.5 w-3.5 text-[#39FF88]" />
+              <Sparkles className="h-3.5 w-3.5 text-[#1E8C5A]" />
               GetHire Command Palette
             </span>
             <span>Use ↑↓ to navigate · ↵ to select</span>

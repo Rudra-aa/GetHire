@@ -59,8 +59,8 @@ export const PerformanceRadar: React.FC<PerformanceRadarProps> = ({ dimensions }
   return (
     <GlassCard className="p-6 flex flex-col justify-between h-[340px]">
       <div className="flex items-center gap-2">
-        <span className="h-3 w-1 rounded-full bg-gold-400" />
-        <h3 className="text-sm font-bold text-white">Performance Radar</h3>
+        <span className="h-3 w-1 rounded-full bg-[#1E8C5A]" />
+        <h3 className="text-sm font-bold text-[#263D68]">Performance Radar</h3>
       </div>
 
       <div className="flex justify-center items-center flex-1 my-auto">
@@ -79,7 +79,7 @@ export const PerformanceRadar: React.FC<PerformanceRadarProps> = ({ dimensions }
                 key={si}
                 points={gridPoints}
                 fill="none"
-                stroke="rgba(255,255,255,0.08)"
+                stroke="#E4EDF5"
                 strokeWidth="1"
               />
             );
@@ -93,7 +93,7 @@ export const PerformanceRadar: React.FC<PerformanceRadarProps> = ({ dimensions }
                 key={i}
                 x1={CENTER} y1={CENTER}
                 x2={x} y2={y}
-                stroke="rgba(255,255,255,0.08)"
+                stroke="#E4EDF5"
                 strokeWidth="1"
               />
             );
@@ -102,8 +102,8 @@ export const PerformanceRadar: React.FC<PerformanceRadarProps> = ({ dimensions }
           {/* Data polygon */}
           <polygon
             points={buildPolygon(values, RADIUS)}
-            fill="rgba(57,255,136,0.15)"
-            stroke="#39FF88"
+            fill="rgba(168,216,195,0.3)"
+            stroke="#1E8C5A"
             strokeWidth="2"
           />
 
@@ -113,7 +113,7 @@ export const PerformanceRadar: React.FC<PerformanceRadarProps> = ({ dimensions }
             const { x, y } = polarToXY(i * step, r);
             return (
               <g key={i}>
-                <circle cx={x} cy={y} r="4" fill="#39FF88" stroke="#09090B" strokeWidth="1.5" />
+                <circle cx={x} cy={y} r="4" fill="#1E8C5A" stroke="#FFFFFF" strokeWidth="1.5" />
               </g>
             );
           })}
@@ -131,7 +131,7 @@ export const PerformanceRadar: React.FC<PerformanceRadarProps> = ({ dimensions }
                   textAnchor="middle"
                   dominantBaseline="middle"
                   fontSize="9"
-                  fill="rgba(255,255,255,0.6)"
+                  fill="#5A6E8C"
                   fontWeight="600"
                   fontFamily="sans-serif"
                 >
@@ -146,7 +146,7 @@ export const PerformanceRadar: React.FC<PerformanceRadarProps> = ({ dimensions }
                   y={y + (lines.length > 1 ? 14 : 10)}
                   textAnchor="middle"
                   fontSize="9"
-                  fill="#39FF88"
+                  fill="#1E8C5A"
                   fontWeight="bold"
                   fontFamily="monospace"
                 >

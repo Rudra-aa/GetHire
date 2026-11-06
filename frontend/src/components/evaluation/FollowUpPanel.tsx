@@ -34,14 +34,14 @@ export const FollowUpPanel: React.FC<FollowUpPanelProps> = ({ evaluations }) => 
     <GlassCard className="p-5 flex flex-col gap-3">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h3 className="text-xs font-bold text-white flex items-center gap-2">
-          <HelpCircle className="h-4 w-4 text-[#8B5CF6]" />
+        <h3 className="text-xs font-bold text-[#263D68] flex items-center gap-2">
+          <HelpCircle className="h-4 w-4 text-[#5245A4]" />
           Follow-up Recommendations
         </h3>
         {items.length > 1 && (
           <button
             onClick={() => setExpanded((prev) => !prev)}
-            className="text-[10px] font-bold text-[#8B5CF6] hover:underline"
+            className="text-[10px] font-bold text-[#5245A4] hover:underline cursor-pointer"
           >
             {expanded ? "Collapse" : `View All (${items.length})`}
           </button>
@@ -53,9 +53,9 @@ export const FollowUpPanel: React.FC<FollowUpPanelProps> = ({ evaluations }) => 
         {visible.map((q, idx) => (
           <div
             key={idx}
-            className="p-3 rounded-xl bg-[#8B5CF6]/5 border border-[#8B5CF6]/15 flex items-start gap-2 text-xs text-neutral-200"
+            className="p-3 rounded-xl bg-[#DCD5F0]/20 border border-[#DCD5F0]/60 flex items-start gap-2 text-xs text-[#263D68]"
           >
-            <ArrowRight className="h-3.5 w-3.5 text-[#8B5CF6] shrink-0 mt-0.5" />
+            <ArrowRight className="h-3.5 w-3.5 text-[#5245A4] shrink-0 mt-0.5" />
             <span className="italic font-medium">"{q}"</span>
           </div>
         ))}
@@ -65,7 +65,7 @@ export const FollowUpPanel: React.FC<FollowUpPanelProps> = ({ evaluations }) => 
       {items.length > 1 && (
         <button
           onClick={() => setExpanded((prev) => !prev)}
-          className="flex items-center justify-center gap-1 text-[10px] text-neutral-500 hover:text-neutral-300 transition-colors pt-1"
+          className="flex items-center justify-center gap-1 text-[10px] text-[#5A6E8C] hover:text-[#263D68] transition-colors pt-1 cursor-pointer"
         >
           {expanded ? (
             <><ChevronUp className="h-3 w-3" /> Show Less</>

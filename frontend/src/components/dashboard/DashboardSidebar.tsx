@@ -84,7 +84,7 @@ export const DashboardSidebar = memo(function DashboardSidebar({
     <>
       {isMobile && !collapsed && (
         <div 
-          className="fixed inset-0 bg-black/60 z-40 backdrop-blur-sm"
+          className="fixed inset-0 bg-black/30 z-40 backdrop-blur-sm"
           onClick={onToggle}
         />
       )}
@@ -95,7 +95,7 @@ export const DashboardSidebar = memo(function DashboardSidebar({
           x: isMobile && collapsed ? -280 : 0
         }}
         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-0 left-0 h-screen z-50 bg-[#09090B] border-r border-white/[0.08] flex flex-col justify-between p-3 select-none"
+        className="fixed top-0 left-0 h-screen z-50 bg-white/80 backdrop-blur-xl border-r border-white/85 shadow-glass flex flex-col justify-between p-3 select-none"
       >
       <div className="flex flex-col gap-6">
         <div className="flex items-center justify-between px-2 pt-2">
@@ -105,10 +105,10 @@ export const DashboardSidebar = memo(function DashboardSidebar({
             <ThemeToggle compact={true} />
             <button
               onClick={onToggle}
-              className="p-1.5 rounded-lg text-neutral-400 hover:text-white hover:bg-white/[0.06] transition-colors"
+              className="p-1.5 rounded-lg text-[#5A6E8C] hover:text-[#263D68] hover:bg-[#F0F5F9] transition-colors"
               title={collapsed ? "Expand Sidebar" : "Collapse Sidebar"}
             >
-              {collapsed ? <PanelLeftOpen className="h-4 w-4 text-[#39FF88]" /> : <PanelLeftClose className="h-4 w-4" />}
+              {collapsed ? <PanelLeftOpen className="h-4 w-4 text-[#1E8C5A]" /> : <PanelLeftClose className="h-4 w-4" />}
             </button>
           </div>
         </div>
@@ -126,13 +126,13 @@ export const DashboardSidebar = memo(function DashboardSidebar({
                 to={item.path}
                 className={`relative flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all group ${
                   isActive
-                    ? "bg-emerald-500/10 text-emerald-700 dark:text-[#39FF88] border border-emerald-500/30 dark:border-emerald-500/20 shadow-sm dark:shadow-[0_0_15px_rgba(57,255,136,0.1)]"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-white/[0.04]"
+                    ? "bg-[#EEF4F9] text-[#1E8C5A] border-l-2 border-[#A8D8C3] shadow-sm"
+                    : "text-[#5A6E8C] hover:text-[#263D68] hover:bg-[#F0F5F9]"
                 }`}
                 title={collapsed ? item.label : undefined}
               >
                 <div className="flex items-center gap-3">
-                  <Icon className={`h-4 w-4 shrink-0 ${isActive ? "text-emerald-600 dark:text-[#39FF88]" : "text-slate-400 dark:text-neutral-400 group-hover:text-slate-900 dark:group-hover:text-white"}`} />
+                  <Icon className={`h-4 w-4 shrink-0 ${isActive ? "text-[#1E8C5A]" : "text-[#8FA3BC] group-hover:text-[#263D68]"}`} />
 
                   {!collapsed && (
                     <span className="truncate">
@@ -142,7 +142,7 @@ export const DashboardSidebar = memo(function DashboardSidebar({
                 </div>
 
                 {isActive && !collapsed && (
-                  <ArrowRight className="h-3.5 w-3.5 text-emerald-600 dark:text-[#39FF88]" />
+                  <ArrowRight className="h-3.5 w-3.5 text-[#1E8C5A]" />
                 )}
               </Link>
             );
@@ -150,14 +150,14 @@ export const DashboardSidebar = memo(function DashboardSidebar({
         </nav>
       </div>
 
-      <div className="flex flex-col gap-3 pt-3 border-t border-slate-200 dark:border-white/[0.08]">
+      <div className="flex flex-col gap-3 pt-3 border-t border-[#E4EDF5]">
         <div ref={menuRef} className="relative">
           <button
             onClick={() => setUserMenuOpen((prev) => !prev)}
-            className="w-full flex items-center justify-between p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-all text-left group"
+            className="w-full flex items-center justify-between p-2 rounded-xl hover:bg-[#F0F5F9] transition-all text-left group"
           >
             <div className="flex items-center gap-2.5 min-w-0">
-              <div className="relative h-8 w-8 rounded-full bg-neutral-800 border border-slate-200 dark:border-white/10 flex items-center justify-center text-xs font-bold text-white shrink-0">
+              <div className="relative h-8 w-8 rounded-full bg-gradient-to-br from-[#A8D8C3] to-[#B9D9EC] border border-[#D0DCE8] flex items-center justify-center text-xs font-bold text-[#1A2D52] shrink-0">
                 {user?.profile_photo || user?.avatar_url ? (
                   <img
                     src={user.profile_photo || user.avatar_url || undefined}
@@ -167,15 +167,15 @@ export const DashboardSidebar = memo(function DashboardSidebar({
                 ) : (
                   <span>{initials}</span>
                 )}
-                <span className="absolute bottom-0 right-0 h-2 w-2 rounded-full bg-[#39FF88] border border-[#09090B]" />
+                <span className="absolute bottom-0 right-0 h-2 w-2 rounded-full bg-[#2DA870] border border-white" />
               </div>
 
               {!collapsed && (
                 <div className="flex flex-col min-w-0">
-                  <span className="text-xs font-bold text-slate-900 dark:text-white truncate">
+                  <span className="text-xs font-bold text-[#263D68] truncate">
                     {user?.full_name?.split(" ")[0] || "Rudra"}
                   </span>
-                  <span className="text-[10px] text-slate-500 dark:text-neutral-400 truncate">
+                  <span className="text-[10px] text-[#5A6E8C] truncate">
                     {user?.target_role || "Frontend Developer"}
                   </span>
                 </div>
@@ -183,7 +183,7 @@ export const DashboardSidebar = memo(function DashboardSidebar({
             </div>
 
             {!collapsed && (
-              <ChevronDown className="h-3.5 w-3.5 text-slate-400 dark:text-neutral-400" />
+              <ChevronDown className="h-3.5 w-3.5 text-[#5A6E8C]" />
             )}
           </button>
 
@@ -194,14 +194,14 @@ export const DashboardSidebar = memo(function DashboardSidebar({
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 8, scale: 0.96 }}
                 transition={{ duration: 0.16 }}
-                className="absolute bottom-12 left-0 right-0 min-w-[190px] p-2 rounded-2xl bg-white dark:bg-[#111217] border border-slate-200 dark:border-white/15 shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-50 flex flex-col gap-1"
+                className="absolute bottom-12 left-0 right-0 min-w-[190px] p-2 rounded-2xl bg-white/85 backdrop-blur-xl border border-white/85 shadow-glass-dropdown z-50 flex flex-col gap-1"
               >
                 <Link
                   to="/profile"
                   onClick={() => setUserMenuOpen(false)}
-                  className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs text-slate-700 hover:text-slate-900 hover:bg-slate-100 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-white/[0.08]"
+                  className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs text-[#263D68] hover:text-[#1A2D52] hover:bg-[#F0F5F9]"
                 >
-                  <User className="h-3.5 w-3.5 text-emerald-600 dark:text-[#39FF88]" />
+                  <User className="h-3.5 w-3.5 text-[#1E8C5A]" />
                   <span>Profile Settings</span>
                 </Link>
                 <button
@@ -209,14 +209,14 @@ export const DashboardSidebar = memo(function DashboardSidebar({
                     setUserMenuOpen(false);
                     setShowResetModal(true);
                   }}
-                  className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 hover:bg-amber-500/10 w-full text-left font-medium cursor-pointer"
+                  className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs text-amber-600 hover:text-amber-700 hover:bg-amber-500/10 w-full text-left font-medium cursor-pointer"
                 >
-                  <RotateCcw className="h-3.5 w-3.5 text-amber-500 dark:text-amber-400" />
+                  <RotateCcw className="h-3.5 w-3.5 text-amber-500" />
                   <span>Reset Progress</span>
                 </button>
                 <button
                   onClick={handleSignOut}
-                  className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-rose-500 dark:text-rose-400 hover:bg-rose-500/10 w-full text-left cursor-pointer"
+                  className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-rose-500 hover:bg-rose-500/10 w-full text-left cursor-pointer"
                 >
                   <LogOut className="h-3.5 w-3.5" />
                   <span>Sign Out</span>
@@ -236,13 +236,13 @@ export const DashboardSidebar = memo(function DashboardSidebar({
         />
 
         {!collapsed && (
-          <div className="flex items-center gap-2 px-2 py-1.5 text-xs text-slate-500 dark:text-neutral-400">
-            <Headphones className="h-4 w-4 text-slate-400 dark:text-neutral-400 shrink-0" />
+          <div className="flex items-center gap-2 px-2 py-1.5 text-xs text-[#5A6E8C]">
+            <Headphones className="h-4 w-4 text-[#8FA3BC] shrink-0" />
             <div className="flex flex-col text-[11px]">
               <span>Need Help?</span>
               <a
                 href="mailto:support@gethire.ai"
-                className="text-emerald-600 dark:text-[#39FF88] hover:underline font-medium"
+                className="text-[#1E8C5A] hover:underline font-medium"
               >
                 Contact Support
               </a>

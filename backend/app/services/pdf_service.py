@@ -11,9 +11,12 @@ from pathlib import Path
 from typing import Optional
 
 try:
-    import fitz  # PyMuPDF
+    import pymupdf as fitz
 except ImportError:
-    fitz = None
+    try:
+        import fitz  # Fallback for older PyMuPDF versions
+    except ImportError:
+        fitz = None
 
 
 @dataclass

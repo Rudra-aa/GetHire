@@ -17,14 +17,14 @@ const PublicPortfolioPage = lazy(() => import("@/pages/PublicPortfolioPage"));
 
 function PageLoader() {
   return (
-    <div className="min-h-screen bg-[#09090B] flex items-center justify-center">
-      <div className="flex flex-col items-center gap-5">
+    <div className="min-h-screen bg-transparent flex items-center justify-center">
+      <div className="flex flex-col items-center gap-4">
         <div className="relative">
-          <div className="h-12 w-12 rounded-full border-2 border-emerald-500/20" />
-          <div className="absolute inset-0 h-12 w-12 rounded-full border-2 border-t-[#39FF88] animate-spin" />
+          <div className="h-10 w-10 rounded-full border-2 border-[#D0DCE8]" />
+          <div className="absolute inset-0 h-10 w-10 rounded-full border-2 border-[#A8D8C3] border-t-transparent animate-spin" />
         </div>
-        <p className="text-xs text-[#39FF88] font-mono tracking-widest font-semibold">
-          LOADING GETHIRE AI OS...
+        <p className="text-xs text-[#5A6E8C] font-sans tracking-widest font-semibold uppercase">
+          Loading GetHire...
         </p>
       </div>
     </div>

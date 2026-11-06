@@ -80,31 +80,31 @@ export const PortfolioShareSection = memo(function PortfolioShareSection({
   };
 
   return (
-    <div className="p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#111217]/90 border border-slate-200 dark:border-white/[0.08] shadow-sm dark:shadow-[0_20px_50px_rgba(0,0,0,0.6)] flex flex-col gap-6 overflow-hidden">
-      <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/[0.08] pb-4">
+    <div className="p-6 sm:p-7 rounded-3xl bg-[#EEF6FB]/85 backdrop-blur-md border border-[#B9D9EC]/60 shadow-glass flex flex-col gap-6 overflow-hidden">
+      <div className="flex items-center justify-between border-b border-[#B9D9EC]/40 pb-4">
         <div>
-          <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+          <h3 className="text-sm font-bold text-[#263D68] flex items-center gap-2">
             Recruiter Portfolio & Share Center
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-300 border border-purple-500/20">
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#DCD5F0]/35 text-[#6E5EBB] border border-[#DCD5F0]/50 font-bold">
               SHARE CENTER
             </span>
           </h3>
-          <p className="text-xs text-slate-500 dark:text-neutral-400 mt-0.5">
+          <p className="text-xs text-[#5A6E8C] mt-0.5">
             Share your verified composite performance history directly with recruiters and hiring managers.
           </p>
         </div>
-        <Share2 className="h-5 w-5 text-purple-500 dark:text-purple-400" />
+        <Share2 className="h-5 w-5 text-[#6E5EBB]" />
       </div>
 
       {errorMsg && (
-        <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-xs flex items-center gap-2">
+        <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-[#E05C5C] text-xs flex items-center gap-2">
           <AlertCircle className="h-4 w-4 shrink-0" />
           <span>{errorMsg}</span>
         </div>
       )}
 
       {successMsg && (
-        <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs flex items-center gap-2">
+        <div className="p-3 rounded-xl bg-[#A8D8C3]/20 border border-[#A8D8C3]/40 text-[#1E8C5A] text-xs flex items-center gap-2">
           <Check className="h-4 w-4 shrink-0" />
           <span>{successMsg}</span>
         </div>
@@ -114,39 +114,39 @@ export const PortfolioShareSection = memo(function PortfolioShareSection({
         {/* Link Generator and View Count */}
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-1.5">
-            <label className="text-[10px] font-mono text-slate-500 dark:text-neutral-400 uppercase">
+            <label className="text-[10px] font-mono text-[#5A6E8C] uppercase">
               Your Portfolio Link
             </label>
             <div className={`flex items-center gap-2 rounded-xl p-2.5 border ${
               isConfigured && isPublic
-                ? "bg-slate-50 dark:bg-[#09090B] border-slate-200 dark:border-white/10"
-                : "bg-slate-100 dark:bg-white/[0.02] border-dashed border-slate-300 dark:border-white/10 opacity-80"
+                ? "bg-white/90 backdrop-blur-sm border-white/95 shadow-xs"
+                : "bg-white/60 border-dashed border-[#B9D9EC]/70 opacity-80"
             }`}>
               <input
                 type="text"
                 readOnly
                 value={displayUrl}
-                className="bg-transparent border-none outline-none text-xs text-slate-800 dark:text-neutral-300 w-full font-mono select-all disabled:cursor-not-allowed"
+                className="bg-transparent border-none outline-none text-xs text-[#263D68] w-full font-mono select-all disabled:cursor-not-allowed"
               />
               <button
                 onClick={handleCopy}
                 disabled={!canCopy}
                 className={`p-1.5 rounded-lg transition-colors shrink-0 ${
                   canCopy
-                    ? "hover:bg-slate-200 dark:hover:bg-white/5 text-slate-600 dark:text-neutral-300 hover:text-slate-900 dark:hover:text-white cursor-pointer"
-                    : "text-slate-300 dark:text-neutral-600 cursor-not-allowed"
+                    ? "hover:bg-[#EEF6FB] text-[#5A6E8C] hover:text-[#263D68] cursor-pointer"
+                    : "text-[#8FA3BC] cursor-not-allowed"
                 }`}
                 title={canCopy ? "Copy Link" : "Copy Link Disabled"}
               >
                 {copied ? (
-                  <Check className="h-4 w-4 text-emerald-600 dark:text-[#39FF88]" />
+                  <Check className="h-4 w-4 text-[#1E8C5A]" />
                 ) : (
                   <Copy className="h-4 w-4" />
                 )}
               </button>
             </div>
             {!isConfigured && (
-              <span className="text-[10px] text-slate-500 dark:text-neutral-400">
+              <span className="text-[10px] text-[#5A6E8C]">
                 Public recruiter sharing is not configured in this environment.
               </span>
             )}
@@ -154,13 +154,13 @@ export const PortfolioShareSection = memo(function PortfolioShareSection({
 
           <div className="flex gap-4">
             {/* Recruiter Views */}
-            <div className="flex-1 p-3 rounded-2xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200 dark:border-white/5 flex items-center gap-3">
-              <Eye className="h-5 w-5 text-cyan-500 dark:text-cyan-400" />
+            <div className="flex-1 p-3 rounded-2xl bg-white/85 backdrop-blur-sm border border-white/95 flex items-center gap-3 shadow-xs">
+              <Eye className="h-5 w-5 text-[#2B7FAD]" />
               <div>
-                <span className="text-[10px] font-mono text-slate-400 dark:text-neutral-500 uppercase block">
+                <span className="text-[10px] font-mono text-[#5A6E8C] uppercase block">
                   Recruiter Views
                 </span>
-                <span className="text-sm font-bold text-slate-900 dark:text-white">
+                <span className="text-sm font-bold text-[#263D68]">
                   {isConfigured && shareSettings?.access_count !== null && shareSettings?.access_count !== undefined
                     ? `${shareSettings.access_count} ${shareSettings.access_count === 1 ? "View" : "Views"}`
                     : "Analytics unavailable"}
@@ -169,22 +169,22 @@ export const PortfolioShareSection = memo(function PortfolioShareSection({
             </div>
 
             {/* Share Visibility */}
-            <div className="flex-1 p-3 rounded-2xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200 dark:border-white/5 flex items-center gap-3">
+            <div className="flex-1 p-3 rounded-2xl bg-white/85 backdrop-blur-sm border border-white/95 flex items-center gap-3 shadow-xs">
               {isConfigured && isPublic ? (
-                <Globe className="h-5 w-5 text-emerald-500 dark:text-emerald-400" />
+                <Globe className="h-5 w-5 text-[#1E8C5A]" />
               ) : (
-                <Lock className="h-5 w-5 text-amber-500 dark:text-amber-400" />
+                <Lock className="h-5 w-5 text-[#D4921A]" />
               )}
               <div>
-                <span className="text-[10px] font-mono text-slate-400 dark:text-neutral-500 uppercase block">
+                <span className="text-[10px] font-mono text-[#5A6E8C] uppercase block">
                   Share Visibility
                 </span>
                 <span className={`text-sm font-bold ${
                   !isConfigured
-                    ? "text-slate-400 dark:text-neutral-500"
+                    ? "text-[#8FA3BC]"
                     : isPublic
-                    ? "text-emerald-600 dark:text-emerald-400"
-                    : "text-amber-600 dark:text-amber-400"
+                    ? "text-[#1E8C5A]"
+                    : "text-[#D4921A]"
                 }`}>
                   {!isConfigured ? "Not Configured" : isPublic ? "Public" : "Private"}
                 </span>
@@ -194,12 +194,12 @@ export const PortfolioShareSection = memo(function PortfolioShareSection({
         </div>
 
         {/* Customization controls */}
-        <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200 dark:border-white/5 flex flex-col gap-4">
-          <div className="flex items-center gap-2 text-xs font-bold text-slate-900 dark:text-white uppercase border-b border-slate-200 dark:border-white/5 pb-2">
-            <Settings2 className="h-4 w-4 text-purple-500 dark:text-purple-400" />
+        <div className="p-4 rounded-2xl bg-white/85 backdrop-blur-sm border border-white/95 flex flex-col gap-4 shadow-xs">
+          <div className="flex items-center gap-2 text-xs font-bold text-[#263D68] uppercase border-b border-[#E4EDF5] pb-2">
+            <Settings2 className="h-4 w-4 text-[#6E5EBB]" />
             <span>Link Customization</span>
             {isSaving && (
-              <span className="ml-auto text-[10px] text-purple-600 dark:text-purple-400 font-mono animate-pulse">
+              <span className="ml-auto text-[10px] text-[#6E5EBB] font-mono animate-pulse">
                 Saving...
               </span>
             )}
@@ -209,13 +209,13 @@ export const PortfolioShareSection = memo(function PortfolioShareSection({
             {/* Publicly accessible link */}
             <div className="flex items-center justify-between">
               <div className="flex flex-col gap-0.5">
-                <span className="text-xs font-semibold text-slate-900 dark:text-white">
+                <span className="text-xs font-semibold text-[#263D68]">
                   Publicly accessible link
                 </span>
-                <span className="text-[10px] text-slate-500 dark:text-neutral-400">
+                <span className="text-[10px] text-[#5A6E8C]">
                   {isConfigured
                     ? "Allow recruiters with the URL to view your verified portfolio"
-                    : "Disabled — requires configured production domain"}
+                    : "Disabled — requires configured domain"}
                 </span>
               </div>
               <input
@@ -223,22 +223,22 @@ export const PortfolioShareSection = memo(function PortfolioShareSection({
                 disabled={!isConfigured || isSaving}
                 checked={isConfigured && isPublic}
                 onChange={(e) => void handleTogglePublic(e.target.checked)}
-                className="w-4 h-4 accent-emerald-500 rounded border-slate-300 dark:border-white/10 bg-transparent disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                className="w-4 h-4 accent-[#A8D8C3] rounded border-[#D0DCE8] bg-transparent disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
               />
             </div>
 
             {/* Include Technical Assessment */}
             <div className="flex items-center justify-between">
               <div className="flex flex-col gap-0.5">
-                <span className="text-xs font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
+                <span className="text-xs font-semibold text-[#263D68] flex items-center gap-1.5">
                   Include Technical Assessment
                   {!hasAssessment && (
-                    <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400">
+                    <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-amber-50 text-[#D4921A]">
                       NOT COMPLETED
                     </span>
                   )}
                 </span>
-                <span className="text-[10px] text-slate-500 dark:text-neutral-400">
+                <span className="text-[10px] text-[#5A6E8C]">
                   {hasAssessment
                     ? "Show detailed concept analysis graph"
                     : "Complete a technical assessment first to enable sharing"}
@@ -249,20 +249,20 @@ export const PortfolioShareSection = memo(function PortfolioShareSection({
                 disabled={!hasAssessment || isSaving}
                 checked={includeAssessment}
                 onChange={(e) => void handleToggleAssessment(e.target.checked)}
-                className="w-4 h-4 accent-emerald-500 rounded border-slate-300 dark:border-white/10 bg-transparent disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                className="w-4 h-4 accent-[#A8D8C3] rounded border-[#D0DCE8] bg-transparent disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
               />
             </div>
 
             {/* Include Interview Session Recordings (Unavailable) */}
             <div className="flex items-center justify-between opacity-60">
               <div className="flex flex-col gap-0.5">
-                <span className="text-xs font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
+                <span className="text-xs font-semibold text-[#263D68] flex items-center gap-1.5">
                   Include Interview Session Recordings
-                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-slate-200 dark:bg-white/10 text-slate-500 dark:text-neutral-400">
+                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-[#F0F5F9] text-[#5A6E8C]">
                     UNAVAILABLE
                   </span>
                 </span>
-                <span className="text-[10px] text-slate-500 dark:text-neutral-400">
+                <span className="text-[10px] text-[#5A6E8C]">
                   Recording storage unavailable (video/audio clips are not captured or stored)
                 </span>
               </div>
@@ -270,7 +270,7 @@ export const PortfolioShareSection = memo(function PortfolioShareSection({
                 type="checkbox"
                 disabled={true}
                 checked={false}
-                className="w-4 h-4 rounded border-slate-300 dark:border-white/10 bg-transparent cursor-not-allowed opacity-30"
+                className="w-4 h-4 rounded border-[#D0DCE8] bg-transparent cursor-not-allowed opacity-30"
               />
             </div>
           </div>

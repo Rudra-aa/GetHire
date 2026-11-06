@@ -18,8 +18,8 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ compact = false, class
         type="button"
         className={`p-2 rounded-xl transition-all duration-200 border cursor-pointer ${
           isDark
-            ? "bg-white/[0.04] hover:bg-white/[0.08] border-white/10 text-amber-300 hover:text-amber-200"
-            : "bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-700 hover:text-slate-900 shadow-sm"
+            ? "bg-[#F0F5F9] hover:bg-[#E4EDF5] border-[#D0DCE8] text-[#5A6E8C] hover:text-[#263D68]"
+            : "bg-[#F0F5F9] hover:bg-[#E4EDF5] border-[#D0DCE8] text-[#5A6E8C] hover:text-[#263D68]"
         } ${className}`}
         title={`Switch to ${isDark ? "Light" : "Dark"} Mode`}
         aria-label={`Switch to ${isDark ? "Light" : "Dark"} Mode`}
@@ -44,32 +44,28 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ compact = false, class
           toggleTheme();
         }
       }}
-      className={`relative p-1 rounded-2xl flex items-center justify-between border cursor-pointer select-none transition-all duration-200 ${
-        isDark
-          ? "bg-[#111217] border-white/10 hover:border-white/20"
-          : "bg-slate-100 border-slate-300 hover:border-slate-400 shadow-sm"
-      } ${className}`}
+      className={`relative p-1 rounded-2xl flex items-center justify-between border cursor-pointer select-none transition-all duration-200 bg-white/80 backdrop-blur-sm border-[#D0DCE8]/80 hover:border-[#B9D9EC] ${className}`}
       aria-label={`Toggle theme (currently ${theme})`}
     >
       <div
         className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-all duration-200 ${
           isDark
-            ? "bg-white/10 text-white shadow-sm"
-            : "text-slate-500 hover:text-slate-800"
+            ? "bg-white border border-[#D0DCE8] text-[#263D68] shadow-sm"
+            : "text-[#5A6E8C] hover:text-[#263D68]"
         }`}
       >
-        <Moon className="h-3.5 w-3.5 text-cyan-400" />
+        <Moon className="h-3.5 w-3.5 text-[#8FA3BC]" />
         <span>Dark</span>
       </div>
 
       <div
         className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-all duration-200 ${
           !isDark
-            ? "bg-white text-slate-900 shadow-sm border border-slate-200"
-            : "text-neutral-400 hover:text-white"
+            ? "bg-white border border-[#D0DCE8] text-[#263D68] shadow-sm"
+            : "text-[#5A6E8C] hover:text-[#263D68]"
         }`}
       >
-        <Sun className="h-3.5 w-3.5 text-amber-500" />
+        <Sun className="h-3.5 w-3.5 text-[#D4921A]" />
         <span>Light</span>
       </div>
     </div>

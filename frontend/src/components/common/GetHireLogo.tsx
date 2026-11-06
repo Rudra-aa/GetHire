@@ -40,7 +40,7 @@ export const GetHireLogo: React.FC<GetHireLogoProps> = ({
   const logoContent = (
     <div className={`flex items-center gap-2.5 shrink-0 group ${className}`} onClick={onClick}>
       <span
-        className={`flex ${iconSizes[size]} items-center justify-center rounded-xl bg-emerald-500/20 text-[#39FF88] border border-[#39FF88]/30 shadow-[0_0_16px_rgba(57,255,136,0.3)] group-hover:scale-105 group-hover:shadow-[0_0_22px_rgba(57,255,136,0.5)] transition-all duration-200 shrink-0`}
+        className={`flex ${iconSizes[size]} items-center justify-center rounded-xl bg-[#A8D8C3]/25 text-[#1E8C5A] border border-[#A8D8C3]/50 shadow-[0_1px_6px_rgba(168,216,195,0.30)] group-hover:scale-105 group-hover:shadow-[0_2px_10px_rgba(168,216,195,0.45)] transition-all duration-200 shrink-0`}
       >
         <svg
           viewBox="0 0 24 24"
@@ -59,7 +59,7 @@ export const GetHireLogo: React.FC<GetHireLogoProps> = ({
 
       {showText && (
         <span
-          className={`font-sans ${textSizes[size]} font-extrabold tracking-tight text-white group-hover:text-[#39FF88] transition-colors`}
+          className={`font-sans ${textSizes[size]} font-extrabold tracking-tight text-[#263D68] group-hover:text-[#1E8C5A] transition-colors`}
         >
           GetHire
         </span>

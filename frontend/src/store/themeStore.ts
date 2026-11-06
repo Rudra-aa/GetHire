@@ -32,14 +32,14 @@ export const applyThemeToDOM = (theme: ThemeMode) => {
 };
 
 const getInitialTheme = (): ThemeMode => {
-  if (typeof window === "undefined") return "dark";
+  if (typeof window === "undefined") return "light";
   const saved = localStorage.getItem(STORAGE_KEY);
   if (saved === "light" || saved === "dark") {
     applyThemeToDOM(saved);
     return saved;
   }
-  applyThemeToDOM("dark");
-  return "dark";
+  applyThemeToDOM("light");
+  return "light";
 };
 
 export const useThemeStore = create<ThemeState>((set) => ({

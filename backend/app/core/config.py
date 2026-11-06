@@ -89,8 +89,8 @@ class Settings(BaseSettings):
 
     # ── Redis ──────────────────────────────────────────────────────────────
     REDIS_URL: str = Field(
-        default="redis://localhost:6379/0",
-        description="Redis connection URL",
+        default="",
+        description="Redis connection URL (optional — skipped if unset)",
     )
     REDIS_MAX_CONNECTIONS: int = Field(
         default=20,
@@ -273,9 +273,42 @@ class Settings(BaseSettings):
     @field_validator("MONGODB_URI", mode="before")
     @classmethod
     def sanitize_mongodb_uri(cls, v: Any) -> str:
-        if isinstance(v, str):
-            v = v.strip().strip("'\"")
-        return v or "mongodb://localhost:27017"
+        if not v:
+            return "mongodb://localhost:27017"
+        if not isinstance(v, str):
+            v = str(v)
+        v = v.strip().strip("'\"")
+        if not v:
+            return "mongodb://localhost:27017"
+
+        # Strip literal escaped sequences like '\n' or '\r' and raw whitespace/newlines
+        v = v.replace("\\r", "").replace("\\n", "")
+        import re
+        v = re.sub(r"[\r\n]+", "", v)
+
+        # Normalize query parameters to clean values (e.g. w=majority\n -> w=majority)
+        if "?" in v:
+            base, query = v.split("?", 1)
+            pairs = query.split("&")
+            clean_pairs = []
+            for pair in pairs:
+                if not pair.strip():
+                    continue
+                if "=" in pair:
+                    key, val = pair.split("=", 1)
+                    k = key.strip()
+                    import urllib.parse
+                    decoded_val = urllib.parse.unquote(val).strip()
+                    decoded_val = decoded_val.replace("\\r", "").replace("\\n", "")
+                    decoded_val = re.sub(r"[\r\n\s]+", "", decoded_val)
+                    if k.lower() == "w" and decoded_val.lower() == "majority":
+                        clean_pairs.append("w=majority")
+                    else:
+                        clean_pairs.append(f"{k}={decoded_val}")
+                else:
+                    clean_pairs.append(pair.strip())
+            v = f"{base}?{'&'.join(clean_pairs)}"
+        return v.strip()
 
     @field_validator("REDIS_URL", mode="before")
     @classmethod
@@ -284,17 +317,29 @@ class Settings(BaseSettings):
             return ""
         if isinstance(v, str):
             v = v.strip().strip("'\"")
-            if not v:
+            if not v or v.lower() in ("none", "null", "disabled", "unset"):
                 return ""
+            # Strip literal escaped sequences like '\n' or '\r' and raw whitespace/newlines
+            v = v.replace("\\r", "").replace("\\n", "")
+            import re
+            v = re.sub(r"[\r\n]+", "", v).strip()
             # If the user pasted a redis-cli command (e.g. 'redis-cli --tls -u rediss://...')
             if "redis-cli" in v:
-                import re
                 match = re.search(r"(rediss?://\S+)", v)
                 if match:
                     v = match.group(1).strip("'\"")
             # Upstash requires rediss:// (TLS)
             if "upstash.io" in v.lower() and v.lower().startswith("redis://"):
                 v = "rediss://" + v[len("redis://"):]
+
+            # In production, skip Redis if configured to localhost/127.0.0.1
+            import os
+            is_prod = (
+                os.environ.get("ENVIRONMENT", "").lower() == "production"
+                or os.environ.get("RENDER", "").lower() in ("true", "1")
+            )
+            if is_prod and any(h in v.lower() for h in ("localhost", "127.0.0.1", "0.0.0.0")):
+                return ""
         return v
 
     # ── Computed properties ────────────────────────────────────────────────

@@ -19,6 +19,7 @@ class FaceSenseSample(BaseModel):
     eye_contact_score: float = 85.0
     direction_status: str = "Direct Eye Contact"
     head_stability_score: float = 85.0
+    posture_stability_score: float = 85.0
     pitch: float = 0.0
     yaw: float = 0.0
     roll: float = 0.0
@@ -30,6 +31,10 @@ class FaceSenseSample(BaseModel):
     stress_score: float = 20.0
     overall_facescore: int = 85
     face_visible: bool = True
+    is_thinking_pause: bool = False
+    lighting_condition: str = "adequate"
+    multiple_faces_detected: bool = False
+    visual_analysis_enabled: bool = True
 
 
 class FaceSenseEventModel(BaseModel):
@@ -58,4 +63,16 @@ class FaceSenseSessionModel(BaseModel):
     avg_eye_contact: float = 85.0
     avg_attention: float = 85.0
     avg_presence: float = 85.0
+    visual_analysis_enabled: bool = True
+    data_quality_status: str = "sufficient"
+    data_quality_reason: Optional[str] = None
+    presentation_stability_score: float = 85.0
+    camera_facing_consistency_pct: float = 85.0
+    posture_stability_pct: float = 85.0
+    expression_variation_score: float = 75.0
+    verbal_attitude_assessment: Optional[Dict[str, Any]] = None
+    strengths: List[str] = Field(default_factory=list)
+    areas_for_improvement: List[str] = Field(default_factory=list)
+    constructive_summary: Optional[str] = None
+    question_analytics: Optional[List[Dict[str, Any]]] = None
     samples: List[FaceSenseSample] = Field(default_factory=list)

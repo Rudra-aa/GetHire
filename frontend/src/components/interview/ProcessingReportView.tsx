@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { Loader2, CheckCircle2, Brain, AlertCircle, RefreshCw } from "lucide-react";
 import { evaluationApi } from "@/services/evaluationApi";
 import { evaluationReportApi } from "@/services/evaluationReportApi";
+import { faceSenseApi } from "@/services/faceSenseApi";
 
 interface ProcessingReportViewProps {
   sessionId: string;
@@ -73,6 +74,15 @@ export const ProcessingReportView: React.FC<ProcessingReportViewProps> = ({
         ]);
       }
 
+      // Finalize visual presentation & non-verbal session analytics
+      if (sessionId && sessionId !== "sess-ai-demo") {
+        try {
+          await faceSenseApi.finishSession(sessionId);
+        } catch (fsErr) {
+          console.warn("[ProcessingReportView] finishSession notice:", fsErr);
+        }
+      }
+
       // Generate immutable evaluation report snapshot
       let finalReportId = sessionId;
       try {
@@ -113,14 +123,14 @@ export const ProcessingReportView: React.FC<ProcessingReportViewProps> = ({
 
   if (error) {
     return (
-      <div className="min-h-screen bg-[#07090e] text-white flex flex-col items-center justify-center p-6">
-        <div className="max-w-xl w-full p-8 rounded-3xl bg-[#0e121d] border border-rose-500/30 shadow-2xl flex flex-col items-center gap-6 text-center">
-          <div className="p-4 rounded-full bg-rose-500/10 border border-rose-500/30">
-            <AlertCircle className="h-10 w-10 text-rose-400" />
+      <div className="min-h-screen bg-[#FAFBFC] text-[#263D68] flex flex-col items-center justify-center p-6">
+        <div className="max-w-xl w-full p-8 rounded-3xl bg-white border border-rose-200 shadow-xl flex flex-col items-center gap-6 text-center">
+          <div className="p-4 rounded-full bg-rose-50 border border-rose-200">
+            <AlertCircle className="h-10 w-10 text-rose-500" />
           </div>
           <div>
-            <h2 className="text-xl font-bold text-white font-display">Evaluation Generation Failed</h2>
-            <p className="text-sm text-neutral-400 mt-2 leading-relaxed">{error}</p>
+            <h2 className="text-xl font-bold text-[#263D68] font-display">Evaluation Generation Failed</h2>
+            <p className="text-sm text-[#5A6E8C] mt-2 leading-relaxed">{error}</p>
           </div>
           <div className="flex gap-3">
             <button
@@ -130,14 +140,14 @@ export const ProcessingReportView: React.FC<ProcessingReportViewProps> = ({
                 void runEvaluation();
               }}
               disabled={isRetrying}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#39FF88] text-black font-bold text-sm hover:bg-[#32e078] transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#A8D8C3] text-[#1E4D38] border border-[#72C9AD] font-bold text-sm hover:bg-[#97ccb6] transition-all disabled:opacity-60 disabled:cursor-not-allowed shadow-sm"
             >
               <RefreshCw className={`h-4 w-4 ${isRetrying ? "animate-spin" : ""}`} />
               Retry Evaluation
             </button>
             <button
               onClick={() => onComplete(sessionId)}
-              className="px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-neutral-300 font-bold text-sm hover:bg-white/10 transition-all"
+              className="px-5 py-2.5 rounded-xl bg-white border border-[#D0DCE8] text-[#263D68] font-bold text-sm hover:bg-[#F0F5F9] transition-all"
             >
               View Results Anyway
             </button>
@@ -148,17 +158,17 @@ export const ProcessingReportView: React.FC<ProcessingReportViewProps> = ({
   }
 
   return (
-    <div className="min-h-screen bg-[#07090e] text-white flex flex-col items-center justify-center p-6">
-      <div className="max-w-xl w-full p-8 rounded-3xl bg-gradient-to-b from-[#0e121d] to-[#07090e] border border-amber-400/30 shadow-2xl shadow-amber-500/10 flex flex-col gap-6">
+    <div className="min-h-screen bg-[#FAFBFC] text-[#263D68] flex flex-col items-center justify-center p-6">
+      <div className="max-w-xl w-full p-8 rounded-3xl bg-white/90 backdrop-blur-xl border border-[#D0DCE8]/80 shadow-[0_24px_48px_-12px_rgba(38,61,104,0.15)] flex flex-col gap-6">
         <div className="flex flex-col items-center text-center gap-3">
           <div className="relative">
-            <div className="h-16 w-16 rounded-full border-2 border-amber-400/20" />
-            <div className="absolute inset-0 h-16 w-16 rounded-full border-2 border-t-amber-400 animate-spin" />
-            <Brain className="absolute inset-0 m-auto h-7 w-7 text-amber-400" />
+            <div className="h-16 w-16 rounded-full border-2 border-[#A8D8C3]/30" />
+            <div className="absolute inset-0 h-16 w-16 rounded-full border-2 border-t-[#1E8C5A] animate-spin" />
+            <Brain className="absolute inset-0 m-auto h-7 w-7 text-[#1E8C5A]" />
           </div>
-          <h2 className="text-2xl font-bold font-display text-white">Synthesizing AI Evaluation</h2>
-          <p className="text-xs text-neutral-400 font-sans">
-            Please hold on while GetHire AI completes multi-layer analysis of your interview session.
+          <h2 className="text-2xl font-bold font-display text-[#263D68]">Synthesizing AI Evaluation</h2>
+          <p className="text-xs text-[#5A6E8C] font-sans">
+            Please hold on while GetHire completes multi-layer analysis of your interview session.
           </p>
         </div>
 
@@ -172,25 +182,25 @@ export const ProcessingReportView: React.FC<ProcessingReportViewProps> = ({
                 key={idx}
                 className={`p-2.5 rounded-xl border text-xs font-mono flex items-center justify-between transition-all duration-200 ${
                   isFinished
-                    ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-300"
+                    ? "bg-[#F0FAF5] border-[#A8D8C3] text-[#1E8C5A]"
                     : isCurrent
-                    ? "bg-amber-400/15 border-amber-400/40 text-amber-300 font-bold"
-                    : "bg-white/[0.02] border-white/10 text-neutral-600"
+                    ? "bg-[#B9D9EC]/20 border-[#B9D9EC] text-[#263D68] font-bold"
+                    : "bg-[#FAFBFC] border-[#E4EDF5] text-[#8FA3BC]"
                 }`}
               >
                 <div className="flex items-center gap-2.5">
                   {isFinished ? (
-                    <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
+                    <CheckCircle2 className="h-3.5 w-3.5 text-[#1E8C5A] shrink-0" />
                   ) : isCurrent ? (
-                    <Loader2 className="h-3.5 w-3.5 text-amber-400 animate-spin shrink-0" />
+                    <Loader2 className="h-3.5 w-3.5 text-[#1E8C5A] animate-spin shrink-0" />
                   ) : (
-                    <span className="h-3.5 w-3.5 rounded-full border border-neutral-700 text-[9px] flex items-center justify-center">
+                    <span className="h-3.5 w-3.5 rounded-full border border-[#D0DCE8] text-[9px] flex items-center justify-center text-[#8FA3BC]">
                       {idx + 1}
                     </span>
                   )}
                   <span className="truncate max-w-xs">{stepText}</span>
                 </div>
-                {isFinished && <span className="text-[10px] text-emerald-400 font-bold">Complete</span>}
+                {isFinished && <span className="text-[10px] text-[#1E8C5A] font-bold">Complete</span>}
               </div>
             );
           })}

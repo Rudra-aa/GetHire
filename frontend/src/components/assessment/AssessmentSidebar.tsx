@@ -44,17 +44,17 @@ export const AssessmentSidebar: React.FC<AssessmentSidebarProps> = ({
 
       {/* Quick Status Stats */}
       <div className="grid grid-cols-3 gap-2">
-        <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col items-center justify-center gap-1 text-center">
-          <span className="text-[10px] font-mono text-neutral-400">Answered</span>
-          <span className="text-sm font-bold text-emerald-400 font-mono">{answeredCount}</span>
+        <div className="p-3 rounded-xl bg-white/80 backdrop-blur-sm border border-[#D0DCE8]/80 shadow-xs flex flex-col items-center justify-center gap-1 text-center">
+          <span className="text-[10px] font-mono text-[#5A6E8C]">Answered</span>
+          <span className="text-sm font-bold text-[#1E8C5A] font-mono">{answeredCount}</span>
         </div>
-        <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col items-center justify-center gap-1 text-center">
-          <span className="text-[10px] font-mono text-neutral-400">Flagged</span>
-          <span className="text-sm font-bold text-purple-400 font-mono">{flaggedCount}</span>
+        <div className="p-3 rounded-xl bg-white/80 backdrop-blur-sm border border-[#D0DCE8]/80 shadow-xs flex flex-col items-center justify-center gap-1 text-center">
+          <span className="text-[10px] font-mono text-[#5A6E8C]">Flagged</span>
+          <span className="text-sm font-bold text-[#5245A4] font-mono">{flaggedCount}</span>
         </div>
-        <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col items-center justify-center gap-1 text-center">
-          <span className="text-[10px] font-mono text-neutral-400">Skipped</span>
-          <span className="text-sm font-bold text-amber-400 font-mono">{skippedCount}</span>
+        <div className="p-3 rounded-xl bg-white/80 backdrop-blur-sm border border-[#D0DCE8]/80 shadow-xs flex flex-col items-center justify-center gap-1 text-center">
+          <span className="text-[10px] font-mono text-[#5A6E8C]">Skipped</span>
+          <span className="text-sm font-bold text-amber-700 font-mono">{skippedCount}</span>
         </div>
       </div>
 
@@ -62,50 +62,50 @@ export const AssessmentSidebar: React.FC<AssessmentSidebarProps> = ({
       <div className="grid grid-cols-2 gap-2">
         <button
           onClick={onOpenCalculator}
-          className="p-3 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-neutral-300 hover:text-white text-xs font-mono font-bold flex items-center justify-center gap-2 transition-all"
+          className="p-3 rounded-xl bg-white hover:bg-[#F0F5F9] border border-[#D0DCE8] text-[#263D68] text-xs font-mono font-bold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm"
         >
-          <Calculator className="h-4 w-4 text-cyan-400" />
+          <Calculator className="h-4 w-4 text-[#2B7FAD]" />
           <span>Calculator</span>
         </button>
         <button
           onClick={onOpenFormulaSheet}
-          className="p-3 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-neutral-300 hover:text-white text-xs font-mono font-bold flex items-center justify-center gap-2 transition-all"
+          className="p-3 rounded-xl bg-white hover:bg-[#F0F5F9] border border-[#D0DCE8] text-[#263D68] text-xs font-mono font-bold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm"
         >
-          <BookOpen className="h-4 w-4 text-cyan-400" />
+          <BookOpen className="h-4 w-4 text-[#2B7FAD]" />
           <span>Formulas</span>
         </button>
       </div>
 
       {/* Section Progress */}
-      <div className="p-4 rounded-3xl bg-white/[0.03] border border-white/10 flex flex-col gap-3">
-        <span className="text-xs font-bold text-white font-display uppercase tracking-wider">
+      <div className="p-4 rounded-2xl bg-white border border-[#D0DCE8] shadow-sm flex flex-col gap-3">
+        <span className="text-xs font-bold text-[#263D68] font-display uppercase tracking-wider">
           Section Mastery
         </span>
         <div className="flex flex-col gap-2 text-[11px] font-mono">
           <div>
-            <div className="flex justify-between text-neutral-400 mb-1">
+            <div className="flex justify-between text-[#5A6E8C] mb-1">
               <span>Data Structures & Algo</span>
-              <span className="text-cyan-300 font-bold">100%</span>
+              <span className="text-[#1E8C5A] font-bold">100%</span>
             </div>
-            <div className="h-1 bg-white/10 rounded-full overflow-hidden">
-              <div className="h-full bg-cyan-400 w-full" />
+            <div className="h-1 bg-[#E4EDF5] rounded-full overflow-hidden">
+              <div className="h-full bg-[#A8D8C3] w-full" />
             </div>
           </div>
           <div>
-            <div className="flex justify-between text-neutral-400 mb-1">
+            <div className="flex justify-between text-[#5A6E8C] mb-1">
               <span>System Design & SQL</span>
-              <span className="text-cyan-300 font-bold">60%</span>
+              <span className="text-[#2B7FAD] font-bold">60%</span>
             </div>
-            <div className="h-1 bg-white/10 rounded-full overflow-hidden">
-              <div className="h-full bg-cyan-400 w-3/5" />
+            <div className="h-1 bg-[#E4EDF5] rounded-full overflow-hidden">
+              <div className="h-full bg-[#B9D9EC] w-3/5" />
             </div>
           </div>
         </div>
       </div>
 
       {/* Rules Info */}
-      <div className="p-4 rounded-3xl bg-cyan-500/5 border border-cyan-500/20 text-xs font-sans text-neutral-400 flex items-start gap-2.5">
-        <ShieldCheck className="h-4 w-4 text-cyan-400 shrink-0 mt-0.5" />
+      <div className="p-4 rounded-2xl bg-[#B9D9EC]/20 border border-[#B9D9EC] text-xs font-sans text-[#263D68] flex items-start gap-2.5">
+        <ShieldCheck className="h-4 w-4 text-[#2B7FAD] shrink-0 mt-0.5" />
         <p className="leading-relaxed">
           Proctored session. Webcam feed and tab activity are actively monitored. Do not switch browser tabs or exit fullscreen.
         </p>

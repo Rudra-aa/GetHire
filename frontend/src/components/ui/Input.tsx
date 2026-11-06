@@ -42,7 +42,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="text-[11px] font-bold uppercase tracking-[0.1em] text-neutral-400"
+            className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#5A6E8C]"
           >
             {label}
           </label>
@@ -50,7 +50,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
         <div className="relative group">
           {iconLeft && (
-            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400 group-focus-within:text-[#39FF88] transition-colors duration-200 z-10">
+            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#8FA3BC] group-focus-within:text-[#A8D8C3] transition-colors duration-200 z-10">
               {iconLeft}
             </span>
           )}
@@ -60,13 +60,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             id={inputId}
             type={computedType}
             className={cn(
-              "w-full h-14 rounded-2xl bg-white/[0.03] border text-white text-sm",
-              "px-4 py-3 placeholder:text-neutral-500",
+              "w-full h-14 rounded-xl bg-white border text-[#263D68] text-sm",
+              "px-4 py-3 placeholder:text-[#8FA3BC]",
               "transition-all duration-200",
-              "focus:outline-none focus:bg-white/[0.05] focus:border-[#39FF88] focus:ring-2 focus:ring-[#39FF88]/25",
+              "focus:outline-none focus:border-[#A8D8C3] focus:ring-2 focus:ring-[#A8D8C3]/30",
               error
-                ? "border-[#FF5C5C]/60 focus:border-[#FF5C5C] focus:ring-[#FF5C5C]/20"
-                : "border-white/[0.09] hover:border-white/[0.18]",
+                ? "border-[#E05C5C]/60 focus:border-[#E05C5C] focus:ring-[#E05C5C]/20"
+                : "border-[#D0DCE8] hover:border-[#B9D9EC]",
               iconLeft ? "pl-12" : "pl-4",
               (enablePasswordToggle || iconRight) ? "pr-12" : "pr-4",
               className
@@ -79,7 +79,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               type="button"
               onClick={() => setShowPassword((prev) => !prev)}
               aria-label={showPassword ? "Hide password" : "Show password"}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-white transition-colors p-1 rounded-lg focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#39FF88] z-10"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-[#8FA3BC] hover:text-[#263D68] transition-colors p-1 rounded-lg focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#A8D8C3] z-10"
             >
               {showPassword ? (
                 <EyeOff className="h-4 w-4" />
@@ -88,19 +88,19 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               )}
             </button>
           ) : iconRight ? (
-            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-neutral-400 z-10">
+            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#8FA3BC] z-10">
               {iconRight}
             </span>
           ) : null}
         </div>
 
         {error && (
-          <span className="text-xs text-[#FF5C5C] flex items-center gap-1.5 font-medium" role="alert">
+          <span className="text-xs text-[#E05C5C] flex items-center gap-1.5 font-medium" role="alert">
             <span aria-hidden>⚠</span> {error}
           </span>
         )}
         {hint && !error && (
-          <span className="text-xs text-neutral-400">{hint}</span>
+          <span className="text-xs text-[#5A6E8C]">{hint}</span>
         )}
       </div>
     );

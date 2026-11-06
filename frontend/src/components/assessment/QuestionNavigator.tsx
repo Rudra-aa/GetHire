@@ -20,12 +20,12 @@ export const QuestionNavigator: React.FC<QuestionNavigatorProps> = ({
   onSelectQuestion,
 }) => {
   return (
-    <div className="p-5 rounded-3xl bg-white/[0.03] border border-white/10 backdrop-blur-xl flex flex-col gap-4">
+    <div className="p-5 rounded-2xl bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 shadow-[0_4px_20px_-2px_rgba(38,61,104,0.05)] flex flex-col gap-4">
       <div className="flex items-center justify-between">
-        <h3 className="text-xs font-bold text-white font-display uppercase tracking-wider">
+        <h3 className="text-xs font-bold text-[#263D68] font-display uppercase tracking-wider">
           Question Navigator
         </h3>
-        <span className="text-[10px] font-mono text-neutral-400">20 Adaptive Qs</span>
+        <span className="text-[10px] font-mono text-[#5A6E8C]">20 Adaptive Qs</span>
       </div>
 
       {/* Grid of Q1 to Q20 */}
@@ -37,27 +37,27 @@ export const QuestionNavigator: React.FC<QuestionNavigatorProps> = ({
           const isFlagged = flagged[qid];
           const isSkipped = skipped[qid] && !isAnswered;
 
-          let btnClass = "bg-white/[0.04] border-white/10 text-neutral-400 hover:bg-white/10";
+          let btnClass = "bg-[#FAFBFC] border-[#D0DCE8] text-[#5A6E8C] hover:bg-[#F0F5F9]";
           if (isCurrent) {
-            btnClass = "bg-cyan-500/25 border-cyan-400 text-white font-bold ring-2 ring-cyan-400/40 shadow-lg shadow-cyan-500/20";
+            btnClass = "bg-[#B9D9EC]/30 border-[#2B7FAD] text-[#263D68] font-bold ring-2 ring-[#B9D9EC]";
           } else if (isFlagged) {
-            btnClass = "bg-purple-500/20 border-purple-500 text-purple-300 font-bold";
+            btnClass = "bg-[#DCD5F0]/40 border-[#6E5EBB] text-[#5245A4] font-bold";
           } else if (isAnswered) {
-            btnClass = "bg-emerald-500/20 border-emerald-500/40 text-emerald-300 font-bold";
+            btnClass = "bg-[#F0FAF5] border-[#1E8C5A] text-[#1E8C5A] font-bold";
           } else if (isSkipped) {
-            btnClass = "bg-amber-500/15 border-amber-500/30 text-amber-300 font-bold";
+            btnClass = "bg-amber-50 border-amber-300 text-amber-800 font-bold";
           }
 
           return (
             <button
               key={idx}
               onClick={() => onSelectQuestion(idx)}
-              className={`h-10 rounded-xl border text-xs font-mono transition-all flex flex-col items-center justify-center relative ${btnClass}`}
+              className={`h-10 rounded-xl border text-xs font-mono transition-all flex flex-col items-center justify-center relative cursor-pointer ${btnClass}`}
               title={`Question ${idx + 1}`}
             >
               <span>Q{idx + 1}</span>
               {isFlagged && (
-                <div className="absolute top-1 right-1 h-1.5 w-1.5 rounded-full bg-purple-400" />
+                <div className="absolute top-1 right-1 h-1.5 w-1.5 rounded-full bg-[#6E5EBB]" />
               )}
             </button>
           );
@@ -65,21 +65,21 @@ export const QuestionNavigator: React.FC<QuestionNavigatorProps> = ({
       </div>
 
       {/* Legend */}
-      <div className="grid grid-cols-2 gap-2 pt-2 border-t border-white/10 text-[10px] font-mono text-neutral-400">
+      <div className="grid grid-cols-2 gap-2 pt-2 border-t border-[#E4EDF5] text-[10px] font-mono text-[#5A6E8C]">
         <div className="flex items-center gap-1.5">
-          <div className="h-2 w-2 rounded-full bg-emerald-400" />
+          <div className="h-2 w-2 rounded-full bg-[#1E8C5A]" />
           <span>Answered</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <div className="h-2 w-2 rounded-full bg-cyan-400" />
+          <div className="h-2 w-2 rounded-full bg-[#2B7FAD]" />
           <span>Current</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <div className="h-2 w-2 rounded-full bg-purple-400" />
+          <div className="h-2 w-2 rounded-full bg-[#6E5EBB]" />
           <span>Flagged</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <div className="h-2 w-2 rounded-full bg-amber-400" />
+          <div className="h-2 w-2 rounded-full bg-amber-500" />
           <span>Skipped</span>
         </div>
       </div>

@@ -30,10 +30,10 @@ export const ScoreDistribution: React.FC<ScoreDistributionProps> = ({
   const needsWorkCount = scores.filter((s) => s < 40).length;
 
   const categories = [
-    { label: "Excellent (80-100)", count: excellentCount, color: "#39FF88" },
-    { label: "Good (60-79)", count: goodCount, color: "#4DA8FF" },
-    { label: "Average (40-59)", count: averageCount, color: "#FFD54A" },
-    { label: "Needs Work (<40)", count: needsWorkCount, color: "#F87171" },
+    { label: "Excellent (80-100)", count: excellentCount, color: "#1E8C5A" },
+    { label: "Good (60-79)", count: goodCount, color: "#2B7FAD" },
+    { label: "Average (40-59)", count: averageCount, color: "#D97706" },
+    { label: "Needs Work (<40)", count: needsWorkCount, color: "#E11D48" },
   ];
 
   // SVG Donut Chart Calculation
@@ -54,8 +54,8 @@ export const ScoreDistribution: React.FC<ScoreDistributionProps> = ({
     <GlassCard className="p-6 flex flex-col justify-between h-[340px]">
       {/* Header */}
       <div className="flex items-center gap-2">
-        <span className="h-3 w-1 rounded-full bg-gold-400" />
-        <h3 className="text-sm font-bold text-white">Score Distribution</h3>
+        <span className="h-3 w-1 rounded-full bg-[#1E8C5A]" />
+        <h3 className="text-sm font-bold text-[#263D68]">Score Distribution</h3>
       </div>
 
       {/* Donut Chart & Legend Grid */}
@@ -79,10 +79,10 @@ export const ScoreDistribution: React.FC<ScoreDistributionProps> = ({
             ))}
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-            <span className="text-2xl font-black text-white font-mono leading-none">
+            <span className="text-2xl font-black text-[#263D68] font-mono leading-none">
               {total}
             </span>
-            <span className="text-[10px] text-neutral-400 font-bold uppercase mt-0.5">
+            <span className="text-[10px] text-[#5A6E8C] font-bold uppercase mt-0.5">
               Total
             </span>
           </div>
@@ -99,12 +99,12 @@ export const ScoreDistribution: React.FC<ScoreDistributionProps> = ({
                     className="h-2.5 w-2.5 rounded-full shrink-0"
                     style={{ backgroundColor: cat.color }}
                   />
-                  <span className="text-[11px] text-neutral-300 font-medium truncate">
+                  <span className="text-[11px] text-[#5A6E8C] font-medium truncate">
                     {cat.label}
                   </span>
                 </div>
-                <span className="text-xs font-mono font-bold text-white shrink-0 ml-2">
-                  {cat.count} <span className="text-neutral-500 font-normal">({pct}%)</span>
+                <span className="text-xs font-mono font-bold text-[#263D68] shrink-0 ml-2">
+                  {cat.count} <span className="text-[#5A6E8C] font-normal">({pct}%)</span>
                 </span>
               </div>
             );
@@ -113,9 +113,9 @@ export const ScoreDistribution: React.FC<ScoreDistributionProps> = ({
       </div>
 
       {/* Footer */}
-      <div className="pt-3 border-t border-white/[0.06] text-center">
-        <span className="text-xs text-neutral-400 font-sans">
-          Your average score is <strong className="text-[#39FF88] font-mono">{overallScore}/100</strong>
+      <div className="pt-3 border-t border-[#E4EDF5] text-center">
+        <span className="text-xs text-[#5A6E8C] font-sans">
+          Your average score is <strong className="text-[#1E8C5A] font-mono">{overallScore}/100</strong>
         </span>
       </div>
     </GlassCard>

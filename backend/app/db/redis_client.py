@@ -60,7 +60,12 @@ class RedisManager:
         """
         url = (settings.REDIS_URL or "").strip()
         if not url:
-            logger.info("Redis is not configured. Service is running in degraded mode without Redis cache.")
+            logger.info("REDIS_URL is not configured. Skipping Redis initialization; running in degraded mode.")
+            self._client = None
+            return
+
+        if settings.is_production and any(h in url.lower() for h in ("localhost", "127.0.0.1", "0.0.0.0")):
+            logger.info("REDIS_URL points to localhost in production. Skipping Redis initialization; running in degraded mode.")
             self._client = None
             return
 

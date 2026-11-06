@@ -73,14 +73,19 @@ class MongoManager:
                 "socketTimeoutMS": 10000,
             }
             # Enable TLS verification with certifi CA bundle for Atlas SRV or explicit TLS/SSL URIs
-            uri_lower = settings.MONGODB_URI.lower()
+            uri_clean = settings.MONGODB_URI.strip()
+            uri_lower = uri_clean.lower()
             is_srv = uri_lower.startswith("mongodb+srv://")
             is_tls = is_srv or "tls=true" in uri_lower or "ssl=true" in uri_lower
             if is_tls:
                 kwargs["tls"] = True
                 kwargs["tlsCAFile"] = certifi.where()
 
-            self._client = AsyncIOMotorClient(settings.MONGODB_URI, **kwargs)
+            # Ensure valid write concern without whitespace or newline artifacts
+            if "w=majority" in uri_lower or is_srv:
+                kwargs["w"] = "majority"
+
+            self._client = AsyncIOMotorClient(uri_clean, **kwargs)
             # Verify connection is actually alive
             await self._client.admin.command("ping")
             db_name = settings.MONGODB_DB_NAME.lower()

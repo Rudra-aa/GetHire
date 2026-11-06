@@ -32,18 +32,10 @@ export const GlassCard: React.FC<GlassCardProps> = ({
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      className={`relative rounded-[24px] border border-white/[0.12] bg-[#12161E]/30 backdrop-blur-[16px] shadow-[0_20px_50px_rgba(0,0,0,0.4)] overflow-hidden transition-all duration-300 ${
-        hoverGlow ? "hover:border-white/20 hover:shadow-[0_25px_60px_rgba(0,0,0,0.5)] hover:-translate-y-0.5" : ""
+      className={`relative rounded-2xl border border-[#D0DCE8]/80 bg-white/80 backdrop-blur-md shadow-[0_4px_20px_-2px_rgba(38,61,104,0.05),0_2px_6px_-1px_rgba(38,61,104,0.03)] overflow-hidden transition-all duration-300 ${
+        hoverGlow ? "hover:bg-white/95 hover:border-[#A8D8C3] hover:shadow-[0_8px_30px_-4px_rgba(38,61,104,0.09)] hover:-translate-y-0.5" : ""
       } ${className}`}
-      style={{
-        background: "rgba(18, 22, 30, 0.30)",
-        backdropFilter: "blur(16px)",
-        WebkitBackdropFilter: "blur(16px)",
-      }}
     >
-      {/* Top subtle glass highlight shine */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
-
       {children}
     </motion.div>
   );

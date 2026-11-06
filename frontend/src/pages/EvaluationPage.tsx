@@ -8,6 +8,7 @@ import { evaluationApi } from "@/services/evaluationApi";
 import { HeroSummaryCard } from "@/components/evaluation/HeroSummaryCard";
 import { PerformanceBreakdown } from "@/components/evaluation/PerformanceBreakdown";
 import { HiringVerdictCard } from "@/components/evaluation/HiringVerdictCard";
+import { VisualPresentationSection } from "@/components/facesense/VisualPresentationSection";
 
 export const EvaluationPage: React.FC = () => {
   const { reportId } = useParams<{ reportId: string }>();
@@ -98,8 +99,8 @@ export const EvaluationPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="py-32 flex flex-col items-center justify-center gap-4 text-neutral-400 font-mono text-xs">
-        <Loader2 className="h-8 w-8 text-[#39FF88] animate-spin" />
+      <div className="py-32 flex flex-col items-center justify-center gap-4 text-[#5A6E8C] font-mono text-xs">
+        <Loader2 className="h-8 w-8 text-[#1E8C5A] animate-spin" />
         <span>Loading Evaluation Data...</span>
       </div>
     );
@@ -109,16 +110,16 @@ export const EvaluationPage: React.FC = () => {
   if (reportId) {
     if (!report) {
       return (
-        <div className="py-24 max-w-lg mx-auto flex flex-col items-center text-center gap-5 p-8 rounded-3xl bg-white/[0.02] border border-white/10">
-          <div className="p-4 rounded-3xl bg-rose-500/10 border border-rose-500/30 text-rose-400">
+        <div className="py-24 max-w-lg mx-auto flex flex-col items-center text-center gap-5 p-8 rounded-2xl bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 shadow-glass">
+          <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700">
             <AlertCircle className="h-10 w-10" />
           </div>
-          <h2 className="text-xl font-bold text-white font-display">Evaluation Report Not Found</h2>
-          <p className="text-sm text-neutral-300 font-sans leading-relaxed">
+          <h2 className="text-xl font-bold text-[#263D68] font-display">Evaluation Report Not Found</h2>
+          <p className="text-sm text-[#5A6E8C] font-sans leading-relaxed">
             {error || "The requested evaluation report does not exist."}
           </p>
           <div className="flex gap-3 pt-2">
-            <button onClick={() => navigate("/evaluation")} className="px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-neutral-300 font-bold text-xs hover:bg-white/10 transition-all">
+            <button onClick={() => navigate("/evaluation")} className="px-5 py-2.5 rounded-xl bg-white/80 backdrop-blur-sm hover:bg-white border border-[#D0DCE8]/80 text-[#263D68] font-bold text-xs transition-all cursor-pointer shadow-sm">
               View Evaluation History
             </button>
           </div>
@@ -138,27 +139,27 @@ export const EvaluationPage: React.FC = () => {
 
     return (
       <div className="max-w-[1600px] mx-auto flex flex-col gap-6">
-        <div className="flex items-center justify-between border-b border-white/10 pb-4">
+        <div className="flex items-center justify-between border-b border-[#E4EDF5] pb-4">
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-xl font-bold font-display text-[#39FF88]">
+              <h1 className="text-xl font-bold font-display text-[#263D68]">
                 {isInterviewOnly
                   ? "Interview-Only Evaluation Report"
                   : `Immutable Evaluation Report #${report.evaluation_number}`}
               </h1>
               {isInterviewOnly && (
-                <span className="px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] font-bold uppercase tracking-wider">
+                <span className="px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200 text-[10px] font-bold uppercase tracking-wider">
                   Interview-Only
                 </span>
               )}
             </div>
-            <p className="text-xs text-neutral-400">
+            <p className="text-xs text-[#5A6E8C]">
               {isInterviewOnly
                 ? "Candidate interview session evaluation • Complete a Technical Assessment to produce an official combined Evaluation Report in your progression."
                 : `Immutable snapshot created on ${new Date(report.created_at).toLocaleString()}`}
             </p>
           </div>
-          <button onClick={() => navigate("/evaluation")} className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-neutral-300 hover:bg-white/10 transition-all">
+          <button onClick={() => navigate("/evaluation")} className="px-4 py-2 rounded-xl bg-white hover:bg-[#F0F5F9] border border-[#D0DCE8] text-xs font-bold text-[#263D68] transition-all cursor-pointer shadow-sm">
             ← Back to History
           </button>
         </div>
@@ -182,31 +183,37 @@ export const EvaluationPage: React.FC = () => {
           
           {/* Qualitative Insights Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 rounded-3xl bg-black/20 border border-white/5 flex flex-col gap-4">
-              <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4 text-[#39FF88]" /> Strengths
+            <div className="p-6 rounded-2xl bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 shadow-glass flex flex-col gap-4">
+              <h3 className="text-sm font-bold text-[#263D68] flex items-center gap-2">
+                <ShieldCheck className="h-4 w-4 text-[#1E8C5A]" /> Strengths
               </h3>
               <ul className="flex flex-col gap-3">
                 {report.strengths.map((s, i) => (
-                  <li key={i} className="text-xs text-neutral-300 bg-white/5 p-3 rounded-xl border border-white/10">
+                  <li key={i} className="text-xs text-[#263D68] bg-[#FAFBFC]/80 backdrop-blur-sm p-3 rounded-xl border border-[#E4EDF5]">
                     {s}
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="p-6 rounded-3xl bg-black/20 border border-white/5 flex flex-col gap-4">
-              <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                <AlertCircle className="h-4 w-4 text-rose-400" /> Areas for Growth
+            <div className="p-6 rounded-2xl bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 shadow-glass flex flex-col gap-4">
+              <h3 className="text-sm font-bold text-[#263D68] flex items-center gap-2">
+                <AlertCircle className="h-4 w-4 text-rose-600" /> Areas for Growth
               </h3>
               <ul className="flex flex-col gap-3">
                 {report.weaknesses.map((w, i) => (
-                  <li key={i} className="text-xs text-neutral-300 bg-white/5 p-3 rounded-xl border border-white/10">
+                  <li key={i} className="text-xs text-[#263D68] bg-[#FAFBFC]/80 backdrop-blur-sm p-3 rounded-xl border border-[#E4EDF5]">
                     {w}
                   </li>
                 ))}
               </ul>
             </div>
           </div>
+
+          {/* Visual Presentation & Non-Verbal Communication Coaching Section */}
+          <VisualPresentationSection
+            data={report.visual_presentation}
+            sessionId={report.interview_session_id}
+          />
         </div>
       </div>
     );
@@ -215,30 +222,30 @@ export const EvaluationPage: React.FC = () => {
   // === RENDER HISTORY CENTER ===
   return (
     <div className="max-w-[1200px] mx-auto flex flex-col gap-6">
-      <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
+      <div className="flex items-center justify-between border-b border-[#E4EDF5] pb-4">
         <div>
-          <h1 className="text-xl font-bold font-display text-slate-900 dark:text-white">Evaluation Center</h1>
-          <p className="text-xs text-slate-500 dark:text-neutral-400">Complete historical record of all your evaluation cycles.</p>
+          <h1 className="text-xl font-bold font-display text-[#263D68]">Evaluation Center</h1>
+          <p className="text-xs text-[#5A6E8C]">Complete historical record of all your evaluation cycles.</p>
         </div>
-        <button onClick={() => navigate("/dashboard")} className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 text-xs font-bold text-slate-700 dark:text-neutral-300 transition-all cursor-pointer">
+        <button onClick={() => navigate("/dashboard")} className="px-4 py-2 rounded-xl bg-white/80 backdrop-blur-sm hover:bg-white border border-[#D0DCE8]/80 text-xs font-bold text-[#263D68] transition-all cursor-pointer shadow-sm">
           Return to Dashboard
         </button>
       </div>
 
       {history.length === 0 ? (
-        <div className="py-24 max-w-lg mx-auto flex flex-col items-center text-center gap-5 p-8 rounded-3xl bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-none">
-          <div className="p-4 rounded-3xl bg-amber-500/10 border border-amber-500/30 text-amber-500 dark:text-amber-400">
+        <div className="py-24 max-w-lg mx-auto flex flex-col items-center text-center gap-5 p-8 rounded-2xl bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 shadow-glass">
+          <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-600">
             <FileText className="h-10 w-10" />
           </div>
-          <h2 className="text-xl font-bold text-slate-900 dark:text-white font-display">No Evaluations Yet</h2>
-          <p className="text-sm text-slate-600 dark:text-neutral-300 font-sans leading-relaxed">
-            You haven't completed a full evaluation cycle yet. To generate your first Immutable Evaluation Report, complete both a Technical Assessment and an AI Mock Interview.
+          <h2 className="text-xl font-bold text-[#263D68] font-display">No Evaluations Yet</h2>
+          <p className="text-sm text-[#5A6E8C] font-sans leading-relaxed">
+            You haven't completed a full evaluation cycle yet. To generate your first Immutable Evaluation Report, complete both a Technical Assessment and a Mock Interview.
           </p>
           <div className="flex gap-3 pt-2">
-             <button onClick={() => navigate("/assessment")} className="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-white dark:text-black font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer shadow-sm">
+             <button onClick={() => navigate("/assessment")} className="px-5 py-2.5 rounded-xl bg-[#A8D8C3] hover:bg-[#97ccb6] text-[#1E4D38] border border-[#72C9AD] font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer shadow-sm">
                Start Assessment
              </button>
-             <button onClick={() => navigate("/interview")} className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-black font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer shadow-sm">
+             <button onClick={() => navigate("/interview")} className="px-5 py-2.5 rounded-xl bg-white hover:bg-[#F0F5F9] border border-[#D0DCE8] text-[#263D68] font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer shadow-sm">
                Start Interview
              </button>
           </div>
@@ -246,31 +253,31 @@ export const EvaluationPage: React.FC = () => {
       ) : (
         <div className="flex flex-col gap-4">
           {history.map((h, i) => (
-            <div key={h.id} className="p-6 rounded-3xl bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-slate-300 dark:hover:border-white/20 shadow-sm hover:shadow-md dark:shadow-none transition-all">
+            <div key={h.id} className="p-6 rounded-2xl bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-white/95 hover:border-[#A8D8C3] shadow-glass transition-all">
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-3">
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white">Report #{h.evaluation_number}</h3>
-                  {i === 0 && <span className="px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-[#39FF88]/20 text-emerald-700 dark:text-[#39FF88] border border-emerald-200 dark:border-[#39FF88]/30 text-[10px] font-bold uppercase tracking-wider">Latest</span>}
+                  <h3 className="text-lg font-bold text-[#263D68]">Report #{h.evaluation_number}</h3>
+                  {i === 0 && <span className="px-2 py-0.5 rounded-md bg-[#A8D8C3]/20 text-[#1E8C5A] border border-[#A8D8C3]/50 text-[10px] font-bold uppercase tracking-wider">Latest</span>}
                 </div>
-                <p className="text-xs text-slate-500 dark:text-neutral-400">Date: {new Date(h.created_at).toLocaleDateString()} at {new Date(h.created_at).toLocaleTimeString()}</p>
+                <p className="text-xs text-[#5A6E8C]">Date: {new Date(h.created_at).toLocaleDateString()} at {new Date(h.created_at).toLocaleTimeString()}</p>
               </div>
               
               <div className="flex items-center gap-8">
                 <div className="flex flex-col gap-1 items-center">
-                  <span className="text-[10px] text-slate-500 dark:text-neutral-500 font-bold uppercase">HireScore</span>
-                  <span className="text-xl font-bold text-slate-900 dark:text-white font-mono">{h.hirescore}</span>
+                  <span className="text-[10px] text-[#5A6E8C] font-bold uppercase">HireScore</span>
+                  <span className="text-xl font-bold text-[#263D68] font-mono">{h.hirescore}</span>
                 </div>
                 <div className="flex flex-col gap-1 items-center">
-                  <span className="text-[10px] text-slate-500 dark:text-neutral-500 font-bold uppercase">Assessment</span>
-                  <span className="text-xl font-bold text-slate-900 dark:text-white font-mono">{h.assessment_score}</span>
+                  <span className="text-[10px] text-[#5A6E8C] font-bold uppercase">Assessment</span>
+                  <span className="text-xl font-bold text-[#263D68] font-mono">{h.assessment_score}</span>
                 </div>
                 <div className="flex flex-col gap-1 items-center">
-                  <span className="text-[10px] text-slate-500 dark:text-neutral-500 font-bold uppercase">Interview</span>
-                  <span className="text-xl font-bold text-slate-900 dark:text-white font-mono">{h.interview_score}</span>
+                  <span className="text-[10px] text-[#5A6E8C] font-bold uppercase">Interview</span>
+                  <span className="text-xl font-bold text-[#263D68] font-mono">{h.interview_score}</span>
                 </div>
                 <button 
                   onClick={() => navigate(`/evaluation/${h.id}`)}
-                  className="px-5 py-2 rounded-xl bg-gradient-to-r from-emerald-400 to-[#39FF88] text-black font-bold text-xs flex items-center gap-1.5 hover:brightness-105 transition-all ml-4 cursor-pointer shadow-sm"
+                  className="px-5 py-2 rounded-xl bg-[#A8D8C3] hover:bg-[#97ccb6] text-[#1E4D38] border border-[#72C9AD] font-bold text-xs flex items-center gap-1.5 transition-all ml-4 cursor-pointer shadow-sm"
                 >
                   View Report <ArrowRight className="h-3.5 w-3.5" />
                 </button>

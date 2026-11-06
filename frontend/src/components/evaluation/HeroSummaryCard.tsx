@@ -20,36 +20,36 @@ const getVerdictInfo = (score: number) => {
   if (score >= 88) {
     return {
       title: "Strong Performance",
-      color: "text-[#39FF88]",
-      bg: "bg-[#39FF88]/10 border-[#39FF88]/30",
-      gaugeColor: "#39FF88",
-      glow: "shadow-[0_0_35px_rgba(57,255,136,0.25)]",
+      color: "text-[#1E8C5A]",
+      bg: "bg-[#F0FAF5] border-[#A8D8C3]",
+      gaugeColor: "#1E8C5A",
+      glow: "shadow-sm",
     };
   }
   if (score >= 70) {
     return {
       title: "Good Performance",
-      color: "text-[#FFD54A]",
-      bg: "bg-[#FFD54A]/10 border-[#FFD54A]/30",
-      gaugeColor: "#39FF88",
-      glow: "shadow-[0_0_35px_rgba(57,255,136,0.2)]",
+      color: "text-[#2B7FAD]",
+      bg: "bg-[#B9D9EC]/20 border-[#B9D9EC]",
+      gaugeColor: "#2B7FAD",
+      glow: "shadow-sm",
     };
   }
   if (score >= 55) {
     return {
       title: "Average Performance",
-      color: "text-[#FFD54A]",
-      bg: "bg-[#FFD54A]/10 border-[#FFD54A]/30",
-      gaugeColor: "#FFD54A",
-      glow: "shadow-[0_0_30px_rgba(255,213,74,0.2)]",
+      color: "text-amber-800",
+      bg: "bg-amber-50 border-amber-200",
+      gaugeColor: "#D97706",
+      glow: "shadow-sm",
     };
   }
   return {
     title: "Needs Polish",
-    color: "text-rose-400",
-    bg: "bg-rose-500/10 border-rose-500/30",
-    gaugeColor: "#F87171",
-    glow: "shadow-[0_0_30px_rgba(248,113,113,0.2)]",
+    color: "text-rose-700",
+    bg: "bg-rose-50 border-rose-200",
+    gaugeColor: "#E11D48",
+    glow: "shadow-sm",
   };
 };
 
@@ -75,10 +75,6 @@ export const HeroSummaryCard: React.FC<HeroSummaryCardProps> = ({
 
   return (
     <GlassCard className="p-6 sm:p-8">
-      {/* Background ambient lighting */}
-      <div className="absolute top-0 right-0 w-[450px] h-[250px] bg-[#39FF88]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[350px] h-[200px] bg-[#4DA8FF]/5 rounded-full blur-3xl pointer-events-none" />
-
       <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
         {/* Left: Gauge + Summary */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 flex-1">
@@ -87,7 +83,7 @@ export const HeroSummaryCard: React.FC<HeroSummaryCardProps> = ({
             <svg width="130" height="130" viewBox="0 0 120 120" className="-rotate-90">
               <circle
                 cx="60" cy="60" r="48"
-                fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="8"
+                fill="none" stroke="#E4EDF5" strokeWidth="8"
               />
               <circle
                 cx="60" cy="60" r="48"
@@ -98,10 +94,10 @@ export const HeroSummaryCard: React.FC<HeroSummaryCardProps> = ({
               />
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-              <span className="text-4xl font-extrabold text-white font-mono leading-none tracking-tight">
+              <span className="text-4xl font-extrabold text-[#263D68] font-mono leading-none tracking-tight">
                 {overallScore}
               </span>
-              <span className="text-[11px] text-neutral-400 font-bold uppercase mt-0.5 tracking-wider">
+              <span className="text-[11px] text-[#5A6E8C] font-bold uppercase mt-0.5 tracking-wider">
                 /100
               </span>
             </div>
@@ -116,22 +112,22 @@ export const HeroSummaryCard: React.FC<HeroSummaryCardProps> = ({
               </span>
             </div>
 
-            <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-sans">
+            <p className="text-xs sm:text-sm text-[#5A6E8C] leading-relaxed font-sans">
               You demonstrated solid understanding of concepts with clear explanations. Focus on strengthening problem-solving approach and code optimization.
             </p>
 
             {/* Status Pills */}
             <div className="flex flex-wrap items-center gap-2 pt-1">
-              <span className="px-2.5 py-1 rounded-lg bg-[#39FF88]/10 border border-[#39FF88]/20 text-[11px] font-semibold text-[#39FF88] flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#39FF88]" />
+              <span className="px-2.5 py-1 rounded-lg bg-[#A8D8C3]/20 border border-[#A8D8C3]/50 text-[11px] font-semibold text-[#1E8C5A] flex items-center gap-1.5">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#1E8C5A]" />
                 Consistent
               </span>
-              <span className="px-2.5 py-1 rounded-lg bg-[#8B5CF6]/10 border border-[#8B5CF6]/20 text-[11px] font-semibold text-[#8B5CF6] flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#8B5CF6]" />
+              <span className="px-2.5 py-1 rounded-lg bg-[#DCD5F0]/30 border border-[#DCD5F0] text-[11px] font-semibold text-[#5245A4] flex items-center gap-1.5">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#5245A4]" />
                 Engaged
               </span>
-              <span className="px-2.5 py-1 rounded-lg bg-[#4DA8FF]/10 border border-[#4DA8FF]/20 text-[11px] font-semibold text-[#4DA8FF] flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#4DA8FF]" />
+              <span className="px-2.5 py-1 rounded-lg bg-[#B9D9EC]/30 border border-[#B9D9EC] text-[11px] font-semibold text-[#2B7FAD] flex items-center gap-1.5">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#2B7FAD]" />
                 On Track
               </span>
             </div>
@@ -139,13 +135,13 @@ export const HeroSummaryCard: React.FC<HeroSummaryCardProps> = ({
         </div>
 
         {/* Right Side: Metadata Grid (2 cols x 3 rows) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full lg:w-auto pt-6 lg:pt-0 border-t lg:border-t-0 border-white/[0.08]">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full lg:w-auto pt-6 lg:pt-0 border-t lg:border-t-0 border-[#E4EDF5]">
           <MetaTile Icon={User} label="Candidate" value={candidateName} />
           <MetaTile Icon={Briefcase} label="Interview" value={targetRole} />
           <MetaTile Icon={Hash} label="Session ID" value={displaySessionId} mono />
           <MetaTile Icon={Calendar} label="Date" value={`${formattedDate} • ${formattedTime}`} />
           <MetaTile Icon={Timer} label="Questions" value={`${totalEvaluated}/12 Answered`} />
-          <MetaTile Icon={Bot} label="Evaluator" value="AI Evaluation Engine" />
+          <MetaTile Icon={Bot} label="Evaluator" value="Evaluation Engine" />
         </div>
       </div>
     </GlassCard>
@@ -158,15 +154,15 @@ const MetaTile: React.FC<{
   value: string;
   mono?: boolean;
 }> = ({ Icon, label, value, mono }) => (
-  <div className="p-3 rounded-xl bg-black/20 border border-white/10 backdrop-blur-md flex items-center gap-3">
-    <div className="p-2 rounded-lg bg-white/[0.04] text-neutral-400 shrink-0">
-      <Icon className="h-4 w-4 text-[#39FF88]" />
+  <div className="p-3 rounded-xl bg-white/80 backdrop-blur-sm border border-[#D0DCE8]/80 flex items-center gap-3 shadow-sm">
+    <div className="p-2 rounded-lg bg-white border border-[#D0DCE8] text-[#2B7FAD] shrink-0">
+      <Icon className="h-4 w-4 text-[#2B7FAD]" />
     </div>
     <div className="flex flex-col min-w-0">
-      <span className="text-[10px] uppercase tracking-wider font-semibold text-neutral-500">
+      <span className="text-[10px] uppercase tracking-wider font-semibold text-[#5A6E8C]">
         {label}
       </span>
-      <span className={`text-xs font-bold text-neutral-200 truncate ${mono ? "font-mono text-[11px]" : ""}`}>
+      <span className={`text-xs font-bold text-[#263D68] truncate ${mono ? "font-mono text-[11px]" : ""}`}>
         {value}
       </span>
     </div>

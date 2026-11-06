@@ -104,7 +104,7 @@ export const AssessmentPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#07090e] flex items-center justify-center text-cyan-400">
+      <div className="min-h-screen bg-transparent flex items-center justify-center text-[#1E8C5A]">
         <Loader2 className="h-8 w-8 animate-spin" />
       </div>
     );
@@ -164,18 +164,18 @@ export const AssessmentPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#07090e] text-slate-900 dark:text-white flex flex-col font-sans relative">
+    <div className="min-h-screen bg-transparent text-[#263D68] flex flex-col font-sans relative">
       
       {/* Fullscreen Exit Warning Banner */}
       {showExitWarning && (
-        <div className="bg-amber-500/20 border-b border-amber-500/40 p-3 px-6 flex items-center justify-between z-50">
-          <div className="flex items-center gap-2.5 text-xs text-amber-700 dark:text-amber-200 font-bold font-mono">
-            <AlertTriangle className="h-4 w-4 text-amber-500 dark:text-amber-400 shrink-0" />
+        <div className="bg-amber-50 border-b border-amber-200 p-3 px-6 flex items-center justify-between z-50">
+          <div className="flex items-center gap-2.5 text-xs text-amber-800 font-bold font-mono">
+            <AlertTriangle className="h-4 w-4 text-amber-600 shrink-0" />
             <span>Proctored Fullscreen Mode Exited. Re-enter fullscreen to continue your assessment.</span>
           </div>
           <button
             onClick={handleReEnterFullscreen}
-            className="px-4 py-1.5 rounded-xl bg-amber-400 text-black font-extrabold text-xs font-display hover:bg-amber-300 transition-all flex items-center gap-1.5 shadow-lg"
+            className="px-4 py-1.5 rounded-xl bg-amber-500 text-white font-extrabold text-xs font-display hover:bg-amber-600 transition-all flex items-center gap-1.5 shadow-sm"
           >
             <Maximize2 className="h-3.5 w-3.5" />
             <span>Re-enter Fullscreen</span>
@@ -208,21 +208,21 @@ export const AssessmentPage: React.FC = () => {
             onSelectOption={(qid, val) => setAnswers((prev) => ({ ...prev, [qid]: val }))}
             onToggleFlag={(qid) => setFlagged((prev) => ({ ...prev, [qid]: !prev[qid] }))}
           />
-          <div className="flex items-center justify-between p-4 rounded-3xl bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-none">
-            <button onClick={handlePrev} disabled={currentIndex === 0} className="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 text-xs font-bold text-slate-700 dark:text-white disabled:opacity-30 transition-all flex items-center gap-2 cursor-pointer">
+          <div className="flex items-center justify-between p-4 rounded-2xl bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 shadow-glass">
+            <button onClick={handlePrev} disabled={currentIndex === 0} className="px-5 py-2.5 rounded-xl bg-[#FAFBFC] hover:bg-[#F0F5F9] border border-[#D0DCE8] text-xs font-bold text-[#263D68] disabled:opacity-30 transition-all flex items-center gap-2 cursor-pointer">
               <ArrowLeft className="h-4 w-4" /> Previous
             </button>
             <div className="flex items-center gap-3">
-              <button onClick={handleSkip} className="px-4 py-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-700 dark:text-amber-300 text-xs font-bold hover:bg-amber-500/20 transition-all cursor-pointer">
+              <button onClick={handleSkip} className="px-4 py-2.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold hover:bg-amber-100 transition-all cursor-pointer">
                 Skip Question
               </button>
               {currentIndex === questions.length - 1 ? (
-                <button onClick={handleSubmit} disabled={submitting} className="px-6 py-2.5 rounded-xl bg-cyan-400 text-black font-extrabold text-xs font-display hover:bg-cyan-300 transition-all flex items-center gap-2">
+                <button onClick={handleSubmit} disabled={submitting} className="px-6 py-2.5 rounded-xl bg-[#A8D8C3] hover:bg-[#97ccb6] text-[#1E4D38] border border-[#72C9AD] font-bold text-xs font-display transition-all flex items-center gap-2 cursor-pointer shadow-sm">
                   {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <CheckCircle2 className="h-4 w-4" />}
                   <span>Submit Assessment</span>
                 </button>
               ) : (
-                <button onClick={handleNext} className="px-6 py-2.5 rounded-xl bg-cyan-400 text-black font-bold text-xs font-display hover:bg-cyan-300 transition-all flex items-center gap-2">
+                <button onClick={handleNext} className="px-6 py-2.5 rounded-xl bg-[#A8D8C3] hover:bg-[#97ccb6] text-[#1E4D38] border border-[#72C9AD] font-bold text-xs font-display transition-all flex items-center gap-2 cursor-pointer shadow-sm">
                   <span>Next Question</span> <ArrowRight className="h-4 w-4" />
                 </button>
               )}
@@ -239,7 +239,7 @@ export const AssessmentPage: React.FC = () => {
             questionIds={questions.map((q) => q.id)}
             onSelectQuestion={(idx) => setCurrentIndex(idx)}
             onOpenCalculator={() => setCalcOpen(true)}
-            onOpenFormulaSheet={() => setFormulaOpen(false)}
+            onOpenFormulaSheet={() => setFormulaOpen(true)}
           />
         </div>
       </main>

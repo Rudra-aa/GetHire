@@ -40,20 +40,20 @@ export const CalculatorModal: React.FC<CalculatorModalProps> = ({ isOpen, onClos
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <div className="w-80 p-5 rounded-3xl bg-[#0f121d] border border-white/20 shadow-2xl flex flex-col gap-4">
-        <div className="flex items-center justify-between pb-2 border-b border-white/10">
-          <div className="flex items-center gap-2 text-cyan-400 font-display text-sm font-bold">
-            <CalcIcon className="h-4 w-4" />
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm">
+      <div className="w-80 p-5 rounded-2xl bg-white/90 backdrop-blur-xl border border-[#D0DCE8]/80 shadow-[0_24px_48px_-12px_rgba(38,61,104,0.15)] flex flex-col gap-4">
+        <div className="flex items-center justify-between pb-2 border-b border-[#E4EDF5]">
+          <div className="flex items-center gap-2 text-[#263D68] font-display text-sm font-bold">
+            <CalcIcon className="h-4 w-4 text-[#1E8C5A]" />
             <span>Assessment Calculator</span>
           </div>
-          <button onClick={onClose} className="p-1 text-neutral-400 hover:text-white">
+          <button onClick={onClose} className="p-1 text-[#5A6E8C] hover:text-[#263D68]">
             <X className="h-4 w-4" />
           </button>
         </div>
 
         {/* Display */}
-        <div className="p-3.5 rounded-2xl bg-black/80 border border-white/10 text-right text-xl font-mono text-cyan-300 font-bold overflow-x-auto">
+        <div className="p-3.5 rounded-xl bg-[#FAFBFC] border border-[#D0DCE8] text-right text-xl font-mono text-[#263D68] font-bold overflow-x-auto">
           {display}
         </div>
 
@@ -61,7 +61,7 @@ export const CalculatorModal: React.FC<CalculatorModalProps> = ({ isOpen, onClos
         <div className="grid grid-cols-4 gap-2">
           <button
             onClick={handleClear}
-            className="col-span-4 p-2.5 rounded-xl bg-rose-500/20 text-rose-300 border border-rose-500/30 text-xs font-mono font-bold hover:bg-rose-500/30"
+            className="col-span-4 p-2.5 rounded-xl bg-rose-50 text-rose-700 border border-rose-200 text-xs font-mono font-bold hover:bg-rose-100 transition-colors"
           >
             Clear (C)
           </button>
@@ -71,12 +71,12 @@ export const CalculatorModal: React.FC<CalculatorModalProps> = ({ isOpen, onClos
               <button
                 key={`${rIdx}-${cIdx}`}
                 onClick={() => (btn === "=" ? handleEvaluate() : handleChar(btn))}
-                className={`p-3 rounded-xl border text-sm font-mono font-bold transition-all ${
+                className={`p-3 rounded-xl border text-sm font-mono font-bold transition-all cursor-pointer ${
                   btn === "="
-                    ? "bg-cyan-400 text-black border-cyan-400"
+                    ? "bg-[#A8D8C3] text-[#1E4D38] border-[#72C9AD] shadow-sm"
                     : ["+", "-", "*", "/"].includes(btn)
-                    ? "bg-cyan-500/10 border-cyan-500/30 text-cyan-400"
-                    : "bg-white/[0.04] border-white/10 text-white hover:bg-white/10"
+                    ? "bg-[#B9D9EC]/30 border-[#B9D9EC] text-[#2B7FAD]"
+                    : "bg-[#FAFBFC] border-[#D0DCE8] text-[#263D68] hover:bg-[#F0F5F9]"
                 }`}
               >
                 {btn}

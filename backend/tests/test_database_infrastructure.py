@@ -129,6 +129,52 @@ class TestMongoDBInfrastructure(unittest.IsolatedAsyncioTestCase):
         self.assertNotIn("secretPass123", redacted)
         self.assertIn("admin_user:***@cluster0.mongodb.net", redacted)
 
+    async def test_06_mongodb_uri_write_concern_whitespace_and_newline_normalization(self) -> None:
+        """Verify write concern parameters with trailing newlines or spaces are cleaned."""
+        raw_uris = [
+            "mongodb+srv://user:pass@cluster.mongodb.net/gethire?retryWrites=true&w=majority\n",
+            "mongodb+srv://user:pass@cluster.mongodb.net/gethire?retryWrites=true&w=majority\r\n",
+            r"mongodb+srv://user:pass@cluster.mongodb.net/gethire?retryWrites=true&w=majority\n",
+            "mongodb+srv://user:pass@cluster.mongodb.net/gethire?w=majority%0A&retryWrites=true",
+            "mongodb+srv://user:pass@cluster.mongodb.net/gethire?retryWrites=true&w= majority ",
+        ]
+        for raw in raw_uris:
+            cleaned = Settings.sanitize_mongodb_uri(raw)
+            self.assertNotIn("\n", cleaned)
+            self.assertNotIn("\r", cleaned)
+            self.assertNotIn(r"\n", cleaned)
+            self.assertIn("w=majority", cleaned)
+
+        # Verify real index initialization succeeds with trailing newline in raw URI
+        from motor.motor_asyncio import AsyncIOMotorClient
+        import certifi
+        from app.utils.db_indexes import init_db_indexes
+
+        raw_atlas = settings.MONGODB_URI.strip() + "\n"
+        cleaned_atlas = Settings.sanitize_mongodb_uri(raw_atlas)
+        client = AsyncIOMotorClient(cleaned_atlas, tls=True, tlsCAFile=certifi.where(), w="majority")
+        db = client[settings.MONGODB_DB_NAME.lower()]
+        # Should execute without UnknownReplWriteConcern 'majority\n' error
+        await init_db_indexes(db)
+        client.close()
+
+    async def test_07_real_atlas_indexes_verified(self) -> None:
+        """Verify all essential collection indexes are present on the Atlas database."""
+        db = mongo_manager.get_database()
+        expected_indexes = {
+            "users": ["idx_users_email_unique", "idx_users_created_at"],
+            "auth_refresh_tokens": ["idx_refresh_tokens_jti_unique", "idx_refresh_tokens_family"],
+            "user_sessions": ["idx_user_sessions_user_active"],
+            "resumes": ["idx_resumes_user_created"],
+            "interview_sessions": ["idx_interview_sessions_user_created", "idx_interview_sessions_status"],
+            "interview_answers": ["idx_interview_answers_session_question", "idx_interview_answers_session_created"],
+            "evaluations": ["idx_evaluations_session_question", "idx_evaluations_user_created", "idx_evaluations_session_created"],
+        }
+        for coll_name, idx_names in expected_indexes.items():
+            info = await db[coll_name].index_information()
+            for idx in idx_names:
+                self.assertIn(idx, info, f"Index {idx} missing on collection {coll_name}")
+
 
 class TestRedisInfrastructure(unittest.IsolatedAsyncioTestCase):
     """Tests for Redis configuration, URL sanitization, and optional degraded mode."""
@@ -189,6 +235,25 @@ class TestRedisInfrastructure(unittest.IsolatedAsyncioTestCase):
         redacted = _redact_redis_url(raw_url)
         self.assertNotIn("superSecretToken", redacted)
         self.assertIn("default:***@useful-grubworm-106332.upstash.io:6379", redacted)
+
+    async def test_05_redis_unset_skips_initialization_entirely(self) -> None:
+        """When REDIS_URL is unset or empty, connect() skips initialization immediately."""
+        isolated_redis = RedisManager()
+        with patch.object(settings, "REDIS_URL", ""):
+            await isolated_redis.connect()
+            self.assertIsNone(isolated_redis._client)
+            self.assertFalse(await isolated_redis.ping())
+            with self.assertRaises(RuntimeError):
+                isolated_redis.get_client()
+
+    async def test_06_redis_localhost_in_production_skipped(self) -> None:
+        """In production, localhost REDIS_URL is skipped to avoid silent connection errors."""
+        isolated_redis = RedisManager()
+        with patch.object(settings, "REDIS_URL", "redis://localhost:6379/0"):
+            with patch.object(Settings, "is_production", new_callable=PropertyMock, return_value=True):
+                await isolated_redis.connect()
+                self.assertIsNone(isolated_redis._client)
+                self.assertFalse(await isolated_redis.ping())
 
 
 if __name__ == "__main__":

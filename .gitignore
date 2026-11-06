@@ -75,3 +75,18 @@ frontend/.npm-cache/
 phase*.png
 runtime_test_resume.pdf
 
+# ── Local Agent & Development Tooling ──────────────────────────────────────
+.agent/
+.agents/
+.gemini/
+.gsd/
+adapters/
+model_capabilities.yaml
+GSD-STYLE.md
+PROJECT_RULES.md
+VERSION
+scripts/validate-*.sh
+scripts/validate-*.ps1
+scripts/search_repo.*
+scripts/setup_search.*
+

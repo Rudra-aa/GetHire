@@ -105,3 +105,4 @@ async def init_db_indexes(db: AsyncIOMotorDatabase) -> None:
         logger.info("Database indexes initialized successfully.")
     except Exception as exc:
         logger.error("Failed to initialize database indexes", error=str(exc))
+        raise

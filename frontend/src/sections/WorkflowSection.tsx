@@ -8,8 +8,8 @@ const stages = [
   {
     number: "01",
     icon: <Upload className="h-5 w-5" />,
-    color: "text-[#39FF88]",
-    bgColor: "bg-emerald-500/10 border-emerald-500/20 text-[#39FF88]",
+    color: "text-[#1E8C5A]",
+    bgColor: "bg-[#A8D8C3]/25 border-[#A8D8C3]/40 text-[#1E8C5A]",
     title: "Career Ingestion",
     desc: "Ingest PDF/DOCX resumes and extract verified achievements.",
     tech: "Secure Parsing · Fast",
@@ -17,88 +17,83 @@ const stages = [
   {
     number: "02",
     icon: <FileSearch className="h-5 w-5" />,
-    color: "text-[#39FF88]",
-    bgColor: "bg-emerald-500/10 border-emerald-500/20 text-[#39FF88]",
+    color: "text-[#1E8C5A]",
+    bgColor: "bg-[#A8D8C3]/25 border-[#A8D8C3]/40 text-[#1E8C5A]",
     title: "Skill Ontology Graph",
     desc: "NLP constructs a verified matrix of your production stack & scale.",
-    tech: "Qwen2.5 · Ontology",
+    tech: "Structured Ontology",
   },
   {
     number: "03",
     icon: <Cpu className="h-5 w-5" />,
-    color: "text-[#4DA8FF]",
-    bgColor: "bg-blue-500/10 border-blue-500/20 text-[#4DA8FF]",
+    color: "text-[#2B7FAD]",
+    bgColor: "bg-[#B9D9EC]/30 border-[#B9D9EC]/50 text-[#2B7FAD]",
     title: "Adaptive Synthesis",
     desc: "Questions engineered specifically from your stated architectural work.",
-    tech: "Llama 3.2 · Adaptive",
+    tech: "Dynamic Synthesis",
   },
   {
     number: "04",
     icon: <Video className="h-5 w-5" />,
-    color: "text-[#4DA8FF]",
-    bgColor: "bg-blue-500/10 border-blue-500/20 text-[#4DA8FF]",
+    color: "text-[#2B7FAD]",
+    bgColor: "bg-[#B9D9EC]/30 border-[#B9D9EC]/50 text-[#2B7FAD]",
     title: "Multimodal Simulation",
     desc: "Real-time mock interview with dynamic follow-up escalation.",
-    tech: "WebRTC · 60 FPS",
+    tech: "WebRTC · Low Latency",
   },
   {
     number: "05",
     icon: <ScanFace className="h-5 w-5" />,
-    color: "text-[#8B5CF6]",
-    bgColor: "bg-purple-500/10 border-purple-500/20 text-[#8B5CF6]",
+    color: "text-[#6E5EBB]",
+    bgColor: "bg-[#DCD5F0]/35 border-[#DCD5F0]/50 text-[#6E5EBB]",
     title: "Biometric & Vocal Telemetry",
     desc: "FaceSense and VoiceSense track composure, eye contact, and cadence.",
-    tech: "PyTorch · Librosa",
+    tech: "Real-time Telemetry",
   },
   {
     number: "06",
     icon: <BarChart2 className="h-5 w-5" />,
-    color: "text-[#8B5CF6]",
-    bgColor: "bg-purple-500/10 border-purple-500/20 text-[#8B5CF6]",
+    color: "text-[#6E5EBB]",
+    bgColor: "bg-[#DCD5F0]/35 border-[#DCD5F0]/50 text-[#6E5EBB]",
     title: "Multi-Signal Evaluation",
     desc: "Objective STAR framework, algorithmic rigor, and tradeoff grading.",
-    tech: "Rubric Engine · L5/L6",
+    tech: "Rubric Engine",
   },
   {
     number: "07",
     icon: <Trophy className="h-5 w-5" />,
-    color: "text-[#FFD54A]",
-    bgColor: "bg-amber-500/10 border-amber-500/20 text-[#FFD54A]",
+    color: "text-[#1E8C5A]",
+    bgColor: "bg-[#A8D8C3]/25 border-[#A8D8C3]/40 text-[#1E8C5A]",
     title: "Predictive HireScore™",
-    desc: "Calibrated composite index benchmarked against Tier 1 standards.",
+    desc: "Calibrated composite index benchmarked against top-tier standards.",
     tech: "Multi-Signal Index",
   },
   {
     number: "08",
     icon: <FileDown className="h-5 w-5" />,
-    color: "text-[#FFD54A]",
-    bgColor: "bg-amber-500/10 border-amber-500/20 text-[#FFD54A]",
+    color: "text-[#2B7FAD]",
+    bgColor: "bg-[#B9D9EC]/30 border-[#B9D9EC]/50 text-[#2B7FAD]",
     title: "Executive Action Plan",
     desc: "Granular gap remediation roadmap and downloadable intelligence report.",
-    tech: "Instant PDF Export",
+    tech: "Executive PDF Export",
   },
 ];
 
 export const WorkflowSection = memo(function WorkflowSection() {
   return (
-    <section id="workflow" className="py-20 bg-transparent relative overflow-hidden">
-      {/* ── Background Depth Matrix & Subtle Gradients ─────────────────────── */}
-      <div className="absolute inset-0 bg-dot-matrix opacity-25 pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute inset-0 vignette-radial pointer-events-none" />
-
+    <section id="workflow" className="py-20 bg-[#F0F5F9]/40 relative overflow-hidden">
       <div className="section-container relative z-10">
-        {/* Section Header with strong reading flow */}
+        {/* Section Header */}
         <div className="max-w-2xl mb-14">
           <div className="eyebrow-pill mb-3">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#39FF88]" />
+            <span className="h-1.5 w-1.5 rounded-full bg-[#1E8C5A]" />
             Intelligent Progression
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#263D68] tracking-tight">
             From Resume Upload to{" "}
-            <span className="gradient-text-luxury">Guaranteed Offer-Ready</span>
+            <span className="gradient-text-luxury">Offer-Ready Confidence</span>
           </h2>
-          <p className="text-xs sm:text-sm text-neutral-400 mt-3 leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#5A6E8C] mt-3 leading-relaxed">
             Eight coordinated phases eliminate every point of failure between your application and the offer letter.
           </p>
         </div>
@@ -112,13 +107,13 @@ export const WorkflowSection = memo(function WorkflowSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ delay: idx * 0.04, duration: 0.38 }}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="glass-card-luxury p-5 rounded-2xl flex flex-col justify-between gap-4 group relative overflow-hidden bg-[#111217]/80 border border-white/[0.08]"
+              whileHover={{ y: -3, transition: { duration: 0.2 } }}
+              className="p-5 rounded-2xl flex flex-col justify-between gap-4 group relative overflow-hidden bg-white/75 backdrop-blur-md border border-[#D0DCE8]/80 shadow-[0_4px_20px_-2px_rgba(38,61,104,0.05)] hover:bg-white/90 hover:border-[#B9D9EC] hover:shadow-[0_8px_30px_-4px_rgba(38,61,104,0.09)] transition-all"
             >
               {/* Inter-stage connector arrow (desktop only, within each row of 4) */}
               {idx < stages.length - 1 && (idx + 1) % 4 !== 0 && (
                 <div className="hidden lg:flex absolute -right-2 top-1/2 -translate-y-1/2 z-10 items-center justify-center pointer-events-none">
-                  <ArrowRight className="h-3.5 w-3.5 text-neutral-600" />
+                  <ArrowRight className="h-3.5 w-3.5 text-[#8FA3BC]" />
                 </div>
               )}
 
@@ -126,21 +121,21 @@ export const WorkflowSection = memo(function WorkflowSection() {
                 <div className={`h-9 w-9 rounded-xl border flex items-center justify-center ${stage.bgColor} ${stage.color}`}>
                   {stage.icon}
                 </div>
-                <span className="font-mono text-xs font-bold text-neutral-500 group-hover:text-[#39FF88] transition-colors">
+                <span className="font-mono text-xs font-bold text-[#8FA3BC] group-hover:text-[#1E8C5A] transition-colors">
                   {stage.number}
                 </span>
               </div>
 
               <div>
-                <h3 className="text-sm font-bold text-white tracking-tight group-hover:text-[#39FF88] transition-colors">
+                <h3 className="text-sm font-bold text-[#263D68] tracking-tight group-hover:text-[#1E8C5A] transition-colors">
                   {stage.title}
                 </h3>
-                <p className="text-xs text-neutral-400 mt-1 leading-relaxed">{stage.desc}</p>
+                <p className="text-xs text-[#5A6E8C] mt-1 leading-relaxed">{stage.desc}</p>
               </div>
 
-              <div className="pt-2.5 border-t border-white/[0.07] flex items-center justify-between">
-                <span className="font-mono text-[10px] text-neutral-500">{stage.tech}</span>
-                <span className="h-1.5 w-1.5 rounded-full bg-white/20 group-hover:bg-[#39FF88] transition-colors" />
+              <div className="pt-2.5 border-t border-[#E4EDF5] flex items-center justify-between">
+                <span className="font-mono text-[10px] text-[#5A6E8C]">{stage.tech}</span>
+                <span className="h-1.5 w-1.5 rounded-full bg-[#D0DCE8] group-hover:bg-[#1E8C5A] transition-colors" />
               </div>
             </motion.div>
           ))}

@@ -69,32 +69,27 @@ export const AiEngineSection = memo(function AiEngineSection() {
   const current = interviewModes.find((m) => m.id === activeMode) ?? interviewModes[0]!;
 
   return (
-    <section id="interview-engine" className="py-24 bg-transparent relative overflow-hidden">
-      {/* ── Background Depth Matrix & Blue Ambient Lighting ────────────────── */}
-      <div className="absolute inset-0 bg-dot-matrix opacity-25 pointer-events-none" />
-      <div className="absolute top-1/2 right-10 w-[550px] h-[550px] bg-blue-500/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute inset-0 vignette-radial pointer-events-none" />
-
+    <section id="interview-engine" className="py-24 bg-[#F0F5F9]/30 relative overflow-hidden">
       <div className="section-container relative z-10">
         {/* Header */}
         <div className="max-w-2xl mb-14">
           <div className="eyebrow-pill mb-3">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#4DA8FF]" />
+            <span className="h-1.5 w-1.5 rounded-full bg-[#2B7FAD]" />
             Adaptive Interview Engine
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#263D68] tracking-tight">
             Every Question Is Generated From <br />
             <span className="gradient-text-luxury">Your Exact Experience</span>
           </h2>
-          <p className="text-xs sm:text-sm text-neutral-400 mt-3 leading-relaxed">
-            No static question banks. If your resume mentions Redis caching or Kubernetes ingress, the AI initiates a targeted system design probe that deepens based on your answers.
+          <p className="text-xs sm:text-sm text-[#5A6E8C] mt-3 leading-relaxed">
+            No static question banks. If your resume mentions Redis caching or Kubernetes ingress, the system initiates a targeted system design probe that deepens based on your answers.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[340px_1fr] gap-8 items-start">
           {/* Mode selector */}
           <div className="flex flex-col gap-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 font-mono">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#5A6E8C] font-mono">
               Select Assessment Dimension
             </span>
             {interviewModes.map((mode) => {
@@ -105,68 +100,68 @@ export const AiEngineSection = memo(function AiEngineSection() {
                   onClick={() => setActiveMode(mode.id)}
                   className={`p-5 rounded-2xl border text-left flex flex-col gap-2 transition-all duration-300 ${
                     isActive
-                      ? "bg-[#111217] border-blue-500/40 shadow-[0_0_25px_rgba(77,168,255,0.15)]"
-                      : "glass-card-luxury bg-[#111217]/70 hover:border-white/20"
+                      ? "bg-white border-[#B9D9EC] shadow-[0_4px_20px_-2px_rgba(43,127,173,0.22)] ring-1 ring-[#B9D9EC]"
+                      : "bg-white/75 backdrop-blur-md border border-[#D0DCE8]/80 hover:border-[#B9D9EC] hover:bg-white/90 shadow-xs"
                   }`}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
-                      <div className="h-8 w-8 rounded-lg border border-white/10 bg-white/5 flex items-center justify-center">
-                        <Cpu className={`h-4 w-4 ${isActive ? "text-[#4DA8FF]" : "text-neutral-400"}`} />
+                      <div className="h-8 w-8 rounded-lg border border-[#D0DCE8] bg-[#F0F5F9] flex items-center justify-center">
+                        <Cpu className={`h-4 w-4 ${isActive ? "text-[#2B7FAD]" : "text-[#8FA3BC]"}`} />
                       </div>
-                      <h3 className={`text-xs font-bold ${isActive ? "text-white" : "text-neutral-300"}`}>
+                      <h3 className={`text-xs font-bold ${isActive ? "text-[#263D68]" : "text-[#5A6E8C]"}`}>
                         {mode.name}
                       </h3>
                     </div>
-                    <ArrowRight className={`h-4 w-4 transition-transform ${isActive ? "text-[#4DA8FF] translate-x-0.5" : "text-neutral-600"}`} />
+                    <ArrowRight className={`h-4 w-4 transition-transform ${isActive ? "text-[#2B7FAD] translate-x-0.5" : "text-[#8FA3BC]"}`} />
                   </div>
-                  <p className="text-[11px] text-neutral-400 font-mono leading-relaxed">{mode.badge}</p>
+                  <p className="text-[11px] text-[#5A6E8C] font-mono leading-relaxed">{mode.badge}</p>
                 </button>
               );
             })}
           </div>
 
           {/* Live question preview */}
-          <div className="p-6 sm:p-8 rounded-3xl glass-card-luxury bg-[#111217]/90 border border-white/[0.08] flex flex-col gap-5 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 flex flex-col gap-5 shadow-[0_8px_30px_-4px_rgba(38,61,104,0.08)]">
             {/* Mode header */}
-            <div className="flex items-center justify-between pb-4 border-b border-white/[0.08] text-xs">
-              <span className="font-bold uppercase tracking-wider text-[11px] text-white flex items-center gap-2">
-                <Bot className="h-4 w-4 text-[#4DA8FF]" />
+            <div className="flex items-center justify-between pb-4 border-b border-[#D0DCE8] text-xs">
+              <span className="font-bold uppercase tracking-wider text-[11px] text-[#263D68] flex items-center gap-2">
+                <Bot className="h-4 w-4 text-[#2B7FAD]" />
                 {current.name} Engine
               </span>
-              <span className="font-mono text-[#4DA8FF] bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20 text-[11px]">
+              <span className="font-mono text-[#2B7FAD] bg-[#B9D9EC]/30 px-2 py-0.5 rounded border border-[#B9D9EC]/50 text-[11px]">
                 {current.badge}
               </span>
             </div>
 
             {/* Mode description */}
-            <p className="text-xs text-neutral-300 leading-relaxed">{current.desc}</p>
+            <p className="text-xs text-[#5A6E8C] leading-relaxed">{current.desc}</p>
 
             {/* Sample questions */}
             <div className="flex flex-col gap-3">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-400">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#5A6E8C]">
                 Generated Adaptive Sequence
               </span>
               {current.questions.map((item, idx) => (
                 <div
                   key={idx}
-                  className="p-4 rounded-2xl bg-black/40 border border-white/[0.06] hover:border-blue-500/30 transition-colors flex flex-col gap-2 group"
+                  className="p-4 rounded-2xl bg-white/80 backdrop-blur-sm border border-[#D0DCE8]/80 hover:border-[#B9D9EC] hover:bg-white/95 transition-all flex flex-col gap-2 group shadow-sm"
                 >
                   <div className="flex items-start gap-2.5">
-                    <span className="font-mono text-[11px] text-[#4DA8FF] font-bold mt-0.5 shrink-0 bg-blue-500/10 px-1.5 py-0.2 rounded border border-blue-500/20">
+                    <span className="font-mono text-[11px] text-[#2B7FAD] font-bold mt-0.5 shrink-0 bg-[#B9D9EC]/30 px-1.5 py-0.2 rounded border border-[#B9D9EC]/50">
                       Q{idx + 1}
                     </span>
-                    <p className="text-xs text-white leading-relaxed font-medium group-hover:text-neutral-100 transition-colors">
+                    <p className="text-xs text-[#263D68] leading-relaxed font-medium">
                       {item.q}
                     </p>
                   </div>
-                  <span className="font-mono text-[10px] text-neutral-400 ml-8">{item.tag}</span>
+                  <span className="font-mono text-[10px] text-[#5A6E8C] ml-8">{item.tag}</span>
                 </div>
               ))}
             </div>
 
-            <div className="pt-4 border-t border-white/[0.08] flex items-center justify-between text-xs text-neutral-400">
-              <span className="flex items-center gap-1.5 text-[#4DA8FF] font-semibold">
+            <div className="pt-4 border-t border-[#D0DCE8] flex items-center justify-between text-xs text-[#5A6E8C]">
+              <span className="flex items-center gap-1.5 text-[#2B7FAD] font-semibold">
                 <Sparkles className="h-3.5 w-3.5" />
                 Adaptive depth escalation active
               </span>

@@ -38,15 +38,15 @@ export const LiveWarningToasts: React.FC<LiveWarningToastsProps> = ({ toasts, on
         return (
           <div
             key={toast.id}
-            className="pointer-events-auto p-4 rounded-2xl bg-[#160c0e]/95 border border-rose-500/40 text-rose-200 text-xs font-mono shadow-2xl backdrop-blur-md flex items-center justify-between gap-3 animate-in fade-in slide-in-from-top-4 duration-300"
+            className="pointer-events-auto p-4 rounded-2xl bg-white/85 border border-rose-300/80 text-rose-900 text-xs font-mono shadow-[0_12px_32px_rgba(38,61,104,0.12)] backdrop-blur-md flex items-center justify-between gap-3 animate-in fade-in slide-in-from-top-4 duration-300"
           >
             <div className="flex items-center gap-2.5">
-              <Icon className="h-4 w-4 text-rose-400 shrink-0" />
+              <Icon className="h-4 w-4 text-rose-600 shrink-0" />
               <span>{toast.message}</span>
             </div>
             <button
               onClick={() => onDismiss(toast.id)}
-              className="p-1 text-rose-400 hover:text-white"
+              className="p-1 text-rose-400 hover:text-rose-700 transition-colors"
             >
               <X className="h-3.5 w-3.5" />
             </button>

@@ -30,7 +30,7 @@ export const CandidateEvolutionSection: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/10 text-xs font-mono text-neutral-400">
+      <div className="p-6 rounded-2xl bg-white border border-[#D0DCE8] text-xs font-mono text-[#5A6E8C]">
         Loading Candidate Evolution Growth Timeline...
       </div>
     );
@@ -40,39 +40,39 @@ export const CandidateEvolutionSection: React.FC = () => {
 
   if (!hasSufficientData) {
     return (
-      <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/10 backdrop-blur flex flex-col gap-6 relative overflow-hidden">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
+      <div className="p-6 sm:p-8 rounded-3xl bg-[#EEF6FB]/85 backdrop-blur-md border border-[#B9D9EC]/60 shadow-glass flex flex-col gap-6 relative overflow-hidden">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#B9D9EC]/40">
           <div className="flex items-center gap-3">
-            <div className="p-3 rounded-2xl bg-gold-400/10 border border-gold-400/30 text-gold-400">
+            <div className="p-3 rounded-2xl bg-[#A8D8C3]/20 border border-[#A8D8C3]/50 text-[#1E8C5A]">
               <TrendingUp className="h-6 w-6" />
             </div>
             <div>
-              <h2 className="text-xl font-black text-white font-display flex items-center gap-2">
+              <h2 className="text-xl font-bold text-[#263D68] font-display flex items-center gap-2">
                 <span>Candidate Evolution Timeline</span>
-                <span className="px-2.5 py-0.5 rounded-full bg-cyan-400/10 text-cyan-300 border border-cyan-400/30 text-[10px] font-mono uppercase tracking-wider">
+                <span className="px-2.5 py-0.5 rounded-full bg-[#B9D9EC]/40 text-[#2B7FAD] border border-[#B9D9EC]/60 text-[10px] font-mono uppercase tracking-wider font-semibold">
                   Calibration Phase
                 </span>
               </h2>
-              <p className="text-xs text-neutral-400 font-sans">
+              <p className="text-xs text-[#5A6E8C] font-sans">
                 Track your complete skill progression curve over time instead of static single snapshots.
               </p>
             </div>
           </div>
         </div>
 
-        <div className="py-12 px-6 rounded-2xl bg-black/40 border border-white/10 flex flex-col items-center justify-center text-center gap-4">
-          <div className="h-12 w-12 rounded-2xl bg-gold-400/10 border border-gold-400/30 text-gold-400 flex items-center justify-center">
+        <div className="py-12 px-6 rounded-2xl bg-white/85 backdrop-blur-md border border-white/95 shadow-glass flex flex-col items-center justify-center text-center gap-4">
+          <div className="h-12 w-12 rounded-2xl bg-[#A8D8C3]/20 border border-[#A8D8C3]/50 text-[#1E8C5A] flex items-center justify-center">
             <TrendingUp className="h-6 w-6" />
           </div>
           <div className="max-w-md flex flex-col gap-1">
-            <h3 className="text-base font-bold text-white">Historical Curve Calibrating</h3>
-            <p className="text-xs text-neutral-400 leading-relaxed">
+            <h3 className="text-base font-bold text-[#263D68]">Historical Curve Calibrating</h3>
+            <p className="text-xs text-[#5A6E8C] leading-relaxed">
               Complete at least two interview sessions to unlock Candidate Evolution and track your multi-session performance trajectory.
             </p>
           </div>
           <button
             onClick={() => navigate("/interview")}
-            className="px-6 py-2.5 rounded-xl bg-gold-400 text-black font-extrabold text-xs font-display hover:bg-gold-300 transition-all flex items-center gap-1.5 shadow-lg shadow-gold-500/20"
+            className="px-6 py-2.5 rounded-xl bg-[#A8D8C3] hover:bg-[#97ccb6] text-[#1E4D38] border border-[#72C9AD] font-bold text-xs font-sans transition-all flex items-center gap-1.5 shadow-sm"
           >
             <span>Launch Interview Session</span>
             <ArrowUpRight className="h-4 w-4" />
@@ -93,29 +93,27 @@ export const CandidateEvolutionSection: React.FC = () => {
   const activePoint: EvolutionPoint = selectedPoint || points[points.length - 1] || points[0] || defaultPoint;
 
   return (
-    <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/10 backdrop-blur flex flex-col gap-6 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gold-400/5 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
+    <div className="p-6 sm:p-8 rounded-3xl bg-[#EEF6FB]/85 backdrop-blur-md border border-[#B9D9EC]/60 shadow-glass flex flex-col gap-6 relative overflow-hidden">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#B9D9EC]/40">
         <div className="flex items-center gap-3">
-          <div className="p-3 rounded-2xl bg-gold-400/10 border border-gold-400/30 text-gold-400">
+          <div className="p-3 rounded-2xl bg-[#A8D8C3]/20 border border-[#A8D8C3]/50 text-[#1E8C5A]">
             <TrendingUp className="h-6 w-6" />
           </div>
           <div>
-            <h2 className="text-xl font-black text-white font-display flex items-center gap-2">
+            <h2 className="text-xl font-bold text-[#263D68] font-display flex items-center gap-2">
               <span>Candidate Evolution Timeline</span>
-              <span className="px-2.5 py-0.5 rounded-full bg-gold-400/10 text-gold-300 border border-gold-400/30 text-[10px] font-mono uppercase tracking-wider">
+              <span className="px-2.5 py-0.5 rounded-full bg-[#A8D8C3]/20 text-[#1E8C5A] border border-[#A8D8C3]/50 text-[10px] font-mono uppercase tracking-wider font-semibold">
                 Flagship Trajectory
               </span>
             </h2>
-            <p className="text-xs text-neutral-400 font-sans">
+            <p className="text-xs text-[#5A6E8C] font-sans">
               Track your complete skill progression curve over time instead of static single snapshots.
             </p>
           </div>
         </div>
 
         <div className="flex items-center gap-3 text-right">
-          <div className="px-4 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold flex items-center gap-1.5">
+          <div className="px-4 py-2 rounded-xl bg-white/85 border border-[#A8D8C3] text-[#1E8C5A] text-xs font-mono font-bold flex items-center gap-1.5 shadow-xs">
             <ArrowUpRight className="h-4 w-4" />
             <span>+{evolutionData?.total_growth_points ?? 0} Points Growth</span>
           </div>
@@ -123,13 +121,13 @@ export const CandidateEvolutionSection: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-        <div className="lg:col-span-8 flex flex-col gap-4 p-5 rounded-2xl bg-black/40 border border-white/10">
-          <div className="flex items-center justify-between text-xs font-mono text-neutral-400 pb-2">
+        <div className="lg:col-span-8 flex flex-col gap-4 p-5 rounded-2xl bg-white/85 backdrop-blur-md border border-white/95 shadow-glass">
+          <div className="flex items-center justify-between text-xs font-mono text-[#5A6E8C] pb-2">
             <span>Historical Progress Trajectory</span>
-            <span className="text-gold-400">{evolutionData?.growth_trajectory || "High Growth Trajectory"}</span>
+            <span className="text-[#1E8C5A] font-bold">{evolutionData?.growth_trajectory || "High Growth Trajectory"}</span>
           </div>
 
-          <div className="flex items-end justify-between gap-2 pt-6 pb-2 px-2 h-48 border-b border-white/10">
+          <div className="flex items-end justify-between gap-2 pt-6 pb-2 px-2 h-48 border-b border-[#E4EDF5]">
             {points.map((pt, idx) => {
               const isSelected = activePoint.month === pt.month;
               const heightPct = Math.max(25, (pt.hirescore / 100) * 100);
@@ -140,20 +138,20 @@ export const CandidateEvolutionSection: React.FC = () => {
                   onClick={() => setSelectedPoint(pt)}
                   className="flex-1 flex flex-col items-center gap-2 cursor-pointer group"
                 >
-                  <span className={`text-xs font-mono font-bold transition-all ${isSelected ? "text-gold-400 scale-110" : "text-neutral-400 group-hover:text-white"}`}>
+                  <span className={`text-xs font-mono font-bold transition-all ${isSelected ? "text-[#1E8C5A] scale-110" : "text-[#5A6E8C] group-hover:text-[#263D68]"}`}>
                     {pt.hirescore}
                   </span>
-                  <div className="w-full max-w-[42px] bg-white/5 rounded-t-xl h-36 flex items-end p-1 relative overflow-hidden">
+                  <div className="w-full max-w-[42px] bg-[#E4EDF5] rounded-t-xl h-36 flex items-end p-1 relative overflow-hidden">
                     <div
                       style={{ height: `${heightPct}%` }}
                       className={`w-full rounded-t-lg transition-all duration-500 ${
                         isSelected
-                          ? "bg-gradient-to-t from-gold-500 to-amber-300 shadow-[0_0_20px_rgba(234,179,8,0.4)]"
-                          : "bg-white/20 group-hover:bg-white/40"
+                          ? "bg-[#1E8C5A] shadow-sm"
+                          : "bg-[#B9D9EC] group-hover:bg-[#A8D8C3]"
                       }`}
                     />
                   </div>
-                  <span className={`text-xs font-mono transition-all ${isSelected ? "text-gold-300 font-bold" : "text-neutral-500"}`}>
+                  <span className={`text-xs font-mono transition-all ${isSelected ? "text-[#1E8C5A] font-bold" : "text-[#8FA3BC]"}`}>
                     {pt.month}
                   </span>
                 </div>
@@ -162,21 +160,21 @@ export const CandidateEvolutionSection: React.FC = () => {
           </div>
         </div>
 
-        <div className="lg:col-span-4 p-5 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col justify-between gap-4 h-full">
+        <div className="lg:col-span-4 p-5 rounded-2xl bg-white/85 backdrop-blur-md border border-white/95 shadow-glass flex flex-col justify-between gap-4 h-full">
           <div>
-            <div className="flex items-center gap-2 text-xs font-mono text-gold-400 uppercase tracking-wider mb-1">
+            <div className="flex items-center gap-2 text-xs font-mono text-[#1E8C5A] font-bold uppercase tracking-wider mb-1">
               <Calendar className="h-3.5 w-3.5" />
               <span>{activePoint.month} Snapshot</span>
             </div>
-            <div className="text-3xl font-black text-white font-display">
-              {activePoint.hirescore} <span className="text-sm font-mono text-neutral-400">/ 100</span>
+            <div className="text-3xl font-black text-[#263D68] font-display">
+              {activePoint.hirescore} <span className="text-sm font-mono text-[#5A6E8C]">/ 100</span>
             </div>
-            <p className="text-xs text-neutral-400 mt-1">
+            <p className="text-xs text-[#5A6E8C] mt-1">
               Readiness Score: {activePoint.readiness_pct}% • Technical Accuracy: {activePoint.technical}%
             </p>
           </div>
 
-          <div className="flex flex-col gap-2 pt-2 border-t border-white/10">
+          <div className="flex flex-col gap-2 pt-2 border-t border-[#E4EDF5]">
             <button
               onClick={() => {
                 if (activePoint.session_id) {
@@ -185,7 +183,7 @@ export const CandidateEvolutionSection: React.FC = () => {
                   navigate("/evaluation");
                 }
               }}
-              className="w-full py-2.5 rounded-xl bg-gold-400/10 hover:bg-gold-400/20 border border-gold-400/30 text-gold-300 text-xs font-bold font-display transition-all flex items-center justify-center gap-1.5"
+              className="w-full py-2.5 rounded-xl bg-white hover:bg-[#F0FAF5] border border-[#D0DCE8] hover:border-[#A8D8C3] text-[#263D68] hover:text-[#1E8C5A] text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-xs"
             >
               <span>Inspect Full {activePoint.month} Report</span>
               <ChevronRight className="h-4 w-4" />

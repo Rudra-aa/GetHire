@@ -111,28 +111,23 @@ export const ResumeUploader: React.FC<ResumeUploaderProps> = ({
         onClick={() => !uploading && fileInputRef.current?.click()}
         className={`relative border-2 border-dashed rounded-2xl p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 ${
           isDragging
-            ? "border-emerald-400 bg-emerald-500/10 scale-[1.01]"
-            : "border-white/10 hover:border-gold-400/40 bg-[#111115]/60 hover:bg-[#111115]/90"
+            ? "border-[#1E8C5A] bg-[#A8D8C3]/20 scale-[1.01]"
+            : "border-[#D0DCE8] hover:border-[#A8D8C3] bg-[#FAFBFC] hover:bg-[#F0FAF5]"
         } ${uploading ? "pointer-events-none opacity-90" : ""}`}
-        style={{
-          boxShadow: isDragging
-            ? "0 0 24px rgba(40, 214, 123, 0.25)"
-            : "inset 0 1px 0 rgba(255, 255, 255, 0.05)",
-        }}
       >
         {uploading ? (
           <div className="flex flex-col items-center gap-4 w-full max-w-md py-4">
-            <div className="h-12 w-12 rounded-2xl bg-gold-400/10 border border-gold-400/30 flex items-center justify-center animate-pulse">
-              <Loader2 className="h-6 w-6 text-gold-400 animate-spin" />
+            <div className="h-12 w-12 rounded-2xl bg-[#A8D8C3]/20 border border-[#A8D8C3]/60 flex items-center justify-center animate-pulse">
+              <Loader2 className="h-6 w-6 text-[#1E8C5A] animate-spin" />
             </div>
             <div className="w-full flex flex-col gap-2">
-              <div className="flex justify-between text-xs text-neutral-400">
+              <div className="flex justify-between text-xs text-[#5A6E8C]">
                 <span>{statusMessage}</span>
-                <span className="font-semibold text-gold-300">{progress}%</span>
+                <span className="font-semibold text-[#1E8C5A]">{progress}%</span>
               </div>
-              <div className="h-2 w-full bg-white/10 rounded-full overflow-hidden">
+              <div className="h-2 w-full bg-[#E4EDF5] rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-gold-400 to-emerald-400 transition-all duration-300"
+                  className="h-full bg-gradient-to-r from-[#A8D8C3] to-[#72C9AD] transition-all duration-300"
                   style={{ width: `${progress}%` }}
                 />
               </div>
@@ -140,20 +135,20 @@ export const ResumeUploader: React.FC<ResumeUploaderProps> = ({
           </div>
         ) : (
           <div className="flex flex-col items-center gap-3">
-            <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-gold-400/20 to-emerald-400/10 border border-gold-400/30 flex items-center justify-center text-gold-300 shadow-lg shadow-gold-500/10">
+            <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#A8D8C3]/20 to-[#B9D9EC]/30 border border-[#A8D8C3]/50 flex items-center justify-center text-[#1E8C5A] shadow-sm">
               <Upload className="h-6 w-6" />
             </div>
             <div className="flex flex-col gap-1">
-              <h3 className="text-base font-semibold text-neutral-100">
+              <h3 className="text-base font-semibold text-[#263D68]">
                 {currentFilename ? "Upload an updated resume" : "Drag & drop your PDF resume"}
               </h3>
-              <p className="text-xs text-neutral-400">
-                Supports PDF up to 10MB. Instant automated parsing & AI skill intelligence.
+              <p className="text-xs text-[#5A6E8C]">
+                Supports PDF up to 10MB. Instant automated parsing & skill intelligence.
               </p>
             </div>
             {currentFilename && (
-              <div className="mt-1 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs text-neutral-300">
-                <FileText className="h-3.5 w-3.5 text-emerald-400" />
+              <div className="mt-1 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#D0DCE8] text-xs text-[#263D68]">
+                <FileText className="h-3.5 w-3.5 text-[#1E8C5A]" />
                 <span>Current: {currentFilename}</span>
               </div>
             )}
@@ -162,7 +157,7 @@ export const ResumeUploader: React.FC<ResumeUploaderProps> = ({
       </div>
 
       {error && (
-        <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-red-500/10 border border-red-500/25 text-red-300 text-xs">
+        <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs">
           <AlertCircle className="h-4 w-4 flex-shrink-0" />
           <span>{error}</span>
         </div>

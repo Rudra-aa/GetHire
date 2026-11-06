@@ -29,19 +29,19 @@ export const ExecutiveSummaries: React.FC<ExecutiveSummariesProps> = ({
     <div className="flex flex-col gap-6 w-full">
       {/* Continue Active Session Banner (if in progress) */}
       {activeSessionId && onContinueSession && (
-        <div className="p-4 rounded-2xl bg-gradient-to-r from-amber-500/15 via-gold-500/10 to-amber-500/5 border border-amber-500/30 flex items-center justify-between gap-4 backdrop-blur shadow-lg">
+        <div className="p-4 rounded-2xl bg-[#EEF6FB]/90 backdrop-blur-md border border-[#B9D9EC]/70 flex items-center justify-between gap-4 shadow-glass">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-amber-500/20 text-amber-300">
-              <Play className="h-5 w-5 fill-amber-300" />
+            <div className="p-2.5 rounded-xl bg-amber-100/90 text-amber-700 border border-amber-200">
+              <Play className="h-5 w-5 fill-current" />
             </div>
             <div>
-              <h4 className="text-xs font-bold font-display text-white">Active Interview Session In Progress</h4>
-              <p className="text-[11px] text-neutral-400 font-sans">Session ID: {activeSessionId}</p>
+              <h4 className="text-xs font-bold font-display text-[#263D68]">Active Interview Session In Progress</h4>
+              <p className="text-[11px] text-[#5A6E8C] font-sans">Session ID: {activeSessionId}</p>
             </div>
           </div>
           <button
             onClick={() => onContinueSession(activeSessionId)}
-            className="px-4 py-2 rounded-xl bg-amber-400 text-black font-extrabold text-xs font-display hover:bg-amber-300 transition-all flex items-center gap-1.5 shadow-lg shadow-amber-500/20"
+            className="px-4 py-2 rounded-xl bg-[#A8D8C3] hover:bg-[#77C4A2] text-[#1A2D52] font-bold text-xs transition-all flex items-center gap-1.5 shadow-sm"
           >
             <span>Continue Active Session</span>
             <ArrowUpRight className="h-3.5 w-3.5" />
@@ -49,43 +49,43 @@ export const ExecutiveSummaries: React.FC<ExecutiveSummariesProps> = ({
         </div>
       )}
 
-      {/* 3 Executive Summary Deck Cards */}
+      {/* 3 Executive Summary Deck Cards (Subtle Powder Blue Section Fills) */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         {/* Card 1: Latest Assessment Summary */}
-        <div id="assessment" className="p-6 rounded-3xl bg-[#0e121d] border border-white/10 flex flex-col justify-between gap-5 shadow-2xl backdrop-blur scroll-mt-24">
+        <div id="assessment" className="p-6 rounded-3xl bg-[#EEF6FB]/85 backdrop-blur-md border border-[#B9D9EC]/60 flex flex-col justify-between gap-5 shadow-glass hover:bg-[#EEF6FB]/95 hover:border-[#B9D9EC] transition-all scroll-mt-24">
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-mono text-neutral-400 uppercase">Latest Assessment Summary</span>
-              <div className="p-2.5 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
+              <span className="text-xs font-mono text-[#5A6E8C] uppercase">Latest Assessment Summary</span>
+              <div className="p-2.5 rounded-2xl bg-[#B9D9EC]/40 border border-[#B9D9EC]/60 text-[#2B7FAD]">
                 <CheckSquare className="h-5 w-5" />
               </div>
             </div>
 
             <div className="flex items-baseline gap-2">
-              <span className="text-3xl font-black text-white font-display">
+              <span className="text-3xl font-black text-[#263D68] font-display">
                 {assessmentScore !== undefined ? `${assessmentScore}%` : "Not Taken"}
               </span>
-              <span className="text-xs font-mono text-cyan-400">Knowledge Score</span>
+              <span className="text-xs font-mono text-[#2B7FAD]">Knowledge Score</span>
             </div>
 
-            <p className="text-xs text-neutral-400 font-sans leading-relaxed">
+            <p className="text-xs text-[#5A6E8C] font-sans leading-relaxed">
               {assessmentScore !== undefined
                 ? "Verified technical concept mastery & learning velocity calibration."
                 : "Awaiting proctored technical assessment execution."}
             </p>
           </div>
 
-          <div className="flex flex-col gap-2 pt-3 border-t border-white/10">
+          <div className="flex flex-col gap-2 pt-3 border-t border-[#B9D9EC]/40">
             {assessmentScore !== undefined ? (
               <div className="flex flex-wrap gap-1">
                 {strongConcepts.slice(0, 3).map((c, i) => (
-                  <span key={i} className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-mono">
+                  <span key={i} className="px-2 py-0.5 rounded bg-white/85 text-[#1E8C5A] border border-[#A8D8C3]/50 text-[10px] font-mono shadow-xs">
                     ✓ {c}
                   </span>
                 ))}
                 {weakConcepts.slice(0, 2).map((c, i) => (
-                  <span key={i} className="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20 text-[10px] font-mono">
+                  <span key={i} className="px-2 py-0.5 rounded bg-rose-50 text-[#E05C5C] border border-rose-200 text-[10px] font-mono shadow-xs">
                     • Gap: {c}
                   </span>
                 ))}
@@ -93,7 +93,7 @@ export const ExecutiveSummaries: React.FC<ExecutiveSummariesProps> = ({
             ) : (
               <Link
                 to="/assessment"
-                className="w-full py-2 rounded-xl bg-cyan-500/15 text-cyan-400 font-extrabold text-xs font-display hover:bg-cyan-500/25 border border-cyan-500/30 transition-all flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(34,211,238,0.15)]"
+                className="w-full py-2.5 rounded-xl bg-[#B9D9EC] hover:bg-[#93C5DF] text-[#1A2D52] font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm"
               >
                 <span>Start Technical Assessment</span>
                 <ArrowRight className="h-3.5 w-3.5" />
@@ -103,71 +103,71 @@ export const ExecutiveSummaries: React.FC<ExecutiveSummariesProps> = ({
         </div>
 
         {/* Card 2: Latest Interview Summary */}
-        <div className="p-6 rounded-3xl bg-[#0e121d] border border-white/10 flex flex-col justify-between gap-5 shadow-2xl backdrop-blur">
+        <div className="p-6 rounded-3xl bg-[#EEF6FB]/80 backdrop-blur-md border border-[#B9D9EC]/50 flex flex-col justify-between gap-5 shadow-glass hover:bg-[#EEF6FB]/95 hover:border-[#A8D8C3]/70 transition-all">
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-mono text-neutral-400 uppercase">Latest Interview Summary</span>
-              <div className="p-2.5 rounded-2xl bg-gold-400/10 border border-gold-400/30 text-gold-400">
+              <span className="text-xs font-mono text-[#5A6E8C] uppercase">Latest Interview Summary</span>
+              <div className="p-2.5 rounded-2xl bg-[#A8D8C3]/25 border border-[#A8D8C3]/50 text-[#1E8C5A]">
                 <Video className="h-5 w-5" />
               </div>
             </div>
 
             <div className="flex items-baseline gap-2">
-              <span className="text-3xl font-black text-white font-display">
+              <span className="text-3xl font-black text-[#263D68] font-display">
                 {interviewCompletedCount}
               </span>
-              <span className="text-xs font-mono text-gold-400">Sessions Completed</span>
+              <span className="text-xs font-mono text-[#1E8C5A]">Sessions Completed</span>
             </div>
 
-            <p className="text-xs text-neutral-400 font-sans leading-relaxed">
+            <p className="text-xs text-[#5A6E8C] font-sans leading-relaxed">
               {interviewCompletedCount > 0
                 ? "Recruiter conversational speech, reasoning, and behavior evaluated."
                 : "No interview sessions completed yet."}
             </p>
           </div>
 
-          <div className="flex items-center justify-between pt-3 border-t border-white/10 text-xs font-mono text-neutral-400">
+          <div className="flex items-center justify-between pt-3 border-t border-[#B9D9EC]/40 text-xs font-mono text-[#5A6E8C]">
             <span>Communication & Reasoning</span>
-            <span className="text-gold-300 font-bold">{interviewCompletedCount > 0 ? "Analyzed" : "Pending"}</span>
+            <span className="text-[#1E8C5A] font-bold">{interviewCompletedCount > 0 ? "Analyzed" : "Pending"}</span>
           </div>
         </div>
 
         {/* Card 3: Latest Evaluation Summary */}
-        <div id="evaluation" className="p-6 rounded-3xl bg-[#0e121d] border border-white/10 flex flex-col justify-between gap-5 shadow-2xl backdrop-blur scroll-mt-24">
+        <div id="evaluation" className="p-6 rounded-3xl bg-[#EEF6FB]/85 backdrop-blur-md border border-[#B9D9EC]/60 flex flex-col justify-between gap-5 shadow-glass hover:bg-[#EEF6FB]/95 hover:border-[#DCD5F0]/80 transition-all scroll-mt-24">
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-mono text-neutral-400 uppercase">Latest Evaluation Summary</span>
-              <div className="p-2.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+              <span className="text-xs font-mono text-[#5A6E8C] uppercase">Latest Evaluation Summary</span>
+              <div className="p-2.5 rounded-2xl bg-[#DCD5F0]/35 border border-[#DCD5F0]/50 text-[#6E5EBB]">
                 <Award className="h-5 w-5" />
               </div>
             </div>
 
             <div className="flex items-baseline gap-2">
-              <span className="text-3xl font-black text-white font-display">
+              <span className="text-3xl font-black text-[#263D68] font-display">
                 {hireScore !== undefined ? hireScore : "--"}
               </span>
-              <span className="text-xs font-mono text-emerald-400">Composite HireScore</span>
+              <span className="text-xs font-mono text-[#6E5EBB]">Composite HireScore</span>
             </div>
 
-            <p className="text-xs text-neutral-400 font-sans leading-relaxed">
+            <p className="text-xs text-[#5A6E8C] font-sans leading-relaxed">
               {isEvaluationUnlocked
                 ? "Unified evidence synthesized across technical depth, speech, and behavior."
-                : "Complete both Technical Assessment and AI Interview to unlock Evaluation."}
+                : "Complete both Technical Assessment and Interview to unlock Evaluation."}
             </p>
           </div>
 
-          <div className="pt-3 border-t border-white/10">
+          <div className="pt-3 border-t border-[#B9D9EC]/40">
             {isEvaluationUnlocked && onOpenEvaluation ? (
               <button
                 onClick={onOpenEvaluation}
-                className="w-full py-2 rounded-xl bg-emerald-400 text-black font-extrabold text-xs font-display hover:bg-emerald-300 transition-all flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-500/20"
+                className="w-full py-2.5 rounded-xl bg-[#A8D8C3] hover:bg-[#77C4A2] text-[#1A2D52] font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm"
               >
                 <span>View Evaluation Report</span>
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </button>
             ) : (
-              <div className="flex items-center justify-center gap-1.5 py-2 text-xs font-mono text-neutral-500">
-                <Lock className="h-3.5 w-3.5 text-rose-400" />
+              <div className="flex items-center justify-center gap-1.5 py-2 text-xs font-mono text-[#8FA3BC]">
+                <Lock className="h-3.5 w-3.5 text-[#E05C5C]" />
                 <span>Locked until both complete</span>
               </div>
             )}

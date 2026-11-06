@@ -101,28 +101,28 @@ export const AiCopilotDrawer = memo(function AiCopilotDrawer({
           animate={{ x: 0 }}
           exit={{ x: "100%" }}
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full max-w-md h-full bg-[#111217] border-l border-white/10 shadow-[0_0_60px_rgba(0,0,0,0.9)] flex flex-col z-10"
+          className="relative w-full max-w-md h-full bg-white/90 backdrop-blur-xl border-l border-[#D0DCE8]/80 shadow-[0_20px_50px_rgba(38,61,104,0.15)] flex flex-col z-10"
         >
           {/* Header */}
-          <div className="flex items-center justify-between p-5 border-b border-white/[0.08] bg-black/30">
+          <div className="flex items-center justify-between p-5 border-b border-[#E4EDF5] bg-[#FAFBFC]/80 backdrop-blur-sm">
             <div className="flex items-center gap-3">
-              <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-emerald-400/20 to-blue-500/20 border border-emerald-500/30 flex items-center justify-center text-[#39FF88] shadow-[0_0_15px_rgba(57,255,136,0.25)]">
+              <div className="h-9 w-9 rounded-xl bg-[#A8D8C3]/25 border border-[#A8D8C3]/60 flex items-center justify-center text-[#1E8C5A] shadow-sm">
                 <Bot className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  GetHire AI Copilot
-                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-[#39FF88]">
-                    LIVE
+                <h3 className="text-sm font-bold text-[#263D68] flex items-center gap-2">
+                  GetHire Career Assistant
+                  <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-[#A8D8C3]/20 text-[#1E8C5A] border border-[#A8D8C3]/40">
+                    ONLINE
                   </span>
                 </h3>
-                <p className="text-[11px] text-neutral-400">Context-Aware Career Operating System</p>
+                <p className="text-[11px] text-[#5A6E8C]">Context-Aware Career Operating System</p>
               </div>
             </div>
 
             <button
               onClick={onClose}
-              className="p-1.5 rounded-xl text-neutral-400 hover:text-white hover:bg-white/[0.06] transition-colors"
+              className="p-1.5 rounded-xl text-[#5A6E8C] hover:text-[#263D68] hover:bg-[#F0F5F9] transition-colors"
             >
               <X className="h-4 w-4" />
             </button>
@@ -138,8 +138,8 @@ export const AiCopilotDrawer = memo(function AiCopilotDrawer({
                 <div
                   className={`h-7 w-7 rounded-lg flex items-center justify-center text-xs shrink-0 ${
                     msg.sender === "user"
-                      ? "bg-blue-500/20 text-[#4DA8FF] border border-blue-500/30"
-                      : "bg-emerald-500/20 text-[#39FF88] border border-emerald-500/30"
+                      ? "bg-[#B9D9EC]/30 text-[#2B7FAD] border border-[#B9D9EC]"
+                      : "bg-[#A8D8C3]/25 text-[#1E8C5A] border border-[#A8D8C3]/60"
                   }`}
                 >
                   {msg.sender === "user" ? <User className="h-3.5 w-3.5" /> : <Bot className="h-3.5 w-3.5" />}
@@ -148,8 +148,8 @@ export const AiCopilotDrawer = memo(function AiCopilotDrawer({
                 <div
                   className={`p-3.5 rounded-2xl text-xs leading-relaxed max-w-[82%] whitespace-pre-wrap ${
                     msg.sender === "user"
-                      ? "bg-[#4DA8FF]/15 text-white border border-[#4DA8FF]/25 rounded-tr-none"
-                      : "bg-black/50 text-neutral-200 border border-white/[0.08] rounded-tl-none"
+                      ? "bg-[#B9D9EC]/20 text-[#263D68] border border-[#B9D9EC]/50 rounded-tr-none"
+                      : "bg-[#FAFBFC] text-[#263D68] border border-[#E4EDF5] rounded-tl-none"
                   }`}
                 >
                   {msg.text}
@@ -159,13 +159,13 @@ export const AiCopilotDrawer = memo(function AiCopilotDrawer({
 
             {isTyping && (
               <div className="flex gap-3">
-                <div className="h-7 w-7 rounded-lg bg-emerald-500/20 text-[#39FF88] border border-emerald-500/30 flex items-center justify-center text-xs shrink-0">
+                <div className="h-7 w-7 rounded-lg bg-[#A8D8C3]/25 text-[#1E8C5A] border border-[#A8D8C3]/60 flex items-center justify-center text-xs shrink-0">
                   <Bot className="h-3.5 w-3.5" />
                 </div>
-                <div className="p-3 rounded-2xl bg-black/50 border border-white/[0.08] flex items-center gap-1.5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#39FF88] animate-bounce" />
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#39FF88] animate-bounce [animation-delay:0.2s]" />
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#39FF88] animate-bounce [animation-delay:0.4s]" />
+                <div className="p-3 rounded-2xl bg-[#FAFBFC] border border-[#E4EDF5] flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#1E8C5A] animate-bounce" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#1E8C5A] animate-bounce [animation-delay:0.2s]" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#1E8C5A] animate-bounce [animation-delay:0.4s]" />
                 </div>
               </div>
             )}
@@ -173,14 +173,14 @@ export const AiCopilotDrawer = memo(function AiCopilotDrawer({
           </div>
 
           {/* Quick Prompts */}
-          <div className="p-3 border-t border-white/[0.06] bg-black/20 flex flex-col gap-1.5">
-            <span className="text-[10px] font-mono text-neutral-400 px-1">Suggested Inquiries:</span>
+          <div className="p-3 border-t border-[#E4EDF5] bg-[#FAFBFC]/80 backdrop-blur-sm flex flex-col gap-1.5">
+            <span className="text-[10px] font-mono text-[#5A6E8C] px-1">Suggested Inquiries:</span>
             <div className="flex flex-col gap-1">
               {quickPrompts.map((q, i) => (
                 <button
                   key={i}
                   onClick={() => handleSend(q)}
-                  className="text-left text-[11px] text-neutral-300 hover:text-white bg-white/[0.04] hover:bg-emerald-500/10 border border-white/[0.06] hover:border-emerald-500/25 p-2 rounded-xl transition-colors truncate"
+                  className="text-left text-[11px] text-[#263D68] hover:text-[#1E8C5A] bg-white/80 hover:bg-[#F0FAF5] border border-[#E4EDF5] hover:border-[#A8D8C3] p-2 rounded-xl transition-colors truncate"
                 >
                   {q}
                 </button>
@@ -189,7 +189,7 @@ export const AiCopilotDrawer = memo(function AiCopilotDrawer({
           </div>
 
           {/* Input Bar */}
-          <div className="p-4 border-t border-white/[0.08] bg-black/40">
+          <div className="p-4 border-t border-[#E4EDF5] bg-white/90 backdrop-blur-sm">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -201,13 +201,13 @@ export const AiCopilotDrawer = memo(function AiCopilotDrawer({
                 type="text"
                 value={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}
-                placeholder="Ask your AI Career Copilot..."
-                className="flex-1 px-4 py-2.5 rounded-xl bg-white/[0.05] border border-white/10 text-xs text-white placeholder:text-neutral-500 focus:outline-none focus:border-emerald-500/40"
+                placeholder="Ask your Career Assistant..."
+                className="flex-1 px-4 py-2.5 rounded-xl bg-[#FAFBFC] border border-[#D0DCE8] text-xs text-[#263D68] placeholder:text-[#5A6E8C] focus:outline-none focus:border-[#A8D8C3]"
               />
               <button
                 type="submit"
                 disabled={!inputVal.trim()}
-                className="p-2.5 rounded-xl bg-gradient-to-r from-[#39FF88] to-[#4DA8FF] text-black font-bold disabled:opacity-40 transition-opacity"
+                className="p-2.5 rounded-xl bg-[#A8D8C3] hover:bg-[#97ccb6] text-[#1E4D38] border border-[#72C9AD] font-bold disabled:opacity-40 transition-opacity"
               >
                 <Send className="h-4 w-4" />
               </button>

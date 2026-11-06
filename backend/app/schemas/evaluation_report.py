@@ -5,7 +5,7 @@ Pydantic schemas for Immutable Evaluation History APIs.
 """
 
 from datetime import datetime
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 from pydantic import BaseModel
 from app.schemas.hirescore import ReadinessDetailsOut
 
@@ -27,6 +27,7 @@ class EvaluationReportBase(BaseModel):
     
     facesense_score: Optional[int] = None
     voicesense_score: Optional[int] = None
+    visual_presentation: Optional[Dict[str, Any]] = None
     
     hirescore: int
     readiness: ReadinessDetailsOut

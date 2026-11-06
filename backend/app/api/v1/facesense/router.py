@@ -19,6 +19,8 @@ from app.schemas.facesense import (
     FaceSenseMetricsBatchRequest,
     FinishFaceSenseRequest,
     StartFaceSenseRequest,
+    ToggleVisualAnalysisRequest,
+    VisualPresentationSummaryOut,
 )
 from app.services.facesense.facesense_service import facesense_service
 
@@ -41,7 +43,28 @@ async def start_facesense_session(
 ) -> Dict[str, Any]:
     """Starts a new FaceSense monitoring session for an interview."""
     user_id = _extract_user_id(current_user)
-    return await facesense_service.start_session(db, user_id=user_id, session_id=payload.session_id)
+    return await facesense_service.start_session(
+        db,
+        user_id=user_id,
+        session_id=payload.session_id,
+        visual_analysis_enabled=payload.visual_analysis_enabled,
+    )
+
+
+@facesense_router.post("/toggle")
+async def toggle_visual_analysis(
+    payload: ToggleVisualAnalysisRequest,
+    db: AsyncIOMotorDatabase = Depends(get_database),
+    current_user: UserModel = Depends(get_current_user),
+) -> Dict[str, Any]:
+    """Allows candidate to toggle visual presentation analysis on or off mid-interview."""
+    user_id = _extract_user_id(current_user)
+    return await facesense_service.toggle_visual_analysis(
+        db,
+        session_id=payload.session_id,
+        user_id=user_id,
+        enabled=payload.enabled,
+    )
 
 
 @facesense_router.post("/metrics")

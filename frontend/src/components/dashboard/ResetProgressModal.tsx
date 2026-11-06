@@ -40,18 +40,18 @@ export const ResetProgressModal: React.FC<ResetProgressModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-in fade-in duration-200"
       onClick={onClose}
     >
       <div
-        className="relative max-w-lg w-full p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#0e111a] border border-slate-200 dark:border-white/15 shadow-2xl flex flex-col gap-6 animate-in zoom-in-95 duration-200"
+        className="relative max-w-lg w-full p-6 sm:p-7 rounded-2xl bg-white/90 backdrop-blur-xl border border-[#D0DCE8]/80 shadow-[0_24px_48px_-12px_rgba(38,61,104,0.15),0_8px_20px_-4px_rgba(38,61,104,0.08)] flex flex-col gap-6 animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
           disabled={isResetting}
-          className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-colors"
+          className="absolute top-5 right-5 p-2 rounded-xl text-[#5A6E8C] hover:text-[#263D68] hover:bg-[#F0F5F9] transition-colors"
           title="Close Modal"
         >
           <X className="h-4 w-4" />
@@ -59,21 +59,21 @@ export const ResetProgressModal: React.FC<ResetProgressModalProps> = ({
 
         {/* Header */}
         <div className="flex items-start gap-4">
-          <div className="h-12 w-12 rounded-2xl bg-amber-500/15 border border-amber-500/30 text-amber-500 dark:text-amber-400 flex items-center justify-center shrink-0 shadow-lg shadow-amber-500/10">
+          <div className="h-12 w-12 rounded-2xl bg-amber-50 border border-amber-200 text-amber-600 flex items-center justify-center shrink-0 shadow-sm">
             <RotateCcw className="h-6 w-6" />
           </div>
           <div>
-            <h3 className="text-lg font-bold font-display text-slate-900 dark:text-white">
+            <h3 className="text-lg font-bold font-display text-[#263D68]">
               Start from Beginning / Reset Progress
             </h3>
-            <p className="text-xs text-slate-600 dark:text-neutral-400 mt-1 leading-relaxed">
-              Safely reset your active progression state to begin a fresh technical assessment and AI mock interview.
+            <p className="text-xs text-[#5A6E8C] mt-1 leading-relaxed">
+              Safely reset your active progression state to begin a fresh technical assessment and mock interview.
             </p>
           </div>
         </div>
 
         {error && (
-          <div className="p-3 rounded-2xl bg-rose-500/15 border border-rose-500/30 text-rose-600 dark:text-rose-300 text-xs font-mono">
+          <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-mono">
             ⚠️ {error}
           </div>
         )}
@@ -81,52 +81,52 @@ export const ResetProgressModal: React.FC<ResetProgressModalProps> = ({
         {/* Impact Breakdown Matrix */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {/* What gets reset */}
-          <div className="p-4 rounded-2xl bg-rose-50 dark:bg-rose-500/5 border border-rose-200 dark:border-rose-500/20 flex flex-col gap-2.5">
-            <div className="flex items-center gap-2 text-rose-600 dark:text-rose-400 font-mono text-xs font-bold">
+          <div className="p-4 rounded-xl bg-rose-50/50 border border-rose-200 flex flex-col gap-2.5">
+            <div className="flex items-center gap-2 text-rose-700 font-mono text-xs font-bold">
               <AlertTriangle className="h-3.5 w-3.5" />
               <span>What will be reset:</span>
             </div>
-            <ul className="text-[11px] text-slate-700 dark:text-neutral-300 flex flex-col gap-1.5 font-sans">
+            <ul className="text-[11px] text-[#5A6E8C] flex flex-col gap-1.5 font-sans">
               <li className="flex items-start gap-1.5">
-                <span className="text-rose-500 dark:text-rose-400">•</span>
+                <span className="text-rose-500">•</span>
                 <span>Active / in-progress interview sessions</span>
               </li>
               <li className="flex items-start gap-1.5">
-                <span className="text-rose-500 dark:text-rose-400">•</span>
+                <span className="text-rose-500">•</span>
                 <span>Active technical assessment attempts</span>
               </li>
               <li className="flex items-start gap-1.5">
-                <span className="text-rose-500 dark:text-rose-400">•</span>
+                <span className="text-rose-500">•</span>
                 <span>Milestone tracker returns to Step 1</span>
               </li>
             </ul>
           </div>
 
           {/* What is preserved */}
-          <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-500/5 border border-emerald-200 dark:border-emerald-500/20 flex flex-col gap-2.5">
-            <div className="flex items-center gap-2 text-emerald-700 dark:text-[#39FF88] font-mono text-xs font-bold">
+          <div className="p-4 rounded-xl bg-[#F0FAF5] border border-[#A8D8C3]/50 flex flex-col gap-2.5">
+            <div className="flex items-center gap-2 text-[#1E8C5A] font-mono text-xs font-bold">
               <ShieldCheck className="h-3.5 w-3.5" />
               <span>What is preserved:</span>
             </div>
-            <ul className="text-[11px] text-slate-700 dark:text-neutral-300 flex flex-col gap-1.5 font-sans">
+            <ul className="text-[11px] text-[#5A6E8C] flex flex-col gap-1.5 font-sans">
               <li className="flex items-start gap-1.5">
-                <CheckCircle2 className="h-3 w-3 text-emerald-600 dark:text-[#39FF88] shrink-0 mt-0.5" />
+                <CheckCircle2 className="h-3 w-3 text-[#1E8C5A] shrink-0 mt-0.5" />
                 <span>Account & login credentials</span>
               </li>
               <li className="flex items-start gap-1.5">
-                <CheckCircle2 className="h-3 w-3 text-emerald-600 dark:text-[#39FF88] shrink-0 mt-0.5" />
+                <CheckCircle2 className="h-3 w-3 text-[#1E8C5A] shrink-0 mt-0.5" />
                 <span>Candidate profile & target role</span>
               </li>
               <li className="flex items-start gap-1.5">
-                <CheckCircle2 className="h-3 w-3 text-emerald-600 dark:text-[#39FF88] shrink-0 mt-0.5" />
+                <CheckCircle2 className="h-3 w-3 text-[#1E8C5A] shrink-0 mt-0.5" />
                 <span>Completed Evaluation Reports</span>
               </li>
               <li className="flex items-start gap-1.5">
-                <CheckCircle2 className="h-3 w-3 text-emerald-600 dark:text-[#39FF88] shrink-0 mt-0.5" />
+                <CheckCircle2 className="h-3 w-3 text-[#1E8C5A] shrink-0 mt-0.5" />
                 <span>Candidate Evolution history</span>
               </li>
               <li className="flex items-start gap-1.5">
-                <CheckCircle2 className="h-3 w-3 text-emerald-600 dark:text-[#39FF88] shrink-0 mt-0.5" />
+                <CheckCircle2 className="h-3 w-3 text-[#1E8C5A] shrink-0 mt-0.5" />
                 <span>Uploaded resume documents</span>
               </li>
             </ul>
@@ -134,12 +134,12 @@ export const ResetProgressModal: React.FC<ResetProgressModalProps> = ({
         </div>
 
         {/* Action Controls */}
-        <div className="flex items-center justify-end gap-3 pt-2 border-t border-slate-200 dark:border-white/10">
+        <div className="flex items-center justify-end gap-3 pt-2 border-t border-[#E4EDF5]">
           <button
             type="button"
             onClick={onClose}
             disabled={isResetting}
-            className="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 text-xs font-mono font-bold text-slate-700 dark:text-neutral-300 transition-all cursor-pointer"
+            className="px-4 py-2.5 rounded-xl bg-[#FAFBFC] hover:bg-[#F0F5F9] border border-[#D0DCE8] text-xs font-mono font-bold text-[#263D68] transition-all cursor-pointer"
           >
             Cancel
           </button>
@@ -148,16 +148,16 @@ export const ResetProgressModal: React.FC<ResetProgressModalProps> = ({
             type="button"
             onClick={handleReset}
             disabled={isResetting}
-            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-400 hover:to-rose-400 text-black font-extrabold text-xs font-display flex items-center gap-2 shadow-lg shadow-rose-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs flex items-center gap-2 shadow-sm transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isResetting ? (
               <>
-                <Loader2 className="h-3.5 w-3.5 animate-spin text-black" />
+                <Loader2 className="h-3.5 w-3.5 animate-spin text-white" />
                 <span>Resetting Progress...</span>
               </>
             ) : (
               <>
-                <RotateCcw className="h-3.5 w-3.5 text-black" />
+                <RotateCcw className="h-3.5 w-3.5 text-white" />
                 <span>Yes, Reset & Start Fresh</span>
               </>
             )}

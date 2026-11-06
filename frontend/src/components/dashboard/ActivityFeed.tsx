@@ -24,46 +24,46 @@ export const ActivityFeed: React.FC<ActivityFeedProps> = ({
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-      {/* Left: AI Copilot Recommendations */}
-      <div className="lg:col-span-6 p-6 rounded-3xl bg-white/[0.03] border border-white/10 flex flex-col justify-between gap-4 backdrop-blur">
+      {/* Left: Recommended Focus (Subtle Powder Blue Section) */}
+      <div className="lg:col-span-6 p-6 rounded-2xl bg-[#EEF6FB]/85 backdrop-blur-md border border-[#B9D9EC]/60 shadow-glass flex flex-col justify-between gap-4">
         <div className="flex items-center gap-2">
-          <div className="p-2 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400">
+          <div className="p-2 rounded-xl bg-[#DCD5F0]/30 border border-[#DCD5F0] text-[#5245A4]">
             <Lightbulb className="h-4 w-4" />
           </div>
-          <h3 className="text-sm font-bold text-white font-display">AI Copilot Recommended Focus</h3>
+          <h3 className="text-sm font-bold text-[#263D68] font-display">Recommended Focus Area</h3>
         </div>
 
-        <p className="text-xs text-neutral-300 font-sans leading-relaxed">
+        <p className="text-xs text-[#5A6E8C] font-sans leading-relaxed">
           {recommendation || "Complete your Stage 1 Technical Assessment to generate a Knowledge Profile targeting System Design & API Security gaps."}
         </p>
 
-        <div className="pt-2 border-t border-white/10 flex items-center justify-between text-xs font-mono text-amber-400 font-bold">
+        <div className="pt-2 border-t border-[#B9D9EC]/40 flex items-center justify-between text-xs font-mono text-[#5245A4] font-bold">
           <span className="flex items-center gap-1">
             <Zap className="h-3.5 w-3.5" /> High Priority Gap Focus
           </span>
         </div>
       </div>
 
-      {/* Right: Timestamped Activity Stream */}
-      <div className="lg:col-span-6 p-6 rounded-3xl bg-white/[0.03] border border-white/10 flex flex-col justify-between gap-4 backdrop-blur">
+      {/* Right: Timestamped Activity Stream (Subtle Powder Blue Section) */}
+      <div className="lg:col-span-6 p-6 rounded-2xl bg-[#EEF6FB]/85 backdrop-blur-md border border-[#B9D9EC]/60 shadow-glass flex flex-col justify-between gap-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="p-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
+            <div className="p-2 rounded-xl bg-[#B9D9EC]/30 border border-[#B9D9EC] text-[#2B7FAD]">
               <Clock className="h-4 w-4" />
             </div>
-            <h3 className="text-sm font-bold text-white font-display">Recent Activity Stream</h3>
+            <h3 className="text-sm font-bold text-[#263D68] font-display">Recent Activity Stream</h3>
           </div>
-          <span className="text-[10px] font-mono text-neutral-400 uppercase">Live Log</span>
+          <span className="text-[10px] font-mono text-[#5A6E8C] uppercase">Live Log</span>
         </div>
 
         <div className="flex flex-col gap-2.5 max-h-40 overflow-y-auto pr-1">
           {defaultActivities.map((act) => (
-            <div key={act.id} className="p-3 rounded-xl bg-black/40 border border-white/5 flex items-center justify-between text-xs font-mono">
+            <div key={act.id} className="p-3 rounded-xl bg-white/85 backdrop-blur-sm border border-white/95 flex items-center justify-between text-xs font-mono shadow-xs">
               <div className="flex items-center gap-2 min-w-0">
-                <CheckCircle2 className="h-3.5 w-3.5 text-cyan-400 shrink-0" />
-                <span className="text-neutral-200 truncate">{act.title}</span>
+                <CheckCircle2 className="h-3.5 w-3.5 text-[#1E8C5A] shrink-0" />
+                <span className="text-[#263D68] truncate">{act.title}</span>
               </div>
-              <span className="text-neutral-500 text-[10px] shrink-0">{act.timestamp}</span>
+              <span className="text-[#5A6E8C] text-[10px] shrink-0">{act.timestamp}</span>
             </div>
           ))}
         </div>

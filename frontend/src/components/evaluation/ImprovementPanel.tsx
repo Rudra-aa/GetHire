@@ -38,14 +38,14 @@ export const ImprovementPanel: React.FC<ImprovementPanelProps> = ({
     <GlassCard className="p-5 flex flex-col gap-3">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h3 className="text-xs font-bold text-white flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-[#FFD54A]" />
+        <h3 className="text-xs font-bold text-[#263D68] flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-amber-500" />
           Areas to Improve
         </h3>
         {items.length > PREVIEW_LIMIT && (
           <button
             onClick={() => setExpanded((prev) => !prev)}
-            className="text-[10px] font-bold text-[#FFD54A] hover:underline flex items-center gap-1"
+            className="text-[10px] font-bold text-amber-800 hover:underline flex items-center gap-1 cursor-pointer"
           >
             {expanded ? "Show Less" : "View All →"}
           </button>
@@ -55,8 +55,8 @@ export const ImprovementPanel: React.FC<ImprovementPanelProps> = ({
       {/* List */}
       <div className="flex flex-col gap-2">
         {displayItems.map((item, idx) => (
-          <div key={idx} className="flex items-start gap-2.5 text-xs text-neutral-300 leading-snug">
-            <AlertTriangle className="h-3.5 w-3.5 text-[#FFD54A] shrink-0 mt-0.5" />
+          <div key={idx} className="flex items-start gap-2.5 text-xs text-[#5A6E8C] leading-snug">
+            <AlertTriangle className="h-3.5 w-3.5 text-amber-600 shrink-0 mt-0.5" />
             <span>{item}</span>
           </div>
         ))}
@@ -66,7 +66,7 @@ export const ImprovementPanel: React.FC<ImprovementPanelProps> = ({
       {items.length > PREVIEW_LIMIT && (
         <button
           onClick={() => setExpanded((prev) => !prev)}
-          className="flex items-center justify-center gap-1 pt-1 text-[10px] text-neutral-500 hover:text-neutral-300 transition-colors"
+          className="flex items-center justify-center gap-1 pt-1 text-[10px] text-[#5A6E8C] hover:text-[#263D68] transition-colors cursor-pointer"
         >
           {expanded ? (
             <><ChevronUp className="h-3 w-3" /> Collapse Improvements</>

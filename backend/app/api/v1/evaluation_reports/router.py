@@ -37,6 +37,7 @@ def _format_out(m) -> EvaluationReportOut:
         completeness=m.completeness,
         facesense_score=m.facesense_score,
         voicesense_score=m.voicesense_score,
+        visual_presentation=m.visual_presentation,
         hirescore=m.hirescore,
         readiness=ReadinessDetailsOut(**readiness_data),
         strengths=m.strengths,

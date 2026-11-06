@@ -130,6 +130,15 @@ async def generate_evaluation_report(
     history_count = await db["evaluation_reports"].count_documents({"candidate_id": str(user_id)})
     evaluation_number = history_count + 1
 
+    # Fetch facesense / visual presentation data if available (coaching section only - does not affect hirescore)
+    facesense_doc = await db["facesense_sessions"].find_one({"session_id": interview_session_id})
+    if facesense_doc:
+        facesense_doc["id"] = str(facesense_doc.get("_id"))
+        facesense_doc.pop("_id", None)
+    facesense_score = None
+    if facesense_doc:
+        facesense_score = facesense_doc.get("visual_presentation_score") or facesense_doc.get("overall_facescore")
+
     report_obj = EvaluationReportModel(
         candidate_id=str(user_id),
         evaluation_number=evaluation_number,
@@ -142,6 +151,8 @@ async def generate_evaluation_report(
         problem_solving=components.problem_solving,
         communication=components.communication,
         completeness=components.star_structure,
+        facesense_score=facesense_score,
+        visual_presentation=facesense_doc,
         hirescore=overall_hirescore,
         readiness=readiness,
         strengths=list(strengths_set)[:5],
@@ -187,6 +198,14 @@ async def get_evaluation_report(
 
     doc = await db["evaluation_reports"].find_one(query)
     if doc:
+        if not doc.get("visual_presentation") and doc.get("interview_session_id"):
+            fs_doc = await db["facesense_sessions"].find_one({"session_id": doc["interview_session_id"]})
+            if fs_doc:
+                fs_doc["id"] = str(fs_doc.get("_id"))
+                fs_doc.pop("_id", None)
+                doc["visual_presentation"] = fs_doc
+                if not doc.get("facesense_score"):
+                    doc["facesense_score"] = fs_doc.get("visual_presentation_score") or fs_doc.get("overall_facescore")
         return EvaluationReportModel(**doc)
 
     # If not found directly, check if report_id matches a completed interview session for this user

@@ -61,13 +61,13 @@ export default function PublicPortfolioPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-50 dark:bg-[#09090B] flex items-center justify-center p-4">
+      <div className="min-h-screen bg-transparent flex items-center justify-center p-4">
         <div className="flex flex-col items-center gap-4 text-center">
           <div className="relative">
-            <div className="h-12 w-12 rounded-full border-2 border-emerald-500/20" />
-            <div className="absolute inset-0 h-12 w-12 rounded-full border-2 border-t-emerald-500 animate-spin" />
+            <div className="h-12 w-12 rounded-full border-2 border-[#A8D8C3]/40" />
+            <div className="absolute inset-0 h-12 w-12 rounded-full border-2 border-t-[#1E8C5A] animate-spin" />
           </div>
-          <p className="text-xs font-mono font-semibold text-slate-600 dark:text-neutral-400 uppercase tracking-widest">
+          <p className="text-xs font-mono font-semibold text-[#5A6E8C] uppercase tracking-widest">
             Verifying Recruiter Portfolio Credentials...
           </p>
         </div>
@@ -77,22 +77,22 @@ export default function PublicPortfolioPage() {
 
   if (error || !portfolio) {
     return (
-      <div className="min-h-screen bg-slate-50 dark:bg-[#09090B] flex items-center justify-center p-4">
-        <div className="max-w-md w-full p-8 rounded-3xl bg-white dark:bg-[#111217] border border-slate-200 dark:border-white/10 shadow-xl flex flex-col items-center text-center gap-5">
-          <div className="p-3.5 rounded-2xl bg-amber-500/10 text-amber-500 border border-amber-500/20">
+      <div className="min-h-screen bg-transparent flex items-center justify-center p-4">
+        <div className="max-w-md w-full p-8 rounded-2xl bg-white/90 backdrop-blur-xl border border-[#D0DCE8]/80 shadow-glass-modal flex flex-col items-center text-center gap-5">
+          <div className="p-3.5 rounded-2xl bg-amber-50 text-amber-600 border border-amber-200">
             <Lock className="h-8 w-8" />
           </div>
           <div>
-            <h2 className="text-lg font-bold text-slate-900 dark:text-white">
+            <h2 className="text-lg font-bold text-[#263D68]">
               Portfolio Unavailable
             </h2>
-            <p className="text-xs text-slate-500 dark:text-neutral-400 mt-2 leading-relaxed">
+            <p className="text-xs text-[#5A6E8C] mt-2 leading-relaxed">
               {error || "This recruiter portfolio link is either private or invalid."}
             </p>
           </div>
           <Link
             to="/"
-            className="px-5 py-2.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-xs font-bold hover:opacity-90 transition-opacity"
+            className="px-5 py-2.5 rounded-xl bg-[#263D68] text-white text-xs font-bold hover:bg-[#1f3153] transition-colors"
           >
             Return to GetHire
           </Link>
@@ -114,32 +114,32 @@ export default function PublicPortfolioPage() {
   } = portfolio;
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#09090B] text-slate-900 dark:text-neutral-200 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-transparent text-[#263D68] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto flex flex-col gap-8">
         
         {/* Navigation Bar / Recruiter Verification Header */}
-        <header className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-6">
+        <header className="flex items-center justify-between border-b border-[#E4EDF5] pb-6">
           <Link to="/" className="flex items-center gap-2">
-            <span className="text-lg font-black tracking-tight text-slate-900 dark:text-white">
-              GetHire<span className="text-emerald-500">.ai</span>
+            <span className="text-lg font-black tracking-tight text-[#263D68]">
+              GetHire<span className="text-[#1E8C5A]">.ai</span>
             </span>
           </Link>
-          <div className="flex items-center gap-2 text-xs font-mono font-semibold px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+          <div className="flex items-center gap-2 text-xs font-mono font-semibold px-3 py-1.5 rounded-full bg-[#A8D8C3]/20 text-[#1E8C5A] border border-[#A8D8C3]/50">
             <ShieldCheck className="h-4 w-4" />
             <span>AUDIT VERIFIED PORTFOLIO</span>
           </div>
         </header>
 
         {/* Hero Card */}
-        <div className="p-8 rounded-3xl bg-white dark:bg-[#111217] border border-slate-200 dark:border-white/10 shadow-lg flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div className="p-8 rounded-2xl bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 shadow-glass flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="flex flex-col gap-2">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">
-              Verified Executive Candidate
+            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#5245A4]">
+              Verified Candidate
             </span>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-[#263D68]">
               {candidate_name}
             </h1>
-            <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500 dark:text-neutral-400 font-medium">
+            <div className="flex flex-wrap items-center gap-3 text-xs text-[#5A6E8C] font-medium">
               <span>{target_role}</span>
               <span>•</span>
               <span>{experience_level}</span>
@@ -147,22 +147,22 @@ export default function PublicPortfolioPage() {
           </div>
 
           {/* HireScore Showcase Box */}
-          <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 flex items-center gap-5 shrink-0">
+          <div className="p-5 rounded-2xl bg-[#FAFBFC]/80 backdrop-blur-sm border border-[#D0DCE8]/80 flex items-center gap-5 shrink-0">
             <div className="text-center">
-              <span className="text-[10px] font-mono text-slate-400 dark:text-neutral-500 uppercase block">
+              <span className="text-[10px] font-mono text-[#5A6E8C] uppercase block">
                 Composite HireScore
               </span>
-              <span className="text-3xl font-black text-slate-900 dark:text-white">
+              <span className="text-3xl font-black text-[#263D68]">
                 {overall_hirescore > 0 ? overall_hirescore : "--"}
-                <span className="text-xs font-normal text-slate-400 dark:text-neutral-500">/100</span>
+                <span className="text-xs font-normal text-[#5A6E8C]">/100</span>
               </span>
             </div>
-            <div className="h-10 w-px bg-slate-200 dark:bg-white/10" />
+            <div className="h-10 w-px bg-[#D0DCE8]" />
             <div>
-              <span className="text-[10px] font-mono text-slate-400 dark:text-neutral-500 uppercase block">
+              <span className="text-[10px] font-mono text-[#5A6E8C] uppercase block">
                 Readiness Verdict
               </span>
-              <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+              <span className="text-sm font-bold text-[#1E8C5A] flex items-center gap-1.5">
                 <CheckCircle2 className="h-4 w-4" />
                 {hiring_verdict}
               </span>
@@ -173,42 +173,42 @@ export default function PublicPortfolioPage() {
         {/* Verified Performance Components */}
         {components && Object.keys(components).length > 0 && (
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div className="p-4 rounded-2xl bg-white dark:bg-[#111217] border border-slate-200 dark:border-white/10">
-              <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-neutral-400 mb-1">
-                <Cpu className="h-4 w-4 text-blue-500" />
+            <div className="p-4 rounded-xl bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 shadow-glass">
+              <div className="flex items-center gap-2 text-xs font-semibold text-[#5A6E8C] mb-1">
+                <Cpu className="h-4 w-4 text-[#2B7FAD]" />
                 <span>Technical</span>
               </div>
-              <span className="text-xl font-bold text-slate-900 dark:text-white">
+              <span className="text-xl font-bold text-[#263D68]">
                 {components.technical_accuracy ?? "--"}%
               </span>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white dark:bg-[#111217] border border-slate-200 dark:border-white/10">
-              <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-neutral-400 mb-1">
-                <BrainCircuit className="h-4 w-4 text-emerald-500" />
+            <div className="p-4 rounded-xl bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 shadow-glass">
+              <div className="flex items-center gap-2 text-xs font-semibold text-[#5A6E8C] mb-1">
+                <BrainCircuit className="h-4 w-4 text-[#1E8C5A]" />
                 <span>Problem Solving</span>
               </div>
-              <span className="text-xl font-bold text-slate-900 dark:text-white">
+              <span className="text-xl font-bold text-[#263D68]">
                 {components.problem_solving ?? "--"}%
               </span>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white dark:bg-[#111217] border border-slate-200 dark:border-white/10">
-              <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-neutral-400 mb-1">
-                <MessageSquare className="h-4 w-4 text-purple-500" />
+            <div className="p-4 rounded-xl bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 shadow-glass">
+              <div className="flex items-center gap-2 text-xs font-semibold text-[#5A6E8C] mb-1">
+                <MessageSquare className="h-4 w-4 text-[#5245A4]" />
                 <span>Communication</span>
               </div>
-              <span className="text-xl font-bold text-slate-900 dark:text-white">
+              <span className="text-xl font-bold text-[#263D68]">
                 {components.communication ?? "--"}%
               </span>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white dark:bg-[#111217] border border-slate-200 dark:border-white/10">
-              <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-neutral-400 mb-1">
-                <Award className="h-4 w-4 text-amber-500" />
+            <div className="p-4 rounded-xl bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 shadow-glass">
+              <div className="flex items-center gap-2 text-xs font-semibold text-[#5A6E8C] mb-1">
+                <Award className="h-4 w-4 text-amber-600" />
                 <span>STAR Delivery</span>
               </div>
-              <span className="text-xl font-bold text-slate-900 dark:text-white">
+              <span className="text-xl font-bold text-[#263D68]">
                 {components.star_structure ?? "--"}%
               </span>
             </div>
@@ -217,16 +217,16 @@ export default function PublicPortfolioPage() {
 
         {/* Verified Skills */}
         {skills && skills.length > 0 && (
-          <div className="p-6 rounded-3xl bg-white dark:bg-[#111217] border border-slate-200 dark:border-white/10 flex flex-col gap-4">
-            <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <Code2 className="h-4 w-4 text-blue-500" />
+          <div className="p-6 rounded-2xl bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 shadow-glass flex flex-col gap-4">
+            <h3 className="text-sm font-bold text-[#263D68] flex items-center gap-2">
+              <Code2 className="h-4 w-4 text-[#2B7FAD]" />
               Verified Core Competencies
             </h3>
             <div className="flex flex-wrap gap-2">
               {skills.map((skill, i) => (
                 <span
                   key={i}
-                  className="px-3 py-1 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono font-medium text-slate-800 dark:text-neutral-200"
+                  className="px-3 py-1 rounded-xl bg-[#FAFBFC]/80 backdrop-blur-sm border border-[#D0DCE8]/80 text-xs font-mono font-medium text-[#263D68]"
                 >
                   {skill}
                 </span>
@@ -235,29 +235,29 @@ export default function PublicPortfolioPage() {
           </div>
         )}
 
-        {/* Technical Assessment Concept Analysis (Included if enabled by candidate) */}
+        {/* Technical Assessment Concept Analysis */}
         {assessment_score !== null && assessment_score !== undefined && (
-          <div className="p-6 rounded-3xl bg-white dark:bg-[#111217] border border-slate-200 dark:border-white/10 flex flex-col gap-4">
-            <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-3">
-              <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <Sparkles className="h-4 w-4 text-emerald-500" />
+          <div className="p-6 rounded-2xl bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 shadow-glass flex flex-col gap-4">
+            <div className="flex items-center justify-between border-b border-[#E4EDF5] pb-3">
+              <h3 className="text-sm font-bold text-[#263D68] flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-[#1E8C5A]" />
                 Proctored Technical Assessment
               </h3>
-              <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+              <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-[#A8D8C3]/20 text-[#1E8C5A] border border-[#A8D8C3]/50">
                 Score: {assessment_score}%
               </span>
             </div>
 
             {assessment_concepts?.strong_concepts && assessment_concepts.strong_concepts.length > 0 && (
               <div>
-                <span className="text-[11px] font-mono text-slate-400 dark:text-neutral-500 uppercase block mb-2">
+                <span className="text-[11px] font-mono text-[#5A6E8C] uppercase block mb-2">
                   Validated Conceptual Strengths
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {assessment_concepts.strong_concepts.map((concept, i) => (
                     <span
                       key={i}
-                      className="px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 text-xs text-emerald-700 dark:text-emerald-300 font-medium"
+                      className="px-2.5 py-1 rounded-lg bg-[#F0FAF5] border border-[#A8D8C3]/60 text-xs text-[#1E8C5A] font-medium"
                     >
                       ✓ {concept}
                     </span>
@@ -269,8 +269,8 @@ export default function PublicPortfolioPage() {
         )}
 
         {/* Security & Privacy Transparency Notice */}
-        <div className="p-4 rounded-2xl bg-slate-100 dark:bg-white/[0.02] border border-slate-200 dark:border-white/5 text-[11px] text-slate-500 dark:text-neutral-400 leading-relaxed flex items-center gap-3">
-          <ShieldCheck className="h-5 w-5 text-emerald-500 shrink-0" />
+        <div className="p-4 rounded-xl bg-[#FAFBFC]/80 backdrop-blur-sm border border-[#D0DCE8]/80 text-[11px] text-[#5A6E8C] leading-relaxed flex items-center gap-3">
+          <ShieldCheck className="h-5 w-5 text-[#1E8C5A] shrink-0" />
           <span>
             Candidate privacy verified: Raw interview transcripts, webcam telemetry logs, and personal credentials are protected and excluded from public recruiter portfolios.
           </span>

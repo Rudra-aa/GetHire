@@ -41,37 +41,31 @@ class EventEngine:
 
         eye_contact = curr_metrics.get("eye_contact_score", 85.0)
         prev_eye_contact = prev_metrics.get("eye_contact_score", 85.0) if prev_metrics else 85.0
+        direction = curr_metrics.get("direction_status", "Direct Eye Contact")
 
-        if eye_contact < 50.0 and prev_eye_contact >= 60.0:
-            events.append(self._build_event("Eye Contact Lost", "medium", "Candidate turned gaze away from interviewer", "eye_contact", timestamp_sec, question_id))
+        if direction == "Natural Thinking Pause (Gaze Shift)":
+            events.append(self._build_event("Thinking Gaze Shift", "info", "Natural cognitive reflection gaze break observed", "eye_contact", timestamp_sec, question_id))
+        elif eye_contact < 50.0 and prev_eye_contact >= 60.0:
+            events.append(self._build_event("Gaze Shift Away", "low", "Gaze shifted away from camera view", "eye_contact", timestamp_sec, question_id))
         elif eye_contact >= 75.0 and prev_eye_contact < 55.0:
-            events.append(self._build_event("Recovered Eye Contact", "info", "Candidate re-established direct eye contact", "eye_contact", timestamp_sec, question_id))
+            events.append(self._build_event("Direct Gaze Re-established", "info", "Direct visual alignment re-established with camera", "eye_contact", timestamp_sec, question_id))
 
-        stress = curr_metrics.get("stress_score", 20.0)
-        prev_stress = prev_metrics.get("stress_score", 20.0) if prev_metrics else 20.0
+        presentation = curr_metrics.get("confidence_score", 80.0)
+        prev_presentation = prev_metrics.get("confidence_score", 80.0) if prev_metrics else 80.0
 
-        if stress - prev_stress > 25.0 and stress > 50.0:
-            events.append(self._build_event("Stress Increased", "high", "Noticeable spike in stress indicator metrics", "stress", timestamp_sec, question_id))
-        elif prev_stress - stress > 20.0 and prev_stress > 50.0:
-            events.append(self._build_event("Stress Reduced", "info", "Candidate composed stress levels", "stress", timestamp_sec, question_id))
-
-        confidence = curr_metrics.get("confidence_score", 80.0)
-        prev_confidence = prev_metrics.get("confidence_score", 80.0) if prev_metrics else 80.0
-
-        if confidence - prev_confidence > 15.0 and confidence >= 75.0:
-            events.append(self._build_event("Confidence Increased", "info", "Candidate posture & expression showed surge in confidence", "confidence", timestamp_sec, question_id))
+        if presentation - prev_presentation > 15.0 and presentation >= 75.0:
+            events.append(self._build_event("High Presentation Poise", "info", "Upright posture & steady visual focus observed", "presentation", timestamp_sec, question_id))
 
         bpm = curr_metrics.get("blink_rate_bpm", 16.0)
-        if bpm > 32.0 and (not prev_metrics or prev_metrics.get("blink_rate_bpm", 16.0) <= 32.0):
-            events.append(self._build_event("High Blink Rate", "medium", f"Elevated blink rate detected ({round(bpm)} bpm)", "blink", timestamp_sec, question_id))
+        if bpm > 34.0 and (not prev_metrics or prev_metrics.get("blink_rate_bpm", 16.0) <= 34.0):
+            events.append(self._build_event("Elevated Blink Rate", "low", f"Elevated blink frequency noted ({round(bpm)} bpm)", "blink", timestamp_sec, question_id))
 
-        direction = curr_metrics.get("direction_status", "Direct Eye Contact")
-        if direction == "Looking Down" and (not prev_metrics or prev_metrics.get("direction_status") != "Looking Down"):
-            events.append(self._build_event("Head Down", "low", "Candidate tilted head down away from camera", "head_pose", timestamp_sec, question_id))
+        if "Looking Down" in direction and (not prev_metrics or "Looking Down" not in prev_metrics.get("direction_status", "")):
+            events.append(self._build_event("Downward Gaze Observed", "low", "Downward visual orientation observed (reading notes or surface)", "head_pose", timestamp_sec, question_id))
 
         framing = curr_metrics.get("camera_framing", "Optimal Camera Framing")
         if framing != "Optimal Camera Framing" and (not prev_metrics or prev_metrics.get("camera_framing") == "Optimal Camera Framing"):
-            events.append(self._build_event("Poor Framing", "low", f"Camera framing issue: {framing}", "presence", timestamp_sec, question_id))
+            events.append(self._build_event("Camera Framing Adjusted", "low", f"Camera framing: {framing}", "presence", timestamp_sec, question_id))
 
         return events
 

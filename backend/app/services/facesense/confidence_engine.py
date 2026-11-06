@@ -1,12 +1,16 @@
 """
 app/services/facesense/confidence_engine.py
 --------------------------------------------
-Confidence Analysis Engine for FaceSense.
-Derives composite Confidence Score (0-100) from eye contact, posture stability,
-smile engagement, and emotional stability.
+Confidence & Visual Presentation Analysis Engine for FaceSense.
+Evaluates observable indicators associated with confident interview presentation:
+- Camera-facing consistency
+- Head orientation & stability
+- Posture consistency & visual engagement
+- Communicative openness (facial animation and conversational smile)
 
-LOC Constraint: < 300 LOC
-Single Responsibility: Candidate Confidence Scoring
+Prompt Requirements:
+- "Provide constructive feedback rather than claiming to know the candidate's actual internal confidence."
+- "Never automatically interpret a facial expression as proof of nervousness, dishonesty, arrogance, confidence or any other internal psychological state."
 """
 
 from __future__ import annotations
@@ -16,7 +20,7 @@ import numpy as np
 
 
 class ConfidenceEngine:
-    """Computes overall candidate Confidence Score (0-100)."""
+    """Computes observable Confidence-Related Presentation Poise (0-100)."""
 
     def compute_confidence(
         self,
@@ -25,50 +29,46 @@ class ConfidenceEngine:
         smile_pct: float = 20.0,
         emotion_label: str = "Neutral",
         emotion_confidence: float = 0.85,
+        posture_stability_score: float = 85.0,
     ) -> Dict[str, Any]:
         """
-        Derives Confidence Score using weighted metrics.
+        Derives an observable Presentation Poise Score (0-100) using physical metrics.
+        Constructive evaluation based on observable visual indicators, not psychological speculation.
         """
-        # Emotion stability bonus / penalty
-        emotion_mod = 0.0
-        if emotion_label in ["Happy", "Neutral"]:
-            emotion_mod = 5.0
-        elif emotion_label in ["Surprise"]:
-            emotion_mod = 0.0
-        elif emotion_label in ["Fear", "Sad", "Angry"]:
-            emotion_mod = -15.0
+        # Conversational warmth / communicative openness bonus (natural smile is ~15-45%)
+        openness_bonus = 0.0
+        if 10.0 <= smile_pct <= 50.0:
+            openness_bonus = 6.0
+        elif smile_pct > 50.0:
+            openness_bonus = 3.0
 
-        # Smile engagement bonus (natural smile is ~15-40%)
-        smile_mod = 0.0
-        if 10.0 <= smile_pct <= 55.0:
-            smile_mod = 5.0
-        elif smile_pct > 65.0:
-            smile_mod = 2.0
-
+        # Weighted observable visual indicators
         raw_score = (
-            (eye_contact_score * 0.45)
-            + (head_stability_score * 0.35)
-            + (emotion_confidence * 100.0 * 0.20)
-            + emotion_mod
-            + smile_mod
+            (eye_contact_score * 0.40)
+            + (head_stability_score * 0.30)
+            + (posture_stability_score * 0.20)
+            + (min(100.0, emotion_confidence * 100.0) * 0.10)
+            + openness_bonus
         )
 
-        confidence_score = float(np.clip(raw_score, 0.0, 100.0))
+        presentation_score = float(np.clip(raw_score, 0.0, 100.0))
 
-        if confidence_score >= 85.0:
-            rating = "High Confidence"
-        elif confidence_score >= 70.0:
-            rating = "Moderate Confidence"
-        elif confidence_score >= 50.0:
-            rating = "Developing Confidence"
+        if presentation_score >= 85.0:
+            rating = "Polished & Poised Presentation"
+        elif presentation_score >= 70.0:
+            rating = "Steady & Engaged Presentation"
+        elif presentation_score >= 50.0:
+            rating = "Developing Presentation Consistency"
         else:
-            rating = "Low Confidence / Nervous"
+            rating = "Variable Visual Demeanor"
 
         return {
-            "confidence_score": round(confidence_score, 1),
+            "confidence_score": round(presentation_score, 1),
+            "presentation_stability_score": round(presentation_score, 1),
             "confidence_rating": rating,
-            "eye_contact_contrib": round(eye_contact_score * 0.45, 1),
-            "head_stability_contrib": round(head_stability_score * 0.35, 1),
+            "eye_contact_contrib": round(eye_contact_score * 0.40, 1),
+            "head_stability_contrib": round(head_stability_score * 0.30, 1),
+            "posture_contrib": round(posture_stability_score * 0.20, 1),
         }
 
 

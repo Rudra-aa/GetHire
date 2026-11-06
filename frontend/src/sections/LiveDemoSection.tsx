@@ -44,39 +44,39 @@ const LiveSimulationConsole = memo(function LiveSimulationConsole() {
       {/* Left Column: Interview Prompt & Live Candidate Stream */}
       <div className="flex flex-col gap-5">
         {/* Interviewer Question Box */}
-        <div className="p-6 rounded-3xl glass-card-luxury bg-[#111217]/90 border border-white/[0.08] flex flex-col gap-3 shadow-lg">
+        <div className="p-6 rounded-3xl bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 flex flex-col gap-3 shadow-glass">
           <div className="flex items-center justify-between text-xs">
             <span className="eyebrow-pill text-[10px] py-0.5 px-2.5">
               <Sparkles className="h-3 w-3" />
-              AI Interviewer
+              Interviewer Prompt
             </span>
-            <span className="font-mono text-neutral-400">System Design (Staff / L6)</span>
+            <span className="font-mono text-[#5A6E8C]">System Design (Staff / L6)</span>
           </div>
-          <p className="text-sm font-semibold text-white leading-relaxed mt-1">
+          <p className="text-sm font-semibold text-[#263D68] leading-relaxed mt-1">
             {sampleQuestion}
           </p>
         </div>
 
         {/* Candidate Response Terminal */}
-        <div className="p-6 rounded-3xl glass-card-luxury bg-[#111217]/90 border border-white/[0.08] min-h-[220px] flex flex-col justify-between shadow-lg">
+        <div className="p-6 rounded-3xl bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 min-h-[220px] flex flex-col justify-between shadow-glass">
           <div>
-            <div className="flex items-center justify-between pb-3 border-b border-white/[0.08] text-xs">
-              <span className="flex items-center gap-2 text-white font-bold">
-                <Mic className="h-4 w-4 text-[#39FF88]" />
+            <div className="flex items-center justify-between pb-3 border-b border-[#E4EDF5] text-xs">
+              <span className="flex items-center gap-2 text-[#263D68] font-bold">
+                <Mic className="h-4 w-4 text-[#1E8C5A]" />
                 Candidate Spoken & Written Stream
               </span>
               {isPlaying && typedChars < sampleResponse.length && (
-                <span className="flex items-center gap-1.5 text-[#39FF88] font-mono text-[11px]">
-                  <span className="h-2 w-2 rounded-full bg-[#39FF88] animate-ping" />
+                <span className="flex items-center gap-1.5 text-[#1E8C5A] font-mono text-[11px]">
+                  <span className="h-2 w-2 rounded-full bg-[#1E8C5A] animate-ping" />
                   Streaming Response
                 </span>
               )}
             </div>
 
-            <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed font-sans mt-4">
+            <p className="text-xs sm:text-sm text-[#3D5370] leading-relaxed font-sans mt-4">
               {displayedText}
               {isPlaying && typedChars < sampleResponse.length && (
-                <span className="inline-block h-4 w-0.5 bg-[#39FF88] ml-1 animate-pulse" />
+                <span className="inline-block h-4 w-0.5 bg-[#1E8C5A] ml-1 animate-pulse" />
               )}
             </p>
           </div>
@@ -86,12 +86,12 @@ const LiveSimulationConsole = memo(function LiveSimulationConsole() {
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mt-6 pt-4 border-t border-white/[0.08] flex flex-wrap items-center gap-3 text-xs"
+              className="mt-6 pt-4 border-t border-[#E4EDF5] flex flex-wrap items-center gap-3 text-xs"
             >
-              <span className="inline-flex items-center gap-1 text-[#39FF88] font-semibold">
+              <span className="inline-flex items-center gap-1 text-[#1E8C5A] font-semibold">
                 <CheckCircle2 className="h-3.5 w-3.5" /> High throughput capacity addressed
               </span>
-              <span className="inline-flex items-center gap-1 text-[#4DA8FF] font-semibold">
+              <span className="inline-flex items-center gap-1 text-[#2B7FAD] font-semibold">
                 <CheckCircle2 className="h-3.5 w-3.5" /> Collision-free Base62 strategy
               </span>
             </motion.div>
@@ -102,14 +102,15 @@ const LiveSimulationConsole = memo(function LiveSimulationConsole() {
         <div className="flex items-center gap-4">
           <button
             onClick={() => setIsPlaying((p) => !p)}
-            className="gradient-btn-luxury inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-black"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-bold text-[#1A2D52] shadow-[0_2px_8px_rgba(168,216,195,0.40)] hover:brightness-105 transition-all"
+            style={{ background: "linear-gradient(135deg, #A8D8C3 0%, #77C4A2 100%)" }}
           >
             {isPlaying ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5 fill-current" />}
             {isPlaying ? "Pause Simulation" : typedChars > 0 ? "Resume Stream" : "Run Live Simulation"}
           </button>
           <button
             onClick={reset}
-            className="px-5 py-3 rounded-full text-xs font-bold text-neutral-400 hover:text-white bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 transition-colors inline-flex items-center gap-1.5"
+            className="px-5 py-3 rounded-full text-xs font-bold text-[#5A6E8C] hover:text-[#263D68] bg-white/80 backdrop-blur-sm hover:bg-white/95 border border-[#D0DCE8]/80 transition-all inline-flex items-center gap-1.5 shadow-sm"
           >
             <RotateCcw className="h-3.5 w-3.5" />
             Reset
@@ -120,28 +121,28 @@ const LiveSimulationConsole = memo(function LiveSimulationConsole() {
       {/* Right Column: Live Calibrated Score Breakdown */}
       <div className="flex flex-col gap-5">
         {/* Aggregate Score Card */}
-        <div className="p-6 rounded-3xl glass-card-luxury bg-[#111217]/90 border border-white/[0.08] flex flex-col items-center text-center gap-2.5 shadow-lg">
-          <span className="font-mono text-[10px] uppercase tracking-wider text-neutral-400 font-bold">
+        <div className="p-6 rounded-3xl bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 flex flex-col items-center text-center gap-2.5 shadow-glass">
+          <span className="font-mono text-[10px] uppercase tracking-wider text-[#5A6E8C] font-bold">
             Live Calibrated HireScore™
           </span>
-          <div className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#39FF88] via-[#4DA8FF] to-[#8B5CF6] font-display leading-none">
+          <div className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#1E8C5A] via-[#2B7FAD] to-[#6E5EBB] font-display leading-none">
             {compositeHireScore}
           </div>
-          <span className="text-xs font-bold text-[#39FF88] bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
+          <span className="text-xs font-bold text-[#1E8C5A] bg-[#A8D8C3]/20 px-2.5 py-0.5 rounded-full border border-[#A8D8C3]/40">
             {compositeHireScore >= 85 ? "Staff Hire Recommendation" : "Evaluating Stream..."}
           </span>
         </div>
 
         {/* Granular Dimension Meters */}
-        <div className="p-6 rounded-3xl glass-card-luxury bg-[#111217]/90 border border-white/[0.08] flex flex-col gap-4 shadow-lg">
+        <div className="p-6 rounded-3xl bg-white/80 backdrop-blur-md border border-[#D0DCE8]/80 flex flex-col gap-4 shadow-glass">
           <div className="flex flex-col gap-1.5">
             <div className="flex justify-between text-xs">
-              <span className="text-neutral-300 font-medium">Technical Depth</span>
-              <span className="font-mono font-bold text-[#39FF88]">{technicalScore}%</span>
+              <span className="text-[#3D5370] font-medium">Technical Depth</span>
+              <span className="font-mono font-bold text-[#1E8C5A]">{technicalScore}%</span>
             </div>
-            <div className="h-2 bg-white/10 rounded-full overflow-hidden p-0.5">
+            <div className="h-2 bg-[#E4EDF5] rounded-full overflow-hidden p-0.5">
               <div
-                className="h-full bg-emerald-400 rounded-full transition-all duration-300 shadow-[0_0_8px_#39FF88]"
+                className="h-full bg-[#A8D8C3] rounded-full transition-all duration-300"
                 style={{ width: `${technicalScore}%` }}
               />
             </div>
@@ -149,12 +150,12 @@ const LiveSimulationConsole = memo(function LiveSimulationConsole() {
 
           <div className="flex flex-col gap-1.5">
             <div className="flex justify-between text-xs">
-              <span className="text-neutral-300 font-medium">STAR Structure</span>
-              <span className="font-mono font-bold text-[#4DA8FF]">{structureScore}%</span>
+              <span className="text-[#3D5370] font-medium">STAR Structure</span>
+              <span className="font-mono font-bold text-[#2B7FAD]">{structureScore}%</span>
             </div>
-            <div className="h-2 bg-white/10 rounded-full overflow-hidden p-0.5">
+            <div className="h-2 bg-[#E4EDF5] rounded-full overflow-hidden p-0.5">
               <div
-                className="h-full bg-blue-400 rounded-full transition-all duration-300 shadow-[0_0_8px_#4DA8FF]"
+                className="h-full bg-[#B9D9EC] rounded-full transition-all duration-300"
                 style={{ width: `${structureScore}%` }}
               />
             </div>
@@ -162,12 +163,12 @@ const LiveSimulationConsole = memo(function LiveSimulationConsole() {
 
           <div className="flex flex-col gap-1.5">
             <div className="flex justify-between text-xs">
-              <span className="text-neutral-300 font-medium">Communication Cadence</span>
-              <span className="font-mono font-bold text-[#8B5CF6]">{clarityScore}%</span>
+              <span className="text-[#3D5370] font-medium">Communication Cadence</span>
+              <span className="font-mono font-bold text-[#6E5EBB]">{clarityScore}%</span>
             </div>
-            <div className="h-2 bg-white/10 rounded-full overflow-hidden p-0.5">
+            <div className="h-2 bg-[#E4EDF5] rounded-full overflow-hidden p-0.5">
               <div
-                className="h-full bg-purple-400 rounded-full transition-all duration-300 shadow-[0_0_8px_#8B5CF6]"
+                className="h-full bg-[#DCD5F0] rounded-full transition-all duration-300"
                 style={{ width: `${clarityScore}%` }}
               />
             </div>
@@ -181,23 +182,18 @@ const LiveSimulationConsole = memo(function LiveSimulationConsole() {
 export const LiveDemoSection = memo(function LiveDemoSection() {
   return (
     <section id="demo" className="py-24 bg-transparent relative overflow-hidden">
-      {/* Background Matrix & Subtle Gradient */}
-      <div className="absolute inset-0 bg-grid-matrix opacity-30 pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute inset-0 vignette-radial pointer-events-none" />
-
       <div className="section-container relative z-10">
         {/* Header */}
         <div className="max-w-2xl mb-14">
           <div className="eyebrow-pill mb-3">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#39FF88]" />
+            <span className="h-1.5 w-1.5 rounded-full bg-[#1E8C5A]" />
             Live Product Simulation
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
-            Watch Real-Time AI <br />
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#263D68] tracking-tight">
+            Watch Real-Time Performance <br />
             <span className="gradient-text-luxury">Evaluation in Action</span>
           </h2>
-          <p className="text-xs sm:text-sm text-neutral-400 mt-3 leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#5A6E8C] mt-3 leading-relaxed">
             Experience how GetHire grades technical rigor, STAR framework adherence, and system trade-offs live during an interview.
           </p>
         </div>

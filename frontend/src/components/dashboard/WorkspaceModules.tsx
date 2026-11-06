@@ -21,49 +21,49 @@ export const WorkspaceModules: React.FC<WorkspaceModulesProps> = ({
   return (
     <div className="flex flex-col gap-6 w-full">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-bold font-display text-white">Candidate Execution Workspace</h2>
-        <span className="text-xs font-mono text-neutral-400">Enterprise Operating System</span>
+        <h2 className="text-xl font-bold font-display text-[#263D68]">Candidate Execution Workspace</h2>
+        <span className="text-xs font-mono text-[#5A6E8C]">Enterprise Operating System</span>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* Module 1: Technical Assessment Center */}
-        <div className="p-6 rounded-3xl bg-gradient-to-b from-cyan-500/[0.06] via-[#111522] to-[#0a0d16] border border-cyan-500/25 flex flex-col justify-between gap-5 shadow-2xl">
+        {/* Module 1: Technical Assessment Center (Subtle Powder Blue Section) */}
+        <div className="p-6 rounded-3xl bg-[#EEF6FB]/85 backdrop-blur-md border border-[#B9D9EC]/60 hover:bg-[#EEF6FB]/95 hover:border-[#B9D9EC] flex flex-col justify-between gap-5 shadow-glass hover:shadow-glass-hover transition-all">
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between">
-              <div className="p-3 rounded-2xl bg-cyan-500/15 border border-cyan-500/30 text-cyan-400">
+              <div className="p-3 rounded-2xl bg-[#B9D9EC]/40 border border-[#B9D9EC]/60 text-[#2B7FAD]">
                 <CheckSquare className="h-6 w-6" />
               </div>
               <span className={`px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase border ${
                 assessmentStatus === "Completed"
-                  ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
+                  ? "bg-[#A8D8C3]/20 text-[#1E8C5A] border-[#A8D8C3]/40"
                   : assessmentStatus === "In Progress"
-                  ? "bg-amber-500/20 text-amber-300 border-amber-500/30"
-                  : "bg-white/5 text-neutral-400 border-white/10"
+                  ? "bg-amber-50 text-[#D4921A] border-amber-200"
+                  : "bg-white/80 text-[#5A6E8C] border-[#D0DCE8]"
               }`}>
                 {assessmentStatus}
               </span>
             </div>
 
             <div className="flex flex-col gap-1">
-              <h3 className="text-lg font-bold text-white font-display">Technical Assessment Center</h3>
-              <p className="text-xs text-neutral-400 leading-relaxed font-sans">
+              <h3 className="text-lg font-bold text-[#263D68] font-display">Technical Assessment Center</h3>
+              <p className="text-xs text-[#5A6E8C] leading-relaxed font-sans">
                 Proctored 20-question technical evaluation (CodeSignal / HackerRank experience). Measures algorithms, code output, and system design.
               </p>
             </div>
           </div>
 
-          <div className="flex items-center justify-between pt-4 border-t border-white/10">
+          <div className="flex items-center justify-between pt-4 border-t border-[#B9D9EC]/40">
             {assessmentStatus === "Completed" && assessmentScore !== undefined ? (
-              <span className="text-xs font-mono text-emerald-400 font-bold">
+              <span className="text-xs font-mono text-[#1E8C5A] font-bold">
                 Knowledge Profile Generated ({assessmentScore}%)
               </span>
             ) : (
-              <span className="text-xs font-mono text-neutral-500">Measures Knowledge</span>
+              <span className="text-xs font-mono text-[#5A6E8C]">Measures Knowledge</span>
             )}
 
             <button
               onClick={() => navigate("/assessment")}
-              className="px-4 py-2 rounded-xl bg-cyan-400 text-black font-extrabold text-xs font-display hover:bg-cyan-300 transition-all flex items-center gap-1.5 shadow-lg shadow-cyan-500/20"
+              className="px-4 py-2 rounded-xl bg-[#B9D9EC] hover:bg-[#93C5DF] text-[#1A2D52] font-bold text-xs transition-all flex items-center gap-1.5 shadow-sm hover:scale-[1.02]"
             >
               <span>{assessmentStatus === "Completed" ? "Retake Test" : "Launch Test"}</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -71,37 +71,37 @@ export const WorkspaceModules: React.FC<WorkspaceModulesProps> = ({
           </div>
         </div>
 
-        {/* Module 2: AI Interview Studio */}
-        <div className="p-6 rounded-3xl bg-gradient-to-b from-gold-500/[0.06] via-[#111522] to-[#0a0d16] border border-gold-400/25 flex flex-col justify-between gap-5 shadow-2xl">
+        {/* Module 2: AI Interview Studio (Subtle Powder Blue Section) */}
+        <div className="p-6 rounded-3xl bg-[#EEF6FB]/80 backdrop-blur-md border border-[#B9D9EC]/50 hover:bg-[#EEF6FB]/95 hover:border-[#A8D8C3]/70 flex flex-col justify-between gap-5 shadow-glass hover:shadow-glass-hover transition-all">
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between">
-              <div className="p-3 rounded-2xl bg-gold-400/15 border border-gold-400/30 text-gold-300">
+              <div className="p-3 rounded-2xl bg-[#A8D8C3]/25 border border-[#A8D8C3]/50 text-[#1E8C5A]">
                 <Video className="h-6 w-6" />
               </div>
               <span className={`px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase border ${
                 interviewStatus === "Completed"
-                  ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
+                  ? "bg-[#A8D8C3]/20 text-[#1E8C5A] border-[#A8D8C3]/40"
                   : interviewStatus === "In Progress"
-                  ? "bg-amber-500/20 text-amber-300 border-amber-500/30"
-                  : "bg-white/5 text-neutral-400 border-white/10"
+                  ? "bg-amber-50 text-[#D4921A] border-amber-200"
+                  : "bg-white/80 text-[#5A6E8C] border-[#D0DCE8]"
               }`}>
                 {interviewStatus}
               </span>
             </div>
 
             <div className="flex flex-col gap-1">
-              <h3 className="text-lg font-bold text-white font-display">AI Interview Studio</h3>
-              <p className="text-xs text-neutral-400 leading-relaxed font-sans">
-                Conversational recruiter interview (Google Meet / HireVue experience). Evaluates communication, reasoning, and system architecture challenges.
+              <h3 className="text-lg font-bold text-[#263D68] font-display">Interview Studio</h3>
+              <p className="text-xs text-[#5A6E8C] leading-relaxed font-sans">
+                Conversational recruiter interview. Evaluates communication, reasoning, and system architecture challenges.
               </p>
             </div>
           </div>
 
-          <div className="flex items-center justify-between pt-4 border-t border-white/10">
-            <span className="text-xs font-mono text-neutral-500">Measures Communication</span>
+          <div className="flex items-center justify-between pt-4 border-t border-[#B9D9EC]/40">
+            <span className="text-xs font-mono text-[#5A6E8C]">Measures Communication</span>
             <button
               onClick={() => navigate("/interview")}
-              className="px-4 py-2 rounded-xl bg-gold-400 text-black font-extrabold text-xs font-display hover:bg-gold-300 transition-all flex items-center gap-1.5 shadow-lg shadow-gold-500/20"
+              className="px-4 py-2 rounded-xl bg-[#A8D8C3] hover:bg-[#77C4A2] text-[#1A2D52] font-bold text-xs transition-all flex items-center gap-1.5 shadow-sm hover:scale-[1.02]"
             >
               <span>{interviewStatus === "Completed" ? "Re-interview" : "Launch Interview"}</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -109,51 +109,51 @@ export const WorkspaceModules: React.FC<WorkspaceModulesProps> = ({
           </div>
         </div>
 
-        {/* Module 3: Unified Evaluation Center (Locked until BOTH complete!) */}
-        <div className={`p-6 rounded-3xl border flex flex-col justify-between gap-5 transition-all shadow-2xl ${
+        {/* Module 3: Unified Evaluation Center (Subtle Powder Blue Section) */}
+        <div className={`p-6 rounded-3xl border flex flex-col justify-between gap-5 transition-all shadow-glass hover:shadow-glass-hover ${
           isEvaluationUnlocked
-            ? "bg-gradient-to-b from-emerald-500/[0.08] via-[#111522] to-[#0a0d16] border-emerald-500/40"
-            : "bg-[#0d0f17]/70 border-white/10 opacity-80"
+            ? "bg-[#EEF6FB]/85 backdrop-blur-md border-[#B9D9EC]/60 hover:bg-[#EEF6FB]/95 hover:border-[#DCD5F0]/80"
+            : "bg-[#EEF6FB]/70 backdrop-blur-sm border-[#B9D9EC]/50"
         }`}>
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between">
               <div className={`p-3 rounded-2xl border ${
                 isEvaluationUnlocked
-                  ? "bg-emerald-500/20 border-emerald-500/40 text-emerald-300"
-                  : "bg-white/5 border-white/10 text-neutral-500"
+                  ? "bg-[#DCD5F0]/35 border-[#DCD5F0]/50 text-[#6E5EBB]"
+                  : "bg-white/80 border-[#D0DCE8] text-[#8FA3BC]"
               }`}>
                 <BarChart2 className="h-6 w-6" />
               </div>
               <span className={`px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase border ${
                 isEvaluationUnlocked
-                  ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
-                  : "bg-rose-500/10 text-rose-300 border-rose-500/20"
+                  ? "bg-[#A8D8C3]/20 text-[#1E8C5A] border-[#A8D8C3]/40"
+                  : "bg-rose-50 text-[#E05C5C] border-rose-200"
               }`}>
                 {isEvaluationUnlocked ? "Ready" : "Locked"}
               </span>
             </div>
 
             <div className="flex flex-col gap-1">
-              <h3 className="text-lg font-bold text-white font-display">Unified Evaluation Center</h3>
-              <p className="text-xs text-neutral-400 leading-relaxed font-sans">
-                Synthesizes evidence from Resume, Technical Assessment, AI Interview, and FaceSense into your final HireScore & Recruiter Portfolio.
+              <h3 className="text-lg font-bold text-[#263D68] font-display">Unified Evaluation Center</h3>
+              <p className="text-xs text-[#5A6E8C] leading-relaxed font-sans">
+                Synthesizes evidence from Resume, Technical Assessment, Interview Studio, and FaceSense into your final HireScore & Portfolio.
               </p>
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 pt-4 border-t border-white/10">
+          <div className="flex flex-col gap-2 pt-4 border-t border-[#B9D9EC]/40">
             {isEvaluationUnlocked ? (
               <button
                 onClick={() => navigate("/evaluation")}
-                className="w-full py-2.5 rounded-xl bg-emerald-400 text-black font-extrabold text-xs font-display hover:bg-emerald-300 transition-all flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-500/20"
+                className="w-full py-2.5 rounded-xl bg-[#A8D8C3] hover:bg-[#77C4A2] text-[#1A2D52] font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm hover:scale-[1.01]"
               >
                 <span>Open Evaluation Report</span>
                 <ArrowRight className="h-3.5 w-3.5" />
               </button>
             ) : (
-              <div className="p-3 rounded-2xl bg-black/40 border border-white/10 flex items-center gap-2 text-[11px] font-sans text-neutral-400">
-                <Lock className="h-4 w-4 text-rose-400 shrink-0" />
-                <span>Complete both Technical Assessment and AI Interview to unlock Evaluation.</span>
+              <div className="p-3 rounded-2xl bg-white/80 backdrop-blur-sm border border-white/95 flex items-center gap-2 text-[11px] font-sans text-[#5A6E8C] shadow-xs">
+                <Lock className="h-4 w-4 text-[#E05C5C] shrink-0" />
+                <span>Complete both Technical Assessment and Interview to unlock Evaluation.</span>
               </div>
             )}
           </div>

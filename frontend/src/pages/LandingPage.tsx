@@ -32,12 +32,12 @@ const panels: Record<PanelId, { title: string; component: ComponentType }> = {
 function SectionLoader() {
   return (
     <div className="py-24 flex justify-center items-center">
-      <div className="h-6 w-6 rounded-full border-2 border-emerald-500/20 border-t-[#39FF88] animate-spin" />
+      <div className="h-6 w-6 rounded-full border-2 border-[#D0DCE8] border-t-[#A8D8C3] animate-spin" />
     </div>
   );
 }
 
-// ── Glass Overlay Panel ───────────────────────────────────────────────────────
+// ── Clean Overlay Panel ───────────────────────────────────────────────────────
 const GlassPanel = memo(function GlassPanel({
   panelId,
   onClose,
@@ -68,7 +68,7 @@ const GlassPanel = memo(function GlassPanel({
       exit={{ opacity: 0 }}
       transition={{ duration: 0.18 }}
       className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-20 overflow-y-auto"
-      style={{ background: "rgba(5, 5, 7, 0.82)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}
+      style={{ background: "rgba(38, 61, 104, 0.45)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)" }}
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
       <motion.div
@@ -76,25 +76,25 @@ const GlassPanel = memo(function GlassPanel({
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 16, scale: 0.98 }}
         transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
-        className="relative w-full max-w-[1280px] mb-10 rounded-3xl overflow-hidden bg-[#111217]/95 backdrop-blur-2xl border border-white/20 shadow-[0_32px_80px_rgba(0,0,0,0.8)]"
+        className="relative w-full max-w-[1280px] mb-10 rounded-3xl overflow-hidden bg-white/90 backdrop-blur-xl border border-[#D0DCE8]/80 shadow-glass-modal"
       >
         {/* Panel header */}
-        <div className="flex items-center justify-between px-6 sm:px-8 py-5 border-b border-white/[0.1]">
+        <div className="flex items-center justify-between px-6 sm:px-8 py-5 border-b border-[#D0DCE8]/80 bg-white/80 backdrop-blur-md">
           <div className="flex items-center gap-3">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#39FF88] shadow-[0_0_8px_#39FF88]" />
-            <h2 className="text-sm font-bold text-white tracking-tight">{title}</h2>
+            <span className="h-2.5 w-2.5 rounded-full bg-[#1E8C5A]" />
+            <h2 className="text-sm font-bold text-[#263D68] tracking-tight">{title}</h2>
           </div>
           <button
             onClick={onClose}
             aria-label="Close panel"
-            className="h-8 w-8 rounded-lg flex items-center justify-center text-neutral-400 hover:text-white hover:bg-white/[0.08] transition-all border border-white/10 hover:border-white/20 shrink-0"
+            className="h-8 w-8 rounded-lg flex items-center justify-center text-[#5A6E8C] hover:text-[#263D68] hover:bg-[#F0F5F9] transition-all border border-[#D0DCE8] shrink-0"
           >
             <X className="h-4 w-4" />
           </button>
         </div>
 
         {/* Scrollable panel content */}
-        <div className="overflow-y-auto max-h-[80vh]">
+        <div className="overflow-y-auto max-h-[80vh] bg-transparent">
           <Suspense fallback={<SectionLoader />}>
             <PanelContent />
           </Suspense>
@@ -121,14 +121,14 @@ export default function LandingPage() {
   }, [openPanel]);
 
   return (
-    <div className="relative min-h-screen bg-transparent text-neutral-200">
+    <div className="relative min-h-screen bg-transparent text-[#263D68]">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className="relative z-10 min-h-screen flex flex-col"
       >
         <Suspense fallback={<SectionLoader />}>
-          {/* ── ON-PAGE SECTIONS (Transparent to show global background) ── */}
+          {/* ── ON-PAGE SECTIONS ── */}
           <HeroSection />
           <WorkflowSection />
           <ResumeIntelligenceSection />
@@ -140,7 +140,7 @@ export default function LandingPage() {
         </Suspense>
       </motion.div>
 
-      {/* ── GLASS OVERLAY PANELS (FaceSense, VoiceSense, Technology, FAQ) ── */}
+      {/* ── OVERLAY PANELS (FaceSense, VoiceSense, Technology, FAQ) ── */}
       <AnimatePresence mode="wait">
         {activePanel && (
           <GlassPanel key={activePanel} panelId={activePanel} onClose={closePanel} />

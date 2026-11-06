@@ -42,6 +42,7 @@ class EvaluationReportModel(BaseModel):
     # AI extensions
     facesense_score: Optional[int] = Field(default=None)
     voicesense_score: Optional[int] = Field(default=None)
+    visual_presentation: Optional[Dict[str, Any]] = Field(default=None, description="Visual and non-verbal presentation coaching analysis")
     
     # Final HireScore Snapshot
     hirescore: int = Field(ge=0, le=100)

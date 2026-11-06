@@ -53,12 +53,12 @@ export const ScoreTrend: React.FC<ScoreTrendProps> = ({ evaluations }) => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="h-3 w-1 rounded-full bg-gold-400" />
-          <h3 className="text-sm font-bold text-white">Score Trend</h3>
+          <span className="h-3 w-1 rounded-full bg-[#1E8C5A]" />
+          <h3 className="text-sm font-bold text-[#263D68]">Score Trend</h3>
         </div>
-        <div className="flex items-center gap-1 text-[11px] font-semibold text-neutral-400 bg-white/[0.04] px-2.5 py-1 rounded-lg border border-white/[0.06] cursor-pointer hover:text-white">
+        <div className="flex items-center gap-1 text-[11px] font-semibold text-[#5A6E8C] bg-white/80 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-[#D0DCE8]/80 cursor-pointer hover:text-[#263D68]">
           <span>By Question</span>
-          <ChevronDown className="h-3 w-3 text-neutral-400" />
+          <ChevronDown className="h-3 w-3 text-[#5A6E8C]" />
         </div>
       </div>
 
@@ -67,8 +67,8 @@ export const ScoreTrend: React.FC<ScoreTrendProps> = ({ evaluations }) => {
         <svg width="100%" height={CHART_H} viewBox={`0 0 ${CHART_W} ${CHART_H}`} className="overflow-visible">
           <defs>
             <linearGradient id="trendGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#39FF88" stopOpacity="0.25" />
-              <stop offset="100%" stopColor="#39FF88" stopOpacity="0" />
+              <stop offset="0%" stopColor="#A8D8C3" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#A8D8C3" stopOpacity="0" />
             </linearGradient>
           </defs>
 
@@ -79,10 +79,10 @@ export const ScoreTrend: React.FC<ScoreTrendProps> = ({ evaluations }) => {
               <g key={val}>
                 <line
                   x1={PAD_X} y1={y} x2={CHART_W - PAD_X} y2={y}
-                  stroke="rgba(255,255,255,0.06)" strokeWidth="1"
+                  stroke="#E4EDF5" strokeWidth="1"
                 />
                 <text x={PAD_X - 6} y={y} textAnchor="end" dominantBaseline="middle"
-                  fontSize="8" fill="rgba(255,255,255,0.3)" fontFamily="monospace">
+                  fontSize="8" fill="#5A6E8C" fontFamily="monospace">
                   {val}
                 </text>
               </g>
@@ -93,7 +93,7 @@ export const ScoreTrend: React.FC<ScoreTrendProps> = ({ evaluations }) => {
           <path d={areaD} fill="url(#trendGrad)" />
 
           {/* Trend line */}
-          <path d={pathD} fill="none" stroke="#39FF88" strokeWidth="2.5" strokeLinejoin="round" />
+          <path d={pathD} fill="none" stroke="#1E8C5A" strokeWidth="2.5" strokeLinejoin="round" />
 
           {/* Data points */}
           {points.map((p, i) => {
@@ -109,8 +109,8 @@ export const ScoreTrend: React.FC<ScoreTrendProps> = ({ evaluations }) => {
                   cx={p.x}
                   cy={p.y}
                   r={isHovered ? 5 : 3.5}
-                  fill={isHovered ? "#fff" : "#39FF88"}
-                  stroke="#09090B"
+                  fill={isHovered ? "#263D68" : "#1E8C5A"}
+                  stroke="#FFFFFF"
                   strokeWidth="2"
                 />
                 {/* X-axis labels */}
@@ -119,14 +119,14 @@ export const ScoreTrend: React.FC<ScoreTrendProps> = ({ evaluations }) => {
                   y={CHART_H - 4}
                   textAnchor="middle"
                   fontSize="9"
-                  fill={isHovered ? "#39FF88" : "rgba(255,255,255,0.4)"}
+                  fill={isHovered ? "#1E8C5A" : "#5A6E8C"}
                   fontFamily="monospace"
                   fontWeight={isHovered ? "bold" : "normal"}
                 >
                   {p.label}
                 </text>
 
-                {/* Tooltip Card (matches reference screenshot style) */}
+                {/* Tooltip Card */}
                 {isHovered && (
                   <g className="transition-all duration-200">
                     <rect
@@ -135,17 +135,17 @@ export const ScoreTrend: React.FC<ScoreTrendProps> = ({ evaluations }) => {
                       width="64"
                       height="26"
                       rx="6"
-                      fill="#12161E"
-                      stroke="#39FF88"
+                      fill="#FFFFFF"
+                      stroke="#A8D8C3"
                       strokeWidth="1"
-                      className="shadow-lg"
+                      className="shadow-md"
                     />
                     <text
                       x={p.x}
                       y={p.y - 24}
                       textAnchor="middle"
                       fontSize="9"
-                      fill="#ffffff"
+                      fill="#263D68"
                       fontFamily="sans-serif"
                       fontWeight="bold"
                     >
@@ -156,7 +156,7 @@ export const ScoreTrend: React.FC<ScoreTrendProps> = ({ evaluations }) => {
                       y={p.y - 14}
                       textAnchor="middle"
                       fontSize="9"
-                      fill="#39FF88"
+                      fill="#1E8C5A"
                       fontFamily="monospace"
                       fontWeight="bold"
                     >

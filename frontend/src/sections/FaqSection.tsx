@@ -38,15 +38,15 @@ export const FaqSection = memo(function FaqSection() {
   }, [searchTerm]);
 
   return (
-    <section id="faq" className="section-padding bg-bg-secondary relative overflow-hidden">
+    <section id="faq" className="py-8 bg-white relative overflow-hidden">
       <div className="section-container">
         {/* Header */}
-        <div className="max-w-[620px] mb-12">
-          <div className="eyebrow-pill mb-4">
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+        <div className="max-w-[620px] mb-10">
+          <div className="eyebrow-pill mb-3">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#1E8C5A]" />
             Frequently Asked Questions
           </div>
-          <h2 className="text-display font-black tracking-tight text-white">
+          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#263D68]">
             Everything You Need <br />
             <span className="gradient-text-luxury">To Know About GetHire</span>
           </h2>
@@ -54,13 +54,13 @@ export const FaqSection = memo(function FaqSection() {
 
         {/* Search Input */}
         <div className="max-w-md mb-8 relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[#8FA3BC]" />
           <input
             type="text"
             placeholder="Search questions..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-[#161D2C] border border-white/10 rounded-2xl pl-11 pr-4 py-3 text-xs text-white placeholder:text-neutral-500 focus:outline-none focus:border-blue-500/50"
+            className="w-full bg-white/80 backdrop-blur-sm border border-[#D0DCE8]/80 rounded-2xl pl-11 pr-4 py-3 text-xs text-[#263D68] placeholder:text-[#8FA3BC] focus:outline-none focus:border-[#A8D8C3] focus:ring-2 focus:ring-[#A8D8C3]/30 shadow-sm transition-all"
           />
         </div>
 
@@ -71,14 +71,14 @@ export const FaqSection = memo(function FaqSection() {
             return (
               <div
                 key={faq.q}
-                className="glass-card-luxury rounded-2xl border border-white/10 overflow-hidden"
+                className="bg-white/80 backdrop-blur-md rounded-2xl border border-[#D0DCE8]/80 overflow-hidden hover:bg-white/95 hover:border-[#B9D9EC] transition-all shadow-glass"
               >
                 <button
                   onClick={() => setOpenIdx(isOpen ? null : idx)}
                   className="w-full p-5 text-left flex items-center justify-between gap-4"
                 >
-                  <span className="text-sm font-bold text-white">{faq.q}</span>
-                  <span className="h-7 w-7 rounded-full border border-white/10 flex items-center justify-center flex-shrink-0 text-neutral-400">
+                  <span className="text-sm font-bold text-[#263D68]">{faq.q}</span>
+                  <span className="h-7 w-7 rounded-full border border-[#D0DCE8]/80 bg-white/90 flex items-center justify-center flex-shrink-0 text-[#5A6E8C]">
                     {isOpen ? <Minus className="h-3.5 w-3.5" /> : <Plus className="h-3.5 w-3.5" />}
                   </span>
                 </button>
@@ -90,7 +90,7 @@ export const FaqSection = memo(function FaqSection() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <p className="px-5 pb-5 text-xs text-neutral-400 leading-relaxed border-t border-white/5 pt-3">
+                      <p className="px-5 pb-5 text-xs text-[#5A6E8C] leading-relaxed border-t border-[#E4EDF5] pt-3">
                         {faq.a}
                       </p>
                     </motion.div>
